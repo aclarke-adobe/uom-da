@@ -1,0 +1,26 @@
+{
+  "variantName": "notice",
+  "baseBlock": "notice",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + text + 1 CTAs",
+    "purpose": "Highlighted informational note (e.g. 'So what does an urban designer do?')"
+  },
+  "contentPattern": {
+    "structure": "Single cell: optional :icon:, a heading, body paragraphs and an optional CTA link. Rendered as a bordered panel with the icon beside the heading and the body indented beneath."
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 1,
+    "lastUsed": null
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_547b31b2cb2b"
+  ]
+}

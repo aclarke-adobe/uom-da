@@ -1,0 +1,15 @@
+{
+  "type": "da",
+  "sites": {
+    "uom-da": {
+      "previewOrg": "aclarke-adobe",
+      "previewSite": "uom-da",
+      "contentHostUrl": "https://content.da.live/aclarke-adobe/uom-da/",
+      "botProtected": true,
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  },
+  "features": [
+    "site-planning"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "variantName": "residency-notice",
+  "baseBlock": "residency-notice",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "text + 1 CTAs",
+    "purpose": "Residency status panel explaining domestic vs international applicability"
+  },
+  "contentPattern": {
+    "structure": "One row per panel section (separated by rules). First section: a short title line (optional :icon: + e.g. 'Domestic student'), an optional one-link paragraph ('Change') shown inline, then explanatory text. Optional audience-keyed rows: cell 1 = audience key (domestic / international), cell 2 = content; only the section matching the audience-switcher selection is shown."
+  },
+  "usage": {
+    "pagesUsing": [
+      "/find/courses/undergraduate/bachelor-of-arts/entry-requirements"
+    ],
+    "reuseCount": 771,
+    "lastUsed": "2026-09-30T21:01:07.292Z"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_6f9783ff1b04",
+    "v_b1c29bbdb2ee",
+    "v_b1276b6bb0cb",
+    "v_042f9a8303ec"
+  ]
+}

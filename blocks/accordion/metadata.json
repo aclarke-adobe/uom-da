@@ -1,0 +1,58 @@
+{
+  "variantName": "accordion",
+  "baseBlock": "accordion",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + text + list",
+    "purpose": "Expandable FAQ / detail sections, optionally with an intro column"
+  },
+  "contentPattern": {
+    "structure": "Optional first row: single cell intro (heading, text, optional links) shown beside the items on desktop. Then one row per item: cell 1 = question/label, cell 2 = answer (rich text, lists, links, images)."
+  },
+  "usage": {
+    "pagesUsing": [
+      "/find/courses/undergraduate/bachelor-of-arts/entry-requirements"
+    ],
+    "reuseCount": 630,
+    "lastUsed": "2026-09-30T21:01:07.365Z"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_1b9e70513597",
+    "v_a0350d37aa04",
+    "v_6af5fc07737b",
+    "v_4ca1adf7f303",
+    "v_3ad89c0da197",
+    "v_f4fa058af246-1",
+    "v_7f1f592c36a0-2",
+    "v_d7ac31bbc9a5",
+    "v_b615283bfa00",
+    "v_b615283bfa00-2",
+    "v_b615283bfa00-3",
+    "v_09180df58220",
+    "v_b615283bfa00-1",
+    "v_e3c974c50702-1",
+    "v_09f01e016c69",
+    "v_cc6221a46acc",
+    "v_cc6221a46acc-1",
+    "v_4ca1adf7f303-1",
+    "v_7f1f592c36a0-1",
+    "v_7f1f592c36a0-5",
+    "v_a0350d37aa04-3",
+    "v_ad43a125ce80-4",
+    "v_b615283bfa00-4",
+    "v_6af5fc07737b-2",
+    "v_79973d17fbf4",
+    "v_7f1f592c36a0",
+    "v_7f1f592c36a0-3",
+    "v_7f1f592c36a0-4",
+    "v_7f1f592c36a0-6",
+    "v_a0350d37aa04-4",
+    "v_a0350d37aa04-5"
+  ]
+}

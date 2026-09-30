@@ -1,0 +1,26 @@
+{
+  "variantName": "embed",
+  "baseBlock": "embed",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + text",
+    "purpose": "Embedded third-party content such as a Google 360 tour or video"
+  },
+  "contentPattern": {
+    "structure": "Single cell: optional heading and intro text, optional placeholder image, then a link to the embeddable URL (Google Maps / Street View, YouTube, Vimeo or other iframe page) as the last link. The iframe lazy-loads (or loads on click when a placeholder image is provided)."
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 1,
+    "lastUsed": null
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_0a76f9b42b11"
+  ]
+}

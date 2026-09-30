@@ -1,0 +1,66 @@
+.residency-notice {
+  background-color: var(--dark-color);
+  color: var(--background-color);
+}
+
+.residency-notice a:any-link {
+  color: inherit;
+}
+
+.residency-notice .residency-notice-section {
+  padding: 24px;
+}
+
+.residency-notice .residency-notice-section + .residency-notice-section {
+  border-top: 1px solid rgb(255 255 255 / 60%);
+}
+
+.residency-notice .residency-notice-section > * {
+  margin: 0;
+  max-width: var(--text-max-width);
+}
+
+.residency-notice .residency-notice-section > * + * {
+  margin-top: 12px;
+}
+
+.residency-notice .residency-notice-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+
+.residency-notice .residency-notice-header > * {
+  margin: 0;
+}
+
+.residency-notice .residency-notice-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  color: inherit;
+}
+
+.residency-notice .residency-notice-title .icon,
+.residency-notice .residency-notice-title img {
+  width: 24px;
+  height: 24px;
+}
+
+.residency-notice .residency-notice-change {
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+}
+
+.residency-notice .residency-notice-section ul {
+  padding-left: 20px;
+}
+
+@media (width >= 900px) {
+  .residency-notice .residency-notice-section {
+    padding: 24px 24px 32px;
+  }
+}

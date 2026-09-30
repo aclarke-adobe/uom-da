@@ -1,0 +1,30 @@
+{
+  "variantName": "audience-switcher",
+  "baseBlock": "form",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "content",
+    "purpose": "Radio toggle that switches page content between audiences (domestic / international, individuals / organisations)"
+  },
+  "contentPattern": {
+    "structure": "Row 1: single cell label (e.g. 'Showing information for'). Rows 2+: cell 1 = option label (e.g. 'Domestic students'), optional cell 2 = audience key (defaults to slugified label). Sections with section-metadata 'Audience: <key>' (or elements with class audience-<key>) show only for the selected audience."
+  },
+  "usage": {
+    "pagesUsing": [
+      "/find/courses/undergraduate/bachelor-of-arts",
+      "/find/courses/undergraduate/bachelor-of-arts/entry-requirements"
+    ],
+    "reuseCount": 2909,
+    "lastUsed": "2026-09-30T21:01:07.241Z"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_123b9a9e557b",
+    "v_2d645b903798"
+  ]
+}

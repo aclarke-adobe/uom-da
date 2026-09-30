@@ -1,0 +1,33 @@
+{
+  "variantName": "tabs",
+  "baseBlock": "tabs",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + text + 1 CTAs",
+    "purpose": "Tabbed content panels (e.g. course structure by stream)"
+  },
+  "contentPattern": {
+    "structure": "One row per tab: cell 1 = tab label, cell 2 = panel content (headings, text, lists, links, nested content). First tab is selected by default; keyboard arrow/Home/End navigation."
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 491,
+    "lastUsed": null
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_dcad3b33ce57-4",
+    "v_dcad3b33ce57-2",
+    "v_709d3115754d",
+    "v_dcad3b33ce57-1",
+    "v_4ceec063d2b3",
+    "v_f277645f5dcb-1",
+    "v_211c686e6589-1",
+    "v_211c686e6589"
+  ]
+}

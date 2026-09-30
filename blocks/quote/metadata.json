@@ -1,0 +1,59 @@
+{
+  "variantName": "quote",
+  "baseBlock": "quote",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + text",
+    "purpose": "Student / staff testimonial or expandable profile"
+  },
+  "contentPattern": {
+    "structure": "Text cell: optional name heading, the quotation paragraphs, optional attribution paragraph starting with an em dash; optional image-only cell shown as a square portrait below the text (the leading dash of the attribution is hidden). Option 'profile': eyebrow paragraph (e.g. 'Profile') + name heading shown, remaining content (quote/bio/links) collapsed behind a 'Read more' toggle."
+  },
+  "usage": {
+    "pagesUsing": [
+      "/index"
+    ],
+    "reuseCount": 429,
+    "lastUsed": "2026-09-30T11:21:26Z"
+  },
+  "options": [
+    {
+      "class": "profile",
+      "label": "Profile"
+    }
+  ],
+  "memberVariantIds": [
+    "v_c9a516725528",
+    "v_d59fb562d74c",
+    "v_e093ff38e1aa",
+    "v_49f75c7bc864",
+    "v_040c0327b31b-1",
+    "v_8c3da60f62c7",
+    "v_d59fb562d74c-2",
+    "v_040c0327b31b",
+    "v_8c3da60f62c7-1",
+    "v_edd7a0db4039",
+    "v_d59fb562d74c-1",
+    "v_f629db72cfae",
+    "v_040c0327b31b-2",
+    "v_040c0327b31b-3",
+    "v_07fe96b94c5b",
+    "v_edd7a0db4039-5",
+    "v_d59fb562d74c-3",
+    "v_8c3da60f62c7-3",
+    "v_6aa585911056",
+    "v_b7f548b542f6",
+    "v_d59fb562d74c-4",
+    "v_d59fb562d74c-6",
+    "v_040c0327b31b-4",
+    "v_ad43a125ce80-3",
+    "v_d59fb562d74c-5",
+    "v_eb791f1bcad5",
+    "v_fba3ab4836c5"
+  ]
+}

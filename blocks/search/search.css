@@ -1,0 +1,168 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.search .search-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.search .search-intro > * {
+  margin: 0;
+}
+
+.search .search-intro > * + * {
+  margin-top: 12px;
+}
+
+.search .search-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.search .search-form {
+  --search-outline-color: #406d80;
+
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
+
+/* standalone search box (e.g. in the hero band) caps at the source column width */
+.search:not(.filters, .search-has-intro) .search-form {
+  max-width: 620px;
+}
+
+.search .search-field {
+  display: flex;
+  width: 100%;
+}
+
+.search .search-field input {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 1px var(--search-outline-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  line-height: 1.5;
+  appearance: none;
+}
+
+.search .search-field input::placeholder {
+  color: #616161;
+  opacity: 1;
+}
+
+.search .search-field input:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+.search .search-field input:hover:not(:focus) {
+  background-color: var(--uom-cyan-light);
+}
+
+.search .search-submit {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 12px 16px 12px 12px;
+  border: 0;
+  border-radius: 0;
+  box-shadow:
+    inset -1px 0 var(--search-outline-color),
+    inset 0 1px var(--search-outline-color),
+    inset 0 -1px var(--search-outline-color);
+  background-color: var(--uom-cyan);
+  color: var(--uom-navy);
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.search .search-submit:hover {
+  background-color: var(--uom-cyan-light);
+  color: var(--uom-navy);
+}
+
+.search .search-submit:active {
+  background-color: #74d6f4;
+}
+
+.search .search-submit:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+.search .search-submit-icon {
+  display: block;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M66.333 69.918 44.417 48.001c-1.667 1.445-3.61 2.57-5.83 3.375-2.22.806-4.582 1.209-7.087 1.209-6.009 0-11.095-2.084-15.257-6.25C12.081 42.168 10 37.14 10 31.25c0-5.889 2.083-10.916 6.25-15.083s9.208-6.25 15.125-6.25 10.944 2.083 15.083 6.25c4.14 4.167 6.209 9.199 6.209 15.096 0 2.38-.39 4.682-1.167 6.904-.778 2.222-1.944 4.306-3.5 6.25l22 21.833-3.667 3.667ZM31.417 47.585c4.514 0 8.35-1.598 11.51-4.792s4.74-7.042 4.74-11.542-1.58-8.347-4.74-11.541c-3.16-3.195-6.996-4.792-11.51-4.792-4.56 0-8.437 1.597-11.629 4.792C16.596 22.904 15 26.75 15 31.25s1.596 8.348 4.788 11.542c3.192 3.194 7.069 4.792 11.629 4.792Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.search .search-extras {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.search .search-note > :first-child {
+  margin-top: 0;
+}
+
+.search .search-note > :last-child {
+  margin-bottom: 0;
+}
+
+/* filters: grouped chip links */
+.search.filters .search-filter-group {
+  padding: 16px 0;
+  border-top: 1px solid var(--uom-grey-border);
+  border-bottom: 1px solid var(--uom-grey-border);
+}
+
+.search.filters .search-filter-label {
+  margin: 0 0 4px;
+}
+
+.search.filters .search-filter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (width >= 900px) {
+  .search.search-has-intro .search-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 48px;
+    align-items: center;
+  }
+}

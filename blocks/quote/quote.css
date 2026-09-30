@@ -1,0 +1,169 @@
+/* default: quotation, attribution, then a square portrait below */
+.quote {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+.quote .quote-text > :first-child {
+  margin-top: 0;
+}
+
+.quote .quote-text > :is(h1, h2, h3, h4, h5, h6) {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  background: linear-gradient(var(--uom-grey-border), var(--uom-grey-border)) left bottom / 40px 2px no-repeat;
+}
+
+.quote blockquote {
+  margin: 0;
+  color: var(--heading-color);
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-m);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.quote blockquote > p {
+  margin: 0 0 16px;
+}
+
+.quote blockquote > p:first-child::before {
+  content: open-quote;
+  margin-right: 4px;
+}
+
+.quote blockquote > p:last-child::after {
+  content: close-quote;
+}
+
+.quote blockquote > p:first-child::before,
+.quote blockquote > p:last-child::after {
+  font-size: var(--heading-font-size-s);
+  line-height: 1.2;
+}
+
+.quote .quote-attribution {
+  margin: 0;
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.quote .quote-media {
+  max-width: 160px;
+  background-color: var(--uom-grey);
+}
+
+.quote .quote-media picture,
+.quote .quote-media img {
+  display: block;
+  width: 100%;
+}
+
+.quote .quote-media img {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+/* profile: collapsed summary with read-more toggle */
+.quote.profile {
+  padding: 32px 24px;
+  background-color: var(--uom-sage-pale);
+}
+
+.quote.profile .quote-attribution {
+  margin: 0 0 24px;
+  color: inherit;
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+}
+
+.quote.profile .quote-media {
+  max-width: none;
+  background-color: transparent;
+}
+
+.quote.profile .quote-media img {
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+.quote.profile .quote-eyebrow {
+  margin: 0 0 8px;
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.quote.profile .quote-profile-summary > :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  padding: 0;
+  background: none;
+  font-size: var(--heading-font-size-xs);
+}
+
+.quote .quote-profile-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  margin: 16px 0 0;
+  padding: 12px;
+  border: 1px solid currentcolor;
+  border-radius: 0;
+  background: transparent;
+  color: var(--heading-color);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quote .quote-profile-toggle::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border: solid currentcolor;
+  border-width: 0 1.5px 1.5px 0;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.quote .quote-profile-toggle[aria-expanded="true"]::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+.quote .quote-profile-details {
+  margin-top: 24px;
+}
+
+.quote .quote-profile-details > :first-child {
+  margin-top: 0;
+}
+
+@media (width >= 600px) {
+  .quote .quote-media {
+    max-width: 100%;
+  }
+}
+
+@media (width >= 900px) {
+  .quote blockquote > p {
+    margin-bottom: 18px;
+  }
+
+  .quote.profile {
+    padding: 48px 220px;
+  }
+
+  /* profile keeps the portrait beside the text */
+  .quote.profile.quote-has-media {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 64px;
+    align-items: start;
+    padding: 48px;
+  }
+}

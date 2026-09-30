@@ -1,0 +1,32 @@
+{
+  "variantName": "form",
+  "baseBlock": "form",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "list",
+    "purpose": "Authored forms and eligibility questionnaires"
+  },
+  "contentPattern": {
+    "structure": "Either a single link to a sheet (.json) or one row per field: Label | Type | Name | Options | Required. Types: fieldset (starts a grouped panel; Options = description), text, email, tel, number, date, textarea, select, radio, checkbox (Options = comma-separated choices), plaintext, submit. A row 'action | <url>' sets the POST endpoint."
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 9,
+    "lastUsed": null
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_6222b1e18e53",
+    "v_994672764597",
+    "v_26ddcdc11a42",
+    "v_403693b62c4b",
+    "v_c0bef28db1cd",
+    "v_c75b44733eb3",
+    "v_fd2df5529a63"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "variantName": "carousel",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "icon",
+    "structure": "heading + 6 images + list",
+    "purpose": "Image gallery slider with captions"
+  },
+  "contentPattern": {
+    "structure": "Optional first row: single cell heading. Then one row per slide: cell 1 = image, optional cell 2 = caption text. Renders a one-at-a-time slider with previous/next buttons and a '1 / N' counter."
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 3,
+    "lastUsed": null
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_93027c119e88",
+    "v_ff0235d0d0e6",
+    "v_ff0235d0d0e6-1"
+  ]
+}

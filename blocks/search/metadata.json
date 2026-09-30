@@ -1,0 +1,43 @@
+{
+  "variantName": "search",
+  "baseBlock": "search",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + 1 CTAs",
+    "purpose": "Course / article search box, optionally with filter links"
+  },
+  "contentPattern": {
+    "structure": "Row 1: cell 1 = optional heading/intro + a link whose href is the search results URL (empty param such as ?q= names the query parameter) and whose text is the placeholder; optional cell 2 = button label (e.g. 'Search'). Option 'filters': further rows = filter group label | list of filter links (rendered as chips); single-cell rows (notes, 'Clear search' link) follow."
+  },
+  "usage": {
+    "pagesUsing": [
+      "/index"
+    ],
+    "reuseCount": 17,
+    "lastUsed": "2026-09-30T11:21:26Z"
+  },
+  "options": [
+    {
+      "class": "filters",
+      "label": "Filters"
+    }
+  ],
+  "memberVariantIds": [
+    "v_3d6151d6de70",
+    "v_3ea1ffb7f73f",
+    "v_3d6151d6de70-1",
+    "v_0f8316595710",
+    "v_56d8129446be",
+    "v_57f860b99c2f-3",
+    "v_7a6b28152624",
+    "v_ad43a125ce80-2",
+    "v_b0c51ddaee75",
+    "v_b42d4dbe1ab2",
+    "v_d2942f3b3bbf"
+  ]
+}

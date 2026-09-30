@@ -19,6 +19,194 @@
   display: block;
 }
 
+.columns > div > div > :first-child {
+  margin-top: 0;
+}
+
+.columns .columns-eyebrow {
+  margin-bottom: 0;
+}
+
+.columns .columns-eyebrow + :is(h1, h2, h3, h4) {
+  margin-top: 8px;
+}
+
+/* overlap: banner image with the content panel pulled up over it */
+.columns.overlap > .columns-overlap-media {
+  display: block;
+  line-height: 0;
+}
+
+.columns.overlap > .columns-overlap-media img {
+  display: block;
+  aspect-ratio: 16 / 5;
+  object-fit: cover;
+}
+
+.columns.overlap > .columns-overlap-panel {
+  position: relative;
+  padding: 32px 24px;
+  background-color: var(--background-color);
+}
+
+/*
+ * split: text panel beside an inset photo; image stacks first on mobile.
+ * vertical rhythm: in the source a tinted band is exactly the tile's height and
+ * tiles are 24px (48px desktop) apart, so offset the section spacing when the
+ * block starts or ends its section
+ */
+main .section > .columns-wrapper:first-child > .columns.split {
+  margin-top: -16px;
+}
+
+main .section > .columns-wrapper:last-child > .columns.split {
+  margin-bottom: -16px;
+}
+
+main .section:is(.light, .highlight, .grey, .sage, .cream, .navy, .dark, .teal) > .columns-wrapper:first-child > .columns.split {
+  margin-top: -40px;
+}
+
+main .section:is(.light, .highlight, .grey, .sage, .cream, .navy, .dark, .teal) > .columns-wrapper:last-child > .columns.split {
+  margin-bottom: -40px;
+}
+
+.columns.split > div {
+  gap: 0;
+}
+
+.columns.split > div > .columns-img-col {
+  margin-top: 24px;
+}
+
+.columns.split > div > .columns-img-col picture {
+  display: block;
+}
+
+.columns.split > div > .columns-img-col img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.columns.split > div > div:not(.columns-img-col) {
+  padding: 48px 24px;
+}
+
+.columns.split .columns-eyebrow {
+  margin: 0 0 24px;
+  color: var(--text-color);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.columns.split h2 {
+  margin: 0 0 18px;
+  color: var(--heading-color);
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+.columns.split .columns-eyebrow + :is(h1, h2, h3, h4) {
+  margin-top: 0;
+}
+
+.columns.split p.button-wrapper {
+  margin: 0;
+}
+
+.columns.split a.button:any-link {
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  font-size: 18px;
+}
+
+.columns.split a.button::before {
+  width: 20px;
+  height: 20px;
+  margin-top: 3.5px;
+}
+
+@media (width >= 481px) {
+  .columns.split a.button:any-link {
+    width: auto;
+  }
+}
+
+/* split desktop: matches the source's 769px breakpoint */
+@media (width >= 769px) {
+  main .section > .columns-wrapper:first-child > .columns.split {
+    margin-top: calc(48px - var(--section-padding));
+  }
+
+  main .section > .columns-wrapper:last-child > .columns.split {
+    margin-bottom: calc(48px - var(--section-padding));
+  }
+
+  main .section:is(.light, .highlight, .grey, .sage, .cream, .navy, .dark, .teal) > .columns-wrapper:first-child > .columns.split {
+    margin-top: calc(-1 * var(--section-padding));
+  }
+
+  main .section:is(.light, .highlight, .grey, .sage, .cream, .navy, .dark, .teal) > .columns-wrapper:last-child > .columns.split {
+    margin-bottom: calc(-1 * var(--section-padding));
+  }
+
+  .columns.split > div {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .columns.split > div > div {
+    box-sizing: border-box;
+    flex: 0 0 50%;
+    order: unset;
+  }
+
+  .columns.split > div > div:not(.columns-img-col) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 432px;
+    padding: 48px;
+  }
+
+  .columns.split .columns-eyebrow {
+    font-size: 14px;
+  }
+
+  .columns.split h2 {
+    margin-bottom: 20px;
+  }
+
+  /* photo inset 48px top / 24px bottom / 16px on the text side, flush to the outer edge */
+  .columns.split > div > .columns-img-col {
+    position: relative;
+    margin-top: 0;
+  }
+
+  .columns.split > div > .columns-img-col picture {
+    position: absolute;
+    inset: 48px 0 24px 16px;
+  }
+
+  .columns.split > div > .columns-img-col:first-child picture {
+    inset: 48px 16px 24px 0;
+  }
+
+  .columns.split > div > .columns-img-col img {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+}
+
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
@@ -29,5 +217,23 @@
   .columns > div > div {
     flex: 1;
     order: unset;
+  }
+
+  .columns.overlap > .columns-overlap-panel {
+    width: calc(100% - 200px);
+    max-width: var(--content-max-width);
+    box-sizing: border-box;
+    margin: -80px auto 0;
+    padding: 80px 104px 48px;
+  }
+
+  /* heading + content pairs: narrow label column, wide content column */
+  .columns.columns-2-cols > .columns-text-row {
+    align-items: flex-start;
+    gap: 48px;
+  }
+
+  .columns.columns-2-cols > .columns-text-row > div + div {
+    flex: 2;
   }
 }

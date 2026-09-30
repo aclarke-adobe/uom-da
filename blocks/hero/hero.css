@@ -5,33 +5,336 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
-}
-
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  display: grid;
+  background-color: var(--dark-color);
   color: var(--background-color);
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+.hero h1,
+.hero h2 {
+  margin: 0;
+  color: inherit;
 }
 
-.hero img {
-  object-fit: cover;
+.hero .hero-content {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: calc(var(--content-max-width) + 48px);
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.hero .hero-main > * {
+  margin: 0;
+}
+
+.hero .hero-main > * + * {
+  margin-top: 16px;
+}
+
+.hero .hero-eyebrow {
+  display: inline-block;
+  padding: 4px 6px;
+  border: 1px solid currentcolor;
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero .hero-main > .hero-eyebrow + * {
+  margin-top: 12px;
+}
+
+/* plain links only: buttons keep their own colour scheme from styles.css */
+.hero a:any-link:not(.button) {
+  color: inherit;
+}
+
+.hero .hero-media picture,
+.hero .hero-media img {
+  display: block;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+/* default with image: image fills the band behind the content */
+.hero.hero-background .hero-media,
+.hero.hero-background .hero-content,
+.hero.overlay .hero-media,
+.hero.overlay .hero-content {
+  grid-area: 1 / 1;
+}
+
+.hero.hero-background .hero-content,
+.hero.overlay .hero-content {
+  position: relative;
+}
+
+.hero.hero-background .hero-media::after,
+.hero.overlay .hero-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgb(0 0 0 / 45%);
+}
+
+/* overlay: centred heading over full-bleed image */
+.hero.overlay {
+  min-height: 240px;
+}
+
+.hero.overlay .hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* split-light: content beside image */
+.hero.split-light .hero-media img {
+  aspect-ratio: 16 / 9;
+}
+
+.hero.split-light {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-bottom: 1px solid var(--uom-grey-border);
+}
+
+.hero.split-light h1,
+.hero.split-light h2 {
+  color: var(--heading-color);
+}
+
+/* aside: heading with a side panel of links */
+.hero.aside {
+  background-color: var(--uom-sage-pale);
+  color: var(--text-color);
+}
+
+.hero.aside h1,
+.hero.aside h2 {
+  color: var(--heading-color);
+}
+
+.hero .hero-aside {
+  margin-top: 32px;
+  padding: 24px;
+  background-color: var(--uom-teal);
+  color: var(--background-color);
+}
+
+.hero .hero-aside > :first-child {
+  margin-top: 0;
+}
+
+.hero .hero-aside > :last-child {
+  margin-bottom: 0;
+}
+
+.hero .hero-aside ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/*
+ * split: content beside image.
+ * Default (h2 heading): in-content feature on the section background,
+ * text 1/3 + image 2/3 inside the content width.
+ * hero-page-header (h1 heading): full-bleed page header, image on the right edge.
+ */
+.hero.split {
+  max-width: var(--content-max-width);
+  margin: 0 auto 48px;
+  padding: 0 16px;
+  gap: 24px;
+  background-color: transparent;
+}
+
+.hero.split .hero-content {
+  max-width: none;
+  padding: 0;
+}
+
+.hero.split .hero-media img {
+  height: auto;
+  aspect-ratio: 40 / 27;
+}
+
+.hero.split .hero-main > * {
+  margin: 0 0 24px;
+}
+
+.hero.split .hero-main > * + *,
+.hero.split .hero-main > .hero-eyebrow + * {
+  margin-top: 0;
+}
+
+.hero.split .hero-main > :last-child {
+  margin-bottom: 0;
+}
+
+.hero.split .hero-main > h1 {
+  margin-bottom: 20px;
+}
+
+.hero.split .hero-main > h2 {
+  margin-bottom: 20px;
+}
+
+.hero.split .hero-main > h1 + p {
+  margin-top: -16px;
+}
+
+.hero.split .hero-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  padding: 0;
+  border: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.07em;
+}
+
+.hero.split .hero-main > .button-wrapper {
+  margin-bottom: 0;
+}
+
+/* CTA spans the column on small phones */
+.hero.split .button-wrapper a.button {
+  width: 100%;
+}
+
+@media (width >= 481px) {
+  .hero.split .button-wrapper a.button {
+    width: auto;
+  }
+}
+
+/* split page header */
+.hero.split.hero-page-header {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  background-color: var(--uom-navy-dark);
+}
+
+.hero.split.hero-page-header .hero-media img {
+  aspect-ratio: 4 / 3;
+}
+
+.hero.split.hero-page-header .hero-content {
+  padding: 32px 16px;
+}
+
+/* stacked page header keeps the source's narrow title measure */
+.hero.split.hero-page-header .hero-main > h1 {
+  max-width: 320px;
+}
+
+/* split switches to side-by-side at the site's tablet breakpoint */
+@media (width >= 769px) {
+  .hero.split {
+    grid-template-columns: calc(100% / 3 - 28.444px) 1fr;
+    align-items: start;
+    column-gap: 42.667px;
+    padding: 0 32px;
+  }
+
+  .hero.split .hero-media {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .hero.split .hero-content {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  /* page header: image pinned to the right 45%, text in the left half of the content width */
+  .hero.split.hero-page-header {
+    display: block;
+    padding: 0;
+  }
+
+  .hero.split.hero-page-header .hero-media {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 45%;
+  }
+
+  .hero.split.hero-page-header .hero-media img {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .hero.split.hero-page-header .hero-content {
+    display: flex;
+    align-items: center;
+    max-width: calc(var(--content-max-width) + 64px);
+    min-height: 400px;
+    padding: 72px 32px 96px;
+  }
+
+  .hero.split.hero-page-header .hero-main {
+    max-width: 50%;
+  }
+
+  .hero.split .hero-main > h1 {
+    margin-bottom: 48px;
+  }
+
+  .hero.split.hero-page-header .hero-main > h1 {
+    max-width: none;
+  }
 }
 
 @media (width >= 900px) {
-  .hero {
-    padding: 40px 32px;
+  .hero .hero-content {
+    padding: 80px 100px;
+  }
+
+  .hero.split-light {
+    grid-template-columns: 7fr 5fr;
+  }
+
+  .hero.split-light .hero-media {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .hero.split-light .hero-content {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: none;
+    margin: 0;
+  }
+
+  .hero.split-light .hero-media img {
+    aspect-ratio: auto;
+  }
+
+  .hero.hero-has-aside .hero-content {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 48px;
+    align-items: start;
+  }
+
+  .hero.hero-has-aside .hero-aside {
+    margin-top: 0;
+  }
+
+  .hero.overlay {
+    min-height: 400px;
   }
 }

@@ -1,0 +1,67 @@
+{
+  "variantName": "columns",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "heading + list",
+    "purpose": "Multi-column layouts: heading/content pairs, image + text splits"
+  },
+  "contentPattern": {
+    "structure": "One or more rows, each with N cells (columns). A cell holding only an image is treated as an image column. Two text cells render as a narrow heading column and a wide content column on desktop. Options: split (image column + content panel, full-bleed 50/50), overlap (first row = banner image only; next row = heading | content panel that overlaps the banner)."
+  },
+  "usage": {
+    "pagesUsing": [
+      "/find/courses/undergraduate/bachelor-of-arts",
+      "/index"
+    ],
+    "reuseCount": 1419,
+    "lastUsed": "2026-09-30T20:46:06Z"
+  },
+  "options": [
+    {
+      "class": "split",
+      "label": "Split"
+    },
+    {
+      "class": "overlap",
+      "label": "Overlap"
+    }
+  ],
+  "memberVariantIds": [
+    "v_b4bcc774eef2",
+    "v_d54c07e31b6c",
+    "v_f1846517a8a7",
+    "v_f84132db5ce3",
+    "v_2861defefeef",
+    "v_1a3c8ea0a90c",
+    "v_1a3c8ea0a90c-1",
+    "v_b4bcc774eef2-1",
+    "v_39ae6daa1388",
+    "v_0b00b76fe538",
+    "v_e40ca1aa0b68",
+    "v_e8413da0c98d",
+    "v_f277645f5dcb-3",
+    "v_1a3c8ea0a90c-2",
+    "v_d91614e94065",
+    "v_e888713fc250",
+    "v_0d841a6f0570",
+    "v_1b9e70513597-3",
+    "v_32678cbf1935",
+    "v_862d8a932913",
+    "v_9dc326ad5e8e",
+    "v_c058553113bc",
+    "v_c9d90eb8d399",
+    "v_e8413da0c98d-1",
+    "v_e9cae856a9cd",
+    "v_f84132db5ce3-1",
+    "v_f84132db5ce3-2",
+    "v_f84132db5ce3-3",
+    "v_f84132db5ce3-4",
+    "v_fc40a915a3ed"
+  ]
+}

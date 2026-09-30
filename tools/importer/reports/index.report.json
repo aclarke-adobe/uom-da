@@ -1,0 +1,25 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au",
+  "path": "index",
+  "timestamp": "2026-09-30T13:11:20.118Z",
+  "title": "Study at the University of Melbourne",
+  "template": "homepage",
+  "blocks": [
+    "hero-split",
+    "search",
+    "cards-tile",
+    "cards-course-link",
+    "hero-split",
+    "cards-tile",
+    "columns-split",
+    "columns-split",
+    "columns-split",
+    "columns-split",
+    "cards",
+    "cards-icon",
+    "cards-tile",
+    "quote",
+    "quote"
+  ]
+}

@@ -1,0 +1,48 @@
+/* Brand tokens extracted from study.unimelb.edu.au */
+
+:root {
+  /* fonts */
+  --heading-font-family: fraunces, fraunces-fallback, georgia, serif;
+  --body-font-family: "Source Sans 3", source-sans-fallback, helvetica, arial, sans-serif;
+
+  /* brand palette */
+  --uom-navy: #000f46;
+  --uom-navy-dark: #000b34;
+  --uom-navy-light: #333f6a;
+  --uom-teal: #00354c;
+  --uom-teal-light: #003c55;
+  --uom-cyan: #46c8f0;
+  --uom-cyan-light: #d1f1fb;
+  --uom-sage: #abc1a7;
+  --uom-sage-light: #d5e0d3;
+  --uom-sage-pale: #eaefe9;
+  --uom-cream: #fff5cb;
+  --uom-amber: #ac5907;
+  --uom-grey: #f1f1f1;
+  --uom-grey-border: #c8c8c8;
+
+  /* colors */
+  --background-color: #fff;
+  --light-color: var(--uom-grey);
+  --dark-color: var(--uom-navy);
+  --text-color: #2d2d2d;
+  --heading-color: var(--uom-navy);
+  --link-color: #003f8b;
+  --link-hover-color: #004ead;
+  --link-on-dark-hover-color: var(--uom-cyan);
+  --focus-color: #0d6cdd;
+
+  /* spacing */
+  --section-padding: 80px;
+  --content-max-width: 1240px;
+  --text-max-width: 880px;
+  --nav-height: 96px;
+
+  /* heading sizes (desktop) */
+  --heading-size-xxl: 48px;
+  --heading-size-xl: 40px;
+  --heading-size-l: 32px;
+  --heading-size-m: 24px;
+  --heading-size-s: 20px;
+  --heading-size-xs: 18px;
+}

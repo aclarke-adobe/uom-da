@@ -1,0 +1,34 @@
+{
+  "variantName": "study-options",
+  "baseBlock": "tabs",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + text + 13 CTAs",
+    "purpose": "Study-area course browser with tabbed, filterable course lists"
+  },
+  "contentPattern": {
+    "structure": "Row 1: single cell with the heading (e.g. 'Study options in Biomedical engineering') and optional intro text. Rows 2+: cell 1 = tab label (e.g. 'Degrees'), cell 2 = bulleted list of courses, each item a course link followed by optional '| Level | Study mode' text. Renders tabs with counts, Level/Study Mode filters derived from the items, a result summary and 'View more courses' after 5 results."
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 110,
+    "lastUsed": null
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_2b66804ca8e3-1",
+    "v_2b66804ca8e3",
+    "v_28c1f44026b8",
+    "v_2b66804ca8e3-3",
+    "v_6af5fc07737b-1",
+    "v_28c1f44026b8-1",
+    "v_dcad3b33ce57",
+    "v_2b66804ca8e3-2",
+    "v_2b66804ca8e3-4"
+  ]
+}

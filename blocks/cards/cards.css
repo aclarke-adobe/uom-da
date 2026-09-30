@@ -1,27 +1,510 @@
+/* two cards blocks authored back to back (e.g. icon cards then link tiles) need separating */
+.cards-wrapper + .cards-wrapper {
+  margin-top: 80px;
+}
+
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  gap: 16px;
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
 
 .cards .cards-card-body {
-  margin: 16px;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.cards .cards-card-body > :first-child {
+  margin-top: 0;
 }
 
 .cards .cards-card-image {
   line-height: 0;
 }
 
+/* default: borderless card, landscape photo, heading, text, arrow link pinned to the bottom */
 .cards > ul > li img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+}
+
+.cards:not(.tile, .link-list, .course-link, .people, .stat) .cards-card-body {
+  padding: 24px 0;
+}
+
+.cards:not(.tile, .link-list, .course-link, .people, .stat) .cards-card-body > :is(h2, h3, h4, h5, h6) {
+  margin: 0 0 12px;
+  color: var(--heading-color);
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-s);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+.cards:not(.tile, .link-list, .course-link, .people, .stat) .cards-card-body > p:where(:not(.cards-card-cta)) {
+  margin: 0;
+}
+
+.cards .cards-card-body > .cards-card-cta {
+  margin-top: auto;
+  padding-top: 24px;
+  margin-bottom: 0;
+}
+
+.cards .cards-card-cta a:any-link:not(.button) {
+  display: inline-flex;
+  align-items: center;
+  color: var(--link-color);
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cards .cards-card-cta a:not(.button)::before {
+  content: '';
+  flex-shrink: 0;
+  order: -1;
+  width: 20px;
+  height: 20px;
+  background-color: currentcolor;
+  mask: var(--arrow-icon) center / contain no-repeat;
+}
+
+.cards .cards-card-cta a:not(.button):hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+.cards .cards-card-eyebrow + .cards-card-title {
+  margin-top: 0;
+}
+
+/* tile: text-only columns under a top rule */
+.cards.tile {
+  --cards-rule-color: var(--uom-grey-border);
+}
+
+.cards.tile > ul > li {
+  border-top: 1px solid var(--cards-rule-color);
+}
+
+.cards.tile .cards-card-body {
+  position: relative;
+  padding-top: 16px;
+}
+
+.cards.tile .cards-card-body > p:where(:not(.cards-card-cta)) {
+  margin: 0 0 24px;
+}
+
+.cards.tile .cards-card-title a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cards.tile .cards-card-title a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+/* tile, bold link title: title with a cyan circular arrow at the top right, description below */
+.cards.tile .cards-card-body > p.cards-card-title {
+  margin: 0 40px 16px 0;
+  color: var(--link-color);
+  font-size: var(--heading-font-size-m);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* the short description under a bold link title only shows from tablet up, as on the source */
+.cards.tile .cards-card-body > :where(p.cards-card-title) ~ p:where(:not(.cards-card-cta)) {
+  display: none;
+}
+
+.cards.tile p.cards-card-title strong {
+  font-weight: inherit;
+}
+
+.cards.tile p.cards-card-title a::after {
+  content: '';
+  position: absolute;
+  top: 12.8px;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000f46' d='M13.3 5.3 12 6.6l4.4 4.5H4v1.8h12.4L12 17.4l1.3 1.3L20 12z'/%3E%3C/svg%3E") center / 20px no-repeat var(--uom-cyan);
+  transition: background-color 0.2s;
+}
+
+.cards.tile p.cards-card-title a:hover::after {
+  background-color: #81daf5;
+}
+
+/* tile, linked heading: small-caps eyebrow above an arrow-prefixed heading link */
+.cards.tile .cards-card-body > p.cards-card-eyebrow {
+  margin: 0 0 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.cards.tile .cards-card-body > :where(h2, h3, h4, h5, h6).cards-card-title {
+  margin: 0 0 12px;
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-m);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+.cards.tile :where(h2, h3, h4, h5, h6).cards-card-title a:any-link {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.cards.tile :where(h2, h3, h4, h5, h6).cards-card-title a::before {
+  content: '';
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background-color: var(--uom-cyan);
+  mask: var(--arrow-icon) center / contain no-repeat;
+}
+
+/* icon: pictogram (icon or image) above heading, text and link */
+
+/* the option class collides with the global 24x24 `.icon` rule (styles.css); undo it on the block */
+.cards.icon {
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+/* pictogram (icon or image) spans the card width at the source 190:150 ratio */
+.cards.icon .cards-card-image .icon {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cards.icon > ul > li img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 190 / 150;
+  object-fit: contain;
+}
+
+/* `:icon-name:` SVG pictograms span the card width at the artwork's 190:150 ratio */
+.cards.icon .cards-card-image.cards-card-icon .icon {
+  width: 100%;
+  height: auto;
+  margin-left: 0;
+}
+
+/* per-pictogram optical alignment, as on the source (artwork side bearing pulled back) */
+.cards.icon .cards-card-image.cards-card-icon .icon.icon-uom-undergraduate-entry-pathways {
+  width: calc(100% + 16px);
+  margin-left: -16px;
+}
+
+.cards.icon .cards-card-image.cards-card-icon .icon.icon-uom-graduate-degree-packages {
+  width: calc(100% + 9px);
+  margin-left: -9px;
+}
+
+/* link-list: single column of arrow links separated by rules */
+.cards.link-list > ul {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.cards.link-list > ul > li {
+  border-bottom: 1px solid var(--uom-grey-border);
+}
+
+.cards.link-list .cards-card-body {
+  margin: 12px 0;
+}
+
+.cards.link-list .cards-card-body p {
+  margin: 0;
+}
+
+/* people: portrait beside name, role and bio */
+.cards.people > ul {
+  grid-template-columns: 1fr;
+}
+
+.cards.people .cards-card-body {
+  margin: 16px 0 0;
+}
+
+.cards.people > ul > li img {
+  aspect-ratio: 1;
+}
+
+/* stat: bordered card with centred figure and label, optional description below a rule */
+.cards.stat > ul > li {
+  border: 1px solid var(--uom-grey-border);
+  background-color: var(--background-color);
+  text-align: center;
+}
+
+.cards.stat .cards-card-body {
+  margin: 16px;
+}
+
+.cards.stat .cards-card-image {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+}
+
+.cards.stat > ul > li img {
+  width: 32px;
+  height: 32px;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+/* icon: `:icon-name:` SVG fills the icon span at its own ratio */
+.cards.icon > ul > li .cards-card-icon img {
+  width: 100%;
+  height: auto;
+}
+
+.cards.stat .cards-card-stat {
+  flex: 0 0 auto;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--uom-grey-border);
+}
+
+.cards.stat .cards-card-desc {
+  text-align: left;
+}
+
+/* course-link: slim bar of arrow-prefixed links, stacked on mobile, one centred line on desktop */
+
+/* the bar is a slim band, not a full-height section */
+main .section:is(.grey, .light, .highlight):has(> .cards-wrapper:only-child > .cards.course-link) {
+  padding: 24px 0;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.cards.course-link > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cards.course-link .cards-card-body p {
+  margin: 0;
+}
+
+.cards.course-link .cards-card-link a:any-link {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+  color: var(--link-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  line-height: 1.3333;
+  text-decoration: none;
+}
+
+.cards.course-link .cards-card-link a::before {
+  content: '';
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  background-color: currentcolor;
+  mask: url('../../icons/arrow-cta.svg') center / contain no-repeat;
+}
+
+.cards.course-link .cards-card-link a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+/* course-link items that are more than a single link keep the compact chip look */
+.cards.course-link > ul > li:not(.cards-card-link) {
+  flex: 1 1 257px;
+  border-left: 4px solid var(--uom-cyan);
+}
+
+.cards.course-link > ul > li:not(.cards-card-link) .cards-card-body {
+  margin: 10px 16px;
+}
+
+.cards.course-link > ul > li:not(.cards-card-link) img {
+  width: 40px;
+  height: 40px;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+@media (width >= 600px) {
+  .cards.people > ul > li {
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) 2fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .cards.people .cards-card-body {
+    margin: 0;
+  }
+
+  /* default / icon cards: two-up, a trailing odd card centred */
+  .cards:not(.tile, .link-list, .course-link, .people, .stat) > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cards:not(.tile, .link-list, .course-link, .people, .stat) .cards-card-body > :is(h2, h3, h4, h5, h6) {
+    margin-bottom: 16px;
+  }
+
+  .cards.tile .cards-card-body > p.cards-card-title {
+    min-height: 66px;
+    margin-bottom: 18px;
+  }
+
+  .cards.tile .cards-card-body > :where(p.cards-card-title) ~ p:where(:not(.cards-card-cta)) {
+    display: block;
+  }
+
+  .cards.tile .cards-card-body > :where(h2, h3, h4, h5, h6).cards-card-title {
+    margin-bottom: 16px;
+  }
+
+  .cards.tile :where(h2, h3, h4, h5, h6).cards-card-title a::before {
+    margin-top: 3px;
+  }
+
+  /* bold-title tiles sit two-up on tablet with roomier rows */
+  .cards.tile .cards-card-body:has(> p.cards-card-title) {
+    padding-bottom: 24px;
+    padding-top: 24px;
+  }
+
+  .cards.tile p.cards-card-title a::after {
+    top: 20.8px;
+  }
+
+  /* linked-heading tiles go three-up from tablet */
+  .cards.tile.cards-cols-3:has(:where(h2, h3, h4, h5, h6).cards-card-title) > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cards:not(.tile, .link-list, .course-link, .people, .stat) > ul > li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 8px);
+  }
+}
+
+@media (width >= 768px) {
+  .cards.course-link > ul {
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 24px 48px;
+  }
+
+  .cards.course-link .cards-card-link a::before {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (width >= 900px) {
+  .cards > ul {
+    gap: 24px;
+  }
+
+  .cards:not(.tile, .link-list, .course-link, .people, .stat) > ul {
+    grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+  }
+
+  .cards.tile > ul,
+  .cards.icon > ul,
+  .cards.stat > ul {
+    grid-template-columns: repeat(auto-fit, minmax(257px, 1fr));
+  }
+
+  .cards.link-list > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 32px;
+  }
+
+  /* fill whole rows: 3 / 6 cards in 3 columns, 4 / 8 cards in 4 columns */
+  .cards.cards-cols-3:not(.link-list, .course-link, .people) > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cards.cards-cols-4:not(.link-list, .course-link, .people) > ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .cards:not(.tile, .link-list, .course-link, .people, .stat) > ul > li:last-child:nth-child(odd) {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
+  }
+
+  /* bold-title tiles stay two-up until the wide breakpoint */
+  .cards.tile:has(p.cards-card-title) > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 1098px) {
+  .cards.tile.cards-cols-3:has(p.cards-card-title) > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cards.tile.cards-cols-4:has(p.cards-card-title) > ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .cards.tile .cards-card-body:has(> p.cards-card-title) {
+    padding-bottom: 0;
+    padding-top: 16px;
+  }
+
+  .cards.tile p.cards-card-title a::after {
+    top: 12.8px;
+  }
+}
+
+/* tiles on a dark section: white titles, section-specific rule colours */
+main .section:is(.navy, .dark) .cards.tile {
+  --cards-rule-color: #406d80;
+}
+
+main .section:is(.navy, .dark) .cards.tile > ul > li:has(> .cards-card-body > :where(h2, h3, h4, h5, h6).cards-card-title) {
+  --cards-rule-color: #d6d6d6;
+}
+
+main .section:is(.navy, .dark) .cards.tile .cards-card-body > p.cards-card-title {
+  color: #fff;
+}
+
+main .section:is(.navy, .dark) .cards.tile p.cards-card-title a:hover {
+  color: var(--link-on-dark-hover-color);
 }

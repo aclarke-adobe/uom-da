@@ -1,0 +1,35 @@
+{
+  "variantName": "callout",
+  "baseBlock": "callout",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "1 CTAs",
+    "purpose": "Call-to-action band pairing a short prompt with a button"
+  },
+  "contentPattern": {
+    "structure": "One or more cells containing a short message (heading or paragraph) and one or more CTA links. Option 'photo': add a cell containing only an image; it becomes a full-bleed background behind a centred white panel holding the message and CTA."
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 793,
+    "lastUsed": null
+  },
+  "options": [
+    {
+      "class": "photo",
+      "label": "Photo"
+    }
+  ],
+  "memberVariantIds": [
+    "v_b02b38a69237",
+    "v_6fc5cc62f45c",
+    "v_e55b1e77a34b",
+    "v_25cb4d51c5bf-1",
+    "v_681c02624f26"
+  ]
+}

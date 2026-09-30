@@ -1,0 +1,34 @@
+{
+  "variantName": "table",
+  "baseBlock": "table",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + text + 1 CTAs + list",
+    "purpose": "Tabular or side-by-side content (fees, contacts, comparisons)"
+  },
+  "contentPattern": {
+    "structure": "Rows and cells map 1:1 to table rows and cells; cells may hold rich content (lists, links, CTAs, images). The first row becomes the header when each of its cells is only a heading, bold text or a short label and more rows follow. Rows stack on mobile with header labels repeated per cell."
+  },
+  "usage": {
+    "pagesUsing": [
+      "/find/courses/undergraduate/bachelor-of-arts/entry-requirements"
+    ],
+    "reuseCount": 14,
+    "lastUsed": "2026-09-30T21:01:07.427Z"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_8c3da60f62c7-2",
+    "v_8a89054f6080",
+    "v_ababd3749b5c",
+    "v_06adf44f9b87",
+    "v_88c0aafe3050",
+    "v_cf3b7354670f",
+    "v_e6f9f3de82a9"
+  ]
+}

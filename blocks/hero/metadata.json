@@ -1,0 +1,68 @@
+{
+  "variantName": "hero",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + text + list",
+    "purpose": "Page-top banner with title, eyebrow, intro and CTAs"
+  },
+  "contentPattern": {
+    "structure": "Cells: optional image-only cell (media); main text cell with optional eyebrow paragraph before the h1, heading, intro text and CTA links; optional second text cell = aside panel. Options: split (dark content beside image), split-light (light content beside image), aside (heading beside a side panel of links), overlay (image background with centred heading). Default: solid dark band, image used as background if present."
+  },
+  "usage": {
+    "pagesUsing": [
+      "/find/courses/undergraduate/bachelor-of-arts",
+      "/index",
+      "/find/courses/undergraduate/bachelor-of-arts/entry-requirements"
+    ],
+    "reuseCount": 4148,
+    "lastUsed": "2026-09-30T21:01:07.210Z"
+  },
+  "options": [
+    {
+      "class": "split",
+      "label": "Split"
+    },
+    {
+      "class": "split-light",
+      "label": "Split Light"
+    },
+    {
+      "class": "aside",
+      "label": "Aside"
+    },
+    {
+      "class": "overlay",
+      "label": "Overlay"
+    }
+  ],
+  "memberVariantIds": [
+    "v_1e91176e0fa9",
+    "v_20988200c7cf",
+    "v_84b68984de27",
+    "v_20988200c7cf-1",
+    "v_b683d4969af2-2",
+    "v_581dda1e8e90",
+    "v_797a01212998",
+    "v_9dc326ad5e8e-1",
+    "v_9aa05f77099a",
+    "v_b683d4969af2-3",
+    "v_709d3115754d-1",
+    "v_b683d4969af2",
+    "v_54bdccb1e6d4",
+    "v_8b2fa4cb5cc4",
+    "v_e31bdce3154b",
+    "v_509c3ac027fb",
+    "v_52f3ac7d79e3",
+    "v_54bdccb1e6d4-1",
+    "v_84b68984de27-1",
+    "v_b04bc3db5e54",
+    "v_b683d4969af2-1",
+    "v_e20ae1e04793"
+  ]
+}

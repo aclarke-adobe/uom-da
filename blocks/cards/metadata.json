@@ -1,0 +1,130 @@
+{
+  "variantName": "cards",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "heading",
+    "purpose": "Grid of cards / tiles for promos, people, stats and link lists"
+  },
+  "contentPattern": {
+    "structure": "One row per card. Optional image cell (picture only) plus a body cell with heading, text and optional CTA link(s) (trailing CTA is pinned to the card bottom). A bold link opening the body (or a heading that is just a link) is the card title, not a button; a short link-free paragraph before the heading/title is an eyebrow. 3/6 cards lay out in 3 columns and 4/8 in 4 on desktop. Options: tile (text-only columns), icon (pictogram above the text: the first cell holds either an icon, authored as `:icon-name:` and served from `/icons/icon-name.svg`, e.g. `:uom-access-melbourne:`, shown at a fixed 64px height, or an image, which spans the card width at a 190:150 ratio), link-list (one link per row, ruled list), course-link (single-link chips), people (portrait beside name/role/bio), stat (first text cell = figure + label, second = description)."
+  },
+  "usage": {
+    "pagesUsing": [
+      "/index",
+      "/find/courses/undergraduate/bachelor-of-arts/entry-requirements"
+    ],
+    "reuseCount": 954,
+    "lastUsed": "2026-09-30T21:01:07.319Z"
+  },
+  "options": [
+    {
+      "class": "tile",
+      "label": "Tile"
+    },
+    {
+      "class": "icon",
+      "label": "Icon"
+    },
+    {
+      "class": "link-list",
+      "label": "Link List"
+    },
+    {
+      "class": "course-link",
+      "label": "Course Link"
+    },
+    {
+      "class": "people",
+      "label": "People"
+    },
+    {
+      "class": "stat",
+      "label": "Stat"
+    }
+  ],
+  "memberVariantIds": [
+    "v_5982e0e1324a",
+    "v_1b9e70513597-1",
+    "v_dd66d9cbbf75",
+    "v_3a53bb345dfd",
+    "v_729150ce6342",
+    "v_ad43a125ce80-1",
+    "v_3a53bb345dfd-1",
+    "v_a2d2d4c90401",
+    "v_45da3ef0f0cf",
+    "v_f4fa058af246",
+    "v_c051b98938fa",
+    "v_4f92156bcda3",
+    "v_f4fa058af246-2",
+    "v_14b1977330fc",
+    "v_4f5ffa6f4bbd",
+    "v_ad43a125ce80",
+    "v_34e2cb739ae7",
+    "v_8c3da60f62c7-4",
+    "v_09f01e016c69-1",
+    "v_84c412363ea8",
+    "v_a2eafef962e2",
+    "v_eee78134b8bf",
+    "v_b276cb2dfa93",
+    "v_ed715a1741c5",
+    "v_368fbaafe957",
+    "v_42081bee17c4",
+    "v_cda92ea8c85f",
+    "v_26d404ae7b0c",
+    "v_4f5ffa6f4bbd-1",
+    "v_5982e0e1324a-1",
+    "v_a0350d37aa04-1",
+    "v_d2259d2e6ed4",
+    "v_dcad3b33ce57-6",
+    "v_57f860b99c2f",
+    "v_5982e0e1324a-2",
+    "v_6272bd324198-1",
+    "v_1b9e70513597-2",
+    "v_6272bd324198",
+    "v_709d3115754d-2",
+    "v_74dc75df2062",
+    "v_a2eafef962e2-1",
+    "v_d92ce8c81fa9",
+    "v_e8fbd78ab6da",
+    "v_0a7665b3f77e",
+    "v_0b8f45f0f9a2",
+    "v_11dfb3b99935",
+    "v_11dfb3b99935-1",
+    "v_2f97971af37a",
+    "v_34b51b61a540",
+    "v_3607212be02d",
+    "v_42081bee17c4-1",
+    "v_432eb82955b8",
+    "v_4f5ffa6f4bbd-2",
+    "v_4f5ffa6f4bbd-3",
+    "v_4f5ffa6f4bbd-4",
+    "v_57f860b99c2f-1",
+    "v_57f860b99c2f-2",
+    "v_58ff19ceda97",
+    "v_59b41269b709",
+    "v_5d356a5b3d34",
+    "v_6689339e2336",
+    "v_6689339e2336-1",
+    "v_6f2d32ecdec0",
+    "v_6f2d32ecdec0-1",
+    "v_6fa9d1b375af",
+    "v_7a3b14538d91",
+    "v_93046445b17f",
+    "v_9fb1acae27a1",
+    "v_a0350d37aa04-2",
+    "v_ab3fcafdbbc9",
+    "v_ad43a125ce80-5",
+    "v_d2259d2e6ed4-1",
+    "v_dcad3b33ce57-3",
+    "v_dcad3b33ce57-5",
+    "v_e74ef87d26d7",
+    "v_e74ef87d26d7-1",
+    "v_f277645f5dcb-2"
+  ]
+}

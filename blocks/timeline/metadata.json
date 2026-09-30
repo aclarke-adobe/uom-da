@@ -1,0 +1,28 @@
+{
+  "variantName": "timeline",
+  "baseBlock": "timeline",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "dense",
+    "hasBackgroundImage": false,
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "text",
+    "purpose": "Key dates / application process timeline"
+  },
+  "contentPattern": {
+    "structure": "One row per milestone: cell 1 = date (one line, or a small label line such as 'Monday' followed by the date line; leave empty to continue the previous date), cell 2 = description (optional heading plus text/links)."
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 34,
+    "lastUsed": null
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_3dd9c338634a-2",
+    "v_3dd9c338634a-1",
+    "v_3dd9c338634a"
+  ]
+}

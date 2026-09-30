@@ -1,0 +1,62 @@
+{
+  "variantName": "video",
+  "baseBlock": "video",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "content",
+    "purpose": "Embedded video with click-to-play poster"
+  },
+  "contentPattern": {
+    "structure": "Optional intro row (no video link): heading and text. Then one row per video: a link to the video (YouTube, Vimeo or .mp4), optional poster image and optional caption (title, duration). Options: split (intro beside a single video), shorts (intro beside a grid of portrait 9:16 videos with captions)."
+  },
+  "usage": {
+    "pagesUsing": [
+      "/find/courses/undergraduate/bachelor-of-arts"
+    ],
+    "reuseCount": 735,
+    "lastUsed": "2026-09-30T20:46:06Z"
+  },
+  "options": [
+    {
+      "class": "split",
+      "label": "Split"
+    },
+    {
+      "class": "shorts",
+      "label": "Shorts"
+    }
+  ],
+  "memberVariantIds": [
+    "v_822bb15371fc-3",
+    "v_73369897cd4d",
+    "v_822bb15371fc-1",
+    "v_f256ad5d4c05",
+    "v_0e1a308b85f0",
+    "v_a6da1fb62ff3",
+    "v_81b8b2d33ef5",
+    "v_90f7ae27f364",
+    "v_822bb15371fc-2",
+    "v_edd7a0db4039-1",
+    "v_47e0448a77f5",
+    "v_822bb15371fc",
+    "v_c6ca763d51c7",
+    "v_a6da1fb62ff3-1",
+    "v_b479cd14f8b4-1",
+    "v_822bb15371fc-4",
+    "v_edd7a0db4039-2",
+    "v_edd7a0db4039-3",
+    "v_0f2d6044878d",
+    "v_6af5fc07737b-3",
+    "v_711036affe17",
+    "v_92136ad319bf",
+    "v_92136ad319bf-1",
+    "v_a6da1fb62ff3-2",
+    "v_edd7a0db4039-4",
+    "v_f256ad5d4c05-1"
+  ]
+}
