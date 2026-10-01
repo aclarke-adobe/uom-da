@@ -18,8 +18,60 @@ function clean(el) {
   return (el ? el.textContent : '').replace(/\s+/g, ' ').trim();
 }
 
+/**
+ * Course-detail blockquotes (B .course-section__main > .course-content > blockquote; bulk snapshots,
+ * e.g. graduate/doctoral-program-in-actuarial-studies, master-of-architecture-master-of-property/
+ * career-outcomes). Shapes: p.block-quotation__content + cite.block-quotation__author;
+ * <p>text <cite>name</cite></p>; bare <em>"text"</em><cite>…</cite> (no <p>). Inline markup (em,
+ * links) is kept, the cite becomes the "— …" attribution (its links kept). No image.
+ */
+function parseCourseQuote(root, document) {
+  const cites = [...root.querySelectorAll('cite')];
+  cites.forEach((c) => c.remove());
+  const paras = [];
+  let loose = document.createElement('p');
+  const flush = () => { if (clean(loose)) paras.push(loose); loose = document.createElement('p'); };
+  [...root.childNodes].forEach((n) => {
+    if (n.nodeType === 8) return;
+    if (n.nodeType === 1 && /^(P|DIV|UL|OL)$/.test(n.tagName)) {
+      flush();
+      if (!clean(n)) return;
+      if (n.tagName === 'DIV') { const p = document.createElement('p'); p.innerHTML = n.innerHTML.trim(); paras.push(p); return; }
+      [...n.attributes].forEach((a) => n.removeAttribute(a.name));
+      paras.push(n);
+      return;
+    }
+    if (n.nodeName === 'BR') return;
+    loose.append(n);
+  });
+  flush();
+  const text = [...paras];
+  cites.forEach((c) => {
+    if (!clean(c)) return;
+    const p = document.createElement('p');
+    c.querySelectorAll('br').forEach((b) => b.remove());
+    p.append(...c.childNodes);
+    const first = p.firstChild;
+    if (first && first.nodeType === 3) first.textContent = first.textContent.replace(/^\s*[—–-]?\s*/, '');
+    p.prepend('— ');
+    text.push(p);
+  });
+  return text;
+}
+
 export default function parse(element, { document }) {
   const root = element.matches('blockquote') ? element : (element.querySelector('blockquote') || element);
+
+  if (element.closest('.course-content, .course-section__main, [data-test$="-page"]')) {
+    const text = parseCourseQuote(root, document);
+    if (!text.length) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    const block = WebImporter.Blocks.createBlock(document, { name: 'Quote', cells: [[text]] });
+    element.replaceWith(block);
+    return;
+  }
 
   const quoteParas = [...root.querySelectorAll('p')]
     .filter((p) => !p.closest('cite') && clean(p))

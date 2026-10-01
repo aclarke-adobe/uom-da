@@ -3346,7 +3346,8 @@
         {
           "name": "residency-notice",
           "instances": [
-            "#admission-requirements div.user-profile[data-test='entry-reqs-user-profile']"
+            "#admission-requirements div.user-profile[data-test='entry-reqs-user-profile']",
+            "#main div[data-test$='-page'] div.user-profile-toggle"
           ]
         },
         {
@@ -3390,13 +3391,14 @@
           "name": "accordion",
           "instances": [
             "#main div[data-test$='-page'] .course-section__main > div:has(> ul.toggleblock.togglerow)",
-            "#main div[data-test$='-page'] .section-bordered > div:has(> ul.toggleblock.togglerow)"
+            "#main div[data-test$='-page'] #admission-criteria .section-bordered ul.toggleblock.togglerow"
           ]
         },
         {
           "name": "tabs",
           "instances": [
-            "#available-subjects div.app-tabs.app-tabs--alt"
+            "#main div[data-test$='-page'] #available-subjects div.subject-programs",
+            "#main div[data-test$='-page'] #sample-plans div.sample-plan"
           ]
         },
         {
@@ -3409,22 +3411,23 @@
         {
           "name": "callout",
           "instances": [
-            "#main div[data-test$='-page'] div.callout-panel"
+            "#main div[data-test$='-page'] div.callout-panel",
+            "#main div[data-test$='-page'] #admission-criteria section#eligibility-calculator"
           ]
         },
         {
           "name": "timeline-key-dates",
           "instances": [
             ".course-section--title .course-section__aside .date-list",
-            "#key-application-dates div.date-list"
+            "#main div[data-test$='-page'] #key-application-dates div.date-list"
           ]
         },
         {
           "name": "video",
           "instances": [
-            "#main div[data-test$='-page'] .course-content > div.embed",
-            "#main div[data-test$='-page'] .course-content > p:has(> iframe)",
-            "#main div[data-test$='-page'] .course-content > figure.figure--embed"
+            "#main div[data-test$='-page'] .course-content > div.embed:not(.alumniprofile *)",
+            "#main div[data-test$='-page'] .course-content > p:has(> iframe):not(.alumniprofile *)",
+            "#main div[data-test$='-page'] .course-content > figure.figure--embed:not(.alumniprofile *)"
           ]
         },
         {
@@ -3490,7 +3493,6 @@
             "#main > div > div.key-facts"
           ],
           "style": "grey",
-          "audience": "domestic",
           "blocks": [
             "key-facts"
           ],
@@ -3517,7 +3519,6 @@
             "#page-title:has(.course-section__aside .date-list)"
           ],
           "style": "sage",
-          "audience": "domestic",
           "blocks": [
             "timeline-key-dates"
           ],
@@ -3597,7 +3598,6 @@
             "#admission-requirements ul.entry-reqs__list"
           ],
           "style": "grey",
-          "audience": "domestic",
           "blocks": [
             "cards-stat"
           ],
@@ -3619,35 +3619,83 @@
           ]
         },
         {
-          "id": "admission-criteria",
-          "name": "Admission criteria",
+          "id": "grad-residency-toggle",
+          "name": "Graduate residency panel (+ entry points)",
           "selector": [
-            "#main div[data-test$='-page'] > section#admission-criteria",
-            "section#admission-criteria"
+            "#main div[data-test$='-page'] > div.section:has(> .section__inner > .user-profile-toggle)",
+            "#entryReqGradEnhanced > div.section:has(> .section__inner > .user-profile-toggle)",
+            "#how-to-apply-grad > div.section:has(> .section__inner > .user-profile-toggle)"
           ],
           "style": null,
           "blocks": [
-            "accordion"
+            "residency-notice"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "admission-criteria",
+          "name": "Admission criteria",
+          "selector": [
+            "#main div[data-test$='-page'] > #admission-criteria",
+            "#admission-criteria"
+          ],
+          "style": null,
+          "blocks": [
+            "accordion",
+            "callout"
           ],
           "defaultContent": [
             "#admission-criteria .course-section__main > h3.header-icon",
             "#admission-criteria .course-section__main > p",
-            "#admission-criteria .section__inner > div.shim-mt2"
+            "#admission-criteria .section__inner > div.shim-mt2",
+            "#admission-criteria > .section__inner > h3.header-icon",
+            "#admission-criteria .section-bordered > div.well--light",
+            "#admission-criteria .section-bordered > p",
+            "#admission-criteria .section-bordered > div.shim-mt1 > :is(h4, p, div)"
           ]
         },
         {
           "id": "additional-information",
           "name": "Additional information",
           "selector": [
-            "#main div[data-test$='-page'] > section#additional-information",
-            "section#additional-information"
+            "#main div[data-test$='-page'] > #additional-information"
           ],
           "style": null,
           "blocks": [
-            "accordion"
+            "accordion",
+            "table"
           ],
           "defaultContent": [
-            "#additional-information .course-section__main > h3.header-icon"
+            "#additional-information .course-section__main > h3.header-icon",
+            "#additional-information > .section__inner > h3.header-icon",
+            "#additional-information .section-bordered > div.well--light"
+          ]
+        },
+        {
+          "id": "additional-information-gam",
+          "name": "Graduate Access Melbourne (domestic only)",
+          "selector": [
+            "#main div[data-test$='-page'] #additional-information .section-bordered > div.course-section__main:has(> h4.additional-information__heading):not(:has(> h4[data-test='advanced-standing-title']))"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#additional-information .section-bordered > div.course-section__main:not(:has(> h4[data-test='advanced-standing-title'])) > :is(h4, div)"
+          ]
+        },
+        {
+          "id": "additional-information-tail",
+          "name": "Advanced Standing + handbook line + general-requirements callout",
+          "selector": [
+            "#main div[data-test$='-page'] #additional-information .section-bordered > div.course-section__main:has(> h4[data-test='advanced-standing-title'])"
+          ],
+          "style": null,
+          "blocks": [
+            "callout"
+          ],
+          "defaultContent": [
+            "#additional-information div.course-section__main:has(> h4[data-test='advanced-standing-title']) > :is(h4, p, div.well--light)",
+            "#additional-information .section__inner > div.course-section__main.text-smaller"
           ]
         },
         {
@@ -3676,8 +3724,23 @@
           ]
         },
         {
+          "id": "sample-plans",
+          "name": "Sample course plan (plan tabs > per-year accordions)",
+          "selector": [
+            "#main div[data-test$='-page'] > section#sample-plans",
+            "#sample-plans"
+          ],
+          "style": "grey",
+          "blocks": [
+            "tabs"
+          ],
+          "defaultContent": [
+            "#sample-plans .course-section__main > :is(h3, p)"
+          ]
+        },
+        {
           "id": "explore-this-course",
-          "name": "Explore this course (majors/minors/diplomas/breadth tabs)",
+          "name": "Explore this course (subject tabs; one h4 + tabs per program)",
           "selector": [
             "#main div[data-test$='-page'] > section#available-subjects",
             "section#available-subjects"
@@ -3745,7 +3808,9 @@
             "section#fees"
           ],
           "style": null,
-          "blocks": [],
+          "blocks": [
+            "notice"
+          ],
           "defaultContent": [
             "#fees h3#fees-panel-title"
           ]
@@ -3754,10 +3819,10 @@
           "id": "fee-panels",
           "name": "Fee panel(s) (audience-keyed)",
           "selector": [
-            "#fees .fee-panel > div:has(.fee-info-panel)"
+            "#fees .fee-panel > div:has(.fee-info-panel)",
+            "#fees .fee-panel > h3#fees-panel-title ~ div"
           ],
           "style": null,
-          "audience": "domestic",
           "blocks": [
             "notice"
           ],
@@ -3782,7 +3847,6 @@
             "#explained > div.course-section"
           ],
           "style": null,
-          "audience": "domestic",
           "blocks": [
             "callout",
             "notice"
@@ -3813,7 +3877,8 @@
           ],
           "style": null,
           "blocks": [
-            "callout"
+            "callout",
+            "table"
           ],
           "defaultContent": [
             "#scholarships h3#scholarships-title",
@@ -3821,71 +3886,10 @@
           ]
         },
         {
-          "id": "how-to-apply",
-          "name": "How to apply body (audience-keyed)",
-          "selector": [
-            "#main div[data-test$='-page'] > section#how-to-apply",
-            "section#how-to-apply"
-          ],
-          "style": null,
-          "audience": "domestic",
-          "blocks": [
-            "callout",
-            "notice"
-          ],
-          "defaultContent": [
-            "#how-to-apply .course-section__main > h3.header-icon",
-            "#how-to-apply .course-section__main > div.course-content > :is(h4, h5, p, ul, ol, div)",
-            "#how-to-apply .course-section__main > div:has(> ol) > :is(h4, ol)"
-          ]
-        },
-        {
-          "id": "grad-residency-toggle",
-          "name": "Graduate residency/qualification toggle panel (unanalysed)",
-          "selector": [
-            "#entryReqGradEnhanced > div.section:has(> .section__inner > .user-profile-toggle)",
-            "#how-to-apply-grad > div.section:has(> .section__inner > .user-profile-toggle)"
-          ],
-          "style": null,
-          "blocks": [],
-          "defaultContent": []
-        },
-        {
-          "id": "postgrad-entry-text",
-          "name": "Graduate entry requirements text (unanalysed)",
-          "selector": [
-            "#postgradentrytext"
-          ],
-          "style": null,
-          "blocks": [
-            "notice"
-          ],
-          "defaultContent": []
-        },
-        {
-          "id": "eligibility-calculator",
-          "name": "Eligibility calculator (unanalysed)",
-          "selector": [
-            "#eligibility-calculator"
-          ],
-          "style": null,
-          "blocks": [],
-          "defaultContent": []
-        },
-        {
-          "id": "sample-plans",
-          "name": "Sample course plans (unanalysed)",
-          "selector": [
-            "#sample-plans"
-          ],
-          "style": null,
-          "blocks": [],
-          "defaultContent": []
-        },
-        {
           "id": "key-application-dates",
-          "name": "Graduate key application dates (unanalysed)",
+          "name": "Key application dates (audience-keyed)",
           "selector": [
+            "#main div[data-test$='-page'] > #key-application-dates",
             "#key-application-dates"
           ],
           "style": null,
@@ -3893,17 +3897,60 @@
             "timeline-key-dates",
             "table"
           ],
-          "defaultContent": []
+          "defaultContent": [
+            "#key-application-dates > .section__inner > h3.header-icon",
+            "#key-application-dates .section-bordered > div.well",
+            "#key-application-dates .section-bordered > div:not(.date-list, .well)"
+          ]
+        },
+        {
+          "id": "how-to-apply",
+          "name": "How to apply body (audience-keyed)",
+          "selector": [
+            "#main div[data-test$='-page'] > #how-to-apply",
+            "#how-to-apply"
+          ],
+          "style": null,
+          "blocks": [
+            "callout",
+            "notice",
+            "table"
+          ],
+          "defaultContent": [
+            "#how-to-apply .course-section__main > h3.header-icon",
+            "#how-to-apply .course-section__main > div.course-content > :is(h4, h5, p, ul, ol, div)",
+            "#how-to-apply .course-section__main > div:has(> ol) > :is(h4, ol)",
+            "#how-to-apply > .section__inner > h3.header-icon",
+            "#how-to-apply .section-bordered > div:not(.callout-panel) > :is(h4, h5, p, ul, ol, small, div.well)"
+          ]
         },
         {
           "id": "after-you-apply",
-          "name": "After you apply (unanalysed)",
+          "name": "After you apply",
           "selector": [
+            "#main div[data-test$='-page'] > #after-you-apply",
             "#after-you-apply"
           ],
           "style": null,
           "blocks": [
             "callout"
+          ],
+          "defaultContent": [
+            "#after-you-apply > .section__inner > h3.header-icon",
+            "#after-you-apply > .section__inner > div.section-bordered > div > :is(ul, ol, p, div.well)",
+            "#after-you-apply #additional-information > :is(h3.header-icon, .section-bordered)",
+            "#after-you-apply > .section__inner > div.course-section__main.text-smaller"
+          ]
+        },
+        {
+          "id": "postgrad-entry-text",
+          "name": "Graduate entry requirements text (unanalysed)",
+          "selector": [
+            "#main div[data-test$='-page'] > #postgradentrytext:not(.section-bordered *)"
+          ],
+          "style": null,
+          "blocks": [
+            "notice"
           ],
           "defaultContent": []
         }
@@ -3919,44 +3966,69 @@
         "defaultAudience": "domestic",
         "sections": {
           "key-facts": {
+            "audience": "domestic",
             "part": "key-facts",
             "selector": [
               "div.key-facts"
             ]
           },
           "title-band-key-dates": {
+            "audience": "domestic",
             "part": "body",
             "selector": [
               "div[data-test$='-page'] > #page-title"
             ]
           },
           "admission-requirements-stats": {
+            "audience": "domestic",
             "part": "body",
             "selector": [
               "#admission-requirements ul.entry-reqs__list"
             ]
           },
-          "fee-panels": {
+          "additional-information-gam": {
+            "audience": "domestic",
             "part": "body",
             "selector": [
-              "#fees .fee-panel > div:has(.fee-info-panel)"
+              "#additional-information .section-bordered > div.course-section__main:has(> h4.additional-information__heading):not(:has(> h4[data-test='advanced-standing-title']))"
+            ],
+            "whenMissing": "domestic-only"
+          },
+          "fee-panels": {
+            "audience": "domestic",
+            "part": "body",
+            "selector": [
+              "#fees .fee-panel > div:has(.fee-info-panel)",
+              "#fees .fee-panel > h3#fees-panel-title ~ div"
             ]
           },
           "fees-explained": {
+            "audience": "domestic",
             "part": "body",
             "selector": [
               "#explained > div.course-section"
             ]
           },
-          "how-to-apply": {
+          "key-application-dates": {
+            "audience": "domestic",
             "part": "body",
             "selector": [
-              "div[data-test$='-page'] > section#how-to-apply"
+              "div[data-test$='-page'] > #key-application-dates"
+            ]
+          },
+          "how-to-apply": {
+            "audience": "domestic",
+            "part": "body",
+            "selector": [
+              "div[data-test$='-page'] > #how-to-apply"
             ]
           }
         },
         "sharedTails": {
           "other-financial-assistance": "fees-explained"
+        },
+        "whenMissing": {
+          "domestic-only": "If the template body part exists but the international counterpart is absent, key the domestic element Audience=domestic and insert no clone. Without a template (no international render), log audience-missing and leave the section unkeyed."
         },
         "inBlock": {
           "key-facts": {
@@ -3969,20 +4041,19 @@
           "residency-notice": {
             "part": "body",
             "selector": [
-              "#admission-requirements [data-test='profile-residency--info']"
+              "#admission-requirements [data-test='profile-residency--info']",
+              "div.user-profile-toggle [data-test='profile-residency--info']"
             ],
-            "use": "international row of the single audience-keyed residency-notice block (no section split)"
+            "titleSelector": [
+              "div.user-profile-toggle [data-test='profile-residency--title']"
+            ],
+            "use": "international row of the single audience-keyed residency-notice block (no section split); undergraduate = div.user-profile, graduate = div.user-profile-toggle"
           }
         },
         "notes": "See migration-work/course-detail/mapping-notes.md#audience-contract"
       },
       "boundaryOnlySections": [
-        "grad-residency-toggle",
-        "postgrad-entry-text",
-        "eligibility-calculator",
-        "sample-plans",
-        "key-application-dates",
-        "after-you-apply"
+        "postgrad-entry-text"
       ],
       "representativeUrls": [
         "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-arts",
@@ -3994,7 +4065,10 @@
         "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-arts/how-to-apply",
         "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/career-outcomes",
         "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/student-experience",
-        "https://study.unimelb.edu.au/find/courses/major/physics"
+        "https://study.unimelb.edu.au/find/courses/major/physics",
+        "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/entry-requirements",
+        "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/how-to-apply",
+        "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/structure"
       ]
     },
     {

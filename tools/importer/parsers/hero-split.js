@@ -2,7 +2,8 @@
 /* global WebImporter */
 /**
  * Parser for hero-split. Base: hero (option: split). Authored as "Hero (split)".
- * Source: https://study.unimelb.edu.au (homepage template).
+ * Source: https://study.unimelb.edu.au (homepage template) + course-detail template (div.course-header).
+ * The course shape is detected first (parseCourseHeader); the homepage shapes below are unchanged.
  *
  * Output (blocks/hero/README.md): 1 row, 2 cells
  *   cell 1 = main text: [eyebrow p] + heading (h1/h2) + intro paragraph(s) + CTA link(s)
@@ -77,7 +78,137 @@ function ctaFrom(a, document) {
   return p;
 }
 
+// Course-detail assets known to 403 (mapping-notes "Images (403 rule)"): never emit, log instead.
+const BLOCKED_IMAGES = [
+  '/0018/48150/Physics.jpg',
+  '/0014/41405/JG-YellowJacket-1098x780.png',
+  '/0030/389019/varieties/thumb.jpg',
+  '/0027/55449/accred_logos_accounting.jpg',
+  '/0016/45124/',
+  '/0022/45256/',
+  '/0030/46875/study_banner_community.png',
+];
+
+function cleanText(el) {
+  return (el ? el.textContent : '').replace(/\s+/g, ' ').trim();
+}
+
+/** Course header image: <img> first (BD snapshot), then the inline background-image (live DOM). */
+function courseImage(element, document) {
+  const holder = element.querySelector('.course-header__img, [data-test="course-header-img"]');
+  if (!holder) return null;
+  const img = holder.querySelector('img');
+  let src = img ? (img.getAttribute('src') || img.getAttribute('data-src') || '') : '';
+  if (!src || /^(data|blob):/.test(src)) {
+    const m = (holder.getAttribute('style') || '').match(/background(?:-image)?\s*:[^;]*url\(\s*(['"]?)([^'")]+)\1\s*\)/i);
+    src = m ? m[2].trim() : '';
+  }
+  if (!src || /^(data|blob):/.test(src)) return null;
+  if (BLOCKED_IMAGES.some((frag) => src.includes(frag))) {
+    console.warn(`[hero-split] image dropped (403): ${src}`);
+    return null;
+  }
+  const out = document.createElement('img');
+  out.src = src;
+  out.alt = (img && img.getAttribute('alt')) || holder.getAttribute('aria-label') || '';
+  return out;
+}
+
+/**
+ * Course-detail shape (div.course-header), verified in
+ * block-context/hero-split/instances/course-detail-01..04.html:
+ *   p.course-header__type (eyebrow: <a> on courses, plain text on majors), h1.course-header__title,
+ *   ul.course-header__statistics > li > a.course-header__stat-link > span.uom-link__text > span,
+ *   div.course-header__btns (empty today), ul.course-header__codes > li.course-header__code
+ *   (absent on majors), div.course-header__img > img (or background-image).
+ * Output cell 1: eyebrow p + h1 + ul of stat links + <p>Course code: <strong>X</strong></p>
+ * (only "Course code"; the other codes become key-facts rows) + optional CTAs. Cell 2: image.
+ */
+function parseCourseHeader(element, document) {
+  const textCell = [];
+  const eyebrow = element.querySelector('.course-header__type, .course-header__tag');
+  if (eyebrow && cleanText(eyebrow)) {
+    const p = document.createElement('p');
+    const a = eyebrow.querySelector('a[href]');
+    if (a) {
+      const link = document.createElement('a');
+      link.href = a.getAttribute('href').trim();
+      link.textContent = cleanText(a);
+      p.append(link);
+    } else {
+      p.textContent = cleanText(eyebrow);
+    }
+    textCell.push(p);
+  }
+
+  const title = element.querySelector('h1, .course-header__title, h2');
+  if (title) {
+    const h1 = document.createElement('h1');
+    h1.textContent = cleanText(title);
+    textCell.push(h1);
+  }
+
+  const stats = [...element.querySelectorAll('.course-header__statistics > li, .course-header__stat')]
+    .filter((li, i, all) => all.indexOf(li) === i);
+  if (stats.length) {
+    const ul = document.createElement('ul');
+    stats.forEach((li) => {
+      li.querySelectorAll('.screenreaders-only, .sr-only').forEach((s) => s.remove());
+      const a = li.querySelector('a[href]');
+      const text = cleanText(li.querySelector('.uom-link__text') || a || li);
+      if (!text) return;
+      const item = document.createElement('li');
+      if (a) {
+        const link = document.createElement('a');
+        link.href = a.getAttribute('href').trim();
+        link.textContent = text;
+        item.append(link);
+      } else {
+        item.textContent = text;
+      }
+      ul.append(item);
+    });
+    if (ul.children.length) textCell.push(ul);
+  }
+
+  // Only "Course code" stays in the hero (the audience transformer has copied the whole list into
+  // key-facts, which emits the other codes).
+  element.querySelectorAll('.course-header__codes > li, .course-header__code').forEach((li) => {
+    const spans = [...li.children];
+    const label = cleanText(spans[0] || li).replace(/:\s*$/, '');
+    if (!/^course code$/i.test(label)) return;
+    const value = cleanText(li.querySelector('.text-bold, strong, b') || spans[1]);
+    if (!value) return;
+    const p = document.createElement('p');
+    const strong = document.createElement('strong');
+    strong.textContent = value;
+    p.append(`${label}: `, strong);
+    textCell.push(p);
+  });
+
+  element.querySelectorAll('.course-header__btns a[href]').forEach((a) => {
+    if (cleanText(a)) textCell.push(ctaFrom(a, document));
+  });
+
+  if (!textCell.length) {
+    element.replaceWith(...element.childNodes);
+    return;
+  }
+
+  // 403 rule: no image -> no image cell (never an empty one)
+  const image = courseImage(element, document);
+  const cells = [image ? [textCell, [image]] : [textCell]];
+  const block = WebImporter.Blocks.createBlock(document, { name: 'Hero (split)', cells });
+  element.replaceWith(block);
+}
+
 export default function parse(element, { document }) {
+  // --- Course-detail page header (div.course-header) ---
+  if (element.matches('.course-header') || element.querySelector(':scope > .course-header__inner')) {
+    parseCourseHeader(element, document);
+    return;
+  }
+
   // --- Elements that belong to other blocks / default content: move out, never consume ---
   const preserved = [];
   const form = element.querySelector('form.inline-search, form[class*="search"]');

@@ -1,0 +1,228 @@
+{
+  "generatedAt": "2026-10-01T00:32:55.803Z",
+  "urlsFile": "/tmp/cap/filter.txt",
+  "concurrency": 1,
+  "lastRun": {
+    "total": 1,
+    "ok": 1,
+    "skipped": 0,
+    "failed": 0,
+    "wallSeconds": 85.2
+  },
+  "results": [
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/entry-requirements",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/entry-requirements.html",
+      "audiences": "domestic,international",
+      "parts": [
+        "body",
+        "key-facts",
+        "hero-codes"
+      ],
+      "intlDiffers": {
+        "body": true,
+        "key-facts": true,
+        "hero-codes": true
+      },
+      "domesticReset": false,
+      "options": null,
+      "phases": {
+        "goto": 17696,
+        "challenge": 424,
+        "render": 2964,
+        "scroll": 8073,
+        "domestic": 471,
+        "switch": 3944,
+        "international": 249
+      },
+      "bytes": 301565,
+      "ms": 34516,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-01T00:28:35.412Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/how-to-apply",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/how-to-apply.html",
+      "audiences": "domestic,international",
+      "parts": [
+        "body",
+        "key-facts",
+        "hero-codes"
+      ],
+      "intlDiffers": {
+        "body": true,
+        "key-facts": true,
+        "hero-codes": true
+      },
+      "domesticReset": false,
+      "options": null,
+      "phases": {
+        "goto": 2354,
+        "challenge": 351,
+        "render": 2426,
+        "scroll": 7220,
+        "domestic": 393,
+        "switch": 3817,
+        "international": 193
+      },
+      "bytes": 280448,
+      "ms": 16874,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-01T00:28:53.501Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/structure",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/structure.html",
+      "audiences": "domestic,international",
+      "parts": [
+        "body",
+        "key-facts",
+        "hero-codes"
+      ],
+      "intlDiffers": {
+        "body": false,
+        "key-facts": true,
+        "hero-codes": true
+      },
+      "domesticReset": false,
+      "options": {
+        "sample-plan": [
+          {
+            "index": 0,
+            "label": "Example 200 point plan",
+            "value": "Example 200 point plan",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "Example 150 point plan",
+            "value": "Example 150 point plan",
+            "default": false,
+            "changed": true
+          }
+        ],
+        "subject-programs": [
+          {
+            "index": 0,
+            "label": "200 Point Program",
+            "value": "200 Point Program",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "150 Point Program",
+            "value": "150 Point Program",
+            "default": false,
+            "changed": true
+          }
+        ]
+      },
+      "phases": {
+        "goto": 27664,
+        "challenge": 1089,
+        "render": 8130,
+        "scroll": 6810,
+        "domestic": 789,
+        "switch": 4854,
+        "international": 731,
+        "options": 21274
+      },
+      "bytes": 1066349,
+      "ms": 72547,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-01T00:29:13.488Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-international-education-ib/structure",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-international-education-ib/structure.html",
+      "audiences": "domestic,international",
+      "parts": [
+        "body",
+        "key-facts",
+        "hero-codes"
+      ],
+      "intlDiffers": {
+        "body": false,
+        "key-facts": true,
+        "hero-codes": false
+      },
+      "domesticReset": false,
+      "options": {
+        "sample-plan": [
+          {
+            "index": 0,
+            "label": "Primary Years Programme",
+            "value": "Primary Years Programme",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "Middle Years Programme",
+            "value": "Middle Years Programme",
+            "default": false,
+            "changed": true
+          },
+          {
+            "index": 2,
+            "label": "Diploma Programme",
+            "value": "Diploma Programme",
+            "default": false,
+            "changed": true
+          }
+        ],
+        "subject-programs": [
+          {
+            "index": 0,
+            "label": "Primary Years Programme",
+            "value": "Primary Years Programme",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "Middle Years Programme",
+            "value": "Middle Years Programme",
+            "default": false,
+            "changed": true
+          },
+          {
+            "index": 2,
+            "label": "Diploma Programme",
+            "value": "Diploma Programme",
+            "default": false,
+            "changed": true
+          }
+        ]
+      },
+      "phases": {
+        "goto": 5671,
+        "challenge": 26705,
+        "render": 7191,
+        "scroll": 13650,
+        "domestic": 384,
+        "switch": 4148,
+        "international": 348,
+        "options": 26368
+      },
+      "bytes": 349914,
+      "ms": 85143,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-01T00:32:55.797Z",
+      "error": null
+    }
+  ]
+}

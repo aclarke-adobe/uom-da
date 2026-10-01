@@ -1,0 +1,186 @@
+{
+  "generatedAt": "2026-10-01T00:33:45.526Z",
+  "dir": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots",
+  "counts": {
+    "scanned": 1132,
+    "withSwitcher": 1020,
+    "withInternationalTemplate": 1020,
+    "structurePages": 160,
+    "structureWithMultiOptionSelects": 26,
+    "structureWithOptionsTemplate": 2,
+    "unreadable": 0,
+    "switcherWithoutInternational": 0,
+    "structureWithoutOptions": 24
+  },
+  "switcherWithoutInternational": [],
+  "structureWithoutOptions": [
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/executive-master-of-arts/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/executive-master-of-arts/structure.html",
+      "selects": {
+        "subject-programs": 3
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-adolescent-health-and-wellbeing/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-adolescent-health-and-wellbeing/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-bushfire-planning-and-management/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-bushfire-planning-and-management/structure.html",
+      "selects": {
+        "sample-plan": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-evaluation/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-evaluation/structure.html",
+      "selects": {
+        "sample-plan": 4
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-visual-art/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-visual-art/structure.html",
+      "selects": {
+        "sample-plan": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-asian-law/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-asian-law/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-banking-and-finance-law/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-banking-and-finance-law/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-clinical-research/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-clinical-research/structure.html",
+      "selects": {
+        "sample-plan": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-communications-law/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-communications-law/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-construction-law/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-construction-law/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-corporate-law/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-corporate-law/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-dispute-resolution/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-dispute-resolution/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-employment-and-labour-relations-law/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-employment-and-labour-relations-law/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-energy-and-resources-law/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-energy-and-resources-law/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-environmental-law/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-environmental-law/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-government-law/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-government-law/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-health-and-medical-law/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-health-and-medical-law/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-human-rights-law/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-human-rights-law/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-international-economic-law/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-international-economic-law/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-international-law/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-international-law/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-international-tax/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-international-tax/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-music-practical-music/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-music-practical-music/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-physiotherapy-paediatrics/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-physiotherapy-paediatrics/structure.html",
+      "selects": {
+        "sample-plan": 4
+      }
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-psychology/structure",
+      "file": "tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-psychology/structure.html",
+      "selects": {
+        "subject-programs": 2
+      }
+    }
+  ]
+}

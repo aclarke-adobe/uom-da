@@ -16,6 +16,14 @@
  *         <div data-excat-part="page-title">  #page-title (only if outside body) </div>
  *       </template>
  *   <html data-excat-audiences="domestic,international"> (or "domestic" when no switcher).
+ *   - on Structure pages whose dropdowns (sample plan / subject program) have >1 option,
+ *     every option's DOMESTIC render of the region (Vue renders only the selected one),
+ *     appended as
+ *       <template id="excat-options" data-captured-at="ISO">
+ *         <div data-excat-part="sample-plan|subject-programs" data-option-label=".."
+ *              data-option-value=".." data-option-index="N" [data-default="true"]>
+ *           region outerHTML</div> ...
+ *       </template>
  *
  * Like the analysis scrape (excat-scrape-webpage bd-scrape.js) the snapshot has
  * <script>/<noscript> stripped (so it is inert under page.setContent) and the same
@@ -26,7 +34,10 @@
  * Usage:
  *   node tools/importer/capture-course-snapshots.mjs --urls <file> \
  *     [--concurrency 4] [--force] [--limit N] [--out tools/importer/bd-snapshots] \
- *     [--report tools/importer/reports/capture-course-snapshots.json]
+ *     [--report tools/importer/reports/capture-course-snapshots.json] [--only-structure-with-options]
+ *
+ *   --only-structure-with-options  keep only /structure URLs whose EXISTING snapshot has a
+ *     sample-plan / subject-program dropdown with >1 option and re-capture them (implies --force).
  *
  * Requires BD_ENDPOINT (credential-less CDP URL of the local Bright Data forwarder).
  */
@@ -50,6 +61,7 @@ const { resolveSavedHtmlPath } = await import(join(IMPORT_SCRIPTS, 'run-bulk-imp
 const { detectBlocked } = await import(join(SCRAPE_SCRIPTS, 'bot-detection.js'));
 const { stripScripts } = await import(join(SCRAPE_SCRIPTS, 'strip-scripts.js'));
 const { trackMainFrameDocumentStatus } = await import(join(SCRAPE_SCRIPTS, 'bd-scrape.js'));
+const { OPTION_REGIONS, snapshotSelectRegions, isStructureUrl } = await import(join(__dirname, 'snapshot-inspect.mjs'));
 const { scrollToTriggerLazyLoad } = await import(
   join(PLUGIN, 'edge-delivery-services/skills/scrape-webpage/scripts/analyze-webpage.js')
 );
@@ -107,7 +119,10 @@ function usage(msg) {
   --force            overwrite existing snapshots (default: skip existing — resumable)
   --limit N          only process the first N URLs of the list
   --out DIR          snapshot root (default tools/importer/bd-snapshots)
-  --report FILE      JSON report (default tools/importer/reports/capture-course-snapshots.json)`);
+  --report FILE      JSON report (default tools/importer/reports/capture-course-snapshots.json)
+  --only-structure-with-options
+                     re-capture (implies --force) only /structure URLs whose existing snapshot
+                     has a sample-plan / subject-program dropdown with more than one option`);
   process.exit(1);
 }
 
@@ -133,6 +148,7 @@ function parseArgs(argv) {
     else if (a === '--limit') opts.limit = parseInt(next(), 10);
     else if (a === '--out') opts.out = resolve(next());
     else if (a === '--report') opts.report = resolve(next());
+    else if (a === '--only-structure-with-options') { opts.onlyStructureWithOptions = true; opts.force = true; }
     else if (a === '--help' || a === '-h') usage();
     else usage(`unknown argument ${a}`);
   }
@@ -179,6 +195,12 @@ function serializeFixed({ selector, sourceUrl, audiences }) {
     const c = cloneInputs[i];
     if (!c) return;
     if (el.checked) c.setAttribute('checked', ''); else c.removeAttribute('checked');
+  });
+  const cloneOptions = clone.querySelectorAll('option');
+  liveRoot.querySelectorAll('option').forEach((el, i) => {
+    const c = cloneOptions[i];
+    if (!c) return;
+    if (el.selected) c.setAttribute('selected', ''); else c.removeAttribute('selected');
   });
   const liveScope = selector ? liveRoot : document.body;
   const cloneScope = selector ? clone : clone.querySelector('body');
@@ -304,8 +326,7 @@ async function waitForBodyRender(page) {
  * checked, #main mutates (or the body text changes), then #main is quiet for 1.5s.
  * There is no `residency` attribute on the live DOM, so mutation-quiet is the signal.
  */
-async function switchAudience(page, audience) {
-  const before = await page.evaluate((s) => document.querySelector(s)?.innerText || '', SEL.body);
+async function armMutationWatch(page) {
   await page.evaluate(() => {
     const main = document.querySelector('#main') || document.body;
     window.__excatMut = { n: 0, last: performance.now() };
@@ -318,12 +339,10 @@ async function switchAudience(page, audience) {
       subtree: true, childList: true, characterData: true, attributes: true,
     });
   });
-  await page.click(audience === 'international' ? SEL.intlLabel : SEL.domLabel, { timeout: 10000 });
-  await page.waitForFunction(
-    ([s, v]) => document.querySelector(s)?.value === v,
-    [SEL.checked, audience],
-    { timeout: 10000 },
-  );
+}
+
+/** After an armed interaction: wait for the re-render to start, then for #main to go quiet. */
+async function waitForSettle(page, before) {
   // Re-render started (first mutation or changed text); identical-content pages just time out.
   await page.waitForFunction(
     ([s, prev]) => window.__excatMut.n > 0 || (document.querySelector(s)?.innerText || '') !== prev,
@@ -342,8 +361,94 @@ async function switchAudience(page, audience) {
   await waitForStableText(page, SEL.body, { timeout: 10000, quietPolls: 2 });
   await sleep(500);
   await page.evaluate(() => window.__excatObs?.disconnect());
-  const after = await page.evaluate((s) => document.querySelector(s)?.innerText || '', SEL.body);
+}
+
+const textOf = (page, selector) => page.evaluate((s) => document.querySelector(s)?.innerText || '', selector);
+
+async function switchAudience(page, audience) {
+  const before = await textOf(page, SEL.body);
+  await armMutationWatch(page);
+  await page.click(audience === 'international' ? SEL.intlLabel : SEL.domLabel, { timeout: 10000 });
+  await page.waitForFunction(
+    ([s, v]) => document.querySelector(s)?.value === v,
+    [SEL.checked, audience],
+    { timeout: 10000 },
+  );
+  await waitForSettle(page, before);
+  const after = await textOf(page, SEL.body);
   return { changed: after !== before };
+}
+
+/** Select option `index` of `selectSel` and wait for the region `rootSel` to re-render. */
+async function selectOptionAndSettle(page, selectSel, rootSel, index) {
+  const before = await textOf(page, SEL.body);
+  const rootBefore = await textOf(page, rootSel);
+  await armMutationWatch(page);
+  await page.selectOption(selectSel, { index }, { timeout: 10000 });
+  await page.waitForFunction(
+    ([s, i]) => document.querySelector(s)?.selectedIndex === i,
+    [selectSel, index],
+    { timeout: 10000 },
+  );
+  await waitForSettle(page, before);
+  return { changed: (await textOf(page, rootSel)) !== rootBefore };
+}
+
+/**
+ * Capture the current (domestic) render of every option of each region dropdown that has
+ * more than one option, restoring each select to its default afterwards.
+ * @returns {{ parts: object[], summary: Record<string, object[]> }}
+ */
+async function captureOptionRegions(page, url) {
+  const parts = [];
+  const summary = {};
+  for (const r of OPTION_REGIONS) {
+    const info = await page.evaluate(([selSel, rootSel]) => {
+      const sel = document.querySelector(selSel);
+      if (!sel || !document.querySelector(rootSel)) return null;
+      return {
+        selectedIndex: sel.selectedIndex,
+        options: [...sel.options].map((o) => ({ label: o.textContent.replace(/\s+/g, ' ').trim(), value: o.value })),
+      };
+    }, [r.select, r.root]);
+    if (!info || info.options.length < 2) continue;
+    const def = info.selectedIndex >= 0 ? info.selectedIndex : 0;
+    const got = new Map();
+    got.set(def, { html: await page.evaluate(serializeFixed, { selector: r.root, sourceUrl: url }), changed: null });
+    try {
+      for (let i = 0; i < info.options.length; i += 1) {
+        if (i !== def) {
+          const { changed } = await selectOptionAndSettle(page, r.select, r.root, i);
+          got.set(i, { html: await page.evaluate(serializeFixed, { selector: r.root, sourceUrl: url }), changed });
+        }
+      }
+    } finally {
+      // Restore the default so later regions (and the session) see the initial state.
+      await selectOptionAndSettle(page, r.select, r.root, def).catch(() => {});
+    }
+    summary[r.part] = info.options.map((o, i) => ({
+      index: i, label: o.label, value: o.value, default: i === def, changed: got.get(i)?.changed ?? null,
+    }));
+    info.options.forEach((o, i) => {
+      const g = got.get(i);
+      if (g?.html) {
+        parts.push({
+          part: r.part, index: i, label: o.label, value: o.value, isDefault: i === def, html: g.html,
+        });
+      }
+    });
+  }
+  return { parts, summary };
+}
+
+const ESC = {
+  '&': '&amp;', '"': '&quot;', '<': '&lt;', '>': '&gt;',
+};
+const escAttr = (v) => String(v).replace(/[&"<>]/g, (c) => ESC[c]);
+
+function insertBeforeBodyEnd(html, fragment) {
+  const at = html.lastIndexOf('</body>');
+  return at >= 0 ? `${html.slice(0, at)}${fragment}${html.slice(at)}` : `${html}${fragment}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -445,18 +550,40 @@ async function capture(context, url) {
       const capturedAt = new Date().toISOString();
       const tpl = `<template id="excat-international" data-captured-at="${capturedAt}">${
         parts.map((p) => `<div data-excat-part="${p.name}">${p.html}</div>`).join('')}</template>`;
-      const at = html.lastIndexOf('</body>');
-      html = at >= 0 ? `${html.slice(0, at)}${tpl}${html.slice(at)}` : `${html}${tpl}`;
+      html = insertBeforeBodyEnd(html, tpl);
       intl = { parts: parts.map((p) => p.name), differs };
       await deleteAudienceCookie(page);
       mark('international');
+    }
+
+    // Structure-page dropdowns: every option's domestic render of the region.
+    let options = null;
+    const hasOptionSelects = await page.evaluate((regions) => regions.some((r) => {
+      const sel = document.querySelector(r.select);
+      return Boolean(sel && sel.options.length > 1 && document.querySelector(r.root));
+    }), OPTION_REGIONS);
+    if (hasOptionSelects) {
+      if (hasSwitcher) {
+        const cur = await page.evaluate((s) => document.querySelector(s)?.value, SEL.checked);
+        if (cur !== 'domestic') await switchAudience(page, 'domestic');
+      }
+      const opt = await captureOptionRegions(page, url);
+      if (opt.parts.length) {
+        const divs = opt.parts.map((p) => `<div data-excat-part="${p.part}" data-option-label="${escAttr(p.label)}" `
+          + `data-option-value="${escAttr(p.value)}" data-option-index="${p.index}"`
+          + `${p.isDefault ? ' data-default="true"' : ''}>${p.html}</div>`).join('');
+        html = insertBeforeBodyEnd(html, `<template id="excat-options" data-captured-at="${new Date().toISOString()}">${divs}</template>`);
+        options = opt.summary;
+      }
+      if (hasSwitcher) await deleteAudienceCookie(page);
+      mark('options');
     }
 
     html = stripScripts(html);
     const bytes = Buffer.byteLength(html, 'utf-8');
     if (bytes < MIN_SNAPSHOT_BYTES) throw new CaptureError(`snapshot suspiciously small (${bytes} bytes)`);
     return {
-      html, bytes, audiences, intl, domesticReset, phases,
+      html, bytes, audiences, intl, domesticReset, phases, options,
     };
   } finally {
     await page.close().catch(() => {});
@@ -500,6 +627,17 @@ async function main() {
   if (!endpoint) usage('BD_ENDPOINT is not set (Bright Data CDP forwarder URL)');
 
   let urls = readUrls(opts.urls);
+  if (opts.onlyStructureWithOptions) {
+    const before = urls.length;
+    urls = urls.filter((u) => {
+      if (!isStructureUrl(u)) return false;
+      const f = resolveSavedHtmlPath(u, opts.out);
+      if (!existsSync(f)) return false;
+      return Object.values(snapshotSelectRegions(readFileSync(f, 'utf-8'))).some((n) => n > 1);
+    });
+    console.log(`[capture] --only-structure-with-options: ${urls.length}/${before} URL(s) are structure `
+      + 'pages with multi-option dropdowns (re-capturing with --force)');
+  }
   if (opts.limit) urls = urls.slice(0, opts.limit);
   const total = urls.length;
   const { concurrency } = opts;
@@ -611,6 +749,7 @@ async function main() {
             parts: res.intl?.parts ?? [],
             intlDiffers: res.intl ? res.intl.differs : null,
             domesticReset: res.domesticReset,
+            options: res.options ?? null,
             phases: res.phases,
             bytes: res.bytes,
             ms,
@@ -620,7 +759,11 @@ async function main() {
             error: null,
           });
           const diff = res.intl ? Object.entries(res.intl.differs).filter(([, v]) => v).map(([k]) => k) : [];
-          const note = res.intl ? ` intl-differs=${diff.join(',') || 'none'}` : '';
+          let note = res.intl ? ` intl-differs=${diff.join(',') || 'none'}` : '';
+          if (res.options) {
+            note += ` options=${Object.entries(res.options)
+              .map(([k, v]) => `${k}:${v.map((o) => o.label).join('/')}`).join(';')}`;
+          }
           console.log(`${label(item.index)} ok       ${item.url} audiences=${res.audiences} bytes=${res.bytes}${note} ${(ms / 1000).toFixed(1)}s`);
         } else if (lastErr && !stopping) {
           counts.failed += 1;

@@ -67,26 +67,80 @@ function pickImage(card, document) {
   return out;
 }
 
+// Course-detail assets known to 403 (mapping-notes "Images (403 rule)"): never emit, log instead.
+const BLOCKED_IMAGES = [
+  '/0018/48150/Physics.jpg',
+  '/0014/41405/JG-YellowJacket-1098x780.png',
+  '/0030/389019/varieties/thumb.jpg',
+  '/0027/55449/accred_logos_accounting.jpg',
+  '/0016/45124/',
+  '/0022/45256/',
+  '/0030/46875/study_banner_community.png',
+];
+
 export default function parse(element, { document }) {
+  // Course-detail shape (block-context/cards/instances/course-detail-01.html, MMA career outcomes
+  // alumni grid): div.grid > div.cell > div.card.card--division > div.card__thumb > img,
+  // div.card__inner > div.card__subheader > h4.card__header, p (role), p.card__meta (completed).
+  // Differences from the homepage: name heading authored as h5 (it sits under the section h4),
+  // cards are not links (btn-owner is a styling artefact), and a 403 portrait drops the image cell
+  // instead of leaving it empty. The homepage (no course wrapper) keeps the original behaviour.
+  const course = !!element.closest('.course-content, .course-section__main, [data-test$="-page"]');
+
   let cards = [...element.querySelectorAll('.card')];
   if (!cards.length) cards = [...element.querySelectorAll(':scope > .cell, :scope > div')];
 
   const cells = [];
   cards.forEach((card) => {
     const body = [];
-    const heading = card.querySelector('h2, h3, h4, .card__title');
+    const heading = card.querySelector('h2, h3, h4, h5, h6, .card__title, .card__header');
     if (heading && clean(heading)) {
-      const h = document.createElement(/^H[2-6]$/.test(heading.tagName) ? heading.tagName.toLowerCase() : 'h3');
-      h.textContent = clean(heading);
-      body.push(h);
+      let tag = /^H[2-6]$/.test(heading.tagName) ? heading.tagName.toLowerCase() : 'h3';
+      if (course) tag = 'h5';
+      const h = document.createElement(tag);
+      const br = course ? heading.querySelector(':scope > br') : null;
+      if (br) {
+        // "Dr Muralee Das<br><strong><em>PhD (…)</em></strong>": name = heading, rest = a paragraph
+        const rest = document.createElement('p');
+        let n = br.nextSibling;
+        while (n) { const next = n.nextSibling; rest.append(n); n = next; }
+        br.remove();
+        h.textContent = clean(heading);
+        body.push(h);
+        if (clean(rest)) body.push(rest);
+      } else {
+        h.textContent = clean(heading);
+        body.push(h);
+      }
     }
-    card.querySelectorAll('.card__inner p, .card__meta').forEach((p, i, all) => {
-      if ([...all].indexOf(p) !== i || !clean(p)) return;
-      const para = document.createElement('p');
-      para.textContent = clean(p);
-      body.push(para);
-    });
-    const cta = card.querySelector('.card__footer a[href], a.btn[href]');
+    if (course) {
+      // keep inline markup (<br> line breaks, <strong>/<em>, real links) and the footer line
+      // (e.g. <strong><em>Completed - 2016</em></strong>), in source order
+      const parts = [...card.querySelectorAll('.card__inner p, .card__inner ul, .card__inner ol, .card__meta')]
+        .filter((p, i, all) => all.indexOf(p) === i && clean(p) && !p.parentElement.closest('p, ul, ol'));
+      parts.forEach((p) => {
+        p.querySelectorAll('a[href]').forEach((a) => a.setAttribute('href', a.getAttribute('href').trim()));
+        body.push(p);
+      });
+      const footer = card.querySelector('.card__footer');
+      if (footer && clean(footer)) {
+        const blocks = [...footer.children].filter((c) => /^(P|UL|OL)$/.test(c.tagName));
+        if (blocks.length) body.push(...blocks);
+        else {
+          const p = document.createElement('p');
+          p.append(...footer.childNodes);
+          body.push(p);
+        }
+      }
+    } else {
+      card.querySelectorAll('.card__inner p, .card__meta').forEach((p, i, all) => {
+        if ([...all].indexOf(p) !== i || !clean(p)) return;
+        const para = document.createElement('p');
+        para.textContent = clean(p);
+        body.push(para);
+      });
+    }
+    const cta = course ? null : card.querySelector('.card__footer a[href], a.btn[href]');
     if (cta) {
       cta.querySelectorAll('.screenreaders-only, .sr-only').forEach((s) => s.remove());
       const link = document.createElement('a');
@@ -97,7 +151,15 @@ export default function parse(element, { document }) {
       body.push(p);
     }
     if (!body.length) return;
-    const image = pickImage(card, document);
+    let image = pickImage(card, document);
+    if (course && image && BLOCKED_IMAGES.some((frag) => image.src.includes(frag))) {
+      console.warn(`[cards] image dropped (403): ${image.src}`);
+      image = null;
+    }
+    if (course) {
+      cells.push(image ? [[image], body] : [body]);
+      return;
+    }
     cells.push([image ? [image] : '', body]);
   });
 

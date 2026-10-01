@@ -51,6 +51,15 @@ function pictogram(card, title, document) {
 }
 
 export default function parse(element, { document }) {
+  // Course-detail shape (career outcomes "Employment outcomes" fact cards; found in the bulk
+  // snapshots, e.g. graduate/master-of-actuarial-science/career-outcomes):
+  //   div.ct-factscard-border div.grid.grid--center > div.cell > div.card.card--fact > div.card__inner >
+  //     [h4.card__meta (e.g. "Within 1 year of graduating")] + p (role, employer)
+  // These cards carry no pictogram: in course mode a card without an icon gets a single body cell
+  // (no empty icon cell), the h4 is authored as h5 (it sits under the section h4) and is not
+  // repeated as a paragraph. The homepage (no course wrapper) keeps the original behaviour.
+  const course = !!element.closest('.course-content, .course-section__main, [data-test$="-page"]');
+
   let cards = [...element.querySelectorAll('.card')];
   if (!cards.length) cards = [...element.querySelectorAll(':scope > .cell, :scope > div')];
 
@@ -60,11 +69,12 @@ export default function parse(element, { document }) {
     const heading = card.querySelector('h2, h3, h4, .card__title');
     const title = clean(heading);
     if (title) {
-      const h = document.createElement(/^H[2-6]$/.test(heading.tagName) ? heading.tagName.toLowerCase() : 'h3');
+      const h = document.createElement(course ? 'h5' : (/^H[2-6]$/.test(heading.tagName) ? heading.tagName.toLowerCase() : 'h3'));
       h.textContent = title;
       body.push(h);
     }
     card.querySelectorAll('.card__inner p, .card__meta').forEach((p, i, all) => {
+      if (course && p === heading) return;
       if ([...all].indexOf(p) !== i || !clean(p)) return;
       const para = document.createElement('p');
       para.textContent = clean(p);
@@ -82,6 +92,10 @@ export default function parse(element, { document }) {
     }
     if (!body.length) return;
     const icon = pictogram(card, title, document);
+    if (course && !icon) {
+      cells.push([body]);
+      return;
+    }
     cells.push([icon ? [icon] : '', body]);
   });
 
