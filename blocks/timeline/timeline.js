@@ -3,13 +3,35 @@
  * One row per milestone: [date (optional; may hold a small label line + date line) |
  * description (optional heading + text/links)]. Rows with an empty date cell continue
  * the previous date.
+ * Option key-dates: a card with an optional header row (a single first cell holding a small
+ * label line and a heading, e.g. 'For domestic students' + 'Key dates'), then one
+ * calendar-icon row per date with the description above the date.
  */
+
+/** Splits a key-dates header cell into its label chip line(s) and title. */
+function decorateHeader(cell) {
+  cell.className = 'timeline-header';
+  const parts = [...cell.children];
+  const title = parts.find((el) => /^H[1-6]$/.test(el.tagName))
+    || (parts.length > 1 ? parts[parts.length - 1] : null);
+  if (title) title.classList.add('timeline-header-title');
+  parts.slice(0, title ? parts.indexOf(title) : parts.length)
+    .forEach((el) => el.classList.add('timeline-header-label'));
+  return cell;
+}
 
 export default function decorate(block) {
   const list = document.createElement('ol');
   list.className = 'timeline-list';
 
-  [...block.children].forEach((row) => {
+  const rows = [...block.children];
+  let header = null;
+  if (block.classList.contains('key-dates') && rows.length > 1
+    && rows[0].children.length === 1 && rows[0].textContent.trim()) {
+    header = decorateHeader(rows.shift().firstElementChild);
+  }
+
+  rows.forEach((row) => {
     const cells = [...row.children];
     if (!cells.length) return;
     const [dateCell, ...bodyCells] = cells.length > 1 ? cells : [document.createElement('div'), ...cells];
@@ -40,5 +62,5 @@ export default function decorate(block) {
     list.append(item);
   });
 
-  block.replaceChildren(list);
+  block.replaceChildren(...(header ? [header] : []), list);
 }

@@ -3318,7 +3318,684 @@
       ],
       "coverageGaps": [],
       "description": "Course page with dark course-title hero, domestic/international toggle, key-facts panel with CTAs, sticky tab sub-navigation, long-form rich text sections, related-links pills and next-tab CTA",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "hero-split",
+          "instances": [
+            "#main > div > div.course-header"
+          ]
+        },
+        {
+          "name": "hero-aside",
+          "instances": [
+            "#main div[data-test$='-page'] > #page-title:has(.course-section__aside .at-a-glance)"
+          ]
+        },
+        {
+          "name": "audience-switcher",
+          "instances": [
+            "#user-profile-audience-switcher"
+          ]
+        },
+        {
+          "name": "key-facts",
+          "instances": [
+            "#main > div > div.key-facts"
+          ]
+        },
+        {
+          "name": "residency-notice",
+          "instances": [
+            "#admission-requirements div.user-profile[data-test='entry-reqs-user-profile']"
+          ]
+        },
+        {
+          "name": "cards-stat",
+          "instances": [
+            "#admission-requirements ul.entry-reqs__list"
+          ]
+        },
+        {
+          "name": "cards-chips",
+          "instances": [
+            "#available-pathways ul.card-course-list.course-list--inline"
+          ]
+        },
+        {
+          "name": "cards-people",
+          "instances": [
+            "#main div[data-test$='-page'] .course-content > div:has(.card--showcase-profile)"
+          ]
+        },
+        {
+          "name": "cards",
+          "instances": [
+            "#main div[data-test$='-page'] .course-section__main > .course-content > div.grid:has(> .cell > .card):not(:has(.card--showcase-profile))"
+          ]
+        },
+        {
+          "name": "cards-icon",
+          "instances": [
+            "#main div[data-test$='-page'] .course-content div.ct-factscard-border div.grid.grid--center",
+            "#main div[data-test$='-page'] .course-content section.accreditations"
+          ]
+        },
+        {
+          "name": "cards-course-link",
+          "instances": [
+            "#main div[data-test$='-page'] .course-content ul.course-list.course-list--inline"
+          ]
+        },
+        {
+          "name": "accordion",
+          "instances": [
+            "#main div[data-test$='-page'] .course-section__main > div:has(> ul.toggleblock.togglerow)",
+            "#main div[data-test$='-page'] .section-bordered > div:has(> ul.toggleblock.togglerow)"
+          ]
+        },
+        {
+          "name": "tabs",
+          "instances": [
+            "#available-subjects div.app-tabs.app-tabs--alt"
+          ]
+        },
+        {
+          "name": "notice",
+          "instances": [
+            "#fees .fee-info-panel",
+            "#main div[data-test$='-page'] .course-section__main > .course-content > div.notice"
+          ]
+        },
+        {
+          "name": "callout",
+          "instances": [
+            "#main div[data-test$='-page'] div.callout-panel"
+          ]
+        },
+        {
+          "name": "timeline-key-dates",
+          "instances": [
+            ".course-section--title .course-section__aside .date-list",
+            "#key-application-dates div.date-list"
+          ]
+        },
+        {
+          "name": "video",
+          "instances": [
+            "#main div[data-test$='-page'] .course-content > div.embed",
+            "#main div[data-test$='-page'] .course-content > p:has(> iframe)",
+            "#main div[data-test$='-page'] .course-content > figure.figure--embed"
+          ]
+        },
+        {
+          "name": "quote-profile",
+          "instances": [
+            "#main div[data-test$='-page'] div.toggleblock.alumniprofile"
+          ]
+        },
+        {
+          "name": "quote",
+          "instances": [
+            "#main div[data-test$='-page'] .course-section__main > .course-content > blockquote"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "#what-can-i-study div.section-alt__row"
+          ]
+        },
+        {
+          "name": "columns-split",
+          "instances": [
+            "#main div[data-test$='-page'] .course-content > section.split-section"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "#main div[data-test$='-page'] table.table:not(.toggleblock table)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "course-header",
+          "name": "Course title hero",
+          "selector": [
+            "#main > div > div.course-header"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-split"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "audience-toggle",
+          "name": "Audience toggle (Showing information for)",
+          "selector": [
+            "#main > div > div:has(> #user-profile-audience-switcher)"
+          ],
+          "style": null,
+          "blocks": [
+            "audience-switcher"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "key-facts",
+          "name": "Key facts panel (audience-keyed)",
+          "selector": [
+            "#main > div > div.key-facts"
+          ],
+          "style": "grey",
+          "audience": "domestic",
+          "blocks": [
+            "key-facts"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "title-band-aside",
+          "name": "Major title band + At a glance panel",
+          "selector": [
+            "#main div[data-test$='-page'] > #page-title:has(.course-section__aside .at-a-glance)",
+            "#page-title:has(.course-section__aside .at-a-glance)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-aside"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "title-band-key-dates",
+          "name": "How to apply title band + key dates (audience-keyed)",
+          "selector": [
+            "#main div[data-test$='-page'] > #page-title:has(.course-section__aside .date-list)",
+            "#page-title:has(.course-section__aside .date-list)"
+          ],
+          "style": "sage",
+          "audience": "domestic",
+          "blocks": [
+            "timeline-key-dates"
+          ],
+          "defaultContent": [
+            "#page-title h2#page-subheader"
+          ]
+        },
+        {
+          "id": "title-band",
+          "name": "Tab title band (h2 + optional in-page anchor list)",
+          "selector": [
+            "#main div[data-test$='-page'] > #page-title:not(:has(.course-section__aside .at-a-glance, .course-section__aside .date-list))",
+            "#page-title:not(:has(.course-section__aside .at-a-glance, .course-section__aside .date-list))"
+          ],
+          "style": "sage",
+          "blocks": [],
+          "defaultContent": [
+            "#page-title h2#page-subheader",
+            "#page-title nav.in-page-vertical-nav ul.in-page-vertical-nav__container"
+          ]
+        },
+        {
+          "id": "course-overview",
+          "name": "Overview body",
+          "selector": [
+            "#main div[data-test$='-page'] > section#course-overview",
+            "section#course-overview"
+          ],
+          "style": null,
+          "blocks": [
+            "video",
+            "notice",
+            "quote",
+            "cards",
+            "cards-icon",
+            "cards-course-link"
+          ],
+          "defaultContent": [
+            "#course-overview .course-section__main > h3.header-icon",
+            "#course-overview .course-section__main > p",
+            "#course-overview .course-content > :is(h2, h3, h4, h5, h6, p:not(:has(> iframe)), ul, ol, figure.figure:not(.figure--embed))",
+            "#course-overview .course-content > div:not(.embed, .notice, .grid) > p"
+          ]
+        },
+        {
+          "id": "related-study-areas",
+          "name": "Related study areas",
+          "selector": [
+            "#main div[data-test$='-page'] > section#what-can-i-study",
+            "section#what-can-i-study"
+          ],
+          "style": null,
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "admission-requirements",
+          "name": "Admission requirements heading + residency panel",
+          "selector": [
+            "#main div[data-test$='-page'] > section#admission-requirements",
+            "section#admission-requirements"
+          ],
+          "style": "grey",
+          "blocks": [
+            "residency-notice"
+          ],
+          "defaultContent": [
+            "#admission-requirements .course-section__main > h3.header-icon"
+          ]
+        },
+        {
+          "id": "admission-requirements-stats",
+          "name": "Admission requirements stat cards (audience-keyed)",
+          "selector": [
+            "#admission-requirements ul.entry-reqs__list"
+          ],
+          "style": "grey",
+          "audience": "domestic",
+          "blocks": [
+            "cards-stat"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "admission-requirements-essential",
+          "name": "Essential requirements (prerequisites, English language)",
+          "selector": [
+            "#admission-requirements .page-entry-requirements__additional-info"
+          ],
+          "style": "grey",
+          "blocks": [],
+          "defaultContent": [
+            ".page-entry-requirements__additional-info > h4",
+            ".page-entry-requirements__pre-reqs > :is(h5, div.course-content, div.well--info)",
+            ".page-entry-requirements__language > :is(h5, div.course-content)",
+            ".page-entry-requirements__additional-info > div.course-content"
+          ]
+        },
+        {
+          "id": "admission-criteria",
+          "name": "Admission criteria",
+          "selector": [
+            "#main div[data-test$='-page'] > section#admission-criteria",
+            "section#admission-criteria"
+          ],
+          "style": null,
+          "blocks": [
+            "accordion"
+          ],
+          "defaultContent": [
+            "#admission-criteria .course-section__main > h3.header-icon",
+            "#admission-criteria .course-section__main > p",
+            "#admission-criteria .section__inner > div.shim-mt2"
+          ]
+        },
+        {
+          "id": "additional-information",
+          "name": "Additional information",
+          "selector": [
+            "#main div[data-test$='-page'] > section#additional-information",
+            "section#additional-information"
+          ],
+          "style": null,
+          "blocks": [
+            "accordion"
+          ],
+          "defaultContent": [
+            "#additional-information .course-section__main > h3.header-icon"
+          ]
+        },
+        {
+          "id": "overview",
+          "name": "Overview (structure / career outcomes body)",
+          "selector": [
+            "#main div[data-test$='-page'] > section#overview",
+            "section#overview"
+          ],
+          "style": null,
+          "blocks": [
+            "video",
+            "quote-profile",
+            "cards",
+            "cards-icon",
+            "notice",
+            "quote",
+            "columns-split",
+            "table"
+          ],
+          "defaultContent": [
+            "#overview .course-section__main > h3.header-icon",
+            "#overview .course-section__main > p",
+            "#overview .course-content > :is(h2, h3, h4, h5, h6, p:not(:has(> iframe)), ul, ol, figure.figure:not(.figure--embed))",
+            "#overview .course-content > div:not(.embed, .notice, .grid, .ct-factscard-border) > :is(p, ul, ol)"
+          ]
+        },
+        {
+          "id": "explore-this-course",
+          "name": "Explore this course (majors/minors/diplomas/breadth tabs)",
+          "selector": [
+            "#main div[data-test$='-page'] > section#available-subjects",
+            "section#available-subjects"
+          ],
+          "style": null,
+          "blocks": [
+            "tabs"
+          ],
+          "defaultContent": [
+            "#available-subjects .course-section__main > :is(h3, p)"
+          ]
+        },
+        {
+          "id": "graduate-pathways",
+          "name": "Graduate pathways",
+          "selector": [
+            "#main div[data-test$='-page'] > section#available-pathways",
+            "section#available-pathways"
+          ],
+          "style": "sage",
+          "blocks": [
+            "cards-chips"
+          ],
+          "defaultContent": [
+            "#available-pathways .course-section__main > h3.header-icon",
+            "#available-pathways .shim-mb1 > p"
+          ]
+        },
+        {
+          "id": "student-experience",
+          "name": "Student experience body",
+          "selector": [
+            "#main div[data-test$='-page'] > section#student-experience",
+            "section#student-experience"
+          ],
+          "style": null,
+          "blocks": [
+            "video",
+            "cards-people",
+            "quote",
+            "cards"
+          ],
+          "defaultContent": [
+            "#student-experience .course-section__main > h3.header-icon",
+            "#student-experience .course-content > :is(h2, h3, h4, h5, h6, p:not(:has(> iframe)), ul, ol, figure.figure:not(.figure--embed))"
+          ]
+        },
+        {
+          "id": "profile",
+          "name": "Student/alumni profile section",
+          "selector": [
+            "#main div[data-test$='-page'] > div.course-section:has(.toggleblock.alumniprofile)"
+          ],
+          "style": null,
+          "blocks": [
+            "quote-profile"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "fees",
+          "name": "Fees heading",
+          "selector": [
+            "#main div[data-test$='-page'] > section#fees",
+            "section#fees"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#fees h3#fees-panel-title"
+          ]
+        },
+        {
+          "id": "fee-panels",
+          "name": "Fee panel(s) (audience-keyed)",
+          "selector": [
+            "#fees .fee-panel > div:has(.fee-info-panel)"
+          ],
+          "style": null,
+          "audience": "domestic",
+          "blocks": [
+            "notice"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "fees-explained-band",
+          "name": "Your fees explained band",
+          "selector": [
+            "#explained > div.bg-alt"
+          ],
+          "style": "grey",
+          "blocks": [],
+          "defaultContent": [
+            "#explained > div.bg-alt h3#explained-title"
+          ]
+        },
+        {
+          "id": "fees-explained",
+          "name": "Fees explained body (audience-keyed)",
+          "selector": [
+            "#explained > div.course-section"
+          ],
+          "style": null,
+          "audience": "domestic",
+          "blocks": [
+            "callout",
+            "notice"
+          ],
+          "defaultContent": [
+            "#explained [data-test='fee-explanation-content'] > :is(h4, h5, p, ul, ol)"
+          ]
+        },
+        {
+          "id": "other-financial-assistance",
+          "name": "Other financial assistance (shared tail of fees explained)",
+          "selector": [
+            "#explained [data-test='fee-explanation-content'] > h4:nth-last-child(2):has(+ p:last-child)"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#explained [data-test='fee-explanation-content'] > h4:nth-last-child(2)",
+            "#explained [data-test='fee-explanation-content'] > h4:nth-last-child(2) + p"
+          ]
+        },
+        {
+          "id": "scholarships",
+          "name": "Scholarships",
+          "selector": [
+            "#main div[data-test$='-page'] > section#scholarships",
+            "section#scholarships"
+          ],
+          "style": null,
+          "blocks": [
+            "callout"
+          ],
+          "defaultContent": [
+            "#scholarships h3#scholarships-title",
+            "#scholarships .course-section__main > p"
+          ]
+        },
+        {
+          "id": "how-to-apply",
+          "name": "How to apply body (audience-keyed)",
+          "selector": [
+            "#main div[data-test$='-page'] > section#how-to-apply",
+            "section#how-to-apply"
+          ],
+          "style": null,
+          "audience": "domestic",
+          "blocks": [
+            "callout",
+            "notice"
+          ],
+          "defaultContent": [
+            "#how-to-apply .course-section__main > h3.header-icon",
+            "#how-to-apply .course-section__main > div.course-content > :is(h4, h5, p, ul, ol, div)",
+            "#how-to-apply .course-section__main > div:has(> ol) > :is(h4, ol)"
+          ]
+        },
+        {
+          "id": "grad-residency-toggle",
+          "name": "Graduate residency/qualification toggle panel (unanalysed)",
+          "selector": [
+            "#entryReqGradEnhanced > div.section:has(> .section__inner > .user-profile-toggle)",
+            "#how-to-apply-grad > div.section:has(> .section__inner > .user-profile-toggle)"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": []
+        },
+        {
+          "id": "postgrad-entry-text",
+          "name": "Graduate entry requirements text (unanalysed)",
+          "selector": [
+            "#postgradentrytext"
+          ],
+          "style": null,
+          "blocks": [
+            "notice"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "eligibility-calculator",
+          "name": "Eligibility calculator (unanalysed)",
+          "selector": [
+            "#eligibility-calculator"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": []
+        },
+        {
+          "id": "sample-plans",
+          "name": "Sample course plans (unanalysed)",
+          "selector": [
+            "#sample-plans"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": []
+        },
+        {
+          "id": "key-application-dates",
+          "name": "Graduate key application dates (unanalysed)",
+          "selector": [
+            "#key-application-dates"
+          ],
+          "style": null,
+          "blocks": [
+            "timeline-key-dates",
+            "table"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "after-you-apply",
+          "name": "After you apply (unanalysed)",
+          "selector": [
+            "#after-you-apply"
+          ],
+          "style": null,
+          "blocks": [
+            "callout"
+          ],
+          "defaultContent": []
+        }
+      ],
+      "audienceContract": {
+        "template": "template#excat-international",
+        "parts": [
+          "body",
+          "key-facts",
+          "hero-codes",
+          "page-title (optional; falls back to body > #page-title)"
+        ],
+        "defaultAudience": "domestic",
+        "sections": {
+          "key-facts": {
+            "part": "key-facts",
+            "selector": [
+              "div.key-facts"
+            ]
+          },
+          "title-band-key-dates": {
+            "part": "body",
+            "selector": [
+              "div[data-test$='-page'] > #page-title"
+            ]
+          },
+          "admission-requirements-stats": {
+            "part": "body",
+            "selector": [
+              "#admission-requirements ul.entry-reqs__list"
+            ]
+          },
+          "fee-panels": {
+            "part": "body",
+            "selector": [
+              "#fees .fee-panel > div:has(.fee-info-panel)"
+            ]
+          },
+          "fees-explained": {
+            "part": "body",
+            "selector": [
+              "#explained > div.course-section"
+            ]
+          },
+          "how-to-apply": {
+            "part": "body",
+            "selector": [
+              "div[data-test$='-page'] > section#how-to-apply"
+            ]
+          }
+        },
+        "sharedTails": {
+          "other-financial-assistance": "fees-explained"
+        },
+        "inBlock": {
+          "key-facts": {
+            "part": "hero-codes",
+            "selector": [
+              "ul.course-header__codes"
+            ],
+            "use": "code rows (VTAC / International VTAC / CRICOS) appended to the matching audience key-facts block; Course code stays in hero"
+          },
+          "residency-notice": {
+            "part": "body",
+            "selector": [
+              "#admission-requirements [data-test='profile-residency--info']"
+            ],
+            "use": "international row of the single audience-keyed residency-notice block (no section split)"
+          }
+        },
+        "notes": "See migration-work/course-detail/mapping-notes.md#audience-contract"
+      },
+      "boundaryOnlySections": [
+        "grad-residency-toggle",
+        "postgrad-entry-text",
+        "eligibility-calculator",
+        "sample-plans",
+        "key-application-dates",
+        "after-you-apply"
+      ],
+      "representativeUrls": [
+        "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-arts",
+        "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-arts/entry-requirements",
+        "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-arts/structure",
+        "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-arts/career-outcomes",
+        "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-arts/student-experience",
+        "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-arts/fees",
+        "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-arts/how-to-apply",
+        "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/career-outcomes",
+        "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/student-experience",
+        "https://study.unimelb.edu.au/find/courses/major/physics"
+      ]
     },
     {
       "name": "section-landing",

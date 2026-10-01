@@ -39,11 +39,11 @@
   object-fit: cover;
 }
 
-.cards:not(.tile, .link-list, .course-link, .people, .stat) .cards-card-body {
+.cards:not(.tile, .link-list, .course-link, .people, .stat, .chips) .cards-card-body {
   padding: 24px 0;
 }
 
-.cards:not(.tile, .link-list, .course-link, .people, .stat) .cards-card-body > :is(h2, h3, h4, h5, h6) {
+.cards:not(.tile, .link-list, .course-link, .people, .stat, .chips) .cards-card-body > :is(h2, h3, h4, h5, h6) {
   margin: 0 0 12px;
   color: var(--heading-color);
   font-family: var(--body-font-family);
@@ -53,7 +53,7 @@
   letter-spacing: normal;
 }
 
-.cards:not(.tile, .link-list, .course-link, .people, .stat) .cards-card-body > p:where(:not(.cards-card-cta)) {
+.cards:not(.tile, .link-list, .course-link, .people, .stat, .chips) .cards-card-body > p:where(:not(.cards-card-cta)) {
   margin: 0;
 }
 
@@ -359,6 +359,39 @@ main .section:is(.grey, .light, .highlight):has(> .cards-wrapper:only-child > .c
   object-fit: contain;
 }
 
+/* chips: wrapping row of white link chips with a light-cyan left border, one link per row */
+.cards.chips > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cards.chips .cards-card-body p {
+  margin: 0;
+}
+
+.cards.chips .cards-card-body a:any-link {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: 12px 16px;
+  border: 1px solid #bfced5;
+  border-left: 6px solid #a3e4f7;
+  border-radius: 2px;
+  background-color: #fff;
+  color: var(--link-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: underline;
+}
+
+.cards.chips .cards-card-body a:hover {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
 @media (width >= 600px) {
   .cards.people > ul > li {
     display: grid;
@@ -372,11 +405,11 @@ main .section:is(.grey, .light, .highlight):has(> .cards-wrapper:only-child > .c
   }
 
   /* default / icon cards: two-up, a trailing odd card centred */
-  .cards:not(.tile, .link-list, .course-link, .people, .stat) > ul {
+  .cards:not(.tile, .link-list, .course-link, .people, .stat, .chips) > ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .cards:not(.tile, .link-list, .course-link, .people, .stat) .cards-card-body > :is(h2, h3, h4, h5, h6) {
+  .cards:not(.tile, .link-list, .course-link, .people, .stat, .chips) .cards-card-body > :is(h2, h3, h4, h5, h6) {
     margin-bottom: 16px;
   }
 
@@ -412,7 +445,7 @@ main .section:is(.grey, .light, .highlight):has(> .cards-wrapper:only-child > .c
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .cards:not(.tile, .link-list, .course-link, .people, .stat) > ul > li:last-child:nth-child(odd) {
+  .cards:not(.tile, .link-list, .course-link, .people, .stat, .chips) > ul > li:last-child:nth-child(odd) {
     grid-column: 1 / -1;
     justify-self: center;
     width: calc(50% - 8px);
@@ -437,7 +470,7 @@ main .section:is(.grey, .light, .highlight):has(> .cards-wrapper:only-child > .c
     gap: 24px;
   }
 
-  .cards:not(.tile, .link-list, .course-link, .people, .stat) > ul {
+  .cards:not(.tile, .link-list, .course-link, .people, .stat, .chips) > ul {
     grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
   }
 
@@ -453,15 +486,15 @@ main .section:is(.grey, .light, .highlight):has(> .cards-wrapper:only-child > .c
   }
 
   /* fill whole rows: 3 / 6 cards in 3 columns, 4 / 8 cards in 4 columns */
-  .cards.cards-cols-3:not(.link-list, .course-link, .people) > ul {
+  .cards.cards-cols-3:not(.link-list, .course-link, .people, .chips) > ul {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .cards.cards-cols-4:not(.link-list, .course-link, .people) > ul {
+  .cards.cards-cols-4:not(.link-list, .course-link, .people, .chips) > ul {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  .cards:not(.tile, .link-list, .course-link, .people, .stat) > ul > li:last-child:nth-child(odd) {
+  .cards:not(.tile, .link-list, .course-link, .people, .stat, .chips) > ul > li:last-child:nth-child(odd) {
     grid-column: auto;
     justify-self: stretch;
     width: auto;

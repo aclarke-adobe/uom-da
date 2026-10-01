@@ -1,6 +1,6 @@
 import { createOptimizedPicture, decorateIcons } from '../../scripts/aem.js';
 
-const OPTION_CLASSES = ['tile', 'icon', 'link-list', 'course-link', 'people', 'stat'];
+const OPTION_CLASSES = ['tile', 'icon', 'link-list', 'course-link', 'people', 'stat', 'chips'];
 
 function isActionParagraph(el) {
   if (el.tagName !== 'P') return false;
@@ -82,7 +82,7 @@ export default function decorate(block) {
   const active = [...block.classList].filter((c) => OPTION_CLASSES.includes(c));
   // icon pictograms render at card width, so only stat images are small
   const smallImages = active.includes('stat');
-  const chips = active.includes('course-link') || active.includes('link-list');
+  const chips = ['course-link', 'link-list', 'chips'].some((c) => active.includes(c));
 
   /* change to ul, li */
   const ul = document.createElement('ul');
@@ -116,7 +116,7 @@ export default function decorate(block) {
       }
     }
 
-    if (active.includes('link-list') || active.includes('course-link')) {
+    if (chips) {
       const links = li.querySelectorAll('a');
       if (links.length === 1 && li.textContent.trim() === links[0].textContent.trim()) {
         li.classList.add('cards-card-link');

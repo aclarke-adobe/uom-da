@@ -1,8 +1,26 @@
 /*
  * Tabs block
  * One row per tab: [tab label | panel content]. Panel content can contain any default
- * content, including nested blocks authored as fragments.
+ * content, including nested blocks (e.g. an accordion), which are decorated and loaded here.
  */
+
+import { decorateBlock, loadBlock } from '../../scripts/aem.js';
+
+/**
+ * Nested blocks authored inside a tab panel (e.g. an accordion per panel) are not reached
+ * by the page-level decorateBlocks, so decorate and load them here. Each gets its own
+ * wrapper so the `<name>-wrapper` class lands on that wrapper, not on the panel.
+ */
+async function loadNestedBlocks(container) {
+  const nested = [...container.querySelectorAll(':scope > div[class]:not([data-block-status])')];
+  await Promise.all(nested.map((nestedBlock) => {
+    const wrapper = document.createElement('div');
+    nestedBlock.replaceWith(wrapper);
+    wrapper.append(nestedBlock);
+    decorateBlock(nestedBlock);
+    return loadBlock(nestedBlock);
+  }));
+}
 
 let instance = 0;
 
@@ -18,7 +36,7 @@ function activate(block, index, focus = false) {
   if (focus) buttons[index].focus();
 }
 
-export default function decorate(block) {
+export default async function decorate(block) {
   instance += 1;
   const rows = [...block.children]
     .filter((row) => row.children.length && row.firstElementChild.textContent.trim());
@@ -70,4 +88,5 @@ export default function decorate(block) {
   block.replaceChildren(tablist, ...panels);
   if (rows.length === 1) block.classList.add('tabs-single');
   activate(block, 0);
+  await Promise.all(panels.map(loadNestedBlocks));
 }
