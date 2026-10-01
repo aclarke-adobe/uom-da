@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/landscape-architecture",
+  "path": "find/courses/major/landscape-architecture",
+  "timestamp": "2026-10-01T13:09:09.515Z",
+  "title": "Landscape Architecture - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

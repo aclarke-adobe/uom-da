@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/honours/bachelor-of-science-advanced-honours/how-to-apply",
+  "path": "find/courses/honours/bachelor-of-science-advanced-honours/how-to-apply",
+  "timestamp": "2026-10-01T13:03:24.996Z",
+  "title": "Bachelor of Science Advanced (Honours) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "callout"
+  ],
+  "droppedImages": ""
+}

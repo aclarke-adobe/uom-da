@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-clinical-psychology",
+  "path": "find/courses/graduate/graduate-diploma-in-clinical-psychology",
+  "timestamp": "2026-10-01T10:48:58.049Z",
+  "title": "Graduate Diploma in Clinical Psychology - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

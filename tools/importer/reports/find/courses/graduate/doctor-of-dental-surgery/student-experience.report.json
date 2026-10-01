@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-dental-surgery/student-experience",
+  "path": "find/courses/graduate/doctor-of-dental-surgery/student-experience",
+  "timestamp": "2026-10-01T10:04:18.308Z",
+  "title": "Doctor of Dental Surgery : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0017/420434/varieties/banner.jpg https://matrix-cms.unimelb.edu.au/__data/assets/image/0022/161734/varieties/thumb.jpg"
+}

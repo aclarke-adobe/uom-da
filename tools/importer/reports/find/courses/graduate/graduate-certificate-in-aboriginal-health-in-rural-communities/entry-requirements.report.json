@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-aboriginal-health-in-rural-communities/entry-requirements",
+  "path": "find/courses/graduate/graduate-certificate-in-aboriginal-health-in-rural-communities/entry-requirements",
+  "timestamp": "2026-10-01T10:14:44.062Z",
+  "title": "Graduate Certificate in Aboriginal Health in Rural Communities : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "residency-notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

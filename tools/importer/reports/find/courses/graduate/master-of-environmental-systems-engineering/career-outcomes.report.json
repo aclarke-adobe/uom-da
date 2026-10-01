@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-environmental-systems-engineering/career-outcomes",
+  "path": "find/courses/graduate/master-of-environmental-systems-engineering/career-outcomes",
+  "timestamp": "2026-10-01T10:00:22.725Z",
+  "title": "Master of Environmental Systems Engineering : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "table"
+  ],
+  "droppedImages": ""
+}

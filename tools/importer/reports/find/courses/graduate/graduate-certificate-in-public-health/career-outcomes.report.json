@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-public-health/career-outcomes",
+  "path": "find/courses/graduate/graduate-certificate-in-public-health/career-outcomes",
+  "timestamp": "2026-10-01T10:37:02.350Z",
+  "title": "Graduate Certificate in Public Health : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

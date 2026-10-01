@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-advanced-social-work-research/student-experience",
+  "path": "find/courses/graduate/master-of-advanced-social-work-research/student-experience",
+  "timestamp": "2026-10-01T13:55:27.379Z",
+  "title": "Master of Advanced Social Work (Research) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video"
+  ],
+  "droppedImages": "https://findacourse.study.unimelb.edu.au/find/_nuxt/placeholder-new.DGFxYecG.jpg"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-modern-languages-education",
+  "path": "find/courses/graduate/graduate-certificate-in-modern-languages-education",
+  "timestamp": "2026-10-01T10:33:31.523Z",
+  "title": "Graduate Certificate in Modern Languages Education - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

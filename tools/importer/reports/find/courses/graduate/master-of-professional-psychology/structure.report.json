@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-professional-psychology/structure",
+  "path": "find/courses/graduate/master-of-professional-psychology/structure",
+  "timestamp": "2026-10-01T12:16:51.426Z",
+  "title": "Master of Professional Psychology : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

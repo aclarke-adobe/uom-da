@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-philosophy-mdhs-health-sciences/student-experience",
+  "path": "find/courses/graduate/master-of-philosophy-mdhs-health-sciences/student-experience",
+  "timestamp": "2026-10-01T12:13:30.503Z",
+  "title": "Master of Philosophy - MDHS (Health Sciences) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video"
+  ],
+  "droppedImages": ""
+}

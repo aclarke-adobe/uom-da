@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-digital-infrastructure-engineering/student-experience",
+  "path": "find/courses/graduate/master-of-digital-infrastructure-engineering/student-experience",
+  "timestamp": "2026-10-01T11:39:42.023Z",
+  "title": "Master of Digital Infrastructure Engineering : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

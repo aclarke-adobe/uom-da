@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-psychology-educational-and-developmental-doctor-of-philosophy/student-experience",
+  "path": "find/courses/graduate/master-of-psychology-educational-and-developmental-doctor-of-philosophy/student-experience",
+  "timestamp": "2026-10-01T12:19:59.498Z",
+  "title": "Master of Psychology (Educational and Developmental)/Doctor of Philosophy : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

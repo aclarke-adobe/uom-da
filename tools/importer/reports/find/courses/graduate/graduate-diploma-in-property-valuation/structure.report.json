@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-property-valuation/structure",
+  "path": "find/courses/graduate/graduate-diploma-in-property-valuation/structure",
+  "timestamp": "2026-10-01T11:05:17.525Z",
+  "title": "Graduate Diploma in Property Valuation : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

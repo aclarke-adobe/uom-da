@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-climate-science/how-to-apply",
+  "path": "find/courses/graduate/master-of-climate-science/how-to-apply",
+  "timestamp": "2026-10-01T11:29:28.438Z",
+  "title": "Master of Climate Science : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

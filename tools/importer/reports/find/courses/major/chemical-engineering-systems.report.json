@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/chemical-engineering-systems",
+  "path": "find/courses/major/chemical-engineering-systems",
+  "timestamp": "2026-10-01T13:05:37.745Z",
+  "title": "Chemical Engineering Systems - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

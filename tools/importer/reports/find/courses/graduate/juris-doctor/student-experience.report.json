@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/juris-doctor/student-experience",
+  "path": "find/courses/graduate/juris-doctor/student-experience",
+  "timestamp": "2026-10-01T11:10:14.680Z",
+  "title": "Juris Doctor : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/economics",
+  "path": "find/courses/major/economics",
+  "timestamp": "2026-10-01T13:06:39.563Z",
+  "title": "Economics - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "columns"
+  ],
+  "droppedImages": ""
+}

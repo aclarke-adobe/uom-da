@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-veterinary-medicine/structure",
+  "path": "find/courses/graduate/doctor-of-veterinary-medicine/structure",
+  "timestamp": "2026-10-01T10:10:40.241Z",
+  "title": "Doctor of Veterinary Medicine : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

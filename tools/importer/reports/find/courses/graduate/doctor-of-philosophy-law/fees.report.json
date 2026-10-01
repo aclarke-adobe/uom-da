@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-law/fees",
+  "path": "find/courses/graduate/doctor-of-philosophy-law/fees",
+  "timestamp": "2026-10-01T10:08:33.675Z",
+  "title": "Doctor of Philosophy - Law : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

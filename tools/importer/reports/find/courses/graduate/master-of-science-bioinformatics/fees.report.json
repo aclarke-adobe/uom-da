@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-science-bioinformatics/fees",
+  "path": "find/courses/graduate/master-of-science-bioinformatics/fees",
+  "timestamp": "2026-10-01T12:22:33.522Z",
+  "title": "Master of Science (Bioinformatics) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

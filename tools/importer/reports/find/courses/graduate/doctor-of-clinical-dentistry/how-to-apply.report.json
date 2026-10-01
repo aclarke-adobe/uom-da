@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-clinical-dentistry/how-to-apply",
+  "path": "find/courses/graduate/doctor-of-clinical-dentistry/how-to-apply",
+  "timestamp": "2026-10-01T10:03:51.434Z",
+  "title": "Doctor of Clinical Dentistry : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0017/422306/varieties/banner.jpg"
+}

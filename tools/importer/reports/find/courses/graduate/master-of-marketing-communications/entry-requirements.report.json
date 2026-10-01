@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-marketing-communications/entry-requirements",
+  "path": "find/courses/graduate/master-of-marketing-communications/entry-requirements",
+  "timestamp": "2026-10-01T12:05:12.366Z",
+  "title": "Master of Marketing Communications : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

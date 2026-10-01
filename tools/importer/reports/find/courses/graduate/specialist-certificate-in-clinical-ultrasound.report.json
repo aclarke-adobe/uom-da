@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-clinical-ultrasound",
+  "path": "find/courses/graduate/specialist-certificate-in-clinical-ultrasound",
+  "timestamp": "2026-10-01T12:42:10.826Z",
+  "title": "Specialist Certificate in Clinical Ultrasound - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

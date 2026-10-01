@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-biostatistics/entry-requirements",
+  "path": "find/courses/graduate/graduate-diploma-in-biostatistics/entry-requirements",
+  "timestamp": "2026-10-01T10:46:38.040Z",
+  "title": "Graduate Diploma in Biostatistics : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

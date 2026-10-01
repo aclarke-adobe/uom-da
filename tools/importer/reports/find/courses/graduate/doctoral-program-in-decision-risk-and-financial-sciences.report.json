@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctoral-program-in-decision-risk-and-financial-sciences",
+  "path": "find/courses/graduate/doctoral-program-in-decision-risk-and-financial-sciences",
+  "timestamp": "2026-10-01T10:11:58.068Z",
+  "title": "Doctoral Program in Decision, Risk and Financial Sciences - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

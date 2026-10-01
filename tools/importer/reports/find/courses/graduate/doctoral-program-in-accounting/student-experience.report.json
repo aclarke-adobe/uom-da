@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctoral-program-in-accounting/student-experience",
+  "path": "find/courses/graduate/doctoral-program-in-accounting/student-experience",
+  "timestamp": "2026-10-01T10:11:06.569Z",
+  "title": "Doctoral Program in Accounting : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-people",
+    "cards-people",
+    "cards-people"
+  ],
+  "droppedImages": ""
+}

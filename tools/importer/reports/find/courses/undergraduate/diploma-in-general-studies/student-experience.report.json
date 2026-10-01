@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/diploma-in-general-studies/student-experience",
+  "path": "find/courses/undergraduate/diploma-in-general-studies/student-experience",
+  "timestamp": "2026-10-01T13:22:02.439Z",
+  "title": "Diploma in General Studies : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

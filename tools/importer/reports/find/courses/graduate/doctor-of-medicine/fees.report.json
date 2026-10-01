@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-medicine/fees",
+  "path": "find/courses/graduate/doctor-of-medicine/fees",
+  "timestamp": "2026-10-01T10:04:57.232Z",
+  "title": "Doctor of Medicine : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

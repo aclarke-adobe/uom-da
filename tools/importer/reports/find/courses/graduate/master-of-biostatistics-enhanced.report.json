@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-biostatistics-enhanced",
+  "path": "find/courses/graduate/master-of-biostatistics-enhanced",
+  "timestamp": "2026-10-01T11:24:53.289Z",
+  "title": "Master of Biostatistics (Enhanced) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

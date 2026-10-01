@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/finance",
+  "path": "find/courses/major/finance",
+  "timestamp": "2026-10-01T13:07:17.519Z",
+  "title": "Finance - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "columns"
+  ],
+  "droppedImages": ""
+}

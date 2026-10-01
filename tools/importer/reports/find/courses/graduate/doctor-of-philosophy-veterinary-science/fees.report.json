@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-veterinary-science/fees",
+  "path": "find/courses/graduate/doctor-of-philosophy-veterinary-science/fees",
+  "timestamp": "2026-10-01T10:09:44.052Z",
+  "title": "Doctor of Philosophy - Veterinary Science : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

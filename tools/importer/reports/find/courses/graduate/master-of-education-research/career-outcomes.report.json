@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-education-research/career-outcomes",
+  "path": "find/courses/graduate/master-of-education-research/career-outcomes",
+  "timestamp": "2026-10-01T11:41:49.742Z",
+  "title": "Master of Education (Research) : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

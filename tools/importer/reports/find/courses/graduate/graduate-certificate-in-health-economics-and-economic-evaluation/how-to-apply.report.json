@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-health-economics-and-economic-evaluation/how-to-apply",
+  "path": "find/courses/graduate/graduate-certificate-in-health-economics-and-economic-evaluation/how-to-apply",
+  "timestamp": "2026-10-01T10:30:18.238Z",
+  "title": "Graduate Certificate in Health Economics and Economic Evaluation : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

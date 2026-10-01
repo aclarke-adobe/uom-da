@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-physiotherapy-pelvic-health/how-to-apply",
+  "path": "find/courses/graduate/master-of-physiotherapy-pelvic-health/how-to-apply",
+  "timestamp": "2026-10-01T12:16:01.297Z",
+  "title": "Master of Physiotherapy (Pelvic Health) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

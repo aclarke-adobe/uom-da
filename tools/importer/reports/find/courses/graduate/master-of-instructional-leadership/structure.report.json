@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-instructional-leadership/structure",
+  "path": "find/courses/graduate/master-of-instructional-leadership/structure",
+  "timestamp": "2026-10-01T11:56:29.021Z",
+  "title": "Master of Instructional Leadership : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

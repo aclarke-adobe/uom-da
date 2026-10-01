@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-veterinary-studies/student-experience",
+  "path": "find/courses/graduate/master-of-veterinary-studies/student-experience",
+  "timestamp": "2026-10-01T12:33:48.312Z",
+  "title": "Master of Veterinary Studies : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

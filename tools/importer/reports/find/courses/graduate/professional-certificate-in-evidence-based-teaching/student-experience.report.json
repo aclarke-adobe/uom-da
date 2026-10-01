@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-evidence-based-teaching/student-experience",
+  "path": "find/courses/graduate/professional-certificate-in-evidence-based-teaching/student-experience",
+  "timestamp": "2026-10-01T12:35:59.877Z",
+  "title": "Professional Certificate in Evidence-Based Teaching : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video"
+  ],
+  "droppedImages": ""
+}

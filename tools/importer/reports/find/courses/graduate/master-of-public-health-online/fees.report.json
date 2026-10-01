@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-public-health-online/fees",
+  "path": "find/courses/graduate/master-of-public-health-online/fees",
+  "timestamp": "2026-10-01T12:21:00.732Z",
+  "title": "Master of Public Health (Online) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-applied-business-analytics/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-applied-business-analytics/fees",
+  "timestamp": "2026-10-01T10:15:51.810Z",
+  "title": "Graduate Certificate in Applied Business Analytics : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

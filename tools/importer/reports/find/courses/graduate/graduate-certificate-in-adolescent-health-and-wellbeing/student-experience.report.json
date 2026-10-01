@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-adolescent-health-and-wellbeing/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-adolescent-health-and-wellbeing/student-experience",
+  "timestamp": "2026-10-01T13:54:23.114Z",
+  "title": "Graduate Certificate in Adolescent Health and Wellbeing : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/study-fac/data/courses/grad/graduate-certificate-in-adolescent-health-and-wellbeing/iStock-1488889438.jpg"
+}

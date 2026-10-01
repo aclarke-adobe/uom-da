@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/diploma-in-music/student-experience",
+  "path": "find/courses/undergraduate/diploma-in-music/student-experience",
+  "timestamp": "2026-10-01T13:23:03.340Z",
+  "title": "Diploma in Music : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

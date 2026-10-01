@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-global-competition-and-consumer-law/student-experience",
+  "path": "find/courses/graduate/graduate-diploma-in-global-competition-and-consumer-law/student-experience",
+  "timestamp": "2026-10-01T10:57:29.131Z",
+  "title": "Graduate Diploma in Global Competition and Consumer Law : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

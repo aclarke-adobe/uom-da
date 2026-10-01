@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting-and-finance/fees",
+  "path": "find/courses/graduate/master-of-management-accounting-and-finance/fees",
+  "timestamp": "2026-10-01T12:02:04.570Z",
+  "title": "Master of Management (Accounting and Finance) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout",
+    "notice"
+  ],
+  "droppedImages": ""
+}

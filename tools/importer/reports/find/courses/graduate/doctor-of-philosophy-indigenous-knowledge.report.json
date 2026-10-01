@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-indigenous-knowledge",
+  "path": "find/courses/graduate/doctor-of-philosophy-indigenous-knowledge",
+  "timestamp": "2026-10-01T10:07:57.173Z",
+  "title": "Doctor of Philosophy - Indigenous Knowledge - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/public-health-and-epidemiology",
+  "path": "find/courses/major/public-health-and-epidemiology",
+  "timestamp": "2026-10-01T13:11:26.778Z",
+  "title": "Public Health and Epidemiology - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video"
+  ],
+  "droppedImages": ""
+}

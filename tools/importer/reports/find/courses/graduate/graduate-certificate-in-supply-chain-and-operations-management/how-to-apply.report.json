@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-supply-chain-and-operations-management/how-to-apply",
+  "path": "find/courses/graduate/graduate-certificate-in-supply-chain-and-operations-management/how-to-apply",
+  "timestamp": "2026-10-01T10:39:37.801Z",
+  "title": "Graduate Certificate in Supply Chain and Operations Management : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

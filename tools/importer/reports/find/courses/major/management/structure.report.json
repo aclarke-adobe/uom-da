@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/management/structure",
+  "path": "find/courses/major/management/structure",
+  "timestamp": "2026-10-01T13:09:18.722Z",
+  "title": "Management : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

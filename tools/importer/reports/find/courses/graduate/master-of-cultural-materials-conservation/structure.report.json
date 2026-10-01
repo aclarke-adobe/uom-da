@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-cultural-materials-conservation/structure",
+  "path": "find/courses/graduate/master-of-cultural-materials-conservation/structure",
+  "timestamp": "2026-10-01T11:37:18.771Z",
+  "title": "Master of Cultural Materials Conservation : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-adolescent-health-and-wellbeing/structure",
+  "path": "find/courses/graduate/graduate-certificate-in-adolescent-health-and-wellbeing/structure",
+  "timestamp": "2026-10-01T13:54:19.977Z",
+  "title": "Graduate Certificate in Adolescent Health and Wellbeing : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/study-fac/data/courses/grad/graduate-certificate-in-adolescent-health-and-wellbeing/iStock-1488889438.jpg"
+}

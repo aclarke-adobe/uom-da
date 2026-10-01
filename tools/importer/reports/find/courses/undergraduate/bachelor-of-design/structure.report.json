@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-design/structure",
+  "path": "find/courses/undergraduate/bachelor-of-design/structure",
+  "timestamp": "2026-10-01T10:01:52.869Z",
+  "title": "Bachelor of Design : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

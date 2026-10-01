@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/diploma-in-mathematical-sciences",
+  "path": "find/courses/undergraduate/diploma-in-mathematical-sciences",
+  "timestamp": "2026-10-01T13:22:29.066Z",
+  "title": "Diploma in Mathematical Sciences - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

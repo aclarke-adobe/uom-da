@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-biostatistics/student-experience",
+  "path": "find/courses/graduate/graduate-diploma-in-biostatistics/student-experience",
+  "timestamp": "2026-10-01T10:46:51.178Z",
+  "title": "Graduate Diploma in Biostatistics : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

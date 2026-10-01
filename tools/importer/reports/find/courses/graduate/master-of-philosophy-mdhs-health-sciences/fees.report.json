@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-philosophy-mdhs-health-sciences/fees",
+  "path": "find/courses/graduate/master-of-philosophy-mdhs-health-sciences/fees",
+  "timestamp": "2026-10-01T12:13:20.714Z",
+  "title": "Master of Philosophy - MDHS (Health Sciences) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout",
+    "table"
+  ],
+  "droppedImages": ""
+}

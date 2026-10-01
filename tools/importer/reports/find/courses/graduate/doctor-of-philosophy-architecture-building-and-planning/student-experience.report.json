@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-architecture-building-and-planning/student-experience",
+  "path": "find/courses/graduate/doctor-of-philosophy-architecture-building-and-planning/student-experience",
+  "timestamp": "2026-10-01T10:06:20.737Z",
+  "title": "Doctor of Philosophy - Architecture, Building and Planning : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

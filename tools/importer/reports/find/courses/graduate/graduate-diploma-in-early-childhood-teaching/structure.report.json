@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-early-childhood-teaching/structure",
+  "path": "find/courses/graduate/graduate-diploma-in-early-childhood-teaching/structure",
+  "timestamp": "2026-10-01T10:53:45.724Z",
+  "title": "Graduate Diploma in Early Childhood Teaching : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "table"
+  ],
+  "droppedImages": ""
+}

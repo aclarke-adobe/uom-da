@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-advanced-nursing-practice-master-of-public-health/student-experience",
+  "path": "find/courses/graduate/master-of-advanced-nursing-practice-master-of-public-health/student-experience",
+  "timestamp": "2026-10-01T11:12:22.413Z",
+  "title": "Master of Advanced Nursing Practice/Master of Public Health : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

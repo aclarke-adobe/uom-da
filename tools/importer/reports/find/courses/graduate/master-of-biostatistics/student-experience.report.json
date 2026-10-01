@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-biostatistics/student-experience",
+  "path": "find/courses/graduate/master-of-biostatistics/student-experience",
+  "timestamp": "2026-10-01T11:25:33.776Z",
+  "title": "Master of Biostatistics : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

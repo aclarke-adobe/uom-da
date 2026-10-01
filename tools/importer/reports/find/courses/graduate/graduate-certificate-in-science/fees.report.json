@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-science/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-science/fees",
+  "timestamp": "2026-10-01T10:37:52.536Z",
+  "title": "Graduate Certificate in Science : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

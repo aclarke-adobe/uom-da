@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-publishing-and-communications",
+  "path": "find/courses/graduate/master-of-publishing-and-communications",
+  "timestamp": "2026-10-01T12:21:58.070Z",
+  "title": "Master of Publishing and Communications - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

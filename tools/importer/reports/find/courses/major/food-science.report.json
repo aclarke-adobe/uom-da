@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/food-science",
+  "path": "find/courses/major/food-science",
+  "timestamp": "2026-10-01T13:07:24.701Z",
+  "title": "Food Science - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

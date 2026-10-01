@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-inclusive-music-teaching/student-experience",
+  "path": "find/courses/graduate/specialist-certificate-in-inclusive-music-teaching/student-experience",
+  "timestamp": "2026-10-01T12:46:20.694Z",
+  "title": "Specialist Certificate in Inclusive Music Teaching : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

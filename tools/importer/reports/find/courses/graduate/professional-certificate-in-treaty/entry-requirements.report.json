@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-treaty/entry-requirements",
+  "path": "find/courses/graduate/professional-certificate-in-treaty/entry-requirements",
+  "timestamp": "2026-10-01T12:38:27.871Z",
+  "title": "Professional Certificate in Treaty : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "accordion",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

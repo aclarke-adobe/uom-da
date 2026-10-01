@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-science-chemistry",
+  "path": "find/courses/graduate/master-of-science-chemistry",
+  "timestamp": "2026-10-01T12:23:11.080Z",
+  "title": "Master of Science (Chemistry) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/executive-master-of-arts/fees",
+  "path": "find/courses/graduate/executive-master-of-arts/fees",
+  "timestamp": "2026-10-01T10:14:03.308Z",
+  "title": "Executive Master of Arts : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

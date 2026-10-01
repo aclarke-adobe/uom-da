@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctoral-program-in-business-administration-and-analytics/fees",
+  "path": "find/courses/graduate/doctoral-program-in-business-administration-and-analytics/fees",
+  "timestamp": "2026-10-01T10:11:44.941Z",
+  "title": "Doctoral Program in Business Administration and Analytics : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "notice",
+    "callout",
+    "notice",
+    "callout"
+  ],
+  "droppedImages": ""
+}

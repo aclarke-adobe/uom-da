@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/computing-and-software-systems",
+  "path": "find/courses/major/computing-and-software-systems",
+  "timestamp": "2026-10-01T13:06:03.606Z",
+  "title": "Computing and Software Systems - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

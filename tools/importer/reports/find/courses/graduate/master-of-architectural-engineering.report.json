@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-architectural-engineering",
+  "path": "find/courses/graduate/master-of-architectural-engineering",
+  "timestamp": "2026-10-01T11:17:03.447Z",
+  "title": "Master of Architectural Engineering - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "table",
+    "columns"
+  ],
+  "droppedImages": ""
+}

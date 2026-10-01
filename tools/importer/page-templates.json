@@ -4022,6 +4022,13 @@
             "selector": [
               "div[data-test$='-page'] > #how-to-apply"
             ]
+          },
+          "admission-criteria": {
+            "audience": "domestic",
+            "part": "body",
+            "selector": [
+              "div[data-test$='-page'] > #admission-criteria"
+            ]
           }
         },
         "sharedTails": {

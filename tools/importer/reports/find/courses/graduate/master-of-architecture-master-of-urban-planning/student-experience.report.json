@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-architecture-master-of-urban-planning/student-experience",
+  "path": "find/courses/graduate/master-of-architecture-master-of-urban-planning/student-experience",
+  "timestamp": "2026-10-01T11:20:26.175Z",
+  "title": "Master of Architecture/Master of Urban Planning : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

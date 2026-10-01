@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-international-tax/fees",
+  "path": "find/courses/graduate/graduate-diploma-in-international-tax/fees",
+  "timestamp": "2026-10-01T11:00:50.530Z",
+  "title": "Graduate Diploma in International Tax : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-law-digital-law-and-technological-innovation",
+  "path": "find/courses/graduate/specialist-certificate-in-law-digital-law-and-technological-innovation",
+  "timestamp": "2026-10-01T12:46:24.256Z",
+  "title": "Specialist Certificate in Law (Digital Law and Technological Innovation) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

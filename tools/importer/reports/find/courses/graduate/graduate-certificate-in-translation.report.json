@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-translation",
+  "path": "find/courses/graduate/graduate-certificate-in-translation",
+  "timestamp": "2026-10-01T13:52:25.640Z",
+  "title": "Graduate Certificate in Translation - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": "https://findacourse.study.unimelb.edu.au/find/_nuxt/placeholder-new.DGFxYecG.jpg"
+}

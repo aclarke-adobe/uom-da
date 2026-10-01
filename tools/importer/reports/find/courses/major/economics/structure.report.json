@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/economics/structure",
+  "path": "find/courses/major/economics/structure",
+  "timestamp": "2026-10-01T13:06:43.195Z",
+  "title": "Economics : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-teaching-secondary-internship/fees",
+  "path": "find/courses/graduate/master-of-teaching-secondary-internship/fees",
+  "timestamp": "2026-10-01T12:29:45.224Z",
+  "title": "Master of Teaching (Secondary) Internship : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

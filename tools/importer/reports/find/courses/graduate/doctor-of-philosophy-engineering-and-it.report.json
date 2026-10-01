@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-engineering-and-it",
+  "path": "find/courses/graduate/doctor-of-philosophy-engineering-and-it",
+  "timestamp": "2026-10-01T10:07:11.823Z",
+  "title": "Doctor of Philosophy - Engineering and IT - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-laws/career-outcomes",
+  "path": "find/courses/graduate/master-of-laws/career-outcomes",
+  "timestamp": "2026-10-01T12:01:01.385Z",
+  "title": "Master of Laws : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

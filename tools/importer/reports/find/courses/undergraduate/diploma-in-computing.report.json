@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/diploma-in-computing",
+  "path": "find/courses/undergraduate/diploma-in-computing",
+  "timestamp": "2026-10-01T13:57:01.793Z",
+  "title": "Diploma in Computing - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": "https://findacourse.study.unimelb.edu.au/find/_nuxt/placeholder-new.DGFxYecG.jpg"
+}

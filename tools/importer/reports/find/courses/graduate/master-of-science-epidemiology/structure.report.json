@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-science-epidemiology/structure",
+  "path": "find/courses/graduate/master-of-science-epidemiology/structure",
+  "timestamp": "2026-10-01T12:24:19.390Z",
+  "title": "Master of Science (Epidemiology) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

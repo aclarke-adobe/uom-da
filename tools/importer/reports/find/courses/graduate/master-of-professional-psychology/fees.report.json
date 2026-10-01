@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-professional-psychology/fees",
+  "path": "find/courses/graduate/master-of-professional-psychology/fees",
+  "timestamp": "2026-10-01T12:16:45.664Z",
+  "title": "Master of Professional Psychology : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

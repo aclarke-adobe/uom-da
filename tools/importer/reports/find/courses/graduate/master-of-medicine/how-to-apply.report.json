@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-medicine/how-to-apply",
+  "path": "find/courses/graduate/master-of-medicine/how-to-apply",
+  "timestamp": "2026-10-01T12:07:13.131Z",
+  "title": "Master of Medicine : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "callout",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-dental-surgery",
+  "path": "find/courses/graduate/doctor-of-dental-surgery",
+  "timestamp": "2026-10-01T10:04:02.097Z",
+  "title": "Doctor of Dental Surgery - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0017/420434/varieties/banner.jpg"
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-science-epidemiology/student-experience",
+  "path": "find/courses/graduate/master-of-science-epidemiology/student-experience",
+  "timestamp": "2026-10-01T12:24:22.552Z",
+  "title": "Master of Science (Epidemiology) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

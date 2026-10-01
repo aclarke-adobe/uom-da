@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-evaluation/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-evaluation/fees",
+  "timestamp": "2026-10-01T10:28:16.324Z",
+  "title": "Graduate Certificate in Evaluation : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

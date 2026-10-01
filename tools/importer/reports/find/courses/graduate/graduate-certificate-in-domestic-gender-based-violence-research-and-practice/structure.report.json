@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-domestic-gender-based-violence-research-and-practice/structure",
+  "path": "find/courses/graduate/graduate-certificate-in-domestic-gender-based-violence-research-and-practice/structure",
+  "timestamp": "2026-10-01T10:25:18.703Z",
+  "title": "Graduate Certificate in Domestic & Gender-Based Violence Research and Practice : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

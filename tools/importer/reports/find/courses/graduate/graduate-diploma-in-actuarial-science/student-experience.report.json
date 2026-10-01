@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-actuarial-science/student-experience",
+  "path": "find/courses/graduate/graduate-diploma-in-actuarial-science/student-experience",
+  "timestamp": "2026-10-01T10:43:19.147Z",
+  "title": "Graduate Diploma in Actuarial Science : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-people"
+  ],
+  "droppedImages": ""
+}

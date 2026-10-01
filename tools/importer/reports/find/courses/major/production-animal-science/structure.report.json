@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/production-animal-science/structure",
+  "path": "find/courses/major/production-animal-science/structure",
+  "timestamp": "2026-10-01T13:11:09.413Z",
+  "title": "Production Animal Science : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

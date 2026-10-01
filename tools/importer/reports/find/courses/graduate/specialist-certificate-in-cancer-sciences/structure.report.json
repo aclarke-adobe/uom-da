@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-cancer-sciences/structure",
+  "path": "find/courses/graduate/specialist-certificate-in-cancer-sciences/structure",
+  "timestamp": "2026-10-01T12:41:19.307Z",
+  "title": "Specialist Certificate in Cancer Sciences : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

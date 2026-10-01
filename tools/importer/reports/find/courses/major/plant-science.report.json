@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/plant-science",
+  "path": "find/courses/major/plant-science",
+  "timestamp": "2026-10-01T13:11:03.454Z",
+  "title": "Plant Science - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

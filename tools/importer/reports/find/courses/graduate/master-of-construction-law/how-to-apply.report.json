@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-construction-law/how-to-apply",
+  "path": "find/courses/graduate/master-of-construction-law/how-to-apply",
+  "timestamp": "2026-10-01T11:33:44.117Z",
+  "title": "Master of Construction Law : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "table",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

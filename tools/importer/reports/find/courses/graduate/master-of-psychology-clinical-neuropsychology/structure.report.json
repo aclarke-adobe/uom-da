@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-psychology-clinical-neuropsychology/structure",
+  "path": "find/courses/graduate/master-of-psychology-clinical-neuropsychology/structure",
+  "timestamp": "2026-10-01T12:18:48.277Z",
+  "title": "Master of Psychology (Clinical Neuropsychology) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

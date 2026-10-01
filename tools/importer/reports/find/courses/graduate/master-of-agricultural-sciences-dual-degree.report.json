@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-agricultural-sciences-dual-degree",
+  "path": "find/courses/graduate/master-of-agricultural-sciences-dual-degree",
+  "timestamp": "2026-10-01T11:13:40.440Z",
+  "title": "Master of Agricultural Sciences (Dual Degree) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

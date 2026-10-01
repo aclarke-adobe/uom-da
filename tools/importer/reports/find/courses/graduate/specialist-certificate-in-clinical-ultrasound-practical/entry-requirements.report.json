@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-clinical-ultrasound-practical/entry-requirements",
+  "path": "find/courses/graduate/specialist-certificate-in-clinical-ultrasound-practical/entry-requirements",
+  "timestamp": "2026-10-01T12:42:20.774Z",
+  "title": "Specialist Certificate in Clinical Ultrasound (Practical) : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

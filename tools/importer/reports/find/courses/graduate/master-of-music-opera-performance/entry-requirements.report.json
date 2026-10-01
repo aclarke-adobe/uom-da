@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-music-opera-performance/entry-requirements",
+  "path": "find/courses/graduate/master-of-music-opera-performance/entry-requirements",
+  "timestamp": "2026-10-01T12:07:55.172Z",
+  "title": "Master of Music (Opera Performance) : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

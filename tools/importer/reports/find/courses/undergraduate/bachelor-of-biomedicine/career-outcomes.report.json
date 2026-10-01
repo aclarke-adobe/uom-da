@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-biomedicine/career-outcomes",
+  "path": "find/courses/undergraduate/bachelor-of-biomedicine/career-outcomes",
+  "timestamp": "2026-10-01T13:13:22.951Z",
+  "title": "Bachelor of Biomedicine : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-chips"
+  ],
+  "droppedImages": ""
+}

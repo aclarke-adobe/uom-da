@@ -170,10 +170,13 @@ function parseCourseHeader(element, document) {
   // Only "Course code" stays in the hero (the audience transformer has copied the whole list into
   // key-facts, which emits the other codes).
   element.querySelectorAll('.course-header__codes > li, .course-header__code').forEach((li) => {
-    const spans = [...li.children];
-    const label = cleanText(spans[0] || li).replace(/:\s*$/, '');
+    // Read label / value from the text, not from child positions: the importer's preProcess unwraps
+    // the attribute-less label <span> before parsing, leaving "Course code: " as a text node.
+    const full = cleanText(li);
+    const valueEl = li.querySelector('.text-bold, strong, b');
+    const value = cleanText(valueEl) || full.split(':').slice(1).join(':').trim();
+    const label = (full.includes(':') ? full.split(':')[0] : full.replace(value, '')).trim();
     if (!/^course code$/i.test(label)) return;
-    const value = cleanText(li.querySelector('.text-bold, strong, b') || spans[1]);
     if (!value) return;
     const p = document.createElement('p');
     const strong = document.createElement('strong');

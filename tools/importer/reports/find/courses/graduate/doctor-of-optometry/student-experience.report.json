@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-optometry/student-experience",
+  "path": "find/courses/graduate/doctor-of-optometry/student-experience",
+  "timestamp": "2026-10-01T13:55:17.279Z",
+  "title": "Doctor of Optometry : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/study-fac/data/courses/grad/doctor-of-optometry/90b137e1ce72197f51a63df0f6652311992e66a6.png"
+}

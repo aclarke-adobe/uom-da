@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-supply-chain-management",
+  "path": "find/courses/graduate/master-of-management-supply-chain-management",
+  "timestamp": "2026-10-01T12:04:18.410Z",
+  "title": "Master of Management (Supply Chain Management) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video"
+  ],
+  "droppedImages": ""
+}

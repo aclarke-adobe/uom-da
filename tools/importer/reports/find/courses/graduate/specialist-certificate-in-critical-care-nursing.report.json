@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-critical-care-nursing",
+  "path": "find/courses/graduate/specialist-certificate-in-critical-care-nursing",
+  "timestamp": "2026-10-01T12:43:20.580Z",
+  "title": "Specialist Certificate in Critical Care Nursing - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0023/105098/Specialist-Certificate-in-Critical-Care-Nursing2-.jpg"
+}

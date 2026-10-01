@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-surgery/how-to-apply",
+  "path": "find/courses/graduate/master-of-surgery/how-to-apply",
+  "timestamp": "2026-10-01T12:27:47.110Z",
+  "title": "Master of Surgery : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "callout",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

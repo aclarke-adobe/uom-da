@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-design-and-production",
+  "path": "find/courses/graduate/master-of-design-and-production",
+  "timestamp": "2026-10-01T11:38:35.563Z",
+  "title": "Master of Design and Production - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

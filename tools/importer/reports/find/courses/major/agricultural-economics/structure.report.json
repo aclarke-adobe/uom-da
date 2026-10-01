@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/agricultural-economics/structure",
+  "path": "find/courses/major/agricultural-economics/structure",
+  "timestamp": "2026-10-01T13:04:15.919Z",
+  "title": "Agricultural Economics : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

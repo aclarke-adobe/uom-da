@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-health-economics-and-economic-evaluation/entry-requirements",
+  "path": "find/courses/graduate/graduate-certificate-in-health-economics-and-economic-evaluation/entry-requirements",
+  "timestamp": "2026-10-01T10:30:12.206Z",
+  "title": "Graduate Certificate in Health Economics and Economic Evaluation : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "residency-notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

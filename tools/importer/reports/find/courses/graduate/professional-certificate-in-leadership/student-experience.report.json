@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-leadership/student-experience",
+  "path": "find/courses/graduate/professional-certificate-in-leadership/student-experience",
+  "timestamp": "2026-10-01T13:56:26.448Z",
+  "title": "Professional Certificate in Leadership : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-people"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/?a=45131"
+}

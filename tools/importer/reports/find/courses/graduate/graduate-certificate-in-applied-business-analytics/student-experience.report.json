@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-applied-business-analytics/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-applied-business-analytics/student-experience",
+  "timestamp": "2026-10-01T10:16:01.303Z",
+  "title": "Graduate Certificate in Applied Business Analytics : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

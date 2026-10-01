@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-arboriculture/how-to-apply",
+  "path": "find/courses/graduate/graduate-certificate-in-arboriculture/how-to-apply",
+  "timestamp": "2026-10-01T10:16:17.134Z",
+  "title": "Graduate Certificate in Arboriculture : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

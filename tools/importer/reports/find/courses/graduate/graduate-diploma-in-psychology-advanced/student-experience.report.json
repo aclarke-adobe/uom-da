@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-psychology-advanced/student-experience",
+  "path": "find/courses/graduate/graduate-diploma-in-psychology-advanced/student-experience",
+  "timestamp": "2026-10-01T11:05:47.979Z",
+  "title": "Graduate Diploma in Psychology (Advanced) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

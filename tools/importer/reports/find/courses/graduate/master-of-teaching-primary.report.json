@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-teaching-primary",
+  "path": "find/courses/graduate/master-of-teaching-primary",
+  "timestamp": "2026-10-01T12:29:08.990Z",
+  "title": "Master of Teaching (Primary) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

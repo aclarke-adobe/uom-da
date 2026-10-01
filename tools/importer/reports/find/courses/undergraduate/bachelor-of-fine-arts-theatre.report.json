@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-fine-arts-theatre",
+  "path": "find/courses/undergraduate/bachelor-of-fine-arts-theatre",
+  "timestamp": "2026-10-01T13:17:13.828Z",
+  "title": "Bachelor of Fine Arts (Theatre) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

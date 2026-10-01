@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-environmental-law/how-to-apply",
+  "path": "find/courses/graduate/master-of-environmental-law/how-to-apply",
+  "timestamp": "2026-10-01T11:46:52.883Z",
+  "title": "Master of Environmental Law : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "table",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

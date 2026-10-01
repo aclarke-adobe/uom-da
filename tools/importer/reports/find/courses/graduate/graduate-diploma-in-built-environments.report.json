@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-built-environments",
+  "path": "find/courses/graduate/graduate-diploma-in-built-environments",
+  "timestamp": "2026-10-01T10:46:54.690Z",
+  "title": "Graduate Diploma in Built Environments - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "columns"
+  ],
+  "droppedImages": ""
+}

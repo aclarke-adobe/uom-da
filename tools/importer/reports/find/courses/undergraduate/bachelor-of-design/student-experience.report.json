@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-design/student-experience",
+  "path": "find/courses/undergraduate/bachelor-of-design/student-experience",
+  "timestamp": "2026-10-01T13:14:18.089Z",
+  "title": "Bachelor of Design : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

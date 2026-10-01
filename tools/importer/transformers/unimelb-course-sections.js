@@ -80,6 +80,15 @@ export default function transform(hookName, element, payload) {
       if (i === 0 && !style && !audience) continue; // first section: no break, no metadata
       insertBreak(el, id, style, audience, i === 0);
     }
+
+    // Sections created by the audience transformer that are not template sections (international-only
+    // notices: data-excat-section-start="international-notice-N"): a break + {Audience} of their own.
+    const known = new Set(sections.map((s) => s.id));
+    element.querySelectorAll(`[${START_ATTR}]`).forEach((el) => {
+      const id = el.getAttribute(START_ATTR);
+      if (known.has(id.replace(/--international$/, ''))) return;
+      insertBreak(el, id, null, el.getAttribute(AUD_ATTR) || null, false);
+    });
   }
 
   if (hookName === 'afterTransform') {

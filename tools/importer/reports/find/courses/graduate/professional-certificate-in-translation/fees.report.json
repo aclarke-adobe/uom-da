@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-translation/fees",
+  "path": "find/courses/graduate/professional-certificate-in-translation/fees",
+  "timestamp": "2026-10-01T13:54:04.150Z",
+  "title": "Professional Certificate in Translation : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": "https://findacourse.study.unimelb.edu.au/find/_nuxt/placeholder-new.DGFxYecG.jpg"
+}

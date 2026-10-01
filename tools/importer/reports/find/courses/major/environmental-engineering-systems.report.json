@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/environmental-engineering-systems",
+  "path": "find/courses/major/environmental-engineering-systems",
+  "timestamp": "2026-10-01T13:07:04.603Z",
+  "title": "Environmental Engineering Systems - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

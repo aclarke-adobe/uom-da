@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-human-rights-law",
+  "path": "find/courses/graduate/master-of-human-rights-law",
+  "timestamp": "2026-10-01T11:53:52.616Z",
+  "title": "Master of Human Rights Law - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

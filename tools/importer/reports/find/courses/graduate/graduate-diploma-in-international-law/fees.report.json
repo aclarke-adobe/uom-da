@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-international-law/fees",
+  "path": "find/courses/graduate/graduate-diploma-in-international-law/fees",
+  "timestamp": "2026-10-01T11:00:26.124Z",
+  "title": "Graduate Diploma in International Law : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

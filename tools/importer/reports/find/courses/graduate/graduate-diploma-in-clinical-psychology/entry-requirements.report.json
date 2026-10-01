@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-clinical-psychology/entry-requirements",
+  "path": "find/courses/graduate/graduate-diploma-in-clinical-psychology/entry-requirements",
+  "timestamp": "2026-10-01T10:49:05.201Z",
+  "title": "Graduate Diploma in Clinical Psychology : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "residency-notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

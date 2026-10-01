@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-landscape-architecture-master-of-urban-planning/entry-requirements",
+  "path": "find/courses/graduate/master-of-landscape-architecture-master-of-urban-planning/entry-requirements",
+  "timestamp": "2026-10-01T11:59:58.245Z",
+  "title": "Master of Landscape Architecture/Master of Urban Planning : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

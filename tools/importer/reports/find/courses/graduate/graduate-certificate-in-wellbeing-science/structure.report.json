@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-wellbeing-science/structure",
+  "path": "find/courses/graduate/graduate-certificate-in-wellbeing-science/structure",
+  "timestamp": "2026-10-01T10:42:24.032Z",
+  "title": "Graduate Certificate in Wellbeing Science : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

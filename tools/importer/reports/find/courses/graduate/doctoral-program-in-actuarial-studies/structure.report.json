@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctoral-program-in-actuarial-studies/structure",
+  "path": "find/courses/graduate/doctoral-program-in-actuarial-studies/structure",
+  "timestamp": "2026-10-01T10:11:28.766Z",
+  "title": "Doctoral Program in Actuarial Studies : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-fine-arts-visual-art/student-experience",
+  "path": "find/courses/undergraduate/bachelor-of-fine-arts-visual-art/student-experience",
+  "timestamp": "2026-10-01T13:17:57.879Z",
+  "title": "Bachelor of Fine Arts (Visual Art) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

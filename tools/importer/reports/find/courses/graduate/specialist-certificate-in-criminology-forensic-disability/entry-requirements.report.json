@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-criminology-forensic-disability/entry-requirements",
+  "path": "find/courses/graduate/specialist-certificate-in-criminology-forensic-disability/entry-requirements",
+  "timestamp": "2026-10-01T12:43:04.311Z",
+  "title": "Specialist Certificate in Criminology (Forensic Disability) : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "accordion",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-computer-science/structure",
+  "path": "find/courses/graduate/graduate-diploma-in-computer-science/structure",
+  "timestamp": "2026-10-01T10:51:13.410Z",
+  "title": "Graduate Diploma in Computer Science : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

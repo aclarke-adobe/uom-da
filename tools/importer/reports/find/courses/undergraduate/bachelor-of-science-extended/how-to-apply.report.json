@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-science-extended/how-to-apply",
+  "path": "find/courses/undergraduate/bachelor-of-science-extended/how-to-apply",
+  "timestamp": "2026-10-01T13:20:58.383Z",
+  "title": "Bachelor of Science (Extended) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "timeline-key-dates",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

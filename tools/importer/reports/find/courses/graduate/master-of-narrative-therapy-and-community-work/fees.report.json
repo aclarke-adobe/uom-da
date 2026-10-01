@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-narrative-therapy-and-community-work/fees",
+  "path": "find/courses/graduate/master-of-narrative-therapy-and-community-work/fees",
+  "timestamp": "2026-10-01T12:09:55.586Z",
+  "title": "Master of Narrative Therapy and Community Work : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

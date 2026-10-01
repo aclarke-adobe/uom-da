@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-teaching-secondary",
+  "path": "find/courses/graduate/master-of-teaching-secondary",
+  "timestamp": "2026-10-01T12:29:33.072Z",
+  "title": "Master of Teaching (Secondary) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/cell-and-developmental-biology/structure",
+  "path": "find/courses/major/cell-and-developmental-biology/structure",
+  "timestamp": "2026-10-01T13:05:34.011Z",
+  "title": "Cell and Developmental Biology : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "quote-profile",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

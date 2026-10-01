@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-cancer-sciences/how-to-apply",
+  "path": "find/courses/graduate/master-of-cancer-sciences/how-to-apply",
+  "timestamp": "2026-10-01T11:28:16.480Z",
+  "title": "Master of Cancer Sciences : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

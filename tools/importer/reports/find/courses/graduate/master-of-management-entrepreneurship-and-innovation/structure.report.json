@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-entrepreneurship-and-innovation/structure",
+  "path": "find/courses/graduate/master-of-management-entrepreneurship-and-innovation/structure",
+  "timestamp": "2026-10-01T12:02:58.965Z",
+  "title": "Master of Management (Entrepreneurship and Innovation) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

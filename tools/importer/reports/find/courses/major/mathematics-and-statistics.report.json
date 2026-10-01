@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/mathematics-and-statistics",
+  "path": "find/courses/major/mathematics-and-statistics",
+  "timestamp": "2026-10-01T13:09:42.709Z",
+  "title": "Mathematics and Statistics - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

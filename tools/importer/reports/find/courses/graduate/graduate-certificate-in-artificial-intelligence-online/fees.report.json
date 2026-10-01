@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-artificial-intelligence-online/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-artificial-intelligence-online/fees",
+  "timestamp": "2026-10-01T10:16:38.918Z",
+  "title": "Graduate Certificate in Artificial Intelligence (Online) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

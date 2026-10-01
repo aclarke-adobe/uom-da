@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/management",
+  "path": "find/courses/major/management",
+  "timestamp": "2026-10-01T13:09:15.500Z",
+  "title": "Management - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "columns"
+  ],
+  "droppedImages": ""
+}

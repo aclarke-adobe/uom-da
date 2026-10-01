@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-urban-and-cultural-heritage",
+  "path": "find/courses/graduate/master-of-urban-and-cultural-heritage",
+  "timestamp": "2026-10-01T12:31:25.311Z",
+  "title": "Master of Urban and Cultural Heritage - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

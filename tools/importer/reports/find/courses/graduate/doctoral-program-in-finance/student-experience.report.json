@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctoral-program-in-finance/student-experience",
+  "path": "find/courses/graduate/doctoral-program-in-finance/student-experience",
+  "timestamp": "2026-10-01T13:53:22.192Z",
+  "title": "Doctoral Program in Finance : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-people",
+    "cards-people"
+  ],
+  "droppedImages": ""
+}

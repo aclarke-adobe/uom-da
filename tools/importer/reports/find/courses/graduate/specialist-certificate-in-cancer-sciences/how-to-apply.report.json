@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-cancer-sciences/how-to-apply",
+  "path": "find/courses/graduate/specialist-certificate-in-cancer-sciences/how-to-apply",
+  "timestamp": "2026-10-01T12:41:16.535Z",
+  "title": "Specialist Certificate in Cancer Sciences : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

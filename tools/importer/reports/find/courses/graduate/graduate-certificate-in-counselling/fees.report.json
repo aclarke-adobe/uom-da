@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-counselling/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-counselling/fees",
+  "timestamp": "2026-10-01T10:21:47.412Z",
+  "title": "Graduate Certificate in Counselling : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

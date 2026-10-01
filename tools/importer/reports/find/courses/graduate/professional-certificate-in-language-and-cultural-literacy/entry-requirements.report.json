@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-language-and-cultural-literacy/entry-requirements",
+  "path": "find/courses/graduate/professional-certificate-in-language-and-cultural-literacy/entry-requirements",
+  "timestamp": "2026-10-01T12:36:54.072Z",
+  "title": "Professional Certificate in Language and Cultural Literacy : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "residency-notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

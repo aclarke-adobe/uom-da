@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-evaluation/student-experience",
+  "path": "find/courses/graduate/master-of-evaluation/student-experience",
+  "timestamp": "2026-10-01T11:48:13.616Z",
+  "title": "Master of Evaluation : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

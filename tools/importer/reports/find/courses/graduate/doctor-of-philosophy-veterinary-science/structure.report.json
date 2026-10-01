@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-veterinary-science/structure",
+  "path": "find/courses/graduate/doctor-of-philosophy-veterinary-science/structure",
+  "timestamp": "2026-10-01T10:09:50.693Z",
+  "title": "Doctor of Philosophy - Veterinary Science : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

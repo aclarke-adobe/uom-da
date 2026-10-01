@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-art-curatorship/structure",
+  "path": "find/courses/graduate/master-of-art-curatorship/structure",
+  "timestamp": "2026-10-01T11:21:12.422Z",
+  "title": "Master of Art Curatorship : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

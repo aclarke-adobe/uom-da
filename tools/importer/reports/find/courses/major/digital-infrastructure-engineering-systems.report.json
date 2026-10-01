@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/digital-infrastructure-engineering-systems",
+  "path": "find/courses/major/digital-infrastructure-engineering-systems",
+  "timestamp": "2026-10-01T13:06:28.899Z",
+  "title": "Digital Infrastructure Engineering Systems - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "columns"
+  ],
+  "droppedImages": ""
+}

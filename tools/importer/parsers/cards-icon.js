@@ -66,7 +66,7 @@ export default function parse(element, { document }) {
   const cells = [];
   cards.forEach((card) => {
     const body = [];
-    const heading = card.querySelector('h2, h3, h4, .card__title');
+    const heading = card.querySelector(course ? 'h2, h3, h4, h5, h6, .card__title' : 'h2, h3, h4, .card__title');
     const title = clean(heading);
     if (title) {
       const h = document.createElement(course ? 'h5' : (/^H[2-6]$/.test(heading.tagName) ? heading.tagName.toLowerCase() : 'h3'));

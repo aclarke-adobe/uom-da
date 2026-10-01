@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-journalism-advanced/entry-requirements",
+  "path": "find/courses/graduate/graduate-certificate-in-journalism-advanced/entry-requirements",
+  "timestamp": "2026-10-01T10:32:50.829Z",
+  "title": "Graduate Certificate in Journalism (Advanced) : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

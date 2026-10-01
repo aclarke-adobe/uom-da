@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-registered-nurse-prescribing/how-to-apply",
+  "path": "find/courses/graduate/specialist-certificate-in-registered-nurse-prescribing/how-to-apply",
+  "timestamp": "2026-10-01T13:56:46.495Z",
+  "title": "Specialist Certificate in Registered Nurse Prescribing : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": "https://findacourse.study.unimelb.edu.au/find/_nuxt/placeholder-new.DGFxYecG.jpg"
+}

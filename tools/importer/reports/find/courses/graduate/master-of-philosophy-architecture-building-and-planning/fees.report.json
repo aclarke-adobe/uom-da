@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-philosophy-architecture-building-and-planning/fees",
+  "path": "find/courses/graduate/master-of-philosophy-architecture-building-and-planning/fees",
+  "timestamp": "2026-10-01T12:11:05.826Z",
+  "title": "Master of Philosophy - Architecture, Building and Planning : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

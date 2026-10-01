@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/animal-science-and-management/structure",
+  "path": "find/courses/major/animal-science-and-management/structure",
+  "timestamp": "2026-10-01T13:04:39.566Z",
+  "title": "Animal Science and Management : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

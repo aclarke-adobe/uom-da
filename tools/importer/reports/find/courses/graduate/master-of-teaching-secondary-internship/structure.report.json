@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-teaching-secondary-internship/structure",
+  "path": "find/courses/graduate/master-of-teaching-secondary-internship/structure",
+  "timestamp": "2026-10-01T12:29:52.592Z",
+  "title": "Master of Teaching (Secondary) Internship : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "quote-profile",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

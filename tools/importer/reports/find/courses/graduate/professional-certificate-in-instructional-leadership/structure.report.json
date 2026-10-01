@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-instructional-leadership/structure",
+  "path": "find/courses/graduate/professional-certificate-in-instructional-leadership/structure",
+  "timestamp": "2026-10-01T12:36:42.047Z",
+  "title": "Professional Certificate in Instructional Leadership : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

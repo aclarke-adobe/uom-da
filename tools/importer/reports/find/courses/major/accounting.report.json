@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/accounting",
+  "path": "find/courses/major/accounting",
+  "timestamp": "2026-10-01T13:04:00.684Z",
+  "title": "Accounting - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "columns"
+  ],
+  "droppedImages": ""
+}

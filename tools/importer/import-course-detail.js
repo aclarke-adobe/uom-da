@@ -768,6 +768,13 @@ const PAGE_TEMPLATE = {
         "selector": [
           "div[data-test$='-page'] > #how-to-apply"
         ]
+      },
+      "admission-criteria": {
+        "audience": "domestic",
+        "part": "body",
+        "selector": [
+          "div[data-test$='-page'] > #admission-criteria"
+        ]
       }
     },
     "sharedTails": {
@@ -870,7 +877,27 @@ function findBlocksOnPage(document, template) {
   return pageBlocks;
 }
 
+/** Remove every comment node under root (including inside <template> content). */
+function removeCommentNodes(root, doc) {
+  const walker = doc.createTreeWalker(root, 128 /* NodeFilter.SHOW_COMMENT */);
+  const comments = [];
+  while (walker.nextNode()) comments.push(walker.currentNode);
+  comments.forEach((c) => c.remove());
+  root.querySelectorAll('template').forEach((t) => { if (t.content) removeCommentNodes(t.content, doc); });
+}
+
 export default {
+  /**
+   * Runs before the importer's own preProcess. Its DOMUtils.removeComments strips comments with a
+   * regex over body.innerHTML, which on some snapshots also deletes real content between comments
+   * (e.g. the Notes notice and subject table on graduate-certificate-in-indigenous-business-leadership/
+   * structure, the case-competition paragraphs on master-of-management-marketing/student-experience).
+   * Removing the comment nodes from the DOM first leaves that regex nothing to match.
+   */
+  preprocess: ({ document }) => {
+    removeCommentNodes(document.documentElement, document);
+  },
+
   transform: (payload) => {
     const { document, url, params } = payload;
     const main = document.body;

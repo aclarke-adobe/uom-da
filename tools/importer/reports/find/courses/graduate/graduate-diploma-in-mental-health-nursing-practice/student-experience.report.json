@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-mental-health-nursing-practice/student-experience",
+  "path": "find/courses/graduate/graduate-diploma-in-mental-health-nursing-practice/student-experience",
+  "timestamp": "2026-10-01T11:02:17.289Z",
+  "title": "Graduate Diploma in Mental Health Nursing Practice : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

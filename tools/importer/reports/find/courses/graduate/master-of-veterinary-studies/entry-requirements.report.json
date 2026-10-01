@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-veterinary-studies/entry-requirements",
+  "path": "find/courses/graduate/master-of-veterinary-studies/entry-requirements",
+  "timestamp": "2026-10-01T12:33:36.090Z",
+  "title": "Master of Veterinary Studies : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "residency-notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-advanced-nursing-practice-nurse-practitioner",
+  "path": "find/courses/graduate/master-of-advanced-nursing-practice-nurse-practitioner",
+  "timestamp": "2026-10-01T11:12:25.976Z",
+  "title": "Master of Advanced Nursing Practice (Nurse Practitioner) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

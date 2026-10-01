@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-industrial-research-chemistry/fees",
+  "path": "find/courses/graduate/master-of-industrial-research-chemistry/fees",
+  "timestamp": "2026-10-01T11:55:07.402Z",
+  "title": "Master of Industrial Research (Chemistry) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

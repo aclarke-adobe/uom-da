@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-laws/student-experience",
+  "path": "find/courses/graduate/master-of-laws/student-experience",
+  "timestamp": "2026-10-01T12:01:21.529Z",
+  "title": "Master of Laws : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote"
+  ],
+  "droppedImages": ""
+}

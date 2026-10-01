@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-paediatric-intensive-care-nursing",
+  "path": "find/courses/graduate/graduate-certificate-in-paediatric-intensive-care-nursing",
+  "timestamp": "2026-10-01T10:33:54.270Z",
+  "title": "Graduate Certificate in Paediatric Intensive Care Nursing - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

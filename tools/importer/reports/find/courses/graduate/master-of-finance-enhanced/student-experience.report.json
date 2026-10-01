@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-finance-enhanced/student-experience",
+  "path": "find/courses/graduate/master-of-finance-enhanced/student-experience",
+  "timestamp": "2026-10-01T11:48:58.232Z",
+  "title": "Master of Finance (Enhanced) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-dispute-resolution",
+  "path": "find/courses/graduate/graduate-diploma-in-dispute-resolution",
+  "timestamp": "2026-10-01T10:53:03.900Z",
+  "title": "Graduate Diploma in Dispute Resolution - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

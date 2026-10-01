@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-paediatric-nursing",
+  "path": "find/courses/graduate/specialist-certificate-in-paediatric-nursing",
+  "timestamp": "2026-10-01T12:47:32.236Z",
+  "title": "Specialist Certificate in Paediatric Nursing - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "table"
+  ],
+  "droppedImages": ""
+}

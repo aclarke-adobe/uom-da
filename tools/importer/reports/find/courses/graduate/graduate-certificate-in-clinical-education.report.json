@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-clinical-education",
+  "path": "find/courses/graduate/graduate-certificate-in-clinical-education",
+  "timestamp": "2026-10-01T10:20:05.656Z",
+  "title": "Graduate Certificate in Clinical Education - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

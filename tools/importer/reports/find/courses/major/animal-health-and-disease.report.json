@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/animal-health-and-disease",
+  "path": "find/courses/major/animal-health-and-disease",
+  "timestamp": "2026-10-01T13:04:29.133Z",
+  "title": "Animal Health and Disease - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

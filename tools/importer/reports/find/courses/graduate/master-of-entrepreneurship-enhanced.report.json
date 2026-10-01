@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-entrepreneurship-enhanced",
+  "path": "find/courses/graduate/master-of-entrepreneurship-enhanced",
+  "timestamp": "2026-10-01T11:44:51.541Z",
+  "title": "Master of Entrepreneurship (Enhanced) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

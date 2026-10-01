@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-arts-advanced",
+  "path": "find/courses/graduate/graduate-diploma-in-arts-advanced",
+  "timestamp": "2026-10-01T10:44:41.262Z",
+  "title": "Graduate Diploma in Arts (Advanced) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

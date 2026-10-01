@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-digital-engineering-infrastructure/entry-requirements",
+  "path": "find/courses/graduate/graduate-certificate-in-digital-engineering-infrastructure/entry-requirements",
+  "timestamp": "2026-10-01T10:24:25.270Z",
+  "title": "Graduate Certificate in Digital Engineering (Infrastructure) : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

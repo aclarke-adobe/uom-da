@@ -91,6 +91,13 @@ function content(root, document) {
       return;
     }
     if (n.matches('.fee-info-panel__year')) { out.push(...feeYear(n, document)); return; }
+    // custom-fees panels list fee items directly (ul.fee-list, no year group): same item format
+    if (n.matches('ul.fee-list, .fee-list')) {
+      const holder = document.createElement('div');
+      holder.append(n.cloneNode(true));
+      out.push(...feeYear(holder, document));
+      return;
+    }
     if (!cleanText(n) && !n.querySelector('img')) return;
     if (/^(DIV|SECTION|SPAN)$/.test(n.tagName) && n.querySelector('p, ul, ol, h1, h2, h3, h4, h5, h6, .fee-info-panel__year')) {
       out.push(...content(n, document));

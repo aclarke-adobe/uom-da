@@ -74,7 +74,7 @@ function imageCell(side, document) {
 function textCell(side, document) {
   const root = side.querySelector('.split-section__inner') || side;
   const content = [];
-  [...root.querySelectorAll('p, h1, h2, h3, h4, a.btn')].forEach((el) => {
+  [...root.querySelectorAll('p, h1, h2, h3, h4, h5, h6, ul, ol, a.btn')].forEach((el) => {
     if (el.matches('a.btn')) {
       const href = (el.getAttribute('href') || '').trim();
       const text = clean(el);
@@ -91,6 +91,7 @@ function textCell(side, document) {
       return;
     }
     if (el.closest('a.btn') || !clean(el)) return;
+    if (el.parentElement && el.parentElement.closest('ul, ol, p') && root.contains(el.parentElement.closest('ul, ol, p'))) return; // nested in a kept list
     if (el.matches('.uom-title-overline, [class*="overline"], [class*="eyebrow"]')) {
       const p = document.createElement('p');
       p.textContent = clean(el);

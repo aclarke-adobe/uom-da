@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/korean-studies",
+  "path": "find/courses/major/korean-studies",
+  "timestamp": "2026-10-01T13:09:02.672Z",
+  "title": "Korean Studies - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside"
+  ],
+  "droppedImages": ""
+}

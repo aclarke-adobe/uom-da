@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-food-and-packaging-innovation/structure",
+  "path": "find/courses/graduate/master-of-food-and-packaging-innovation/structure",
+  "timestamp": "2026-10-01T11:50:04.086Z",
+  "title": "Master of Food and Packaging Innovation : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

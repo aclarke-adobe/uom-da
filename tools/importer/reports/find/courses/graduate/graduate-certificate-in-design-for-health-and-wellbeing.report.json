@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-design-for-health-and-wellbeing",
+  "path": "find/courses/graduate/graduate-certificate-in-design-for-health-and-wellbeing",
+  "timestamp": "2026-10-01T10:23:58.932Z",
+  "title": "Graduate Certificate in Design for Health and Wellbeing - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

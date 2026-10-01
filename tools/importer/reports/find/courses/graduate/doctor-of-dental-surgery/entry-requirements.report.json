@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-dental-surgery/entry-requirements",
+  "path": "find/courses/graduate/doctor-of-dental-surgery/entry-requirements",
+  "timestamp": "2026-10-01T09:58:34.515Z",
+  "title": "Doctor of Dental Surgery : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "accordion",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0017/420434/varieties/banner.jpg"
+}

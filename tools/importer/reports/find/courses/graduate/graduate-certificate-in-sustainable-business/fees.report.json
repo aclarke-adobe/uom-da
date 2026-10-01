@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-sustainable-business/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-sustainable-business/fees",
+  "timestamp": "2026-10-01T10:40:08.415Z",
+  "title": "Graduate Certificate in Sustainable Business : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

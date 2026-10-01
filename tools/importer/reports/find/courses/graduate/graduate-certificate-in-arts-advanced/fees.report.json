@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-arts-advanced/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-arts-advanced/fees",
+  "timestamp": "2026-10-01T10:17:06.340Z",
+  "title": "Graduate Certificate in Arts (Advanced) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

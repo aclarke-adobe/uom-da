@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctoral-program-in-finance/career-outcomes",
+  "path": "find/courses/graduate/doctoral-program-in-finance/career-outcomes",
+  "timestamp": "2026-10-01T13:53:19.565Z",
+  "title": "Doctoral Program in Finance : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards"
+  ],
+  "droppedImages": ""
+}

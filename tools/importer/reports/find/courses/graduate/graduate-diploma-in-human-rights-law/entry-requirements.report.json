@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-human-rights-law/entry-requirements",
+  "path": "find/courses/graduate/graduate-diploma-in-human-rights-law/entry-requirements",
+  "timestamp": "2026-10-01T10:59:00.713Z",
+  "title": "Graduate Diploma in Human Rights Law : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctoral-program-in-economics/student-experience",
+  "path": "find/courses/graduate/doctoral-program-in-economics/student-experience",
+  "timestamp": "2026-10-01T13:53:35.810Z",
+  "title": "Doctoral Program in Economics : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-people",
+    "cards-people",
+    "cards-people",
+    "cards-people"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/study-fac/data/courses/incompatible-courses/doctoral-program-in-economics/22180_0175.jpg/300x240.jpg https://matrix-cms.unimelb.edu.au/study-fac/data/courses/incompatible-courses/doctoral-program-in-economics/tim-robinso.jpg/300.jpg"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-clinical-dentistry/fees",
+  "path": "find/courses/graduate/master-of-clinical-dentistry/fees",
+  "timestamp": "2026-10-01T11:30:14.922Z",
+  "title": "Master of Clinical Dentistry : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

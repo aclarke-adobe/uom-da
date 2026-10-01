@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/diploma-in-general-studies/entry-requirements",
+  "path": "find/courses/undergraduate/diploma-in-general-studies/entry-requirements",
+  "timestamp": "2026-10-01T13:21:48.121Z",
+  "title": "Diploma in General Studies : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "residency-notice",
+    "cards-stat",
+    "accordion",
+    "accordion"
+  ],
+  "droppedImages": ""
+}

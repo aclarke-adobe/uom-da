@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/honours/bachelor-of-science-degree-with-honours/how-to-apply",
+  "path": "find/courses/honours/bachelor-of-science-degree-with-honours/how-to-apply",
+  "timestamp": "2026-10-01T13:03:50.983Z",
+  "title": "Bachelor of Science (Degree with Honours) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "callout",
+    "table",
+    "table",
+    "callout",
+    "callout",
+    "table",
+    "table",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-learning-intervention/career-outcomes",
+  "path": "find/courses/graduate/master-of-learning-intervention/career-outcomes",
+  "timestamp": "2026-10-01T12:01:29.272Z",
+  "title": "Master of Learning Intervention : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video"
+  ],
+  "droppedImages": ""
+}

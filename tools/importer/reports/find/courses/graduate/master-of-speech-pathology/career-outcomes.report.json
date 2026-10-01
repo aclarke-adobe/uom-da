@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-speech-pathology/career-outcomes",
+  "path": "find/courses/graduate/master-of-speech-pathology/career-outcomes",
+  "timestamp": "2026-10-01T12:26:46.583Z",
+  "title": "Master of Speech Pathology : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile",
+    "cards-chips"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-urban-horticulture/student-experience",
+  "path": "find/courses/graduate/master-of-urban-horticulture/student-experience",
+  "timestamp": "2026-10-01T12:32:34.678Z",
+  "title": "Master of Urban Horticulture : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

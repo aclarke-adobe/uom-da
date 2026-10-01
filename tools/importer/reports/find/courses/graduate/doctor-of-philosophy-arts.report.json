@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-arts",
+  "path": "find/courses/graduate/doctor-of-philosophy-arts",
+  "timestamp": "2026-10-01T10:06:25.291Z",
+  "title": "Doctor of Philosophy - Arts - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

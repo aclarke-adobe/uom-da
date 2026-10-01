@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-counselling/fees",
+  "path": "find/courses/graduate/master-of-counselling/fees",
+  "timestamp": "2026-10-01T11:35:35.986Z",
+  "title": "Master of Counselling : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

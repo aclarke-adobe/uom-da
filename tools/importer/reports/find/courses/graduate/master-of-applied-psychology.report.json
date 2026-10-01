@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-applied-psychology",
+  "path": "find/courses/graduate/master-of-applied-psychology",
+  "timestamp": "2026-10-01T11:16:41.121Z",
+  "title": "Master of Applied Psychology - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

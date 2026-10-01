@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-international-tax/student-experience",
+  "path": "find/courses/graduate/graduate-diploma-in-international-tax/student-experience",
+  "timestamp": "2026-10-01T11:01:03.051Z",
+  "title": "Graduate Diploma in International Tax : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

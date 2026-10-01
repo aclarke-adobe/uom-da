@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-clinical-education/career-outcomes",
+  "path": "find/courses/graduate/graduate-diploma-in-clinical-education/career-outcomes",
+  "timestamp": "2026-10-01T10:48:35.485Z",
+  "title": "Graduate Diploma in Clinical Education : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

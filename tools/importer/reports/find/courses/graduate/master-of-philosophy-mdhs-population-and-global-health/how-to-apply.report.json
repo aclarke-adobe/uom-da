@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-philosophy-mdhs-population-and-global-health/how-to-apply",
+  "path": "find/courses/graduate/master-of-philosophy-mdhs-population-and-global-health/how-to-apply",
+  "timestamp": "2026-10-01T12:14:08.074Z",
+  "title": "Master of Philosophy - MDHS (Population and Global Health) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "callout",
+    "table",
+    "callout",
+    "callout",
+    "table",
+    "callout"
+  ],
+  "droppedImages": ""
+}

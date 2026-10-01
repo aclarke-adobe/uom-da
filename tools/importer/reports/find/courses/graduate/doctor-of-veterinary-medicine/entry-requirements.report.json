@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-veterinary-medicine/entry-requirements",
+  "path": "find/courses/graduate/doctor-of-veterinary-medicine/entry-requirements",
+  "timestamp": "2026-10-01T10:10:29.424Z",
+  "title": "Doctor of Veterinary Medicine : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "accordion",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

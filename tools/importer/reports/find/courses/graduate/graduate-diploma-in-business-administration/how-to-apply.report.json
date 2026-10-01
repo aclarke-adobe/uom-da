@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-business-administration/how-to-apply",
+  "path": "find/courses/graduate/graduate-diploma-in-business-administration/how-to-apply",
+  "timestamp": "2026-10-01T10:48:16.381Z",
+  "title": "Graduate Diploma in Business Administration : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

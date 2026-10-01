@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-construction-law/fees",
+  "path": "find/courses/graduate/graduate-diploma-in-construction-law/fees",
+  "timestamp": "2026-10-01T10:51:32.949Z",
+  "title": "Graduate Diploma in Construction Law : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

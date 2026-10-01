@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-tesol",
+  "path": "find/courses/graduate/master-of-tesol",
+  "timestamp": "2026-10-01T12:30:24.231Z",
+  "title": "Master of TESOL - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "quote",
+    "columns"
+  ],
+  "droppedImages": ""
+}

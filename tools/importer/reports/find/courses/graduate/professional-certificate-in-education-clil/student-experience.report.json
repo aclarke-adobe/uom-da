@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-education-clil/student-experience",
+  "path": "find/courses/graduate/professional-certificate-in-education-clil/student-experience",
+  "timestamp": "2026-10-01T12:35:11.081Z",
+  "title": "Professional Certificate in Education (CLIL) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "video"
+  ],
+  "droppedImages": ""
+}

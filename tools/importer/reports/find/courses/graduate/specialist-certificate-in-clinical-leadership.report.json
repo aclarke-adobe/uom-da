@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-clinical-leadership",
+  "path": "find/courses/graduate/specialist-certificate-in-clinical-leadership",
+  "timestamp": "2026-10-01T12:41:26.646Z",
+  "title": "Specialist Certificate in Clinical Leadership - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

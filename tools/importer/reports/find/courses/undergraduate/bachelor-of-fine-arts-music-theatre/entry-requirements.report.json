@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-fine-arts-music-theatre/entry-requirements",
+  "path": "find/courses/undergraduate/bachelor-of-fine-arts-music-theatre/entry-requirements",
+  "timestamp": "2026-10-01T13:16:08.802Z",
+  "title": "Bachelor of Fine Arts (Music Theatre) : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "cards-stat",
+    "cards-stat",
+    "accordion",
+    "accordion"
+  ],
+  "droppedImages": ""
+}

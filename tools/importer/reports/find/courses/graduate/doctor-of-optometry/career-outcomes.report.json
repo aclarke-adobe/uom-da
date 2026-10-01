@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-optometry/career-outcomes",
+  "path": "find/courses/graduate/doctor-of-optometry/career-outcomes",
+  "timestamp": "2026-10-01T10:05:15.618Z",
+  "title": "Doctor of Optometry : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-chips"
+  ],
+  "droppedImages": ""
+}

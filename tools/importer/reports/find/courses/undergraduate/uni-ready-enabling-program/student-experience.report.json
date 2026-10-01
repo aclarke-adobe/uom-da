@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/uni-ready-enabling-program/student-experience",
+  "path": "find/courses/undergraduate/uni-ready-enabling-program/student-experience",
+  "timestamp": "2026-10-01T13:23:24.090Z",
+  "title": "Uni Ready Enabling Program : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-criminology-forensic-disability/structure",
+  "path": "find/courses/graduate/specialist-certificate-in-criminology-forensic-disability/structure",
+  "timestamp": "2026-10-01T12:43:13.573Z",
+  "title": "Specialist Certificate in Criminology (Forensic Disability) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

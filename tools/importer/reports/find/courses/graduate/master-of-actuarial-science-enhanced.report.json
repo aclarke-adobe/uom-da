@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-actuarial-science-enhanced",
+  "path": "find/courses/graduate/master-of-actuarial-science-enhanced",
+  "timestamp": "2026-10-01T11:10:22.041Z",
+  "title": "Master of Actuarial Science (Enhanced) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

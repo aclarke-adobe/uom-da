@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-supply-chain-management/student-experience",
+  "path": "find/courses/graduate/master-of-management-supply-chain-management/student-experience",
+  "timestamp": "2026-10-01T12:04:39.323Z",
+  "title": "Master of Management (Supply Chain Management) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

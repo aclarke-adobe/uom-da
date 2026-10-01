@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-biostatistics-enhanced/entry-requirements",
+  "path": "find/courses/graduate/master-of-biostatistics-enhanced/entry-requirements",
+  "timestamp": "2026-10-01T11:25:00.321Z",
+  "title": "Master of Biostatistics (Enhanced) : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

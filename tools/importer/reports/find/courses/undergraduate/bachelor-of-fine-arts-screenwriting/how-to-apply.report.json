@@ -1,0 +1,24 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-fine-arts-screenwriting/how-to-apply",
+  "path": "find/courses/undergraduate/bachelor-of-fine-arts-screenwriting/how-to-apply",
+  "timestamp": "2026-10-01T13:17:03.899Z",
+  "title": "Bachelor of Fine Arts (Screenwriting) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "callout",
+    "callout",
+    "notice",
+    "callout",
+    "callout",
+    "callout",
+    "notice",
+    "notice",
+    "callout"
+  ],
+  "droppedImages": ""
+}

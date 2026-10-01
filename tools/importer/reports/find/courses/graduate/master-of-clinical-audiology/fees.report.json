@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-clinical-audiology/fees",
+  "path": "find/courses/graduate/master-of-clinical-audiology/fees",
+  "timestamp": "2026-10-01T11:29:49.875Z",
+  "title": "Master of Clinical Audiology : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-global-competition-and-consumer-law/student-experience",
+  "path": "find/courses/graduate/master-of-global-competition-and-consumer-law/student-experience",
+  "timestamp": "2026-10-01T11:52:36.564Z",
+  "title": "Master of Global Competition and Consumer Law : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

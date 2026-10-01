@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-business/career-outcomes",
+  "path": "find/courses/graduate/graduate-certificate-in-business/career-outcomes",
+  "timestamp": "2026-10-01T10:18:40.994Z",
+  "title": "Graduate Certificate in Business : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

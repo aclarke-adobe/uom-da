@@ -167,11 +167,13 @@ function decorateSectionMetadata(main) {
   });
 }
 
+// nested blocks live in their own module so blocks can import them without running loadPage()
+export { decorateNestedBlocks } from './nested-blocks.js';
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
  */
-// eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);

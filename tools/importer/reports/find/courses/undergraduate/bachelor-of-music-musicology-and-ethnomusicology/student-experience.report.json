@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-music-musicology-and-ethnomusicology/student-experience",
+  "path": "find/courses/undergraduate/bachelor-of-music-musicology-and-ethnomusicology/student-experience",
+  "timestamp": "2026-10-01T13:19:56.648Z",
+  "title": "Bachelor of Music (Musicology & Ethnomusicology) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote",
+    "video"
+  ],
+  "droppedImages": ""
+}

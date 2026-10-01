@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-law/student-experience",
+  "path": "find/courses/graduate/doctor-of-philosophy-law/student-experience",
+  "timestamp": "2026-10-01T10:08:42.269Z",
+  "title": "Doctor of Philosophy - Law : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

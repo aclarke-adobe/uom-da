@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-urban-and-cultural-heritage/student-experience",
+  "path": "find/courses/graduate/master-of-urban-and-cultural-heritage/student-experience",
+  "timestamp": "2026-10-01T12:31:45.907Z",
+  "title": "Master of Urban and Cultural Heritage : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

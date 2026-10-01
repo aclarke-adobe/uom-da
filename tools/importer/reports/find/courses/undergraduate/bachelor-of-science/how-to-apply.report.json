@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-science/how-to-apply",
+  "path": "find/courses/undergraduate/bachelor-of-science/how-to-apply",
+  "timestamp": "2026-10-01T13:21:18.552Z",
+  "title": "Bachelor of Science : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

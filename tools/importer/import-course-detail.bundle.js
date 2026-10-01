@@ -158,10 +158,11 @@ var CustomImportScript = (() => {
       if (ul.children.length) textCell2.push(ul);
     }
     element.querySelectorAll(".course-header__codes > li, .course-header__code").forEach((li) => {
-      const spans = [...li.children];
-      const label = cleanText(spans[0] || li).replace(/:\s*$/, "");
+      const full = cleanText(li);
+      const valueEl = li.querySelector(".text-bold, strong, b");
+      const value = cleanText(valueEl) || full.split(":").slice(1).join(":").trim();
+      const label = (full.includes(":") ? full.split(":")[0] : full.replace(value, "")).trim();
       if (!/^course code$/i.test(label)) return;
-      const value = cleanText(li.querySelector(".text-bold, strong, b") || spans[1]);
       if (!value) return;
       const p = document2.createElement("p");
       const strong = document2.createElement("strong");
@@ -407,9 +408,10 @@ var CustomImportScript = (() => {
       cells.push([[labelP], valueParas]);
     });
     element.querySelectorAll("ul[data-excat-hero-codes] > li").forEach((li) => {
-      const parts = [...li.children];
-      const label = cleanText4(parts[0] || li).replace(/:\s*$/, "");
-      const value = cleanText4(li.querySelector(".text-bold, strong, b") || parts[1]);
+      const full = cleanText4(li);
+      const valueEl = li.querySelector(".text-bold, strong, b");
+      const value = cleanText4(valueEl) || full.split(":").slice(1).join(":").trim();
+      const label = (full.includes(":") ? full.split(":")[0] : full.replace(value, "")).trim();
       if (!label || !value || /^course code$/i.test(label)) return;
       cells.push([label, value]);
     });
@@ -431,7 +433,7 @@ var CustomImportScript = (() => {
       }
       cells.push([[p]]);
     });
-    element.querySelectorAll(".key-facts-cta .cta-panel-message").forEach((m) => {
+    element.querySelectorAll(".key-facts-cta .cta-panel-message, .key-facts-cta .key-facts-buttons-additional").forEach((m) => {
       if (!cleanText4(m) || m.querySelector("a")) return;
       const p = document2.createElement("p");
       p.textContent = cleanText4(m);
@@ -773,11 +775,45 @@ var CustomImportScript = (() => {
         }
       }
       if (course) {
-        const parts = [...card.querySelectorAll(".card__inner p, .card__inner ul, .card__inner ol, .card__meta")].filter((p, i, all) => all.indexOf(p) === i && clean(p) && !p.parentElement.closest("p, ul, ol"));
-        parts.forEach((p) => {
-          p.querySelectorAll("a[href]").forEach((a) => a.setAttribute("href", a.getAttribute("href").trim()));
-          body.push(p);
-        });
+        const walkInner = (node) => {
+          [...node.childNodes].forEach((n) => {
+            if (n.nodeType === 3) {
+              if (clean(n)) {
+                const p = document2.createElement("p");
+                p.textContent = clean(n);
+                body.push(p);
+              }
+              return;
+            }
+            if (n.nodeType !== 1 || n === heading2) return;
+            if (heading2 && n.contains(heading2)) {
+              walkInner(n);
+              return;
+            }
+            if (!clean(n) && !n.querySelector("img")) return;
+            if (/^(P|UL|OL)$/.test(n.tagName)) {
+              n.querySelectorAll("a[href]").forEach((a) => a.setAttribute("href", a.getAttribute("href").trim()));
+              body.push(n);
+            } else if (/^(DIV|SECTION|BLOCKQUOTE|FIGURE)$/.test(n.tagName)) {
+              if (n.querySelector("p, ul, ol, div, blockquote, h1, h2, h3, h4, h5, h6")) walkInner(n);
+              else {
+                const p = document2.createElement("p");
+                p.innerHTML = n.innerHTML.trim();
+                body.push(p);
+              }
+            } else if (/^H[1-6]$/.test(n.tagName) || /^(CITE|SPAN|STRONG|EM|A|SMALL)$/.test(n.tagName)) {
+              const p = document2.createElement("p");
+              p.innerHTML = n.innerHTML.trim();
+              body.push(p);
+            } else if (n.tagName !== "HR" && n.tagName !== "IMG") {
+              const p = document2.createElement("p");
+              p.textContent = clean(n);
+              body.push(p);
+            }
+          });
+        };
+        const inner = card.querySelector(".card__inner");
+        if (inner) walkInner(inner);
         const footer = card.querySelector(".card__footer");
         if (footer && clean(footer)) {
           const blocks = [...footer.children].filter((c) => /^(P|UL|OL)$/.test(c.tagName));
@@ -850,7 +886,7 @@ var CustomImportScript = (() => {
     const cells = [];
     cards.forEach((card) => {
       const body = [];
-      const heading2 = card.querySelector("h2, h3, h4, .card__title");
+      const heading2 = card.querySelector(course ? "h2, h3, h4, h5, h6, .card__title" : "h2, h3, h4, .card__title");
       const title = clean2(heading2);
       if (title) {
         const h = document2.createElement(course ? "h5" : /^H[2-6]$/.test(heading2.tagName) ? heading2.tagName.toLowerCase() : "h3");
@@ -1478,6 +1514,12 @@ var CustomImportScript = (() => {
         out.push(...feeYear(n, document2));
         return;
       }
+      if (n.matches("ul.fee-list, .fee-list")) {
+        const holder = document2.createElement("div");
+        holder.append(n.cloneNode(true));
+        out.push(...feeYear(holder, document2));
+        return;
+      }
       if (!cleanText11(n) && !n.querySelector("img")) return;
       if (/^(DIV|SECTION|SPAN)$/.test(n.tagName) && n.querySelector("p, ul, ol, h1, h2, h3, h4, h5, h6, .fee-info-panel__year")) {
         out.push(...content(n, document2));
@@ -2099,7 +2141,7 @@ var CustomImportScript = (() => {
   function textCell(side, document2) {
     const root = side.querySelector(".split-section__inner") || side;
     const content2 = [];
-    [...root.querySelectorAll("p, h1, h2, h3, h4, a.btn")].forEach((el) => {
+    [...root.querySelectorAll("p, h1, h2, h3, h4, h5, h6, ul, ol, a.btn")].forEach((el) => {
       if (el.matches("a.btn")) {
         const href = (el.getAttribute("href") || "").trim();
         const text = clean4(el);
@@ -2115,6 +2157,7 @@ var CustomImportScript = (() => {
         return;
       }
       if (el.closest("a.btn") || !clean4(el)) return;
+      if (el.parentElement && el.parentElement.closest("ul, ol, p") && root.contains(el.parentElement.closest("ul, ol, p"))) return;
       if (el.matches('.uom-title-overline, [class*="overline"], [class*="eyebrow"]')) {
         const p = document2.createElement("p");
         p.textContent = clean4(el);
@@ -2348,6 +2391,7 @@ var CustomImportScript = (() => {
   }
   function cleanCourseChrome(root) {
     removeAll(root, COURSE_CHROME_SELECTORS);
+    removeTrackers(root);
     root.querySelectorAll("svg").forEach((svg) => {
       if (svg.parentNode) svg.remove();
     });
@@ -2358,6 +2402,7 @@ var CustomImportScript = (() => {
     root.querySelectorAll("table").forEach((t) => {
       if (!t.querySelector("td, th")) t.remove();
     });
+    root.querySelectorAll("table:not(.table)").forEach((t) => t.classList.add("table"));
     root.querySelectorAll(".course-content > div.ct-factscard-border").forEach((card) => {
       if (!card.querySelector("img, p, h1, h2, h3, h4, h5, h6, li, a")) card.remove();
     });
@@ -2407,6 +2452,35 @@ var CustomImportScript = (() => {
       return "";
     }
   }
+  var NON_CONTENT_IMAGE = /\/_nuxt\/placeholder[^/?#]*\.(?:jpe?g|png|gif|webp|svg|avif)(?:[?#]|$)/i;
+  var TRACKER_HOST = /(?:^|\.)(?:t\.co|analytics\.twitter\.com|ads-twitter\.com|static\.ads-twitter\.com|facebook\.com|facebook\.net|connect\.facebook\.net|doubleclick\.net|google-analytics\.com|googletagmanager\.com|googleadservices\.com|googlesyndication\.com|bat\.bing\.com|clarity\.ms|px\.ads\.linkedin\.com|snap\.licdn\.com|analytics\.tiktok\.com|ct\.pinterest\.com|tealiumiq\.com|tiqcdn\.com|hotjar\.com|quantserve\.com|demdex\.net|omtrdc\.net|adnxs\.com|everesttech\.net|optimizely\.com)$/i;
+  function isTracker(raw) {
+    if (!raw) return false;
+    try {
+      const u = new URL(String(raw).trim().replace(/&amp;/g, "&"), "https://study.unimelb.edu.au/");
+      if (TRACKER_HOST.test(u.hostname)) return true;
+      return /\/i\/adsct|\/tr\/?\?id=|\/collect\?|\/pixel(?:\.gif)?(?:[?/]|$)/i.test(u.pathname + u.search);
+    } catch (e) {
+      return false;
+    }
+  }
+  function removeTrackers(root) {
+    root.querySelectorAll("img, iframe, source, link, embed, object").forEach((el) => {
+      const refs = [
+        el.getAttribute("src"),
+        el.getAttribute("data-src"),
+        el.getAttribute("href"),
+        el.getAttribute("data"),
+        ...(el.getAttribute("srcset") || "").split(",").map((s) => s.trim().split(/\s+/)[0])
+      ];
+      if (!refs.some(isTracker)) return;
+      const wrap = el.parentElement && el.parentElement.tagName === "PICTURE" ? el.parentElement : el;
+      const parent = wrap.parentElement;
+      wrap.remove();
+      if (parent && /^(P|A|SPAN|NOSCRIPT)$/.test(parent.tagName) && !parent.textContent.trim() && !parent.querySelector("img, iframe, video")) parent.remove();
+    });
+    root.querySelectorAll('img[width="1"][height="1"], img[width="0"][height="0"]').forEach((img) => img.remove());
+  }
   function dropUnloadableImages(root, blocked, dropped) {
     root.querySelectorAll("img").forEach((img) => {
       const refs = [
@@ -2452,8 +2526,9 @@ var CustomImportScript = (() => {
         cleanCourseChrome(frag);
         fixCourseLinks(frag);
       });
-      const blocked = new Set(payload && payload.unloadableImages || []);
-      if (blocked.size) {
+      const list = new Set(payload && payload.unloadableImages || []);
+      const blocked = { has: (k) => list.has(k) || NON_CONTENT_IMAGE.test(k) };
+      {
         const dropped = new Set(doc.excatDroppedImages || []);
         dropUnloadableImages(element, blocked, dropped);
         doc.querySelectorAll('template[id^="excat-"]').forEach((tpl) => {
@@ -2467,6 +2542,7 @@ var CustomImportScript = (() => {
     if (hookName === TransformHook.afterTransform) {
       removeAll(element, AFTER_PARSE_SELECTORS);
       removeAll(element, COURSE_CHROME_SELECTORS);
+      removeTrackers(element);
       fixCourseLinks(element);
       removeComments(element);
       element.querySelectorAll("[data-excat-audience], [data-excat-section-start], [data-excat-section-skip], [data-excat-hero-codes], [data-excat-residency], [data-excat-part]").forEach((el) => {
@@ -2543,6 +2619,67 @@ ${hrefs}`;
     clone.setAttribute(AUD_ATTR, "international");
     clone.setAttribute(START_ATTR, `${id}--international`);
     d.after(clone);
+  }
+  var BODY_SEL = "[data-test$='-page']";
+  function norm(t) {
+    return (t || "").replace(/\s+/g, " ").trim().toLowerCase();
+  }
+  function addInternationalOnlyNotices(element, template, bodyPart, liveSelector) {
+    if (!bodyPart) return;
+    const intlB = bodyPart.querySelector(BODY_SEL);
+    const liveB = element.querySelector(`#main div${BODY_SEL}`) || element.querySelector(`div${BODY_SEL}`);
+    if (!intlB || !liveB) return;
+    const doc = element.ownerDocument;
+    const sectionStarts = /* @__PURE__ */ new Set();
+    (template.sections || []).forEach((s) => {
+      const el = first(element, liveSelector(s.id));
+      if (el) sectionStarts.add(el);
+    });
+    const isSectionStart = (el) => !!el && (sectionStarts.has(el) || el.hasAttribute(START_ATTR));
+    const liveText = norm(signature(liveB));
+    let n = 0;
+    [...intlB.querySelectorAll(".notice")].forEach((notice) => {
+      if (notice.parentElement.closest(".notice") || notice.closest(".fee-info-panel, #fees, table")) return;
+      const text = norm(notice.textContent);
+      if (!text || liveText.includes(text)) return;
+      let top = notice;
+      while (top.parentElement && top.parentElement !== intlB) top = top.parentElement;
+      if (top.parentElement !== intlB) return;
+      const liveKids = [...liveB.children];
+      let counterpart = top.id ? liveB.querySelector(`:scope > #${CSS.escape(top.id)}`) : null;
+      if (!counterpart && top.querySelector(".user-profile-toggle")) counterpart = liveKids.find((k) => k.querySelector(".user-profile-toggle"));
+      let ref = null;
+      if (counterpart) {
+        const heading2 = top.querySelector("h1, h2, h3, h4");
+        const before = heading2 && notice.compareDocumentPosition(heading2) & 4;
+        ref = before ? counterpart : counterpart.nextElementSibling;
+        while (!before && ref && ref.getAttribute(START_ATTR) === `${counterpart.getAttribute(START_ATTR)}--international`) ref = ref.nextElementSibling;
+      } else {
+        let prev = top.previousElementSibling;
+        while (prev && !prev.id) prev = prev.previousElementSibling;
+        const prevLive = prev ? liveB.querySelector(`:scope > #${CSS.escape(prev.id)}`) : null;
+        if (!prevLive) return;
+        ref = prevLive.nextElementSibling;
+        while (ref && ref.getAttribute(START_ATTR) && /--international$/.test(ref.getAttribute(START_ATTR))) ref = ref.nextElementSibling;
+      }
+      n += 1;
+      if (ref && !isSectionStart(ref)) {
+        ref.setAttribute(START_ATTR, `after-international-notice-${n}`);
+        console.log(`${LOG} international-only notice: resumed shared content in its own section`);
+      }
+      const wrap = doc.createElement("div");
+      wrap.setAttribute(AUD_ATTR, "international");
+      wrap.setAttribute(START_ATTR, `international-notice-${n}`);
+      const main = doc.createElement("div");
+      main.className = "course-section__main";
+      const content2 = doc.createElement("div");
+      content2.className = "course-content";
+      content2.append(doc.importNode(notice, true));
+      main.append(content2);
+      wrap.append(main);
+      liveB.insertBefore(wrap, ref);
+      console.log(`${LOG} international-only notice inserted: "${text.slice(0, 60)}"`);
+    });
   }
   function addInternationalResidency(element, template, inBlock, bodyPart) {
     if (!inBlock || !bodyPart) return;
@@ -2650,6 +2787,7 @@ ${hrefs}`;
         }
       });
       addInternationalResidency(element, template, contract.inBlock && contract.inBlock["residency-notice"], parts.body);
+      addInternationalOnlyNotices(element, template, parts.body, liveSelector);
     }
     if (hookName === "afterTransform") {
       const doc = element.ownerDocument || document;
@@ -2709,6 +2847,12 @@ ${hrefs}`;
         if (i === 0 && !style && !audience) continue;
         insertBreak(el, id, style, audience, i === 0);
       }
+      const known = new Set(sections.map((s) => s.id));
+      element.querySelectorAll(`[${START_ATTR2}]`).forEach((el) => {
+        const id = el.getAttribute(START_ATTR2);
+        if (known.has(id.replace(/--international$/, ""))) return;
+        insertBreak(el, id, null, el.getAttribute(AUD_ATTR2) || null, false);
+      });
     }
     if (hookName === "afterTransform") {
       element.querySelectorAll(`hr[${MARK}]`).forEach((hr) => {
@@ -2734,7 +2878,20 @@ ${hrefs}`;
   }
 
   // tools/importer/unloadable-images.js
-  var unloadable_images_default = [];
+  var unloadable_images_default = [
+    "https://matrix-cms.unimelb.edu.au/?a=45131",
+    "https://matrix-cms.unimelb.edu.au/__data/assets/image/0010/111421/KannanSethuraman.jpg",
+    "https://matrix-cms.unimelb.edu.au/__data/assets/image/0017/420434/varieties/banner.jpg",
+    "https://matrix-cms.unimelb.edu.au/__data/assets/image/0017/422306/varieties/banner.jpg",
+    "https://matrix-cms.unimelb.edu.au/__data/assets/image/0028/46963/diploma-in-languages-banner.jpg",
+    "https://matrix-cms.unimelb.edu.au/study-fac/content/courses-by-academic-division/graduate/fam/profiles/academic/Leon-de-Bruin-300px.jpg",
+    "https://matrix-cms.unimelb.edu.au/study-fac/data/courses/grad/doctor-of-optometry/90b137e1ce72197f51a63df0f6652311992e66a6.png",
+    "https://matrix-cms.unimelb.edu.au/study-fac/data/courses/grad/graduate-certificate-in-adolescent-health-and-wellbeing/iStock-1488889438.jpg",
+    "https://matrix-cms.unimelb.edu.au/study-fac/data/courses/incompatible-courses/doctoral-program-in-economics/22180_0175.jpg/300x240.jpg",
+    "https://matrix-cms.unimelb.edu.au/study-fac/data/courses/incompatible-courses/doctoral-program-in-economics/tim-robinso.jpg/300.jpg",
+    "https://study.unimelb.edu.au/4024",
+    "https://study.unimelb.edu.au/4732"
+  ];
 
   // tools/importer/import-course-detail.js
   var parsers = {
@@ -3468,6 +3625,13 @@ ${hrefs}`;
           "selector": [
             "div[data-test$='-page'] > #how-to-apply"
           ]
+        },
+        "admission-criteria": {
+          "audience": "domestic",
+          "part": "body",
+          "selector": [
+            "div[data-test$='-page'] > #admission-criteria"
+          ]
         }
       },
       "sharedTails": {
@@ -3552,7 +3716,30 @@ ${hrefs}`;
     console.log(`Found ${pageBlocks.length} block instances on page`);
     return pageBlocks;
   }
+  function removeCommentNodes(root, doc) {
+    const walker = doc.createTreeWalker(
+      root,
+      128
+      /* NodeFilter.SHOW_COMMENT */
+    );
+    const comments = [];
+    while (walker.nextNode()) comments.push(walker.currentNode);
+    comments.forEach((c) => c.remove());
+    root.querySelectorAll("template").forEach((t) => {
+      if (t.content) removeCommentNodes(t.content, doc);
+    });
+  }
   var import_course_detail_default = {
+    /**
+     * Runs before the importer's own preProcess. Its DOMUtils.removeComments strips comments with a
+     * regex over body.innerHTML, which on some snapshots also deletes real content between comments
+     * (e.g. the Notes notice and subject table on graduate-certificate-in-indigenous-business-leadership/
+     * structure, the case-competition paragraphs on master-of-management-marketing/student-experience).
+     * Removing the comment nodes from the DOM first leaves that regex nothing to match.
+     */
+    preprocess: ({ document: document2 }) => {
+      removeCommentNodes(document2.documentElement, document2);
+    },
     transform: (payload) => {
       const { document: document2, url, params } = payload;
       const main = document2.body;

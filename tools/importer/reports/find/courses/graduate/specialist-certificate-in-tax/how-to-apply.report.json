@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-tax/how-to-apply",
+  "path": "find/courses/graduate/specialist-certificate-in-tax/how-to-apply",
+  "timestamp": "2026-10-01T12:48:52.775Z",
+  "title": "Specialist Certificate in Tax : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

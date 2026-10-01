@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-corporate-law/student-experience",
+  "path": "find/courses/graduate/graduate-diploma-in-corporate-law/student-experience",
+  "timestamp": "2026-10-01T10:52:13.652Z",
+  "title": "Graduate Diploma in Corporate Law : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

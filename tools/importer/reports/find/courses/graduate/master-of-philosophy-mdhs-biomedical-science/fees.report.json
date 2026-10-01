@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-philosophy-mdhs-biomedical-science/fees",
+  "path": "find/courses/graduate/master-of-philosophy-mdhs-biomedical-science/fees",
+  "timestamp": "2026-10-01T12:12:37.130Z",
+  "title": "Master of Philosophy - MDHS (Biomedical Science) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout",
+    "table"
+  ],
+  "droppedImages": ""
+}

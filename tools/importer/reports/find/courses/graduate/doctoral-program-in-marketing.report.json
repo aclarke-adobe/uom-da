@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctoral-program-in-marketing",
+  "path": "find/courses/graduate/doctoral-program-in-marketing",
+  "timestamp": "2026-10-01T13:52:38.803Z",
+  "title": "Doctoral Program in Marketing - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

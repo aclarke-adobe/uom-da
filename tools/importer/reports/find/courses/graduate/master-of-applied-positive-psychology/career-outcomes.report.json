@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-applied-positive-psychology/career-outcomes",
+  "path": "find/courses/graduate/master-of-applied-positive-psychology/career-outcomes",
+  "timestamp": "2026-10-01T11:16:20.865Z",
+  "title": "Master of Applied Positive Psychology : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

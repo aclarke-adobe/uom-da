@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-marketing/how-to-apply",
+  "path": "find/courses/graduate/master-of-marketing/how-to-apply",
+  "timestamp": "2026-10-01T12:05:38.590Z",
+  "title": "Master of Marketing : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

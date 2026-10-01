@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-cancer-sciences/career-outcomes",
+  "path": "find/courses/graduate/master-of-cancer-sciences/career-outcomes",
+  "timestamp": "2026-10-01T11:28:05.808Z",
+  "title": "Master of Cancer Sciences : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

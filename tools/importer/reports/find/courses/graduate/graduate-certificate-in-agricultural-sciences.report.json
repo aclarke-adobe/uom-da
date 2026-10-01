@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-agricultural-sciences",
+  "path": "find/courses/graduate/graduate-certificate-in-agricultural-sciences",
+  "timestamp": "2026-10-01T10:15:22.078Z",
+  "title": "Graduate Certificate in Agricultural Sciences - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

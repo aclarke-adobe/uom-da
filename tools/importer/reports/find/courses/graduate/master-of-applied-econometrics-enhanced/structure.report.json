@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-applied-econometrics-enhanced/structure",
+  "path": "find/courses/graduate/master-of-applied-econometrics-enhanced/structure",
+  "timestamp": "2026-10-01T11:15:11.260Z",
+  "title": "Master of Applied Econometrics (Enhanced) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

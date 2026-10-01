@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-applied-psychology/entry-requirements",
+  "path": "find/courses/graduate/master-of-applied-psychology/entry-requirements",
+  "timestamp": "2026-10-01T11:16:48.387Z",
+  "title": "Master of Applied Psychology : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

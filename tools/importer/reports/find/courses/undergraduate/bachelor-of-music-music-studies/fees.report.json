@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-music-music-studies/fees",
+  "path": "find/courses/undergraduate/bachelor-of-music-music-studies/fees",
+  "timestamp": "2026-10-01T13:19:23.930Z",
+  "title": "Bachelor of Music (Music Studies) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-inclusive-music-teaching",
+  "path": "find/courses/graduate/specialist-certificate-in-inclusive-music-teaching",
+  "timestamp": "2026-10-01T12:46:00.297Z",
+  "title": "Specialist Certificate in Inclusive Music Teaching - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

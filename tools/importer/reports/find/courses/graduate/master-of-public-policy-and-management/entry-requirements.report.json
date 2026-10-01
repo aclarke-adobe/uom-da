@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-public-policy-and-management/entry-requirements",
+  "path": "find/courses/graduate/master-of-public-policy-and-management/entry-requirements",
+  "timestamp": "2026-10-01T12:21:40.398Z",
+  "title": "Master of Public Policy and Management : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

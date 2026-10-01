@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-medical-technology-innovation/student-experience",
+  "path": "find/courses/graduate/master-of-medical-technology-innovation/student-experience",
+  "timestamp": "2026-10-01T12:06:56.020Z",
+  "title": "Master of Medical Technology Innovation : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

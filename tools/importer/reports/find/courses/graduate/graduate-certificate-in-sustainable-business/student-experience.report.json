@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-sustainable-business/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-sustainable-business/student-experience",
+  "timestamp": "2026-10-01T10:40:17.722Z",
+  "title": "Graduate Certificate in Sustainable Business : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-people"
+  ],
+  "droppedImages": ""
+}

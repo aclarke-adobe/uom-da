@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-university-teaching/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-university-teaching/student-experience",
+  "timestamp": "2026-10-01T10:41:23.843Z",
+  "title": "Graduate Certificate in University Teaching : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

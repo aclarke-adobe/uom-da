@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-music-jazz-and-improvisation/structure",
+  "path": "find/courses/undergraduate/bachelor-of-music-jazz-and-improvisation/structure",
+  "timestamp": "2026-10-01T13:19:06.675Z",
+  "title": "Bachelor of Music (Jazz and Improvisation) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

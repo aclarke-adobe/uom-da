@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-philosophy-law/structure",
+  "path": "find/courses/graduate/master-of-philosophy-law/structure",
+  "timestamp": "2026-10-01T12:12:21.112Z",
+  "title": "Master of Philosophy - Law : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

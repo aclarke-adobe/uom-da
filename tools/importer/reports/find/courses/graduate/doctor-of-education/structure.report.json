@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-education/structure",
+  "path": "find/courses/graduate/doctor-of-education/structure",
+  "timestamp": "2026-10-01T10:04:38.286Z",
+  "title": "Doctor of Education : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

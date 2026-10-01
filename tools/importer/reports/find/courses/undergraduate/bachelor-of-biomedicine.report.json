@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-biomedicine",
+  "path": "find/courses/undergraduate/bachelor-of-biomedicine",
+  "timestamp": "2026-10-01T13:13:19.970Z",
+  "title": "Bachelor of Biomedicine - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

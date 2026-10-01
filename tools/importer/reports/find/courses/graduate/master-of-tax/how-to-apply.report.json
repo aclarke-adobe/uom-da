@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-tax/how-to-apply",
+  "path": "find/courses/graduate/master-of-tax/how-to-apply",
+  "timestamp": "2026-10-01T12:28:09.444Z",
+  "title": "Master of Tax : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "table",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

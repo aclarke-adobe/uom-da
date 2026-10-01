@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-design-for-health-and-wellbeing/how-to-apply",
+  "path": "find/courses/graduate/specialist-certificate-in-design-for-health-and-wellbeing/how-to-apply",
+  "timestamp": "2026-10-01T12:43:52.799Z",
+  "title": "Specialist Certificate in Design for Health and Wellbeing : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

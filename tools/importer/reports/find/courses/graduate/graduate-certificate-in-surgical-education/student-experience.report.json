@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-surgical-education/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-surgical-education/student-experience",
+  "timestamp": "2026-10-01T09:59:30.158Z",
+  "title": "Graduate Certificate in Surgical Education : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-small-animal-emergency-and-critical-care/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-small-animal-emergency-and-critical-care/fees",
+  "timestamp": "2026-10-01T10:38:44.709Z",
+  "title": "Graduate Certificate in Small Animal Emergency and Critical Care : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

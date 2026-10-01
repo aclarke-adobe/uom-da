@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-leadership/fees",
+  "path": "find/courses/graduate/professional-certificate-in-leadership/fees",
+  "timestamp": "2026-10-01T12:37:19.408Z",
+  "title": "Professional Certificate in Leadership : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

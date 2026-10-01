@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-clinical-audiology/student-experience",
+  "path": "find/courses/graduate/master-of-clinical-audiology/student-experience",
+  "timestamp": "2026-10-01T11:30:00.877Z",
+  "title": "Master of Clinical Audiology : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

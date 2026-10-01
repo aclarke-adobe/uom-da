@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-advanced-social-work-research/career-outcomes",
+  "path": "find/courses/graduate/master-of-advanced-social-work-research/career-outcomes",
+  "timestamp": "2026-10-01T13:55:37.751Z",
+  "title": "Master of Advanced Social Work (Research) : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": "https://findacourse.study.unimelb.edu.au/find/_nuxt/placeholder-new.DGFxYecG.jpg"
+}

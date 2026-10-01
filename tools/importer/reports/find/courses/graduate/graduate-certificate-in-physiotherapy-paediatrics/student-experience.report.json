@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-physiotherapy-paediatrics/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-physiotherapy-paediatrics/student-experience",
+  "timestamp": "2026-10-01T10:35:25.950Z",
+  "title": "Graduate Certificate in Physiotherapy (Paediatrics) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

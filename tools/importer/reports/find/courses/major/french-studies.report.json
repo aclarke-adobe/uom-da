@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/french-studies",
+  "path": "find/courses/major/french-studies",
+  "timestamp": "2026-10-01T13:07:31.568Z",
+  "title": "French Studies - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

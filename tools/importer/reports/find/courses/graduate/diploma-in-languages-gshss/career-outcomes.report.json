@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/diploma-in-languages-gshss/career-outcomes",
+  "path": "find/courses/graduate/diploma-in-languages-gshss/career-outcomes",
+  "timestamp": "2026-10-01T10:03:18.536Z",
+  "title": "Diploma in Languages (GSHSS) : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0028/46963/diploma-in-languages-banner.jpg"
+}

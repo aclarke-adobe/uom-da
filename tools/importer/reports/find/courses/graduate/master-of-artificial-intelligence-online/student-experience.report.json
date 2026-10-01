@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-artificial-intelligence-online/student-experience",
+  "path": "find/courses/graduate/master-of-artificial-intelligence-online/student-experience",
+  "timestamp": "2026-10-01T11:21:42.706Z",
+  "title": "Master of Artificial Intelligence (Online) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

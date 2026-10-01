@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-arts-and-cultural-management/entry-requirements",
+  "path": "find/courses/graduate/master-of-arts-and-cultural-management/entry-requirements",
+  "timestamp": "2026-10-01T11:22:24.205Z",
+  "title": "Master of Arts and Cultural Management : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

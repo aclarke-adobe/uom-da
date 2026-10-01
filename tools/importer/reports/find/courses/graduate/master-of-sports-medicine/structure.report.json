@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-sports-medicine/structure",
+  "path": "find/courses/graduate/master-of-sports-medicine/structure",
+  "timestamp": "2026-10-01T12:27:28.174Z",
+  "title": "Master of Sports Medicine : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

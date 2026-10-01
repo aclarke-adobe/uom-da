@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-music-music-studies/entry-requirements",
+  "path": "find/courses/undergraduate/bachelor-of-music-music-studies/entry-requirements",
+  "timestamp": "2026-10-01T13:19:21.085Z",
+  "title": "Bachelor of Music (Music Studies) : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "cards-stat",
+    "cards-stat",
+    "accordion",
+    "accordion"
+  ],
+  "droppedImages": ""
+}

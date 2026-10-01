@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/pharmacology",
+  "path": "find/courses/major/pharmacology",
+  "timestamp": "2026-10-01T13:10:32.805Z",
+  "title": "Pharmacology - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

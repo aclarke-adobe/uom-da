@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/urban-planning/structure",
+  "path": "find/courses/major/urban-planning/structure",
+  "timestamp": "2026-10-01T13:11:50.817Z",
+  "title": "Urban Planning : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

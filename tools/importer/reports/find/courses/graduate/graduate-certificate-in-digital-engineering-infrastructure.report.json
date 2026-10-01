@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-digital-engineering-infrastructure",
+  "path": "find/courses/graduate/graduate-certificate-in-digital-engineering-infrastructure",
+  "timestamp": "2026-10-01T10:24:17.694Z",
+  "title": "Graduate Certificate in Digital Engineering (Infrastructure) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

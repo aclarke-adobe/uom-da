@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-science",
+  "path": "find/courses/graduate/graduate-diploma-in-science",
+  "timestamp": "2026-10-01T11:06:36.088Z",
+  "title": "Graduate Diploma in Science - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

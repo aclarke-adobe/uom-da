@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-medicine/career-outcomes",
+  "path": "find/courses/graduate/doctor-of-medicine/career-outcomes",
+  "timestamp": "2026-10-01T10:04:50.362Z",
+  "title": "Doctor of Medicine : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "cards-chips"
+  ],
+  "droppedImages": ""
+}

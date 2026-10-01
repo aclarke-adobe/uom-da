@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-paediatric-critical-care-nursing/structure",
+  "path": "find/courses/graduate/specialist-certificate-in-paediatric-critical-care-nursing/structure",
+  "timestamp": "2026-10-01T12:47:25.459Z",
+  "title": "Specialist Certificate in Paediatric Critical Care Nursing : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

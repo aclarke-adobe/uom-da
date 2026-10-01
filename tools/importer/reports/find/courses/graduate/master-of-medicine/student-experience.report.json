@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-medicine/student-experience",
+  "path": "find/courses/graduate/master-of-medicine/student-experience",
+  "timestamp": "2026-10-01T12:07:19.988Z",
+  "title": "Master of Medicine : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

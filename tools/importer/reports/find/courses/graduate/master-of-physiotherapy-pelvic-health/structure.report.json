@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-physiotherapy-pelvic-health/structure",
+  "path": "find/courses/graduate/master-of-physiotherapy-pelvic-health/structure",
+  "timestamp": "2026-10-01T12:16:05.023Z",
+  "title": "Master of Physiotherapy (Pelvic Health) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "table",
+    "table",
+    "table",
+    "table",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

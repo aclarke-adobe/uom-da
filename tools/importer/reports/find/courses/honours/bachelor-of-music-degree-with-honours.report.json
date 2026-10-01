@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/honours/bachelor-of-music-degree-with-honours",
+  "path": "find/courses/honours/bachelor-of-music-degree-with-honours",
+  "timestamp": "2026-10-01T13:02:48.959Z",
+  "title": "Bachelor of Music (Degree with Honours) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

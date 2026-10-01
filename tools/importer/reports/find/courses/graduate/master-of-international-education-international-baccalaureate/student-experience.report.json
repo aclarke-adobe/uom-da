@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-international-education-international-baccalaureate/student-experience",
+  "path": "find/courses/graduate/master-of-international-education-international-baccalaureate/student-experience",
+  "timestamp": "2026-10-01T11:57:46.424Z",
+  "title": "Master of International Education (International Baccalaureate) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video"
+  ],
+  "droppedImages": ""
+}

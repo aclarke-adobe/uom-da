@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-fine-arts",
+  "path": "find/courses/graduate/master-of-fine-arts",
+  "timestamp": "2026-10-01T11:49:21.777Z",
+  "title": "Master of Fine Arts - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

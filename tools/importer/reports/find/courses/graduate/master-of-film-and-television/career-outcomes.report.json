@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-film-and-television/career-outcomes",
+  "path": "find/courses/graduate/master-of-film-and-television/career-outcomes",
+  "timestamp": "2026-10-01T11:48:20.613Z",
+  "title": "Master of Film and Television : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-commerce/career-outcomes",
+  "path": "find/courses/undergraduate/bachelor-of-commerce/career-outcomes",
+  "timestamp": "2026-10-01T13:13:44.806Z",
+  "title": "Bachelor of Commerce : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "table",
+    "quote-profile",
+    "cards-chips"
+  ],
+  "droppedImages": ""
+}

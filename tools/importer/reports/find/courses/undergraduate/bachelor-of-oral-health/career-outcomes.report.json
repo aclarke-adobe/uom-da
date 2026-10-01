@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-oral-health/career-outcomes",
+  "path": "find/courses/undergraduate/bachelor-of-oral-health/career-outcomes",
+  "timestamp": "2026-10-01T13:20:27.459Z",
+  "title": "Bachelor of Oral Health : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-medicine",
+  "path": "find/courses/graduate/doctor-of-medicine",
+  "timestamp": "2026-10-01T10:04:45.875Z",
+  "title": "Doctor of Medicine - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

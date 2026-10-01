@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/microbiology",
+  "path": "find/courses/major/microbiology",
+  "timestamp": "2026-10-01T13:10:04.000Z",
+  "title": "Microbiology - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

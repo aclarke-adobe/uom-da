@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-data-science/student-experience",
+  "path": "find/courses/graduate/master-of-data-science/student-experience",
+  "timestamp": "2026-10-01T11:38:32.369Z",
+  "title": "Master of Data Science : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

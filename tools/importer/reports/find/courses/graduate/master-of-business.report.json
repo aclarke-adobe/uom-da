@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-business",
+  "path": "find/courses/graduate/master-of-business",
+  "timestamp": "2026-10-01T11:26:03.877Z",
+  "title": "Master of Business - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice"
+  ],
+  "droppedImages": ""
+}

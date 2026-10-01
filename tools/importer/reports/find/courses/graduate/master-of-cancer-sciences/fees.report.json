@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-cancer-sciences/fees",
+  "path": "find/courses/graduate/master-of-cancer-sciences/fees",
+  "timestamp": "2026-10-01T11:28:12.562Z",
+  "title": "Master of Cancer Sciences : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "notice",
+    "callout",
+    "notice",
+    "callout"
+  ],
+  "droppedImages": ""
+}

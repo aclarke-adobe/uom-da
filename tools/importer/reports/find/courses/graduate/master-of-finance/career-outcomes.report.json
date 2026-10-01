@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-finance/career-outcomes",
+  "path": "find/courses/graduate/master-of-finance/career-outcomes",
+  "timestamp": "2026-10-01T11:49:01.537Z",
+  "title": "Master of Finance : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

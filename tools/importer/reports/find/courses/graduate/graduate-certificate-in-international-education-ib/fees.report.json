@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-international-education-ib/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-international-education-ib/fees",
+  "timestamp": "2026-10-01T10:32:30.503Z",
+  "title": "Graduate Certificate in International Education (IB) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

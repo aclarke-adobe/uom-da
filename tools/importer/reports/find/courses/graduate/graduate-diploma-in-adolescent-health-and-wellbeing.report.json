@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-adolescent-health-and-wellbeing",
+  "path": "find/courses/graduate/graduate-diploma-in-adolescent-health-and-wellbeing",
+  "timestamp": "2026-10-01T10:43:22.488Z",
+  "title": "Graduate Diploma in Adolescent Health and Wellbeing - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

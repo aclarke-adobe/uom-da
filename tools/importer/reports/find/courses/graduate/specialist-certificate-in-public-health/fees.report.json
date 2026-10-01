@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-public-health/fees",
+  "path": "find/courses/graduate/specialist-certificate-in-public-health/fees",
+  "timestamp": "2026-10-01T12:47:59.945Z",
+  "title": "Specialist Certificate in Public Health : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/juris-doctor",
+  "path": "find/courses/graduate/juris-doctor",
+  "timestamp": "2026-10-01T11:09:52.090Z",
+  "title": "Juris Doctor - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

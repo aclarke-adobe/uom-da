@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-modern-languages-education/entry-requirements",
+  "path": "find/courses/graduate/master-of-modern-languages-education/entry-requirements",
+  "timestamp": "2026-10-01T12:07:31.280Z",
+  "title": "Master of Modern Languages Education : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-public-policy-and-management/student-experience",
+  "path": "find/courses/graduate/master-of-public-policy-and-management/student-experience",
+  "timestamp": "2026-10-01T12:21:54.156Z",
+  "title": "Master of Public Policy and Management : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

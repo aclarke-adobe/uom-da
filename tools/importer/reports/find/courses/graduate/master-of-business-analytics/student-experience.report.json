@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-business-analytics/student-experience",
+  "path": "find/courses/graduate/master-of-business-analytics/student-experience",
+  "timestamp": "2026-10-01T11:27:36.922Z",
+  "title": "Master of Business Analytics : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

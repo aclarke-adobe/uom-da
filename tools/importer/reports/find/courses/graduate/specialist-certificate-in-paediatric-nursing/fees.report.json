@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-paediatric-nursing/fees",
+  "path": "find/courses/graduate/specialist-certificate-in-paediatric-nursing/fees",
+  "timestamp": "2026-10-01T12:47:38.267Z",
+  "title": "Specialist Certificate in Paediatric Nursing : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

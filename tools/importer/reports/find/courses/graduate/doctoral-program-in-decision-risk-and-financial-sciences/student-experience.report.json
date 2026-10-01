@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctoral-program-in-decision-risk-and-financial-sciences/student-experience",
+  "path": "find/courses/graduate/doctoral-program-in-decision-risk-and-financial-sciences/student-experience",
+  "timestamp": "2026-10-01T10:12:17.921Z",
+  "title": "Doctoral Program in Decision, Risk and Financial Sciences : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-people",
+    "cards-people",
+    "cards-people",
+    "cards-people"
+  ],
+  "droppedImages": ""
+}

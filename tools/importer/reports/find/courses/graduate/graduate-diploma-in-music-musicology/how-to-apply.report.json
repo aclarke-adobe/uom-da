@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-music-musicology/how-to-apply",
+  "path": "find/courses/graduate/graduate-diploma-in-music-musicology/how-to-apply",
+  "timestamp": "2026-10-01T11:03:19.010Z",
+  "title": "Graduate Diploma in Music (Musicology) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

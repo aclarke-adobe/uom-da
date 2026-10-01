@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-entrepreneurship-and-innovation/how-to-apply",
+  "path": "find/courses/graduate/master-of-management-entrepreneurship-and-innovation/how-to-apply",
+  "timestamp": "2026-10-01T12:02:55.050Z",
+  "title": "Master of Management (Entrepreneurship and Innovation) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

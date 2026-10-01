@@ -112,12 +112,35 @@ export default function parse(element, { document }) {
     if (course) {
       // keep inline markup (<br> line breaks, <strong>/<em>, real links) and the footer line
       // (e.g. <strong><em>Completed - 2016</em></strong>), in source order
-      const parts = [...card.querySelectorAll('.card__inner p, .card__inner ul, .card__inner ol, .card__meta')]
-        .filter((p, i, all) => all.indexOf(p) === i && clean(p) && !p.parentElement.closest('p, ul, ol'));
-      parts.forEach((p) => {
-        p.querySelectorAll('a[href]').forEach((a) => a.setAttribute('href', a.getAttribute('href').trim()));
-        body.push(p);
-      });
+      // every block of the card body in source order: p / ul / ol kept, wrapper divs walked,
+      // blockquotes (student quotes) and bare text (news-card teasers) become paragraphs; the
+      // title heading is already in `body`, other headings become paragraphs
+      const walkInner = (node) => {
+        [...node.childNodes].forEach((n) => {
+          if (n.nodeType === 3) {
+            if (clean(n)) { const p = document.createElement('p'); p.textContent = clean(n); body.push(p); }
+            return;
+          }
+          if (n.nodeType !== 1 || n === heading) return;
+          if (heading && n.contains(heading)) { walkInner(n); return; } // e.g. div.card__subheader
+          if (!clean(n) && !n.querySelector('img')) return;
+          if (/^(P|UL|OL)$/.test(n.tagName)) {
+            n.querySelectorAll('a[href]').forEach((a) => a.setAttribute('href', a.getAttribute('href').trim()));
+            body.push(n);
+          } else if (/^(DIV|SECTION|BLOCKQUOTE|FIGURE)$/.test(n.tagName)) {
+            if (n.querySelector('p, ul, ol, div, blockquote, h1, h2, h3, h4, h5, h6')) walkInner(n);
+            else { const p = document.createElement('p'); p.innerHTML = n.innerHTML.trim(); body.push(p); }
+          } else if (/^H[1-6]$/.test(n.tagName) || /^(CITE|SPAN|STRONG|EM|A|SMALL)$/.test(n.tagName)) {
+            const p = document.createElement('p');
+            p.innerHTML = n.innerHTML.trim();
+            body.push(p);
+          } else if (n.tagName !== 'HR' && n.tagName !== 'IMG') {
+            const p = document.createElement('p'); p.textContent = clean(n); body.push(p);
+          }
+        });
+      };
+      const inner = card.querySelector('.card__inner');
+      if (inner) walkInner(inner);
       const footer = card.querySelector('.card__footer');
       if (footer && clean(footer)) {
         const blocks = [...footer.children].filter((c) => /^(P|UL|OL)$/.test(c.tagName));

@@ -177,6 +177,7 @@ function fixCourseLinks(root) {
  */
 function cleanCourseChrome(root) {
   removeAll(root, COURSE_CHROME_SELECTORS);
+  removeTrackers(root);
 
   // Inline SVG icons and data:/blob: icon images cannot be authored (the importer's
   // preProcess has already rewritten data: <img> sources to blob: URLs on the live page).
@@ -190,6 +191,13 @@ function cleanCourseChrome(root) {
   root.querySelectorAll('table').forEach((t) => {
     if (!t.querySelector('td, th')) t.remove();
   });
+
+  // Data tables authored without the `table` class (e.g. table#careers_ "Industries | Companies |
+  // Job roles" on engineering career outcomes, table#table74347 majors list on bachelor-of-science
+  // structure) are not matched by the table block instance (`table.table`), and a raw <table> left
+  // in default content is read by html2md as a block table whose first row is the block name, so
+  // its header row was lost. Give every remaining content table the class so the table parser runs.
+  root.querySelectorAll('table:not(.table)').forEach((t) => t.classList.add('table'));
 
   // Empty facts card (a populated one holds the cards-icon grid)
   root.querySelectorAll('.course-content > div.ct-factscard-border').forEach((card) => {
@@ -267,6 +275,42 @@ function imageKey(raw) {
  * otherwise empty wrapper such as <picture> or <p> goes with it), inline background-image styles,
  * and <meta content> (og:image / twitter:image).
  */
+// Generic placeholders served by the course app (e.g. findacourse.study.unimelb.edu.au/find/_nuxt/
+// placeholder-new.<hash>.jpg on honours heroes): never content.
+const NON_CONTENT_IMAGE = /\/_nuxt\/placeholder[^/?#]*\.(?:jpe?g|png|gif|webp|svg|avif)(?:[?#]|$)/i;
+
+// Tracking pixels / beacons. Pages imported from a live render (Bright Data fallback) carry the
+// <img>/<iframe> beacons that tag scripts inject at runtime (Twitter t.co/i/adsct, Facebook, …);
+// snapshots strip scripts but not their output.
+const TRACKER_HOST = /(?:^|\.)(?:t\.co|analytics\.twitter\.com|ads-twitter\.com|static\.ads-twitter\.com|facebook\.com|facebook\.net|connect\.facebook\.net|doubleclick\.net|google-analytics\.com|googletagmanager\.com|googleadservices\.com|googlesyndication\.com|bat\.bing\.com|clarity\.ms|px\.ads\.linkedin\.com|snap\.licdn\.com|analytics\.tiktok\.com|ct\.pinterest\.com|tealiumiq\.com|tiqcdn\.com|hotjar\.com|quantserve\.com|demdex\.net|omtrdc\.net|adnxs\.com|everesttech\.net|optimizely\.com)$/i;
+
+function isTracker(raw) {
+  if (!raw) return false;
+  try {
+    const u = new URL(String(raw).trim().replace(/&amp;/g, '&'), 'https://study.unimelb.edu.au/');
+    if (TRACKER_HOST.test(u.hostname)) return true;
+    return /\/i\/adsct|\/tr\/?\?id=|\/collect\?|\/pixel(?:\.gif)?(?:[?/]|$)/i.test(u.pathname + u.search);
+  } catch (e) {
+    return false;
+  }
+}
+
+/** Remove tracking beacons: img/iframe/source/link/embed elements pointing at tracker endpoints. */
+function removeTrackers(root) {
+  root.querySelectorAll('img, iframe, source, link, embed, object').forEach((el) => {
+    const refs = [el.getAttribute('src'), el.getAttribute('data-src'), el.getAttribute('href'), el.getAttribute('data'),
+      ...(el.getAttribute('srcset') || '').split(',').map((s) => s.trim().split(/\s+/)[0])];
+    if (!refs.some(isTracker)) return;
+    const wrap = el.parentElement && el.parentElement.tagName === 'PICTURE' ? el.parentElement : el;
+    const parent = wrap.parentElement;
+    wrap.remove();
+    if (parent && /^(P|A|SPAN|NOSCRIPT)$/.test(parent.tagName) && !parent.textContent.trim()
+      && !parent.querySelector('img, iframe, video')) parent.remove();
+  });
+  // 1x1 beacons with no tracker host still known (width/height attributes of 1 or 0)
+  root.querySelectorAll('img[width="1"][height="1"], img[width="0"][height="0"]').forEach((img) => img.remove());
+}
+
 function dropUnloadableImages(root, blocked, dropped) {
   root.querySelectorAll('img').forEach((img) => {
     const refs = [img.getAttribute('src'), img.getAttribute('data-src'), img.getAttribute('data-lazy-src'),
@@ -317,8 +361,10 @@ export default function transform(hookName, element, payload) {
     // Images that cannot be loaded on the source (tools/importer/unloadable-images.json, passed in by
     // the import script) are dropped before any parser runs, on the page, in the template parts and
     // in the head (og:image feeds the Metadata block), so no block is left with an empty image cell.
-    const blocked = new Set((payload && payload.unloadableImages) || []);
-    if (blocked.size) {
+    // Also always dropped: the generic hero placeholder (not content, not embeddable cross-origin).
+    const list = new Set((payload && payload.unloadableImages) || []);
+    const blocked = { has: (k) => list.has(k) || NON_CONTENT_IMAGE.test(k) };
+    {
       const dropped = new Set(doc.excatDroppedImages || []);
       dropUnloadableImages(element, blocked, dropped);
       doc.querySelectorAll('template[id^="excat-"]').forEach((tpl) => {
@@ -333,6 +379,7 @@ export default function transform(hookName, element, payload) {
   if (hookName === TransformHook.afterTransform) {
     removeAll(element, AFTER_PARSE_SELECTORS);
     removeAll(element, COURSE_CHROME_SELECTORS);
+    removeTrackers(element);
     fixCourseLinks(element);
     removeComments(element);
 

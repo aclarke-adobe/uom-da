@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-leadership",
+  "path": "find/courses/graduate/professional-certificate-in-leadership",
+  "timestamp": "2026-10-01T12:37:10.271Z",
+  "title": "Professional Certificate in Leadership - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

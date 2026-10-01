@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-health-economics-and-economic-evaluation/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-health-economics-and-economic-evaluation/fees",
+  "timestamp": "2026-10-01T10:30:15.151Z",
+  "title": "Graduate Certificate in Health Economics and Economic Evaluation : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

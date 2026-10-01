@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-clinical-education/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-clinical-education/student-experience",
+  "timestamp": "2026-10-01T10:20:26.281Z",
+  "title": "Graduate Certificate in Clinical Education : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

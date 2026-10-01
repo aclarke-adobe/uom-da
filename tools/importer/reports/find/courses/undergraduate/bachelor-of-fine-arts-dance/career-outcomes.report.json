@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-fine-arts-dance/career-outcomes",
+  "path": "find/courses/undergraduate/bachelor-of-fine-arts-dance/career-outcomes",
+  "timestamp": "2026-10-01T13:15:14.528Z",
+  "title": "Bachelor of Fine Arts (Dance) : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "quote-profile",
+    "cards-chips"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/actuarial-studies/structure",
+  "path": "find/courses/major/actuarial-studies/structure",
+  "timestamp": "2026-10-01T13:04:09.522Z",
+  "title": "Actuarial Studies : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

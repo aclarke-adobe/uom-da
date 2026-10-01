@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/diploma-in-general-studies/fees",
+  "path": "find/courses/undergraduate/diploma-in-general-studies/fees",
+  "timestamp": "2026-10-01T13:21:51.695Z",
+  "title": "Diploma in General Studies : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

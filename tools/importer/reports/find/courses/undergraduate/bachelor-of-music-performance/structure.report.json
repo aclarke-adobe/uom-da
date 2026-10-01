@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-music-performance/structure",
+  "path": "find/courses/undergraduate/bachelor-of-music-performance/structure",
+  "timestamp": "2026-10-01T13:20:18.086Z",
+  "title": "Bachelor of Music (Performance) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

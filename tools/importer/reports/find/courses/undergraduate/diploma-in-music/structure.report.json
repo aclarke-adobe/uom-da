@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/diploma-in-music/structure",
+  "path": "find/courses/undergraduate/diploma-in-music/structure",
+  "timestamp": "2026-10-01T13:23:00.221Z",
+  "title": "Diploma in Music : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

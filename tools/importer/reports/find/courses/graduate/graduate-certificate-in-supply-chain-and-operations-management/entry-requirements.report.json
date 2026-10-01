@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-supply-chain-and-operations-management/entry-requirements",
+  "path": "find/courses/graduate/graduate-certificate-in-supply-chain-and-operations-management/entry-requirements",
+  "timestamp": "2026-10-01T10:39:31.349Z",
+  "title": "Graduate Certificate in Supply Chain and Operations Management : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

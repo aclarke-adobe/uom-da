@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-engineering-and-it/career-outcomes",
+  "path": "find/courses/graduate/doctor-of-philosophy-engineering-and-it/career-outcomes",
+  "timestamp": "2026-10-01T10:07:15.407Z",
+  "title": "Doctor of Philosophy - Engineering and IT : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

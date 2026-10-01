@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-business-administration/entry-requirements",
+  "path": "find/courses/graduate/graduate-diploma-in-business-administration/entry-requirements",
+  "timestamp": "2026-10-01T09:59:44.587Z",
+  "title": "Graduate Diploma in Business Administration : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice"
+  ],
+  "droppedImages": ""
+}

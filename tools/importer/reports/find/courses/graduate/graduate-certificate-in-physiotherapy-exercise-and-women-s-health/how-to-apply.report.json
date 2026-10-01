@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-physiotherapy-exercise-and-women-s-health/how-to-apply",
+  "path": "find/courses/graduate/graduate-certificate-in-physiotherapy-exercise-and-women-s-health/how-to-apply",
+  "timestamp": "2026-10-01T10:34:54.304Z",
+  "title": "Graduate Certificate in Physiotherapy (Exercise and Women's Health) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

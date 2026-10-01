@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-english-for-the-global-workplace",
+  "path": "find/courses/graduate/graduate-certificate-in-english-for-the-global-workplace",
+  "timestamp": "2026-10-01T10:26:34.309Z",
+  "title": "Graduate Certificate in English for the Global Workplace - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

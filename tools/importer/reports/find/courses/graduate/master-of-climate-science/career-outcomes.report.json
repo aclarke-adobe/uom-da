@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-climate-science/career-outcomes",
+  "path": "find/courses/graduate/master-of-climate-science/career-outcomes",
+  "timestamp": "2026-10-01T11:29:18.871Z",
+  "title": "Master of Climate Science : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

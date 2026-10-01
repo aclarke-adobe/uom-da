@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-arts-and-cultural-management-advanced/how-to-apply",
+  "path": "find/courses/graduate/graduate-diploma-in-arts-and-cultural-management-advanced/how-to-apply",
+  "timestamp": "2026-10-01T10:45:18.177Z",
+  "title": "Graduate Diploma in Arts and Cultural Management (Advanced) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

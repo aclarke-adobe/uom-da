@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-architectural-engineering/fees",
+  "path": "find/courses/graduate/master-of-architectural-engineering/fees",
+  "timestamp": "2026-10-01T11:17:13.052Z",
+  "title": "Master of Architectural Engineering : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

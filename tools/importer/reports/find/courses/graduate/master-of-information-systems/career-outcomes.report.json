@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-information-systems/career-outcomes",
+  "path": "find/courses/graduate/master-of-information-systems/career-outcomes",
+  "timestamp": "2026-10-01T11:55:21.774Z",
+  "title": "Master of Information Systems : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "table",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

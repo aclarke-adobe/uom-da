@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-actuarial-science-extended/how-to-apply",
+  "path": "find/courses/graduate/master-of-actuarial-science-extended/how-to-apply",
+  "timestamp": "2026-10-01T11:11:00.941Z",
+  "title": "Master of Actuarial Science (Extended) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

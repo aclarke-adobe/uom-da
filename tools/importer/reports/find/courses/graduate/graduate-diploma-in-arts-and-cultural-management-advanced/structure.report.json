@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-arts-and-cultural-management-advanced/structure",
+  "path": "find/courses/graduate/graduate-diploma-in-arts-and-cultural-management-advanced/structure",
+  "timestamp": "2026-10-01T10:45:21.511Z",
+  "title": "Graduate Diploma in Arts and Cultural Management (Advanced) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

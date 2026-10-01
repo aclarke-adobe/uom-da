@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-commerce/structure",
+  "path": "find/courses/undergraduate/bachelor-of-commerce/structure",
+  "timestamp": "2026-10-01T10:01:49.252Z",
+  "title": "Bachelor of Commerce : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "table",
+    "quote-profile",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

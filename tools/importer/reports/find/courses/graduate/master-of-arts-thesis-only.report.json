@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-arts-thesis-only",
+  "path": "find/courses/graduate/master-of-arts-thesis-only",
+  "timestamp": "2026-10-01T11:22:43.635Z",
+  "title": "Master of Arts (Thesis only) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

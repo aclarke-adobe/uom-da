@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-education-learning-difficulties/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-education-learning-difficulties/student-experience",
+  "timestamp": "2026-10-01T10:26:10.291Z",
+  "title": "Graduate Certificate in Education (Learning Difficulties) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

@@ -101,9 +101,12 @@ export default function parse(element, { document }) {
 
   // --- code rows (hero codes copied in by the audience transformer) ---
   element.querySelectorAll('ul[data-excat-hero-codes] > li').forEach((li) => {
-    const parts = [...li.children];
-    const label = cleanText(parts[0] || li).replace(/:\s*$/, '');
-    const value = cleanText(li.querySelector('.text-bold, strong, b') || parts[1]);
+    // label / value from the text: the importer's preProcess unwraps the attribute-less label
+    // <span> ("VTAC code: "), so child positions are not reliable
+    const full = cleanText(li);
+    const valueEl = li.querySelector('.text-bold, strong, b');
+    const value = cleanText(valueEl) || full.split(':').slice(1).join(':').trim();
+    const label = (full.includes(':') ? full.split(':')[0] : full.replace(value, '')).trim();
     if (!label || !value || /^course code$/i.test(label)) return;
     cells.push([label, value]);
   });
@@ -129,7 +132,9 @@ export default function parse(element, { document }) {
     cells.push([[p]]);
   });
   // non-link CTA panel messages (e.g. .cta-panel-message) as action text
-  element.querySelectorAll('.key-facts-cta .cta-panel-message').forEach((m) => {
+  // (e.g. div.key-facts-buttons-additional "Applications for this course are currently closed",
+  // shown instead of / beside the buttons on 35 snapshots)
+  element.querySelectorAll('.key-facts-cta .cta-panel-message, .key-facts-cta .key-facts-buttons-additional').forEach((m) => {
     if (!cleanText(m) || m.querySelector('a')) return;
     const p = document.createElement('p');
     p.textContent = cleanText(m);

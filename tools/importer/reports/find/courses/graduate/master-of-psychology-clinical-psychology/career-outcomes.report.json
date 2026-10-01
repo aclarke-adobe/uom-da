@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-psychology-clinical-psychology/career-outcomes",
+  "path": "find/courses/graduate/master-of-psychology-clinical-psychology/career-outcomes",
+  "timestamp": "2026-10-01T12:19:13.966Z",
+  "title": "Master of Psychology (Clinical Psychology) : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-chips"
+  ],
+  "droppedImages": ""
+}

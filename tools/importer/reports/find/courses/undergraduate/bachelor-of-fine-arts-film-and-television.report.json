@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-fine-arts-film-and-television",
+  "path": "find/courses/undergraduate/bachelor-of-fine-arts-film-and-television",
+  "timestamp": "2026-10-01T13:15:36.228Z",
+  "title": "Bachelor of Fine Arts (Film and Television) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

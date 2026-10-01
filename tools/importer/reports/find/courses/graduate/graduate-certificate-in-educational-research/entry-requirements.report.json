@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-educational-research/entry-requirements",
+  "path": "find/courses/graduate/graduate-certificate-in-educational-research/entry-requirements",
+  "timestamp": "2026-10-01T10:26:20.577Z",
+  "title": "Graduate Certificate in Educational Research : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

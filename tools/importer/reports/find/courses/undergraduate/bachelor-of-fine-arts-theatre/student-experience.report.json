@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-fine-arts-theatre/student-experience",
+  "path": "find/courses/undergraduate/bachelor-of-fine-arts-theatre/student-experience",
+  "timestamp": "2026-10-01T13:17:35.584Z",
+  "title": "Bachelor of Fine Arts (Theatre) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

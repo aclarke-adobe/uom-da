@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-actuarial-science/fees",
+  "path": "find/courses/graduate/master-of-actuarial-science/fees",
+  "timestamp": "2026-10-01T11:11:17.393Z",
+  "title": "Master of Actuarial Science : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout",
+    "notice"
+  ],
+  "droppedImages": ""
+}

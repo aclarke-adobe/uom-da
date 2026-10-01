@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-applied-linguistics/entry-requirements",
+  "path": "find/courses/graduate/master-of-applied-linguistics/entry-requirements",
+  "timestamp": "2026-10-01T11:15:52.518Z",
+  "title": "Master of Applied Linguistics : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

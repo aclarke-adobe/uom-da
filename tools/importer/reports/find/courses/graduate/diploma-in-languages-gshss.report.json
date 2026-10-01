@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/diploma-in-languages-gshss",
+  "path": "find/courses/graduate/diploma-in-languages-gshss",
+  "timestamp": "2026-10-01T10:03:15.122Z",
+  "title": "Diploma in Languages (GSHSS) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0028/46963/diploma-in-languages-banner.jpg"
+}

@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-science-earth-sciences/fees",
+  "path": "find/courses/graduate/master-of-science-earth-sciences/fees",
+  "timestamp": "2026-10-01T12:23:46.696Z",
+  "title": "Master of Science (Earth Sciences) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

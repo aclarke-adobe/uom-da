@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-counselling",
+  "path": "find/courses/graduate/master-of-counselling",
+  "timestamp": "2026-10-01T11:35:26.553Z",
+  "title": "Master of Counselling - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "cards-course-link",
+    "cards-course-link",
+    "columns"
+  ],
+  "droppedImages": ""
+}

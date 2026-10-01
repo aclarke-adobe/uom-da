@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-fine-arts-film-and-television/fees",
+  "path": "find/courses/undergraduate/bachelor-of-fine-arts-film-and-television/fees",
+  "timestamp": "2026-10-01T13:15:47.287Z",
+  "title": "Bachelor of Fine Arts (Film and Television) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

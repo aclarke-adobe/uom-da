@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-tax",
+  "path": "find/courses/graduate/specialist-certificate-in-tax",
+  "timestamp": "2026-10-01T12:48:39.065Z",
+  "title": "Specialist Certificate in Tax - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

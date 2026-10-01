@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/honours/bachelor-of-fine-arts-degree-with-honours",
+  "path": "find/courses/honours/bachelor-of-fine-arts-degree-with-honours",
+  "timestamp": "2026-10-01T13:02:08.256Z",
+  "title": "Bachelor of Fine Arts (Degree with Honours) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

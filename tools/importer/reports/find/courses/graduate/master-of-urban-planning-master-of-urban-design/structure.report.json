@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-urban-planning-master-of-urban-design/structure",
+  "path": "find/courses/graduate/master-of-urban-planning-master-of-urban-design/structure",
+  "timestamp": "2026-10-01T12:32:59.133Z",
+  "title": "Master of Urban Planning/Master of Urban Design : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

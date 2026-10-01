@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/architecture/structure",
+  "path": "find/courses/major/architecture/structure",
+  "timestamp": "2026-10-01T13:04:52.263Z",
+  "title": "Architecture : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

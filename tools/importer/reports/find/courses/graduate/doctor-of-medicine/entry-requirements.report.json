@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-medicine/entry-requirements",
+  "path": "find/courses/graduate/doctor-of-medicine/entry-requirements",
+  "timestamp": "2026-10-01T10:04:54.555Z",
+  "title": "Doctor of Medicine : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "accordion",
+    "accordion",
+    "table",
+    "callout"
+  ],
+  "droppedImages": ""
+}

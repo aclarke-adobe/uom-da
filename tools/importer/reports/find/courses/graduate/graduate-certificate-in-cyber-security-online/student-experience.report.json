@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-cyber-security-online/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-cyber-security-online/student-experience",
+  "timestamp": "2026-10-01T10:23:07.937Z",
+  "title": "Graduate Certificate in Cyber Security (Online) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

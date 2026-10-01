@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-corporate-law/how-to-apply",
+  "path": "find/courses/graduate/graduate-diploma-in-corporate-law/how-to-apply",
+  "timestamp": "2026-10-01T10:52:04.714Z",
+  "title": "Graduate Diploma in Corporate Law : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "table",
+    "timeline-key-dates",
+    "table",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

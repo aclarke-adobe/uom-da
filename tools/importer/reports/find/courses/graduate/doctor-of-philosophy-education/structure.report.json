@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-education/structure",
+  "path": "find/courses/graduate/doctor-of-philosophy-education/structure",
+  "timestamp": "2026-10-01T10:07:05.752Z",
+  "title": "Doctor of Philosophy - Education : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

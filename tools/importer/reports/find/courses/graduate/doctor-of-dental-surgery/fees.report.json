@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-dental-surgery/fees",
+  "path": "find/courses/graduate/doctor-of-dental-surgery/fees",
+  "timestamp": "2026-10-01T10:04:08.553Z",
+  "title": "Doctor of Dental Surgery : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0017/420434/varieties/banner.jpg"
+}

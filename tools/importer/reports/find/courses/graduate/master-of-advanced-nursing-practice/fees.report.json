@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-advanced-nursing-practice/fees",
+  "path": "find/courses/graduate/master-of-advanced-nursing-practice/fees",
+  "timestamp": "2026-10-01T11:12:57.894Z",
+  "title": "Master of Advanced Nursing Practice : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

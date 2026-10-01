@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/german-studies",
+  "path": "find/courses/major/german-studies",
+  "timestamp": "2026-10-01T13:08:03.818Z",
+  "title": "German Studies - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

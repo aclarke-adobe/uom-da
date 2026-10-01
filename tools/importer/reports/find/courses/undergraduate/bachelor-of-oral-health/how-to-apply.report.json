@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-oral-health/how-to-apply",
+  "path": "find/courses/undergraduate/bachelor-of-oral-health/how-to-apply",
+  "timestamp": "2026-10-01T13:20:33.843Z",
+  "title": "Bachelor of Oral Health : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "table",
+    "callout",
+    "callout",
+    "table",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-human-resource-management",
+  "path": "find/courses/graduate/master-of-human-resource-management",
+  "timestamp": "2026-10-01T11:53:31.375Z",
+  "title": "Master of Human Resource Management - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-icon",
+    "cards-course-link",
+    "columns"
+  ],
+  "droppedImages": ""
+}

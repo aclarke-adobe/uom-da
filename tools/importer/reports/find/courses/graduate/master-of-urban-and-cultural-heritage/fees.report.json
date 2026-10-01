@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-urban-and-cultural-heritage/fees",
+  "path": "find/courses/graduate/master-of-urban-and-cultural-heritage/fees",
+  "timestamp": "2026-10-01T12:31:34.325Z",
+  "title": "Master of Urban and Cultural Heritage : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

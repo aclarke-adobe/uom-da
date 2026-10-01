@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-marketing/student-experience",
+  "path": "find/courses/graduate/master-of-management-marketing/student-experience",
+  "timestamp": "2026-10-01T10:00:41.596Z",
+  "title": "Master of Management (Marketing) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards",
+    "cards"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-modern-languages-education/how-to-apply",
+  "path": "find/courses/graduate/graduate-certificate-in-modern-languages-education/how-to-apply",
+  "timestamp": "2026-10-01T10:33:44.730Z",
+  "title": "Graduate Certificate in Modern Languages Education : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

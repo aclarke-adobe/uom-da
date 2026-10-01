@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-private-law/how-to-apply",
+  "path": "find/courses/graduate/master-of-private-law/how-to-apply",
+  "timestamp": "2026-10-01T12:16:24.751Z",
+  "title": "Master of Private Law : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "table",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

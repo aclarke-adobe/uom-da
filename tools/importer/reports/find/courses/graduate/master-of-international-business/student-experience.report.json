@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-international-business/student-experience",
+  "path": "find/courses/graduate/master-of-international-business/student-experience",
+  "timestamp": "2026-10-01T10:00:36.978Z",
+  "title": "Master of International Business : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "cards-people",
+    "cards"
+  ],
+  "droppedImages": ""
+}

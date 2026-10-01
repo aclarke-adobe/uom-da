@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management/student-experience",
+  "path": "find/courses/graduate/master-of-management/student-experience",
+  "timestamp": "2026-10-01T12:04:59.783Z",
+  "title": "Master of Management : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "cards-people",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/honours/bachelor-of-medical-science-degree-with-honours/how-to-apply",
+  "path": "find/courses/honours/bachelor-of-medical-science-degree-with-honours/how-to-apply",
+  "timestamp": "2026-10-01T10:01:31.977Z",
+  "title": "Bachelor of Medical Science (Degree with Honours) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "callout"
+  ],
+  "droppedImages": ""
+}

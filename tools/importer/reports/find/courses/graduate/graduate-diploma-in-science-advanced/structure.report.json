@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-science-advanced/structure",
+  "path": "find/courses/graduate/graduate-diploma-in-science-advanced/structure",
+  "timestamp": "2026-10-01T11:06:55.875Z",
+  "title": "Graduate Diploma in Science (Advanced) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

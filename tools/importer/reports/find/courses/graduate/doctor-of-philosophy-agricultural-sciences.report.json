@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-agricultural-sciences",
+  "path": "find/courses/graduate/doctor-of-philosophy-agricultural-sciences",
+  "timestamp": "2026-10-01T10:05:37.198Z",
+  "title": "Doctor of Philosophy - Agricultural Sciences - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

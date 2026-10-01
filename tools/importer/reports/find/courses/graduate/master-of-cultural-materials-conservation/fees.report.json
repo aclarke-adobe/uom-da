@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-cultural-materials-conservation/fees",
+  "path": "find/courses/graduate/master-of-cultural-materials-conservation/fees",
+  "timestamp": "2026-10-01T11:37:12.214Z",
+  "title": "Master of Cultural Materials Conservation : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

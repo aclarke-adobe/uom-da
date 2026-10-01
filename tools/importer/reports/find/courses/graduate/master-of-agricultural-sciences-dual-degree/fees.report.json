@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-agricultural-sciences-dual-degree/fees",
+  "path": "find/courses/graduate/master-of-agricultural-sciences-dual-degree/fees",
+  "timestamp": "2026-10-01T10:00:05.465Z",
+  "title": "Master of Agricultural Sciences (Dual Degree) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

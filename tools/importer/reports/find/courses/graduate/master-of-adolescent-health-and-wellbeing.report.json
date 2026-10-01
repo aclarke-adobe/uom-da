@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-adolescent-health-and-wellbeing",
+  "path": "find/courses/graduate/master-of-adolescent-health-and-wellbeing",
+  "timestamp": "2026-10-01T11:11:30.567Z",
+  "title": "Master of Adolescent Health and Wellbeing - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

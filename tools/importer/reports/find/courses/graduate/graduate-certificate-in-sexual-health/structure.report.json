@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-sexual-health/structure",
+  "path": "find/courses/graduate/graduate-certificate-in-sexual-health/structure",
+  "timestamp": "2026-10-01T10:38:27.100Z",
+  "title": "Graduate Certificate in Sexual Health : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

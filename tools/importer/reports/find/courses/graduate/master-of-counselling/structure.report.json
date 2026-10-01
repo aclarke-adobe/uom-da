@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-counselling/structure",
+  "path": "find/courses/graduate/master-of-counselling/structure",
+  "timestamp": "2026-10-01T11:35:41.851Z",
+  "title": "Master of Counselling : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

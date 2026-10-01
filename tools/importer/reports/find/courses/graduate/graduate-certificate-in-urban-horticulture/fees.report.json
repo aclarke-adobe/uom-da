@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-urban-horticulture/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-urban-horticulture/fees",
+  "timestamp": "2026-10-01T10:41:37.177Z",
+  "title": "Graduate Certificate in Urban Horticulture : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

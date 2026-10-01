@@ -1,0 +1,24 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-legal-leadership/how-to-apply",
+  "path": "find/courses/graduate/specialist-certificate-in-legal-leadership/how-to-apply",
+  "timestamp": "2026-10-01T12:47:01.936Z",
+  "title": "Specialist Certificate in Legal Leadership : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "timeline-key-dates",
+    "table",
+    "timeline-key-dates",
+    "table",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

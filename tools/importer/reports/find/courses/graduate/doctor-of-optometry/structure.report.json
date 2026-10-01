@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-optometry/structure",
+  "path": "find/courses/graduate/doctor-of-optometry/structure",
+  "timestamp": "2026-10-01T10:05:30.016Z",
+  "title": "Doctor of Optometry : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

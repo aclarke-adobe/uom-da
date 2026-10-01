@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-dental-public-health/structure",
+  "path": "find/courses/graduate/graduate-certificate-in-dental-public-health/structure",
+  "timestamp": "2026-10-01T10:23:27.912Z",
+  "title": "Graduate Certificate in Dental Public Health : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-human-resources/student-experience",
+  "path": "find/courses/graduate/master-of-management-human-resources/student-experience",
+  "timestamp": "2026-10-01T12:03:52.441Z",
+  "title": "Master of Management (Human Resources) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-industrial-research-chemistry/how-to-apply",
+  "path": "find/courses/graduate/master-of-industrial-research-chemistry/how-to-apply",
+  "timestamp": "2026-10-01T11:55:10.866Z",
+  "title": "Master of Industrial Research (Chemistry) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "callout",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

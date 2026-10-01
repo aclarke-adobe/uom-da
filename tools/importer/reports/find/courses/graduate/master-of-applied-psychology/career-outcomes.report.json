@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-applied-psychology/career-outcomes",
+  "path": "find/courses/graduate/master-of-applied-psychology/career-outcomes",
+  "timestamp": "2026-10-01T11:16:44.727Z",
+  "title": "Master of Applied Psychology : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

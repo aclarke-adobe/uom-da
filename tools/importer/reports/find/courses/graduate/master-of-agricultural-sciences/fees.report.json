@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-agricultural-sciences/fees",
+  "path": "find/courses/graduate/master-of-agricultural-sciences/fees",
+  "timestamp": "2026-10-01T11:14:10.039Z",
+  "title": "Master of Agricultural Sciences : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

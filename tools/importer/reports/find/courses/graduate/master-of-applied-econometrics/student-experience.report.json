@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-applied-econometrics/student-experience",
+  "path": "find/courses/graduate/master-of-applied-econometrics/student-experience",
+  "timestamp": "2026-10-01T11:15:41.264Z",
+  "title": "Master of Applied Econometrics : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-people",
+    "cards-people",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

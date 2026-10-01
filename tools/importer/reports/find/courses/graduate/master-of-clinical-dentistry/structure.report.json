@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-clinical-dentistry/structure",
+  "path": "find/courses/graduate/master-of-clinical-dentistry/structure",
+  "timestamp": "2026-10-01T11:30:21.112Z",
+  "title": "Master of Clinical Dentistry : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

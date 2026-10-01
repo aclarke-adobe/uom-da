@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-law/how-to-apply",
+  "path": "find/courses/graduate/doctor-of-philosophy-law/how-to-apply",
+  "timestamp": "2026-10-01T10:08:37.005Z",
+  "title": "Doctor of Philosophy - Law : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "table",
+    "callout",
+    "callout",
+    "table",
+    "callout"
+  ],
+  "droppedImages": ""
+}

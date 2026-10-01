@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-university-teaching/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-university-teaching/fees",
+  "timestamp": "2026-10-01T10:41:15.038Z",
+  "title": "Graduate Certificate in University Teaching : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

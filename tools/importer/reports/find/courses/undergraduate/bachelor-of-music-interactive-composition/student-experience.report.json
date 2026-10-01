@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-music-interactive-composition/student-experience",
+  "path": "find/courses/undergraduate/bachelor-of-music-interactive-composition/student-experience",
+  "timestamp": "2026-10-01T13:18:46.154Z",
+  "title": "Bachelor of Music (Interactive Composition) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

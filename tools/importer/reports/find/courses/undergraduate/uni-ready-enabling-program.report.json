@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/uni-ready-enabling-program",
+  "path": "find/courses/undergraduate/uni-ready-enabling-program",
+  "timestamp": "2026-10-01T13:23:05.849Z",
+  "title": "Uni Ready Enabling Program - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

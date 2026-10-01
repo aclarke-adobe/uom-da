@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-critical-care-nursing/entry-requirements",
+  "path": "find/courses/graduate/specialist-certificate-in-critical-care-nursing/entry-requirements",
+  "timestamp": "2026-10-01T12:43:26.568Z",
+  "title": "Specialist Certificate in Critical Care Nursing : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0023/105098/Specialist-Certificate-in-Critical-Care-Nursing2-.jpg"
+}

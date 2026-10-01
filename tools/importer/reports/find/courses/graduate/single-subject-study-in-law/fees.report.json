@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/single-subject-study-in-law/fees",
+  "path": "find/courses/graduate/single-subject-study-in-law/fees",
+  "timestamp": "2026-10-01T12:40:23.144Z",
+  "title": "Single Subject Study in Law : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0019/133345/MLM-2020-1.jpg"
+}

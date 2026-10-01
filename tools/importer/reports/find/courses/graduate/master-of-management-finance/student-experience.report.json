@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-finance/student-experience",
+  "path": "find/courses/graduate/master-of-management-finance/student-experience",
+  "timestamp": "2026-10-01T12:03:27.068Z",
+  "title": "Master of Management (Finance) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-people",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/accounting/structure",
+  "path": "find/courses/major/accounting/structure",
+  "timestamp": "2026-10-01T13:04:03.807Z",
+  "title": "Accounting : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

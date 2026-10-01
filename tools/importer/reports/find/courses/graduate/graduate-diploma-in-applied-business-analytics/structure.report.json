@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-applied-business-analytics/structure",
+  "path": "find/courses/graduate/graduate-diploma-in-applied-business-analytics/structure",
+  "timestamp": "2026-10-01T10:44:31.233Z",
+  "title": "Graduate Diploma in Applied Business Analytics : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

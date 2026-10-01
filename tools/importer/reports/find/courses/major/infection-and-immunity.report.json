@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/infection-and-immunity",
+  "path": "find/courses/major/infection-and-immunity",
+  "timestamp": "2026-10-01T13:08:41.229Z",
+  "title": "Infection and Immunity - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

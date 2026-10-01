@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-psychology-clinical-psychology-doctor-of-philosophy/fees",
+  "path": "find/courses/graduate/master-of-psychology-clinical-psychology-doctor-of-philosophy/fees",
+  "timestamp": "2026-10-01T12:19:04.437Z",
+  "title": "Master of Psychology (Clinical Psychology)/Doctor of Philosophy : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

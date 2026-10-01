@@ -104,6 +104,87 @@ function markSplit(d, clone, id) {
   d.after(clone);
 }
 
+/**
+ * International-only notices. Some courses are closed to student-visa holders; their international
+ * body carries a notice that has no domestic counterpart ("This course is not available to
+ * international students who require a student visa (subclass 500) … CRICOS"), either inside the
+ * graduate residency panel section, inside #admission-criteria, or as its own div.section (UG).
+ * None of those regions is audience-split, so the notice was lost. Each such notice is inserted into
+ * the live body as its own international-only section, wrapped so the notice block instance
+ * (`B .course-section__main > .course-content > div.notice`) parses it:
+ *   <div data-excat-audience="international" data-excat-section-start="international-notice-N">
+ *     <div class="course-section__main"><div class="course-content">{notice}</div></div></div>
+ * Position: next to the live counterpart of the notice's top-level body child (before it when the
+ * notice precedes that child's first heading, else after it). When the element that follows does not
+ * start a template section, it is marked as a plain section start (`after-international-notice-N`)
+ * so the international-only section never swallows shared content.
+ */
+const BODY_SEL = "[data-test$='-page']";
+
+function norm(t) {
+  return (t || '').replace(/\s+/g, ' ').trim().toLowerCase();
+}
+
+function addInternationalOnlyNotices(element, template, bodyPart, liveSelector) {
+  if (!bodyPart) return;
+  const intlB = bodyPart.querySelector(BODY_SEL);
+  const liveB = element.querySelector(`#main div${BODY_SEL}`) || element.querySelector(`div${BODY_SEL}`);
+  if (!intlB || !liveB) return;
+  const doc = element.ownerDocument;
+  const sectionStarts = new Set();
+  (template.sections || []).forEach((s) => { const el = first(element, liveSelector(s.id)); if (el) sectionStarts.add(el); });
+  const isSectionStart = (el) => !!el && (sectionStarts.has(el) || el.hasAttribute(START_ATTR));
+  const liveText = norm(signature(liveB));
+  let n = 0;
+  [...intlB.querySelectorAll('.notice')].forEach((notice) => {
+    if (notice.parentElement.closest('.notice') || notice.closest('.fee-info-panel, #fees, table')) return;
+    const text = norm(notice.textContent);
+    if (!text || liveText.includes(text)) return; // also shown to domestic readers / already split
+    let top = notice;
+    while (top.parentElement && top.parentElement !== intlB) top = top.parentElement;
+    if (top.parentElement !== intlB) return;
+    const liveKids = [...liveB.children];
+    let counterpart = top.id ? liveB.querySelector(`:scope > #${CSS.escape(top.id)}`) : null;
+    if (!counterpart && top.querySelector('.user-profile-toggle')) counterpart = liveKids.find((k) => k.querySelector('.user-profile-toggle'));
+    let ref = null; // insert before ref
+    if (counterpart) {
+      const heading = top.querySelector('h1, h2, h3, h4');
+      const before = heading && (notice.compareDocumentPosition(heading) & 4); // heading follows notice
+      ref = before ? counterpart : counterpart.nextElementSibling;
+      // skip over audience copies of the counterpart (its international clone)
+      while (!before && ref && ref.getAttribute(START_ATTR) === `${counterpart.getAttribute(START_ATTR)}--international`) ref = ref.nextElementSibling;
+    } else {
+      // intl-only top-level region: after the live counterpart of its nearest previous sibling with an id
+      let prev = top.previousElementSibling;
+      while (prev && !prev.id) prev = prev.previousElementSibling;
+      const prevLive = prev ? liveB.querySelector(`:scope > #${CSS.escape(prev.id)}`) : null;
+      if (!prevLive) return;
+      ref = prevLive.nextElementSibling;
+      while (ref && ref.getAttribute(START_ATTR) && /--international$/.test(ref.getAttribute(START_ATTR))) ref = ref.nextElementSibling;
+    }
+    n += 1;
+    if (ref && !isSectionStart(ref)) {
+      // the following content is not a template section start (e.g. the unmapped "Entry points"
+      // div.section after the title band on research-degree ER pages): give it a plain section break
+      // of its own so it does not become part of the international-only section
+      ref.setAttribute(START_ATTR, `after-international-notice-${n}`);
+      console.log(`${LOG} international-only notice: resumed shared content in its own section`);
+    }
+    const wrap = doc.createElement('div');
+    wrap.setAttribute(AUD_ATTR, 'international');
+    wrap.setAttribute(START_ATTR, `international-notice-${n}`);
+    const main = doc.createElement('div');
+    main.className = 'course-section__main';
+    const content = doc.createElement('div');
+    content.className = 'course-content';
+    content.append(doc.importNode(notice, true));
+    main.append(content);
+    wrap.append(main);
+    liveB.insertBefore(wrap, ref);
+    console.log(`${LOG} international-only notice inserted: "${text.slice(0, 60)}"`);
+  });
+}
+
 // residency-notice: the international residency text goes inside the domestic block.
 function addInternationalResidency(element, template, inBlock, bodyPart) {
   if (!inBlock || !bodyPart) return;
@@ -231,6 +312,9 @@ export default function transform(hookName, element, payload) {
 
     // residency-notice (inBlock, not split into sections)
     addInternationalResidency(element, template, contract.inBlock && contract.inBlock['residency-notice'], parts.body);
+
+    // international-only notices (not available to student-visa holders, …)
+    addInternationalOnlyNotices(element, template, parts.body, liveSelector);
   }
 
   if (hookName === 'afterTransform') {

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-implementation-science/student-experience",
+  "path": "find/courses/graduate/specialist-certificate-in-implementation-science/student-experience",
+  "timestamp": "2026-10-01T12:45:56.747Z",
+  "title": "Specialist Certificate in Implementation Science : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0026/108782/Narrative-therapy.jpg"
+}

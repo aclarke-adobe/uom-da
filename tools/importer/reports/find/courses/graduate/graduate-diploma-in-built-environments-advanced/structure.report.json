@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-built-environments-advanced/structure",
+  "path": "find/courses/graduate/graduate-diploma-in-built-environments-advanced/structure",
+  "timestamp": "2026-10-01T10:47:13.974Z",
+  "title": "Graduate Diploma in Built Environments (Advanced) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

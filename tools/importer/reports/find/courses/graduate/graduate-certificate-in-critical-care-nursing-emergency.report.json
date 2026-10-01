@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-critical-care-nursing-emergency",
+  "path": "find/courses/graduate/graduate-certificate-in-critical-care-nursing-emergency",
+  "timestamp": "2026-10-01T10:22:04.505Z",
+  "title": "Graduate Certificate in Critical Care Nursing (Emergency) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

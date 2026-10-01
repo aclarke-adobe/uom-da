@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-empowering-health-in-aboriginal-communities/entry-requirements",
+  "path": "find/courses/graduate/specialist-certificate-in-empowering-health-in-aboriginal-communities/entry-requirements",
+  "timestamp": "2026-10-01T12:44:57.246Z",
+  "title": "Specialist Certificate in Empowering Health in Aboriginal Communities : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "residency-notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-fine-arts-screenwriting/career-outcomes",
+  "path": "find/courses/undergraduate/bachelor-of-fine-arts-screenwriting/career-outcomes",
+  "timestamp": "2026-10-01T13:16:52.831Z",
+  "title": "Bachelor of Fine Arts (Screenwriting) : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-chips"
+  ],
+  "droppedImages": ""
+}

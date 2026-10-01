@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-science-extended/career-outcomes",
+  "path": "find/courses/undergraduate/bachelor-of-science-extended/career-outcomes",
+  "timestamp": "2026-10-01T13:20:48.298Z",
+  "title": "Bachelor of Science (Extended) : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "cards-chips"
+  ],
+  "droppedImages": ""
+}

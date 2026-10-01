@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-creative-writing-publishing-and-editing/entry-requirements",
+  "path": "find/courses/graduate/master-of-creative-writing-publishing-and-editing/entry-requirements",
+  "timestamp": "2026-10-01T11:36:19.333Z",
+  "title": "Master of Creative Writing, Publishing and Editing : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

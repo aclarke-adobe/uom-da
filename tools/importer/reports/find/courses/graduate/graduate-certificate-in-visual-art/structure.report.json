@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-visual-art/structure",
+  "path": "find/courses/graduate/graduate-certificate-in-visual-art/structure",
+  "timestamp": "2026-10-01T09:59:33.563Z",
+  "title": "Graduate Certificate in Visual Art : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

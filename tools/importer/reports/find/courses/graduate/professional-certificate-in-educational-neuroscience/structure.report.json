@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-educational-neuroscience/structure",
+  "path": "find/courses/graduate/professional-certificate-in-educational-neuroscience/structure",
+  "timestamp": "2026-10-01T12:35:29.651Z",
+  "title": "Professional Certificate in Educational Neuroscience : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

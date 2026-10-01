@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctoral-program-in-management/structure",
+  "path": "find/courses/graduate/doctoral-program-in-management/structure",
+  "timestamp": "2026-10-01T13:56:15.857Z",
+  "title": "Doctoral Program in Management : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "table"
+  ],
+  "droppedImages": ""
+}

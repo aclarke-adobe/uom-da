@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-chemical-engineering",
+  "path": "find/courses/graduate/master-of-chemical-engineering",
+  "timestamp": "2026-10-01T11:28:27.352Z",
+  "title": "Master of Chemical Engineering - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

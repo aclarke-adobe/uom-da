@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-agriculture/student-experience",
+  "path": "find/courses/undergraduate/bachelor-of-agriculture/student-experience",
+  "timestamp": "2026-10-01T13:12:50.298Z",
+  "title": "Bachelor of Agriculture : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

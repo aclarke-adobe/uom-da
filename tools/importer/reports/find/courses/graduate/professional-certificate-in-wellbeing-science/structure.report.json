@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-wellbeing-science/structure",
+  "path": "find/courses/graduate/professional-certificate-in-wellbeing-science/structure",
+  "timestamp": "2026-10-01T12:39:49.814Z",
+  "title": "Professional Certificate in Wellbeing Science : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0030/52986/Prof.jpg"
+}

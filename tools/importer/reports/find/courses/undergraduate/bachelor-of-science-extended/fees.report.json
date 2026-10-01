@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-science-extended/fees",
+  "path": "find/courses/undergraduate/bachelor-of-science-extended/fees",
+  "timestamp": "2026-10-01T13:20:54.962Z",
+  "title": "Bachelor of Science (Extended) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

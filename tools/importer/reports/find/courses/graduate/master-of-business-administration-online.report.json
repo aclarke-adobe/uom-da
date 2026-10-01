@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-business-administration-online",
+  "path": "find/courses/graduate/master-of-business-administration-online",
+  "timestamp": "2026-10-01T11:26:10.655Z",
+  "title": "Master of Business Administration (Online) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

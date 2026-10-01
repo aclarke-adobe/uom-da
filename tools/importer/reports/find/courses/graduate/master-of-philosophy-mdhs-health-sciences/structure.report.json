@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-philosophy-mdhs-health-sciences/structure",
+  "path": "find/courses/graduate/master-of-philosophy-mdhs-health-sciences/structure",
+  "timestamp": "2026-10-01T12:13:27.420Z",
+  "title": "Master of Philosophy - MDHS (Health Sciences) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

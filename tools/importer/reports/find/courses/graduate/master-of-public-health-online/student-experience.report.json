@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-public-health-online/student-experience",
+  "path": "find/courses/graduate/master-of-public-health-online/student-experience",
+  "timestamp": "2026-10-01T12:21:10.390Z",
+  "title": "Master of Public Health (Online) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

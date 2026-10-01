@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-counselling",
+  "path": "find/courses/graduate/graduate-diploma-in-counselling",
+  "timestamp": "2026-10-01T10:52:17.874Z",
+  "title": "Graduate Diploma in Counselling - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "cards-course-link",
+    "cards-course-link",
+    "columns"
+  ],
+  "droppedImages": ""
+}

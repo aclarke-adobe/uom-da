@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-language-and-cultural-literacy/fees",
+  "path": "find/courses/graduate/professional-certificate-in-language-and-cultural-literacy/fees",
+  "timestamp": "2026-10-01T12:36:57.181Z",
+  "title": "Professional Certificate in Language and Cultural Literacy : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

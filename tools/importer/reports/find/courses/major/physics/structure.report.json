@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/physics/structure",
+  "path": "find/courses/major/physics/structure",
+  "timestamp": "2026-10-01T13:10:46.148Z",
+  "title": "Physics : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

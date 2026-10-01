@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-implementation-science/entry-requirements",
+  "path": "find/courses/graduate/specialist-certificate-in-implementation-science/entry-requirements",
+  "timestamp": "2026-10-01T12:45:43.417Z",
+  "title": "Specialist Certificate in Implementation Science : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0026/108782/Narrative-therapy.jpg"
+}

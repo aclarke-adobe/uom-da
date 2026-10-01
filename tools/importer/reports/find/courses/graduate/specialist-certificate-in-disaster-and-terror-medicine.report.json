@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-disaster-and-terror-medicine",
+  "path": "find/courses/graduate/specialist-certificate-in-disaster-and-terror-medicine",
+  "timestamp": "2026-10-01T12:44:03.535Z",
+  "title": "Specialist Certificate in Disaster and Terror Medicine - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-medicine-dentistry-and-health-sciences/student-experience",
+  "path": "find/courses/graduate/doctor-of-philosophy-medicine-dentistry-and-health-sciences/student-experience",
+  "timestamp": "2026-10-01T10:09:06.647Z",
+  "title": "Doctor of Philosophy - Medicine, Dentistry and Health Sciences : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video"
+  ],
+  "droppedImages": ""
+}

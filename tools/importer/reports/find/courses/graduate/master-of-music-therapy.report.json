@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-music-therapy",
+  "path": "find/courses/graduate/master-of-music-therapy",
+  "timestamp": "2026-10-01T12:09:23.281Z",
+  "title": "Master of Music Therapy - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

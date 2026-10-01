@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/human-nutrition",
+  "path": "find/courses/major/human-nutrition",
+  "timestamp": "2026-10-01T13:08:19.570Z",
+  "title": "Human Nutrition - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

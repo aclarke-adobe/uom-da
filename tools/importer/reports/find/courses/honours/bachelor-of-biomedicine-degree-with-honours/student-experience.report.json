@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/honours/bachelor-of-biomedicine-degree-with-honours/student-experience",
+  "path": "find/courses/honours/bachelor-of-biomedicine-degree-with-honours/student-experience",
+  "timestamp": "2026-10-01T13:01:41.913Z",
+  "title": "Bachelor of Biomedicine (Degree with Honours) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "video",
+    "video"
+  ],
+  "droppedImages": ""
+}

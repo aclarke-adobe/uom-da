@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-economics/fees",
+  "path": "find/courses/graduate/master-of-economics/fees",
+  "timestamp": "2026-10-01T11:40:19.035Z",
+  "title": "Master of Economics : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout",
+    "notice"
+  ],
+  "droppedImages": ""
+}

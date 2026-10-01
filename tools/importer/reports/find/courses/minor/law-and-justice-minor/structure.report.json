@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/minor/law-and-justice-minor/structure",
+  "path": "find/courses/minor/law-and-justice-minor/structure",
+  "timestamp": "2026-10-01T13:12:23.581Z",
+  "title": "Law and Justice minor : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

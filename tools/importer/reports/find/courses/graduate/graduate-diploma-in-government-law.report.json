@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-government-law",
+  "path": "find/courses/graduate/graduate-diploma-in-government-law",
+  "timestamp": "2026-10-01T10:57:33.257Z",
+  "title": "Graduate Diploma in Government Law - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

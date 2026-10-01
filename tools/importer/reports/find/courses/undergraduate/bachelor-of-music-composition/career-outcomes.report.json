@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-music-composition/career-outcomes",
+  "path": "find/courses/undergraduate/bachelor-of-music-composition/career-outcomes",
+  "timestamp": "2026-10-01T13:18:05.154Z",
+  "title": "Bachelor of Music (Composition) : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

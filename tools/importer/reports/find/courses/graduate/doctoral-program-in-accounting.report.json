@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctoral-program-in-accounting",
+  "path": "find/courses/graduate/doctoral-program-in-accounting",
+  "timestamp": "2026-10-01T10:10:45.929Z",
+  "title": "Doctoral Program in Accounting - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/minor/digital-studies-minor",
+  "path": "find/courses/minor/digital-studies-minor",
+  "timestamp": "2026-10-01T13:52:04.924Z",
+  "title": "Digital Studies minor - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside"
+  ],
+  "droppedImages": "https://findacourse.study.unimelb.edu.au/find/_nuxt/placeholder-new.DGFxYecG.jpg"
+}

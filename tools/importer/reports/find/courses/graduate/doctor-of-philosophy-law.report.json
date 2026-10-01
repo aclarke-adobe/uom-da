@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-law",
+  "path": "find/courses/graduate/doctor-of-philosophy-law",
+  "timestamp": "2026-10-01T10:08:23.663Z",
+  "title": "Doctor of Philosophy - Law - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-psychology/career-outcomes",
+  "path": "find/courses/graduate/graduate-diploma-in-psychology/career-outcomes",
+  "timestamp": "2026-10-01T11:05:51.573Z",
+  "title": "Graduate Diploma in Psychology : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

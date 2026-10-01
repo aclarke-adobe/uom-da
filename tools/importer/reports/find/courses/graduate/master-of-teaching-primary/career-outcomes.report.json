@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-teaching-primary/career-outcomes",
+  "path": "find/courses/graduate/master-of-teaching-primary/career-outcomes",
+  "timestamp": "2026-10-01T12:29:11.941Z",
+  "title": "Master of Teaching (Primary) : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards-chips"
+  ],
+  "droppedImages": ""
+}

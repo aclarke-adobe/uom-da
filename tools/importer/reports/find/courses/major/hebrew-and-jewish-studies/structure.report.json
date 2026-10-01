@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/hebrew-and-jewish-studies/structure",
+  "path": "find/courses/major/hebrew-and-jewish-studies/structure",
+  "timestamp": "2026-10-01T13:08:15.258Z",
+  "title": "Hebrew and Jewish Studies : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

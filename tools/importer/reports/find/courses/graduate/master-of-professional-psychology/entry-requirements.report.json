@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-professional-psychology/entry-requirements",
+  "path": "find/courses/graduate/master-of-professional-psychology/entry-requirements",
+  "timestamp": "2026-10-01T12:16:42.594Z",
+  "title": "Master of Professional Psychology : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

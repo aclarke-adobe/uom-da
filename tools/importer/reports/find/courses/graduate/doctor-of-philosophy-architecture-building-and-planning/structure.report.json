@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-architecture-building-and-planning/structure",
+  "path": "find/courses/graduate/doctor-of-philosophy-architecture-building-and-planning/structure",
+  "timestamp": "2026-10-01T10:06:17.347Z",
+  "title": "Doctor of Philosophy - Architecture, Building and Planning : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

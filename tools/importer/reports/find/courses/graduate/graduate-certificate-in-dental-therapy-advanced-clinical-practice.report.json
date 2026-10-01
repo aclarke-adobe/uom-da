@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-dental-therapy-advanced-clinical-practice",
+  "path": "find/courses/graduate/graduate-certificate-in-dental-therapy-advanced-clinical-practice",
+  "timestamp": "2026-10-01T10:23:34.308Z",
+  "title": "Graduate Certificate in Dental Therapy (Advanced Clinical Practice) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-agriculture",
+  "path": "find/courses/undergraduate/bachelor-of-agriculture",
+  "timestamp": "2026-10-01T13:12:30.882Z",
+  "title": "Bachelor of Agriculture - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

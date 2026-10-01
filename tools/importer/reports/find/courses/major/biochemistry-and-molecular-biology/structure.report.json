@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/biochemistry-and-molecular-biology/structure",
+  "path": "find/courses/major/biochemistry-and-molecular-biology/structure",
+  "timestamp": "2026-10-01T13:05:05.496Z",
+  "title": "Biochemistry and Molecular Biology : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

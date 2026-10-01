@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/physics/career-outcomes",
+  "path": "find/courses/major/physics/career-outcomes",
+  "timestamp": "2026-10-01T13:10:43.032Z",
+  "title": "Physics : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "video"
+  ],
+  "droppedImages": ""
+}

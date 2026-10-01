@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-architecture-master-of-urban-planning/fees",
+  "path": "find/courses/graduate/master-of-architecture-master-of-urban-planning/fees",
+  "timestamp": "2026-10-01T11:20:10.257Z",
+  "title": "Master of Architecture/Master of Urban Planning : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

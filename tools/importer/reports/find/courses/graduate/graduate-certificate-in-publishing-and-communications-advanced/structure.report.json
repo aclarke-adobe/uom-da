@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-publishing-and-communications-advanced/structure",
+  "path": "find/courses/graduate/graduate-certificate-in-publishing-and-communications-advanced/structure",
+  "timestamp": "2026-10-01T10:37:42.236Z",
+  "title": "Graduate Certificate in Publishing and Communications (Advanced) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

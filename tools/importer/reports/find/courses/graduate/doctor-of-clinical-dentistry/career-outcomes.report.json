@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-clinical-dentistry/career-outcomes",
+  "path": "find/courses/graduate/doctor-of-clinical-dentistry/career-outcomes",
+  "timestamp": "2026-10-01T10:03:41.098Z",
+  "title": "Doctor of Clinical Dentistry : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0017/422306/varieties/banner.jpg"
+}

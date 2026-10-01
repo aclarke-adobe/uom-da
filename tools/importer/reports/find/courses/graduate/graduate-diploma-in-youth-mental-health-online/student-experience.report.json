@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-youth-mental-health-online/student-experience",
+  "path": "find/courses/graduate/graduate-diploma-in-youth-mental-health-online/student-experience",
+  "timestamp": "2026-10-01T11:09:47.730Z",
+  "title": "Graduate Diploma in Youth Mental Health (Online) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

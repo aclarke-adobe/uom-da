@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-psychology-educational-and-developmental/structure",
+  "path": "find/courses/graduate/master-of-psychology-educational-and-developmental/structure",
+  "timestamp": "2026-10-01T12:20:16.325Z",
+  "title": "Master of Psychology (Educational and Developmental) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

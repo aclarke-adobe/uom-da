@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-wellbeing-leadership/fees",
+  "path": "find/courses/graduate/professional-certificate-in-wellbeing-leadership/fees",
+  "timestamp": "2026-10-01T12:39:16.978Z",
+  "title": "Professional Certificate in Wellbeing Leadership : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0030/52986/Prof.jpg"
+}

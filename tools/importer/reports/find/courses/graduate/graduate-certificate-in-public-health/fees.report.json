@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-public-health/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-public-health/fees",
+  "timestamp": "2026-10-01T10:37:10.266Z",
+  "title": "Graduate Certificate in Public Health : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

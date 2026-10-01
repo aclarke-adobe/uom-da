@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-indigenous-research/student-experience",
+  "path": "find/courses/graduate/professional-certificate-in-indigenous-research/student-experience",
+  "timestamp": "2026-10-01T13:54:48.302Z",
+  "title": "Professional Certificate in Indigenous Research : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": "https://findacourse.study.unimelb.edu.au/find/_nuxt/placeholder-new.DGFxYecG.jpg"
+}

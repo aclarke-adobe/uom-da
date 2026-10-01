@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-entrepreneurship-enhanced/entry-requirements",
+  "path": "find/courses/graduate/master-of-entrepreneurship-enhanced/entry-requirements",
+  "timestamp": "2026-10-01T11:44:58.350Z",
+  "title": "Master of Entrepreneurship (Enhanced) : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

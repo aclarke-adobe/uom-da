@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-food-and-packaging-innovation/student-experience",
+  "path": "find/courses/graduate/master-of-food-and-packaging-innovation/student-experience",
+  "timestamp": "2026-10-01T11:50:07.619Z",
+  "title": "Master of Food and Packaging Innovation : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

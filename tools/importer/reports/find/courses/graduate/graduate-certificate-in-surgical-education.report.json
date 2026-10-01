@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-surgical-education",
+  "path": "find/courses/graduate/graduate-certificate-in-surgical-education",
+  "timestamp": "2026-10-01T09:59:19.421Z",
+  "title": "Graduate Certificate in Surgical Education - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

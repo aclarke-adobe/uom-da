@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-teaching-early-childhood-and-primary/fees",
+  "path": "find/courses/graduate/master-of-teaching-early-childhood-and-primary/fees",
+  "timestamp": "2026-10-01T12:28:33.113Z",
+  "title": "Master of Teaching (Early Childhood and Primary) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-creative-writing-publishing-and-editing/fees",
+  "path": "find/courses/graduate/master-of-creative-writing-publishing-and-editing/fees",
+  "timestamp": "2026-10-01T11:36:22.327Z",
+  "title": "Master of Creative Writing, Publishing and Editing : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

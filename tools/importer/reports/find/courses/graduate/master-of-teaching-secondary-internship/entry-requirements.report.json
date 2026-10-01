@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-teaching-secondary-internship/entry-requirements",
+  "path": "find/courses/graduate/master-of-teaching-secondary-internship/entry-requirements",
+  "timestamp": "2026-10-01T12:29:41.138Z",
+  "title": "Master of Teaching (Secondary) Internship : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

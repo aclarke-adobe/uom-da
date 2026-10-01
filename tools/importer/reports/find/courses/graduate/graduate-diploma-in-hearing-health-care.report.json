@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-hearing-health-care",
+  "path": "find/courses/graduate/graduate-diploma-in-hearing-health-care",
+  "timestamp": "2026-10-01T10:58:24.309Z",
+  "title": "Graduate Diploma in Hearing Health Care - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

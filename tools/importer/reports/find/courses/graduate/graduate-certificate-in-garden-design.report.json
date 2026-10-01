@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-garden-design",
+  "path": "find/courses/graduate/graduate-certificate-in-garden-design",
+  "timestamp": "2026-10-01T10:28:55.120Z",
+  "title": "Graduate Certificate in Garden Design - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

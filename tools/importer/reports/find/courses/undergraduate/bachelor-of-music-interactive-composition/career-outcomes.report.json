@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-music-interactive-composition/career-outcomes",
+  "path": "find/courses/undergraduate/bachelor-of-music-interactive-composition/career-outcomes",
+  "timestamp": "2026-10-01T13:18:29.313Z",
+  "title": "Bachelor of Music (Interactive Composition) : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile",
+    "cards-chips"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-arts-and-cultural-management/student-experience",
+  "path": "find/courses/graduate/master-of-arts-and-cultural-management/student-experience",
+  "timestamp": "2026-10-01T11:22:40.202Z",
+  "title": "Master of Arts and Cultural Management : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-arts-advanced/student-experience",
+  "path": "find/courses/graduate/graduate-diploma-in-arts-advanced/student-experience",
+  "timestamp": "2026-10-01T10:45:00.647Z",
+  "title": "Graduate Diploma in Arts (Advanced) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

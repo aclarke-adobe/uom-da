@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-teaching-early-childhood-and-primary/student-experience",
+  "path": "find/courses/graduate/master-of-teaching-early-childhood-and-primary/student-experience",
+  "timestamp": "2026-10-01T12:28:43.563Z",
+  "title": "Master of Teaching (Early Childhood and Primary) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

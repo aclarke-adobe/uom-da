@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-teaching-secondary-internship/student-experience",
+  "path": "find/courses/graduate/master-of-teaching-secondary-internship/student-experience",
+  "timestamp": "2026-10-01T12:29:57.167Z",
+  "title": "Master of Teaching (Secondary) Internship : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "video",
+    "video"
+  ],
+  "droppedImages": ""
+}

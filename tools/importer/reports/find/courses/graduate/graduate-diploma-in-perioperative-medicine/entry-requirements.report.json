@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-perioperative-medicine/entry-requirements",
+  "path": "find/courses/graduate/graduate-diploma-in-perioperative-medicine/entry-requirements",
+  "timestamp": "2026-10-01T11:04:12.341Z",
+  "title": "Graduate Diploma in Perioperative Medicine : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

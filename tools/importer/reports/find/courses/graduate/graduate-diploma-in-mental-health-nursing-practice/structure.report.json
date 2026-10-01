@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-mental-health-nursing-practice/structure",
+  "path": "find/courses/graduate/graduate-diploma-in-mental-health-nursing-practice/structure",
+  "timestamp": "2026-10-01T11:02:14.712Z",
+  "title": "Graduate Diploma in Mental Health Nursing Practice : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

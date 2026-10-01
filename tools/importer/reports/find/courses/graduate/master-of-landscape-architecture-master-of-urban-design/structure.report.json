@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-landscape-architecture-master-of-urban-design/structure",
+  "path": "find/courses/graduate/master-of-landscape-architecture-master-of-urban-design/structure",
+  "timestamp": "2026-10-01T11:59:46.320Z",
+  "title": "Master of Landscape Architecture/Master of Urban Design : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

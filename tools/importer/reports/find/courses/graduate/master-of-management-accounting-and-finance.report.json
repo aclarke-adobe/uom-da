@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting-and-finance",
+  "path": "find/courses/graduate/master-of-management-accounting-and-finance",
+  "timestamp": "2026-10-01T12:01:56.032Z",
+  "title": "Master of Management (Accounting and Finance) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

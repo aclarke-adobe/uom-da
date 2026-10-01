@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-cancer-sciences/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-cancer-sciences/student-experience",
+  "timestamp": "2026-10-01T10:19:43.144Z",
+  "title": "Graduate Certificate in Cancer Sciences : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-public-health",
+  "path": "find/courses/graduate/graduate-certificate-in-public-health",
+  "timestamp": "2026-10-01T10:36:28.217Z",
+  "title": "Graduate Certificate in Public Health - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

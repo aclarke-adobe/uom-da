@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-paediatric-nursing/entry-requirements",
+  "path": "find/courses/graduate/graduate-certificate-in-paediatric-nursing/entry-requirements",
+  "timestamp": "2026-10-01T10:34:23.952Z",
+  "title": "Graduate Certificate in Paediatric Nursing : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

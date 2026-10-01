@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-psychology-clinical-neuropsychology-doctor-of-philosophy/structure",
+  "path": "find/courses/graduate/master-of-psychology-clinical-neuropsychology-doctor-of-philosophy/structure",
+  "timestamp": "2026-10-01T12:18:31.348Z",
+  "title": "Master of Psychology (Clinical Neuropsychology)/Doctor of Philosophy : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

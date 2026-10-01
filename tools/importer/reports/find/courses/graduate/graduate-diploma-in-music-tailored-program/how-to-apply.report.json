@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-music-tailored-program/how-to-apply",
+  "path": "find/courses/graduate/graduate-diploma-in-music-tailored-program/how-to-apply",
+  "timestamp": "2026-10-01T11:04:01.645Z",
+  "title": "Graduate Diploma in Music (Tailored Program) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "callout",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

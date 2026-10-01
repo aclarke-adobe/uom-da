@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/marine-biology",
+  "path": "find/courses/major/marine-biology",
+  "timestamp": "2026-10-01T13:09:22.065Z",
+  "title": "Marine Biology - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

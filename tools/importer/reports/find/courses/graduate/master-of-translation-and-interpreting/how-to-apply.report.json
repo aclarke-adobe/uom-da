@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-translation-and-interpreting/how-to-apply",
+  "path": "find/courses/graduate/master-of-translation-and-interpreting/how-to-apply",
+  "timestamp": "2026-10-01T12:31:14.752Z",
+  "title": "Master of Translation and Interpreting : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

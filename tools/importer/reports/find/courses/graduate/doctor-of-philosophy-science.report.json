@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-science",
+  "path": "find/courses/graduate/doctor-of-philosophy-science",
+  "timestamp": "2026-10-01T10:09:09.376Z",
+  "title": "Doctor of Philosophy - Science - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

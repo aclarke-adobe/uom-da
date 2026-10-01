@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-clinical-ultrasound/structure",
+  "path": "find/courses/graduate/master-of-clinical-ultrasound/structure",
+  "timestamp": "2026-10-01T11:32:05.263Z",
+  "title": "Master of Clinical Ultrasound : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-finance-enhanced/fees",
+  "path": "find/courses/graduate/master-of-finance-enhanced/fees",
+  "timestamp": "2026-10-01T11:48:50.717Z",
+  "title": "Master of Finance (Enhanced) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

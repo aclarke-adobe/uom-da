@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-business-administration/student-experience",
+  "path": "find/courses/graduate/professional-certificate-in-business-administration/student-experience",
+  "timestamp": "2026-10-01T12:34:48.762Z",
+  "title": "Professional Certificate in Business Administration : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

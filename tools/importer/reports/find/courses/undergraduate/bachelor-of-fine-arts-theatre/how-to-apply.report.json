@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-fine-arts-theatre/how-to-apply",
+  "path": "find/courses/undergraduate/bachelor-of-fine-arts-theatre/how-to-apply",
+  "timestamp": "2026-10-01T13:17:28.233Z",
+  "title": "Bachelor of Fine Arts (Theatre) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "callout",
+    "callout",
+    "notice",
+    "video",
+    "callout",
+    "callout",
+    "callout",
+    "notice",
+    "notice",
+    "video",
+    "callout"
+  ],
+  "droppedImages": ""
+}

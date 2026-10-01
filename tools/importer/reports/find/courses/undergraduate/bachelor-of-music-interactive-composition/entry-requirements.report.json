@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-music-interactive-composition/entry-requirements",
+  "path": "find/courses/undergraduate/bachelor-of-music-interactive-composition/entry-requirements",
+  "timestamp": "2026-10-01T13:18:32.279Z",
+  "title": "Bachelor of Music (Interactive Composition) : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "cards-stat",
+    "cards-stat",
+    "accordion",
+    "accordion"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctoral-program-in-business-administration-and-analytics/student-experience",
+  "path": "find/courses/graduate/doctoral-program-in-business-administration-and-analytics/student-experience",
+  "timestamp": "2026-10-01T10:11:54.599Z",
+  "title": "Doctoral Program in Business Administration and Analytics : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

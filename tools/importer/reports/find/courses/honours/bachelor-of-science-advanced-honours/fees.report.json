@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/honours/bachelor-of-science-advanced-honours/fees",
+  "path": "find/courses/honours/bachelor-of-science-advanced-honours/fees",
+  "timestamp": "2026-10-01T10:01:39.469Z",
+  "title": "Bachelor of Science Advanced (Honours) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

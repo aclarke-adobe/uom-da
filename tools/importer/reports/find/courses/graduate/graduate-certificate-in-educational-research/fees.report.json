@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-educational-research/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-educational-research/fees",
+  "timestamp": "2026-10-01T10:26:23.600Z",
+  "title": "Graduate Certificate in Educational Research : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

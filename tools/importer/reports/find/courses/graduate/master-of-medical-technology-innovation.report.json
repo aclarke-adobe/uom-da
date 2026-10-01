@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-medical-technology-innovation",
+  "path": "find/courses/graduate/master-of-medical-technology-innovation",
+  "timestamp": "2026-10-01T12:06:37.280Z",
+  "title": "Master of Medical Technology Innovation - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/plant-and-soil-science",
+  "path": "find/courses/major/plant-and-soil-science",
+  "timestamp": "2026-10-01T13:10:56.262Z",
+  "title": "Plant and Soil Science - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

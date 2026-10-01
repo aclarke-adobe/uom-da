@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-commerce/student-experience",
+  "path": "find/courses/undergraduate/bachelor-of-commerce/student-experience",
+  "timestamp": "2026-10-01T13:13:57.901Z",
+  "title": "Bachelor of Commerce : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "table",
+    "table",
+    "table",
+    "table",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

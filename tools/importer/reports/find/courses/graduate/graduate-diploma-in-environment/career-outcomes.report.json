@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-environment/career-outcomes",
+  "path": "find/courses/graduate/graduate-diploma-in-environment/career-outcomes",
+  "timestamp": "2026-10-01T10:55:10.014Z",
+  "title": "Graduate Diploma in Environment : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

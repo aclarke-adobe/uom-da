@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/single-subject-study-in-law/how-to-apply",
+  "path": "find/courses/graduate/single-subject-study-in-law/how-to-apply",
+  "timestamp": "2026-10-01T12:40:25.744Z",
+  "title": "Single Subject Study in Law : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "callout",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0019/133345/MLM-2020-1.jpg"
+}

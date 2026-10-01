@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/spanish-and-latin-american-studies",
+  "path": "find/courses/major/spanish-and-latin-american-studies",
+  "timestamp": "2026-10-01T13:51:52.974Z",
+  "title": "Spanish and Latin American Studies - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": "https://findacourse.study.unimelb.edu.au/find/_nuxt/placeholder-new.DGFxYecG.jpg"
+}

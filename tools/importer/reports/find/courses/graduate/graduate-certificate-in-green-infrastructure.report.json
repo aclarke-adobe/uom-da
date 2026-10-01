@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-green-infrastructure",
+  "path": "find/courses/graduate/graduate-certificate-in-green-infrastructure",
+  "timestamp": "2026-10-01T10:29:42.273Z",
+  "title": "Graduate Certificate in Green Infrastructure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

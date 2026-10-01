@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-oral-health/fees",
+  "path": "find/courses/undergraduate/bachelor-of-oral-health/fees",
+  "timestamp": "2026-10-01T13:20:30.043Z",
+  "title": "Bachelor of Oral Health : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

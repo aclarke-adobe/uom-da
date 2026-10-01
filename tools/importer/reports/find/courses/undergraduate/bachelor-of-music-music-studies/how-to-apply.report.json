@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-music-music-studies/how-to-apply",
+  "path": "find/courses/undergraduate/bachelor-of-music-music-studies/how-to-apply",
+  "timestamp": "2026-10-01T13:19:27.104Z",
+  "title": "Bachelor of Music (Music Studies) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "callout",
+    "callout",
+    "notice",
+    "video",
+    "callout",
+    "callout",
+    "callout",
+    "notice",
+    "notice",
+    "video",
+    "callout"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-development-studies/structure",
+  "path": "find/courses/graduate/master-of-development-studies/structure",
+  "timestamp": "2026-10-01T11:39:15.043Z",
+  "title": "Master of Development Studies : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

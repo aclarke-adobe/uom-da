@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-property-master-of-urban-planning",
+  "path": "find/courses/graduate/master-of-property-master-of-urban-planning",
+  "timestamp": "2026-10-01T12:17:01.526Z",
+  "title": "Master of Property/Master of Urban Planning - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

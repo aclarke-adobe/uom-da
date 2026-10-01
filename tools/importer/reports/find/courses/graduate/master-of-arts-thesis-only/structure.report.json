@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-arts-thesis-only/structure",
+  "path": "find/courses/graduate/master-of-arts-thesis-only/structure",
+  "timestamp": "2026-10-01T11:23:14.718Z",
+  "title": "Master of Arts (Thesis only) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

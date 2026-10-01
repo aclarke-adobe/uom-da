@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-agricultural-sciences/fees",
+  "path": "find/courses/graduate/graduate-diploma-in-agricultural-sciences/fees",
+  "timestamp": "2026-10-01T10:43:59.163Z",
+  "title": "Graduate Diploma in Agricultural Sciences : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

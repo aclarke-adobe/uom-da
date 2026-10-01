@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/honours/bachelor-of-medical-science-degree-with-honours/fees",
+  "path": "find/courses/honours/bachelor-of-medical-science-degree-with-honours/fees",
+  "timestamp": "2026-10-01T13:02:42.752Z",
+  "title": "Bachelor of Medical Science (Degree with Honours) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

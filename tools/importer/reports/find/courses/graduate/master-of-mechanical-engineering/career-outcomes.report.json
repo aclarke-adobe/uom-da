@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-mechanical-engineering/career-outcomes",
+  "path": "find/courses/graduate/master-of-mechanical-engineering/career-outcomes",
+  "timestamp": "2026-10-01T12:05:52.232Z",
+  "title": "Master of Mechanical Engineering : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "table",
+    "quote-profile",
+    "cards-chips"
+  ],
+  "droppedImages": ""
+}

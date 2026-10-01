@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-indigenous-research-and-leadership/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-indigenous-research-and-leadership/student-experience",
+  "timestamp": "2026-10-01T13:55:44.075Z",
+  "title": "Graduate Certificate in Indigenous Research and Leadership : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": "https://findacourse.study.unimelb.edu.au/find/_nuxt/placeholder-new.DGFxYecG.jpg"
+}

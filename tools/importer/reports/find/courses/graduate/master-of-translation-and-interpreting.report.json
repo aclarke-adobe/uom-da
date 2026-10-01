@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-translation-and-interpreting",
+  "path": "find/courses/graduate/master-of-translation-and-interpreting",
+  "timestamp": "2026-10-01T12:31:05.714Z",
+  "title": "Master of Translation and Interpreting - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

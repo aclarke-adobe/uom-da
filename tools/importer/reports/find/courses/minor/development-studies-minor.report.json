@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/minor/development-studies-minor",
+  "path": "find/courses/minor/development-studies-minor",
+  "timestamp": "2026-10-01T13:12:16.513Z",
+  "title": "Development Studies minor - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

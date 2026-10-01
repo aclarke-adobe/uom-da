@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-industrial-research-chemistry",
+  "path": "find/courses/graduate/master-of-industrial-research-chemistry",
+  "timestamp": "2026-10-01T11:55:00.572Z",
+  "title": "Master of Industrial Research (Chemistry) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

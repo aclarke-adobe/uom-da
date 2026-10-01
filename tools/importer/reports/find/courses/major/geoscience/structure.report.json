@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/geoscience/structure",
+  "path": "find/courses/major/geoscience/structure",
+  "timestamp": "2026-10-01T13:07:59.929Z",
+  "title": "Geoscience : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "tabs",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

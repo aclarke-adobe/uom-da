@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/honours/bachelor-of-fine-arts-degree-with-honours/structure",
+  "path": "find/courses/honours/bachelor-of-fine-arts-degree-with-honours/structure",
+  "timestamp": "2026-10-01T13:02:25.344Z",
+  "title": "Bachelor of Fine Arts (Degree with Honours) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

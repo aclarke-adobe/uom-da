@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-positive-education",
+  "path": "find/courses/graduate/professional-certificate-in-positive-education",
+  "timestamp": "2026-10-01T12:37:33.653Z",
+  "title": "Professional Certificate in Positive Education - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video"
+  ],
+  "droppedImages": ""
+}

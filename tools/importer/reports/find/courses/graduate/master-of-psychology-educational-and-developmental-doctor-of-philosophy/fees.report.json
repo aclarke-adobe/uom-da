@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-psychology-educational-and-developmental-doctor-of-philosophy/fees",
+  "path": "find/courses/graduate/master-of-psychology-educational-and-developmental-doctor-of-philosophy/fees",
+  "timestamp": "2026-10-01T12:19:48.262Z",
+  "title": "Master of Psychology (Educational and Developmental)/Doctor of Philosophy : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

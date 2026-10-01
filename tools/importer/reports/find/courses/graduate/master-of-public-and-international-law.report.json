@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-public-and-international-law",
+  "path": "find/courses/graduate/master-of-public-and-international-law",
+  "timestamp": "2026-10-01T12:20:22.444Z",
+  "title": "Master of Public and International Law - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

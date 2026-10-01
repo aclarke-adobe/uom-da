@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/honours/bachelor-of-agriculture-degree-with-honours/fees",
+  "path": "find/courses/honours/bachelor-of-agriculture-degree-with-honours/fees",
+  "timestamp": "2026-10-01T13:51:38.387Z",
+  "title": "Bachelor of Agriculture (Degree with Honours) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

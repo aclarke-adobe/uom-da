@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-publishing-and-communications-advanced/fees",
+  "path": "find/courses/graduate/graduate-diploma-in-publishing-and-communications-advanced/fees",
+  "timestamp": "2026-10-01T11:06:22.008Z",
+  "title": "Graduate Diploma in Publishing and Communications (Advanced) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

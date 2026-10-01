@@ -1,0 +1,25 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-psychology-advanced/how-to-apply",
+  "path": "find/courses/graduate/graduate-diploma-in-psychology-advanced/how-to-apply",
+  "timestamp": "2026-10-01T11:05:41.443Z",
+  "title": "Graduate Diploma in Psychology (Advanced) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "callout",
+    "table",
+    "table",
+    "notice",
+    "callout",
+    "callout",
+    "table",
+    "table",
+    "notice",
+    "callout"
+  ],
+  "droppedImages": ""
+}

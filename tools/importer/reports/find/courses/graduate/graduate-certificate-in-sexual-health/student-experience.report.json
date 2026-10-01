@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-sexual-health/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-sexual-health/student-experience",
+  "timestamp": "2026-10-01T10:38:29.867Z",
+  "title": "Graduate Certificate in Sexual Health : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

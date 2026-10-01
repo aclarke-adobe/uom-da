@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-physiotherapy/fees",
+  "path": "find/courses/graduate/doctor-of-physiotherapy/fees",
+  "timestamp": "2026-10-01T10:10:07.901Z",
+  "title": "Doctor of Physiotherapy : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

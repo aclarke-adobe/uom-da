@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-education-online",
+  "path": "find/courses/graduate/master-of-education-online",
+  "timestamp": "2026-10-01T11:41:24.595Z",
+  "title": "Master of Education (Online) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

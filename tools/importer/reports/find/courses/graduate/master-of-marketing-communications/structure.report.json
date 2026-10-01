@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-marketing-communications/structure",
+  "path": "find/courses/graduate/master-of-marketing-communications/structure",
+  "timestamp": "2026-10-01T12:05:23.229Z",
+  "title": "Master of Marketing Communications : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

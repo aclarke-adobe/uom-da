@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-philosophy-mdhs-psychological-sciences/student-experience",
+  "path": "find/courses/graduate/master-of-philosophy-mdhs-psychological-sciences/student-experience",
+  "timestamp": "2026-10-01T12:14:36.673Z",
+  "title": "Master of Philosophy - MDHS (Psychological Sciences) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

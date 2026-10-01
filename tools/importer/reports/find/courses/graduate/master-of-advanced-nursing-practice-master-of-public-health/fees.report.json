@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-advanced-nursing-practice-master-of-public-health/fees",
+  "path": "find/courses/graduate/master-of-advanced-nursing-practice-master-of-public-health/fees",
+  "timestamp": "2026-10-01T11:12:09.108Z",
+  "title": "Master of Advanced Nursing Practice/Master of Public Health : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

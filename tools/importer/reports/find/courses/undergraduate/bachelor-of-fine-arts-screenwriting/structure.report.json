@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-fine-arts-screenwriting/structure",
+  "path": "find/courses/undergraduate/bachelor-of-fine-arts-screenwriting/structure",
+  "timestamp": "2026-10-01T13:17:07.501Z",
+  "title": "Bachelor of Fine Arts (Screenwriting) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

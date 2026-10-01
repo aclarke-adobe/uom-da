@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-clinical-rehabilitation/student-experience",
+  "path": "find/courses/graduate/graduate-diploma-in-clinical-rehabilitation/student-experience",
+  "timestamp": "2026-10-01T10:49:41.781Z",
+  "title": "Graduate Diploma in Clinical Rehabilitation : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

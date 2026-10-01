@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-education-clil/how-to-apply",
+  "path": "find/courses/graduate/professional-certificate-in-education-clil/how-to-apply",
+  "timestamp": "2026-10-01T12:35:04.607Z",
+  "title": "Professional Certificate in Education (CLIL) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

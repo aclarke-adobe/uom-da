@@ -118,42 +118,63 @@ function walk(dir, out = []) {
   return out;
 }
 
-const IMAGE_PATH = /\/__data\/assets\/(?:image|git_bridge)\/|\.(?:jpe?g|png|gif|webp|svg|avif)(?:$|\?)/i;
+const IMAGE_EXT = /\.(?:jpe?g|png|gif|webp|svg|avif)(?:$|\?)/i;
+// Content images may live on any university host (matrix-cms, study, arts, finearts-music,
+// research, …) or on a known CMS bucket. Trackers, app placeholders (/_nuxt/) and YouTube
+// posters are not assets to localise (posters stay on i.ytimg.com, which is embeddable).
+const IMAGE_HOST = /(?:^|\.)(?:unimelb\.edu\.au|bespoke-production\.s3\.amazonaws\.com)$/i;
+const SKIP_URL = /\/_nuxt\/|\/i\/adsct/i;
+// Known external images: referenced by content but not fetchable through Bright Data
+// (robots-restricted on study.unimelb.edu.au); left as-is in the content.
+export const KNOWN_EXTERNAL = [
+  'https://study.unimelb.edu.au/__data/assets/image/0030/331869/pgm2.jpg',
+];
 
-/** Normalise a raw attribute value to an absolute asset URL, or null when it is not a content image. */
-export function normaliseImageUrl(raw) {
+/**
+ * Normalise a raw image reference to an absolute URL, or null when it is not a content image to
+ * check. Relative references resolve against the page URL. `fromImg` marks values read from an
+ * <img>/<source>/og:image (any path counts, e.g. Matrix `?a=<id>` asset URLs); CSS url() values
+ * need an image-like path.
+ */
+export function normaliseImageUrl(raw, pageUrl = ORIGIN, fromImg = false) {
   if (!raw) return null;
   let v = raw.trim().replace(/&amp;/g, '&').replace(/^['"]|['"]$/g, '');
-  if (!v || v.startsWith('data:') || v.startsWith('blob:')) return null;
+  if (!v || /^(data|blob|javascript|about):/i.test(v) || v.startsWith('#')) return null;
   if (v.startsWith('//')) v = `https:${v}`;
   let u;
-  try { u = new URL(v, ORIGIN); } catch (e) { return null; }
-  if (!/^(matrix-cms|study)\.unimelb\.edu\.au$/i.test(u.hostname)) return null;
-  if (!u.pathname.startsWith('/__data/assets/') || !IMAGE_PATH.test(u.pathname)) return null;
+  try { u = new URL(v, pageUrl); } catch (e) { return null; }
+  if (!/^https?:$/.test(u.protocol) || !IMAGE_HOST.test(u.hostname)) return null;
+  if (/^findacourse\./i.test(u.hostname) || SKIP_URL.test(u.href)) return null;
+  const imagey = IMAGE_EXT.test(u.pathname) || /\/__data\/assets\/(?:image|git_bridge)\//.test(u.pathname);
+  if (!fromImg && !imagey) return null;
   u.hash = '';
   return u.href;
 }
 
 function collect() {
   const files = walk(SNAP_ROOT);
-  const seen = new Map(); // url -> { pages, example }
-  const patterns = [
-    /\s(?:src|data-src|data-lazy-src|content)="([^"]+)"/gi,
-    /\ssrcset="([^"]+)"/gi,
-    /url\(\s*(?:&quot;|['"])?([^)'"&]+?)(?:&quot;|['"])?\s*\)/gi,
-  ];
+  const seen = new Map(); // url -> { pages, example, files }
   files.forEach((file) => {
     const html = readFileSync(file, 'utf8');
     const page = file.slice(SNAP_ROOT.length).replace(/\.html$/, '') || '/';
+    const pageUrl = `https://study.unimelb.edu.au${page === '/index' ? '/' : page}`;
     const found = new Set();
-    patterns.forEach((re, i) => {
-      re.lastIndex = 0;
-      let m;
-      while ((m = re.exec(html))) {
-        const vals = i === 1 ? m[1].split(',').map((s) => s.trim().split(/\s+/)[0]) : [m[1]];
-        vals.forEach((val) => { const url = normaliseImageUrl(val); if (url) found.add(url); });
+    const add = (val, fromImg) => { const url = normaliseImageUrl(val, pageUrl, fromImg); if (url) found.add(url); };
+    // <img>/<source>: src, data-src, data-lazy-src, srcset
+    for (const m of html.matchAll(/<(?:img|source)\b[^>]*>/gi)) {
+      const tag = m[0];
+      for (const a of tag.matchAll(/\s(?:src|data-src|data-lazy-src)="([^"]*)"/gi)) add(a[1], true);
+      for (const a of tag.matchAll(/\s(?:srcset|data-srcset)="([^"]*)"/gi)) {
+        a[1].split(',').forEach((part) => add(part.trim().split(/\s+/)[0], true));
       }
-    });
+    }
+    // inline CSS backgrounds
+    for (const m of html.matchAll(/url\(\s*(?:&quot;|['"])?([^)'"&]+?)(?:&quot;|['"])?\s*\)/gi)) add(m[1], false);
+    // og:image / twitter:image
+    for (const m of html.matchAll(/<meta\b[^>]*(?:property|name)="(?:og:image|twitter:image)[^"]*"[^>]*>/gi)) {
+      const c = m[0].match(/\scontent="([^"]*)"/i);
+      if (c) add(c[1], true);
+    }
     found.forEach((url) => {
       const e = seen.get(url) || { pages: 0, example: page };
       e.pages += 1;
@@ -161,6 +182,7 @@ function collect() {
       seen.set(url, e);
     });
   });
+  KNOWN_EXTERNAL.forEach((u) => seen.delete(u));
   return { files: files.length, urls: seen };
 }
 
@@ -267,6 +289,9 @@ async function main() {
   urls.forEach((info, url) => {
     cache.results[url] = { ...(cache.results[url] || {}), pages: info.pages, example: info.example };
   });
+  Object.values(cache.results).forEach((r) => { if (r.status === 'ok') r.everOk = true; });
+  // drop stale entries that the collector no longer finds (older URL normalisation)
+  Object.keys(cache.results).forEach((u) => { if (!urls.has(u)) delete cache.results[u]; });
 
   // --pages <file>: restrict testing / localisation to images referenced by these pages
   // (URLs or site paths, one per line), e.g. tools/importer/urls-course-pilot.txt
@@ -337,6 +362,14 @@ async function main() {
           r = again;
         }
         if (r.status === 'retry') r = { ...r, status: 'unloadable' };
+        // The SSO-hop failure is intermittent. An image that has ever loaded (status ok in an earlier
+        // run, or a downloaded copy on disk) is not recorded as unloadable on a later failure: it
+        // stays ok (and is retried for download), so a flaky run never drops a real image.
+        const hasLocal = prev.local && existsSync(join(MEDIA_DIR, prev.local.replace(/^\/media-da\//, '')));
+        if ((r.status === 'unloadable' || r.status === 'unknown') && (prev.everOk || hasLocal)) {
+          r = { ...r, status: hasLocal ? 'ok' : 'unknown', reason: `transient: ${r.reason || r.status}` };
+        }
+        if (r.status === 'ok') r.everOk = true;
         delete r.sessionLost;
         if (r.body) {
           if (DOWNLOAD) r.local = saveLocal(url, r.contentType, r.body);

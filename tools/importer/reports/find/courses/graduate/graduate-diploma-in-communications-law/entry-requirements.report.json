@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-communications-law/entry-requirements",
+  "path": "find/courses/graduate/graduate-diploma-in-communications-law/entry-requirements",
+  "timestamp": "2026-10-01T10:50:39.022Z",
+  "title": "Graduate Diploma in Communications Law : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

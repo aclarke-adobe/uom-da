@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-science-extended/structure",
+  "path": "find/courses/undergraduate/bachelor-of-science-extended/structure",
+  "timestamp": "2026-10-01T13:21:01.848Z",
+  "title": "Bachelor of Science (Extended) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

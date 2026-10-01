@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-music-jazz-and-improvisation/student-experience",
+  "path": "find/courses/undergraduate/bachelor-of-music-jazz-and-improvisation/student-experience",
+  "timestamp": "2026-10-01T13:19:10.876Z",
+  "title": "Bachelor of Music (Jazz and Improvisation) : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

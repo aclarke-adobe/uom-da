@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-psychology",
+  "path": "find/courses/graduate/graduate-diploma-in-psychology",
+  "timestamp": "2026-10-01T11:05:23.503Z",
+  "title": "Graduate Diploma in Psychology - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns"
+  ],
+  "droppedImages": ""
+}

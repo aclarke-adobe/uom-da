@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-arts/fees",
+  "path": "find/courses/graduate/doctor-of-philosophy-arts/fees",
+  "timestamp": "2026-10-01T10:06:35.819Z",
+  "title": "Doctor of Philosophy - Arts : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

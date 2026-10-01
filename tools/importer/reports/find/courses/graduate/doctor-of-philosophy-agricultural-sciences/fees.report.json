@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-agricultural-sciences/fees",
+  "path": "find/courses/graduate/doctor-of-philosophy-agricultural-sciences/fees",
+  "timestamp": "2026-10-01T10:05:47.938Z",
+  "title": "Doctor of Philosophy - Agricultural Sciences : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

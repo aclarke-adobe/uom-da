@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-climate-change-and-health/fees",
+  "path": "find/courses/graduate/graduate-certificate-in-climate-change-and-health/fees",
+  "timestamp": "2026-10-01T10:19:52.119Z",
+  "title": "Graduate Certificate in Climate Change and Health : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

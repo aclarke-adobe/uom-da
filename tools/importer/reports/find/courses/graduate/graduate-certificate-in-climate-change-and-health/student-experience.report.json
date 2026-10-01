@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-climate-change-and-health/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-climate-change-and-health/student-experience",
+  "timestamp": "2026-10-01T10:20:02.648Z",
+  "title": "Graduate Certificate in Climate Change and Health : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/cell-and-developmental-biology",
+  "path": "find/courses/major/cell-and-developmental-biology",
+  "timestamp": "2026-10-01T13:05:30.538Z",
+  "title": "Cell and Developmental Biology - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

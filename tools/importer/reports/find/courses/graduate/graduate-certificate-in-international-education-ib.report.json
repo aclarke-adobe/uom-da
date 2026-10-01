@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-international-education-ib",
+  "path": "find/courses/graduate/graduate-certificate-in-international-education-ib",
+  "timestamp": "2026-10-01T10:32:19.846Z",
+  "title": "Graduate Certificate in International Education (IB) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "quote",
+    "columns"
+  ],
+  "droppedImages": ""
+}

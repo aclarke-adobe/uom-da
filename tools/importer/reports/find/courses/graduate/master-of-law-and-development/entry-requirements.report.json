@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-law-and-development/entry-requirements",
+  "path": "find/courses/graduate/master-of-law-and-development/entry-requirements",
+  "timestamp": "2026-10-01T12:00:40.573Z",
+  "title": "Master of Law and Development : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

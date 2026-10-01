@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-business-administration-online/fees",
+  "path": "find/courses/graduate/graduate-diploma-in-business-administration-online/fees",
+  "timestamp": "2026-10-01T10:47:54.129Z",
+  "title": "Graduate Diploma in Business Administration (Online) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

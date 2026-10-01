@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-urban-design/student-experience",
+  "path": "find/courses/graduate/master-of-urban-design/student-experience",
+  "timestamp": "2026-10-01T12:32:11.097Z",
+  "title": "Master of Urban Design : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

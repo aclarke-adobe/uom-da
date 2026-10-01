@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-business-administration-part-time/structure",
+  "path": "find/courses/graduate/master-of-business-administration-part-time/structure",
+  "timestamp": "2026-10-01T11:26:48.610Z",
+  "title": "Master of Business Administration (Part-time) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

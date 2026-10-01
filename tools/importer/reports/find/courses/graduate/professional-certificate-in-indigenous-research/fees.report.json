@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-indigenous-research/fees",
+  "path": "find/courses/graduate/professional-certificate-in-indigenous-research/fees",
+  "timestamp": "2026-10-01T13:54:57.716Z",
+  "title": "Professional Certificate in Indigenous Research : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": "https://findacourse.study.unimelb.edu.au/find/_nuxt/placeholder-new.DGFxYecG.jpg"
+}

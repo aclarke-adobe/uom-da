@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/doctor-of-optometry/entry-requirements",
+  "path": "find/courses/graduate/doctor-of-optometry/entry-requirements",
+  "timestamp": "2026-10-01T10:05:19.300Z",
+  "title": "Doctor of Optometry : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

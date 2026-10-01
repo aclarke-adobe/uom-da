@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-cyber-security-online/fees",
+  "path": "find/courses/graduate/master-of-cyber-security-online/fees",
+  "timestamp": "2026-10-01T11:37:35.219Z",
+  "title": "Master of Cyber Security (Online) : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

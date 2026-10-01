@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-business-analytics",
+  "path": "find/courses/graduate/master-of-business-analytics",
+  "timestamp": "2026-10-01T11:27:17.092Z",
+  "title": "Master of Business Analytics - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

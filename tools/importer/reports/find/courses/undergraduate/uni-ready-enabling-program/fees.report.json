@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/uni-ready-enabling-program/fees",
+  "path": "find/courses/undergraduate/uni-ready-enabling-program/fees",
+  "timestamp": "2026-10-01T13:23:15.258Z",
+  "title": "Uni Ready Enabling Program : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "notice",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

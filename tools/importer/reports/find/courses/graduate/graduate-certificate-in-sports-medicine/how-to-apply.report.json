@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-sports-medicine/how-to-apply",
+  "path": "find/courses/graduate/graduate-certificate-in-sports-medicine/how-to-apply",
+  "timestamp": "2026-10-01T10:39:12.360Z",
+  "title": "Graduate Certificate in Sports Medicine : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

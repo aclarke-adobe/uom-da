@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-music-orchestral-performance/how-to-apply",
+  "path": "find/courses/graduate/master-of-music-orchestral-performance/how-to-apply",
+  "timestamp": "2026-10-01T12:08:27.938Z",
+  "title": "Master of Music (Orchestral Performance) : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

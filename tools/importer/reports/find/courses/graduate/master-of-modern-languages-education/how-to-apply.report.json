@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-modern-languages-education/how-to-apply",
+  "path": "find/courses/graduate/master-of-modern-languages-education/how-to-apply",
+  "timestamp": "2026-10-01T12:07:37.652Z",
+  "title": "Master of Modern Languages Education : How to apply - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "timeline-key-dates",
+    "timeline-key-dates",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}

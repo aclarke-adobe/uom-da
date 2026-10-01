@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/animal-science-and-management",
+  "path": "find/courses/major/animal-science-and-management",
+  "timestamp": "2026-10-01T13:04:35.881Z",
+  "title": "Animal Science and Management - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

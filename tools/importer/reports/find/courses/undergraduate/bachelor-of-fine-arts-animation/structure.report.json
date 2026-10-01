@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-fine-arts-animation/structure",
+  "path": "find/courses/undergraduate/bachelor-of-fine-arts-animation/structure",
+  "timestamp": "2026-10-01T13:15:03.100Z",
+  "title": "Bachelor of Fine Arts (Animation) : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

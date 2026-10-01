@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-music-composition",
+  "path": "find/courses/undergraduate/bachelor-of-music-composition",
+  "timestamp": "2026-10-01T13:18:01.583Z",
+  "title": "Bachelor of Music (Composition) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

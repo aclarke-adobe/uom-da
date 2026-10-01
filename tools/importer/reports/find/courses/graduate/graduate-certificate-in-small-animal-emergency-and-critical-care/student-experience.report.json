@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-small-animal-emergency-and-critical-care/student-experience",
+  "path": "find/courses/graduate/graduate-certificate-in-small-animal-emergency-and-critical-care/student-experience",
+  "timestamp": "2026-10-01T10:38:54.890Z",
+  "title": "Graduate Certificate in Small Animal Emergency and Critical Care : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

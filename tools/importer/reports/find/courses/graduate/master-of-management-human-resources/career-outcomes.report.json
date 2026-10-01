@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-human-resources/career-outcomes",
+  "path": "find/courses/graduate/master-of-management-human-resources/career-outcomes",
+  "timestamp": "2026-10-01T12:03:34.235Z",
+  "title": "Master of Management (Human Resources) : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "quote-profile"
+  ],
+  "droppedImages": ""
+}

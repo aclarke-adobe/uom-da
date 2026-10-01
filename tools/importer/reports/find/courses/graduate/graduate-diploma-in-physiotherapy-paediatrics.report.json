@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-physiotherapy-paediatrics",
+  "path": "find/courses/graduate/graduate-diploma-in-physiotherapy-paediatrics",
+  "timestamp": "2026-10-01T11:04:30.254Z",
+  "title": "Graduate Diploma in Physiotherapy (Paediatrics) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

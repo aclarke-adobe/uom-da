@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-global-media-communication/student-experience",
+  "path": "find/courses/graduate/master-of-global-media-communication/student-experience",
+  "timestamp": "2026-10-01T11:53:00.781Z",
+  "title": "Master of Global Media Communication : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-social-work/structure",
+  "path": "find/courses/graduate/master-of-social-work/structure",
+  "timestamp": "2026-10-01T12:26:10.459Z",
+  "title": "Master of Social Work : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}

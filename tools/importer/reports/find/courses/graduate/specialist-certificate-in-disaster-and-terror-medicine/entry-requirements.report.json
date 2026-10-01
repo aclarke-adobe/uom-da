@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-disaster-and-terror-medicine/entry-requirements",
+  "path": "find/courses/graduate/specialist-certificate-in-disaster-and-terror-medicine/entry-requirements",
+  "timestamp": "2026-10-01T12:44:10.854Z",
+  "title": "Specialist Certificate in Disaster and Terror Medicine : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "notice",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

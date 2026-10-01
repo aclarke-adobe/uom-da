@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-fine-arts/student-experience",
+  "path": "find/courses/graduate/master-of-fine-arts/student-experience",
+  "timestamp": "2026-10-01T11:49:42.175Z",
+  "title": "Master of Fine Arts : Student experience - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

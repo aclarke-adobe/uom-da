@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-law-and-development",
+  "path": "find/courses/graduate/master-of-law-and-development",
+  "timestamp": "2026-10-01T12:00:34.538Z",
+  "title": "Master of Law and Development - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

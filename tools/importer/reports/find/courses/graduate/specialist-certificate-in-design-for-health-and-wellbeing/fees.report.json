@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-design-for-health-and-wellbeing/fees",
+  "path": "find/courses/graduate/specialist-certificate-in-design-for-health-and-wellbeing/fees",
+  "timestamp": "2026-10-01T12:43:50.149Z",
+  "title": "Specialist Certificate in Design for Health and Wellbeing : Fees - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "notice",
+    "notice",
+    "callout",
+    "callout",
+    "callout"
+  ],
+  "droppedImages": ""
+}
