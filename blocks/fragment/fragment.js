@@ -20,7 +20,11 @@ import {
  */
 export async function loadFragment(path) {
   if (path && path.startsWith('/') && !path.startsWith('//')) {
-    const resp = await fetch(`${path}.plain.html`);
+    let resp = await fetch(`${path}.plain.html`);
+    // local preview serves imported content under /content (as for nav and footer)
+    if (!resp.ok && window.location.pathname.startsWith('/content/')) {
+      resp = await fetch(`/content${path}.plain.html`);
+    }
     if (resp.ok) {
       const main = document.createElement('main');
       main.innerHTML = await resp.text();

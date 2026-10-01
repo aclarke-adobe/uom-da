@@ -926,6 +926,40 @@ export default {
     // 4. afterTransform (final cleanup + section metadata)
     executeTransformers('afterTransform', main, payload);
 
+    // 4b. Oversized pages (DA rejects sources over 1MB): move each program's subject tabs
+    //     (an h4 followed by a Tabs block) into its own fragment document. The page keeps the
+    //     h4 and gets a fragment link; importing "<url>#excat-fragment-N" emits fragment N.
+    const pagePath = new URL(params.originalURL).pathname.replace(/\/$/, '').replace(/\.html?$/, '') || '/index';
+    const fragmentMatch = /#excat-fragment-(\d+)$/.exec(params.originalURL || '');
+    const FRAGMENT_THRESHOLD = 800000;
+    if (fragmentMatch || main.innerHTML.length > FRAGMENT_THRESHOLD) {
+      const programTabs = [...main.querySelectorAll('h4')]
+        .map((h) => h.nextElementSibling)
+        .filter((t) => t && t.tagName === 'TABLE'
+          && /^tabs\b/i.test((t.querySelector('tr')?.textContent || '').trim()));
+      const fragmentPath = (n) => WebImporter.FileUtils.sanitizePath(`/fragments${pagePath}/program-${n}`);
+      if (fragmentMatch) {
+        const n = Number(fragmentMatch[1]);
+        const fragment = document.createElement('div');
+        if (programTabs[n - 1]) fragment.append(programTabs[n - 1]);
+        return [{
+          element: fragment,
+          path: fragmentPath(n),
+          report: { title: `${document.title} — program ${n}`, template: PAGE_TEMPLATE.name, fragmentOf: pagePath },
+        }];
+      }
+      programTabs.forEach((table, i) => {
+        const href = fragmentPath(i + 1);
+        const p = document.createElement('p');
+        const a = document.createElement('a');
+        a.href = href;
+        a.textContent = href;
+        p.append(a);
+        table.replaceWith(p);
+      });
+      console.log(`[import] split ${programTabs.length} program tab blocks into fragments`);
+    }
+
     // 5. Built-in rules
     const hr = document.createElement('hr');
     main.appendChild(hr);

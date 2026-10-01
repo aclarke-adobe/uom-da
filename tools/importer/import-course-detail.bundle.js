@@ -3759,6 +3759,36 @@ ${hrefs}`;
         }
       });
       executeTransformers("afterTransform", main, payload);
+      const pagePath = new URL(params.originalURL).pathname.replace(/\/$/, "").replace(/\.html?$/, "") || "/index";
+      const fragmentMatch = /#excat-fragment-(\d+)$/.exec(params.originalURL || "");
+      const FRAGMENT_THRESHOLD = 8e5;
+      if (fragmentMatch || main.innerHTML.length > FRAGMENT_THRESHOLD) {
+        const programTabs = [...main.querySelectorAll("h4")].map((h) => h.nextElementSibling).filter((t) => {
+          var _a;
+          return t && t.tagName === "TABLE" && /^tabs\b/i.test((((_a = t.querySelector("tr")) == null ? void 0 : _a.textContent) || "").trim());
+        });
+        const fragmentPath = (n) => WebImporter.FileUtils.sanitizePath(`/fragments${pagePath}/program-${n}`);
+        if (fragmentMatch) {
+          const n = Number(fragmentMatch[1]);
+          const fragment = document2.createElement("div");
+          if (programTabs[n - 1]) fragment.append(programTabs[n - 1]);
+          return [{
+            element: fragment,
+            path: fragmentPath(n),
+            report: { title: `${document2.title} \u2014 program ${n}`, template: PAGE_TEMPLATE.name, fragmentOf: pagePath }
+          }];
+        }
+        programTabs.forEach((table, i) => {
+          const href = fragmentPath(i + 1);
+          const p = document2.createElement("p");
+          const a = document2.createElement("a");
+          a.href = href;
+          a.textContent = href;
+          p.append(a);
+          table.replaceWith(p);
+        });
+        console.log(`[import] split ${programTabs.length} program tab blocks into fragments`);
+      }
       const hr = document2.createElement("hr");
       main.appendChild(hr);
       WebImporter.rules.createMetadata(main, document2);
