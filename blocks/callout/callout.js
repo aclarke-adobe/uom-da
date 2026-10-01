@@ -1,11 +1,17 @@
 /*
  * Callout block
- * Default: a band with a short message and one or more CTA links.
+ * Default: a grey panel with a short message (shown as a title) and one or more CTA links
+ * (<strong> link = cyan button, <em> link = sage button). Long copy stacks the CTA beneath.
+ * Option `bordered`: outlined panel with a smaller title (course fees tab callouts).
  * Option `photo`: an image cell becomes a full-bleed background behind a centred panel.
  */
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
-const OPTION_CLASSES = ['photo'];
+const OPTION_CLASSES = ['photo', 'bordered'];
+
+// course "Fees & scholarships" tab callouts are outlined on the source site; imported
+// content carries no option, so the tab path selects it when no option is authored
+const BORDERED_PATH = /\/find\/courses\/.+\/fees\/?$/;
 
 function isActionParagraph(el) {
   if (el.tagName !== 'P') return false;
@@ -14,6 +20,10 @@ function isActionParagraph(el) {
 }
 
 export default function decorate(block) {
+  if (!OPTION_CLASSES.some((c) => block.classList.contains(c))
+    && BORDERED_PATH.test(window.location.pathname)) {
+    block.classList.add('bordered');
+  }
   const active = [...block.classList].filter((c) => OPTION_CLASSES.includes(c));
 
   const cells = [...block.querySelectorAll(':scope > div > div')];
@@ -53,8 +63,10 @@ export default function decorate(block) {
   }
   block.append(panel);
 
-  // long copy stacks the CTA under the message instead of beside it
+  // long copy stacks the CTA under the message instead of beside it; a short message is a title
   if (text.textContent.trim().length > 120 || text.children.length > 1) {
     block.classList.add('callout-stacked');
+  } else if (text.firstElementChild) {
+    text.firstElementChild.classList.add('callout-title');
   }
 }

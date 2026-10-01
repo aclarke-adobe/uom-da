@@ -25,6 +25,10 @@
     {
       "class": "photo",
       "label": "Photo"
+    },
+    {
+      "class": "bordered",
+      "label": "Bordered"
     }
   ],
   "memberVariantIds": [

@@ -5,7 +5,9 @@
  * the previous date.
  * Option key-dates: a card with an optional header row (a single first cell holding a small
  * label line and a heading, e.g. 'For domestic students' + 'Key dates'), then one
- * calendar-icon row per date with the description above the date.
+ * calendar-icon row per date with the description above the date. A header with only a title
+ * (no label line) renders as a flat grey panel (.timeline-panel). A first row with no date is
+ * a message (e.g. 'Applications now open').
  */
 
 /** Splits a key-dates header cell into its label chip line(s) and title. */
@@ -29,6 +31,8 @@ export default function decorate(block) {
   if (block.classList.contains('key-dates') && rows.length > 1
     && rows[0].children.length === 1 && rows[0].textContent.trim()) {
     header = decorateHeader(rows.shift().firstElementChild);
+    // a header with only a title (no label chip) renders as the flat grey panel
+    if (!header.querySelector('.timeline-header-label')) block.classList.add('timeline-panel');
   }
 
   rows.forEach((row) => {

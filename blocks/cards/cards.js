@@ -114,6 +114,20 @@ export default function decorate(block) {
         bodies[0].classList.add('cards-card-stat');
         [...bodies].slice(1).forEach((b) => b.classList.add('cards-card-desc'));
       }
+      // figure = the bold-only paragraph; paragraphs before it are the title, after it the label
+      const stat = bodies[0];
+      const parts = stat ? [...stat.children] : [];
+      const valueIndex = parts.findIndex((el) => {
+        const strong = el.querySelector('strong');
+        return el.tagName === 'P' && strong && el.textContent.trim() === strong.textContent.trim();
+      });
+      if (valueIndex >= 0) {
+        parts.forEach((el, i) => {
+          if (i < valueIndex) el.classList.add('cards-stat-title');
+          else if (i === valueIndex) el.classList.add('cards-stat-value');
+          else el.classList.add('cards-stat-label');
+        });
+      }
     }
 
     if (chips) {
@@ -125,6 +139,11 @@ export default function decorate(block) {
 
     if (li.children.length) ul.append(li);
   });
+
+  // default cards without CTAs are profile cards (course alumni: white card, padded text);
+  // icon cards without any pictogram are text-only fact cards (employment outcomes)
+  if (!active.length && !ul.querySelector('.cards-card-cta')) block.classList.add('cards-profile');
+  if (active.includes('icon') && !ul.querySelector('.cards-card-image')) block.classList.add('cards-facts');
 
   // column-count hook so 3 / 6 cards fill full rows instead of leaving an empty 4th track
   const count = ul.children.length;

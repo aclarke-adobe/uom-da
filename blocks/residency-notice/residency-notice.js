@@ -41,7 +41,23 @@ export default function decorate(block) {
     return section;
   }).filter((s) => s.textContent.trim() || s.querySelector('picture, .icon'));
 
+  // footnote: a trailing shared row that is a single short line with a link
+  // (e.g. "Can't find your qualification? Let us know") sits under the panel text, unruled
+  const last = sections[sections.length - 1];
+  if (sections.length > 1 && last && !last.dataset.audience) {
+    const els = [...last.children];
+    const text = last.textContent.trim();
+    const links = last.querySelectorAll('a');
+    if (els.length <= 1 && links.length === 1 && text.length <= 120
+      && text !== links[0].textContent.trim() && !last.querySelector('ul, ol, h1, h2, h3, h4, h5, h6')) {
+      last.classList.add('residency-notice-footer');
+      links[0].classList.remove('button');
+      links[0].closest('.button-container')?.classList.remove('button-container');
+    }
+  }
+
   sections.forEach((section) => {
+    if (section.classList.contains('residency-notice-footer')) return;
     const first = section.firstElementChild;
     if (!first) return;
     // header line: title (icon + strong/heading) with an inline link such as "Change"

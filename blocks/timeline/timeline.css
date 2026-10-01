@@ -9,6 +9,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 4px;
+  margin: 0;
   padding: 0 0 24px 32px;
 }
 
@@ -88,7 +89,17 @@
   }
 }
 
-/* key-dates: white card, teal header (outlined label chip + title), calendar icon per date */
+/*
+ * key-dates option
+ * card (default; the undergraduate title-band aside): white with a shadow, teal header with an
+ * outlined label chip and a title, one calendar-icon row per date (bold title above the
+ * uppercase date). panel (.timeline-panel, set by the JS when the header has no label chip;
+ * the graduate "Key application dates" list): grey and flat, uppercase header, regular-weight
+ * titles, bold dates, rows capped at the text width.
+ */
+
+/* the panel and message overrides are grouped after the card rules they refine */
+/* stylelint-disable no-descending-specificity */
 .timeline.key-dates {
   background-color: var(--background-color);
   box-shadow: 0 0 6px -1px rgb(0 0 0 / 40%);
@@ -134,6 +145,8 @@
 .timeline.key-dates .timeline-item {
   grid-template-columns: min(20%, 85px) 70%;
   gap: 0;
+  box-sizing: border-box;
+  max-width: var(--text-max-width);
   padding: 0;
 }
 
@@ -146,18 +159,24 @@
   line-height: 1.5;
 }
 
+/* the title is authored bold; the row sets its weight */
+.timeline.key-dates .timeline-body :is(strong, b) {
+  font-weight: inherit;
+}
+
 .timeline.key-dates .timeline-date {
   grid-area: 2 / 2;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--uom-grey);
-}
-
-.timeline.key-dates .timeline-item-continued .timeline-date {
-  display: none;
+  text-align: left;
 }
 
 .timeline.key-dates .timeline-item:last-child .timeline-date {
   border-bottom: 0;
+}
+
+.timeline.key-dates .timeline-item-continued .timeline-date {
+  display: none;
 }
 
 .timeline.key-dates .timeline-item-continued .timeline-body {
@@ -173,52 +192,125 @@
   text-transform: uppercase;
 }
 
-/* rail: a short connector from each calendar icon down to the next one */
+/* rail: a 26px connector at the foot of each icon column, leading to the next icon */
 .timeline.key-dates .timeline-item::before {
-  top: 44px;
+  top: auto;
   bottom: 0;
   left: calc(min(20%, 85px) / 2 - 1px);
   width: 2px;
-  height: auto;
+  height: 26px;
 }
 
-.timeline.key-dates .timeline-item:last-child::before {
+.timeline.key-dates .timeline-item:last-child::before,
+.timeline.key-dates .timeline-item-continued::before {
   display: none;
 }
 
-/* calendar icon (source glyph, 27px with a white ring) replaces the diamond marker */
+/* calendar icon (source glyph, 27.2px with a 3.2px ring) replaces the diamond marker */
 .timeline.key-dates .timeline-item::after {
   top: 13.6px;
   left: calc(min(20%, 85px) / 2 - 13.6px);
   box-sizing: border-box;
   width: 27.2px;
   height: 27.2px;
-  border: 3px solid #fff;
+  border: 3.2px solid #fff;
   background: url('../../icons/calendar-date.svg') center / contain no-repeat #fff;
   transform: none;
 }
 
-/* a row without a date (e.g. a 'no dates yet' message) has no icon */
+/* a row without a date that does not continue one (e.g. 'Applications now open') has no icon */
 .timeline.key-dates .timeline-item-continued::after {
   display: none;
 }
 
-@media (width >= 600px) {
-  .timeline.key-dates .timeline-item {
-    grid-template-columns: min(20%, 85px) 70%;
-    gap: 0;
-    padding: 0;
-  }
+/* ...and in the card it is a message panel with the green check badge */
+.timeline.key-dates .timeline-item-continued:first-child {
+  display: block;
+  padding: 16px 16px 16px 56px;
+}
 
-  .timeline.key-dates .timeline-item::before {
-    left: calc(min(20%, 85px) / 2 - 1px);
-  }
+.timeline.key-dates .timeline-item-continued:first-child .timeline-body {
+  display: grid;
+  align-content: center;
+  min-height: 32px;
+  padding: 0;
+  font-weight: 700;
+}
 
-  .timeline.key-dates .timeline-item::after {
-    left: calc(min(20%, 85px) / 2 - 13.6px);
-  }
+.timeline.key-dates .timeline-item-continued:first-child::after {
+  display: block;
+  top: 16px;
+  left: 16px;
+  width: 24px;
+  height: 32px;
+  border: 0;
+  background: url('../../icons/check.svg') center / contain no-repeat;
+}
 
-  .timeline.key-dates .timeline-date {
-    text-align: left;
-  }
+/* panel */
+.timeline.key-dates.timeline-panel {
+  background-color: var(--uom-grey);
+  box-shadow: none;
+}
+
+.timeline.key-dates.timeline-panel .timeline-header-title {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* the icon column takes a sixth of the row (max 85px); text runs to a 24px right gutter */
+.timeline.key-dates.timeline-panel .timeline-item {
+  grid-template-columns: min(100% / 6, 85px) 1fr;
+  padding-right: 24px;
+}
+
+.timeline.key-dates.timeline-panel .timeline-body {
+  font-weight: 400;
+}
+
+.timeline.key-dates.timeline-panel .timeline-date {
+  border-bottom-color: var(--uom-grey-border);
+}
+
+.timeline.key-dates.timeline-panel .timeline-item:last-child .timeline-date {
+  border-bottom: 0;
+}
+
+.timeline.key-dates.timeline-panel .timeline-date > * {
+  font-weight: 700;
+  letter-spacing: 0.0075rem;
+}
+
+.timeline.key-dates.timeline-panel .timeline-item::before {
+  left: calc(min((100% - 24px) / 6, 85px) / 2 - 1px);
+}
+
+.timeline.key-dates.timeline-panel .timeline-item::after {
+  left: calc(min((100% - 24px) / 6, 85px) / 2 - 13.6px);
+  border-color: var(--uom-grey);
+  background-color: var(--uom-grey);
+}
+
+/* panel 'no scheduled dates' message: plain text, no icon */
+.timeline.key-dates.timeline-panel .timeline-list:has(> .timeline-item-continued:first-child) {
+  padding: 0;
+}
+
+.timeline.key-dates.timeline-panel .timeline-item-continued:first-child {
+  margin-bottom: 24px;
+  padding: 16px;
+}
+
+.timeline.key-dates.timeline-panel .timeline-item-continued:first-child .timeline-body {
+  display: block;
+  min-height: 0;
+  color: var(--text-color);
+  font-weight: 400;
+}
+
+.timeline.key-dates.timeline-panel .timeline-item-continued:first-child::after {
+  display: none;
 }

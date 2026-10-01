@@ -1,4 +1,18 @@
+/*
+ * Accordion: UoM "togglerow" rows (navy left bar, thin blue-grey rule, chevron).
+ * Default (e.g. entry requirements): regular-weight labels, sage-pale open panel.
+ * Inside a tabs panel (course structure subject lists): white rows, bold navy titles,
+ * points on the right, white bordered open panel with the handbook link right-aligned.
+ * Sample course plan years (.accordion-plan: intro + "Semester 1 · 50 pts" rows, in a tab
+ * panel or at top level): small uppercase year box on the left, link-blue semester titles,
+ * subject cards (.accordion-subjects) in the open panel.
+ */
+
 .accordion {
+  --accordion-rule-color: #bfced5;
+  --accordion-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2.5 7.25 12 16.75l9.5-9.5' fill='none' stroke='%23000' stroke-width='2.25'/%3E%3C/svg%3E");
+  --accordion-external: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M9 1.5h5.5V7M14.5 1.5 7 9M12 9.5v5H1.5V4h5' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E");
+
   display: grid;
   gap: 24px;
 }
@@ -7,55 +21,249 @@
   margin-top: 0;
 }
 
-.accordion .accordion-items {
-  border-top: 1px solid var(--uom-grey-border);
+.accordion .accordion-item {
+  background-color: var(--background-color);
 }
 
-.accordion details {
-  border-bottom: 1px solid var(--uom-grey-border);
-}
-
-.accordion details summary {
-  position: relative;
-  padding: 16px 48px 16px 16px;
-  cursor: pointer;
+.accordion .accordion-item-label {
+  display: flex;
+  align-items: center;
+  border-left: 6px solid var(--uom-navy);
+  border-right: 1px solid var(--accordion-rule-color);
+  border-bottom: 1px solid var(--accordion-rule-color);
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  line-height: 1.5;
   list-style: none;
-  font-weight: 600;
-  color: var(--link-color);
+  cursor: pointer;
 }
 
-.accordion details summary::-webkit-details-marker {
+.accordion .accordion-item-label::-webkit-details-marker {
   display: none;
 }
 
-.accordion details summary::after {
+.accordion .accordion-item-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 8px 16px;
+}
+
+.accordion .accordion-item-meta {
+  flex: none;
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.105px;
+}
+
+.accordion .accordion-item-label::after {
   content: '';
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  width: 7px;
-  height: 7px;
-  border: solid currentcolor;
-  border-width: 0 2px 2px 0;
-  transform: translateY(-75%) rotate(45deg);
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin: 0 16px 0 8px;
+  background-color: var(--link-color);
+  mask: var(--accordion-chevron) center / contain no-repeat;
   transition: transform 0.2s;
 }
 
-.accordion details[open] summary::after {
-  transform: translateY(-25%) rotate(-135deg);
-}
-
-.accordion details summary:focus-visible {
+.accordion .accordion-item-label:focus-visible {
   outline: 2px solid var(--focus-color);
   outline-offset: -2px;
 }
 
 .accordion .accordion-item-body {
-  padding: 0 16px 16px;
+  padding: 24px;
+  background-color: var(--uom-sage-pale);
+}
+
+.accordion .accordion-item-body > :is(p, ul, ol, h1, h2, h3, h4, h5, h6) {
+  max-width: var(--text-max-width);
 }
 
 .accordion .accordion-item-body > :first-child {
   margin-top: 0;
+}
+
+.accordion .accordion-item-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* subject cards (sample course plans) */
+.accordion .accordion-item-body > .accordion-subjects {
+  display: flex;
+  flex-direction: column;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border-right: 1px solid var(--accordion-rule-color);
+  border-bottom: 1px solid var(--accordion-rule-color);
+  list-style: none;
+}
+
+.accordion .accordion-subject {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 12.44px 16px 7.11px 14.22px;
+  border-left: 6px solid #406d80;
+  background-color: var(--uom-cyan-light);
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.accordion .accordion-subject-elective {
+  border-left-color: #444a40;
+  background-color: var(--uom-sage-pale);
+}
+
+.accordion .accordion-subject-capstone {
+  border-left-color: #2c421d;
+  background-color: #e7edc8;
+}
+
+.accordion .accordion-subject-type {
+  letter-spacing: 0.98px;
+  text-transform: uppercase;
+}
+
+.accordion .accordion-subject-title {
+  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: -0.105px;
+}
+
+.accordion .accordion-subject-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 5.33px;
+}
+
+.accordion .accordion-subject a.accordion-subject-link:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 auto 8px 0;
+  color: var(--link-color);
+  font-weight: 400;
+  letter-spacing: 0.98px;
+  text-transform: uppercase;
+}
+
+.accordion .accordion-subject a.accordion-subject-link::after {
+  content: '';
+  flex: none;
+  width: 12px;
+  height: 12px;
+  background-color: currentcolor;
+  mask: var(--accordion-external) center / contain no-repeat;
+}
+
+.accordion .accordion-subject a.accordion-subject-link:hover {
+  color: var(--link-hover-color);
+}
+
+.accordion .accordion-subject-points {
+  font-weight: 600;
+  letter-spacing: -0.105px;
+  white-space: nowrap;
+}
+
+/* nested in a tabs panel: course structure subject lists */
+.tabs .accordion .accordion-item-title,
+.accordion.accordion-plan .accordion-item-title {
+  box-sizing: border-box;
+  max-width: var(--text-max-width);
+  color: var(--uom-navy);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.tabs .accordion .accordion-item-meta,
+.accordion.accordion-plan .accordion-item-meta {
+  margin-right: 8px;
+}
+
+.tabs .accordion .accordion-item-label::after,
+.accordion.accordion-plan .accordion-item-label::after {
+  margin-left: auto;
+}
+
+.tabs .accordion .accordion-item-body {
+  padding: 16px;
+  border: 1px solid var(--accordion-rule-color);
+  border-top: 0;
+  background-color: var(--background-color);
+}
+
+/* trailing "View detailed information in the Handbook" link */
+.tabs .accordion .accordion-item-body > * + p:last-child:has(> a:only-child) {
+  max-width: none;
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--accordion-rule-color);
+  text-align: right;
+}
+
+/* sample course plan year: small uppercase year box, link-blue semester titles */
+.accordion.accordion-plan {
+  grid-template-columns: 67px minmax(0, 1fr);
+  gap: 19px;
+  align-items: start;
+}
+
+.accordion.accordion-plan .accordion-intro > * {
+  max-width: 90px;
+  margin: 0;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.98px;
+  text-transform: uppercase;
+}
+
+.accordion.accordion-plan .accordion-intro > :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 600;
+}
+
+.accordion.accordion-plan .accordion-item-title {
+  max-width: none;
+  color: var(--link-color);
+  line-height: 1.5;
+}
+
+.accordion .accordion-item-body:has(> .accordion-subjects:only-child) {
+  padding: 0;
+  border: 0;
+}
+
+/* states */
+.accordion .accordion-item[open] > .accordion-item-label::after {
+  transform: rotate(180deg);
+}
+
+.tabs .accordion .accordion-item-label:hover .accordion-item-title,
+.accordion.accordion-plan .accordion-item-label:hover .accordion-item-title {
+  text-decoration: underline;
+}
+
+@media (width >= 600px) {
+  .accordion .accordion-item-body > .accordion-subjects {
+    flex-flow: row wrap;
+  }
+
+  .accordion .accordion-subject {
+    flex: 0 0 50%;
+    box-sizing: border-box;
+  }
 }
 
 @media (width >= 900px) {
@@ -63,5 +271,18 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
     gap: 64px;
     align-items: start;
+  }
+
+  .accordion .accordion-subject {
+    flex-basis: 25%;
+  }
+
+  .accordion.accordion-plan {
+    grid-template-columns: 83px minmax(0, 1fr);
+    gap: 19px;
+  }
+
+  .accordion.accordion-plan .accordion-item-meta {
+    margin-right: 39px;
   }
 }

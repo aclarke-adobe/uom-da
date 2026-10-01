@@ -1,12 +1,23 @@
+/*
+ * Callout
+ * Default: grey panel, title + CTA side by side (wrapping when they do not fit).
+ * .callout-stacked (long copy): body text with the CTA beneath.
+ * .bordered: outlined panel with a smaller title.
+ * .photo: full-bleed image behind a centred white panel.
+ */
+
 .callout {
   position: relative;
+  margin: 24px 0;
   background-color: var(--light-color);
 }
 
 .callout .callout-panel {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
   padding: 24px;
 }
 
@@ -16,6 +27,13 @@
 
 .callout .callout-text > * + * {
   margin-top: 12px;
+}
+
+.callout .callout-text > .callout-title {
+  color: var(--heading-color);
+  font-size: var(--heading-font-size-m);
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 .callout .callout-actions {
@@ -28,32 +46,45 @@
   margin: 0;
 }
 
-@media (width >= 900px) {
-  .callout:not(.callout-stacked) .callout-panel {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-  }
+/* long copy: text block, CTA beneath */
+.callout.callout-stacked .callout-panel {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 24px;
+  padding: 32px 16px;
+}
 
-  .callout:not(.callout-stacked) .callout-text {
-    flex: 1 1 auto;
-  }
+.callout.callout-stacked .callout-text > * {
+  max-width: var(--text-max-width);
+}
 
-  .callout:not(.callout-stacked) .callout-actions {
-    flex: 0 0 auto;
-  }
+/* bordered: outlined, smaller bold title */
+.callout.bordered {
+  border: 1px solid #809daa;
+  background-color: transparent;
+}
+
+.callout.bordered .callout-panel {
+  padding: 12px;
+}
+
+.callout.bordered .callout-text > .callout-title {
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
 }
 
 /* photo: full-bleed image behind a centred panel */
 .callout.photo {
+  margin: 0;
   background-color: var(--uom-sage-pale);
 }
 
 .callout.photo .callout-panel {
-  align-items: center;
-  text-align: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .callout.photo .callout-actions {
@@ -89,11 +120,6 @@
 }
 
 @media (width >= 900px) {
-  .callout.photo .callout-panel {
-    flex-direction: column;
-    justify-content: center;
-  }
-
   .callout.photo.callout-has-media .callout-panel {
     width: calc(100% - 200px);
     max-width: var(--content-max-width);

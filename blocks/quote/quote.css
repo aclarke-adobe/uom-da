@@ -44,6 +44,12 @@
   line-height: 1.2;
 }
 
+/* the author typed the quotation marks */
+.quote.quote-marked blockquote > p::before,
+.quote.quote-marked blockquote > p::after {
+  content: none;
+}
+
 .quote .quote-attribution {
   margin: 0;
   color: var(--text-color);
@@ -69,81 +75,6 @@
   object-fit: cover;
 }
 
-/* profile: collapsed summary with read-more toggle */
-.quote.profile {
-  padding: 32px 24px;
-  background-color: var(--uom-sage-pale);
-}
-
-.quote.profile .quote-attribution {
-  margin: 0 0 24px;
-  color: inherit;
-  font-size: var(--body-font-size-s);
-  font-weight: 600;
-}
-
-.quote.profile .quote-media {
-  max-width: none;
-  background-color: transparent;
-}
-
-.quote.profile .quote-media img {
-  aspect-ratio: auto;
-  height: 100%;
-}
-
-.quote.profile .quote-eyebrow {
-  margin: 0 0 8px;
-  font-size: var(--body-font-size-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.quote.profile .quote-profile-summary > :is(h1, h2, h3, h4, h5, h6) {
-  margin: 0;
-  padding: 0;
-  background: none;
-  font-size: var(--heading-font-size-xs);
-}
-
-.quote .quote-profile-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 24px;
-  margin: 16px 0 0;
-  padding: 12px;
-  border: 1px solid currentcolor;
-  border-radius: 0;
-  background: transparent;
-  color: var(--heading-color);
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.quote .quote-profile-toggle::after {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border: solid currentcolor;
-  border-width: 0 1.5px 1.5px 0;
-  transform: translateY(-2px) rotate(45deg);
-  transition: transform 0.2s;
-}
-
-.quote .quote-profile-toggle[aria-expanded="true"]::after {
-  transform: translateY(2px) rotate(-135deg);
-}
-
-.quote .quote-profile-details {
-  margin-top: 24px;
-}
-
-.quote .quote-profile-details > :first-child {
-  margin-top: 0;
-}
-
 @media (width >= 600px) {
   .quote .quote-media {
     max-width: 100%;
@@ -154,16 +85,265 @@
   .quote blockquote > p {
     margin-bottom: 18px;
   }
+}
 
-  .quote.profile {
-    padding: 48px 220px;
+/*
+ * profile: a sage header row (image, eyebrow, name, read-more toggle) above a grey
+ * full-width panel that the toggle reveals
+ */
+.quote.profile {
+  display: block;
+  background-color: var(--uom-sage-pale);
+}
+
+.quote.profile .quote-profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.quote.profile .quote-media {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: 200px;
+  max-width: none;
+  height: 196px;
+  padding: 12px;
+  background-color: transparent;
+}
+
+.quote.profile .quote-media picture {
+  height: 100%;
+}
+
+.quote.profile .quote-media img {
+  height: 100%;
+  aspect-ratio: auto;
+  object-position: left top;
+}
+
+.quote.profile .quote-text {
+  box-sizing: border-box;
+  align-self: stretch;
+  padding: 32px 20px;
+}
+
+.quote.profile .quote-eyebrow {
+  margin: 0;
+  color: var(--heading-color);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: calc(var(--body-font-size-m) * 1.5);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.quote.profile .quote-profile-summary > :is(h1, h2, h3, h4, h5, h6) {
+  max-width: var(--text-max-width);
+  margin: 0 0 12px;
+  padding: 6.4px 0 0;
+  background: none;
+  color: var(--heading-color);
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.quote .quote-profile-toggle {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 150px;
+  margin: 0;
+  padding: 12px 16px 12px 12px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--heading-color);
+  color: var(--heading-color);
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+}
+
+.quote .quote-profile-toggle:hover {
+  background-color: rgb(209 241 251 / 80%);
+}
+
+.quote .quote-profile-toggle:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+/* chevron-down; it stays down when open, as in the source */
+.quote .quote-profile-toggle::after {
+  content: '';
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  margin-right: 3px;
+  border: solid currentcolor;
+  border-width: 0 1.5px 1.5px 0;
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.quote.profile .quote-profile-details {
+  padding: 32px;
+  background-color: var(--uom-grey);
+}
+
+.quote.profile .quote-profile-details > * {
+  max-width: var(--text-max-width);
+}
+
+.quote.profile .quote-profile-details > :first-child {
+  margin-top: 0;
+}
+
+/* quotation (paragraphs + closing attribution); flex keeps the last margin inside */
+.quote.profile .quote-profile-details blockquote {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 24px;
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.quote.profile .quote-profile-details blockquote > p {
+  margin: 0;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.quote.profile .quote-profile-details blockquote > p + p:not(.quote-attribution) {
+  margin-top: 18px;
+}
+
+.quote.profile .quote-profile-details blockquote > p:first-child::before {
+  margin: 0;
+  font-size: inherit;
+}
+
+.quote.profile .quote-profile-details blockquote > p:has(+ .quote-attribution)::after {
+  content: close-quote;
+}
+
+.quote.profile .quote-profile-details blockquote > .quote-attribution {
+  margin: 0 0 18px;
+  font-size: var(--body-font-size-m);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.quote.profile .quote-profile-details blockquote > .quote-attribution::after {
+  content: none;
+}
+
+/* the source switches the header to a row at 481px */
+@media (width >= 600px) {
+  .quote.profile .quote-profile-header {
+    flex-direction: row;
+    padding-bottom: 0;
   }
 
-  /* profile keeps the portrait beside the text */
-  .quote.profile.quote-has-media {
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-    gap: 64px;
-    align-items: start;
-    padding: 48px;
+  .quote.profile .quote-text {
+    flex: 1 1 auto;
+    align-self: auto;
+    min-width: 0;
+  }
+
+  .quote .quote-profile-toggle {
+    width: fit-content;
+  }
+}
+
+/* the source steps up at 720px */
+@media (width >= 769px) {
+  .quote.profile .quote-profile-summary > :is(h1, h2, h3, h4, h5, h6) {
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+
+  .quote.profile .quote-profile-details blockquote > p {
+    font-size: 32px;
+  }
+
+  .quote.profile .quote-profile-details blockquote > p + p:not(.quote-attribution) {
+    margin-top: 20px;
+  }
+
+  .quote.profile .quote-profile-details blockquote > .quote-attribution {
+    margin-bottom: 20px;
+  }
+}
+
+/*
+ * course pages (main holds a course-only block, as in styles/course.css): the course
+ * content blockquote, a large semibold italic quotation in the text colour, then the
+ * attribution in semibold body text with a leading dash
+ */
+main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) {
+  margin-bottom: 24px;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) .quote-text > * {
+  max-width: var(--text-max-width);
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote {
+  color: var(--text-color);
+  font-size: 24px;
+  font-style: italic;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote:not(:has(+ .quote-attribution)) {
+  margin-bottom: 18px;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote > p {
+  margin-bottom: 0;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote > p:not(:last-child) {
+  margin-bottom: 18px;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote > p:first-child::before,
+main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote > p:last-child::after {
+  margin: 0;
+  font-size: inherit;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) .quote-attribution {
+  margin-bottom: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) .quote-attribution::before {
+  content: '— ';
+}
+
+@media (width >= 769px) {
+  main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote {
+    font-size: 32px;
+  }
+
+  main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote:not(:has(+ .quote-attribution)),
+  main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote > p:not(:last-child),
+  main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) .quote-attribution {
+    margin-bottom: 20px;
   }
 }

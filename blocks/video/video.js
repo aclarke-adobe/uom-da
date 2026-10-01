@@ -2,8 +2,9 @@
  * Video block
  * Intro row (optional): a row without a video link holding a heading and text.
  * Video rows: a link to the video (YouTube, Vimeo or .mp4), an optional poster image and
- * optional caption text (title, duration). The poster shows a play button; the player
- * loads on click (or lazily when in view if there is no poster).
+ * optional caption text (title, duration). The poster shows a play button (YouTube's red
+ * button for YouTube links); the player loads on click (or lazily when in view if there is
+ * no poster).
  * Options: split (intro beside a single video), shorts (intro beside a grid of
  * portrait 9:16 videos with captions).
  */
@@ -11,6 +12,7 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 
 const OPTION_CLASSES = ['split', 'shorts'];
 const VIDEO_LINK = /youtube\.com|youtu\.be|vimeo\.com|\.mp4(\?|$)/i;
+const YOUTUBE_LINK = /youtube\.com|youtu\.be/i;
 
 function embedSrc(href, autoplay) {
   const url = new URL(href);
@@ -52,6 +54,7 @@ function buildItem(row) {
   const pic = row.querySelector('picture');
   const item = document.createElement('div');
   item.className = 'video-item';
+  if (link && YOUTUBE_LINK.test(link.href)) item.classList.add('video-youtube');
 
   const caption = document.createElement('div');
   caption.className = 'video-caption';

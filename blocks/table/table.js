@@ -3,7 +3,8 @@
  * Each row becomes a table row, each cell a table cell. The first row is used as the
  * header when every non-empty cell in it is only a heading, bold text or a short label
  * (and more rows follow). Cells may contain rich content (lists, links, images).
- * On small screens rows stack; header labels are repeated per cell via data-label.
+ * Narrow screens scroll the table sideways inside the block; the scroll container
+ * becomes a focusable, labelled region only while it actually overflows.
  */
 
 function isHeaderRow(row, rowCount) {
@@ -13,7 +14,10 @@ function isHeaderRow(row, rowCount) {
   return cells.every((cell) => {
     const els = [...cell.children];
     if (!els.length) return cell.textContent.trim().length <= 60;
-    return els.length === 1 && (/^H[1-6]$/.test(els[0].tagName)
+    const onlyText = els.length === 1
+      && cell.textContent.trim() === els[0].textContent.trim();
+    return onlyText && (/^H[1-6]$/.test(els[0].tagName)
+      || /^(STRONG|B)$/.test(els[0].tagName)
       || (els[0].tagName === 'P' && els[0].children.length === 1
         && /^(STRONG|B)$/.test(els[0].firstElementChild.tagName)
         && els[0].textContent.trim() === els[0].firstElementChild.textContent.trim())
@@ -27,7 +31,6 @@ export default function decorate(block) {
 
   const table = document.createElement('table');
   const hasHeader = isHeaderRow(rows[0], rows.length);
-  const labels = [];
 
   if (hasHeader) {
     const thead = document.createElement('thead');
@@ -36,7 +39,6 @@ export default function decorate(block) {
       const th = document.createElement('th');
       th.scope = 'col';
       th.append(...cell.childNodes);
-      labels.push(th.textContent.trim());
       tr.append(th);
     });
     thead.append(tr);
@@ -47,9 +49,8 @@ export default function decorate(block) {
   const tbody = document.createElement('tbody');
   rows.slice(hasHeader ? 1 : 0).forEach((row) => {
     const tr = document.createElement('tr');
-    [...row.children].forEach((cell, i) => {
+    [...row.children].forEach((cell) => {
       const td = document.createElement('td');
-      if (labels[i]) td.dataset.label = labels[i];
       td.append(...cell.childNodes);
       tr.append(td);
     });
@@ -64,4 +65,19 @@ export default function decorate(block) {
   wrapper.className = 'table-scroll';
   wrapper.append(table);
   block.replaceChildren(wrapper);
+
+  // keyboard users can scroll an overflowing table; non-overflowing ones stay out of the tab order
+  const caption = table.querySelector('th')?.textContent.trim();
+  const syncScrollable = () => {
+    if (wrapper.scrollWidth > wrapper.clientWidth + 1) {
+      wrapper.tabIndex = 0;
+      wrapper.setAttribute('role', 'region');
+      wrapper.setAttribute('aria-label', caption ? `Table: ${caption}` : 'Table');
+    } else {
+      wrapper.removeAttribute('tabindex');
+      wrapper.removeAttribute('role');
+      wrapper.removeAttribute('aria-label');
+    }
+  };
+  if (window.ResizeObserver) new ResizeObserver(syncScrollable).observe(wrapper);
 }

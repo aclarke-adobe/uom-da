@@ -1,35 +1,75 @@
+/*
+ * table: navy header row, striped body rows with a grey rule under each row.
+ * Narrow screens keep the table layout (min 600px wide, as on the source) and
+ * scroll it sideways inside the block instead of overflowing the page.
+ */
+.table {
+  margin-bottom: 24px;
+}
+
+/* inline-size containment: the table's min width never widens a flex/grid parent (accordion, tabs) */
 .table .table-scroll {
+  max-width: 100%;
+  contain: inline-size;
   overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.table .table-scroll:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
 }
 
 .table table {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
+  border-spacing: 0;
+  font-size: inherit;
+  line-height: inherit;
   text-align: left;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--uom-grey-border);
+  background-color: var(--background-color);
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: var(--uom-grey);
 }
 
 .table th,
 .table td {
   padding: 16px;
-  vertical-align: top;
-  border-top: 1px solid var(--uom-grey-border);
-}
-
-.table tr:last-child td {
-  border-bottom: 1px solid var(--uom-grey-border);
+  text-align: left;
+  vertical-align: middle;
 }
 
 .table th {
+  background-color: var(--uom-navy);
+  color: #fff;
   font-weight: 600;
-  color: var(--heading-color);
+}
+
+.table th :is(strong, b) {
+  font-weight: inherit;
+}
+
+.table th a:any-link {
+  color: #fff;
 }
 
 .table :is(th, td) > :first-child {
   margin-top: 0;
 }
 
-.table :is(th, td) > :last-child {
+.table :is(th, td) > p:last-child {
   margin-bottom: 0;
+}
+
+.table td :is(ul, ol) {
+  padding-left: 24px;
 }
 
 .table td img {
@@ -38,39 +78,9 @@
   height: auto;
 }
 
-@media (width < 600px) {
-  .table table,
-  .table tbody,
-  .table tr,
-  .table td {
-    display: block;
-  }
-
-  .table thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-  }
-
-  .table td {
-    padding: 12px 0;
-    border-top: 0;
-  }
-
-  .table tr {
-    border-top: 1px solid var(--uom-grey-border);
-  }
-
-  .table tr:last-child td {
-    border-bottom: 0;
-  }
-
-  .table td[data-label]::before {
-    content: attr(data-label);
-    display: block;
-    margin-bottom: 4px;
-    font-weight: 600;
+/* wide screens: equal columns, as on the source */
+@media (width >= 1098px) {
+  .table table {
+    table-layout: fixed;
   }
 }

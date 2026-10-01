@@ -34,6 +34,17 @@ export default function decorate(block) {
     if (!row.querySelector('.columns-img-col')) row.classList.add('columns-text-row');
   });
 
+  // link list: a list whose every item is just one link renders as a row of link chips
+  block.querySelectorAll(':scope > div > div > ul').forEach((list) => {
+    const items = [...list.children];
+    const isLinkList = items.length && items.every((li) => {
+      const links = li.querySelectorAll('a');
+      return links.length === 1 && li.children.length === 1
+        && li.textContent.trim() === links[0].textContent.trim();
+    });
+    if (isLinkList) list.classList.add('columns-link-list');
+  });
+
   // eyebrow: short link-free paragraph(s) placed before a column's heading
   block.querySelectorAll(':scope > div > div > :is(h1, h2, h3, h4)').forEach((heading) => {
     let prev = heading.previousElementSibling;

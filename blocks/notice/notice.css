@@ -1,51 +1,286 @@
-.notice {
-  --notice-accent: var(--uom-teal);
+/*
+ * Notice
+ * Default: information notice (light blue panel, blue rule, info marker).
+ * .notice-panel (authored with a leading :icon:): course fee panel, icon column on the left,
+ * fee lists as label / price rows grouped by year; collapses to its heading below 769px.
+ */
 
-  padding: 24px;
-  border: 1px solid var(--notice-accent);
-  background-color: var(--uom-sage-pale);
+.notice {
+  --notice-info-color: #1f7593;
+  --notice-info-bg: #e3f6fd;
+  --notice-rule-color: #cacaca;
+  --notice-info-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 17h2v-6h-2v6Zm1-8q.425 0 .713-.288T13 8q0-.425-.288-.713T12 7q-.425 0-.713.288T11 8q0 .425.288.713T12 9Zm0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22Z'/%3E%3C/svg%3E");
+  --notice-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2.5 7.25 12 16.75l9.5-9.5' fill='none' stroke='%23000' stroke-width='2.25'/%3E%3C/svg%3E");
+
+  position: relative;
+  margin: 24px 0;
+  border: 1px solid var(--notice-info-color);
+  padding: 16px 16px 16px 48px;
+  background-color: var(--notice-info-bg);
+  color: #222;
 }
 
-.notice .notice-head {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
+.notice::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--notice-info-color);
+  mask: var(--notice-info-icon) center / contain no-repeat;
 }
 
 .notice .notice-head > :is(h1, h2, h3, h4, h5, h6) {
-  margin: 0;
-  font-size: var(--heading-font-size-s);
+  margin: 0 0 16px;
+  font-size: var(--heading-font-size-m);
 }
 
-.notice .notice-icon {
-  flex: 0 0 20px;
-  width: 20px;
-  height: 20px;
-  margin-top: 4px;
-  border-radius: 50%;
-  background-color: var(--notice-accent);
-}
-
-.notice .notice-icon:has(.icon) {
-  border-radius: 0;
-  background-color: transparent;
-}
-
-.notice .notice-icon .icon,
-.notice .notice-icon img {
-  width: 20px;
-  height: 20px;
-}
-
-.notice .notice-body {
-  padding-left: 32px;
-  max-width: var(--text-max-width);
+.notice .notice-head:only-child > :is(h1, h2, h3, h4, h5, h6) {
+  margin-bottom: 0;
 }
 
 .notice .notice-body > :first-child {
-  margin-top: 16px;
+  margin-top: 0;
 }
 
 .notice .notice-body > :last-child {
   margin-bottom: 0;
+}
+
+.notice .notice-body[hidden] {
+  display: none;
+}
+
+@media (width >= 769px) {
+  .notice {
+    padding: 24px 24px 24px 56px;
+  }
+
+  .notice::before {
+    top: 24px;
+    left: 24px;
+  }
+
+  .notice .notice-head > :is(h1, h2, h3, h4, h5, h6) {
+    margin-bottom: 18px;
+  }
+}
+
+/* panel (icon notices: CSP / IFP / RTP fee panels) */
+.notice.notice-panel {
+  display: flex;
+  margin: 0 0 16px;
+  border: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.notice.notice-panel::before {
+  content: none;
+}
+
+.notice.notice-panel.notice-follows {
+  padding-top: 24px;
+}
+
+.notice.notice-panel .notice-icon {
+  display: none;
+}
+
+.notice.notice-panel .notice-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notice.notice-panel .notice-body > * {
+  max-width: var(--text-max-width);
+}
+
+/* collapsible heading row (small screens) */
+.notice.notice-collapsible .notice-head {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.notice.notice-collapsible .notice-head > :is(h1, h2, h3, h4, h5, h6) {
+  flex: 1;
+  margin-right: 16px;
+}
+
+.notice.notice-collapsible.notice-expanded .notice-head {
+  border-bottom: 1px solid var(--notice-rule-color);
+  padding-bottom: 16px;
+}
+
+.notice .notice-toggle {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--heading-color);
+  cursor: pointer;
+}
+
+.notice .notice-toggle::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: currentcolor;
+  mask: var(--notice-chevron) center / 16px no-repeat;
+}
+
+.notice .notice-toggle:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+.notice.notice-expanded .notice-toggle::before {
+  transform: rotate(180deg);
+}
+
+/* fee lists */
+.notice .notice-fees {
+  margin-bottom: 32px;
+}
+
+.notice .notice-fees:last-child {
+  margin-bottom: 0;
+}
+
+.notice .notice-fee-year {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.notice .notice-fee-year:last-child {
+  margin-bottom: 0;
+}
+
+.notice .notice-fee-year .notice-fee-year-title {
+  margin: 0 16px 0 0;
+  border-left: 4px solid var(--notice-fee-accent);
+  padding: 0 16px;
+  font-size: var(--heading-font-size-m);
+  font-weight: 600;
+}
+
+.notice .notice-fee-list {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.notice .notice-fee-list > li {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  border-left: 4px solid var(--notice-fee-accent);
+  padding: 4.8px 16px;
+}
+
+.notice .notice-fee-price {
+  font-weight: 700;
+}
+
+.notice .notice-fee-desc {
+  font-size: var(--body-font-size-xs);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.0075em;
+}
+
+.notice .notice-fee-list-vertical > li + li {
+  margin-top: 24px;
+}
+
+.notice .notice-fee-accent-0 { --notice-fee-accent: #809daa; }
+.notice .notice-fee-accent-1 { --notice-fee-accent: #ffe05e; }
+.notice .notice-fee-accent-2 { --notice-fee-accent: #95a08e; }
+.notice .notice-fee-accent-3 { --notice-fee-accent: #be7440; }
+
+@media (width >= 769px) {
+  .notice.notice-panel {
+    margin-bottom: 32px;
+  }
+
+  .notice.notice-panel.notice-follows {
+    border-top: 1px solid var(--notice-rule-color);
+  }
+
+  .notice.notice-panel .notice-icon {
+    display: block;
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    margin-right: 24px;
+  }
+
+  .notice.notice-panel .notice-icon .icon,
+  .notice.notice-panel .notice-icon img {
+    display: block;
+    width: 32px;
+    height: 32px;
+  }
+
+  .notice.notice-collapsible .notice-head {
+    cursor: auto;
+  }
+
+  .notice.notice-collapsible .notice-head > :is(h1, h2, h3, h4, h5, h6) {
+    margin-right: 0;
+  }
+
+  .notice.notice-collapsible.notice-expanded .notice-head {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .notice .notice-toggle {
+    display: none;
+  }
+
+  .notice .notice-fee-year {
+    flex-direction: row;
+  }
+
+  .notice .notice-fee-year .notice-fee-year-title {
+    flex: 0 0 auto;
+    align-self: center;
+    width: 15%;
+    min-width: 144px;
+    border-left: 0;
+    padding: 0;
+  }
+
+  .notice .notice-fee-year .notice-fee-list > li {
+    flex-direction: row;
+  }
+
+  .notice .notice-fee-year :is(.notice-fee-label, .notice-fee-price) {
+    flex: 1;
+  }
+
+  .notice .notice-fee-year .notice-fee-list > li:first-child {
+    padding-top: 16px;
+  }
+
+  .notice .notice-fee-year .notice-fee-list > li:last-child {
+    padding-bottom: 16px;
+  }
+}
+
+@media (width >= 1098px) {
+  .notice .notice-fee-year .notice-fee-price {
+    flex: 2;
+  }
 }

@@ -1,26 +1,53 @@
+/*
+ * Tabs: UoM "app-tabs--alt" strip (navy text, 5px navy bar under the active tab,
+ * underline on hover) over a light grey panel. In a grey section the panel blends
+ * into the section, so it drops its side padding (sample course plans).
+ */
+
 .tabs .tabs-list {
   display: flex;
-  gap: 8px;
   overflow-x: auto;
   scrollbar-width: thin;
 }
 
 .tabs .tabs-tab {
+  position: relative;
   flex: 0 0 auto;
-  margin: 0;
+  margin: 0 4px 0 0;
   padding: 12px 8px;
   border: 0;
-  border-bottom: 4px solid transparent;
   border-radius: 0;
+  overflow: hidden;
   background: transparent;
-  color: inherit;
+  color: var(--uom-navy);
   font: inherit;
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
   cursor: pointer;
 }
 
+.tabs .tabs-tab::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 5px;
+  background-color: var(--uom-navy);
+  transform: translateY(5px);
+  transition: transform 0.2s;
+}
+
+.tabs .tabs-tab:hover {
+  text-decoration: underline;
+}
+
 .tabs .tabs-tab[aria-selected="true"] {
-  border-bottom-color: var(--uom-navy);
   font-weight: 600;
+}
+
+.tabs .tabs-tab[aria-selected="true"]::after {
+  transform: none;
 }
 
 .tabs .tabs-tab:focus-visible {
@@ -29,7 +56,7 @@
 }
 
 .tabs .tabs-panel {
-  padding: 24px;
+  padding: 24px 16px;
   background-color: var(--light-color);
 }
 
@@ -41,12 +68,24 @@
   margin-bottom: 0;
 }
 
-@media (width >= 900px) {
-  .tabs .tabs-list {
-    gap: 16px;
-  }
+.tabs .tabs-panel > .accordion-wrapper:last-child {
+  margin-bottom: 24px;
+}
 
+.tabs .tabs-panel > .accordion-wrapper + .accordion-wrapper {
+  margin-top: 36px;
+}
+
+main .section.grey .tabs .tabs-panel {
+  padding: 24px 0 0;
+}
+
+main .section.grey .tabs .tabs-panel > .accordion-wrapper:last-child {
+  margin-bottom: 0;
+}
+
+@media (width >= 769px) {
   .tabs .tabs-panel {
-    padding: 32px 24px;
+    padding: 24px;
   }
 }

@@ -142,6 +142,185 @@
 }
 
 /*
+ * aside option (course/major "overview" title band): sage band with the heading;
+ * the "at a glance" panel (dark course list over a grey CTA well) stacks below on
+ * mobile and hangs from the band's top-right corner on desktop.
+ */
+.hero.aside .hero-content {
+  max-width: calc(var(--content-max-width) + 32px);
+  padding: 48px 16px;
+}
+
+.hero.aside .hero-main > h2 {
+  max-width: var(--text-max-width);
+  font-size: var(--heading-font-size-xl);
+  line-height: 1.2;
+}
+
+.hero.aside .hero-aside {
+  margin-top: 48px;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  box-shadow: 0 0 6px -1px rgb(0 0 0 / 40%);
+}
+
+.hero.aside .hero-aside-courses {
+  padding: 24px;
+  background-color: var(--uom-teal-light);
+  color: var(--background-color);
+}
+
+.hero.aside .hero-aside-courses > * {
+  margin: 0;
+}
+
+.hero.aside .hero-aside-courses > * + * {
+  margin-top: 24px;
+}
+
+.hero.aside .hero-aside-title {
+  font-weight: 600;
+}
+
+.hero.aside .hero-aside-links li {
+  margin: 0;
+}
+
+.hero.aside .hero-aside-links li + li {
+  margin-top: 16px;
+}
+
+.hero.aside .hero-aside-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background-color: var(--uom-grey);
+}
+
+.hero.aside .hero-aside-actions > p {
+  margin: 0;
+}
+
+/* course links (outlined) and CTA links (cyan) share the full-width arrow button shape */
+.hero.aside .hero-aside-links a:any-link,
+.hero.aside .hero-aside-actions a:any-link {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  padding: 12px 16px 12px 12px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.hero.aside .hero-aside-links a:any-link::before,
+.hero.aside .hero-aside-actions a:any-link::before {
+  content: '';
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 3.5px;
+  background-color: currentcolor;
+  mask: var(--arrow-icon) center / contain no-repeat;
+}
+
+.hero.aside .hero-aside-links a:any-link {
+  box-shadow: inset 0 0 0 1px var(--background-color);
+  color: var(--background-color);
+}
+
+.hero.aside .hero-aside-actions a:any-link {
+  background-color: var(--uom-cyan);
+  color: var(--uom-navy);
+}
+
+.hero.aside .hero-aside-links a:any-link:hover,
+.hero.aside .hero-aside-actions a:any-link:hover {
+  text-decoration: underline;
+}
+
+.hero.aside .hero-aside-actions a:any-link:hover {
+  background-color: var(--uom-cyan-light);
+}
+
+@media (width >= 600px) {
+  .hero.aside .hero-content {
+    padding-block: 64px;
+  }
+}
+
+@media (width >= 769px) {
+  .hero.aside .hero-content {
+    max-width: calc(var(--content-max-width) + 64px);
+    padding-inline: 32px;
+  }
+
+  .hero.aside .hero-aside-actions {
+    gap: 24px;
+  }
+}
+
+/* desktop: only the heading row is the sage band; the 384px panel overhangs it */
+@media (width >= 900px) {
+  .hero.aside {
+    background-color: transparent;
+  }
+
+  .hero.aside.hero-has-aside .hero-content {
+    position: relative;
+    grid-template-columns: minmax(0, 1fr) 384px;
+    gap: 0;
+    padding-block: 0;
+  }
+
+  .hero.aside .hero-main {
+    grid-area: 1 / 1 / 2 / 3;
+    align-self: start;
+    padding-block: 64px;
+    background-color: var(--uom-sage-pale);
+    box-shadow: 0 0 0 100vmax var(--uom-sage-pale);
+    clip-path: inset(0 -100vmax);
+  }
+
+  .hero.aside.hero-has-aside .hero-main > h2 {
+    max-width: min(var(--text-max-width), calc(100% - 384px - 24px));
+  }
+
+  /*
+   * the panel is positioned in its grid cell, so it takes no flow space: the band is
+   * only as tall as the heading row and the panel hangs over the next section
+   * (which leaves room for it, see styles/course.css)
+   */
+  .hero.aside.hero-has-aside .hero-aside {
+    position: absolute;
+    z-index: 2;
+    grid-area: 1 / 2 / 2 / 3;
+    inset: 64px 0 auto;
+    margin-top: 0;
+  }
+}
+
+@media (width >= 1304px) {
+  .hero.aside .hero-content {
+    max-width: var(--content-max-width);
+    padding-inline: 0;
+  }
+
+  .hero.aside .hero-main {
+    padding-block: 80px;
+  }
+
+  .hero.aside.hero-has-aside .hero-aside {
+    top: 80px;
+  }
+}
+
+/*
  * split: content beside image.
  * Default (h2 heading): in-content feature on the section background,
  * text 1/3 + image 2/3 inside the content width.
@@ -336,5 +515,190 @@
 
   .hero.overlay {
     min-height: 400px;
+  }
+}
+
+/*
+ * course header (split + h1 + stat list, set by hero.js): navy band with the level tag,
+ * h1, arrow stat links and the course code line; the image fills the right 30% on
+ * wide screens and is hidden below that.
+ */
+.hero.split.hero-course {
+  display: block;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background-color: var(--uom-navy-dark);
+  color: var(--background-color);
+}
+
+.hero.split.hero-course .hero-media {
+  display: none;
+}
+
+.hero.split.hero-course .hero-content {
+  max-width: calc(var(--content-max-width) + 32px);
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+.hero.split.hero-course .hero-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero.split.hero-course .hero-main > * {
+  max-width: var(--text-max-width);
+  margin: 0;
+}
+
+.hero.split.hero-course .hero-eyebrow {
+  margin-bottom: 8px;
+  padding: 0.3rem;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.hero.split.hero-course .hero-eyebrow-tag {
+  border: 1px solid #a2a49f;
+}
+
+.hero.split.hero-course .hero-eyebrow a:any-link {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.hero.split.hero-course .hero-main > h1 {
+  margin-bottom: 20px;
+  font-size: var(--heading-font-size-xxl);
+  line-height: 1.2;
+}
+
+.hero.split.hero-course .hero-main > h1 + p {
+  margin-top: 0;
+}
+
+.hero.split.hero-course .hero-main > .hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: none;
+  margin-bottom: 32px;
+  padding: 0;
+  list-style: none;
+}
+
+.hero.split.hero-course .hero-stats li {
+  display: flex;
+  margin: 0;
+}
+
+.hero.split.hero-course .hero-stats a:any-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-weight: 600;
+  line-height: 1.3333;
+  text-decoration: none;
+}
+
+.hero.split.hero-course .hero-stats a:any-link::before {
+  content: '';
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  background-color: var(--uom-cyan);
+  mask: url('../../icons/arrow-cta.svg') center / contain no-repeat;
+}
+
+.hero.split.hero-course .hero-stats a.hero-stat-external .hero-stat-text::after {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 2px 0 6px;
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M1.333 12q-.55 0-.941-.392A1.28 1.28 0 0 1 0 10.667V1.333q0-.55.392-.941Q.783 0 1.333 0H6v1.333H1.333v9.334h9.334V6H12v4.667q0 .55-.392.941a1.28 1.28 0 0 1-.941.392zm3.134-3.533-.934-.934 6.2-6.2h-2.4V0H12v4.667h-1.333v-2.4z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.hero.split.hero-course .hero-stats a:any-link:hover .hero-stat-text {
+  text-decoration: underline;
+}
+
+.hero.split.hero-course .hero-eyebrow a:any-link:hover {
+  text-decoration: underline;
+}
+
+.hero.split.hero-course .hero-main > .hero-codes {
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: -0.0075em;
+}
+
+.hero.split.hero-course .hero-codes strong {
+  font-weight: 600;
+}
+
+@media (width >= 600px) {
+  .hero.split.hero-course .hero-content {
+    padding-block: 64px;
+  }
+}
+
+@media (width >= 769px) {
+  .hero.split.hero-course .hero-content {
+    max-width: calc(var(--content-max-width) + 64px);
+    padding: 64px 32px 32px;
+  }
+
+  .hero.split.hero-course .hero-main > h1 {
+    margin-bottom: 24px;
+  }
+
+  .hero.split.hero-course .hero-main > .hero-stats {
+    flex-direction: row;
+    gap: 48px;
+  }
+
+  .hero.split.hero-course .hero-stats a:any-link::before {
+    width: 24px;
+    height: 24px;
+  }
+
+  .hero.split.hero-course .hero-main > .hero-codes {
+    margin-top: 80px;
+  }
+}
+
+@media (width >= 1098px) {
+  .hero.split.hero-course .hero-content {
+    padding-top: 96px;
+  }
+
+  .hero.split.hero-course .hero-main {
+    padding-right: 352px;
+  }
+
+  .hero.split.hero-course .hero-media {
+    display: block;
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 30%;
+  }
+
+  .hero.split.hero-course .hero-media img {
+    height: 100%;
+    aspect-ratio: auto;
+    object-position: 100% 50%;
+  }
+}
+
+@media (width >= 1304px) {
+  .hero.split.hero-course .hero-content {
+    max-width: var(--content-max-width);
+    padding-inline: 0;
   }
 }

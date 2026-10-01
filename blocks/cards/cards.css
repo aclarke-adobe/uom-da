@@ -245,28 +245,94 @@
   margin: 0;
 }
 
-/* people: portrait beside name, role and bio */
+/* people: stacked profile cards, portrait floated beside name and bio (text wraps below it on
+   narrow screens), a 6px grey rule under each card and a cyan one under the last */
 .cards.people > ul {
   grid-template-columns: 1fr;
+  gap: 0;
 }
 
-.cards.people .cards-card-body {
-  margin: 16px 0 0;
+.cards.people > ul > li {
+  display: flow-root;
+  padding: 24px;
+  border-bottom: 6px solid var(--uom-grey-border);
+}
+
+.cards.people > ul > li:where(:last-child) {
+  border-bottom-color: var(--uom-cyan);
+}
+
+.cards.people .cards-card-image {
+  float: left;
+  width: 250px;
+  margin: 0 20px 20px 0;
 }
 
 .cards.people > ul > li img {
-  aspect-ratio: 1;
+  height: auto;
+  aspect-ratio: auto;
 }
 
-/* stat: bordered card with centred figure and label, optional description below a rule */
+.cards.people .cards-card-body {
+  display: block;
+  max-width: 880px;
+}
+
+.cards.people .cards-card-body > :is(h2, h3, h4, h5, h6) {
+  margin: 0 0 24px;
+  color: var(--heading-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+.cards.people .cards-card-body > p {
+  margin: 0 0 24px;
+}
+
+/* stat: shaded entry-score card (first sage, others grey), centred title / figure / label,
+   description below a rule */
 .cards.stat > ul > li {
-  border: 1px solid var(--uom-grey-border);
-  background-color: var(--background-color);
+  padding: 12px;
+  background-color: var(--uom-grey);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
   text-align: center;
 }
 
-.cards.stat .cards-card-body {
-  margin: 16px;
+.cards.stat > ul > li:where(:first-child) {
+  background-color: var(--uom-sage-pale);
+}
+
+.cards.stat .cards-card-body > p {
+  margin: 0;
+}
+
+.cards.stat .cards-card-body > .cards-stat-title {
+  margin-bottom: 8px;
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.cards.stat .cards-stat-value {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xl);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.cards.stat p.cards-stat-value strong {
+  font-weight: 400;
+}
+
+.cards.stat .cards-card-body > .cards-stat-label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
 .cards.stat .cards-card-image {
@@ -282,21 +348,52 @@
   object-fit: contain;
 }
 
+.cards.stat .cards-card-stat {
+  flex: 0 0 auto;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #bfced5;
+}
+
+.cards.stat .cards-card-desc {
+  display: block;
+  margin: 12px 0 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: -0.0075em;
+  text-align: left;
+}
+
+/* profile: default cards without CTAs (course alumni) - white card, fixed-height photo, padded text */
+.cards.cards-profile > ul > li {
+  background-color: var(--background-color);
+}
+
+.cards.cards-profile > ul > li img {
+  height: 360px;
+  aspect-ratio: auto;
+}
+
+.cards.cards-profile .cards-card-body {
+  padding: 24px;
+}
+
+.cards.cards-profile .cards-card-body > p:where(:not(.cards-card-cta)) {
+  margin: 0 0 24px;
+}
+
+/* a lone profile is a feature: unpadded text with a larger name (photo moves right on desktop) */
+.cards.cards-profile > ul > li:where(:only-child) .cards-card-body {
+  padding: 24px 0 0;
+}
+
+.cards.cards-profile > ul > li:where(:only-child) .cards-card-body > :is(h2, h3, h4, h5, h6) {
+  font-size: var(--heading-font-size-l);
+}
+
 /* icon: `:icon-name:` SVG fills the icon span at its own ratio */
 .cards.icon > ul > li .cards-card-icon img {
   width: 100%;
   height: auto;
-}
-
-.cards.stat .cards-card-stat {
-  flex: 0 0 auto;
-  align-items: center;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--uom-grey-border);
-}
-
-.cards.stat .cards-card-desc {
-  text-align: left;
 }
 
 /* course-link: slim bar of arrow-prefixed links, stacked on mobile, one centred line on desktop */
@@ -392,18 +489,93 @@ main .section:is(.grey, .light, .highlight):has(> .cards-wrapper:only-child > .c
   text-decoration: none;
 }
 
+/* stat nested in an accordion (graduate English test scores): white bordered tiles, navy text */
+.accordion .cards.stat > ul {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.accordion .cards.stat > ul > li {
+  padding: 16px;
+  border: 1px solid #dddfe7;
+  background-color: var(--background-color);
+  box-shadow: none;
+  color: var(--heading-color);
+}
+
+.accordion .cards.stat .cards-card-stat {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.accordion .cards.stat .cards-stat-title {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+}
+
+.accordion .cards.stat .cards-stat-value {
+  font-size: 36px;
+}
+
+/* the description sits at the bottom of the tile, so tiles in a row align on it */
+.accordion .cards.stat .cards-card-desc {
+  flex: 0 0 auto;
+  margin: auto 0 0;
+  padding-top: 8px;
+  color: #222;
+  text-align: center;
+}
+
+/* facts: text-only icon cards (employment outcomes) - white, centred, colour-cycling base rule */
+.cards.icon.cards-facts > ul {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.cards.icon.cards-facts > ul > li {
+  border-bottom: 6px solid var(--uom-grey-border);
+  background-color: var(--background-color);
+  color: var(--heading-color);
+  text-align: center;
+}
+
+.cards.icon.cards-facts > ul > li:where(:nth-child(4n + 2)) {
+  border-bottom-color: var(--uom-cyan);
+}
+
+.cards.icon.cards-facts > ul > li:where(:nth-child(4n + 3)) {
+  border-bottom-color: #ffd629;
+}
+
+.cards.icon.cards-facts > ul > li:where(:nth-child(4n + 4)) {
+  border-bottom-color: #9fb825;
+}
+
+.cards.icon.cards-facts > ul > li .cards-card-body {
+  padding: 24px 24px 32px;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: -0.0075em;
+}
+
+.cards.icon.cards-facts .cards-card-body > :is(h2, h3, h4, h5, h6) {
+  margin: 0 0 12px;
+  color: inherit;
+  font-size: var(--body-font-size-m);
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+.cards.icon.cards-facts .cards-card-body > p:where(:not(.cards-card-cta)) {
+  margin: 0 0 8px;
+}
+
+.cards.icon.cards-facts .cards-card-body > p:last-child {
+  margin-bottom: 0;
+}
+
 @media (width >= 600px) {
-  .cards.people > ul > li {
-    display: grid;
-    grid-template-columns: minmax(160px, 1fr) 2fr;
-    gap: 24px;
-    align-items: start;
-  }
-
-  .cards.people .cards-card-body {
-    margin: 0;
-  }
-
   /* default / icon cards: two-up, a trailing odd card centred */
   .cards:not(.tile, .link-list, .course-link, .people, .stat, .chips) > ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -475,8 +647,7 @@ main .section:is(.grey, .light, .highlight):has(> .cards-wrapper:only-child > .c
   }
 
   .cards.tile > ul,
-  .cards.icon > ul,
-  .cards.stat > ul {
+  .cards.icon > ul {
     grid-template-columns: repeat(auto-fit, minmax(257px, 1fr));
   }
 
@@ -486,11 +657,11 @@ main .section:is(.grey, .light, .highlight):has(> .cards-wrapper:only-child > .c
   }
 
   /* fill whole rows: 3 / 6 cards in 3 columns, 4 / 8 cards in 4 columns */
-  .cards.cards-cols-3:not(.link-list, .course-link, .people, .chips) > ul {
+  .cards.cards-cols-3:not(.link-list, .course-link, .people, .stat, .chips) > ul {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .cards.cards-cols-4:not(.link-list, .course-link, .people, .chips) > ul {
+  .cards.cards-cols-4:not(.link-list, .course-link, .people, .stat, .chips) > ul {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
@@ -540,4 +711,85 @@ main .section:is(.navy, .dark) .cards.tile .cards-card-body > p.cards-card-title
 
 main .section:is(.navy, .dark) .cards.tile p.cards-card-title a:hover {
   color: var(--link-on-dark-hover-color);
+}
+
+/* course-page variants: these come after the shared breakpoint rules they refine */
+@media (width >= 600px) {
+  .cards.cards-profile > ul {
+    grid-template-columns: 1fr;
+  }
+
+  .accordion .cards.stat > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cards.cards-profile > ul:has(> li:nth-child(3)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cards.cards-profile > ul > li:last-child:nth-child(odd) {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
+  }
+
+  .cards.icon.cards-facts > ul > li:last-child:nth-child(odd) {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
+  }
+}
+
+@media (width >= 769px) {
+  /* stat: two cards per row, a lone card stays half width */
+  .cards.stat > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .cards.icon.cards-facts > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .cards.cards-profile > ul:has(> li:nth-child(2)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cards.cards-profile > ul:has(> li:nth-child(3)) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cards.cards-profile > ul > li:only-child {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .cards.icon.cards-facts > ul > li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 12px);
+  }
+
+  .cards.cards-profile > ul > li img {
+    height: 320px;
+  }
+
+  .cards.cards-profile > ul > li:only-child .cards-card-image {
+    order: 2;
+  }
+
+  .cards.cards-profile > ul > li:where(:only-child) .cards-card-body {
+    padding-right: 24px;
+  }
+
+  .accordion .cards.stat .cards-stat-title {
+    font-size: 18px;
+  }
+}
+
+@media (width >= 1098px) {
+  .accordion .cards.stat > ul {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
 }

@@ -1,0 +1,342 @@
+/*
+ * Course pages (find/courses/**): section rhythm, title bands and default content.
+ * Course pages carry no template metadata, so every rule is scoped to a main that
+ * holds a course-only block (audience switcher, key facts or the major title band).
+ * Sections split by audience render one copy at a time; the other copy is [hidden],
+ * so adjacency rules look through up to two hidden siblings.
+ */
+
+/* the long :has() adjacency selectors target different elements; ordering by specificity would scatter related rules */
+/* stylelint-disable no-descending-specificity */
+
+/* audience-split copies never take space, even where a rule sets display */
+main > .section[hidden] {
+  display: none !important;
+}
+
+/* vertical rhythm: 48px below the source's 720px breakpoint, 80px above */
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal) {
+  margin: 48px 0;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section:is(.grey, .sage, .light, .highlight, .cream):not(.key-facts-container) {
+  margin: 0;
+  padding: 48px 0;
+}
+
+/* the course header, audience bar and key facts sit flush on top of each other */
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.hero-container:first-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.audience-switcher-container {
+  margin: 0;
+}
+
+/* a padded band ends on its content, not on the last element's margin */
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section:is(.grey, .sage) > div:last-child > :last-child {
+  margin-bottom: 0;
+}
+
+/*
+ * continuation sections: an unstyled section that follows an unstyled section and
+ * does not open with its own h2/h3 (audience-split notices under "Fees", the shared
+ * "Other financial assistance" tail, graduate GAM / Advanced Standing) continues the
+ * previous section, so it gets paragraph spacing instead of section spacing (the
+ * negative top margin collapses with the previous section's bottom margin to 24px)
+ */
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal, [hidden]) + .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):is(:has(> .default-content-wrapper:first-child > :first-child:not(h1, h2, h3)), [data-audience]:not(:has(> .default-content-wrapper:first-child))),
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal, [hidden]) + [hidden] + .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):is(:has(> .default-content-wrapper:first-child > :first-child:not(h1, h2, h3)), [data-audience]:not(:has(> .default-content-wrapper:first-child))) {
+  margin-top: -24px;
+}
+
+/* consecutive visible grey sections read as one band */
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:not([hidden]):is(:has(+ .section.grey:not([hidden])), :has(+ [hidden] + .section.grey:not([hidden])), :has(+ [hidden] + [hidden] + .section.grey:not([hidden]))) {
+  padding-bottom: 0;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:not([hidden]) + .section.grey,
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:not([hidden]) + [hidden] + .section.grey,
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:not([hidden]) + [hidden] + [hidden] + .section.grey {
+  padding-top: 0;
+}
+
+/*
+ * admission requirements band (undergraduate entry requirements): the stat cards and
+ * "Essential requirements" share one white panel under the residency notice
+ */
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:has(> .cards-wrapper > .cards.stat) > div,
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:is(:has(> .cards-wrapper > .cards.stat), :has(> .residency-notice-wrapper)) + .section.grey:not(:has(.block)) > div {
+  max-width: none;
+  margin-inline: max(16px, calc((100% - 1240px) / 2));
+  padding: 24px 24px 0;
+  border: 1px solid #e4e4e4;
+  border-block: 0;
+  background-color: var(--background-color);
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:has(> .cards-wrapper > .cards.stat) > div:first-child,
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:has(> .residency-notice-wrapper) + .section.grey:not(:has(.block)) > div:first-child {
+  border-top: 1px solid #e4e4e4;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:is(:has(> .cards-wrapper > .cards.stat), :has(> .residency-notice-wrapper)) + .section.grey:not(:has(.block)) > div:last-child {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:is(:has(> .cards-wrapper > .cards.stat), :has(> .residency-notice-wrapper)) + .section.grey:not(:has(.block)) > .default-content-wrapper > * {
+  max-width: none;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:is(:has(> .cards-wrapper > .cards.stat), :has(> .residency-notice-wrapper)) + .section.grey:not(:has(.block)) h4 {
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:is(:has(> .cards-wrapper > .cards.stat), :has(> .residency-notice-wrapper)) + .section.grey:not(:has(.block)) h5 {
+  margin-bottom: 8px;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:is(:has(> .cards-wrapper > .cards.stat), :has(> .residency-notice-wrapper)) + .section.grey:not(:has(.block)) h5 ~ h5 {
+  padding-top: 24px;
+  border-top: 1px solid #e4e4e4;
+}
+
+/* title band: h2 with an optional in-page anchor list */
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.sage > .default-content-wrapper > h2 + ul {
+  margin-top: 24px;
+  padding-left: 24px;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.sage > .default-content-wrapper > h2 + ul > li:last-child {
+  margin-bottom: 12px;
+}
+
+/* title band with the key-dates card (stacked below the heading on small screens) */
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section.sage > .timeline-wrapper {
+  margin-top: 48px;
+}
+
+/* major title band: the hero (aside) block is the band */
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section:has(> .hero-wrapper > .hero.aside) {
+  margin: 0;
+}
+
+/* default content */
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section > .default-content-wrapper :is(ul, ol) {
+  padding-left: 24px;
+}
+
+/* ticked checklist ("Before you apply") */
+main:has(.audience-switcher, .key-facts, .hero.aside) .default-content-wrapper > h4[id^="before-you-apply"] + ol {
+  list-style: none;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) .default-content-wrapper > h4[id^="before-you-apply"] + ol > li {
+  position: relative;
+  font-weight: 600;
+}
+
+main:has(.audience-switcher, .key-facts, .hero.aside) .default-content-wrapper > h4[id^="before-you-apply"] + ol > li::before {
+  content: '';
+  position: absolute;
+  top: 0.55em;
+  left: -20px;
+  width: 0.6em;
+  height: 0.33em;
+  border-bottom: 2px solid #2c421d;
+  border-left: 2px solid #2c421d;
+  transform: rotate(-45deg);
+}
+
+/* image paragraphs (figures) may use the full content width */
+main:has(.audience-switcher, .key-facts, .hero.aside) > .section > .default-content-wrapper > p:has(> picture:only-child) {
+  max-width: none;
+}
+
+/* handbook footnote under entry requirements / after you apply */
+main:has(.audience-switcher, .key-facts, .hero.aside) .default-content-wrapper > p:has(> a[href*="handbook.unimelb.edu.au"][href$="/entry-participation-requirements"]) {
+  font-size: var(--body-font-size-xs);
+  line-height: 1.4;
+}
+
+@media (width >= 769px) {
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal) {
+    margin: var(--section-padding) 0;
+  }
+
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section:is(.grey, .sage, .light, .highlight, .cream):not(.key-facts-container) {
+    margin: 0;
+    padding: var(--section-padding) 0;
+  }
+
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal, [hidden]) + .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):is(:has(> .default-content-wrapper:first-child > :first-child:not(h1, h2, h3)), [data-audience]:not(:has(> .default-content-wrapper:first-child))),
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal, [hidden]) + [hidden] + .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):is(:has(> .default-content-wrapper:first-child > :first-child:not(h1, h2, h3)), [data-audience]:not(:has(> .default-content-wrapper:first-child))) {
+    margin-top: calc(24px - var(--section-padding));
+  }
+
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.hero-container:first-child,
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.audience-switcher-container,
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section:has(> .hero-wrapper > .hero.aside) {
+    margin: 0;
+  }
+
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:has(> .cards-wrapper > .cards.stat) > div,
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.grey:is(:has(> .cards-wrapper > .cards.stat), :has(> .residency-notice-wrapper)) + .section.grey:not(:has(.block)) > div {
+    margin-inline: max(32px, calc((100% - 1240px) / 2));
+  }
+
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section > .default-content-wrapper > p:has(> picture:only-child) {
+    margin-bottom: 32px;
+  }
+}
+
+/*
+ * title band with the key-dates card: the card sits to the right of the heading,
+ * top-aligned with it, and hangs into the next section, whose content narrows to
+ * leave room for it (source .course-section--title / __main-with-aside, >= 900px)
+ */
+@media (width >= 900px) {
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.sage:has(> .timeline-wrapper) {
+    position: relative;
+    z-index: 1;
+  }
+
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.sage > .timeline-wrapper {
+    position: absolute;
+    top: var(--section-padding);
+    right: max(32px, calc((100% - 1240px) / 2));
+    box-sizing: border-box;
+    width: 384px;
+    margin: 0;
+    padding: 0;
+  }
+
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.sage:has(> .timeline-wrapper) > .default-content-wrapper > * {
+    max-width: min(var(--text-max-width), calc(100% - 384px - 24px));
+  }
+
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.sage:has(> .timeline-wrapper) > .default-content-wrapper > :last-child {
+    margin-bottom: 0;
+  }
+
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.sage:not([hidden]):has(> .timeline-wrapper) + .section:not([hidden]) > div,
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.sage:not([hidden]):has(> .timeline-wrapper) + [hidden] + .section:not([hidden]) > div,
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.sage:not([hidden]):has(> .timeline-wrapper) + [hidden] + [hidden] + .section:not([hidden]) > div {
+    box-sizing: border-box;
+    max-width: none;
+    padding-right: calc(32px + 384px + 24px);
+  }
+}
+
+@media (width >= 1304px) {
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.sage:not([hidden]):has(> .timeline-wrapper) + .section:not([hidden]) > div,
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.sage:not([hidden]):has(> .timeline-wrapper) + [hidden] + .section:not([hidden]) > div,
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section.sage:not([hidden]):has(> .timeline-wrapper) + [hidden] + [hidden] + .section:not([hidden]) > div {
+    max-width: var(--content-max-width);
+    padding-right: calc(384px + 24px);
+  }
+}
+
+/*
+ * major title band (hero aside): the course panel hangs from the band into the
+ * overview section, whose content keeps clear of it (source __main-with-aside)
+ */
+@media (width >= 900px) {
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section:has(> .hero-wrapper > .hero.aside.hero-has-aside) + .section > div {
+    box-sizing: border-box;
+    max-width: none;
+    padding-right: calc(32px + 384px + 24px);
+  }
+}
+
+@media (width >= 1304px) {
+  main:has(.audience-switcher, .key-facts, .hero.aside) > .section:has(> .hero-wrapper > .hero.aside.hero-has-aside) + .section > div {
+    max-width: var(--content-max-width);
+    padding-right: calc(384px + 24px);
+  }
+}
+
+/*
+ * graduate entry requirements / how to apply: after the (unstyled) residency section,
+ * each h3 section frames its content below the heading in a thin box (source
+ * .section-bordered). Continuation sections (GAM, Advanced Standing) extend the box;
+ * the handbook footnote and the callout after it sit outside it.
+ * The frame is drawn on the section's wrappers: side borders on every wrapper; the
+ * heading (and the footnote) span the full frame width over the side borders on a white
+ * background and draw the top (bottom) rule; otherwise the last wrapper draws the bottom.
+ */
+main:has(> .section.residency-notice-container:not(.grey, .sage)) > .section.residency-notice-container ~ .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):has(> .default-content-wrapper:first-child) > div {
+  display: flow-root;
+  max-width: none;
+  margin-inline: max(16px, calc((100% - 1240px) / 2));
+  padding-inline: 24px;
+  border-inline: 1px solid #cacaca;
+  background-color: var(--background-color);
+}
+
+main:has(> .section.residency-notice-container:not(.grey, .sage)) > .section.residency-notice-container ~ .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal) > .default-content-wrapper:first-child > h3:first-child {
+  max-width: none;
+  margin: 0 -25px 24px;
+  padding: 0 0 20px;
+  border-bottom: 1px solid #cacaca;
+  background-color: var(--background-color);
+}
+
+main:has(> .section.residency-notice-container:not(.grey, .sage)) > .section.residency-notice-container ~ .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):has(> .default-content-wrapper:first-child):not(:has(> .default-content-wrapper > p:last-child > a[href*="handbook.unimelb.edu.au"][href$="/entry-participation-requirements"])) > div:last-child {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #cacaca;
+}
+
+main:has(> .section.residency-notice-container:not(.grey, .sage)) > .section.residency-notice-container ~ .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):has(> .default-content-wrapper:first-child) > div > :last-child {
+  margin-bottom: 0;
+}
+
+/* a second h3 inside the same section closes the frame and opens a new one */
+main:has(> .section.residency-notice-container:not(.grey, .sage)) > .section.residency-notice-container ~ .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):has(> .default-content-wrapper:first-child) > .default-content-wrapper > h3:not(:first-child) {
+  max-width: none;
+  margin: 24px -25px;
+  padding: 24px 0 20px;
+  border-block: 1px solid #cacaca;
+  background-color: var(--background-color);
+}
+
+/* the footnote closes the frame; what follows it is outside */
+main:has(> .section.residency-notice-container:not(.grey, .sage)) > .section.residency-notice-container ~ .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal) > .default-content-wrapper > p:last-child:has(> a[href*="handbook.unimelb.edu.au"][href$="/entry-participation-requirements"]) {
+  max-width: none;
+  margin: 24px -25px 0;
+  padding: 8px 0 0;
+  border-top: 1px solid #cacaca;
+  background-color: var(--background-color);
+}
+
+main:has(> .section.residency-notice-container:not(.grey, .sage)) > .section.residency-notice-container ~ .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal) > .default-content-wrapper:has(> p:last-child > a[href*="handbook.unimelb.edu.au"][href$="/entry-participation-requirements"]) ~ div {
+  margin-top: 16px;
+  padding-inline: 0;
+  border-inline: 0;
+  background-color: transparent;
+}
+
+/* a continuation section pulls up over the previous frame's bottom padding and rule */
+main:has(> .section.residency-notice-container:not(.grey, .sage)) > .section.residency-notice-container ~ .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal, [hidden]):has(> .default-content-wrapper:first-child) + .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):has(> .default-content-wrapper:first-child > :first-child:not(h1, h2, h3)),
+main:has(> .section.residency-notice-container:not(.grey, .sage)) > .section.residency-notice-container ~ .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal, [hidden]):has(> .default-content-wrapper:first-child) + [hidden] + .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):has(> .default-content-wrapper:first-child > :first-child:not(h1, h2, h3)) {
+  margin-top: calc(-48px - 25px);
+}
+
+main:has(> .section.residency-notice-container:not(.grey, .sage)) > .section.residency-notice-container ~ .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):has(> .default-content-wrapper:first-child > :first-child:not(h1, h2, h3)) > div:first-child {
+  padding-top: 24px;
+}
+
+@media (width >= 769px) {
+  main:has(> .section.residency-notice-container:not(.grey, .sage)) > .section.residency-notice-container ~ .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):has(> .default-content-wrapper:first-child) > div {
+    margin-inline: max(32px, calc((100% - 1240px) / 2));
+  }
+
+  main:has(> .section.residency-notice-container:not(.grey, .sage)) > .section.residency-notice-container ~ .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal, [hidden]):has(> .default-content-wrapper:first-child) + .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):has(> .default-content-wrapper:first-child > :first-child:not(h1, h2, h3)),
+  main:has(> .section.residency-notice-container:not(.grey, .sage)) > .section.residency-notice-container ~ .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal, [hidden]):has(> .default-content-wrapper:first-child) + [hidden] + .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):has(> .default-content-wrapper:first-child > :first-child:not(h1, h2, h3)) {
+    margin-top: calc(-1 * var(--section-padding) - 25px);
+  }
+}

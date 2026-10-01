@@ -1,18 +1,38 @@
+/*
+ * Residency notice: navy panel (source .user-profile-toggle / .user-profile).
+ * Sections are separated by a white rule; the source keeps a 24px paragraph margin
+ * inside a 24px padded panel, so the last visible section ends 48px above the edge.
+ */
 .residency-notice {
-  background-color: var(--dark-color);
+  background-color: var(--uom-navy);
   color: var(--background-color);
+}
+
+/* undergraduate admission-requirements band: the panel uses the darker navy (.user-profile) */
+.section.grey .residency-notice {
+  background-color: var(--uom-navy-dark);
 }
 
 .residency-notice a:any-link {
   color: inherit;
 }
 
+.residency-notice a:hover {
+  color: var(--link-on-dark-hover-color);
+}
+
 .residency-notice .residency-notice-section {
   padding: 24px;
 }
 
-.residency-notice .residency-notice-section + .residency-notice-section {
-  border-top: 1px solid rgb(255 255 255 / 60%);
+/* last visible section (not followed by a footnote) */
+.residency-notice .residency-notice-section:not(.residency-notice-footer, :has(~ .residency-notice-section:not([hidden]))) {
+  padding-bottom: 48px;
+}
+
+/* a rule above every section that follows a visible one (hidden audience copies are skipped) */
+.residency-notice .residency-notice-section:not([hidden]) ~ .residency-notice-section:not(.residency-notice-footer) {
+  border-top: 1px solid var(--background-color);
 }
 
 .residency-notice .residency-notice-section > * {
@@ -27,7 +47,7 @@
 .residency-notice .residency-notice-header {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 4px 12px;
 }
 
@@ -37,30 +57,81 @@
 
 .residency-notice .residency-notice-title {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
-  font-size: var(--body-font-size-m);
+  font-size: 18px;
   font-weight: 600;
+  line-height: 27px;
   color: inherit;
+}
+
+.residency-notice .residency-notice-title strong {
+  font-weight: inherit;
+}
+
+/* residency title (source .title--xs): audience-keyed or first section */
+.residency-notice .residency-notice-section:is([data-audience], :first-child) .residency-notice-title {
+  font-size: 18px;
+  line-height: 1.2;
 }
 
 .residency-notice .residency-notice-title .icon,
 .residency-notice .residency-notice-title img {
+  flex: 0 0 auto;
   width: 24px;
   height: 24px;
 }
 
 .residency-notice .residency-notice-change {
-  font-size: var(--body-font-size-s);
   font-weight: 600;
 }
 
+/* entry-point list (source radio group: 16px below the label, 40px pitch, text at 24px) */
 .residency-notice .residency-notice-section ul {
-  padding-left: 20px;
+  padding-left: 24px;
 }
 
-@media (width >= 900px) {
-  .residency-notice .residency-notice-section {
-    padding: 24px 24px 32px;
+.residency-notice .residency-notice-section > .residency-notice-title + ul {
+  margin-top: 16px;
+}
+
+.residency-notice .residency-notice-section ul > li + li {
+  margin-top: 13px;
+}
+
+.residency-notice .residency-notice-section > ul + * {
+  margin-top: 20px;
+}
+
+/* note under the entry points (source <small>) */
+.residency-notice .residency-notice-section > ul ~ p {
+  font-size: 0.8em;
+  line-height: 1.875;
+}
+
+/* footnote row ("Can't find your qualification? Let us know") */
+.residency-notice .residency-notice-section.residency-notice-footer {
+  padding: 0 24px 24px;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: -0.105px;
+}
+
+.residency-notice .residency-notice-section.residency-notice-footer > * {
+  max-width: none;
+}
+
+@media (width >= 769px) {
+  .residency-notice .residency-notice-section:is([data-audience], :first-child) .residency-notice-title {
+    font-size: 20px;
+  }
+
+  .residency-notice .residency-notice-section > .residency-notice-title + *,
+  .residency-notice .residency-notice-section > .residency-notice-header + * {
+    margin-top: 16px;
+  }
+
+  .residency-notice .residency-notice-footer {
+    text-align: right;
   }
 }
