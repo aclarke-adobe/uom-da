@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/major/physics",
+  "path": "find/courses/major/physics",
+  "timestamp": "2026-10-01T03:33:53.193Z",
+  "title": "Physics - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "hero-aside",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

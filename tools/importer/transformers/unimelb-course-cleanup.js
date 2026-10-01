@@ -71,7 +71,6 @@ const COURSE_CHROME_SELECTORS = [
   'span.togglerow__chevron',
   "button[data-test='alumni-button']",
   '.date-entry__icon',
-  "a[data-test='callout-panel-button'] .push-icon",
   '.push-icon img',
   '#main .uom-link__icon',
   '.uom-link__icon',
@@ -158,12 +157,15 @@ function fixCourseLinks(root) {
       href = href.replace(/#nav$/, '');
       // Truncated "/entry-requirement" -> "/entry-requirements" (defensive)
       href = href.replace(/\/entry-requirement(?=[/?#]|$)/, '/entry-requirements');
-      // EDS paths have no trailing slash
-      href = href.replace(/^(\/[^?#]*?)\/+(?=[?#]|$)/, '$1');
       if (/[?&]fac=undefined/.test(href)) {
         // Source bug on the HTA Application Portal href: kept as-is, logged.
         console.warn(`[course-cleanup] source href with fac=undefined kept: ${href}`);
       }
+    }
+
+    // EDS paths have no trailing slash (root-relative site links, incl. ones authored relative)
+    if (href.startsWith('/') && !href.startsWith('//')) {
+      href = href.replace(/^(\/[^?#]*?)\/+(?=[?#]|$)/, '$1');
     }
 
     if (href !== a.getAttribute('href')) a.setAttribute('href', href);
@@ -195,6 +197,107 @@ function cleanCourseChrome(root) {
   });
 
   removeComments(root);
+  normalizeInlineFormats(root);
+}
+
+/**
+ * html2md maps <u>, <sub>, <sup> to custom mdast nodes (underline / subscript / superscript) that
+ * mdast-util-phrasing does not know. When one of them sits as a loose inline child of a block
+ * container (e.g. a bare-text <div>, as Outlook pastes produce:
+ *   <div>… submit an <u><a href="…">application</a></u>.</div>)
+ * hast-to-mdast lifts the node out to the document root, and the markdown root handler then
+ * serialises the WHOLE page as phrasing: every block table runs into the next with no blank lines
+ * and md2da turns the page into one paragraph.
+ * The importer's own preProcess unwraps `u > a`, but it runs on the page before the transform, so
+ * it never sees the template#excat-international copies inserted by the audience transformer
+ * (BA how-to-apply). Fix both cases here, on the live page and on the template parts:
+ *   - <u> is unwrapped (underline is not authored; mapping-notes "unwrap <small>/<u>");
+ *   - loose inline runs that contain <sub>/<sup> inside a block container are wrapped in <p>.
+ */
+const INLINE_TAGS = /^(A|ABBR|B|BDI|BDO|BR|CITE|CODE|DATA|DFN|EM|I|IMG|KBD|MARK|Q|S|SAMP|SMALL|SPAN|STRONG|SUB|SUP|TIME|U|VAR|WBR|DEL|INS)$/;
+
+function normalizeInlineFormats(root) {
+  root.querySelectorAll('u').forEach((u) => {
+    if (u.parentNode) u.replaceWith(...u.childNodes);
+  });
+  const doc = root.ownerDocument || root;
+  const containers = new Set();
+  root.querySelectorAll('sub, sup').forEach((el) => {
+    const parent = el.parentElement;
+    if (parent && /^(DIV|SECTION|ARTICLE|ASIDE|MAIN|TD|TH|LI|BLOCKQUOTE|FIGURE|BODY)$/.test(parent.tagName)
+      && [...parent.children].some((c) => !INLINE_TAGS.test(c.tagName))) {
+      containers.add(parent);
+    }
+  });
+  containers.forEach((parent) => {
+    let run = [];
+    const flush = (before) => {
+      if (run.some((n) => (n.nodeType === 3 ? n.textContent.trim() : true))) {
+        const p = doc.createElement('p');
+        parent.insertBefore(p, before);
+        run.forEach((n) => p.append(n));
+      }
+      run = [];
+    };
+    [...parent.childNodes].forEach((n) => {
+      if (n.nodeType === 3 || (n.nodeType === 1 && INLINE_TAGS.test(n.tagName))) run.push(n);
+      else if (n.nodeType === 1) flush(n);
+    });
+    flush(null);
+  });
+}
+
+/** Absolute, normalised form of an image reference (same rules as check-images.mjs). */
+function imageKey(raw) {
+  if (!raw) return '';
+  let v = String(raw).trim().replace(/&amp;/g, '&').replace(/^['"]|['"]$/g, '');
+  if (!v || /^(data|blob):/.test(v)) return '';
+  if (v.startsWith('//')) v = `https:${v}`;
+  try {
+    const u = new URL(v, 'https://study.unimelb.edu.au/');
+    u.hash = '';
+    return u.href;
+  } catch (e) {
+    return '';
+  }
+}
+
+/**
+ * Remove every reference to a blocked image under root: <img> (src / data-src / srcset; an
+ * otherwise empty wrapper such as <picture> or <p> goes with it), inline background-image styles,
+ * and <meta content> (og:image / twitter:image).
+ */
+function dropUnloadableImages(root, blocked, dropped) {
+  root.querySelectorAll('img').forEach((img) => {
+    const refs = [img.getAttribute('src'), img.getAttribute('data-src'), img.getAttribute('data-lazy-src'),
+      ...(img.getAttribute('srcset') || '').split(',').map((s) => s.trim().split(/\s+/)[0])];
+    const hit = refs.map(imageKey).find((k) => k && blocked.has(k));
+    if (!hit) return;
+    dropped.add(hit);
+    let target = img;
+    const picture = img.closest('picture');
+    if (picture) target = picture;
+    const parent = target.parentElement;
+    target.remove();
+    if (parent && /^(P|A|SPAN|FIGURE)$/.test(parent.tagName) && !parent.textContent.trim()
+      && !parent.querySelector('img, iframe, video')) parent.remove();
+  });
+  root.querySelectorAll('[style*="url("]').forEach((el) => {
+    const style = el.getAttribute('style');
+    const m = style.match(/background(?:-image)?\s*:[^;]*url\(\s*(['"]?)([^'")]+)\1\s*\)/i);
+    const key = m && imageKey(m[2]);
+    if (key && blocked.has(key)) {
+      dropped.add(key);
+      el.setAttribute('style', style.replace(/background(?:-image)?\s*:[^;]*url\([^)]*\)[^;]*;?/gi, ''));
+    }
+  });
+  root.querySelectorAll('meta[content]').forEach((meta) => {
+    const key = imageKey(meta.getAttribute('content'));
+    if (key && blocked.has(key)) {
+      dropped.add(key);
+      meta.remove();
+    }
+  });
 }
 
 export default function transform(hookName, element, payload) {
@@ -210,6 +313,21 @@ export default function transform(hookName, element, payload) {
       cleanCourseChrome(frag);
       fixCourseLinks(frag);
     });
+
+    // Images that cannot be loaded on the source (tools/importer/unloadable-images.json, passed in by
+    // the import script) are dropped before any parser runs, on the page, in the template parts and
+    // in the head (og:image feeds the Metadata block), so no block is left with an empty image cell.
+    const blocked = new Set((payload && payload.unloadableImages) || []);
+    if (blocked.size) {
+      const dropped = new Set(doc.excatDroppedImages || []);
+      dropUnloadableImages(element, blocked, dropped);
+      doc.querySelectorAll('template[id^="excat-"]').forEach((tpl) => {
+        dropUnloadableImages(tpl.content && tpl.content.childNodes.length ? tpl.content : tpl, blocked, dropped);
+      });
+      if (doc.head) dropUnloadableImages(doc.head, blocked, dropped);
+      doc.excatDroppedImages = [...dropped];
+      dropped.forEach((u) => console.warn(`[course-cleanup] image dropped (cannot be loaded on the source): ${u}`));
+    }
   }
 
   if (hookName === TransformHook.afterTransform) {

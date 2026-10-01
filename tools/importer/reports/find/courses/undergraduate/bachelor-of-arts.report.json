@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-arts",
+  "path": "find/courses/undergraduate/bachelor-of-arts",
+  "timestamp": "2026-10-01T03:33:09.521Z",
+  "title": "Bachelor of Arts - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "video",
+    "video",
+    "columns"
+  ],
+  "droppedImages": ""
+}

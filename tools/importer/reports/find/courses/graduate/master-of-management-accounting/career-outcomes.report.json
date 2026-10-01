@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/career-outcomes",
+  "path": "find/courses/graduate/master-of-management-accounting/career-outcomes",
+  "timestamp": "2026-10-01T03:33:38.643Z",
+  "title": "Master of Management (Accounting) : Career outcomes - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "cards"
+  ],
+  "droppedImages": ""
+}

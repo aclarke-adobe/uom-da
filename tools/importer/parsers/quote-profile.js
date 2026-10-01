@@ -20,15 +20,11 @@
  *     panel:   .alumniprofile__lower > div[.course-content] > p… | blockquote > p > cite | iframe
  */
 
-const BLOCKED_IMAGES = [
-  '/0018/48150/Physics.jpg',
-  '/0014/41405/JG-YellowJacket-1098x780.png',
-  '/0030/389019/varieties/thumb.jpg',
-  '/0027/55449/accred_logos_accounting.jpg',
-  '/0016/45124/',
-  '/0022/45256/',
-  '/0030/46875/study_banner_community.png',
-];
+// Image availability is decided at import time from tools/importer/unloadable-images.json (generated
+// by tools/importer/check-images.mjs through Bright Data): the course cleanup transformer drops those
+// images before parsing. The assets once listed here as "403" load fine on the source (only curl and
+// cross-site hotlinking are refused) and are localised to /media-da/ via the snapshot sidecars.
+const BLOCKED_IMAGES = [];
 
 function cleanText(el) {
   return (el ? el.textContent : '').replace(/\s+/g, ' ').trim();

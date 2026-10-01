@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-01T00:32:55.803Z",
-  "urlsFile": "/tmp/cap/filter.txt",
-  "concurrency": 1,
+  "generatedAt": "2026-10-01T04:43:36.683Z",
+  "urlsFile": "/tmp/gapfill-urls.txt",
+  "concurrency": 3,
   "lastRun": {
-    "total": 1,
-    "ok": 1,
+    "total": 160,
+    "ok": 10,
     "skipped": 0,
     "failed": 0,
-    "wallSeconds": 85.2
+    "wallSeconds": 172.4
   },
   "results": [
     {
@@ -222,6 +222,527 @@
       "attempts": 1,
       "worker": 1,
       "capturedAt": "2026-10-01T00:32:55.797Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-adolescent-health-and-wellbeing/structure",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-adolescent-health-and-wellbeing/structure.html",
+      "audiences": "domestic,international",
+      "parts": [
+        "body",
+        "key-facts",
+        "hero-codes"
+      ],
+      "intlDiffers": {
+        "body": false,
+        "key-facts": true,
+        "hero-codes": false
+      },
+      "domesticReset": false,
+      "options": {
+        "subject-programs": [
+          {
+            "index": 0,
+            "label": "Health Promotion Specialisation",
+            "value": "Health Promotion Specialisation",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "Oncology Specialisation",
+            "value": "Oncology Specialisation",
+            "default": false,
+            "changed": false
+          }
+        ]
+      },
+      "phases": {
+        "goto": 26850,
+        "challenge": 1801,
+        "render": 3238,
+        "scroll": 6025,
+        "domestic": 374,
+        "switch": 3845,
+        "international": 366,
+        "options": 13357
+      },
+      "bytes": 293873,
+      "ms": 58105,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-01T04:41:42.463Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/executive-master-of-arts/structure",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/executive-master-of-arts/structure.html",
+      "audiences": "domestic,international",
+      "parts": [
+        "body",
+        "key-facts",
+        "hero-codes"
+      ],
+      "intlDiffers": {
+        "body": false,
+        "key-facts": true,
+        "hero-codes": true
+      },
+      "domesticReset": false,
+      "options": {
+        "subject-programs": [
+          {
+            "index": 0,
+            "label": "200 point program (2 years full time)",
+            "value": "200 point program (2 years full time)",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "150 point program",
+            "value": "150 point program",
+            "default": false,
+            "changed": true
+          },
+          {
+            "index": 2,
+            "label": "100 point program",
+            "value": "100 point program",
+            "default": false,
+            "changed": true
+          }
+        ]
+      },
+      "phases": {
+        "goto": 27259,
+        "challenge": 1336,
+        "render": 2912,
+        "scroll": 6730,
+        "domestic": 488,
+        "switch": 4335,
+        "international": 440,
+        "options": 17351
+      },
+      "bytes": 1001199,
+      "ms": 61893,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-01T04:41:46.261Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-visual-art/structure",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-visual-art/structure.html",
+      "audiences": "domestic",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": {
+        "sample-plan": [
+          {
+            "index": 0,
+            "label": "Sample 50-point program taken over 1 year part-time",
+            "value": "Sample 50-point program taken over 1 year part-time",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "50-point program taken over 2 years part-time",
+            "value": "50-point program taken over 2 years part-time",
+            "default": false,
+            "changed": true
+          }
+        ]
+      },
+      "phases": {
+        "goto": 3203,
+        "challenge": 922,
+        "render": 3966,
+        "scroll": 5449,
+        "domestic": 792,
+        "options": 9366
+      },
+      "bytes": 264558,
+      "ms": 23964,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-01T04:42:11.169Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-bushfire-planning-and-management/structure",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-bushfire-planning-and-management/structure.html",
+      "audiences": "domestic,international",
+      "parts": [
+        "body",
+        "key-facts",
+        "hero-codes"
+      ],
+      "intlDiffers": {
+        "body": false,
+        "key-facts": true,
+        "hero-codes": false
+      },
+      "domesticReset": false,
+      "options": {
+        "sample-plan": [
+          {
+            "index": 0,
+            "label": "Bushfire Planning Stream",
+            "value": "Bushfire Planning Stream",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "Bushfire Management Stream",
+            "value": "Bushfire Management Stream",
+            "default": false,
+            "changed": true
+          }
+        ]
+      },
+      "phases": {
+        "goto": 71911,
+        "challenge": 243,
+        "render": 2493,
+        "scroll": 6184,
+        "domestic": 232,
+        "switch": 3626,
+        "international": 126,
+        "options": 11000
+      },
+      "bytes": 328437,
+      "ms": 96316,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-01T04:42:20.682Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-evaluation/structure",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-certificate-in-evaluation/structure.html",
+      "audiences": "domestic,international",
+      "parts": [
+        "body",
+        "key-facts",
+        "hero-codes"
+      ],
+      "intlDiffers": {
+        "body": false,
+        "key-facts": true,
+        "hero-codes": false
+      },
+      "domesticReset": false,
+      "options": {
+        "sample-plan": [
+          {
+            "index": 0,
+            "label": "Term 1 and Term 3 Intake (Full-time)",
+            "value": "Term 1 and Term 3 Intake (Full-time)",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "Term 2 and Term 4 Intake (Full-time)",
+            "value": "Term 2 and Term 4 Intake (Full-time)",
+            "default": false,
+            "changed": true
+          },
+          {
+            "index": 2,
+            "label": "Term 1 and Term 3 Intake (Part-time)",
+            "value": "Term 1 and Term 3 Intake (Part-time)",
+            "default": false,
+            "changed": true
+          },
+          {
+            "index": 3,
+            "label": "Term 2 and Term 4 Intake (Part-time)",
+            "value": "Term 2 and Term 4 Intake (Part-time)",
+            "default": false,
+            "changed": true
+          }
+        ]
+      },
+      "phases": {
+        "goto": 7653,
+        "challenge": 939,
+        "render": 8932,
+        "scroll": 6691,
+        "domestic": 708,
+        "switch": 4541,
+        "international": 408,
+        "options": 22143
+      },
+      "bytes": 341768,
+      "ms": 52670,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-01T04:42:35.827Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-asian-law/structure",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-asian-law/structure.html",
+      "audiences": "domestic,international",
+      "parts": [
+        "body",
+        "key-facts",
+        "hero-codes"
+      ],
+      "intlDiffers": {
+        "body": false,
+        "key-facts": true,
+        "hero-codes": true
+      },
+      "domesticReset": false,
+      "options": {
+        "subject-programs": [
+          {
+            "index": 0,
+            "label": "Asian Law",
+            "value": "Asian Law",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "Non-common law background",
+            "value": "Non-common law background",
+            "default": false,
+            "changed": true
+          }
+        ]
+      },
+      "phases": {
+        "goto": 4440,
+        "challenge": 1352,
+        "render": 5608,
+        "scroll": 6671,
+        "domestic": 971,
+        "switch": 4066,
+        "international": 350,
+        "options": 11429
+      },
+      "bytes": 418729,
+      "ms": 35070,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-01T04:42:47.161Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-banking-and-finance-law/structure",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-banking-and-finance-law/structure.html",
+      "audiences": "domestic,international",
+      "parts": [
+        "body",
+        "key-facts",
+        "hero-codes"
+      ],
+      "intlDiffers": {
+        "body": false,
+        "key-facts": true,
+        "hero-codes": true
+      },
+      "domesticReset": false,
+      "options": {
+        "subject-programs": [
+          {
+            "index": 0,
+            "label": "Banking and Finance Law",
+            "value": "Banking and Finance Law",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "Non-common law background",
+            "value": "Non-common law background",
+            "default": false,
+            "changed": true
+          }
+        ]
+      },
+      "phases": {
+        "goto": 3881,
+        "challenge": 1458,
+        "render": 5894,
+        "scroll": 6789,
+        "domestic": 279,
+        "switch": 3666,
+        "international": 248,
+        "options": 10764
+      },
+      "bytes": 430507,
+      "ms": 33131,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-01T04:42:54.923Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-communications-law/structure",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-communications-law/structure.html",
+      "audiences": "domestic,international",
+      "parts": [
+        "body",
+        "key-facts",
+        "hero-codes"
+      ],
+      "intlDiffers": {
+        "body": false,
+        "key-facts": true,
+        "hero-codes": false
+      },
+      "domesticReset": false,
+      "options": {
+        "subject-programs": [
+          {
+            "index": 0,
+            "label": "Communications Law",
+            "value": "Communications Law",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "Non-common law background",
+            "value": "Non-common law background",
+            "default": false,
+            "changed": true
+          }
+        ]
+      },
+      "phases": {
+        "goto": 3651,
+        "challenge": 1031,
+        "render": 2971,
+        "scroll": 6549,
+        "domestic": 860,
+        "switch": 4218,
+        "international": 338,
+        "options": 13184
+      },
+      "bytes": 418547,
+      "ms": 33106,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-01T04:43:20.840Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-construction-law/structure",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-construction-law/structure.html",
+      "audiences": "domestic,international",
+      "parts": [
+        "body",
+        "key-facts",
+        "hero-codes"
+      ],
+      "intlDiffers": {
+        "body": false,
+        "key-facts": true,
+        "hero-codes": true
+      },
+      "domesticReset": false,
+      "options": {
+        "subject-programs": [
+          {
+            "index": 0,
+            "label": "Construction Law",
+            "value": "Construction Law",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "Non-common law background",
+            "value": "Non-common law background",
+            "default": false,
+            "changed": true
+          }
+        ]
+      },
+      "phases": {
+        "goto": 2755,
+        "challenge": 598,
+        "render": 3183,
+        "scroll": 8290,
+        "domestic": 483,
+        "switch": 4275,
+        "international": 254,
+        "options": 10819
+      },
+      "bytes": 757823,
+      "ms": 30807,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-01T04:43:26.424Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-clinical-research/structure",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/courses/graduate/graduate-diploma-in-clinical-research/structure.html",
+      "audiences": "domestic,international",
+      "parts": [
+        "body",
+        "key-facts",
+        "hero-codes"
+      ],
+      "intlDiffers": {
+        "body": false,
+        "key-facts": true,
+        "hero-codes": true
+      },
+      "domesticReset": false,
+      "options": {
+        "sample-plan": [
+          {
+            "index": 0,
+            "label": "Full-time 100 point program",
+            "value": "Full-time 100 point program",
+            "default": true,
+            "changed": null
+          },
+          {
+            "index": 1,
+            "label": "Part-time 100 point program",
+            "value": "Part-time 100 point program",
+            "default": false,
+            "changed": true
+          }
+        ]
+      },
+      "phases": {
+        "goto": 6697,
+        "challenge": 2377,
+        "render": 12344,
+        "scroll": 8160,
+        "domestic": 1830,
+        "switch": 8797,
+        "international": 808,
+        "options": 18104
+      },
+      "bytes": 359464,
+      "ms": 59674,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-01T04:43:36.683Z",
       "error": null
     }
   ]

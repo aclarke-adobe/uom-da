@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/master-of-management-accounting/entry-requirements",
+  "path": "find/courses/graduate/master-of-management-accounting/entry-requirements",
+  "timestamp": "2026-10-01T03:33:42.554Z",
+  "title": "Master of Management (Accounting) : Entry requirements - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "residency-notice",
+    "callout",
+    "accordion",
+    "callout"
+  ],
+  "droppedImages": ""
+}

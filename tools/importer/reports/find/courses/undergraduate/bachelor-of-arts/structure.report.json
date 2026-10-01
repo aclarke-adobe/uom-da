@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/undergraduate/bachelor-of-arts/structure",
+  "path": "find/courses/undergraduate/bachelor-of-arts/structure",
+  "timestamp": "2026-10-01T03:33:20.551Z",
+  "title": "Bachelor of Arts : Course structure - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "tabs"
+  ],
+  "droppedImages": ""
+}
