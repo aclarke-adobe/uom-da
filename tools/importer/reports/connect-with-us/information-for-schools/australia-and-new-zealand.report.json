@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand",
+  "path": "connect-with-us/information-for-schools/australia-and-new-zealand",
+  "timestamp": "2026-10-02T07:08:09.325Z",
+  "title": "Information for schools/Australia and New Zealand",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "hero-split-light",
+    "cards-tile",
+    "columns",
+    "cards",
+    "cards",
+    "cards-tile",
+    "cards"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/hansen-scholarship-program/meet-our-hansen-scholars",
+  "path": "study-with-us/hansen-scholarship-program/meet-our-hansen-scholars",
+  "timestamp": "2026-10-02T07:19:52.258Z",
+  "title": "Meet our Hansen Scholars",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "video-shorts",
+    "cards",
+    "quote",
+    "cards"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

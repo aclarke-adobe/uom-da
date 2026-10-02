@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/cost-of-living",
+  "path": "student-life/cost-of-living",
+  "timestamp": "2026-10-02T07:16:03.782Z",
+  "title": "Cost of living",
+  "template": "section-landing",
+  "blocks": [
+    "hero",
+    "table",
+    "cards-link-list"
+  ],
+  "fragments": "international-students-resources",
+  "droppedImages": ""
+}

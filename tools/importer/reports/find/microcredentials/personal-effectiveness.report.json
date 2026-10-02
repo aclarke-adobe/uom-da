@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/personal-effectiveness",
+  "path": "find/microcredentials/personal-effectiveness",
+  "timestamp": "2026-10-02T07:10:22.197Z",
+  "title": "Personal Effectiveness - micro-credential",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns-overlap",
+    "columns",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits who-you-will-learn-from-belinda-allen",
+  "droppedImages": ""
+}

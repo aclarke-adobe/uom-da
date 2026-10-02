@@ -1,0 +1,483 @@
+/*
+ * Section-landing pages (accommodation, short courses, micro-credentials, study areas,
+ * professional development, international, ...): section rhythm, layouts and default content.
+ *
+ * Scope: a main whose first section holds nothing but a hero that is not a course header.
+ * Course and major pages open with a .hero-course (h1 + stat links; sections stay hidden
+ * until their blocks are decorated, so the class is always there when they show), and the
+ * homepage's first section also holds the search block and quick links. Every rule below
+ * starts with that scope, so the homepage and course pages are never matched. The scope
+ * sits in :where() so it adds no specificity: block CSS that sets its own section's
+ * spacing (e.g. columns overlap) still wins over the generic rhythm here. Short courses and
+ * micro-credentials also match course.css (keyed on key facts), which uses the same rhythm.
+ *
+ * Shared bands are fragments: buildAutoBlocks swaps the fragment link paragraph for the
+ * fragment's sections, so they end up nested in the host section's default content
+ * wrapper. The host and its wrapper are taken out of layout (display: contents) and the
+ * nested sections are given the same box as a top-level section.
+ *
+ * Source rhythm (UI kit): 48px below 720px, 80px above, as section padding on tinted bands
+ * and as collapsing margins on white sections; a band that follows a band of the same
+ * colour drops its top padding.
+ */
+
+/* the long :has() selectors target different elements; ordering by specificity would scatter related rules */
+/* stylelint-disable no-descending-specificity */
+
+/* vertical rhythm (mobile) */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:first-child, .audience-switcher-container, .grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal),
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal) {
+  margin: 48px 0;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:is(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):not(.key-facts-container),
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section:is(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal) {
+  margin: 0;
+  padding: 48px 0;
+}
+
+/* a band ends on its content: the source's trailing margins collapse into the band padding */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:is(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal) > .default-content-wrapper:last-child > :last-child,
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section:is(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal) > .default-content-wrapper:last-child > :last-child {
+  margin-bottom: 0;
+}
+
+/* page header and feature banners (hero alone in its section) are the band: flush on neighbouring bands, white sections keep their own margins */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section.hero-container:has(> .hero-wrapper:only-child) {
+  margin: 0;
+  padding: 0;
+}
+
+/* a band followed by a band of the same colour reads as one band */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section.grey:not(.key-facts-container) + .section.grey,
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section.navy + .section.navy,
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section.grey + .section.grey,
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section.navy + .section.navy,
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section.grey:not(.key-facts-container) + .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section.grey:first-child,
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section.navy + .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section.navy:first-child,
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))):has(> .default-content-wrapper > .section.grey:last-child) + .section.grey,
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))):has(> .default-content-wrapper > .section.navy:last-child) + .section.navy {
+  padding-top: 0;
+}
+
+/* fragment includes: the host section and its wrapper take no box of their own */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:has(> .default-content-wrapper:only-child > .section:first-child):not(:has(> .default-content-wrapper > :not(.section))),
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:has(> .default-content-wrapper:only-child > .section:first-child):not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper {
+  display: contents;
+}
+
+/* fragment sections: the same box as a top-level section (styles.css main > .section) */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section {
+  max-width: none;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section > div {
+  max-width: var(--content-max-width);
+  margin: auto;
+  padding: 0 16px;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section > .default-content-wrapper > * {
+  max-width: var(--text-max-width);
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section.centered > .default-content-wrapper {
+  text-align: center;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section.centered > .default-content-wrapper > * {
+  margin-inline: auto;
+}
+
+/* default content: lists, footnotes, lead paragraph */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section > .default-content-wrapper :is(ul, ol) {
+  padding-left: 24px;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section > .default-content-wrapper :is(sup, sub) {
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section.hero-container:first-child + .section:not(.grey, .navy) > .default-content-wrapper:only-child > p:only-child:not(:has(> a:only-child)) {
+  margin-bottom: 16px;
+  color: var(--heading-color);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* sub-headings: an h3 below the section's opening content is the small title (source title--sm), not a section heading */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section > .default-content-wrapper > h3:not(:first-child) {
+  margin-bottom: 18px;
+  font-size: var(--heading-font-size-m);
+}
+
+/* short courses and micro-credentials (the landing pages with key facts): section headings use the sans title style; Fees keeps the serif */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))):has(.key-facts) .section > .default-content-wrapper > h2:not(#fees) {
+  margin-bottom: 18px;
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+/* quick links (slimline-quicklinks): a slim grey band with a centred row of arrow links over a keyline */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.grey.centered:has(> .default-content-wrapper:only-child > ul:only-child > li > a:only-child) {
+  padding: 24px 0;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.grey.centered:has(> .default-content-wrapper:only-child > ul:only-child > li > a:only-child) ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 48px;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.grey.centered:has(> .default-content-wrapper:only-child > ul:only-child > li > a:only-child) li {
+  display: flex;
+  margin: 0;
+  line-height: 24px;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.grey.centered:has(> .default-content-wrapper:only-child > ul:only-child > li > a:only-child) li > a:any-link {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+  text-decoration: none;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.grey.centered:has(> .default-content-wrapper:only-child > ul:only-child > li > a:only-child) li > a::before {
+  content: '';
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background-color: currentcolor;
+  mask: var(--arrow-icon) center / contain no-repeat;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.grey.centered:has(> .default-content-wrapper:only-child > ul:only-child > li > a:only-child) li > a:hover {
+  text-decoration: underline;
+}
+
+/* crest band (navy, centred): the closing link is the band's call to action (source btn--secondary) */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.navy.centered > .default-content-wrapper:only-child > p:last-child:not(:first-child, .button-wrapper) > a:only-child:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px 12px 12px;
+  background-color: var(--uom-sage);
+  color: var(--uom-navy);
+  text-decoration: none;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.navy.centered > .default-content-wrapper:only-child > p:last-child:not(:first-child, .button-wrapper) > a:only-child::before {
+  content: '';
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background-color: currentcolor;
+  mask: var(--arrow-icon) center / contain no-repeat;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.navy.centered > .default-content-wrapper:only-child > p:last-child:not(:first-child, .button-wrapper) > a:only-child:hover {
+  background-color: var(--uom-sage-light);
+  color: var(--uom-navy);
+}
+
+/* full-width image: a section holding only image paragraphs spans the viewport (ct-section-imagefullwidth) */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:only-child > p:first-child > picture:only-child):not(:has(> .default-content-wrapper > :not(p)), :has(> .default-content-wrapper > p > :not(picture))) > .default-content-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:only-child > p:first-child > picture:only-child):not(:has(> .default-content-wrapper > :not(p)), :has(> .default-content-wrapper > p > :not(picture))) > .default-content-wrapper > p {
+  max-width: none;
+  margin: 0;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:only-child > p:first-child > picture:only-child):not(:has(> .default-content-wrapper > :not(p)), :has(> .default-content-wrapper > p > :not(picture))) > .default-content-wrapper img {
+  display: block;
+  width: 100%;
+  max-height: 450px;
+  aspect-ratio: 100 / 54;
+  object-fit: cover;
+}
+
+/*
+ * heading beside a block (source section-alt: heading and intro in the left third):
+ * people cards ("Who you will learn from") and text-only quotes ("What people are saying").
+ * Quotes with photos keep the homepage row layout from styles.css.
+ */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) :is(.section:has(> .default-content-wrapper:first-child + .cards-wrapper > .cards.people), .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media))) > .default-content-wrapper:first-child h2,
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section > .default-content-wrapper:has(> h2:first-child + ul:last-child > li:first-child > a[href^="#"]:only-child) > h2 {
+  margin-bottom: 18px;
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media)) {
+  display: block;
+  padding-inline: 0;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media)) > div {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media)) > .quote-wrapper + .quote-wrapper {
+  margin-top: 24px;
+}
+
+/* in-page anchor list (ct-inpagenav "On this page"): a plain vertical list of links */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section > .default-content-wrapper:has(> h2:first-child + ul:last-child > li:first-child > a[href^="#"]:only-child) > h2 {
+  margin-bottom: 24px;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section > .default-content-wrapper:has(> h2:first-child + ul:last-child > li:first-child > a[href^="#"]:only-child) > ul {
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section > .default-content-wrapper:has(> h2:first-child + ul:last-child > li:first-child > a[href^="#"]:only-child) > ul > li:last-child {
+  margin-bottom: 0;
+}
+
+/*
+ * personalised advice (ct-section-todolist): heading over a rule, then pictogram + text
+ * beside the link tiles; the pictogram shows from 769px
+ */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2:first-child + p > picture:first-child):has(> .cards-wrapper > .cards.tile) > .default-content-wrapper > h2:first-child {
+  max-width: none;
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2:first-child + p > picture:first-child):has(> .cards-wrapper > .cards.tile) > .default-content-wrapper > h2:first-child + p {
+  display: none;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2:first-child + p > picture:first-child):has(> .cards-wrapper > .cards.tile) > .default-content-wrapper > h2:first-child + p img {
+  display: block;
+  width: 130px;
+  height: auto;
+}
+
+/*
+ * short-course fees (source section-alt--bordered): a white panel inset over a navy band.
+ * Mobile: a 24px navy strip above a full-width panel.
+ */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2#fees:first-child):has(> .cards-wrapper > .cards.tile) {
+  margin: 0;
+  padding-top: 24px;
+  background: linear-gradient(var(--uom-navy), var(--uom-navy)) top / 100% 24px no-repeat;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2#fees:first-child):has(> .cards-wrapper > .cards.tile) > div {
+  display: flow-root;
+  background-color: var(--background-color);
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2#fees:first-child):has(> .cards-wrapper > .cards.tile) > div:first-child {
+  padding-top: 48px;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2#fees:first-child):has(> .cards-wrapper > .cards.tile) > div:last-child {
+  padding-bottom: 48px;
+}
+
+@media (width >= 769px) {
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:first-child, .audience-switcher-container, .grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal),
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal) {
+    margin: var(--section-padding) 0;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:is(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):not(.key-facts-container),
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section:is(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal) {
+    padding: var(--section-padding) 0;
+  }
+
+  /* re-assert the merges and the page header after the shorthand above */
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section.grey:not(.key-facts-container) + .section.grey,
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section.navy + .section.navy,
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section.grey + .section.grey,
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section.navy + .section.navy,
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section.grey:not(.key-facts-container) + .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section.grey:first-child,
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section.navy + .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section.navy:first-child,
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))):has(> .default-content-wrapper > .section.grey:last-child) + .section.grey,
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))):has(> .default-content-wrapper > .section.navy:last-child) + .section.navy {
+    padding-top: 0;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section.hero-container:has(> .hero-wrapper:only-child) {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* a split tile band follows a navy band directly (styles.css leaves a white gap on the homepage) */
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section.navy + .section:is(.grey, .navy):has(> .columns-wrapper .columns.split) {
+    margin-top: 0;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section > div {
+    padding: 0 32px;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section.hero-container:first-child + .section:not(.grey, .navy) > .default-content-wrapper:only-child > p:only-child:not(:has(> a:only-child)) {
+    margin-bottom: 18px;
+    font-size: 24px;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) :is(.section:has(> .default-content-wrapper:first-child + .cards-wrapper > .cards.people), .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media))) > .default-content-wrapper:first-child h2,
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section > .default-content-wrapper:has(> h2:first-child + ul:last-child > li:first-child > a[href^="#"]:only-child) > h2 {
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media)) > div {
+    padding: 0 32px;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))):has(.key-facts) .section > .default-content-wrapper > h2:not(#fees) {
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
+
+  /* todolist: pictogram beside the text, tiles below */
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2:first-child + p > picture:first-child):has(> .cards-wrapper > .cards.tile) {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    column-gap: 24px;
+    align-items: start;
+    padding-inline: max(32px, calc((100% - var(--content-max-width)) / 2));
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2:first-child + p > picture:first-child):has(> .cards-wrapper > .cards.tile) > .default-content-wrapper:first-child {
+    display: contents;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2:first-child + p > picture:first-child):has(> .cards-wrapper > .cards.tile) > .default-content-wrapper > h2:first-child {
+    grid-column: 1 / -1;
+    margin-bottom: var(--section-padding);
+    padding-bottom: var(--section-padding);
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2:first-child + p > picture:first-child):has(> .cards-wrapper > .cards.tile) > .default-content-wrapper > h2:first-child + p {
+    display: block;
+    grid-column: 1;
+    margin: 0;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2:first-child + p > picture:first-child):has(> .cards-wrapper > .cards.tile) > .default-content-wrapper > h2:first-child + p ~ * {
+    grid-column: 2;
+    max-width: none;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2:first-child + p > picture:first-child):has(> .cards-wrapper > .cards.tile) > .cards-wrapper {
+    grid-column: 1 / -1;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* fees: strip above a full-width panel */
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2#fees:first-child):has(> .cards-wrapper > .cards.tile) {
+    margin: 0;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2#fees:first-child):has(> .cards-wrapper > .cards.tile) > div:first-child {
+    padding-top: var(--section-padding);
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2#fees:first-child):has(> .cards-wrapper > .cards.tile) > div:last-child {
+    padding-bottom: var(--section-padding);
+  }
+}
+
+@media (width >= 900px) {
+  /* heading beside the block: left third (source __left), block in the remaining width */
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) :is(.section:has(> .default-content-wrapper:first-child + .cards-wrapper > .cards.people), .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media))) {
+    display: grid;
+    grid-template-columns: minmax(0, calc((100% + 24px) / 3 - 64px)) minmax(0, 1fr);
+    column-gap: 72px;
+    align-items: start;
+    padding-inline: max(32px, calc((100% - var(--content-max-width)) / 2));
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) :is(.section:has(> .default-content-wrapper:first-child + .cards-wrapper > .cards.people), .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media))) > div {
+    grid-column: 2;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) :is(.section:has(> .default-content-wrapper:first-child + .cards-wrapper > .cards.people), .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media))) > .default-content-wrapper:first-child {
+    grid-row: 1 / span 9;
+    grid-column: 1;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) :is(.section:has(> .default-content-wrapper:first-child + .cards-wrapper > .cards.people), .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media))) > .default-content-wrapper:first-child > :last-child {
+    margin-bottom: 0;
+  }
+
+  /* in-page anchor list: heading in the left third, links beside it */
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section > .default-content-wrapper:has(> h2:first-child + ul:last-child > li:first-child > a[href^="#"]:only-child) {
+    display: grid;
+    grid-template-columns: minmax(0, calc((100% + 24px) / 3 - 64px)) minmax(0, 1fr);
+    column-gap: 72px;
+    align-items: start;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section > .default-content-wrapper:has(> h2:first-child + ul:last-child > li:first-child > a[href^="#"]:only-child) > * {
+    max-width: none;
+    margin-bottom: 0;
+  }
+
+  /* todolist: pictogram and text in the left half, tiles in the right half */
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2:first-child + p > picture:first-child):has(> .cards-wrapper > .cards.tile) {
+    grid-template-columns: 130px minmax(0, 1fr) minmax(0, calc(50% - 12px));
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2:first-child + p > picture:first-child):has(> .cards-wrapper > .cards.tile) > .cards-wrapper {
+    grid-area: 2 / 3 / span 9;
+  }
+}
+
+@media (width >= 1098px) {
+  /* fees: navy band across the top with the white panel inset over it */
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2#fees:first-child):has(> .cards-wrapper > .cards.tile) {
+    padding-top: 40px;
+    background-size: 100% 256px;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child > h2#fees:first-child):has(> .cards-wrapper > .cards.tile) > div {
+    box-sizing: border-box;
+    max-width: var(--content-max-width);
+    margin-inline: max(32px, calc((100% - var(--content-max-width)) / 2));
+    padding-inline: clamp(32px, 8.4%, 104px);
+  }
+}
+
+@media (width >= 1304px) {
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section > div {
+    padding: 0;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media)) > div {
+    padding: 0;
+  }
+}

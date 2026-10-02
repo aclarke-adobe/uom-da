@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/assessment-of-bushfire-exposure",
+  "path": "find/microcredentials/assessment-of-bushfire-exposure",
+  "timestamp": "2026-10-02T07:08:58.120Z",
+  "title": "Assessment of Bushfire Exposure - micro-credential",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "columns",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits",
+  "droppedImages": ""
+}

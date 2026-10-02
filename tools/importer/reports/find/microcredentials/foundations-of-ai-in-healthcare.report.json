@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/foundations-of-ai-in-healthcare",
+  "path": "find/microcredentials/foundations-of-ai-in-healthcare",
+  "timestamp": "2026-10-02T07:09:36.379Z",
+  "title": "Foundations of AI in Healthcare - online course.",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "columns",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits who-you-will-learn-from-joseph-west",
+  "droppedImages": ""
+}

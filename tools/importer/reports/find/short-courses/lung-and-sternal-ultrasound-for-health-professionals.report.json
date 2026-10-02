@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/lung-and-sternal-ultrasound-for-health-professionals",
+  "path": "find/short-courses/lung-and-sternal-ultrasound-for-health-professionals",
+  "timestamp": "2026-10-02T07:12:55.364Z",
+  "title": "Lung and Sternal Ultrasound for Health Professionals",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

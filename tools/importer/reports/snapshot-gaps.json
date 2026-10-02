@@ -1,17 +1,33 @@
 {
-  "generatedAt": "2026-10-01T14:07:52.141Z",
+  "generatedAt": "2026-10-02T02:25:47.478Z",
   "dir": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots",
+  "urls": null,
   "counts": {
-    "scanned": 3312,
+    "scanned": 3570,
+    "unreadable": 0,
     "withSwitcher": 2881,
     "withInternationalTemplate": 2881,
     "structurePages": 521,
     "structureWithMultiOptionSelects": 160,
     "structureWithOptionsTemplate": 160,
-    "unreadable": 0,
+    "withB2bSwitcher": 8,
+    "withOrganisationsTemplate": 8,
+    "withClickToPlayVideos": 30,
+    "videoPlayers": 37,
+    "videoPlayersResolved": 37,
+    "withFullWidthImages": 8,
+    "fullWidthImages": 11,
+    "fullWidthImagesMarked": 11,
     "switcherWithoutInternational": 0,
-    "structureWithoutOptions": 0
+    "structureWithoutOptions": 0,
+    "viewsWithoutOrganisations": 0,
+    "videosWithoutSrc": 0,
+    "fullWidthImagesWithoutBg": 0,
+    "anyGap": 0
   },
   "switcherWithoutInternational": [],
-  "structureWithoutOptions": []
+  "structureWithoutOptions": [],
+  "viewsWithoutOrganisations": [],
+  "videosWithoutSrc": [],
+  "fullWidthImagesWithoutBg": []
 }

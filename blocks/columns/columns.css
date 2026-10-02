@@ -1,3 +1,6 @@
+/* variant rules (overlap, split band/menu, cta, figure) are grouped by variant, not by specificity */
+/* stylelint-disable no-descending-specificity */
+
 .columns > div {
   display: flex;
   flex-direction: column;
@@ -31,7 +34,38 @@
   margin-top: 8px;
 }
 
-/* overlap: banner image with the content panel pulled up over it */
+/* buttons: full width with an 18px label on phones, 20px arrow */
+.columns a.button:any-link {
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  font-size: 18px;
+}
+
+.columns a.button::before {
+  width: 20px;
+  height: 20px;
+  margin-top: 3.5px;
+}
+
+/*
+ * overlap: full-bleed 5:2 banner (max 448px tall) with a white panel of
+ * heading | content; from 1304px the panel is inset and pulled up 80px over the banner.
+ * The band has no spacing of its own: neighbouring sections provide it.
+ */
+main .section:has(> .columns-wrapper:first-child > .columns.overlap) {
+  margin-top: 0;
+}
+
+main .section:has(> .columns-wrapper:last-child > .columns.overlap) {
+  margin-bottom: 0;
+}
+
+main .section > .columns-wrapper:has(> .columns.overlap.block) {
+  max-width: none;
+  padding: 0;
+}
+
 .columns.overlap > .columns-overlap-media {
   display: block;
   line-height: 0;
@@ -39,14 +73,35 @@
 
 .columns.overlap > .columns-overlap-media img {
   display: block;
-  aspect-ratio: 16 / 5;
+  max-height: 448px;
+  aspect-ratio: 5 / 2;
   object-fit: cover;
 }
 
 .columns.overlap > .columns-overlap-panel {
+  display: block;
   position: relative;
-  padding: 32px 24px;
+  box-sizing: border-box;
+  padding: 48px 16px;
   background-color: var(--background-color);
+}
+
+.columns.overlap > .columns-overlap-panel > div:first-child {
+  margin-bottom: 24px;
+}
+
+.columns.overlap > .columns-overlap-panel h3 {
+  margin-bottom: 12px;
+  font-size: var(--heading-font-size-s);
+}
+
+.columns.overlap > .columns-overlap-panel :is(ul, ol) {
+  margin-bottom: 32px;
+  padding-left: 24px;
+}
+
+.columns.overlap > .columns-overlap-panel sup {
+  line-height: 0;
 }
 
 /*
@@ -133,17 +188,85 @@ main .section:is(.light, .highlight, .grey, .sage, .cream, .navy, .dark, .teal) 
   margin: 0;
 }
 
-.columns.split a.button:any-link {
-  align-items: flex-start;
-  gap: 4px;
-  width: 100%;
-  font-size: 18px;
+/*
+ * split band (photo + text, no eyebrow): full-bleed; the photo fills its half edge to
+ * edge, the text sits on the section colour, aligned to the content grid
+ */
+main .section > .columns-wrapper:has(> .columns.split.columns-bleed.block) {
+  max-width: none;
+  padding: 0;
 }
 
-.columns.split a.button::before {
-  width: 20px;
-  height: 20px;
-  margin-top: 3.5px;
+/*
+ * band and menu set their own height: on a tinted band they sit flush with its edges
+ * (the band's padding is dropped, whatever the page rhythm sets it to)
+ */
+main .section:is(.light, .highlight, .grey, .sage, .cream, .navy, .dark, .teal):has(> .columns-wrapper:first-child > .columns.split:is(.columns-bleed, .columns-menu)) {
+  padding-top: 0;
+}
+
+main .section:is(.light, .highlight, .grey, .sage, .cream, .navy, .dark, .teal):has(> .columns-wrapper:last-child > .columns.split:is(.columns-bleed, .columns-menu)) {
+  padding-bottom: 0;
+}
+
+main .section > .columns-wrapper:first-child > .columns.split.block:is(.columns-bleed, .columns-menu) {
+  margin-top: 0;
+}
+
+main .section > .columns-wrapper:last-child > .columns.split.block:is(.columns-bleed, .columns-menu) {
+  margin-bottom: 0;
+}
+
+.columns.split.columns-bleed > div > .columns-img-col {
+  margin-top: 0;
+}
+
+.columns.split.columns-bleed > div > div:not(.columns-img-col) {
+  padding: 48px 16px;
+}
+
+/* split menu (photo + link list): contained, ruled arrow links */
+.columns.split.columns-menu > div > .columns-img-col {
+  margin: 0 -16px;
+}
+
+.columns.split.columns-menu > div > div:not(.columns-img-col) {
+  padding: 24px 0 48px;
+}
+
+.columns.split.columns-menu h2 {
+  margin-bottom: 20px;
+  font-size: var(--heading-font-size-m);
+}
+
+.columns.split.columns-menu .columns-link-list {
+  display: block;
+}
+
+.columns.split.columns-menu .columns-link-list a:any-link {
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 16px 4px;
+  border: 0;
+  border-bottom: 1px solid #dddfe7;
+  border-radius: 0;
+  background-color: transparent;
+  font-size: 20px;
+  line-height: 24px;
+  text-decoration: none;
+}
+
+.columns.split.columns-menu .columns-link-list a:any-link::before {
+  content: '';
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background-color: currentcolor;
+  mask: var(--arrow-icon) center / contain no-repeat;
+}
+
+.columns.split.columns-menu .columns-link-list a:hover {
+  text-decoration: underline;
 }
 
 /*
@@ -159,11 +282,62 @@ main .section:is(.light, .highlight, .grey, .sage, .cream, .navy, .dark, .teal) 
   letter-spacing: normal;
 }
 
+.columns:not(.split, .overlap) > .columns-text-row > div:first-child > :is(h2, h3):not(:last-child) {
+  margin-bottom: 18px;
+}
+
 .columns.columns-2-cols:not(.split, .overlap) > .columns-text-row > div:first-child {
   margin-bottom: 24px;
 }
 
-.columns.columns-2-cols:not(.split, .overlap) > .columns-text-row > div:first-child > :last-child {
+.columns.columns-2-cols:not(.split, .overlap) > .columns-text-row > div:first-child > :is(h1, h2, h3, h4, h5, h6):last-child {
+  margin-bottom: 0;
+}
+
+/* a label column ending in text keeps its paragraph margin as the gap */
+.columns.columns-2-cols:not(.split, .overlap) > .columns-text-row > div:first-child:has(> p:last-child) {
+  margin-bottom: 0;
+}
+
+.columns:not(.split, .overlap) > .columns-text-row > div:last-child > :last-child {
+  margin-bottom: 0;
+}
+
+.columns:not(.split, .overlap) > .columns-text-row > div:last-child > h3 {
+  margin-bottom: 16px;
+  font-size: var(--heading-font-size-m);
+}
+
+/* heading | text + button (two-column header text): serif heading, 1/3 + 2/3 */
+.columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row {
+  gap: 16px;
+}
+
+.columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row > div:first-child {
+  margin-bottom: 0;
+}
+
+.columns:not(.split, .overlap) > .columns-cta-row > div:first-child > :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.columns:not(.split, .overlap) p.button-wrapper {
+  margin: 0 0 24px;
+}
+
+.columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row > div:first-child > :is(h1, h2, h3, h4, h5, h6):last-child {
+  margin-bottom: 20px;
+}
+
+/* text + inset figure (text with figures): photo first on phones */
+.columns:not(.split, .overlap) > div:not(.columns-text-row) > .columns-img-col {
+  margin-bottom: 24px;
+}
+
+.columns:not(.split, .overlap) > div:not(.columns-text-row) > div:not(.columns-img-col) > :last-child {
   margin-bottom: 0;
 }
 
@@ -201,9 +375,77 @@ main .section:is(.light, .highlight, .grey, .sage, .cream, .navy, .dark, .teal) 
   text-decoration: none;
 }
 
+/* course cards (series): name over an uppercase type label, amber left edge */
+.columns .columns-course-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+  padding: 0;
+  list-style: none;
+}
+
+.columns .columns-course-list > li {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 8px;
+  padding: 0 8px;
+}
+
+.columns .columns-course-list a:any-link {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 12px 16px;
+  border: 1px solid #bfced5;
+  border-left: 6px solid #be7440;
+  border-radius: 2px;
+  background-color: var(--background-color);
+  text-decoration: none;
+}
+
+.columns .columns-course-name {
+  margin-bottom: 12px;
+  color: var(--link-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: underline;
+}
+
+.columns .columns-course-type {
+  color: #707070;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.columns .columns-course-list a:hover .columns-course-name {
+  text-decoration: none;
+}
+
 @media (width >= 481px) {
-  .columns.split a.button:any-link {
+  .columns a.button:any-link {
     width: auto;
+  }
+
+  .columns .columns-course-list > li {
+    width: 50%;
+  }
+}
+
+@media (width >= 600px) {
+  .columns.overlap > .columns-overlap-panel {
+    padding-block: 64px;
+  }
+
+  .columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
   }
 }
 
@@ -279,6 +521,87 @@ main .section:is(.light, .highlight, .grey, .sage, .cream, .navy, .dark, .teal) 
     height: 100%;
     aspect-ratio: auto;
   }
+
+  /* band: photo fills its half; text bottom-aligned, outer edge on the content grid */
+  .columns.split.columns-bleed > div > .columns-img-col picture,
+  .columns.split.columns-bleed > div > .columns-img-col:first-child picture {
+    inset: 0;
+  }
+
+  .columns.split.columns-bleed > div > div:not(.columns-img-col) {
+    justify-content: flex-end;
+    padding: 48px max(32px, calc(50% - var(--content-max-width) / 2)) 48px 48px;
+  }
+
+  .columns.split.columns-bleed > div > div:not(.columns-img-col):first-child {
+    padding: 48px 48px 48px max(32px, calc(50% - var(--content-max-width) / 2));
+  }
+
+  /* menu: two equal columns 48px apart, photo filling its column */
+  .columns.split.columns-menu > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px;
+  }
+
+  .columns.split.columns-menu > div > .columns-img-col {
+    margin: 0;
+  }
+
+  .columns.split.columns-menu > div > .columns-img-col picture,
+  .columns.split.columns-menu > div > .columns-img-col:first-child picture {
+    inset: 0;
+  }
+
+  .columns.split.columns-menu > div > div:not(.columns-img-col) {
+    align-items: stretch;
+    min-height: 0;
+    padding: 80px 0;
+  }
+
+  .columns.split.columns-menu h2 {
+    font-size: 24px;
+  }
+
+  .columns.split.columns-menu .columns-link-list a:any-link {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .columns.split.columns-menu .columns-link-list a:any-link::before {
+    width: 32px;
+    height: 32px;
+  }
+
+  .columns .columns-course-list > li {
+    width: calc(100% / 3);
+  }
+
+  /* text + inset figure: text up to 880px, the photo a quarter of the viewport */
+  .columns:not(.split, .overlap) > div:not(.columns-text-row) {
+    --columns-inset-width: calc(50vw - 24px);
+
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .columns:not(.split, .overlap) > div:not(.columns-text-row) > div {
+    flex: 0 1 var(--text-max-width);
+    order: unset;
+    min-width: 0;
+  }
+
+  .columns:not(.split, .overlap) > div:not(.columns-text-row) > .columns-img-col {
+    flex: 0 0 var(--columns-inset-width);
+    margin-bottom: 0;
+  }
+
+  .columns:not(.split, .overlap) > div:not(.columns-text-row) > .columns-img-col:first-child + div {
+    flex-basis: calc(var(--text-max-width) - var(--columns-inset-width) - 24px);
+    margin-right: auto;
+  }
 }
 
 /* heading + content pair from tablet: one-third label column, two-thirds content */
@@ -292,6 +615,39 @@ main .section:is(.light, .highlight, .grey, .sage, .cream, .navy, .dark, .teal) 
 
   .columns.columns-2-cols:not(.split, .overlap) > .columns-text-row > div:first-child {
     margin: 0 48px 0 0;
+  }
+
+  .columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row > div:first-child {
+    margin: 0;
+  }
+
+  .columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row > div:last-child {
+    grid-column: span 2;
+  }
+
+  .columns.overlap > .columns-overlap-panel {
+    padding-inline: 32px;
+  }
+
+  .columns.overlap > .columns-overlap-panel h3 {
+    margin-bottom: 16px;
+  }
+
+  .columns:not(.split, .overlap) > .columns-text-row > div:first-child > :is(h2, h3):not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  .columns:not(.split, .overlap) > .columns-text-row > div:last-child > h3 {
+    margin-bottom: 18px;
+    font-size: var(--heading-font-size-m);
+  }
+
+  .columns:not(.split, .overlap) > .columns-cta-row > div:first-child > :is(h1, h2, h3, h4, h5, h6) {
+    font-size: 36px;
   }
 }
 
@@ -308,11 +664,40 @@ main .section:is(.light, .highlight, .grey, .sage, .cream, .navy, .dark, .teal) 
   }
 
   .columns.overlap > .columns-overlap-panel {
-    width: calc(100% - 200px);
-    max-width: var(--content-max-width);
-    box-sizing: border-box;
-    margin: -80px auto 0;
-    padding: 80px 104px 48px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
   }
 
+  .columns.overlap > .columns-overlap-panel > div:first-child {
+    margin: 0 48px 0 0;
+  }
+
+  .columns:not(.split, .overlap) > div:not(.columns-text-row) {
+    align-items: flex-start;
+  }
+}
+
+@media (width >= 1099px) {
+  .columns:not(.split, .overlap) > div:not(.columns-text-row) {
+    --columns-inset-width: calc(100vw / 3 - 24px);
+  }
+}
+
+@media (width >= 1304px) {
+  .columns.overlap > .columns-overlap-panel {
+    width: min(var(--content-max-width), 100% - 200px);
+    margin: -80px auto 0;
+    padding: 80px 92px;
+  }
+}
+
+@media (width >= 1440px) {
+  .columns.overlap > .columns-overlap-panel {
+    padding-inline: 104px;
+  }
+
+  .columns:not(.split, .overlap) > div:not(.columns-text-row) {
+    --columns-inset-width: calc(25vw - 24px);
+  }
 }

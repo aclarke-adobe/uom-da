@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/recognising-and-managing-disinformation",
+  "path": "find/microcredentials/recognising-and-managing-disinformation",
+  "timestamp": "2026-10-02T07:10:34.081Z",
+  "title": "Recognising and Managing Disinformation micro-credential",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits",
+  "droppedImages": ""
+}

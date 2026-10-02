@@ -56,6 +56,11 @@ function buildFact(labelCell, valueCells) {
   dd.className = 'key-facts-value';
   valueCells.forEach((cell) => dd.append(...cell.childNodes));
 
+  // partner logo rows ("In collaboration with", "Endorsed by"): images only, no icon
+  if (!icon && dd.querySelector('img') && !dd.textContent.trim()) {
+    item.classList.add('key-facts-item-logos');
+  }
+
   item.append(dt, dd);
   return item;
 }

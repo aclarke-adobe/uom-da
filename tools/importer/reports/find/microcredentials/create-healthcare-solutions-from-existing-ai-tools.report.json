@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/create-healthcare-solutions-from-existing-ai-tools",
+  "path": "find/microcredentials/create-healthcare-solutions-from-existing-ai-tools",
+  "timestamp": "2026-10-02T07:09:06.067Z",
+  "title": "Create Healthcare Solutions from Existing AI Tools - micro-credential",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "columns",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits who-you-will-learn-from-joseph-west",
+  "droppedImages": ""
+}

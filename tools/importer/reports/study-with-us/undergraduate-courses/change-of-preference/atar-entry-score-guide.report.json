@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/undergraduate-courses/change-of-preference/atar-entry-score-guide",
+  "path": "study-with-us/undergraduate-courses/change-of-preference/atar-entry-score-guide",
+  "timestamp": "2026-10-02T07:21:12.028Z",
+  "title": "ATAR entry score guide",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "table",
+    "hero-split"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

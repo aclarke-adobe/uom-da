@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/clinical-costing-fundamentals-and-analyses",
+  "path": "find/short-courses/clinical-costing-fundamentals-and-analyses",
+  "timestamp": "2026-10-02T07:11:20.116Z",
+  "title": "Clinical Costing Fundamentals and Analyses",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

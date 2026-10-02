@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/acknowledgement-of-country",
+  "path": "find/microcredentials/acknowledgement-of-country",
+  "timestamp": "2026-10-02T07:08:51.730Z",
+  "title": "Acknowledgement of Country - micro-credential",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "organisations-only-notice micro-credential-benefits",
+  "droppedImages": ""
+}

@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/ultrasound-imaging-for-physiotherapists",
+  "path": "find/short-courses/ultrasound-imaging-for-physiotherapists",
+  "timestamp": "2026-10-02T07:15:08.795Z",
+  "title": "Ultrasound Imaging for Physiotherapists",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

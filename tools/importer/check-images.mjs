@@ -124,11 +124,9 @@ const IMAGE_EXT = /\.(?:jpe?g|png|gif|webp|svg|avif)(?:$|\?)/i;
 // posters are not assets to localise (posters stay on i.ytimg.com, which is embeddable).
 const IMAGE_HOST = /(?:^|\.)(?:unimelb\.edu\.au|bespoke-production\.s3\.amazonaws\.com)$/i;
 const SKIP_URL = /\/_nuxt\/|\/i\/adsct/i;
-// Known external images: referenced by content but not fetchable through Bright Data
-// (robots-restricted on study.unimelb.edu.au); left as-is in the content.
-export const KNOWN_EXTERNAL = [
-  'https://study.unimelb.edu.au/__data/assets/image/0030/331869/pgm2.jpg',
-];
+// Known external images: referenced by content but not fetchable at all; left as-is in the content.
+// (pgm2.jpg, listed here before, is now downloaded through the in-page fetch below.)
+export const KNOWN_EXTERNAL = [];
 
 /**
  * Normalise a raw image reference to an absolute URL, or null when it is not a content image to
@@ -325,76 +323,263 @@ async function main() {
     process.exit(1);
   }
 
+  const untested = new Set();
+
+  /** Record one probe result for url (confirmation, ever-ok protection, download). */
+  const record = (url, r0) => {
+    const prev = cache.results[url];
+    let r = { ...r0 };
+    if (r.status === 'retry') r = { ...r, status: 'unloadable' };
+    // The SSO-hop failure is intermittent. An image that has ever loaded (status ok in an earlier
+    // run, or a downloaded copy on disk) is not recorded as unloadable on a later failure: it
+    // stays ok (and is retried for download), so a flaky run never drops a real image.
+    const hasLocal = prev.local && existsSync(join(MEDIA_DIR, prev.local.replace(/^\/media-da\//, '')));
+    if ((r.status === 'unloadable' || r.status === 'unknown') && (prev.everOk || hasLocal)) {
+      r = { ...r, status: hasLocal ? 'ok' : 'unknown', reason: `transient: ${r.reason || r.status}` };
+    }
+    if (r.status === 'ok') r.everOk = true;
+    delete r.sessionLost;
+    if (r.body) {
+      if (DOWNLOAD) r.local = saveLocal(url, r.contentType, r.body);
+      r.bytes = r.body.length;
+      delete r.body;
+    }
+    cache.results[url] = {
+      ...prev, reason: undefined, ...r, checkedAt: new Date().toISOString(), attempts: (prev.attempts || 0) + 1,
+    };
+  };
+
   async function worker(id, list) {
-    let browser = null;
-    let context = null;
-    const connect = async () => {
-      if (browser) await browser.close().catch(() => {});
-      browser = await chromium.connectOverCDP(endpoint, { timeout: 60000 });
-      context = browser.contexts()[0] || await browser.newContext();
+    const session = new Session(chromium, endpoint, id);
+    let done = 0;
+    const progress = (n, force) => {
+      const before = done;
+      done += n;
+      if (!force && Math.floor(before / SAVE_EVERY) === Math.floor(done / SAVE_EVERY) && done !== list.length) return;
+      const c = writeOut(cache);
+      console.log(`[check-images] session ${id}: ${done}/${list.length} — ok ${c.ok}, unloadable ${c.unloadable}, unknown ${c.unknown}, pending ${c.pending}, untested ${untested.size}`);
     };
-    const run = async (url, wantBody) => {
-      for (let attempt = 1; attempt <= 2; attempt += 1) {
-        try {
-          if (!browser || !browser.isConnected()) await connect();
-          const r = await probe(context, url, wantBody);
-          if (r.sessionLost) browser = null; // Bright Data closes the session after a robots refusal
-          return r;
-        } catch (err) {
-          browser = null;
-          if (attempt === 2) return { status: 'unknown', reason: `session: ${err.message.split('\n')[0].slice(0, 160)}` };
-        }
-      }
-      return { status: 'unknown', reason: 'session' };
-    };
+    // 1. robots-restricted study.unimelb.edu.au assets: in-page same-origin fetch, in batches
+    const inPage = list.filter((u) => IN_PAGE_HOST.test(new URL(u).hostname));
+    const direct = list.filter((u) => !inPage.includes(u));
     try {
-      for (let i = 0; i < list.length; i += 1) {
-        const url = list[i];
-        const prev = cache.results[url];
-        let r = await run(url, DOWNLOAD);
-        // A failure is not proof: Bright Data intermittently reports the SSO hop for public assets
-        // (9 of 11 first-pass "redirect-to-sso" images loaded on a re-test). Confirm every
-        // failure in CONFIRMATIONS more fresh sessions; any success wins.
+      for (let i = 0; i < inPage.length; i += FETCH_BATCH) {
+        const batch = inPage.slice(i, i + FETCH_BATCH);
+        let res = await session.inPage(batch);
+        if (!res) { batch.forEach((u) => untested.add(u)); progress(batch.length); continue; }
+        // a failure is confirmed once more after a fresh session (any success wins)
+        const failed = batch.filter((u) => res[u].status !== 'ok');
+        if (failed.length) {
+          await session.reset();
+          const again = await session.inPage(failed);
+          if (again) failed.forEach((u) => { if (again[u].status === 'ok' || res[u].status === 'unknown') res[u] = again[u]; });
+        }
+        batch.forEach((u) => record(u, res[u]));
+        progress(batch.length);
+      }
+      // 2. other hosts (matrix-cms, …): top-level navigation; in-page fetch from a study page when
+      //    the navigation fails for any reason other than a confirmed SSO / HTTP refusal
+      for (let i = 0; i < direct.length; i += 1) {
+        const url = direct[i];
+        let r = await session.navigate(url);
+        if (!r) { untested.add(url); progress(1); continue; }
+        // A failure is not proof: Bright Data intermittently reports the SSO hop for public assets.
+        // Confirm every failure in CONFIRMATIONS more fresh sessions; any success wins.
         for (let k = 0; k < CONFIRMATIONS && (r.status === 'retry' || r.status === 'unloadable'); k += 1) {
-          browser = null;
-          const again = await run(url, DOWNLOAD);
+          await session.reset();
+          const again = await session.navigate(url);
+          if (!again) break;
           if (again.status === 'ok' || again.status === 'unknown') { r = again; break; }
           r = again;
         }
-        if (r.status === 'retry') r = { ...r, status: 'unloadable' };
-        // The SSO-hop failure is intermittent. An image that has ever loaded (status ok in an earlier
-        // run, or a downloaded copy on disk) is not recorded as unloadable on a later failure: it
-        // stays ok (and is retried for download), so a flaky run never drops a real image.
-        const hasLocal = prev.local && existsSync(join(MEDIA_DIR, prev.local.replace(/^\/media-da\//, '')));
-        if ((r.status === 'unloadable' || r.status === 'unknown') && (prev.everOk || hasLocal)) {
-          r = { ...r, status: hasLocal ? 'ok' : 'unknown', reason: `transient: ${r.reason || r.status}` };
+        if (r.status !== 'ok') {
+          const viaPage = await session.inPage([url]);
+          if (viaPage && (viaPage[url].status === 'ok' || r.status === 'unknown')) {
+            r = { ...viaPage[url], reason: viaPage[url].reason || `in-page after: ${r.reason || r.status}`.slice(0, 200) };
+          }
         }
-        if (r.status === 'ok') r.everOk = true;
-        delete r.sessionLost;
-        if (r.body) {
-          if (DOWNLOAD) r.local = saveLocal(url, r.contentType, r.body);
-          r.bytes = r.body.length;
-          delete r.body;
-        }
-        cache.results[url] = {
-          ...prev, reason: undefined, ...r, checkedAt: new Date().toISOString(), attempts: (prev.attempts || 0) + 1,
-        };
-        if ((i + 1) % SAVE_EVERY === 0 || i === list.length - 1) {
-          const c = writeOut(cache);
-          console.log(`[check-images] session ${id}: ${i + 1}/${list.length} — ok ${c.ok}, unloadable ${c.unloadable}, unknown ${c.unknown}, pending ${c.pending}`);
-        }
+        record(url, r);
+        progress(1);
       }
     } finally {
-      if (browser) await browser.close().catch(() => {});
+      await session.close();
     }
   }
 
   const shards = Array.from({ length: SESSIONS }, (_, i) => todo.filter((_, k) => k % SESSIONS === i));
   await Promise.all(shards.map((list, i) => worker(i + 1, list)));
-  console.log('[check-images] done', writeOut(cache));
-  if (DOWNLOAD) console.log(`[check-images] sidecars updated: ${writeSidecars(urls, cache, scope)}`);
+  console.log('[check-images] done', writeOut(cache), `untested (Bright Data unreachable after retries): ${untested.size}`);
+  if (DOWNLOAD) {
+    const changed = writeSidecars(urls, cache, scope);
+    console.log(`[check-images] sidecars updated: ${changed}`);
+  }
+}
+
+// ------------------------------------------------------------------ Bright Data session
+// Bright Data drops sessions (Target closed, `session limit reached` (1013), robots refusals close
+// the session). Every operation reconnects with exponential backoff and is retried on the new
+// session; a URL is never classified from a session error. Only after MAX_SESSION_TRIES failed
+// reconnects is it left untested (its previous result is kept) for the next run.
+const IN_PAGE_HOST = /^study\.unimelb\.edu\.au$/i;
+const ANCHOR = 'https://study.unimelb.edu.au/study-with-us';
+const FETCH_BATCH = 8;
+const MAX_SESSION_TRIES = 8;
+const MAX_IMAGE_BYTES = 25 * 1024 * 1024;
+const SESSION_ERR = /closed|Target|disconnected|session|WebSocket|ECONN|socket hang up|1013|Execution context was destroyed|net::ERR_(?:CONNECTION|TUNNEL|PROXY|EMPTY_RESPONSE)/i;
+const sleep = (ms) => new Promise((r) => { setTimeout(r, ms); });
+
+class Session {
+  constructor(chromium, endpoint, id) {
+    Object.assign(this, { chromium, endpoint, id, browser: null, context: null, anchor: null });
+  }
+
+  async close() {
+    const b = this.browser;
+    this.browser = null;
+    this.anchor = null;
+    if (b) await Promise.race([b.close().catch(() => {}), sleep(10000)]);
+  }
+
+  async reset() { await this.close(); }
+
+  async connect() {
+    await this.close();
+    this.browser = await this.chromium.connectOverCDP(this.endpoint, { timeout: 60000 });
+    this.context = this.browser.contexts()[0] || await this.browser.newContext();
+  }
+
+  /** Run fn(context) with reconnect + backoff on session errors; null when it never got through. */
+  async withSession(label, fn) {
+    for (let attempt = 0; attempt < MAX_SESSION_TRIES; attempt += 1) {
+      try {
+        if (!this.browser || !this.browser.isConnected()) await this.connect();
+        return await fn(this.context);
+      } catch (err) {
+        // probe() already turns URL-level failures into results, so anything thrown here is a
+        // session / page-level failure (dropped CDP session, anchor page not loading): retry it
+        const msg = err.message.split('\n').join(' ');
+        await this.close();
+        const limit = /session limit/i.test(msg);
+        const wait = Math.min(120000, (limit ? 15000 : 5000) * 2 ** attempt) + Math.floor(Math.random() * 3000);
+        console.log(`[check-images] session ${this.id}: ${label}: ${msg.slice(0, 120)} — reconnect in ${Math.round(wait / 1000)}s (${attempt + 1}/${MAX_SESSION_TRIES})`);
+        await sleep(wait);
+      }
+    }
+    return null;
+  }
+
+  /** Top-level navigation probe (probe() above); null when Bright Data stayed unreachable. */
+  async navigate(url) {
+    return this.withSession('navigate', async (context) => {
+      const r = await probe(context, url, DOWNLOAD);
+      if (r.status === 'unknown' && SESSION_ERR.test(r.reason || '') && !/restricted in accordance with robots/i.test(r.reason || '')) {
+        throw new Error(`session: ${r.reason}`);
+      }
+      if (r.sessionLost) await this.close(); // Bright Data closes the session after a robots refusal
+      delete r.sessionLost;
+      return r;
+    });
+  }
+
+  /**
+   * Download urls from inside a normal study.unimelb.edu.au page: same-origin fetch for study
+   * assets (robots.txt only stops Bright Data navigating to them), CORS fetch for matrix-cms.
+   * Returns { url: result } or null when Bright Data stayed unreachable.
+   */
+  async inPage(urls) {
+    return this.withSession('in-page', async (context) => {
+      if (!this.anchor || this.anchor.isClosed()) {
+        this.anchor = await context.newPage();
+        await this.anchor.goto(ANCHOR, { timeout: NAV_TIMEOUT, waitUntil: 'domcontentloaded' });
+      }
+      const raw = await this.anchor.evaluate(inPageFetch, { urls, max: MAX_IMAGE_BYTES });
+      const out = {};
+      raw.forEach((f) => { out[f.url] = classifyFetch(f); });
+      return out;
+    });
+  }
+}
+
+/** Runs in the page: fetch each URL, verify, return base64 bytes (canvas fallback for PNG only). */
+async function inPageFetch({ urls, max }) {
+  const toB64 = (buf) => {
+    let s = '';
+    for (let i = 0; i < buf.length; i += 0x8000) s += String.fromCharCode(...buf.subarray(i, i + 0x8000));
+    return btoa(s);
+  };
+  const viaCanvas = (url) => new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      try {
+        const c = document.createElement('canvas');
+        c.width = img.naturalWidth;
+        c.height = img.naturalHeight;
+        c.getContext('2d').drawImage(img, 0, 0);
+        resolve({ b64: c.toDataURL('image/png').split(',')[1], w: img.naturalWidth });
+      } catch (e) { resolve({ error: String(e.message || e) }); }
+    };
+    img.onerror = () => resolve({ error: 'img load error' });
+    img.src = url;
+  });
+  const out = [];
+  for (const url of urls) {
+    const sameOrigin = new URL(url).origin === window.location.origin;
+    try {
+      // manual first: a redirect (Matrix restricted asset -> SSO login) is visible as opaqueredirect
+      const m = await fetch(url, { cache: 'no-store', redirect: 'manual', credentials: 'omit' });
+      let r = m;
+      let redirected = false;
+      if (m.type === 'opaqueredirect') {
+        redirected = true;
+        try { r = await fetch(url, { cache: 'no-store', credentials: 'omit' }); } catch (e) {
+          out.push({ url, redirected, error: `redirect then ${String(e.message || e)}` });
+          continue;
+        }
+      }
+      const type = r.headers.get('content-type') || '';
+      const declared = parseInt(r.headers.get('content-length') || '0', 10);
+      const buf = new Uint8Array(await r.arrayBuffer());
+      const ok = r.status >= 200 && r.status < 300 && /^image\//i.test(type) && buf.length > 0 && buf.length <= max
+        && (!declared || declared === buf.length || /gzip|br|deflate/i.test(r.headers.get('content-encoding') || ''));
+      out.push({
+        url, status: r.status, type, finalUrl: r.url, redirected: redirected || r.redirected, size: buf.length, declared, b64: ok ? toB64(buf) : '',
+      });
+    } catch (e) {
+      const error = String(e.message || e);
+      // fetch blocked: re-encode through a canvas only where that is lossless (PNG); other formats
+      // are recorded with the reason instead of being re-compressed
+      if (sameOrigin && /\.png(?:$|\?)/i.test(new URL(url).pathname)) {
+        const c = await viaCanvas(url);
+        if (c.b64) { out.push({ url, status: 200, type: 'image/png', canvas: true, size: Math.floor(c.b64.length * 0.75), b64: c.b64 }); continue; }
+        out.push({ url, error: `${error}; canvas: ${c.error}` });
+      } else {
+        out.push({ url, error: `${error}${sameOrigin ? '; no lossless canvas fallback for this format' : ''}` });
+      }
+    }
+  }
+  return out;
+}
+
+/** Map an in-page fetch result to a check result. */
+function classifyFetch(f) {
+  const sso = /sso\.unimelb\.edu\.au|okta|login/i;
+  if (f.error) {
+    if (f.redirected) return { status: 'unloadable', reason: `redirect-cross-origin (login): ${f.error}`.slice(0, 200), method: 'in-page-fetch' };
+    return { status: 'unknown', reason: `in-page fetch failed: ${f.error}`.slice(0, 200), method: 'in-page-fetch' };
+  }
+  const base = { http: f.status, contentType: f.type, method: f.canvas ? 'in-page-canvas-png' : 'in-page-fetch' };
+  if (sso.test(f.finalUrl || '')) return { ...base, status: 'unloadable', reason: 'redirect-to-sso' };
+  if ([401, 403, 404, 410].includes(f.status)) return { ...base, status: 'retry', reason: `http-${f.status}` };
+  if (f.status >= 200 && f.status < 300) {
+    if (!/^image\//i.test(f.type)) return { ...base, status: 'unloadable', reason: 'not-an-image' };
+    if (!f.b64) return { ...base, status: 'unknown', reason: `bad body (size ${f.size}, content-length ${f.declared})` };
+    return { ...base, status: 'ok', body: Buffer.from(f.b64, 'base64') };
+  }
+  return { ...base, status: 'unknown', reason: `http-${f.status}` };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  main().catch((e) => { console.error(e); process.exit(1); });
+  // explicit exit: lingering Bright Data CDP sockets otherwise keep the process (and its
+  // sessions) alive after the run, which starves the next run with "session limit reached"
+  main().then(() => process.exit(0), (e) => { console.error(e); process.exit(1); });
 }

@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/introduction-to-health-economic-evaluation-alongside-clinical-studies",
+  "path": "find/short-courses/introduction-to-health-economic-evaluation-alongside-clinical-studies",
+  "timestamp": "2026-10-02T07:12:46.120Z",
+  "title": "Introduction to health economic evaluation alongside clinical studies",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "columns"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

@@ -1,0 +1,25 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/accommodation",
+  "path": "accommodation",
+  "timestamp": "2026-10-02T07:07:32.343Z",
+  "title": "Student Accommodation | University of Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "video-split",
+    "cards-tile",
+    "cards-tile",
+    "cards",
+    "table",
+    "cards-tile",
+    "columns-split",
+    "cards",
+    "columns-split",
+    "quote",
+    "cards-tile",
+    "cards-tile"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

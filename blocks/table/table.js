@@ -5,7 +5,36 @@
  * (and more rows follow). Cells may contain rich content (lists, links, images).
  * Narrow screens scroll the table sideways inside the block; the scroll container
  * becomes a focusable, labelled region only while it actually overflows.
+ * Option `compact` (with a header row): below 600px each row becomes a card headed by its
+ * first cell, the other cells labelled with their column headers; columns size to content.
  */
+
+/**
+ * A bold label that is a link (`<strong><a>`) was turned into a button by decorateButtons
+ * before the block ran: the only content of the cell is that button.
+ * @param {Element} el
+ * @returns {boolean}
+ */
+function isButtonLabel(el) {
+  return el.tagName === 'P' && el.classList.contains('button-wrapper')
+    && el.children.length === 1 && el.firstElementChild.matches('a.button')
+    && el.textContent.trim() === el.firstElementChild.textContent.trim();
+}
+
+/**
+ * Turns a decorated button back into a plain link (header cells hold labels, not CTAs).
+ * @param {Element} cell
+ */
+function unbuttonLinks(cell) {
+  cell.querySelectorAll('p.button-wrapper').forEach((p) => {
+    const a = p.querySelector('a.button');
+    if (!a) return;
+    a.classList.remove('button', 'primary', 'secondary', 'accent');
+    if (!a.classList.length) a.removeAttribute('class');
+    p.classList.remove('button-wrapper');
+    if (!p.classList.length) p.removeAttribute('class');
+  });
+}
 
 function isHeaderRow(row, rowCount) {
   if (rowCount < 2) return false;
@@ -17,6 +46,7 @@ function isHeaderRow(row, rowCount) {
     const onlyText = els.length === 1
       && cell.textContent.trim() === els[0].textContent.trim();
     return onlyText && (/^H[1-6]$/.test(els[0].tagName)
+      || isButtonLabel(els[0])
       || /^(STRONG|B)$/.test(els[0].tagName)
       || (els[0].tagName === 'P' && els[0].children.length === 1
         && /^(STRONG|B)$/.test(els[0].firstElementChild.tagName)
@@ -38,6 +68,7 @@ export default function decorate(block) {
     [...rows[0].children].forEach((cell) => {
       const th = document.createElement('th');
       th.scope = 'col';
+      unbuttonLinks(cell);
       th.append(...cell.childNodes);
       tr.append(th);
     });
@@ -57,6 +88,17 @@ export default function decorate(block) {
     tbody.append(tr);
   });
   table.append(tbody);
+
+  // compact: below 600px each body row is a card headed by its first cell, every other
+  // cell labelled with its column header
+  if (block.classList.contains('compact') && hasHeader) {
+    const labels = [...table.querySelectorAll('thead th')].map((th) => th.textContent.replace(/\s+/g, ' ').trim());
+    tbody.querySelectorAll('tr').forEach((tr) => {
+      [...tr.children].forEach((td, i) => {
+        if (labels[i]) td.dataset.label = `${labels[i]}:`;
+      });
+    });
+  }
 
   const cols = Math.max(...rows.map((r) => r.children.length));
   block.classList.add(`table-${cols}-cols`);

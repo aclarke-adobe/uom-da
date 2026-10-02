@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/study-social-work-and-gender-based-violence",
+  "path": "study-with-us/graduate-courses/health/study-social-work-and-gender-based-violence",
+  "timestamp": "2026-10-02T07:18:43.809Z",
+  "title": "Study social work and gender-based violence",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards",
+    "video-split",
+    "columns-overlap"
+  ],
+  "fragments": "personalised-advice",
+  "droppedImages": ""
+}

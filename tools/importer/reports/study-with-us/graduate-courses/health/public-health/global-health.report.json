@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/public-health/global-health",
+  "path": "study-with-us/graduate-courses/health/public-health/global-health",
+  "timestamp": "2026-10-02T07:18:31.198Z",
+  "title": "Global Health",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards-icon",
+    "quote",
+    "video-split"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

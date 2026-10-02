@@ -2,7 +2,8 @@
  * Search block
  * Row 1: optional heading/intro text and a link whose href is the search results URL
  * (an empty query param such as `?q=` names the parameter, default `q`) and whose text
- * is the input placeholder. An optional second cell gives the button label.
+ * is the input placeholder. The link may sit in its own cell after a heading/intro cell.
+ * An optional cell after the link's cell gives the button label.
  * Option `filters`: further rows [group label | list of filter links] render as groups of
  * filter chips; single-cell rows (notes, "Clear search") are appended after them.
  */
@@ -93,17 +94,21 @@ export default function decorate(block) {
   if (!rows.length) return;
 
   const [firstRow, ...rest] = rows;
-  const [mainCell, buttonCell] = firstRow.children;
+  const firstCells = [...firstRow.children];
   const intro = document.createElement('div');
   intro.className = 'search-intro';
-  const link = mainCell ? [...mainCell.querySelectorAll('a')].pop() : null;
+  // the search link is the last link in the first row: in the first cell (a second cell
+  // gives the button label) or in its own cell after a heading/intro cell
+  const link = [...firstRow.querySelectorAll('a')].pop() || null;
+  const linkIndex = link ? firstCells.findIndex((cell) => cell.contains(link)) : 0;
+  const buttonCell = firstCells[linkIndex + 1];
 
-  if (mainCell) {
-    [...mainCell.children].forEach((el) => {
+  firstCells.slice(0, linkIndex + 1).forEach((cell) => {
+    [...cell.children].forEach((el) => {
       if (link && el.contains(link)) return;
       intro.append(el);
     });
-  }
+  });
 
   const main = document.createElement('div');
   main.className = 'search-main';

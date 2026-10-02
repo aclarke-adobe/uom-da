@@ -18,6 +18,15 @@
   margin-top: 12px;
 }
 
+/* intro heading (landing course search, source ct-coursesearch title--md): sans title */
+.search .search-intro > :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
 .search .search-label {
   position: absolute;
   width: 1px;
@@ -33,6 +42,11 @@
   position: relative;
   width: 100%;
   margin: 0;
+}
+
+/* with an intro (landing course search) the field is outlined in navy */
+.search.search-has-intro .search-form {
+  --search-outline-color: var(--uom-navy);
 }
 
 /* standalone search box (e.g. in the hero band) caps at the source column width */
@@ -162,7 +176,15 @@
   .search.search-has-intro .search-main {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-    gap: 48px;
-    align-items: center;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .search.search-has-intro .search-intro {
+    margin-right: 48px;
+  }
+
+  .search.search-has-intro .search-intro > :last-child {
+    margin-bottom: 20px;
   }
 }

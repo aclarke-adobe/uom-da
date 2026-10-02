@@ -201,7 +201,74 @@ function accordionBlock(uls, document) {
   return WebImporter.Blocks.createBlock(document, { name: 'Accordion', cells });
 }
 
+/**
+ * Section-landing accordions (details.uom-accordion-item; UI kit v17.11), verified in
+ * block-context/accordion/instances/section-landing-*.html:
+ *   .section-alt__row > .section-alt__left (h2 + text = 1-cell intro row) | .section-alt__right > .uom-accordion
+ *   div.ct-accordion.section .uom-accordion (no intro)
+ *   details.uom-accordion-item > summary > span.uom-title-6 (label) |
+ *     section.uom-accordion-item__section > [div.uom-accordion-item__section-content] (answer; the inner
+ *     wrapper is optional)
+ * Answer content goes through answerContent (nested Table blocks for tables, etc.); a.btn ->
+ * <p><strong><a>, a.btn--secondary -> <em>, a.btn--text -> plain link. Course pages never contain
+ * details.uom-accordion-item, so their (ul.toggleblock) output is unchanged.
+ */
+function landingButtons(root, document) {
+  root.querySelectorAll('a.btn, a[class*="btn--"]').forEach((a) => {
+    const cls = a.className || '';
+    const link = document.createElement('a');
+    link.href = (a.getAttribute('href') || '').trim();
+    link.textContent = cleanText(a) || (a.getAttribute('title') || '').trim();
+    let node = link;
+    if (!/btn--text/.test(cls) && /\bbtn\b/.test(cls)) {
+      node = document.createElement(/btn--secondary/.test(cls) ? 'em' : 'strong');
+      node.append(link);
+    }
+    const parent = a.parentElement;
+    if (parent && parent.tagName === 'P') a.replaceWith(node);
+    else { const p = document.createElement('p'); p.append(node); a.replaceWith(p); }
+  });
+}
+
+function parseLandingAccordion(element, document) {
+  const cells = [];
+  const left = element.querySelector(':scope > .section-alt__left');
+  if (left) {
+    const intro = [];
+    [...left.children].forEach((c) => {
+      if (!cleanText(c) && !c.querySelector('img')) return;
+      if (/^H[1-6]$/.test(c.tagName)) { const h = document.createElement(c.tagName.toLowerCase()); h.textContent = cleanText(c); intro.push(h); return; }
+      landingButtons(c, document);
+      if (c.matches('a')) { intro.push(...answerContent({ childNodes: [c] }, document)); return; }
+      intro.push(...answerContent({ childNodes: [c] }, document));
+    });
+    if (intro.length) cells.push([intro]);
+  }
+  const items = [...element.querySelectorAll('details.uom-accordion-item')]
+    .filter((d) => !d.parentElement.closest('details.uom-accordion-item'));
+  items.forEach((d) => {
+    const label = cleanText(d.querySelector(':scope > summary .uom-title-6') || d.querySelector(':scope > summary'));
+    if (!label) return;
+    const section = d.querySelector(':scope > section, :scope > .uom-accordion-item__section') || d;
+    const root = section.querySelector(':scope > .uom-accordion-item__section-content') || section;
+    if (root === d) d.querySelector(':scope > summary') && d.querySelector(':scope > summary').remove();
+    landingButtons(root, document);
+    const answer = answerContent(root, document);
+    cells.push([label, answer.length ? answer : '']);
+  });
+  if (!items.length) {
+    element.replaceWith(...element.childNodes);
+    return;
+  }
+  const block = WebImporter.Blocks.createBlock(document, { name: 'Accordion', cells });
+  element.replaceWith(block);
+}
+
 export default function parse(element, { document }) {
+  if (element.querySelector('details.uom-accordion-item') || element.matches('.uom-accordion')) {
+    parseLandingAccordion(element, document);
+    return;
+  }
   const uls = element.matches('ul.toggleblock')
     ? [element]
     : [...element.querySelectorAll(':scope > ul.toggleblock')];

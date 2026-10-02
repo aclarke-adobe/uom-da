@@ -114,7 +114,32 @@ function content(root, document) {
   return out;
 }
 
-export default function parse(element, { document }) {
+/** section-landing: runs of "- item" paragraphs (Word-paste bullets) become one <ul>. */
+function dashLists(cell, document) {
+  const out = [];
+  let ul = null;
+  cell.forEach((el) => {
+    const isDash = el.tagName === 'P' && /^\s*[-–•]\s+/.test(el.textContent);
+    if (!isDash) { ul = null; out.push(el); return; }
+    if (!ul) { ul = document.createElement('ul'); out.push(ul); }
+    const li = document.createElement('li');
+    li.innerHTML = el.innerHTML.replace(/^\s*[-–•]\s+/, '');
+    ul.append(li);
+  });
+  return out;
+}
+
+export default function parse(element, { document, template }) {
+  if (template === 'section-landing' && !element.matches('.fee-info-panel')) {
+    const root = element.matches('.notice') ? element : (element.querySelector('.notice') || element);
+    const cell = dashLists(content(root, document), document);
+    if (!cell.length || !cell.some((el) => cleanText(el))) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    element.replaceWith(WebImporter.Blocks.createBlock(document, { name: 'Notice', cells: [[cell]] }));
+    return;
+  }
   const cell = [];
 
   if (element.matches('.fee-info-panel') || element.querySelector('.fee-info-panel__inner')) {

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/professional-development/micro-credentials-and-short-courses-for-individuals/data-and-digital-transformation",
+  "path": "study-with-us/professional-development/micro-credentials-and-short-courses-for-individuals/data-and-digital-transformation",
+  "timestamp": "2026-10-02T07:20:42.462Z",
+  "title": "Data and digital transformation micro-credentials and short courses",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards-chips",
+    "cards-link-list"
+  ],
+  "fragments": "micro-credentials-and-short-courses",
+  "droppedImages": ""
+}

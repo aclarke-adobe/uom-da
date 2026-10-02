@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate",
+  "path": "how-to-apply/equity-entry-schemes/access-melbourne-undergraduate",
+  "timestamp": "2026-10-02T07:15:32.738Z",
+  "title": "Access Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero",
+    "accordion",
+    "columns-split",
+    "cards"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/clubs-societies-and-events",
+  "path": "student-life/clubs-societies-and-events",
+  "timestamp": "2026-10-02T07:16:00.744Z",
+  "title": "Clubs, societies and events at University of Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "video-split"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

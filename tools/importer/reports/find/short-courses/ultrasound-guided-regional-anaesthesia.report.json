@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/ultrasound-guided-regional-anaesthesia",
+  "path": "find/short-courses/ultrasound-guided-regional-anaesthesia",
+  "timestamp": "2026-10-02T07:15:00.139Z",
+  "title": "Ultrasound Guided Regional Anaesthesia",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

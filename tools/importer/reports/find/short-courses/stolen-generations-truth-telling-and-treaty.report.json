@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/stolen-generations-truth-telling-and-treaty",
+  "path": "find/short-courses/stolen-generations-truth-telling-and-treaty",
+  "timestamp": "2026-10-02T07:14:15.327Z",
+  "title": "Stolen Generations, Truth-Telling & Treaty",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "organisations-only-notice",
+  "droppedImages": ""
+}

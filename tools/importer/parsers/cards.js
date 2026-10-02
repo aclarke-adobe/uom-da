@@ -74,7 +74,89 @@ function pickImage(card, document) {
 // cross-site hotlinking are refused) and are localised to /media-da/ via the snapshot sidecars.
 const BLOCKED_IMAGES = [];
 
-export default function parse(element, { document }) {
+/* ---- section-landing shapes (template 'section-landing'; verified in
+ * block-context/cards/instances/section-landing-01..08.html) ----
+ *   ct-featurespanel  .card--features-panel: .card__thumb img | h3.card__title + a.btn--cta (-> <em>)
+ *   ct-profilelist    a.card--stafflist[href]: .card__thumb img | h3.card__position (linked to the card href)
+ *                     + .card__excerpt
+ *   ct-pagelisting    .card--generic: .card__thumb img | h3 > a.card__title + .card__excerpt + .card__links a
+ *   ct-newslisting    .card-news-tag: same + .card__sub-titles (date); trailing "..." of a teaser dropped
+ *   ct-eventslisting  li.event .card-news-tag (no image): h3 link, date/time line, excerpt, tags, links
+ * No image -> a single body cell (never an empty image cell).
+ */
+function landingLink(href, label, document) {
+  const a = document.createElement('a');
+  a.href = (href || '').trim();
+  a.textContent = label;
+  return a;
+}
+
+function landingPara(textOrNode, document) {
+  const p = document.createElement('p');
+  if (typeof textOrNode === 'string') p.textContent = textOrNode;
+  else p.append(textOrNode);
+  return p;
+}
+
+function landingCard(card, document) {
+  card.querySelectorAll('.screenreaders-only, .sr-only').forEach((x) => x.remove());
+  const body = [];
+  const cardHref = card.matches('a[href]') ? card.getAttribute('href') : '';
+  const heading = card.querySelector('.card__inner h1, .card__inner h2, .card__inner h3, .card__inner h4, .card__title, .card__header, h3');
+  const title = clean(heading);
+  if (title) {
+    const h = document.createElement('h3');
+    const titleLink = heading.matches('a[href]') ? heading : heading.querySelector('a[href]');
+    const href = (titleLink && titleLink.getAttribute('href')) || cardHref;
+    if (href) h.append(landingLink(href, title, document));
+    else h.textContent = title;
+    body.push(h);
+  }
+  card.querySelectorAll('.card__sub-titles .sub-title, .card__sub-titles > :not(.sub-title)').forEach((st) => {
+    if (clean(st)) body.push(landingPara(clean(st), document));
+  });
+  const inner = card.querySelector('.card__inner') || card;
+  inner.querySelectorAll(':scope > p, :scope > .card__meta, .card__excerpt').forEach((ex) => {
+    if (heading && (ex === heading || ex.contains(heading))) return;
+    const t = clean(ex).replace(/\s*(\.{3,}|…)$/, '');
+    if (t) body.push(landingPara(t, document));
+  });
+  card.querySelectorAll('.card__tags .tags__item').forEach((tag) => {
+    if (clean(tag)) body.push(landingPara(clean(tag), document));
+  });
+  const titleHref = heading && (heading.matches('a') ? heading : heading.querySelector('a'));
+  card.querySelectorAll('.card__links a[href], .card__footer a[href]').forEach((a) => {
+    const label = clean(a) || (a.getAttribute('aria-label') || '').trim();
+    if (!label) return;
+    const link = landingLink(a.getAttribute('href'), label, document);
+    const cls = a.className || '';
+    if (/btn--cta|btn--secondary/.test(cls)) { const em = document.createElement('em'); em.append(link); body.push(landingPara(em, document)); return; }
+    if (/\bbtn\b/.test(cls) && !/btn--text/.test(cls)) { const st = document.createElement('strong'); st.append(link); body.push(landingPara(st, document)); return; }
+    body.push(landingPara(link, document));
+  });
+  if (!titleHref && !body.some((b) => b.querySelector && b.querySelector('a'))) { /* text-only card */ }
+  const image = pickImage(card, document);
+  if (image && card.matches('.card--stafflist') && /^profile-image$/i.test(image.alt)) {
+    const t = card.querySelector('[title]');
+    image.alt = (t && t.getAttribute('title').trim()) || title;
+  }
+  if (!body.length && !image) return null;
+  return image ? [[image], body.length ? body : ''] : [body];
+}
+
+function parseLanding(element, document) {
+  let cards = [...element.querySelectorAll('.card')].filter((c) => !c.parentElement.closest('.card'));
+  if (!cards.length) cards = [...element.querySelectorAll(':scope > .cell, :scope > li')];
+  const rows = cards.map((c) => landingCard(c, document)).filter(Boolean);
+  if (!rows.length) { element.replaceWith(...element.childNodes); return; }
+  element.replaceWith(WebImporter.Blocks.createBlock(document, { name: 'Cards', cells: rows }));
+}
+
+export default function parse(element, { document, template }) {
+  if (template === 'section-landing') {
+    parseLanding(element, document);
+    return;
+  }
   // Course-detail shape (block-context/cards/instances/course-detail-01.html, MMA career outcomes
   // alumni grid): div.grid > div.cell > div.card.card--division > div.card__thumb > img,
   // div.card__inner > div.card__subheader > h4.card__header, p (role), p.card__meta (completed).

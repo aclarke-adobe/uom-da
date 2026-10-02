@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/class-observation-training",
+  "path": "find/short-courses/class-observation-training",
+  "timestamp": "2026-10-02T07:11:17.252Z",
+  "title": "CLASS Observation Training - Short Course",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

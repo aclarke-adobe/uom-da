@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/ultrasound-guided-vascular-access-short-course",
+  "path": "find/short-courses/ultrasound-guided-vascular-access-short-course",
+  "timestamp": "2026-10-02T07:15:06.199Z",
+  "title": "Ultrasound Guided Vascular Access Short Course",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

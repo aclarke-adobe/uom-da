@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/creativity-and-innovation",
+  "path": "find/microcredentials/creativity-and-innovation",
+  "timestamp": "2026-10-02T07:09:08.657Z",
+  "title": "Creativity and Innovation micro-credential",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "organisations-only-notice micro-credential-benefits",
+  "droppedImages": ""
+}

@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/professional-development/micro-credentials-and-short-courses-for-individuals/Instructional-Leadership-Spotlight-Series",
+  "path": "study-with-us/professional-development/micro-credentials-and-short-courses-for-individuals/instructional-leadership-spotlight-series",
+  "timestamp": "2026-10-02T07:20:32.631Z",
+  "title": "Instructional Leadership Spotlight Series",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards"
+  ],
+  "fragments": "discuss-your-organisations-needs",
+  "droppedImages": ""
+}

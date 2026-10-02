@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/melbourne-school-enrichment-program",
+  "path": "connect-with-us/information-for-schools/australia-and-new-zealand/melbourne-school-enrichment-program",
+  "timestamp": "2026-10-02T07:08:21.226Z",
+  "title": "Melbourne School Enrichment Program",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "columns",
+    "cards-icon",
+    "cards-icon",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion",
+    "columns-split"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/build-custom-ai-tools-for-healthcare",
+  "path": "find/microcredentials/build-custom-ai-tools-for-healthcare",
+  "timestamp": "2026-10-02T07:09:01.999Z",
+  "title": "Build Custom AI Tools for Healthcare - University of Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "columns",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits who-you-will-learn-from-joseph-west",
+  "droppedImages": ""
+}

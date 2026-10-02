@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/indigenous-community-research",
+  "path": "find/microcredentials/indigenous-community-research",
+  "timestamp": "2026-10-02T07:09:42.924Z",
+  "title": "Indigenous Community Research - micro-credential",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "organisations-only-notice micro-credential-benefits",
+  "droppedImages": ""
+}

@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/immunisation-nurse-immuniser",
+  "path": "find/short-courses/immunisation-nurse-immuniser",
+  "timestamp": "2026-10-02T07:12:35.819Z",
+  "title": "Immunisation (Nurse Immuniser)",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

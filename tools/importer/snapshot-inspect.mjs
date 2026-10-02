@@ -40,5 +40,32 @@ export function snapshotSelectRegions(html) {
 }
 
 export const hasAudienceSwitcher = (html) => /\bid="user-profile-audience-switcher"/.test(html);
+// Short-course / microcredential "individuals vs organisations" (b2c/b2b) switcher; its
+// organisations view is captured as <template id="excat-organisations">.
+export const hasB2bSwitcher = (html) => /\bid="page-short-course-audience-switcher"/.test(html);
+
+/** The default document only (everything before the first appended excat template). */
+const mainDoc = (html) => {
+  const i = html.search(/<template\b[^>]*\bid="excat-/);
+  return i >= 0 ? html.slice(0, i) : html;
+};
+
+/**
+ * Click-to-play players (v17.9 button.video__btn / v17.11 button.uom-video-overlay__play-button)
+ * vs players carrying data-excat-video-src.
+ */
+export function videoPlayerStats(html) {
+  const doc = mainDoc(html);
+  return {
+    buttons: (doc.match(/<button\b[^>]*\bclass="[^"]*\b(video__btn|uom-video-overlay__play-button)\b/g) || []).length,
+    resolved: (doc.match(/\bdata-excat-video-src="[^"]+"/g) || []).length,
+  };
+}
+
+/** div.full-width-image elements vs those carrying data-excat-bg. */
+export function fullWidthImageStats(html) {
+  const tags = mainDoc(html).match(/<div\b[^>]*\bclass="[^"]*\bfull-width-image\b[^"]*"[^>]*>/g) || [];
+  return { total: tags.length, marked: tags.filter((t) => /\bdata-excat-bg="[^"]+"/.test(t)).length };
+}
 export const hasTemplate = (html, id) => new RegExp(`<template\\b[^>]*\\bid="${id}"`).test(html);
 export const isStructureUrl = (url) => /\/structure\/?$/.test(new URL(url).pathname);

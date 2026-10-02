@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/career-pathways",
+  "path": "study-with-us/career-pathways",
+  "timestamp": "2026-10-02T07:16:47.678Z",
+  "title": "Career pathways",
+  "template": "section-landing",
+  "blocks": [
+    "hero",
+    "hero",
+    "cards-icon",
+    "cards-tile"
+  ],
+  "fragments": "personalised-advice",
+  "droppedImages": ""
+}

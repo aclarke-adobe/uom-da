@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/connect-with-us/information-for-schools",
+  "path": "connect-with-us/information-for-schools",
+  "timestamp": "2026-10-02T07:08:06.633Z",
+  "title": "Information for schools",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards-tile"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

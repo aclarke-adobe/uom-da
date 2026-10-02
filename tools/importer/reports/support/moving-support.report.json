@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/support/moving-support",
+  "path": "support/moving-support",
+  "timestamp": "2026-10-02T07:21:26.450Z",
+  "title": "Moving support",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "columns-split"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

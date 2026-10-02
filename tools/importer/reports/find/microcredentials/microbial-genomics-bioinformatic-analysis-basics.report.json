@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/microbial-genomics-bioinformatic-analysis-basics",
+  "path": "find/microcredentials/microbial-genomics-bioinformatic-analysis-basics",
+  "timestamp": "2026-10-02T07:10:06.031Z",
+  "title": "Microbial Genomics: Bioinformatic Analysis Basics - University of Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "columns",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits",
+  "droppedImages": ""
+}

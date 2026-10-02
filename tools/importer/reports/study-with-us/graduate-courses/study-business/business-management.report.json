@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/study-business/business-management",
+  "path": "study-with-us/graduate-courses/study-business/business-management",
+  "timestamp": "2026-10-02T07:19:19.768Z",
+  "title": "Study business management",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards",
+    "cards",
+    "columns-overlap",
+    "columns-split"
+  ],
+  "fragments": "personalised-advice",
+  "droppedImages": ""
+}

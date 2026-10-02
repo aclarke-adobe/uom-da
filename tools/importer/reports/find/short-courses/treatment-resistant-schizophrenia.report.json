@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/treatment-resistant-schizophrenia",
+  "path": "find/short-courses/treatment-resistant-schizophrenia",
+  "timestamp": "2026-10-02T07:14:39.845Z",
+  "title": "Treatment Resistant Schizophrenia - Short Course",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

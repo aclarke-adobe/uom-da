@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/introduction-to-health-economics-for-health-technology-assessment",
+  "path": "find/short-courses/introduction-to-health-economics-for-health-technology-assessment",
+  "timestamp": "2026-10-02T07:12:48.764Z",
+  "title": "Introduction to Health Economics for Health Technology Assessment",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

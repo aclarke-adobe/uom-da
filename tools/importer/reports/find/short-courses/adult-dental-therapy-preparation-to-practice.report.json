@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/adult-dental-therapy-preparation-to-practice",
+  "path": "find/short-courses/adult-dental-therapy-preparation-to-practice",
+  "timestamp": "2026-10-02T07:11:00.381Z",
+  "title": "Adult Dental Therapy (Preparation to Practice)",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "columns"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

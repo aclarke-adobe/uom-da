@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/events/meet-melbourne",
+  "path": "student-life/events/meet-melbourne",
+  "timestamp": "2026-10-02T07:16:16.910Z",
+  "title": "Meet Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "columns",
+    "hero"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

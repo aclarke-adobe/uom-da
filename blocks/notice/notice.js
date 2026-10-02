@@ -164,19 +164,24 @@ export default function decorate(block) {
   body.className = 'notice-body';
 
   let marker = null;
+  let removed = null;
   if (icon) {
     marker = document.createElement('span');
     marker.className = 'notice-icon';
     marker.setAttribute('aria-hidden', 'true');
     const iconParent = icon.parentElement;
     marker.append(icon);
-    if (iconParent && iconParent.tagName === 'P' && !iconParent.textContent.trim()) iconParent.remove();
+    if (iconParent && iconParent.tagName === 'P' && !iconParent.textContent.trim()) {
+      iconParent.remove();
+      removed = iconParent;
+    }
     block.classList.add('notice-panel');
   }
 
+  // (not isConnected: fragments are decorated before they are attached to the page)
   nodes.forEach((el) => {
     if (el === heading) head.append(el);
-    else if (el.isConnected) body.append(el);
+    else if (el !== removed) body.append(el);
   });
 
   if (heading) content.append(head);

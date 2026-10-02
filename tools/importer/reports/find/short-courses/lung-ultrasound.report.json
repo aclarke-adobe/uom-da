@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/lung-ultrasound",
+  "path": "find/short-courses/lung-ultrasound",
+  "timestamp": "2026-10-02T07:12:58.078Z",
+  "title": "Lung Ultrasound",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

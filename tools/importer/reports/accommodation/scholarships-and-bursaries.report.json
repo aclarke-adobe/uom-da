@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/accommodation/scholarships-and-bursaries",
+  "path": "accommodation/scholarships-and-bursaries",
+  "timestamp": "2026-10-02T07:07:42.610Z",
+  "title": "Scholarships and Bursaries | The University of Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "table"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

@@ -6,11 +6,15 @@
  * Options: split, split-light (content beside image), aside (heading + side panel),
  * overlay (image background with centred heading). Default: solid band; an image, if
  * present, is used as the background.
- * `hero-page-header` is added when the main heading is an h1: split then renders as a
- * full-bleed page header (image on the right edge) instead of an in-content feature.
- * `hero-course` replaces it when the h1 is followed by a list of stat links (course and
- * major pages): level tag / h1 / stat links / "Course code" line, image on the right 30%.
+ * `hero-page-header` is added when a split hero's main heading is an h1 (homepage): it
+ * renders as a full-bleed page header (image on the right edge) instead of an in-content
+ * feature. `hero-course` replaces it when the h1 is followed by a list of stat links
+ * (course and major pages): level tag / h1 / stat links / "Course code" line, image on
+ * the right 30%. `hero-banner` replaces it when a split hero is the only content of its
+ * section (landing page header or feature banner): navy band, optional tag link, image
+ * pinned to the right edge.
  * The aside option splits its panel into the course list and the trailing CTA links.
+ * Link-only paragraphs that are not buttons get `hero-link` (arrow links in split-light).
  */
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
@@ -58,18 +62,27 @@ export default function decorate(block) {
   const mainChildren = [...main.children];
   const isCourse = heading && heading.tagName === 'H1'
     && mainChildren.slice(mainChildren.indexOf(heading) + 1).some((el) => el.tagName === 'UL');
+  // landing banner: a split hero that is the only content of its section (landing page
+  // header, or a later feature banner with an h2); the homepage header shares its
+  // section with the search and the homepage feature with its cards
+  const section = block.closest('.section');
+  const isBanner = !isCourse && active.includes('split') && section
+    && [...section.children].every((el) => el === block.parentElement);
   if (isCourse) {
     block.classList.add('hero-course');
-  } else if (heading && heading.tagName === 'H1') {
-    // a hero whose main heading is the page h1 is a page header (full-bleed layout)
+  } else if (isBanner) {
+    block.classList.add('hero-banner');
+  } else if (active.includes('split') && heading && heading.tagName === 'H1') {
+    // a split hero whose main heading is the page h1 is the homepage page header
     block.classList.add('hero-page-header');
   }
+  const tagEyebrows = isCourse || isBanner;
   if (heading) {
     let prev = heading.previousElementSibling;
     while (prev) {
       if (prev.tagName === 'P' && !prev.querySelector('a, picture')) {
         prev.classList.add('hero-eyebrow');
-      } else if (isCourse && prev.tagName === 'P' && !prev.querySelector('picture')
+      } else if (tagEyebrows && prev.tagName === 'P' && !prev.querySelector('picture')
         && prev.querySelectorAll('a').length === 1
         && prev.textContent.trim() === prev.querySelector('a').textContent.trim()) {
         // course level link (e.g. "Undergraduate") is shown as an outlined tag
@@ -78,6 +91,14 @@ export default function decorate(block) {
       prev = prev.previousElementSibling;
     }
   }
+
+  [...main.children].forEach((el) => {
+    const links = el.tagName === 'P' && !el.classList.contains('button-wrapper')
+      && !el.classList.contains('hero-eyebrow') ? el.querySelectorAll('a') : [];
+    if (links.length === 1 && el.textContent.trim() === links[0].textContent.trim()) {
+      el.classList.add('hero-link');
+    }
+  });
 
   if (isCourse) {
     [...main.children].forEach((el) => {

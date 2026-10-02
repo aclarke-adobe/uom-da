@@ -182,7 +182,72 @@ var CustomImportScript = (() => {
     const block = WebImporter.Blocks.createBlock(document2, { name: "Hero (split)", cells });
     element.replaceWith(block);
   }
+  function parsePageHeaderAlt(element, document2) {
+    const content2 = element.querySelector(".page-header-alt__content-inner, .page-header-alt__content") || element;
+    const textCell2 = [];
+    const tag = content2.querySelector(".page-header-alt__title-tag, .title--overline");
+    if (tag && cleanText(tag)) {
+      const p = document2.createElement("p");
+      if (tag.matches("a[href]")) {
+        const a = document2.createElement("a");
+        a.href = tag.getAttribute("href").trim();
+        a.textContent = cleanText(tag);
+        p.append(a);
+      } else p.textContent = cleanText(tag);
+      textCell2.push(p);
+    }
+    const title = content2.querySelector("h1, h2, .page-header-alt__title");
+    if (title && cleanText(title)) {
+      const later = [...document2.querySelectorAll("h1")].some((h2) => h2 !== title && !element.contains(h2) && h2.compareDocumentPosition(element) & 4);
+      const h = document2.createElement(later ? "h2" : "h1");
+      h.textContent = cleanText(title);
+      textCell2.push(h);
+    }
+    content2.querySelectorAll("p").forEach((p) => {
+      if (p === tag || p.closest(".page-header-alt__actions") || !cleanText(p)) return;
+      const out = document2.createElement("p");
+      out.innerHTML = p.innerHTML.trim();
+      out.querySelectorAll("*").forEach((c) => [...c.attributes].forEach((a) => {
+        if (a.name !== "href") c.removeAttribute(a.name);
+      }));
+      textCell2.push(out);
+    });
+    content2.querySelectorAll(".page-header-alt__actions a[href]").forEach((a) => {
+      if (!cleanText(a)) return;
+      if (/btn--text/.test(a.className) || !/\bbtn\b/.test(a.className)) {
+        const link2 = document2.createElement("a");
+        link2.href = a.getAttribute("href").trim();
+        link2.textContent = cleanText(a);
+        const p = document2.createElement("p");
+        p.append(link2);
+        textCell2.push(p);
+      } else textCell2.push(ctaFrom(a, document2));
+    });
+    if (!textCell2.length) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    const holder = element.querySelector(".page-header-alt__img");
+    let image = null;
+    if (holder) {
+      const img = holder.querySelector("img");
+      let src = img ? img.getAttribute("src") || img.getAttribute("data-src") || "" : "";
+      if ((!src || /^(data|blob):/.test(src)) && holder.querySelector("[data-excat-bg]")) src = holder.querySelector("[data-excat-bg]").getAttribute("data-excat-bg");
+      if (src && !/^(data|blob):/.test(src)) {
+        image = document2.createElement("img");
+        image.src = src.trim();
+        image.alt = img && img.getAttribute("alt") || "";
+      }
+    }
+    const cells = [image ? [textCell2, [image]] : [textCell2]];
+    const block = WebImporter.Blocks.createBlock(document2, { name: "Hero (split)", cells });
+    element.replaceWith(block);
+  }
   function parse(element, { document: document2 }) {
+    if (element.matches(".page-header-alt")) {
+      parsePageHeaderAlt(element, document2);
+      return;
+    }
     if (element.matches(".course-header") || element.querySelector(":scope > .course-header__inner")) {
       parseCourseHeader(element, document2);
       return;
@@ -322,6 +387,8 @@ var CustomImportScript = (() => {
         return { text, key: input.getAttribute("value") || slugify(text) };
       });
     }
+    const KEY_MAP = { b2c: "individuals", b2b: "organisations" };
+    options = options.map((o) => __spreadProps(__spreadValues({}, o), { key: KEY_MAP[o.key] || o.key }));
     options = options.filter((o) => o.text && o.key);
     if (!options.length) {
       element.replaceWith(...element.childNodes);
@@ -345,7 +412,10 @@ var CustomImportScript = (() => {
     fees: "fees",
     "entry requirements": "entry-requirements",
     "entry schemes": "entry-schemes",
-    "english language requirements": "english-language"
+    "english language requirements": "english-language",
+    // section-landing short courses / micro-credentials (not used on course pages)
+    "start date": "calendar",
+    "study mode": "location"
   };
   function cleanText4(el) {
     return (el ? el.textContent : "").replace(/\s+/g, " ").trim();
@@ -395,9 +465,28 @@ var CustomImportScript = (() => {
     const cells = [];
     let items = [...element.querySelectorAll(".key-facts-section__main--item")];
     if (!items.length) items = [...element.querySelectorAll(".key-facts-section__main > div")];
+    const landing = !!(element.parentElement && element.parentElement.id === "main");
     items.forEach((item) => {
       const label = cleanText4(item.querySelector('.key-facts-section__main--title, [class*="--title"]'));
       const value = item.querySelector('.key-facts-section__main--value, [class*="--value"]');
+      if (landing && label && value && !cleanText4(value) && value.querySelector("img")) {
+        const logos = [...value.querySelectorAll("img")].map((img) => {
+          const src = img.getAttribute("src") || "";
+          if (!src || /^(data|blob):/.test(src)) return null;
+          const out = document2.createElement("img");
+          out.src = src;
+          out.alt = img.getAttribute("alt") || "";
+          const p = document2.createElement("p");
+          p.append(out);
+          return p;
+        }).filter(Boolean);
+        if (logos.length) {
+          const labelP2 = document2.createElement("p");
+          labelP2.textContent = label;
+          cells.push([[labelP2], logos]);
+        }
+        return;
+      }
       if (!label || !value || !cleanText4(value)) return;
       const icon = ICONS[label.toLowerCase()];
       const labelP = document2.createElement("p");
@@ -596,7 +685,35 @@ var CustomImportScript = (() => {
     });
     return rows;
   }
+  function landingStatRows(container, document2) {
+    const rows = [];
+    container.querySelectorAll(".uom-stat").forEach((stat) => {
+      const figure = cleanText6(stat.querySelector(".uom-stat__title"));
+      const caption = cleanText6(stat.querySelector(".uom-stat__text"));
+      if (!figure && !caption) return;
+      const cell = [];
+      if (figure) {
+        const p = document2.createElement("p");
+        const strong = document2.createElement("strong");
+        strong.textContent = figure;
+        p.append(strong);
+        cell.push(p);
+      }
+      if (caption) cell.push(para(caption, document2));
+      rows.push([cell]);
+    });
+    return rows;
+  }
   function parse6(element, { document: document2 }) {
+    if (element.querySelector(".uom-stat")) {
+      const rows = landingStatRows(element, document2);
+      if (!rows.length) {
+        element.replaceWith(...element.childNodes);
+        return;
+      }
+      element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Cards", variants: ["stat"], cells: rows }));
+      return;
+    }
     const cells = statRows(element, document2);
     if (!cells.length) {
       element.replaceWith(...element.childNodes);
@@ -610,7 +727,38 @@ var CustomImportScript = (() => {
   function cleanText7(el) {
     return (el ? el.textContent : "").replace(/\s+/g, " ").trim();
   }
-  function parse7(element, { document: document2 }) {
+  function landingChip(li, document2) {
+    const a = li.querySelector("a[href]");
+    const name = cleanText7(li.querySelector(".card-course__name") || a || li);
+    if (!name) return null;
+    const p = document2.createElement("p");
+    if (a) {
+      const link2 = document2.createElement("a");
+      link2.href = a.getAttribute("href").trim();
+      link2.textContent = name;
+      p.append(link2);
+    } else p.textContent = name;
+    const cell = [p];
+    const type = cleanText7(li.querySelector(".card-course__type"));
+    if (type) {
+      const t = document2.createElement("p");
+      t.textContent = type;
+      cell.push(t);
+    }
+    return [cell];
+  }
+  function parse7(element, { document: document2, template }) {
+    if (template === "section-landing") {
+      let lis = [...element.querySelectorAll(":scope > li")];
+      if (!lis.length) lis = [...element.querySelectorAll("li")];
+      const rows = lis.map((li) => landingChip(li, document2)).filter(Boolean);
+      if (!rows.length) {
+        element.replaceWith(...element.childNodes);
+        return;
+      }
+      element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Cards", variants: ["chips"], cells: rows }));
+      return;
+    }
     let items = [...element.querySelectorAll(":scope > li")];
     if (!items.length) items = [...element.querySelectorAll(".card-course-list__item, li")];
     const cells = [];
@@ -660,7 +808,57 @@ var CustomImportScript = (() => {
     out.alt = img && img.getAttribute("alt") || name || "";
     return out;
   }
+  function parseShortCourseProfiles(element, document2) {
+    const cells = [];
+    element.querySelectorAll(".page-short-course__profile").forEach((card) => {
+      const content2 = card.querySelector(".page-short-course__profile-content") || card;
+      const name = cleanText8(content2.querySelector("h1, h2, h3, h4, h5, h6"));
+      const body = [];
+      if (name) {
+        const h = document2.createElement("h3");
+        h.textContent = name;
+        body.push(h);
+      }
+      content2.querySelectorAll("p, ul, ol").forEach((el) => {
+        if (!cleanText8(el)) return;
+        if (el.parentElement && el.parentElement.closest("p, ul, ol") && content2.contains(el.parentElement)) return;
+        const out = document2.createElement(el.tagName.toLowerCase());
+        out.innerHTML = el.innerHTML.trim();
+        out.querySelectorAll("*").forEach((c) => [...c.attributes].forEach((a) => {
+          if (!["href", "src", "alt"].includes(a.name)) c.removeAttribute(a.name);
+        }));
+        body.push(out);
+      });
+      content2.querySelectorAll(":scope > a[href]").forEach((a) => {
+        const label = cleanText8(a);
+        if (!label) return;
+        const link2 = document2.createElement("a");
+        link2.href = a.getAttribute("href").trim();
+        link2.textContent = label;
+        const p = document2.createElement("p");
+        p.append(link2);
+        body.push(p);
+      });
+      const holder = card.querySelector(".page-short-course__profile-img") || card;
+      const image = portrait(holder, name, document2);
+      if (!body.length) {
+        if (image) cells.push([[image]]);
+        return;
+      }
+      cells.push(image ? [[image], body] : [body]);
+    });
+    if (!cells.length) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    const block = WebImporter.Blocks.createBlock(document2, { name: "Cards", variants: ["people"], cells });
+    element.replaceWith(block);
+  }
   function parse8(element, { document: document2 }) {
+    if (element.querySelector(".page-short-course__profile")) {
+      parseShortCourseProfiles(element, document2);
+      return;
+    }
     let cards = [...element.querySelectorAll(".card--showcase-profile")];
     if (!cards.length) cards = [...element.querySelectorAll(".card")];
     const cells = [];
@@ -744,7 +942,89 @@ var CustomImportScript = (() => {
     return out;
   }
   var BLOCKED_IMAGES3 = [];
-  function parse9(element, { document: document2 }) {
+  function landingLink(href, label, document2) {
+    const a = document2.createElement("a");
+    a.href = (href || "").trim();
+    a.textContent = label;
+    return a;
+  }
+  function landingPara(textOrNode, document2) {
+    const p = document2.createElement("p");
+    if (typeof textOrNode === "string") p.textContent = textOrNode;
+    else p.append(textOrNode);
+    return p;
+  }
+  function landingCard(card, document2) {
+    card.querySelectorAll(".screenreaders-only, .sr-only").forEach((x) => x.remove());
+    const body = [];
+    const cardHref = card.matches("a[href]") ? card.getAttribute("href") : "";
+    const heading2 = card.querySelector(".card__inner h1, .card__inner h2, .card__inner h3, .card__inner h4, .card__title, .card__header, h3");
+    const title = clean(heading2);
+    if (title) {
+      const h = document2.createElement("h3");
+      const titleLink = heading2.matches("a[href]") ? heading2 : heading2.querySelector("a[href]");
+      const href = titleLink && titleLink.getAttribute("href") || cardHref;
+      if (href) h.append(landingLink(href, title, document2));
+      else h.textContent = title;
+      body.push(h);
+    }
+    card.querySelectorAll(".card__sub-titles .sub-title, .card__sub-titles > :not(.sub-title)").forEach((st) => {
+      if (clean(st)) body.push(landingPara(clean(st), document2));
+    });
+    const inner = card.querySelector(".card__inner") || card;
+    inner.querySelectorAll(":scope > p, :scope > .card__meta, .card__excerpt").forEach((ex) => {
+      if (heading2 && (ex === heading2 || ex.contains(heading2))) return;
+      const t = clean(ex).replace(/\s*(\.{3,}|…)$/, "");
+      if (t) body.push(landingPara(t, document2));
+    });
+    card.querySelectorAll(".card__tags .tags__item").forEach((tag) => {
+      if (clean(tag)) body.push(landingPara(clean(tag), document2));
+    });
+    const titleHref = heading2 && (heading2.matches("a") ? heading2 : heading2.querySelector("a"));
+    card.querySelectorAll(".card__links a[href], .card__footer a[href]").forEach((a) => {
+      const label = clean(a) || (a.getAttribute("aria-label") || "").trim();
+      if (!label) return;
+      const link2 = landingLink(a.getAttribute("href"), label, document2);
+      const cls = a.className || "";
+      if (/btn--cta|btn--secondary/.test(cls)) {
+        const em = document2.createElement("em");
+        em.append(link2);
+        body.push(landingPara(em, document2));
+        return;
+      }
+      if (/\bbtn\b/.test(cls) && !/btn--text/.test(cls)) {
+        const st = document2.createElement("strong");
+        st.append(link2);
+        body.push(landingPara(st, document2));
+        return;
+      }
+      body.push(landingPara(link2, document2));
+    });
+    if (!titleHref && !body.some((b) => b.querySelector && b.querySelector("a"))) {
+    }
+    const image = pickImage(card, document2);
+    if (image && card.matches(".card--stafflist") && /^profile-image$/i.test(image.alt)) {
+      const t = card.querySelector("[title]");
+      image.alt = t && t.getAttribute("title").trim() || title;
+    }
+    if (!body.length && !image) return null;
+    return image ? [[image], body.length ? body : ""] : [body];
+  }
+  function parseLanding(element, document2) {
+    let cards = [...element.querySelectorAll(".card")].filter((c) => !c.parentElement.closest(".card"));
+    if (!cards.length) cards = [...element.querySelectorAll(":scope > .cell, :scope > li")];
+    const rows = cards.map((c) => landingCard(c, document2)).filter(Boolean);
+    if (!rows.length) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Cards", cells: rows }));
+  }
+  function parse9(element, { document: document2, template }) {
+    if (template === "section-landing") {
+      parseLanding(element, document2);
+      return;
+    }
     const course = !!element.closest('.course-content, .course-section__main, [data-test$="-page"]');
     let cards = [...element.querySelectorAll(".card")];
     if (!cards.length) cards = [...element.querySelectorAll(":scope > .cell, :scope > div")];
@@ -879,7 +1159,123 @@ var CustomImportScript = (() => {
     p.textContent = `:${name}:`;
     return p;
   }
+  var OVERVIEW_ICONS = { briefcase: "briefcase", handshake: "handshake", circlewavycheck: "verified-badge" };
+  function landingIconCell(holder, document2) {
+    if (!holder) return null;
+    const img = holder.matches("img") ? holder : holder.querySelector("img");
+    if (!img) return null;
+    const tagged = img.getAttribute("data-excat-icon");
+    const src = (img.getAttribute("src") || "").trim();
+    const file = (src.split("/").pop() || "").replace(/\.svg$/i, "").toLowerCase();
+    const name = tagged || /\.svg$/i.test(src) && OVERVIEW_ICONS[file];
+    if (name) {
+      const p = document2.createElement("p");
+      p.textContent = `:uom-${name}:`;
+      return p;
+    }
+    if (!src || /^(data|blob):/.test(src)) return null;
+    const out = document2.createElement("img");
+    out.src = src;
+    out.alt = clean2({ textContent: img.getAttribute("alt") || "" });
+    return out;
+  }
+  function landingCta(a, document2) {
+    a.querySelectorAll(".screenreaders-only, .sr-only").forEach((x) => x.remove());
+    const link2 = document2.createElement("a");
+    link2.href = (a.getAttribute("href") || "").trim();
+    link2.textContent = clean2(a) || (a.getAttribute("title") || "").trim();
+    const cls = a.className || "";
+    const p = document2.createElement("p");
+    if (/\bbtn\b/.test(cls) && !/btn--text/.test(cls)) {
+      const w = document2.createElement(/btn--secondary/.test(cls) ? "em" : "strong");
+      w.append(link2);
+      p.append(w);
+    } else p.append(link2);
+    return p;
+  }
+  function landingBody(card, skip, document2) {
+    const body = [];
+    const heading2 = card.querySelector("h2, h3, h4, h5, h6");
+    if (heading2 && clean2(heading2)) {
+      const h = document2.createElement("h3");
+      h.textContent = clean2(heading2);
+      body.push(h);
+    }
+    [...card.querySelectorAll('h2, h3, h4, h5, h6, p, ul, ol, a.btn, a[class*="btn--"]')].forEach((el) => {
+      if (el === heading2 || skip && skip.contains(el) || !clean2(el)) return;
+      if (el.parentElement && el.parentElement.closest("p, ul, ol") && card.contains(el.parentElement)) return;
+      if (el.matches("a")) {
+        if (!el.closest("p, li")) body.push(landingCta(el, document2));
+        return;
+      }
+      if (/^H[2-6]$/.test(el.tagName)) {
+        const p = document2.createElement("p");
+        p.textContent = clean2(el);
+        body.push(p);
+        return;
+      }
+      const out = document2.createElement(el.tagName.toLowerCase());
+      out.innerHTML = el.innerHTML.trim();
+      out.querySelectorAll('a.btn, a[class*="btn--"]').forEach((a) => {
+        const cta = landingCta(a, document2);
+        a.replaceWith(...cta.childNodes);
+      });
+      out.querySelectorAll("*").forEach((c) => [...c.attributes].forEach((at) => {
+        if (at.name !== "href") c.removeAttribute(at.name);
+      }));
+      out.querySelectorAll("span").forEach((sp) => sp.replaceWith(...sp.childNodes));
+      if (clean2(out)) body.push(out);
+    });
+    return body;
+  }
+  function parseLanding2(element, document2) {
+    const rows = [];
+    if (element.matches(".logo-listing") || element.querySelector(".logo-listing__item")) {
+      element.querySelectorAll(".logo-listing__item").forEach((item) => {
+        const img = landingIconCell(item.querySelector("img"), document2);
+        if (img) rows.push([[img]]);
+      });
+    } else if (element.matches("ul.document-list") || element.querySelector("ul.document-list")) {
+      element.querySelectorAll("li").forEach((li) => {
+        const img = landingIconCell(li.querySelector("figure > img, img"), document2);
+        const body = [];
+        (li.querySelector("figcaption") || li).querySelectorAll("a[href]").forEach((a) => {
+          const p = document2.createElement("p");
+          const link2 = document2.createElement("a");
+          link2.href = a.getAttribute("href").trim();
+          link2.textContent = clean2(a);
+          p.append(link2);
+          body.push(p);
+        });
+        if (!body.length && !img) return;
+        rows.push(img ? [[img], body.length ? body : ""] : [body]);
+      });
+    } else {
+      let cards = [...element.querySelectorAll(".card--fact, .card-focus, .section-alt__inner-flex-items")];
+      if (!cards.length) cards = [...element.querySelectorAll(":scope > .cell")];
+      cards.forEach((card) => {
+        const holder = card.querySelector(".section-alt__inner-svg-icon, .card--focus-box__icon, .card__icons__left") || card.querySelector(":scope > img");
+        const icon = card.matches(".card--fact") ? null : landingIconCell(holder, document2);
+        const body = landingBody(card, holder, document2);
+        if (!body.length && !icon) return;
+        rows.push(icon ? [[icon], body.length ? body : ""] : [body]);
+      });
+    }
+    if (!rows.length) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Cards (icon)", cells: rows }));
+  }
+  function isLanding(element) {
+    if (element.closest('.course-content, .course-section__main, [data-test$="-page"]')) return false;
+    return !!(element.closest(".ct-factscard, .ct-imagelisting, .ct-textthreecolumn, .ct-focusbox, .ct-documentlisting") || element.closest("#main > section#overview"));
+  }
   function parse10(element, { document: document2 }) {
+    if (isLanding(element)) {
+      parseLanding2(element, document2);
+      return;
+    }
     const course = !!element.closest('.course-content, .course-section__main, [data-test$="-page"]');
     let cards = [...element.querySelectorAll(".card")];
     if (!cards.length) cards = [...element.querySelectorAll(":scope > .cell, :scope > div")];
@@ -1117,7 +1513,71 @@ var CustomImportScript = (() => {
     if (!cells.length) return null;
     return WebImporter.Blocks.createBlock(document2, { name: "Accordion", cells });
   }
+  function landingButtons(root, document2) {
+    root.querySelectorAll('a.btn, a[class*="btn--"]').forEach((a) => {
+      const cls = a.className || "";
+      const link2 = document2.createElement("a");
+      link2.href = (a.getAttribute("href") || "").trim();
+      link2.textContent = cleanText9(a) || (a.getAttribute("title") || "").trim();
+      let node = link2;
+      if (!/btn--text/.test(cls) && /\bbtn\b/.test(cls)) {
+        node = document2.createElement(/btn--secondary/.test(cls) ? "em" : "strong");
+        node.append(link2);
+      }
+      const parent = a.parentElement;
+      if (parent && parent.tagName === "P") a.replaceWith(node);
+      else {
+        const p = document2.createElement("p");
+        p.append(node);
+        a.replaceWith(p);
+      }
+    });
+  }
+  function parseLandingAccordion(element, document2) {
+    const cells = [];
+    const left = element.querySelector(":scope > .section-alt__left");
+    if (left) {
+      const intro = [];
+      [...left.children].forEach((c) => {
+        if (!cleanText9(c) && !c.querySelector("img")) return;
+        if (/^H[1-6]$/.test(c.tagName)) {
+          const h = document2.createElement(c.tagName.toLowerCase());
+          h.textContent = cleanText9(c);
+          intro.push(h);
+          return;
+        }
+        landingButtons(c, document2);
+        if (c.matches("a")) {
+          intro.push(...answerContent({ childNodes: [c] }, document2));
+          return;
+        }
+        intro.push(...answerContent({ childNodes: [c] }, document2));
+      });
+      if (intro.length) cells.push([intro]);
+    }
+    const items = [...element.querySelectorAll("details.uom-accordion-item")].filter((d) => !d.parentElement.closest("details.uom-accordion-item"));
+    items.forEach((d) => {
+      const label = cleanText9(d.querySelector(":scope > summary .uom-title-6") || d.querySelector(":scope > summary"));
+      if (!label) return;
+      const section = d.querySelector(":scope > section, :scope > .uom-accordion-item__section") || d;
+      const root = section.querySelector(":scope > .uom-accordion-item__section-content") || section;
+      if (root === d) d.querySelector(":scope > summary") && d.querySelector(":scope > summary").remove();
+      landingButtons(root, document2);
+      const answer = answerContent(root, document2);
+      cells.push([label, answer.length ? answer : ""]);
+    });
+    if (!items.length) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    const block = WebImporter.Blocks.createBlock(document2, { name: "Accordion", cells });
+    element.replaceWith(block);
+  }
   function parse12(element, { document: document2 }) {
+    if (element.querySelector("details.uom-accordion-item") || element.matches(".uom-accordion")) {
+      parseLandingAccordion(element, document2);
+      return;
+    }
     const uls = element.matches("ul.toggleblock") ? [element] : [...element.querySelectorAll(":scope > ul.toggleblock")];
     if (!uls.length) uls.push(...element.querySelectorAll("ul.toggleblock"));
     const before = [];
@@ -1535,7 +1995,37 @@ var CustomImportScript = (() => {
     });
     return out;
   }
-  function parse14(element, { document: document2 }) {
+  function dashLists(cell, document2) {
+    const out = [];
+    let ul = null;
+    cell.forEach((el) => {
+      const isDash = el.tagName === "P" && /^\s*[-–•]\s+/.test(el.textContent);
+      if (!isDash) {
+        ul = null;
+        out.push(el);
+        return;
+      }
+      if (!ul) {
+        ul = document2.createElement("ul");
+        out.push(ul);
+      }
+      const li = document2.createElement("li");
+      li.innerHTML = el.innerHTML.replace(/^\s*[-–•]\s+/, "");
+      ul.append(li);
+    });
+    return out;
+  }
+  function parse14(element, { document: document2, template }) {
+    if (template === "section-landing" && !element.matches(".fee-info-panel")) {
+      const root = element.matches(".notice") ? element : element.querySelector(".notice") || element;
+      const cell2 = dashLists(content(root, document2), document2);
+      if (!cell2.length || !cell2.some((el) => cleanText11(el))) {
+        element.replaceWith(...element.childNodes);
+        return;
+      }
+      element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Notice", cells: [[cell2]] }));
+      return;
+    }
     const cell = [];
     if (element.matches(".fee-info-panel") || element.querySelector(".fee-info-panel__inner")) {
       const panel = element.matches(".fee-info-panel") ? element : element.querySelector(".fee-info-panel");
@@ -1973,7 +2463,58 @@ var CustomImportScript = (() => {
     });
     return text;
   }
+  function bgPortrait(holder, document2) {
+    if (!holder) return null;
+    const img = holder.querySelector("img");
+    let src = (holder.getAttribute("data-excat-bg") || "").trim();
+    if (!src && img) src = (img.getAttribute("src") || "").trim();
+    if (!src || /^(data|blob):/.test(src)) return null;
+    const out = document2.createElement("img");
+    out.src = src;
+    out.alt = (holder.getAttribute("aria-label") || img && img.getAttribute("alt") || "").trim();
+    return out;
+  }
+  function parseCardFocus(element, document2) {
+    const para3 = (t) => {
+      const p = document2.createElement("p");
+      p.textContent = t;
+      return p;
+    };
+    const text = [];
+    let holder = null;
+    const alumni = element.querySelector(".alumni");
+    if (alumni) {
+      const q = clean3(alumni.querySelector(".alumni__short-text"));
+      if (q) text.push(para3(q));
+      const name = clean3(alumni.querySelector(".alumni__name"));
+      if (name) text.push(para3(`\u2014 ${name}`));
+      const role = clean3(alumni.querySelector(".alumni__title"));
+      if (role) text.push(para3(role));
+      holder = alumni.querySelector(".alumni__img");
+    } else {
+      const bq = element.querySelector("blockquote") || element;
+      bq.querySelectorAll("p").forEach((p) => {
+        if (!p.closest("cite") && clean3(p)) text.push(para3(clean3(p)));
+      });
+      const name = clean3(bq.querySelector("cite"));
+      if (name) text.push(para3(`\u2014 ${name.replace(/^[—–-]\s*/, "")}`));
+      const sub = clean3(bq.querySelector(".block-quotation__sub-cite"));
+      if (sub) text.push(para3(sub));
+      holder = element.querySelector(".testimonials__img");
+    }
+    if (!text.length) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    const image = bgPortrait(holder, document2);
+    const row = image ? [text, [image]] : [text];
+    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Quote", cells: [row] }));
+  }
   function parse19(element, { document: document2 }) {
+    if (element.matches(".card-focus") && element.querySelector(".testimonials, .alumni")) {
+      parseCardFocus(element, document2);
+      return;
+    }
     const root = element.matches("blockquote") ? element : element.querySelector("blockquote") || element;
     if (element.closest('.course-content, .course-section__main, [data-test$="-page"]')) {
       const text2 = parseCourseQuote(root, document2);
@@ -2084,7 +2625,144 @@ var CustomImportScript = (() => {
     });
     return out;
   }
-  function parse20(element, { document: document2 }) {
+  function landingStrip(root) {
+    [root, ...root.querySelectorAll("*")].forEach((el) => {
+      [...el.attributes].forEach((a) => {
+        if (!["href", "src", "alt", "colspan", "rowspan"].includes(a.name)) el.removeAttribute(a.name);
+      });
+    });
+    root.querySelectorAll("span").forEach((sp) => sp.replaceWith(...sp.childNodes));
+    root.querySelectorAll("a[href]").forEach((a) => a.setAttribute("href", a.getAttribute("href").trim()));
+    return root;
+  }
+  function landingCta2(a, document2) {
+    const link2 = document2.createElement("a");
+    link2.href = (a.getAttribute("href") || "").trim();
+    link2.textContent = cleanText16(a);
+    const cls = a.className || "";
+    const p = document2.createElement("p");
+    if (/btn--text/.test(cls) || !/\bbtn\b/.test(cls)) {
+      p.append(link2);
+      return p;
+    }
+    const wrap = document2.createElement(/btn--secondary/.test(cls) ? "em" : "strong");
+    wrap.append(link2);
+    p.append(wrap);
+    return p;
+  }
+  function landingCourseList(list, document2) {
+    const ul = document2.createElement("ul");
+    list.querySelectorAll(":scope > li").forEach((li) => {
+      const a = li.querySelector("a[href]");
+      const name = cleanText16(li.querySelector(".card-course__name") || a || li);
+      if (!name) return;
+      const item = document2.createElement("li");
+      if (a) {
+        const link2 = document2.createElement("a");
+        link2.href = a.getAttribute("href").trim();
+        link2.textContent = name;
+        item.append(link2);
+      } else item.textContent = name;
+      const type = cleanText16(li.querySelector(".card-course__type"));
+      if (type) item.append(` (${type})`);
+      ul.append(item);
+    });
+    return ul.children.length ? ul : null;
+  }
+  function landingImage(fig, document2) {
+    const img = fig.matches("img") ? fig : fig.querySelector("img");
+    if (!img) return [];
+    const src = (img.getAttribute("src") || img.getAttribute("data-src") || "").trim();
+    if (!src || /^(data|blob):/.test(src)) return [];
+    const out = document2.createElement("img");
+    out.src = src;
+    out.alt = (img.getAttribute("alt") || "").trim();
+    const p = document2.createElement("p");
+    p.append(out);
+    const res = [p];
+    const cap = fig.querySelector && fig.querySelector("figcaption");
+    if (cap && cleanText16(cap)) {
+      const c = document2.createElement("p");
+      c.innerHTML = cap.innerHTML.trim();
+      res.push(landingStrip(c));
+    }
+    return res;
+  }
+  function landingSide(side, document2, figures) {
+    const out = [];
+    if (!side) return out;
+    [...side.childNodes].forEach((n) => {
+      if (n.nodeType === 3) {
+        if (cleanText16(n)) {
+          const p = document2.createElement("p");
+          p.textContent = cleanText16(n);
+          out.push(p);
+        }
+        return;
+      }
+      if (n.nodeType !== 1 || !cleanText16(n) && !n.querySelector("img") && !n.matches("img")) return;
+      if (n.matches("figure") && figures) {
+        figures.push(n);
+        return;
+      }
+      if (n.matches("figure, img")) {
+        out.push(...landingImage(n, document2));
+        return;
+      }
+      if (n.matches("ul.card-course-list, ul.page-short-course__course-list")) {
+        const ul = landingCourseList(n, document2);
+        if (ul) out.push(ul);
+        return;
+      }
+      if (n.matches("a")) {
+        if (cleanText16(n)) out.push(landingCta2(n, document2));
+        return;
+      }
+      if (/^H[1-6]$/.test(n.tagName)) {
+        const h = document2.createElement(n.tagName.toLowerCase());
+        h.textContent = cleanText16(n);
+        out.push(h);
+        return;
+      }
+      if (n.tagName === "P" && n.querySelector('a.btn, a[class*="btn--"]') && cleanText16(n) === cleanText16(n.querySelector("a"))) {
+        out.push(landingCta2(n.querySelector("a"), document2));
+        return;
+      }
+      if (/^(DIV|SECTION|ARTICLE)$/.test(n.tagName)) {
+        out.push(...landingSide(n, document2, figures));
+        return;
+      }
+      out.push(landingStrip(n));
+    });
+    return out;
+  }
+  function parseLanding3(element, document2) {
+    let sides = [...element.querySelectorAll(":scope > .section-alt__left, :scope > .section-alt__right")];
+    let row;
+    if (sides.length) {
+      row = sides.map((s) => landingSide(s, document2)).filter((c) => c.length);
+    } else if (element.matches(".grid") || element.querySelector(":scope > .cell")) {
+      sides = [...element.querySelectorAll(":scope > .cell")];
+      row = sides.map((s) => landingSide(s, document2)).filter((c) => c.length);
+    } else {
+      const figures = [];
+      const text = landingSide(element, document2, figures);
+      const images = figures.flatMap((f) => landingImage(f, document2));
+      const left = figures.some((f) => /figure--inset-left/.test(f.className));
+      row = [text, images].filter((c) => c.length);
+      if (left) row.reverse();
+    }
+    if (!row.length) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Columns", cells: [row] }));
+  }
+  function parse20(element, { document: document2, template }) {
+    if (template === "section-landing") {
+      parseLanding3(element, document2);
+      return;
+    }
     let sides = [...element.querySelectorAll(":scope > .section-alt__left, :scope > .section-alt__right")];
     if (!sides.length) sides = [...element.children];
     const row = sides.map((s) => sideContent(s, document2)).filter((c) => c.length);
@@ -2169,7 +2847,112 @@ var CustomImportScript = (() => {
     });
     return content2;
   }
-  function parse21(element, { document: document2 }) {
+  function landingCta3(a, document2) {
+    const link2 = document2.createElement("a");
+    link2.href = (a.getAttribute("href") || "").trim();
+    link2.textContent = clean4(a);
+    const cls = a.className || "";
+    const p = document2.createElement("p");
+    if (/btn--text/.test(cls)) {
+      p.append(link2);
+      return p;
+    }
+    const wrap = document2.createElement(/btn--secondary/.test(cls) ? "em" : "strong");
+    wrap.append(link2);
+    p.append(wrap);
+    return p;
+  }
+  function stripAttrs7(el) {
+    [el, ...el.querySelectorAll("*")].forEach((c) => [...c.attributes].forEach((a) => {
+      if (!["href", "src", "alt", "colspan", "rowspan"].includes(a.name)) c.removeAttribute(a.name);
+    }));
+    el.querySelectorAll("span").forEach((sp) => sp.replaceWith(...sp.childNodes));
+    el.querySelectorAll("a[href]").forEach((a) => a.setAttribute("href", a.getAttribute("href").trim()));
+    return el;
+  }
+  var BR_BR = /<br\s*\/?>\s*(?:&nbsp;|\s)*<br\s*\/?>/i;
+  function splitBrParagraph(p, document2) {
+    if (!BR_BR.test(p.innerHTML)) return [p];
+    return p.innerHTML.split(BR_BR).map((h) => {
+      const q = document2.createElement("p");
+      q.innerHTML = h.trim();
+      return q;
+    }).filter((q) => clean4(q) || q.querySelector("img"));
+  }
+  function landingTextCell(side, document2) {
+    const root = side.querySelector(".split-section__inner, .section-image__content") || side;
+    const content2 = [];
+    [...root.querySelectorAll('p, h1, h2, h3, h4, h5, h6, ul, ol, a.btn, a[class*="btn--"]')].forEach((el) => {
+      if (el.matches("a")) {
+        if (el.parentElement && el.parentElement.closest("ul, ol") && root.contains(el.parentElement)) return;
+        if (clean4(el) && el.getAttribute("href")) content2.push(landingCta3(el, document2));
+        return;
+      }
+      if (el.closest("a") || !clean4(el)) return;
+      if (el.parentElement && el.parentElement.closest("ul, ol, p") && root.contains(el.parentElement.closest("ul, ol, p"))) return;
+      if (el.matches("ul.uom-link-panel-list__items, .uom-link-panel-list ul")) {
+        const ul = document2.createElement("ul");
+        el.querySelectorAll("li").forEach((li) => {
+          const a = li.querySelector("a[href]");
+          const label = clean4(li.querySelector(".uom-link-panel__text") || a || li);
+          if (!label) return;
+          const item = document2.createElement("li");
+          if (a) {
+            const link2 = document2.createElement("a");
+            link2.href = a.getAttribute("href").trim();
+            link2.textContent = label;
+            item.append(link2);
+          } else item.textContent = label;
+          ul.append(item);
+        });
+        if (ul.children.length) content2.push(ul);
+        return;
+      }
+      const copy = el.cloneNode(true);
+      copy.querySelectorAll('a.btn, a[class*="btn--"]').forEach((a) => a.remove());
+      if (!clean4(copy) && !copy.querySelector("img")) return;
+      stripAttrs7(copy);
+      if (copy.tagName === "P") content2.push(...splitBrParagraph(copy, document2));
+      else content2.push(copy);
+    });
+    return content2;
+  }
+  function repairAlt(alt) {
+    return (alt || "").replace(/^\s*Image for\s+/i, "").replace(/\}\s*$/, "").trim();
+  }
+  function parseLanding4(element, document2) {
+    let sides;
+    if (element.querySelector(".section-image__img")) {
+      sides = [element.querySelector(".section-image__img"), element.querySelector(".section-image__content") || element.querySelector(".section-image__inner")];
+    } else {
+      sides = [...element.querySelectorAll(":scope > .split-section__side, :scope > div")];
+      if (!sides.length) sides = [...element.children];
+    }
+    const row = [];
+    sides.filter(Boolean).forEach((side) => {
+      const isImage = side.matches('[class*="--with-image"], .section-image__img') || side.querySelector("img") && !clean4(side);
+      if (isImage) {
+        const cell = imageCell(side, document2);
+        if (cell) {
+          cell[0].alt = repairAlt(cell[0].alt);
+          row.push(cell);
+        }
+      } else {
+        const cell = landingTextCell(side, document2);
+        if (cell.length) row.push(cell);
+      }
+    });
+    if (!row.length) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Columns (split)", cells: [row] }));
+  }
+  function parse21(element, { document: document2, template }) {
+    if (template === "section-landing") {
+      parseLanding4(element, document2);
+      return;
+    }
     let sides = [...element.querySelectorAll(":scope > .split-section__side, :scope > div")];
     if (!sides.length) sides = [...element.children];
     const row = [];
@@ -2195,7 +2978,7 @@ var CustomImportScript = (() => {
   function cleanText17(el) {
     return (el ? el.textContent : "").replace(/\s+/g, " ").trim();
   }
-  function stripAttrs7(root) {
+  function stripAttrs8(root) {
     [root, ...root.querySelectorAll("*")].forEach((el) => {
       if (!el.attributes) return;
       [...el.attributes].forEach((a) => {
@@ -2207,12 +2990,12 @@ var CustomImportScript = (() => {
   function cellContent2(cell, document2, bold) {
     const hasBlocks = [...cell.children].some((c) => /^(P|UL|OL|DIV|H[1-6]|TABLE)$/.test(c.tagName));
     if (hasBlocks) {
-      stripAttrs7(cell);
+      stripAttrs8(cell);
       return [...cell.childNodes].filter((n) => n.nodeType === 1 || cleanText17(n));
     }
     const p = document2.createElement("p");
     p.innerHTML = cell.innerHTML.replace(/\s+/g, " ").trim();
-    stripAttrs7(p);
+    stripAttrs8(p);
     if (!cleanText17(p) && !p.querySelector("img")) return "";
     if (bold && !(p.children.length === 1 && /^(STRONG|B)$/.test(p.firstElementChild.tagName) && cleanText17(p) === cleanText17(p.firstElementChild))) {
       const strong = document2.createElement("strong");

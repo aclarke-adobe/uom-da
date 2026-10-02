@@ -10,6 +10,28 @@ Single block table. Content: One row per card. Optional image cell (picture only
 
 Automatic sub-styles (no extra class to author): default cards with no CTA link get `cards-profile` (course alumni: white card, fixed-height photo, padded text; a lone card puts the photo on the right on desktop), and icon cards with no pictogram cell get `cards-facts` (centred text-only employment cards with a grey/cyan/yellow/green bottom rule, two per row).
 
+Section-landing shapes (also automatic; `cards.js` `decorateShapes` derives them from the authored cells and the section style only, so homepage and course cards never get them):
+
+| Shape class | Option | Authored as | Source component |
+| --- | --- | --- | --- |
+| `cards-tile-photo` (+ `cards-tile-desc`) | tile | image cell + linked heading (+ text) | ct-pathfinder photo tiles: navy card, centred white title, whole card links |
+| `cards-tile-box` | tile | linked heading (+ text), or plain text only | ct-pathfinder link tiles without a photo: navy boxes |
+| `cards-tile-text` | tile | plain heading + text | fee tiers, ct-textthreecolumn text columns (no rule) |
+| `cards-tile-button` | tile, grey section | bold link only | ct-section-todolist "personalised advice" white link buttons |
+| `cards-tile-panel` | tile, navy section holding only the block | bold link + text | ct-focusboxpathfinder outlined-button panels (teal band) |
+| (bold-only title) | tile | `**Title**` + text | pathfinder-today feature tiles on navy (unlinked bold title) |
+| `cards-people-profile` | people | portrait + h3 name, role, bio | short-course `page-short-course__profile` (role paragraph is bold) |
+| `cards-icon-inline` | icon, no tile block in the section | `:uom-*:` icon + text | ct-textthreecolumn / micro-credential pictograms (48px line icon) |
+| `cards-fact-tiles` | icon, text only, h3 | h3 figure + text | ct-factscard navy tiles with serif figure |
+| `cards-docs` | icon | image + link(s) only | ct-documentlisting brochure covers |
+| `cards-logos` | icon | image only | ct-imagelisting greyscale logos |
+| `cards-stat-ranking` | stat, one cell, figure first | `**figure**` + label | uom-stats-and-rankings outlined tiles |
+| `cards-chip-<type>` on the card | chips | link + type paragraph | ct-coursecards (left rule coloured by type) |
+| `cards-news` | default | linked h3, date, excerpt, links | ct-newslisting / ct-eventslisting |
+| `cards-staff` | default, no CTA | image + linked h3 + text | ct-profilelist staff cards |
+| `cards-listing` | default, no CTA | image + h3 only | ct-pagelisting image listing |
+| `cards-feature` | default | CTA authored as a button (`*[link]*`) | ct-featurespanel (full-width button) |
+
 ## Supported variations
 
 | Variation | Option class |

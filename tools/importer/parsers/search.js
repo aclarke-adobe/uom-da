@@ -59,7 +59,18 @@ export default function parse(element, { document, params }) {
   const p = document.createElement('p');
   p.append(link);
 
-  const cells = [[p]];
+  // section-landing ct-coursesearch (.section-alt__row: .section-alt__left h2 | .section-alt__right form):
+  // the heading goes in the cell above the search link. The homepage instance is the form itself.
+  const left = element.querySelector(':scope > .section-alt__left');
+  const heading = left && left.querySelector('h1, h2, h3, h4');
+  const cell = [];
+  if (heading && heading.textContent.trim()) {
+    const h = document.createElement('h2');
+    h.textContent = heading.textContent.replace(/\s+/g, ' ').trim();
+    cell.push(h);
+  }
+  cell.push(p);
+  const cells = [cell];
   const block = WebImporter.Blocks.createBlock(document, { name: 'Search', cells });
   element.replaceWith(block);
 }

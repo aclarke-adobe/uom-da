@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/fixed-prosthodontics-in-clinical-practice",
+  "path": "find/short-courses/fixed-prosthodontics-in-clinical-practice",
+  "timestamp": "2026-10-02T07:12:02.670Z",
+  "title": "Fixed Prosthodontics in Clinical Practice",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "columns"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

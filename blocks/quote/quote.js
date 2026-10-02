@@ -5,6 +5,10 @@
  * render); an optional image-only cell, shown as a square portrait below the text.
  * A quotation that already starts with a quotation mark gets `quote-marked` (no generated
  * marks).
+ * An attribution followed by one more paragraph (a course or role line) makes a card
+ * (`quote-card`, line gets `quote-subcite`); its portrait sits beside the text on desktop,
+ * on the side of its cell (image cell first = left, otherwise right).
+ * A card with authored quotation marks is the profile card (role, name, rule, quotation).
  * Option `profile`: a collapsed profile — a header row with the image, an eyebrow
  * paragraph, the name heading and a "Read more" toggle; the toggle reveals a full-width
  * panel with the remaining content. When that content ends with an attribution, the
@@ -83,6 +87,7 @@ export default function decorate(block) {
   const text = document.createElement('div');
   text.className = 'quote-text';
   let media = null;
+  let mediaFirst = false;
 
   cells.forEach((cell) => {
     const pic = cell.querySelector('picture');
@@ -91,6 +96,7 @@ export default function decorate(block) {
         media = document.createElement('div');
         media.className = 'quote-media';
         media.append(pic);
+        mediaFirst = !text.children.length;
       }
     } else if (![...cell.children].some((el) => BLOCK_TAGS.test(el.tagName))) {
       // bare text (or inline-only) cell
@@ -108,6 +114,14 @@ export default function decorate(block) {
   const last = text.lastElementChild;
   if (last && last.tagName === 'P' && DASH.test(last.textContent.trim())) {
     last.classList.add('quote-attribution');
+  } else if (!active.includes('profile') && last && last.tagName === 'P') {
+    // card: the attribution is followed by a single course / role line
+    const name = last.previousElementSibling;
+    if (name && name.tagName === 'P' && DASH.test(name.textContent.trim())) {
+      name.classList.add('quote-attribution');
+      last.classList.add('quote-subcite');
+      block.classList.add('quote-card');
+    }
   }
 
   if (media) {
@@ -132,7 +146,7 @@ export default function decorate(block) {
   // wrap quotation paragraphs (everything after the heading, before attribution)
   const quote = document.createElement('blockquote');
   [...text.children].forEach((el) => {
-    if (/^H[1-6]$/.test(el.tagName) || el.classList.contains('quote-attribution')) return;
+    if (/^H[1-6]$/.test(el.tagName) || el.matches('.quote-attribution, .quote-subcite')) return;
     if (el.tagName === 'P' || el.tagName === 'UL' || el.tagName === 'OL') {
       if (!quote.parentElement) el.before(quote);
       quote.append(el);
@@ -142,5 +156,7 @@ export default function decorate(block) {
   if (QUOTE_MARK.test(quote.textContent.trim())) block.classList.add('quote-marked');
 
   block.replaceChildren(text);
-  if (media) block.append(media);
+  // a card keeps the authored side of its portrait; other quotes show it below the text
+  if (media && mediaFirst && block.classList.contains('quote-card')) block.prepend(media);
+  else if (media) block.append(media);
 }

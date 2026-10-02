@@ -112,6 +112,28 @@ function isIntroRow(row) {
   return cells.length > 1 && !cells.slice(1).some((c) => c.textContent.trim() || c.querySelector('img, picture'));
 }
 
+/**
+ * Landing-page accordions (UoM design-system "uom-accordion": blue bold titles, thin
+ * dividers, tinted open item) are told apart from course-page "togglerow" accordions by
+ * their markup: an h2/h3 intro row, or (without an intro) a section h2 as the last heading
+ * before the block, or nothing before it in its section. Course accordions sit under
+ * h3/h4 headings, have h4 "Year" intros (sample plans) or are nested in tabs.
+ * @param {HTMLElement} block
+ * @param {?HTMLElement} intro
+ * @returns {boolean}
+ */
+function isLandingAccordion(block, intro) {
+  if (block.closest('.tabs')) return false;
+  if (intro) return !!intro.querySelector(':scope > :is(h2, h3)') && !intro.querySelector(':scope > :is(h4, h5, h6)');
+  const wrapper = block.parentElement;
+  const section = wrapper?.parentElement;
+  if (!section?.classList.contains('section')) return false;
+  const before = [...section.children].slice(0, [...section.children].indexOf(wrapper));
+  if (!before.some((el) => el.textContent.trim() || el.querySelector('img, picture'))) return true;
+  const headings = before.flatMap((el) => [...el.querySelectorAll('h1, h2, h3, h4, h5, h6')]);
+  return headings.at(-1)?.tagName === 'H2';
+}
+
 export default async function decorate(block) {
   const rows = [...block.children];
   const items = document.createElement('div');
@@ -151,6 +173,9 @@ export default async function decorate(block) {
   });
 
   block.append(items);
+  if (isLandingAccordion(block, block.querySelector(':scope > .accordion-intro'))) {
+    block.classList.add('accordion-ds');
+  }
   if (block.querySelector(':scope > .accordion-intro')) {
     block.classList.add('accordion-has-intro');
     // a year of a sample course plan: intro + "Semester 1 · 50 pts" rows

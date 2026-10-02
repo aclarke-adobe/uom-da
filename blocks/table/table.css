@@ -84,3 +84,86 @@
     table-layout: fixed;
   }
 }
+
+/* landing pages (same scope as styles/landing.css): superscript markers keep the row height */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .table :is(sup, sub) {
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .table sup {
+  top: -0.5em;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .table sub {
+  bottom: -0.25em;
+}
+
+/* compact (source table--is-compacted): columns size to their content */
+.table.compact table {
+  table-layout: auto;
+}
+
+@media (width < 600px) {
+  .table.compact .table-scroll {
+    overflow-x: visible;
+  }
+
+  .table.compact table,
+  .table.compact tbody,
+  .table.compact tr,
+  .table.compact td {
+    display: block;
+  }
+
+  .table.compact table {
+    min-width: 0;
+  }
+
+  .table.compact thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .table.compact td {
+    padding: 0 16px;
+  }
+
+  .table.compact td:last-child {
+    padding-bottom: 16px;
+  }
+
+  .table.compact td[data-label]::before {
+    content: attr(data-label);
+    margin-right: 8px;
+    font-weight: 700;
+  }
+
+  .table.compact td > p:only-child {
+    display: inline;
+  }
+
+  /* the first cell heads the card */
+  .table.compact td:first-child {
+    margin-bottom: 8px;
+    padding: 16px;
+    background-color: var(--uom-navy);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .table.compact td:first-child::before {
+    content: none;
+  }
+
+  .table.compact td:first-child a:any-link {
+    color: #fff;
+    text-decoration: none;
+  }
+}

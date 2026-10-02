@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/professional-development",
+  "path": "study-with-us/professional-development",
+  "timestamp": "2026-10-02T07:20:07.550Z",
+  "title": "Unlock your potential with professional development | University of Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards-tile",
+    "cards-icon"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

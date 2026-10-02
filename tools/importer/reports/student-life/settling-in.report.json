@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/settling-in",
+  "path": "student-life/settling-in",
+  "timestamp": "2026-10-02T07:16:40.959Z",
+  "title": "Settling in",
+  "template": "section-landing",
+  "blocks": [
+    "hero"
+  ],
+  "fragments": "international-students-resources",
+  "droppedImages": ""
+}

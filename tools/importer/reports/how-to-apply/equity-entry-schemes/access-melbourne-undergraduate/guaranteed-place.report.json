@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate/guaranteed-place",
+  "path": "how-to-apply/equity-entry-schemes/access-melbourne-undergraduate/guaranteed-place",
+  "timestamp": "2026-10-02T07:15:38.293Z",
+  "title": "Guaranteed place",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "table",
+    "table",
+    "cards-tile"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

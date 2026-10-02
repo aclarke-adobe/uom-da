@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/clinical-facilitation-essential-skills-and-principles",
+  "path": "find/short-courses/clinical-facilitation-essential-skills-and-principles",
+  "timestamp": "2026-10-02T07:11:24.003Z",
+  "title": "Clinical Facilitation: Essential Skills and Principles",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

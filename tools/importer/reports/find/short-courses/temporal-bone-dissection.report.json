@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/temporal-bone-dissection",
+  "path": "find/short-courses/temporal-bone-dissection",
+  "timestamp": "2026-10-02T07:14:26.646Z",
+  "title": "Temporal Bone Dissection",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

@@ -35,7 +35,7 @@ function resolveIconCell(div) {
  * card title, not a CTA. decorateButtons has already turned it into a `.button`, so undo that
  * and keep the authored bold. A bare `<strong><a>` (no paragraph) is wrapped in one.
  */
-function decorateTitle(body) {
+function decorateTitle(body, tile) {
   const first = body.firstElementChild;
   if (!first) return;
   if (first.tagName === 'STRONG' && first.querySelector('a')) {
@@ -44,6 +44,11 @@ function decorateTitle(body) {
     p.append(first);
   }
   const titleP = body.firstElementChild;
+  // a bold-only opening paragraph followed by text is an unlinked title (feature tiles on navy)
+  const boldOnly = titleP.tagName === 'P' && titleP.children.length === 1
+    && titleP.firstElementChild.tagName === 'STRONG' && !titleP.querySelector('a')
+    && titleP.textContent.trim() === titleP.firstElementChild.textContent.trim();
+  if (tile && boldOnly && titleP.nextElementSibling) titleP.classList.add('cards-card-title');
   const link = titleP.tagName === 'P' ? titleP.querySelector(':scope > a.button, :scope > strong > a') : null;
   if (link && isActionParagraph(titleP) && titleP.querySelectorAll('a').length === 1) {
     const bold = link.classList.contains('button') && !link.classList.contains('secondary');
@@ -78,6 +83,129 @@ function decorateTitle(body) {
   }
 }
 
+const HEADING = 'H2 H3 H4 H5 H6';
+const isHeading = (el) => !!el && HEADING.includes(el.tagName);
+const slug = (text) => text.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+/**
+ * Shape hooks for the section-landing card patterns, derived only from the authored
+ * cells (and the section style), so the homepage / course shapes keep their look.
+ * Each `cards-<shape>` class names one source component.
+ */
+function decorateShapes(block, ul, active) {
+  const lis = [...ul.children];
+  if (!lis.length) return;
+  const section = block.closest('.section');
+  const sectionHas = (c) => !!section && section.classList.contains(c);
+  const body = (li) => li.querySelector(':scope > .cards-card-body');
+  const first = (li) => body(li)?.firstElementChild || null;
+  const all = (fn) => lis.every(fn);
+  const add = (...c) => block.classList.add(...c);
+  const hasImage = (li) => !!li.querySelector(':scope > .cards-card-image:not(.cards-card-icon)');
+  const linkedHeading = (el) => isHeading(el) && el.classList.contains('cards-card-title');
+
+  if (active.includes('tile')) {
+    const textOnly = (li) => {
+      const b = body(li);
+      if (!b || !b.textContent.trim()) return false;
+      return !b.children.length || (b.children.length === 1 && b.firstElementChild.tagName === 'P'
+        && !b.firstElementChild.children.length);
+    };
+    if (all(hasImage)) {
+      // pathfinder photo tiles: navy card, photo on top, centred white title (+ description)
+      add('cards-tile-photo');
+      if (lis.some((li) => body(li)?.querySelector(':scope > p:not(.cards-card-cta)'))) add('cards-tile-desc');
+    } else if (all((li) => !hasImage(li) && (textOnly(li)
+      || (linkedHeading(first(li)) && !body(li).querySelector('.cards-card-eyebrow'))))) {
+      // pathfinder link tiles without a photo: centred navy boxes
+      add('cards-tile-box');
+      if (lis.some((li) => body(li)?.querySelector(':scope > p'))) add('cards-tile-desc');
+    } else if (all((li) => isHeading(first(li)) && !first(li).classList.contains('cards-card-title'))) {
+      // fee tiers / three-column text: plain heading over text, no rule
+      add('cards-tile-text');
+    } else if (all((li) => body(li)?.children.length === 1 && first(li).matches('p.cards-card-title'))
+      && sectionHas('grey')) {
+      // "personalised advice" to-do list: white link buttons beside an intro
+      add('cards-tile-button');
+    } else if (all((li) => first(li)?.matches('p.cards-card-title') && first(li).querySelector('a'))
+      && sectionHas('navy') && block.parentElement?.parentElement === section
+      && section.children.length === 1) {
+      // focus-box pathfinder: two navy panels with an outlined button and a line of text
+      add('cards-tile-panel');
+    }
+  }
+
+  if (active.includes('people') && all((li) => first(li)?.tagName === 'H3')) {
+    // short-course profile: portrait beside an h3 name, bold role and bio
+    add('cards-people-profile');
+    lis.forEach((li) => {
+      const ps = body(li).querySelectorAll(':scope > p');
+      if (ps.length > 1) ps[0].classList.add('cards-card-role');
+    });
+  }
+
+  if (active.includes('icon')) {
+    if (all((li) => hasImage(li) && !body(li))) add('cards-logos');
+    else if (all((li) => hasImage(li) && body(li)
+      && [...body(li).children].every((el) => el.tagName === 'A' || isActionParagraph(el)))) add('cards-docs');
+    else if (block.classList.contains('cards-facts') && all((li) => first(li)?.tagName === 'H3')) add('cards-fact-tiles');
+    else if (ul.querySelector('.cards-card-icon') && !section?.querySelector('.cards.tile')) {
+      // line pictograms beside the text columns (the homepage feature panel keeps full-width art)
+      add('cards-icon-inline');
+    }
+  }
+
+  if (active.includes('stat') && all((li) => li.querySelectorAll('.cards-card-body').length === 1
+    && first(li)?.classList.contains('cards-stat-value'))) {
+    add('cards-stat-ranking');
+  }
+
+  if (active.includes('link-list')) {
+    // sublink menus fill their three columns top to bottom
+    ul.style.setProperty('--link-rows', Math.ceil(lis.length / 3));
+  }
+
+  if (active.includes('chips')) {
+    lis.filter((li) => !li.classList.contains('cards-card-link')).forEach((li) => {
+      const type = [...li.querySelectorAll('.cards-card-body > p')].find((p) => !p.querySelector('a'));
+      if (type) {
+        type.classList.add('cards-card-type');
+        li.classList.add(`cards-chip-${slug(type.textContent)}`);
+      }
+    });
+  }
+
+  if (!active.length) {
+    if (all((li) => linkedHeading(first(li)) && body(li).querySelector('.cards-card-cta'))) {
+      // news / event listing: linked title, date line, excerpt, right-aligned links
+      add('cards-news');
+      lis.forEach((li) => {
+        const b = body(li);
+        const date = first(li).nextElementSibling;
+        if (date?.tagName === 'P' && !date.querySelector('a') && /\d/.test(date.textContent)
+          && date.textContent.trim().length < 60) date.classList.add('cards-card-date');
+        // trailing link paragraphs stack at the bottom; a short label before them is a tag
+        let el = b.lastElementChild;
+        while (el && isActionParagraph(el) && el !== first(li)) {
+          el.classList.add('cards-card-cta');
+          el = el.previousElementSibling;
+        }
+        if (el && el.tagName === 'P' && !el.classList.contains('cards-card-date')
+          && el.previousElementSibling?.tagName === 'P' && !el.previousElementSibling.classList.contains('cards-card-date')
+          && el.textContent.trim().length < 40 && !/[.!?]$/.test(el.textContent.trim())) {
+          el.classList.add('cards-card-tag');
+        }
+      });
+    } else if (block.classList.contains('cards-profile') && all(hasImage)) {
+      if (all((li) => linkedHeading(first(li)))) add('cards-staff');
+      else if (all((li) => body(li)?.children.length === 1 && first(li).tagName === 'H3')) add('cards-listing');
+    } else if (ul.querySelector('.cards-card-cta a.button')) {
+      // feature panel: full-width button under each card
+      add('cards-feature');
+    }
+  }
+}
+
 export default function decorate(block) {
   const active = [...block.classList].filter((c) => OPTION_CLASSES.includes(c));
   // icon pictograms render at card width, so only stat images are small
@@ -96,7 +224,7 @@ export default function decorate(block) {
     });
 
     // title link (bold link / linked heading) and eyebrow; chip/list links stay plain links
-    if (!chips) li.querySelectorAll('.cards-card-body').forEach(decorateTitle);
+    if (!chips) li.querySelectorAll('.cards-card-body').forEach((b) => decorateTitle(b, active.includes('tile')));
 
     // trailing CTA-only paragraphs are pinned to the bottom of the card
     li.querySelectorAll('.cards-card-body').forEach((body) => {
@@ -149,6 +277,9 @@ export default function decorate(block) {
   const count = ul.children.length;
   if (count % 4 === 0) block.classList.add('cards-cols-4');
   else if (count % 3 === 0) block.classList.add('cards-cols-3');
+  else if (count === 2) block.classList.add('cards-cols-2');
+
+  decorateShapes(block, ul, active);
 
   const width = smallImages ? '160' : '750';
   ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width }])));

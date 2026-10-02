@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/study-education",
+  "path": "study-with-us/graduate-courses/study-education",
+  "timestamp": "2026-10-02T07:19:26.377Z",
+  "title": "Graduate study in Education",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards",
+    "columns-overlap",
+    "video-split",
+    "quote",
+    "columns"
+  ],
+  "fragments": "personalised-advice",
+  "droppedImages": ""
+}

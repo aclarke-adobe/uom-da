@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/lifestyle",
+  "path": "student-life/lifestyle",
+  "timestamp": "2026-10-02T07:16:34.501Z",
+  "title": "The Melbourne lifestyle",
+  "template": "section-landing",
+  "blocks": [
+    "hero"
+  ],
+  "fragments": "international-students-resources",
+  "droppedImages": ""
+}

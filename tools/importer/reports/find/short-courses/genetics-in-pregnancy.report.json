@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/genetics-in-pregnancy",
+  "path": "find/short-courses/genetics-in-pregnancy",
+  "timestamp": "2026-10-02T07:12:11.992Z",
+  "title": "Genetics in Pregnancy",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

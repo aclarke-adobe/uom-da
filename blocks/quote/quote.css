@@ -292,58 +292,269 @@
 /*
  * course pages (main holds a course-only block, as in styles/course.css): the course
  * content blockquote, a large semibold italic quotation in the text colour, then the
- * attribution in semibold body text with a leading dash
+ * attribution in semibold body text with a leading dash. Section landing pages (short
+ * courses and micro-credentials also hold key facts) are left to the rules below.
  */
-main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) {
+main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) {
   margin-bottom: 24px;
 }
 
-main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) .quote-text > * {
+main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) .quote-text > * {
   max-width: var(--text-max-width);
 }
 
-main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote {
+main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) blockquote {
   color: var(--text-color);
   font-size: 24px;
   font-style: italic;
 }
 
-main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote:not(:has(+ .quote-attribution)) {
+main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) blockquote:not(:has(+ .quote-attribution)) {
   margin-bottom: 18px;
 }
 
-main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote > p {
+main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) blockquote > p {
   margin-bottom: 0;
 }
 
-main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote > p:not(:last-child) {
+main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) blockquote > p:not(:last-child) {
   margin-bottom: 18px;
 }
 
-main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote > p:first-child::before,
-main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote > p:last-child::after {
+main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) blockquote > p:first-child::before,
+main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) blockquote > p:last-child::after {
   margin: 0;
   font-size: inherit;
 }
 
-main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) .quote-attribution {
+main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) .quote-attribution {
   margin-bottom: 18px;
   font-weight: 600;
   line-height: 1.2;
 }
 
-main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) .quote-attribution::before {
+main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) .quote-attribution::before {
   content: '— ';
 }
 
 @media (width >= 769px) {
-  main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote {
+  main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) blockquote {
     font-size: 32px;
   }
 
-  main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote:not(:has(+ .quote-attribution)),
-  main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) blockquote > p:not(:last-child),
-  main:has(.audience-switcher, .key-facts, .hero.aside) .quote:not(.profile) .quote-attribution {
+  main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) blockquote:not(:has(+ .quote-attribution)),
+  main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) blockquote > p:not(:last-child),
+  main:has(.audience-switcher, .key-facts, .hero.aside):not(:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside)))) .quote:not(.profile) .quote-attribution {
     margin-bottom: 20px;
+  }
+}
+
+/* the landing variants below never meet .profile or the course-page rules above */
+/* stylelint-disable no-descending-specificity */
+
+/*
+ * section landing pages (first section is a plain landing hero, as in styles/landing.css)
+ * text-only quotes (source testimonials-alt--long, "What people are saying"): a large
+ * navy quotation with the opening mark on its own line and the closing mark hung below
+ * the right edge, then the name in body text
+ */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote:not(.profile, .quote-has-media, .quote-card) blockquote {
+  margin-bottom: 18px;
+  font-size: 24px;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote:not(.profile, .quote-has-media, .quote-card) blockquote > p {
+  position: relative;
+  margin: 0;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote:not(.profile, .quote-has-media, .quote-card) blockquote > p + p {
+  margin-top: 18px;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote:not(.profile, .quote-has-media, .quote-card) blockquote > p:first-child::before,
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote:not(.profile, .quote-has-media, .quote-card) blockquote > p:last-child::after {
+  display: block;
+  margin: 28px 8px 12px 0;
+  font-size: 36px;
+  line-height: 0;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote:not(.profile, .quote-has-media, .quote-card) blockquote > p:last-child::after {
+  position: absolute;
+  top: 100%;
+  right: 28px;
+  margin-right: 0;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote:not(.profile, .quote-has-media, .quote-card) .quote-attribution {
+  margin-bottom: 24px;
+}
+
+@media (width >= 769px) {
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote:not(.profile, .quote-has-media, .quote-card) {
+    max-width: 544px;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote:not(.profile, .quote-has-media, .quote-card) blockquote {
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote:not(.profile, .quote-has-media, .quote-card) blockquote > p + p {
+    margin-top: 20px;
+  }
+}
+
+/*
+ * card (source ct-testimonial card-focus .testimonials): an italic quotation in body
+ * text, the name after a dash and an uppercase course line, with the portrait above or
+ * below (authored cell order); on desktop the portrait takes a third on that side and
+ * the text is centred beside it
+ */
+.quote.quote-card {
+  gap: 0;
+}
+
+.quote.quote-card .quote-media {
+  max-width: none;
+  margin-bottom: 32px;
+  background-color: transparent;
+}
+
+.quote.quote-card .quote-media img {
+  aspect-ratio: 3 / 4;
+}
+
+.quote.quote-card .quote-text {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 24px;
+}
+
+.quote.quote-card .quote-text > * {
+  max-width: var(--text-max-width);
+}
+
+.quote.quote-card blockquote {
+  margin: 0 0 12px;
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.quote.quote-card blockquote > p {
+  margin: 0;
+}
+
+.quote.quote-card blockquote > p + p {
+  margin-top: 12px;
+}
+
+.quote.quote-card blockquote > p:first-child::before,
+.quote.quote-card blockquote > p:last-child::after {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.quote.quote-card .quote-attribution {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.quote.quote-card .quote-attribution::before {
+  content: '—';
+}
+
+.quote.quote-card .quote-subcite {
+  margin: 0 0 8px;
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/*
+ * profile card (source card-focus .alumni; its quotation carries typed quotation marks):
+ * role line, a navy name over a short grey rule, then the quotation in plain body text;
+ * the text sits at the top on desktop
+ */
+.quote.quote-card.quote-marked .quote-text {
+  padding-bottom: 0;
+}
+
+.quote.quote-card.quote-marked .quote-subcite {
+  order: -2;
+}
+
+.quote.quote-card.quote-marked .quote-attribution {
+  order: -1;
+  color: var(--heading-color);
+  font-size: 24px;
+}
+
+.quote.quote-card.quote-marked .quote-attribution::before {
+  content: none;
+}
+
+/* the 40px rule under the name */
+.quote.quote-card.quote-marked .quote-attribution::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  margin: 18px 0 24px;
+  background-color: rgb(128 128 128);
+}
+
+.quote.quote-card.quote-marked blockquote {
+  margin-bottom: 24px;
+  font-style: normal;
+}
+
+@media (width >= 600px) {
+  .quote.quote-card .quote-subcite {
+    margin-top: 12px;
+  }
+
+  .quote.quote-card.quote-marked .quote-subcite {
+    margin-top: 0;
+  }
+}
+
+@media (width >= 769px) {
+  .quote.quote-card.quote-has-media {
+    display: flex;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .quote.quote-card.quote-has-media .quote-media {
+    flex: 0 0 33%;
+    align-self: flex-start;
+    margin-bottom: 0;
+  }
+
+  .quote.quote-card.quote-has-media .quote-text {
+    flex: 0 0 59%;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .quote.quote-card.quote-marked .quote-text {
+    flex-basis: 65%;
+    justify-content: flex-start;
+  }
+
+  .quote.quote-card.quote-marked .quote-attribution {
+    font-size: 32px;
+  }
+
+  .quote.quote-card.quote-marked .quote-attribution::after {
+    margin-top: 20px;
   }
 }

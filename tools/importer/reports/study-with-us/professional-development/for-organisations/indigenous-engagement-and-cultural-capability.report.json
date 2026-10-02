@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/professional-development/for-organisations/indigenous-engagement-and-cultural-capability",
+  "path": "study-with-us/professional-development/for-organisations/indigenous-engagement-and-cultural-capability",
+  "timestamp": "2026-10-02T07:20:20.293Z",
+  "title": "Indigenous Engagement and Cultural Capability",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards",
+    "cards",
+    "cards-icon",
+    "cards-icon",
+    "cards-icon",
+    "columns-split",
+    "cards",
+    "cards",
+    "columns-split"
+  ],
+  "fragments": "executive-learning-insights-subscribe pdo-featured-courses pdo-learning-formats pdo-how-we-partner pdo-newsroom",
+  "droppedImages": ""
+}

@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/connect-with-us/graduate-study-events/banner-default",
+  "path": "connect-with-us/graduate-study-events/banner-default",
+  "timestamp": "2026-10-02T07:07:47.781Z",
+  "title": "Banner - Default",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

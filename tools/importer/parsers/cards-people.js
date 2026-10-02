@@ -48,7 +48,56 @@ function portrait(card, name, document) {
   return out;
 }
 
+/**
+ * Section-landing short-course profiles ("Who you will learn from"), verified in
+ * block-context/cards-people/source.html for section-landing:
+ *   .section-alt__right > .page-short-course__profile >
+ *     .page-short-course__profile-img > img, .page-short-course__profile-content > h3, p.text-bold (role), p…
+ * Row: [portrait] | <h3>{name}</h3> + role/bio paragraphs. Empty profile paragraphs are skipped.
+ * Course pages have no .page-short-course__profile, so their output is unchanged.
+ */
+function parseShortCourseProfiles(element, document) {
+  const cells = [];
+  element.querySelectorAll('.page-short-course__profile').forEach((card) => {
+    const content = card.querySelector('.page-short-course__profile-content') || card;
+    const name = cleanText(content.querySelector('h1, h2, h3, h4, h5, h6'));
+    const body = [];
+    if (name) { const h = document.createElement('h3'); h.textContent = name; body.push(h); }
+    content.querySelectorAll('p, ul, ol').forEach((el) => {
+      if (!cleanText(el)) return;
+      if (el.parentElement && el.parentElement.closest('p, ul, ol') && content.contains(el.parentElement)) return;
+      const out = document.createElement(el.tagName.toLowerCase());
+      out.innerHTML = el.innerHTML.trim();
+      out.querySelectorAll('*').forEach((c) => [...c.attributes].forEach((a) => { if (!['href', 'src', 'alt'].includes(a.name)) c.removeAttribute(a.name); }));
+      body.push(out);
+    });
+    // "Read more" (a.btn--text to Find an Expert) sits beside the paragraphs: a plain link paragraph
+    content.querySelectorAll(':scope > a[href]').forEach((a) => {
+      const label = cleanText(a);
+      if (!label) return;
+      const link = document.createElement('a');
+      link.href = a.getAttribute('href').trim();
+      link.textContent = label;
+      const p = document.createElement('p');
+      p.append(link);
+      body.push(p);
+    });
+    const holder = card.querySelector('.page-short-course__profile-img') || card;
+    const image = portrait(holder, name, document);
+    // a profile with an empty content column (portrait only) keeps its portrait as an image-only row
+    if (!body.length) { if (image) cells.push([[image]]); return; }
+    cells.push(image ? [[image], body] : [body]);
+  });
+  if (!cells.length) { element.replaceWith(...element.childNodes); return; }
+  const block = WebImporter.Blocks.createBlock(document, { name: 'Cards', variants: ['people'], cells });
+  element.replaceWith(block);
+}
+
 export default function parse(element, { document }) {
+  if (element.querySelector('.page-short-course__profile')) {
+    parseShortCourseProfiles(element, document);
+    return;
+  }
   let cards = [...element.querySelectorAll('.card--showcase-profile')];
   if (!cards.length) cards = [...element.querySelectorAll('.card')];
 

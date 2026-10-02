@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/connect-with-us/international/india",
+  "path": "connect-with-us/international/india",
+  "timestamp": "2026-10-02T07:08:39.527Z",
+  "title": "Indian International Student Information | Study at Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "columns",
+    "video",
+    "columns-split",
+    "accordion",
+    "cards-icon",
+    "quote",
+    "accordion",
+    "columns-split"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

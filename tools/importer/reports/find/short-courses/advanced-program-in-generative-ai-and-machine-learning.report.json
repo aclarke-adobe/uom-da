@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/advanced-program-in-generative-ai-and-machine-learning",
+  "path": "find/short-courses/advanced-program-in-generative-ai-and-machine-learning",
+  "timestamp": "2026-10-02T07:11:04.390Z",
+  "title": "Adv program in Generative AI and Machine Learning - University of Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

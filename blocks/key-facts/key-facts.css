@@ -69,6 +69,20 @@ main .section.key-facts-container:is(.grey, .light, .highlight, .sage, .cream) {
   line-height: 19.6px;
 }
 
+/* partner logos (short courses / micro-credentials): no icon column, stacked logos up to 200px */
+.key-facts .key-facts-item-logos {
+  padding-left: 0;
+}
+
+.key-facts .key-facts-item-logos .key-facts-value :is(picture, img) {
+  display: block;
+}
+
+.key-facts .key-facts-item-logos .key-facts-value img {
+  max-width: 200px;
+  height: auto;
+}
+
 /* actions: strong = cyan primary, em = sage secondary, plain = text link */
 .key-facts .key-facts-actions {
   display: flex;

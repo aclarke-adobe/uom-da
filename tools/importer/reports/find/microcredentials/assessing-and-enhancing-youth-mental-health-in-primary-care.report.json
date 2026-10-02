@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/assessing-and-enhancing-youth-mental-health-in-primary-care",
+  "path": "find/microcredentials/assessing-and-enhancing-youth-mental-health-in-primary-care",
+  "timestamp": "2026-10-02T07:08:55.097Z",
+  "title": "Assessing and Enhancing YMH in Primary Care - micro-credential",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "columns",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits",
+  "droppedImages": ""
+}

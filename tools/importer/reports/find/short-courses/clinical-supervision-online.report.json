@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/clinical-supervision-online",
+  "path": "find/short-courses/clinical-supervision-online",
+  "timestamp": "2026-10-02T07:11:27.179Z",
+  "title": "Clinical Supervision - online course",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

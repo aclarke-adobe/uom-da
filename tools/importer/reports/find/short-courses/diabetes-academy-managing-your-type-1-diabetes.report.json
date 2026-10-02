@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/diabetes-academy-managing-your-type-1-diabetes",
+  "path": "find/short-courses/diabetes-academy-managing-your-type-1-diabetes",
+  "timestamp": "2026-10-02T07:11:53.181Z",
+  "title": "Diabetes Academy – Managing Your Type 1 Diabetes",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

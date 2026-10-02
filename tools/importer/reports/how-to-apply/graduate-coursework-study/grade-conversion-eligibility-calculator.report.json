@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/graduate-coursework-study/grade-conversion-eligibility-calculator",
+  "path": "how-to-apply/graduate-coursework-study/grade-conversion-eligibility-calculator",
+  "timestamp": "2026-10-02T07:30:36.828Z",
+  "title": "Grade Conversion Eligibility Calculator",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "video-split"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

@@ -7,25 +7,52 @@
  * broadcast as an `audience-change` event. Page sections authored with section metadata
  * `Audience: <key>` (rendered as data-audience) and elements carrying an
  * `audience-<key>` class are shown only for the matching audience.
+ *
+ * Each switcher type (its set of option keys) persists under its own storage key, so
+ * choosing Organisations on a micro-credential leaves the course domestic/international
+ * choice alone.
  */
 
-const STORAGE_KEY = 'uom-audience';
+const LEGACY_STORAGE_KEY = 'uom-audience';
+
+// the course switcher predates per-type keys; it keeps the legacy key so that
+// returning visitors keep their choice
+const STORAGE_KEYS = {
+  'domestic|international': LEGACY_STORAGE_KEY,
+};
 
 function slugify(text) {
   return text.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
-function readStored() {
+function storageKeyFor(keys) {
+  const type = [...new Set(keys)].sort().join('|');
+  return STORAGE_KEYS[type] || `${LEGACY_STORAGE_KEY}:${type}`;
+}
+
+function readStored(storageKey) {
   try {
-    return localStorage.getItem(STORAGE_KEY);
+    return localStorage.getItem(storageKey);
   } catch (e) {
     return null;
   }
 }
 
-function store(key) {
+/**
+ * The stored choice for this switcher type. Before per-type keys every switcher wrote the
+ * legacy key, so a value there that belongs to this switcher's options is still honoured.
+ */
+function readChoice(storageKey, keys) {
+  const stored = slugify(readStored(storageKey) || '');
+  if (keys.includes(stored)) return stored;
+  if (storageKey === LEGACY_STORAGE_KEY) return '';
+  const legacy = slugify(readStored(LEGACY_STORAGE_KEY) || '');
+  return keys.includes(legacy) ? legacy : '';
+}
+
+function store(storageKey, key) {
   try {
-    localStorage.setItem(STORAGE_KEY, key);
+    localStorage.setItem(storageKey, key);
   } catch (e) {
     // storage unavailable, ignore
   }
@@ -70,9 +97,10 @@ export default function decorate(block) {
   if (!options.length) return;
 
   const keys = options.map((o) => o.key);
+  const storageKey = storageKeyFor(keys);
   const params = new URLSearchParams(window.location.search);
-  const requested = slugify(params.get('audience') || readStored() || '');
-  const current = keys.includes(requested) ? requested : keys[0];
+  const fromUrl = slugify(params.get('audience') || '');
+  const current = (keys.includes(fromUrl) && fromUrl) || readChoice(storageKey, keys) || keys[0];
 
   const fieldset = document.createElement('fieldset');
   fieldset.className = 'audience-switcher-group';
@@ -101,7 +129,7 @@ export default function decorate(block) {
     lbl.textContent = label;
     input.addEventListener('change', () => {
       if (!input.checked) return;
-      store(key);
+      store(storageKey, key);
       applyAudience(key, keys);
       // keep other switchers on the page in sync
       document.querySelectorAll(`.audience-switcher input[value="${key}"]`).forEach((other) => {

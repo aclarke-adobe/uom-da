@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/support",
+  "path": "support",
+  "timestamp": "2026-10-02T07:21:24.045Z",
+  "title": "Support centre | Future students",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards-icon",
+    "cards-tile",
+    "cards-icon",
+    "columns-split"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

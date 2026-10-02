@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/managing-compassion-fatigue-in-health-professionals",
+  "path": "find/short-courses/managing-compassion-fatigue-in-health-professionals",
+  "timestamp": "2026-10-02T07:13:05.238Z",
+  "title": "Managing Compassion Fatigue in Health Professionals",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

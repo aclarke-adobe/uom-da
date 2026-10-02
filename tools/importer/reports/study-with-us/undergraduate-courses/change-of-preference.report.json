@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/undergraduate-courses/change-of-preference",
+  "path": "study-with-us/undergraduate-courses/change-of-preference",
+  "timestamp": "2026-10-02T07:21:09.410Z",
+  "title": "Change of preference",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards-tile",
+    "hero",
+    "cards"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

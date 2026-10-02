@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/campus-and-facilities",
+  "path": "student-life/campus-and-facilities",
+  "timestamp": "2026-10-02T07:15:58.372Z",
+  "title": "Campus and facilities",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

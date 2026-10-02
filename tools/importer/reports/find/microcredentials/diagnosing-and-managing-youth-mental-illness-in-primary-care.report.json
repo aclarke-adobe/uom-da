@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/diagnosing-and-managing-youth-mental-illness-in-primary-care",
+  "path": "find/microcredentials/diagnosing-and-managing-youth-mental-illness-in-primary-care",
+  "timestamp": "2026-10-02T07:09:15.513Z",
+  "title": "Diagnosing and Managing Youth Mental Illness in Primary Care",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "columns",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits",
+  "droppedImages": ""
+}

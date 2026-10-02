@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/practical-methods-for-health-economic-evaluation",
+  "path": "find/short-courses/practical-methods-for-health-economic-evaluation",
+  "timestamp": "2026-10-02T07:13:50.377Z",
+  "title": "Practical Methods for Health Economic Evaluation",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "columns"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

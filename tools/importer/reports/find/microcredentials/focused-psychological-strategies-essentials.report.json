@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/focused-psychological-strategies-essentials",
+  "path": "find/microcredentials/focused-psychological-strategies-essentials",
+  "timestamp": "2026-10-02T07:09:33.079Z",
+  "title": "Focused Psychological Strategies Essentials - micro-credential",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits",
+  "droppedImages": ""
+}

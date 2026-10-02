@@ -1,5 +1,6 @@
 /*
- * Audience switcher (source #user-profile-audience-switcher, UoM DS .uom-radio).
+ * Audience switcher (source #user-profile-audience-switcher on courses and
+ * #page-short-course-audience-switcher on micro-credentials; both UoM DS .uom-radio).
  * White bar with a full-bleed bottom rule; the label and the radio group wrap onto
  * separate lines on narrow screens. Radios are drawn with the design-system look:
  * 20px ring, 12px navy dot when checked, pale cyan on hover, blue focus ring.

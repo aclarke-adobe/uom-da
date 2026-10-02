@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/online-courses",
+  "path": "study-with-us/online-courses",
+  "timestamp": "2026-10-02T07:30:34.321Z",
+  "title": "Online study | Find in-demand courses | University of Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "columns",
+    "search",
+    "hero",
+    "columns",
+    "cards"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

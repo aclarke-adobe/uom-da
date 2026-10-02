@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/professional-development/professional-development-for-individuals-support",
+  "path": "study-with-us/professional-development/professional-development-for-individuals-support",
+  "timestamp": "2026-10-02T07:21:01.157Z",
+  "title": "Professional development | Student support - The University of Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

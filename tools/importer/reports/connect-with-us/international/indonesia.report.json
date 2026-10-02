@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/connect-with-us/international/indonesia",
+  "path": "connect-with-us/international/indonesia",
+  "timestamp": "2026-10-02T07:08:43.181Z",
+  "title": "Indonesian International Student Information | Study at Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "columns",
+    "video",
+    "columns-split",
+    "accordion",
+    "cards-icon",
+    "quote",
+    "quote",
+    "accordion",
+    "columns-split"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

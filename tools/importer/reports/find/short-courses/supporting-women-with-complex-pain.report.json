@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/supporting-women-with-complex-pain",
+  "path": "find/short-courses/supporting-women-with-complex-pain",
+  "timestamp": "2026-10-02T07:14:18.676Z",
+  "title": "Supporting Women with Complex Pain",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "accordion"
+  ],
+  "fragments": "organisations-only-notice",
+  "droppedImages": ""
+}

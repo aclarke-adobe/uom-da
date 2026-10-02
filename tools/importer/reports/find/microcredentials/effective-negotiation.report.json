@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/effective-negotiation",
+  "path": "find/microcredentials/effective-negotiation",
+  "timestamp": "2026-10-02T07:09:26.185Z",
+  "title": "Effective Negotiation - micro-credential",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "columns",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits",
+  "droppedImages": ""
+}

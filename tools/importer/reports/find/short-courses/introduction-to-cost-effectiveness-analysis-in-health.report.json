@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/introduction-to-cost-effectiveness-analysis-in-health",
+  "path": "find/short-courses/introduction-to-cost-effectiveness-analysis-in-health",
+  "timestamp": "2026-10-02T07:12:42.652Z",
+  "title": "Introduction to Cost Effectiveness Analysis in Health",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

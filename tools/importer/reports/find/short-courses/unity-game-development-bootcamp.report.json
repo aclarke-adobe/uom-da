@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/unity-game-development-bootcamp",
+  "path": "find/short-courses/unity-game-development-bootcamp",
+  "timestamp": "2026-10-02T07:15:15.672Z",
+  "title": "Unity Game Development Bootcamp - Short Course",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

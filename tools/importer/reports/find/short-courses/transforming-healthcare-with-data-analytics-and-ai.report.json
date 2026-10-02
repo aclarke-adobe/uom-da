@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/transforming-healthcare-with-data-analytics-and-ai",
+  "path": "find/short-courses/transforming-healthcare-with-data-analytics-and-ai",
+  "timestamp": "2026-10-02T07:14:29.977Z",
+  "title": "Transforming Healthcare with Data Analytics and AI",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "quote",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

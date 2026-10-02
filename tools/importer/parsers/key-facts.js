@@ -32,6 +32,9 @@ const ICONS = {
   'entry requirements': 'entry-requirements',
   'entry schemes': 'entry-schemes',
   'english language requirements': 'english-language',
+  // section-landing short courses / micro-credentials (not used on course pages)
+  'start date': 'calendar',
+  'study mode': 'location',
 };
 
 function cleanText(el) {
@@ -83,9 +86,31 @@ export default function parse(element, { document }) {
   // --- fact rows ---
   let items = [...element.querySelectorAll('.key-facts-section__main--item')];
   if (!items.length) items = [...element.querySelectorAll('.key-facts-section__main > div')];
+  const landing = !!(element.parentElement && element.parentElement.id === 'main');
   items.forEach((item) => {
     const label = cleanText(item.querySelector('.key-facts-section__main--title, [class*="--title"]'));
     const value = item.querySelector('.key-facts-section__main--value, [class*="--value"]');
+    // section-landing partner-logo rows ("In collaboration with" / "Endorsed by" / "Co-designed with"):
+    // label | logo image(s). Only on the landing shape (#main > div.key-facts); course key facts
+    // (#main > div > div.key-facts) are unchanged. Empty placeholder items (&nbsp; label, no value) are skipped.
+    if (landing && label && value && !cleanText(value) && value.querySelector('img')) {
+      const logos = [...value.querySelectorAll('img')].map((img) => {
+        const src = img.getAttribute('src') || '';
+        if (!src || /^(data|blob):/.test(src)) return null;
+        const out = document.createElement('img');
+        out.src = src;
+        out.alt = img.getAttribute('alt') || '';
+        const p = document.createElement('p');
+        p.append(out);
+        return p;
+      }).filter(Boolean);
+      if (logos.length) {
+        const labelP = document.createElement('p');
+        labelP.textContent = label;
+        cells.push([[labelP], logos]);
+      }
+      return;
+    }
     if (!label || !value || !cleanText(value)) return;
     const icon = ICONS[label.toLowerCase()];
     const labelP = document.createElement('p');

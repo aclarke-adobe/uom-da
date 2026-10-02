@@ -31,7 +31,150 @@ function makeLink(a, text, document) {
   return link;
 }
 
+// ---------------------------------------------------------------- section-landing shapes
+// (mapping-notes "cards-tile shapes"; verified in block-context/cards-tile/instances/section-landing-*.html)
+//   fee tiers        #fees .grid > .cell (h3 + text; a.btn--text -> plain link)
+//   todolist         .todo-list__button-cards > a.btn-card > .btn-card__inner > .btn-card__label
+//   pathfinder       .grid > .cell > a.card (card--image: thumb + h4 + p; card--link: thumb + .card__header)
+//   textthreecolumn  .grid > .section__flex-items (h3 + p + a.btn--secondary / btn--text)
+//   focusbox path.   .card--pathfinder > .card__inner > a.btn + p
+// None of these classes occur on the homepage, whose two shapes (pathfinder-today, article cards) follow.
+
+function landingCta(a, document) {
+  const link = makeLink(a, cleanText(a) || cleanText({ textContent: a.getAttribute('aria-label') || '' }), document);
+  const p = document.createElement('p');
+  const cls = a.className || '';
+  if (/btn--text/.test(cls) || !/\bbtn\b/.test(cls)) p.append(link);
+  else {
+    const wrap = document.createElement(/btn--secondary/.test(cls) ? 'em' : 'strong');
+    wrap.append(link);
+    p.append(wrap);
+  }
+  return p;
+}
+
+function stripAll(el) {
+  [el, ...el.querySelectorAll('*')].forEach((n) => [...n.attributes].forEach((a) => { if (!/^(href|src|alt)$/.test(a.name)) n.removeAttribute(a.name); }));
+  return el;
+}
+
+/** Generic tile body: headings (as h3), paragraphs, lists, CTA links, in source order. */
+function tileBody(root, document, titleLink) {
+  const body = [];
+  const walk = (node) => {
+    [...node.childNodes].forEach((n) => {
+      if (n.nodeType === 3) { if (cleanText(n)) { const p = document.createElement('p'); p.textContent = cleanText(n); body.push(p); } return; }
+      if (n.nodeType !== 1) return;
+      if (n.matches('.card__thumb, img, picture, svg')) return;
+      if (n.matches('a.btn, a[class*="btn--"]')) { if (cleanText(n)) body.push(landingCta(n, document)); return; }
+      if (!cleanText(n)) return;
+      if (/^H[1-6]$/.test(n.tagName) || n.matches('.card__header, .btn-card__label')) {
+        // "57.41%<br>based on ATAR…": the figure stays the heading, the rest becomes a paragraph
+        const parts = n.querySelector('br')
+          ? n.innerHTML.split(/<br\s*\/?>/i).map((s) => cleanText({ textContent: s.replace(/<[^>]+>/g, ' ') })).filter(Boolean)
+          : [cleanText(n)];
+        const h = document.createElement('h3');
+        if (titleLink && !body.some((b) => b.tagName === 'H3')) h.append(makeLink(titleLink, parts[0], document));
+        else h.textContent = parts[0];
+        body.push(h);
+        parts.slice(1).forEach((t) => { const p = document.createElement('p'); p.textContent = t; body.push(p); });
+        return;
+      }
+      if (/^(P|UL|OL)$/.test(n.tagName)) {
+        const only = n.querySelector(':scope > a.btn, :scope > a[class*="btn--"]');
+        if (only && cleanText(only) === cleanText(n)) { body.push(landingCta(only, document)); return; }
+        body.push(stripAll(n));
+        return;
+      }
+      walk(n);
+    });
+  };
+  walk(root);
+  return body;
+}
+
+function tileImage(card, document) {
+  const holder = card.querySelector('.card__thumb');
+  if (!holder) return null;
+  const img = holder.querySelector('img');
+  let src = img ? (img.getAttribute('src') || '') : '';
+  if ((!src || /^(data|blob):/.test(src)) && holder.hasAttribute('data-excat-bg')) src = holder.getAttribute('data-excat-bg');
+  if (!src || /^(data|blob):/.test(src)) return null;
+  const out = document.createElement('img');
+  out.src = src.trim();
+  out.alt = holder.getAttribute('aria-label') || (img && img.getAttribute('alt')) || '';
+  return out;
+}
+
+function landingTiles(element, document) {
+  const cells = [];
+  // todolist button cards: iterate the inner wrappers (adjacent <a> siblings can merge in html2md)
+  const btnCards = [...element.querySelectorAll('.btn-card__inner')];
+  if (btnCards.length) {
+    btnCards.forEach((inner) => {
+      const a = inner.closest('a[href]');
+      const label = cleanText(inner.querySelector('.btn-card__label') || inner);
+      if (!label) return;
+      const p = document.createElement('p');
+      const strong = document.createElement('strong');
+      if (a) strong.append(makeLink(a, label, document)); else strong.textContent = label;
+      p.append(strong);
+      const rest = [...inner.children].filter((c) => !c.matches('.btn-card__label') && cleanText(c)).map((c) => { const q = document.createElement('p'); q.textContent = cleanText(c); return q; });
+      cells.push([[p, ...rest]]);
+    });
+    return cells;
+  }
+  // focusbox pathfinder: CTA button + description
+  const pathfinders = [...element.querySelectorAll('.card--pathfinder')];
+  if (pathfinders.length) {
+    pathfinders.forEach((card) => {
+      const body = [];
+      const inner = card.querySelector('.card__inner') || card;
+      [...inner.children].forEach((c) => {
+        if (c.matches('a[href]')) {
+          const p = document.createElement('p');
+          const strong = document.createElement('strong');
+          strong.append(makeLink(c, cleanText(c), document));
+          p.append(strong);
+          body.push(p);
+        } else if (cleanText(c)) body.push(stripAll(c));
+      });
+      if (body.length) cells.push([body]);
+    });
+    return cells;
+  }
+  // pathfinder link tiles: .cell > a.card (keyed on the cell wrapper)
+  const linkCards = [...element.querySelectorAll(':scope > .cell')].map((c) => c.querySelector(':scope > a.card[href]')).filter(Boolean);
+  if (linkCards.length) {
+    linkCards.forEach((card) => {
+      const body = tileBody(card, document, card);
+      if (!body.length) return;
+      const image = tileImage(card, document);
+      cells.push(image ? [[image], body] : [body]);
+    });
+    return cells;
+  }
+  // text columns (ct-textthreecolumn) and fee tiers (#fees .grid > .cell)
+  let cols = [...element.querySelectorAll(':scope > .section__flex-items')];
+  if (!cols.length && element.closest('#fees')) cols = [...element.querySelectorAll(':scope > .cell')];
+  if (cols.length) {
+    cols.forEach((col) => {
+      const body = tileBody(col, document, null);
+      if (body.length) cells.push([body]);
+    });
+    return cells;
+  }
+  return cells;
+}
+
 export default function parse(element, { document }) {
+  const landingCells = landingTiles(element, document);
+  if (landingCells.length) {
+    const block = WebImporter.Blocks.createBlock(document, { name: 'Cards (tile)', cells: landingCells });
+    element.replaceWith(block);
+    return;
+  }
+
   const cells = [];
 
   // Shape A: pathfinder tiles
@@ -41,11 +184,12 @@ export default function parse(element, { document }) {
     const a = item.querySelector('a[href]');
     const titleEl = item.querySelector('.pathfinder-today__link-title') || a;
     const title = cleanText(titleEl);
-    if (!a || !title) return;
+    if (!title) return;
     const body = [];
     const p = document.createElement('p');
     const strong = document.createElement('strong');
-    strong.append(makeLink(a, title, document));
+    // section-landing PD tiles (div.bg-inverted > div.pathfinder-today) are not links: bold title only
+    if (a) strong.append(makeLink(a, title, document)); else strong.textContent = title;
     p.append(strong);
     body.push(p);
     const desc = cleanText(item.querySelector('.pathfinder-today__link-description, [class*="description"]'));

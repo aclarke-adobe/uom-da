@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/school-visits-and-presentations",
+  "path": "connect-with-us/information-for-schools/australia-and-new-zealand/school-visits-and-presentations",
+  "timestamp": "2026-10-02T07:08:32.878Z",
+  "title": "School visits and presentations",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "notice"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

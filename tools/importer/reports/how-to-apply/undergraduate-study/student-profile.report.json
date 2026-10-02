@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/undergraduate-study/student-profile",
+  "path": "how-to-apply/undergraduate-study/student-profile",
+  "timestamp": "2026-10-02T07:15:51.547Z",
+  "title": "Student profile",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards-stat",
+    "cards-tile",
+    "cards-tile",
+    "cards"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

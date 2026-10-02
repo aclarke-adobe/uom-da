@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/life-at-melbourne",
+  "path": "student-life/life-at-melbourne",
+  "timestamp": "2026-10-02T07:16:31.891Z",
+  "title": "Life at Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards",
+    "columns-split",
+    "video-split",
+    "quote"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

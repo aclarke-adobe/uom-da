@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/pbs-specialist-forensic-disability-practice",
+  "path": "find/microcredentials/pbs-specialist-forensic-disability-practice",
+  "timestamp": "2026-10-02T07:10:15.796Z",
+  "title": "PBS: Specialist Forensic Disability Practice - professional development",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "organisations-only-notice micro-credential-benefits",
+  "droppedImages": ""
+}

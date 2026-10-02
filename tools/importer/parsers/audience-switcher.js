@@ -38,6 +38,10 @@ export default function parse(element, { document }) {
       return { text, key: input.getAttribute('value') || slugify(text) };
     });
   }
+  // section-landing short courses: radio values b2c / b2b are authored as the audienceContract keys
+  // (Section Metadata `Audience` individuals / organisations). Course pages use domestic/international.
+  const KEY_MAP = { b2c: 'individuals', b2b: 'organisations' };
+  options = options.map((o) => ({ ...o, key: KEY_MAP[o.key] || o.key }));
   options = options.filter((o) => o.text && o.key);
 
   if (!options.length) {

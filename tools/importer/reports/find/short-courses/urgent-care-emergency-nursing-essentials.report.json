@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/urgent-care-emergency-nursing-essentials",
+  "path": "find/short-courses/urgent-care-emergency-nursing-essentials",
+  "timestamp": "2026-10-02T07:15:18.527Z",
+  "title": "Urgent Care - Emergency Nursing: Essentials",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/study-fac/data/non-award/short-courses/transition-to-mental-health-nursing/Cathy.jpg"
+}

@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/health-inequality-measurement-concepts-methods-and-applications-3-days",
+  "path": "find/short-courses/health-inequality-measurement-concepts-methods-and-applications-3-days",
+  "timestamp": "2026-10-02T07:12:22.439Z",
+  "title": "Health Inequality Measurement: Concepts, Methods and Applications (3 days)",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

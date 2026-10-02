@@ -284,3 +284,27 @@
     flex: 2;
   }
 }
+
+/*
+ * landing pages (same scope as styles/landing.css): a notice alone in its section (the
+ * organisations-only notice under the short course header) is spaced by its own 24px
+ * margins, not the page's section rhythm
+ */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.notice-container:not(.grey, .sage, .light, .highlight, .cream, .navy, .dark, .teal):has(> .notice-wrapper:only-child > .notice.block:not(.notice-panel)) {
+  margin: 0;
+}
+
+/* landing pages: the source sets a notice's list as dash-led paragraphs (school visit guidelines) */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .notice:not(.notice-panel) .notice-body > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .notice:not(.notice-panel) .notice-body > ul > li {
+  margin: 0 0 24px;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .notice:not(.notice-panel) .notice-body > ul > li::before {
+  content: '- ';
+}

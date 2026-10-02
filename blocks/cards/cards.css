@@ -227,20 +227,7 @@
   margin-left: -9px;
 }
 
-/* link-list: single column of arrow links separated by rules */
-.cards.link-list > ul {
-  grid-template-columns: 1fr;
-  gap: 0;
-}
-
-.cards.link-list > ul > li {
-  border-bottom: 1px solid var(--uom-grey-border);
-}
-
-.cards.link-list .cards-card-body {
-  margin: 12px 0;
-}
-
+/* link-list: ruled arrow links (section-landing sublink menus, styled with the shapes below) */
 .cards.link-list .cards-card-body p {
   margin: 0;
 }
@@ -651,11 +638,6 @@ main .section:is(.grey, .light, .highlight):has(> .cards-wrapper:only-child > .c
     grid-template-columns: repeat(auto-fit, minmax(257px, 1fr));
   }
 
-  .cards.link-list > ul {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0 32px;
-  }
-
   /* fill whole rows: 3 / 6 cards in 3 columns, 4 / 8 cards in 4 columns */
   .cards.cards-cols-3:not(.link-list, .course-link, .people, .stat, .chips) > ul {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -793,3 +775,936 @@ main .section:is(.navy, .dark) .cards.tile p.cards-card-title a:hover {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
+
+/*
+ * Section-landing shapes. cards.js adds one `cards-<shape>` class per source component, derived
+ * from the authored cells only, so none of these rules reach the homepage or course-page cards.
+ * They refine the shared rules above, so they sit after them and repeat their selectors' weight.
+ */
+
+/* stylelint-disable no-descending-specificity */
+
+/* card lists inside a fragment's section sit in the host's default content, whose list indent must not apply */
+main .section .cards > ul {
+  padding: 0;
+}
+
+/* --- tile, text columns (fee tiers, ct-textthreecolumn text): plain heading over text, no rule */
+.cards.tile.cards-tile-text > ul > li {
+  border-top: 0;
+}
+
+.cards.tile.cards-tile-text .cards-card-body {
+  padding-top: 0;
+}
+
+.cards.tile.cards-tile-text .cards-card-body > :is(h2, h3, h4, h5, h6):first-child {
+  margin: 0 0 16px;
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-m);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+.cards.tile.cards-tile-text .cards-card-body > .cards-card-cta {
+  margin: 0 0 24px;
+  padding-top: 0;
+}
+
+.cards.tile.cards-tile-text .cards-card-cta a.button {
+  width: 100%;
+}
+
+/* --- tile, pathfinder photo / link tiles: navy cards, centred white title, whole card is the link */
+.cards.tile:is(.cards-tile-photo, .cards-tile-box) > ul {
+  --tile-cols: 1;
+  --tile-gap: 16px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--tile-gap);
+}
+
+.cards.tile:is(.cards-tile-photo, .cards-tile-box) > ul > li {
+  position: relative;
+  flex: 0 0 calc((100% - (var(--tile-cols) - 1) * var(--tile-gap)) / var(--tile-cols));
+  border-top: 0;
+  background-color: var(--uom-navy);
+  color: #fff;
+  text-align: center;
+}
+
+.cards.tile:is(.cards-tile-photo, .cards-tile-box) .cards-card-body {
+  padding: 24px;
+  font-weight: 600;
+}
+
+.cards.tile:is(.cards-tile-photo, .cards-tile-box) .cards-card-body > :where(h2, h3, h4, h5, h6).cards-card-title {
+  margin: 0 0 24px;
+  color: #fff;
+  font-size: var(--heading-font-size-m);
+}
+
+.cards.tile:is(.cards-tile-photo, .cards-tile-box) :where(h2, h3, h4, h5, h6).cards-card-title a:any-link {
+  display: inline;
+  color: #fff;
+}
+
+.cards.tile:is(.cards-tile-photo, .cards-tile-box) :where(h2, h3, h4, h5, h6).cards-card-title a::before {
+  content: none;
+}
+
+.cards.tile:is(.cards-tile-photo, .cards-tile-box) :where(h2, h3, h4, h5, h6).cards-card-title a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.cards.tile:is(.cards-tile-photo, .cards-tile-box) :where(h2, h3, h4, h5, h6).cards-card-title a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.cards.tile:is(.cards-tile-photo, .cards-tile-box) .cards-card-body > p:where(:not(.cards-card-cta)) {
+  margin: 0 0 24px;
+}
+
+.cards.tile:is(.cards-tile-photo, .cards-tile-box) .cards-card-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* link-only boxes: a single underlined title (or the bare text of a lost link) */
+.cards.tile.cards-tile-box .cards-card-body {
+  justify-content: center;
+  padding: 30px 24px;
+}
+
+.cards.tile.cards-tile-box:not(.cards-tile-desc) .cards-card-body > :where(h2, h3, h4, h5, h6).cards-card-title {
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
+}
+
+.cards.tile.cards-tile-box:not(.cards-tile-desc) :where(h2, h3, h4, h5, h6).cards-card-title a:any-link {
+  text-decoration: underline;
+}
+
+.cards.tile.cards-tile-box .cards-card-body:not(:has(> :not(p:only-child))) {
+  padding: 48px 24px;
+}
+
+.cards.tile.cards-tile-box .cards-card-body > p:only-child {
+  margin: 0;
+}
+
+/* photo tiles without a description: a single line title with a trailing arrow */
+.cards.tile.cards-tile-photo:not(.cards-tile-desc) .cards-card-body > :where(h2, h3, h4, h5, h6).cards-card-title {
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
+}
+
+.cards.tile.cards-tile-photo:not(.cards-tile-desc) :where(h2, h3, h4, h5, h6).cards-card-title a:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cards.tile.cards-tile-photo:not(.cards-tile-desc) :where(h2, h3, h4, h5, h6).cards-card-title a::before {
+  content: '';
+  flex-shrink: 0;
+  order: 1;
+  width: 16px;
+  height: 16px;
+  background-color: currentcolor;
+  mask: var(--arrow-icon) center / contain no-repeat;
+}
+
+/* --- tile, "personalised advice" to-do list: white link buttons beside the intro */
+.cards.tile.cards-tile-button > ul {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.cards.tile.cards-tile-button > ul > li {
+  position: relative;
+  border-top: 0;
+  background-color: var(--background-color);
+}
+
+.cards.tile.cards-tile-button .cards-card-body {
+  padding: 14px;
+}
+
+.cards.tile.cards-tile-button .cards-card-body > p.cards-card-title {
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
+}
+
+.cards.tile.cards-tile-button p.cards-card-title a:any-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3px;
+}
+
+.cards.tile.cards-tile-button p.cards-card-title a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.cards.tile.cards-tile-button p.cards-card-title a::after {
+  position: static;
+  flex-shrink: 0;
+  order: 1;
+  width: 16px;
+  height: 16px;
+  border-radius: 0;
+  background: currentcolor;
+  mask: var(--arrow-icon) center / contain no-repeat;
+}
+
+.cards.tile.cards-tile-button p.cards-card-title a:hover::after {
+  background: currentcolor;
+}
+
+/* --- tile, focus-box pathfinder: navy panels with an outlined button over a teal band */
+main .section.navy:has(> .cards-wrapper > .cards-tile-panel) {
+  background-color: var(--uom-teal-light);
+}
+
+.cards.tile.cards-tile-panel > ul {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.cards.tile.cards-tile-panel > ul > li {
+  min-height: 275px;
+  border-top: 0;
+  background-color: var(--uom-navy);
+  text-align: center;
+}
+
+.cards.tile.cards-tile-panel .cards-card-body,
+.cards.tile.cards-tile-panel .cards-card-body:has(> p.cards-card-title) {
+  align-items: center;
+  padding: 48px 24px 24px;
+}
+
+main .section .cards.tile.cards-tile-panel .cards-card-body > p.cards-card-title {
+  width: 100%;
+  min-height: 0;
+  margin: 0 0 24px;
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
+}
+
+.cards.tile.cards-tile-panel p.cards-card-title a:any-link {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  padding: 12px 16px 12px 12px;
+  box-shadow: inset 0 0 0 1px #fff;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.cards.tile.cards-tile-panel p.cards-card-title a::before {
+  content: '';
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  background-color: currentcolor;
+  mask: var(--arrow-icon) center / contain no-repeat;
+}
+
+.cards.tile.cards-tile-panel p.cards-card-title a::after {
+  content: none;
+}
+
+.cards.tile.cards-tile-panel p.cards-card-title a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.cards.tile.cards-tile-panel .cards-card-body > :where(p.cards-card-title) ~ p:where(:not(.cards-card-cta)) {
+  display: block;
+  margin: 0 0 24px;
+  color: #fff;
+}
+
+/* --- people, short-course profile: portrait beside an h3 name, bold role and bio */
+.cards.people.cards-people-profile > ul {
+  gap: 24px;
+}
+
+.cards.people.cards-people-profile > ul > li {
+  padding: 0;
+  border-bottom: 0;
+}
+
+.cards.people.cards-people-profile .cards-card-image {
+  float: none;
+  width: 160px;
+  margin: 0 0 16px;
+}
+
+.cards.people.cards-people-profile > ul > li img {
+  object-fit: cover;
+}
+
+.cards.people.cards-people-profile .cards-card-body > h3 {
+  margin: 0 0 8px;
+  font-size: var(--heading-font-size-m);
+}
+
+.cards.people.cards-people-profile .cards-card-body > p {
+  margin: 0 0 24px;
+}
+
+.cards.people.cards-people-profile .cards-card-body > p.cards-card-role {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* --- icon, line pictograms over the text columns (ct-textthreecolumn, micro-credential benefits) */
+.cards.icon.cards-icon-inline .cards-card-image.cards-card-icon .icon,
+.cards.icon.cards-icon-inline .cards-card-image.cards-card-icon .icon[class*="icon-uom-"] {
+  width: auto;
+  height: 48px;
+  margin: 0 0 8px -8px;
+}
+
+.cards.icon.cards-icon-inline > ul > li .cards-card-icon img {
+  width: auto;
+  height: 48px;
+}
+
+.cards.icon.cards-icon-inline .cards-card-body {
+  padding: 0;
+}
+
+.cards.icon.cards-icon-inline .cards-card-body > :is(h2, h3, h4, h5, h6) {
+  margin: 0 0 8px;
+}
+
+.cards.icon.cards-icon-inline .cards-card-body > p:where(:not(.cards-card-cta)) {
+  margin: 0 0 24px;
+}
+
+/* the micro-credential benefits band (no section style) uses the larger card title */
+main .section:not(.centered) .cards.icon.cards-icon-inline .cards-card-body > :is(h2, h3, h4, h5, h6) {
+  margin-bottom: 16px;
+  font-size: var(--heading-font-size-m);
+}
+
+/* a heading-less continuation grid reads as more rows of the same grid */
+.cards-wrapper:has(> .cards-icon-inline) + .cards-wrapper:has(> .cards-icon-inline) {
+  margin-top: 24px;
+}
+
+/* --- icon, fact tiles (ct-factscard): navy, serif figure, thin colour-cycling base rule */
+.cards.icon.cards-facts.cards-fact-tiles > ul > li {
+  border-bottom-width: 3px;
+  background-color: var(--uom-navy);
+  color: #fff;
+}
+
+.cards.icon.cards-facts.cards-fact-tiles > ul > li .cards-card-body {
+  padding: 24px;
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+
+.cards.icon.cards-facts.cards-fact-tiles .cards-card-body > h3 {
+  margin: 0 0 20px;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* the closing note under the fact tiles keeps the source's gap */
+.cards-wrapper:has(> .cards-fact-tiles) + .default-content-wrapper {
+  margin-top: 24px;
+}
+
+/* --- icon, document listing: natural-ratio brochure covers with a centred caption link */
+.cards.icon.cards-docs > ul {
+  grid-template-columns: 1fr;
+}
+
+.cards.icon.cards-docs > ul > li img {
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: fill;
+}
+
+.cards.icon.cards-docs .cards-card-body {
+  display: block;
+  padding: 0;
+  text-align: center;
+}
+
+.cards.icon.cards-docs .cards-card-body > p,
+.cards.icon.cards-docs .cards-card-body > .cards-card-cta {
+  margin: 0 0 24px;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: -0.0075em;
+}
+
+.cards.icon.cards-docs .cards-card-body a:any-link {
+  display: inline;
+  color: var(--link-color);
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.cards.icon.cards-docs .cards-card-cta a::before {
+  content: none;
+}
+
+/* --- icon, logo listing: greyscale logos wrapping in centred rows */
+.cards.icon.cards-logos > ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  text-align: center;
+}
+
+.cards.icon.cards-logos > ul > li:nth-child(n) {
+  box-sizing: border-box;
+  display: block;
+  width: 50%;
+  padding: 16px;
+}
+
+.cards.icon.cards-logos > ul > li img {
+  width: auto;
+  max-width: 100%;
+  max-height: 120px;
+  aspect-ratio: auto;
+  object-fit: fill;
+  filter: grayscale(100%);
+  opacity: 0.65;
+}
+
+/* --- stat, rankings (uom-stats-and-rankings): outlined tiles, serif figure, small caps label */
+.cards.stat.cards-stat-ranking > ul {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.cards.stat.cards-stat-ranking > ul > li,
+.cards.stat.cards-stat-ranking > ul > li:first-child {
+  padding: 64px 16px 16px;
+  border: 1px solid var(--uom-grey-border);
+  background-color: transparent;
+  box-shadow: none;
+  color: var(--heading-color);
+}
+
+main .section:is(.navy, .dark) .cards.stat.cards-stat-ranking > ul > li {
+  border-color: #48527a;
+  color: #fff;
+}
+
+.cards.stat.cards-stat-ranking .cards-stat-value {
+  margin-bottom: 8px;
+  font-size: var(--heading-font-size-xl);
+}
+
+.cards.stat.cards-stat-ranking .cards-card-body > .cards-stat-label {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+
+main .section:has(> .cards-wrapper > .cards-stat-ranking) > .cards-wrapper + .default-content-wrapper {
+  margin-top: 32px;
+  color: #cdcdcd;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* --- chips, course cards with a type line: left rule coloured by course type */
+.cards.chips > ul:not(:has(> .cards-card-link)) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+.cards.chips > ul > li:not(.cards-card-link) {
+  --chip-color: var(--uom-navy);
+}
+
+.cards.chips > ul > li.cards-chip-coursework {
+  --chip-color: var(--uom-sage);
+}
+
+.cards.chips > ul > li.cards-chip-short-course {
+  --chip-color: #be7440;
+}
+
+.cards.chips > ul > li.cards-chip-diploma {
+  --chip-color: var(--uom-cyan);
+}
+
+.cards.chips > ul > li.cards-chip-certificate {
+  --chip-color: #809daa;
+}
+
+.cards.chips > ul > li:not(.cards-card-link) .cards-card-body {
+  justify-content: center;
+  padding: 12px 16px;
+  border: 1px solid #bfced5;
+  border-left: 6px solid var(--chip-color);
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+.cards.chips > ul > li:not(.cards-card-link) .cards-card-body a:any-link {
+  display: inline;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: var(--body-font-size-m);
+  line-height: 1.3;
+}
+
+.cards.chips > ul > li:not(.cards-card-link) .cards-card-body > p:first-child {
+  margin-bottom: 6px;
+}
+
+.cards.chips .cards-card-body > p.cards-card-type {
+  color: #707070;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* --- link-list, sublink menus: ruled arrow links flowing down three columns */
+main .section .cards.link-list > ul {
+  gap: 0;
+  display: block;
+  padding-top: 1px;
+  column-gap: 24px;
+}
+
+.cards.link-list > ul > li {
+  display: block;
+  margin: -1px 0 0;
+  padding: 16px 16px 16px 0;
+  border-top: 1px solid var(--uom-grey-border);
+  border-bottom: 1px solid var(--uom-grey-border);
+  break-inside: avoid;
+}
+
+.cards.link-list .cards-card-body {
+  display: block;
+  margin: 0;
+}
+
+.cards.link-list .cards-card-body a:any-link {
+  display: flex;
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.cards.link-list .cards-card-body a::after {
+  content: '';
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  background-color: currentcolor;
+  mask: var(--arrow-icon) center / contain no-repeat;
+}
+
+/* --- default, feature panel: full-width button under each card */
+.cards.cards-feature .cards-card-cta a.button {
+  width: 100%;
+}
+
+/* --- default, news / event listing: white card, linked title, dated, right-aligned links */
+.cards.cards-news > ul > li {
+  background-color: var(--background-color);
+  box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
+}
+
+.cards.cards-news .cards-card-body {
+  padding: 16px;
+}
+
+.cards.cards-news .cards-card-body > h3.cards-card-title {
+  margin-bottom: 12px;
+}
+
+.cards.cards-news .cards-card-body > p.cards-card-date {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  padding-top: 8px;
+  border-top: 1px solid #e4e4e4;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.cards.cards-news .cards-card-body > p.cards-card-date::before {
+  content: '';
+  flex-shrink: 0;
+  align-self: center;
+  width: 16px;
+  height: 16px;
+  background-color: currentcolor;
+  mask: url('../../icons/calendar.svg') center / contain no-repeat;
+}
+
+.cards.cards-news .cards-card-body > .cards-card-date + p:where(:not(.cards-card-cta, .cards-card-tag)) {
+  margin: 8px 0 16px;
+  padding-top: 12px;
+  border-top: 1px solid #e4e4e4;
+}
+
+.cards.cards-news .cards-card-body > p.cards-card-tag {
+  align-self: flex-start;
+  margin: 16px 0;
+  padding: 4px 8px;
+  background-color: var(--uom-sage-pale);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.cards.cards-news .cards-card-body > .cards-card-cta {
+  align-self: flex-end;
+  padding-top: 0;
+  text-align: right;
+}
+
+.cards.cards-news .cards-card-body > .cards-card-cta + .cards-card-cta {
+  margin-top: 8px;
+}
+
+.cards.cards-news .cards-card-cta a:not(.button)::before {
+  content: none;
+}
+
+/* --- default, staff list: cut-out portrait over a ruled name / expertise box */
+.cards.cards-profile.cards-staff > ul > li {
+  position: relative;
+  background-color: transparent;
+}
+
+.cards.cards-profile.cards-staff > ul > li img {
+  height: 320px;
+  object-fit: contain;
+}
+
+.cards.cards-profile.cards-staff .cards-card-body {
+  padding: 24px;
+  border: 1px solid var(--uom-grey-border);
+  border-top: 0;
+}
+
+.cards.cards-profile.cards-staff .cards-card-body > h3 {
+  margin: 0;
+  color: var(--link-color);
+}
+
+.cards.cards-profile.cards-staff h3 a:any-link {
+  text-decoration: none;
+}
+
+.cards.cards-profile.cards-staff h3 a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.cards.cards-profile.cards-staff h3 a:hover {
+  text-decoration: underline;
+}
+
+.cards.cards-profile.cards-staff .cards-card-body > p:where(:not(.cards-card-cta)) {
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--uom-grey-border);
+}
+
+/* --- default, image listing: fixed-height photo over a link-styled title */
+.cards.cards-profile.cards-listing > ul > li {
+  background-color: transparent;
+}
+
+.cards.cards-profile.cards-listing > ul > li img {
+  height: 200px;
+}
+
+.cards.cards-profile.cards-listing .cards-card-body {
+  padding: 24px 0;
+}
+
+.cards.cards-profile.cards-listing .cards-card-body > h3 {
+  margin: 0;
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+@media (width >= 600px) {
+  .cards.tile.cards-tile-text > ul,
+  .cards.tile.cards-tile-text.cards-cols-3 > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cards.tile.cards-tile-photo:not(.cards-tile-desc) > ul,
+  .cards.tile.cards-tile-box > ul {
+    --tile-cols: 2;
+  }
+
+  .cards.tile.cards-tile-button > ul {
+    display: flex;
+    gap: 16px;
+  }
+
+  .cards.tile.cards-tile-button > ul > li {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 260px;
+  }
+
+  .cards.tile.cards-tile-button .cards-card-body,
+  .cards.tile.cards-tile-button .cards-card-body:has(> p.cards-card-title) {
+    padding: 20px 10px 25px 20px;
+  }
+
+  .cards.tile.cards-tile-button .cards-card-body > p.cards-card-title {
+    flex: 1 1 auto;
+    min-height: 0;
+    margin: 0;
+  }
+
+  .cards.tile.cards-tile-button p.cards-card-title a:any-link {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .cards.chips > ul:not(:has(> .cards-card-link)) {
+    grid-template-columns: repeat(auto-fit, calc((100% - 16px) / 2));
+    justify-content: center;
+  }
+
+  .cards.icon.cards-docs > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cards.icon:is(.cards-docs, .cards-icon-inline, .cards-fact-tiles) > ul > li:last-child:nth-child(odd) {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
+  }
+
+  .cards.icon.cards-logos > ul > li:nth-child(n) {
+    width: 28%;
+  }
+
+  .cards.cards-news .cards-card-body {
+    padding: 20px;
+  }
+
+  .cards.cards-news .cards-card-body > h3.cards-card-title {
+    margin-bottom: 16px;
+  }
+}
+
+@media (width >= 769px) {
+  .cards.tile.cards-tile-text .cards-card-body > :is(h2, h3, h4, h5, h6):first-child {
+    margin-bottom: 18px;
+  }
+
+  .cards.tile.cards-tile-button .cards-card-body,
+  .cards.tile.cards-tile-button .cards-card-body:has(> p.cards-card-title) {
+    padding: 20px 20px 25px;
+  }
+
+  .cards.tile.cards-tile-button > ul {
+    gap: 20px;
+  }
+
+  .cards.people.cards-people-profile > ul > li {
+    display: grid;
+    grid-template-columns: calc(37.5% - 27px) minmax(0, 1fr);
+    column-gap: 43px;
+    align-items: start;
+  }
+
+  .cards.people.cards-people-profile .cards-card-image {
+    width: auto;
+    margin: 0 0 16px;
+  }
+
+  .cards.people.cards-people-profile .cards-card-body {
+    margin-top: -6px;
+  }
+
+  .cards.icon.cards-icon-inline.cards-cols-3 > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cards.icon.cards-logos > ul > li:nth-child(n) {
+    width: 26%;
+  }
+
+  .cards.stat.cards-stat-ranking > ul {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  }
+
+  .cards.stat.cards-stat-ranking.cards-cols-3 > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cards.stat.cards-stat-ranking .cards-card-body > .cards-stat-label {
+    font-size: 14px;
+  }
+
+  main .section:has(> .cards-wrapper > .cards-stat-ranking) > .cards-wrapper + .default-content-wrapper {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  main .section:has(> .cards-wrapper > .cards-stat-ranking) > .cards-wrapper + .default-content-wrapper > * {
+    max-width: none;
+    margin-inline: auto;
+  }
+
+  .cards.chips > ul:not(:has(> .cards-card-link)) {
+    grid-template-columns: repeat(auto-fit, calc((100% - 48px) / 3));
+    gap: 24px;
+  }
+}
+
+@media (width >= 900px) {
+  .cards.tile.cards-tile-text .cards-card-cta a.button {
+    width: auto;
+  }
+
+  .cards.tile.cards-tile-photo:not(.cards-tile-desc) > ul {
+    --tile-cols: 3;
+  }
+
+  .cards.tile.cards-tile-photo:not(.cards-tile-desc).cards-cols-4 > ul {
+    --tile-cols: 4;
+  }
+
+  .cards.tile.cards-tile-photo.cards-tile-desc > ul {
+    --tile-cols: 2;
+  }
+
+  .cards.tile:is(.cards-tile-photo, .cards-tile-box) > ul {
+    --tile-gap: 24px;
+  }
+
+  .cards.tile.cards-tile-box.cards-cols-3 > ul {
+    --tile-cols: 3;
+  }
+
+  .cards.tile.cards-tile-box:not(.cards-tile-desc).cards-cols-4 > ul {
+    --tile-cols: 4;
+  }
+
+  .cards.tile.cards-tile-panel > ul,
+  .cards.tile.cards-tile-panel:has(p.cards-card-title) > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .cards.tile.cards-tile-panel > ul > li {
+    min-height: 281px;
+  }
+
+  .cards.tile.cards-tile-panel .cards-card-body,
+  .cards.tile.cards-tile-panel .cards-card-body:has(> p.cards-card-title) {
+    padding: 48px 48px 24px;
+  }
+
+  .cards.tile.cards-tile-panel p.cards-card-title a:any-link {
+    width: auto;
+  }
+
+  .cards.icon.cards-fact-tiles.cards-cols-3 > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cards.icon.cards-facts.cards-fact-tiles > ul > li:last-child:nth-child(odd) {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
+  }
+
+  .cards.icon.cards-docs > ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .cards.icon.cards-logos > ul > li:nth-child(n) {
+    width: 22%;
+  }
+
+  .cards.chips > ul:not(:has(> .cards-card-link)) {
+    grid-template-columns: repeat(auto-fit, calc((100% - 72px) / 4));
+  }
+
+  main .section .cards.link-list > ul {
+    display: grid;
+    grid-template-rows: repeat(var(--link-rows, 1), auto);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-flow: column;
+    align-content: start;
+    gap: 0 24px;
+  }
+
+  .cards:is(.cards-feature, .cards-news).cards-cols-2 > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cards.cards-profile.cards-staff.cards-cols-4 > ul:has(> li:nth-child(3)) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 1098px) {
+  .cards.icon.cards-logos > ul > li:nth-child(n) {
+    width: 20%;
+  }
+}
+
+/* stylelint-enable no-descending-specificity */

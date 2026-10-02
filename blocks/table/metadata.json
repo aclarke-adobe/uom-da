@@ -21,7 +21,12 @@
     "reuseCount": 14,
     "lastUsed": "2026-09-30T21:01:07.427Z"
   },
-  "options": [],
+  "options": [
+    {
+      "class": "compact",
+      "label": "Compact"
+    }
+  ],
   "memberVariantIds": [
     "v_8c3da60f62c7-2",
     "v_8a89054f6080",

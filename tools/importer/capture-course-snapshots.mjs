@@ -24,6 +24,15 @@
  *              data-option-value=".." data-option-index="N" [data-default="true"]>
  *           region outerHTML</div> ...
  *       </template>
+ *   - with the microcredential Individuals/Organisations switcher
+ *     (#page-short-course-audience-switcher, b2c default / b2b): the ORGANISATIONS view as
+ *       <template id="excat-organisations"> parts body (#main) | key-facts | hero
+ *       (#main > div.page-header-alt); <html data-excat-views="individuals,organisations">.
+ *   - click-to-play videos (#main .video | .uom-video with a play button, no iframe): play is
+ *     clicked after serialisation and the embed URL written as data-excat-video-src on the
+ *     player root (the snapshot keeps the poster + button, no iframe).
+ *   - non-course pages only: lazily applied backgrounds (div.full-width-image, empty/none
+ *     inline background-image) are scrolled into view and recorded as data-excat-bg="<url>".
  *
  * Like the analysis scrape (excat-scrape-webpage bd-scrape.js) the snapshot has
  * <script>/<noscript> stripped (so it is inert under page.setContent) and the same
@@ -35,6 +44,13 @@
  *   node tools/importer/capture-course-snapshots.mjs --urls <file> \
  *     [--concurrency 4] [--force] [--limit N] [--out tools/importer/bd-snapshots] \
  *     [--report tools/importer/reports/capture-course-snapshots.json] [--only-structure-with-options]
+ *     [--body-selector SEL]
+ *
+ * Body: the course wrapper #main div[data-test$='-page'] when it renders (course pages:
+ * unchanged behaviour); otherwise #main, then main (section landings and other non-course
+ * pages) — chosen by probing the rendered DOM, or forced with --body-selector. Hidden
+ * Optimizely variants (span.optimizely_experiment__block) are left in the snapshot; the
+ * import transformer removes the hidden one.
  *
  *   --only-structure-with-options  keep only /structure URLs whose EXISTING snapshot has a
  *     sample-plan / subject-program dropdown with >1 option and re-capture them (implies --force).
@@ -120,6 +136,8 @@ function usage(msg) {
   --limit N          only process the first N URLs of the list
   --out DIR          snapshot root (default tools/importer/bd-snapshots)
   --report FILE      JSON report (default tools/importer/reports/capture-course-snapshots.json)
+  --body-selector S  force the page body selector (default: probe the course wrapper
+                     #main div[data-test$='-page'], else #main, else main)
   --only-structure-with-options
                      re-capture (implies --force) only /structure URLs whose existing snapshot
                      has a sample-plan / subject-program dropdown with more than one option`);
@@ -148,6 +166,7 @@ function parseArgs(argv) {
     else if (a === '--limit') opts.limit = parseInt(next(), 10);
     else if (a === '--out') opts.out = resolve(next());
     else if (a === '--report') opts.report = resolve(next());
+    else if (a === '--body-selector') opts.bodySelector = next();
     else if (a === '--only-structure-with-options') { opts.onlyStructureWithOptions = true; opts.force = true; }
     else if (a === '--help' || a === '-h') usage();
     else usage(`unknown argument ${a}`);
@@ -182,7 +201,9 @@ function readUrls(file) {
  * images are read from the LIVE elements (computed style needs layout) via a parallel
  * walk — cloneNode(true) preserves element order. Returns null if selector misses.
  */
-function serializeFixed({ selector, sourceUrl, audiences }) {
+function serializeFixed({
+  selector, sourceUrl, audiences, views, markBg,
+}) {
   const BG_SEL = 'div, section, article, header, footer, aside, main, figure';
   const liveRoot = selector ? document.querySelector(selector) : document.documentElement;
   if (!liveRoot) return null;
@@ -244,6 +265,19 @@ function serializeFixed({ selector, sourceUrl, audiences }) {
     if (liveEls.length === cloneEls.length) {
       liveEls.forEach((el, i) => {
         const src = bgUrl(el);
+        if (markBg) {
+          // Record lazily-applied / unparseable backgrounds as data-excat-bg (non-course pages):
+          // div.full-width-image, an empty/none inline background-image, or a url the
+          // bd-scrape regex above can't read (e.g. url(" https://...") with a leading space).
+          const comp = window.getComputedStyle(el)?.getPropertyValue('background-image') || '';
+          const cm = comp.match(/url\(\s*['"]?\s*([^'")]*?)\s*['"]?\s*\)/);
+          if (cm && cm[1]) {
+            const im = (el.getAttribute('style') || '').match(/background-image\s*:\s*([^;]*)/i);
+            const inlineBg = im ? im[1].trim().toLowerCase() : null;
+            const lazy = inlineBg === '' || inlineBg === 'none';
+            if (el.matches('.full-width-image') || lazy || !src) cloneEls[i].setAttribute('data-excat-bg', cm[1]);
+          }
+        }
         if (src) {
           const img = document.createElement('img');
           img.src = src;
@@ -287,6 +321,7 @@ function serializeFixed({ selector, sourceUrl, audiences }) {
 
   if (selector) return clone.outerHTML;
   if (audiences) clone.setAttribute('data-excat-audiences', audiences);
+  if (views) clone.setAttribute('data-excat-views', views);
   const dt = document.doctype;
   const doctype = dt ? `<!DOCTYPE ${dt.name}${dt.publicId ? ` PUBLIC "${dt.publicId}"` : ''}${dt.systemId ? ` "${dt.systemId}"` : ''}>` : '';
   return doctype + clone.outerHTML;
@@ -313,12 +348,49 @@ async function waitForStableText(page, selector, { timeout = 20000, interval = 5
   return last;
 }
 
-async function waitForBodyRender(page) {
+// The "body" of a page: what is waited on, watched for re-renders and captured as the
+// international `body` part. Per page (workers share this module), set by waitForBodyRender.
+const bodyOf = (page) => page.excatBody ?? SEL.body;
+const isCourseBody = (page) => bodyOf(page) === SEL.body;
+// Fallbacks for non-course pages (section landings etc.), in order.
+const GENERIC_BODIES = ['#main', 'main'];
+
+/** Course flow, unchanged: wrapper attached, text stable, fee panel on fees tabs. */
+async function waitForCourseBody(page) {
+  page.excatBody = SEL.body;
   await page.waitForSelector(SEL.body, { state: 'attached', timeout: RENDER_TIMEOUT });
   await waitForStableText(page, SEL.body);
   if (await page.$(SEL.fees)) {
     await page.waitForSelector(SEL.feePanel, { state: 'attached', timeout: 15000 }).catch(() => {});
   }
+}
+
+/**
+ * Pick the body by probing what renders (never by URL):
+ *  1. --body-selector, if given;
+ *  2. the course wrapper `#main div[data-test$='-page']` -> the original course flow;
+ *  3. otherwise `#main`, then `main`, once it holds real (>=200 chars, stable) text —
+ *     re-checking for a late course wrapper before settling on the generic body.
+ */
+async function waitForBodyRender(page, forced) {
+  if (forced) {
+    page.excatBody = forced;
+    if (forced === SEL.body) { await waitForCourseBody(page); return; }
+    await page.waitForSelector(forced, { state: 'attached', timeout: RENDER_TIMEOUT });
+    await waitForStableText(page, forced);
+    return;
+  }
+  const first = await page.waitForFunction(
+    ([course, generic]) => (document.querySelector(course) ? course : generic.find((s) => document.querySelector(s))),
+    [SEL.body, GENERIC_BODIES],
+    { timeout: RENDER_TIMEOUT, polling: 250 },
+  ).then((h) => h.jsonValue());
+  if (first === SEL.body) { await waitForCourseBody(page); return; }
+  await waitForStableText(page, first);
+  if (await page.$(SEL.body)) { await waitForCourseBody(page); return; }
+  const len = await page.evaluate((s) => document.querySelector(s)?.innerText.length ?? 0, first);
+  if (len < 200) throw new Error(`${first} has no real content (${len} chars)`);
+  page.excatBody = first;
 }
 
 /**
@@ -346,7 +418,7 @@ async function waitForSettle(page, before) {
   // Re-render started (first mutation or changed text); identical-content pages just time out.
   await page.waitForFunction(
     ([s, prev]) => window.__excatMut.n > 0 || (document.querySelector(s)?.innerText || '') !== prev,
-    [SEL.body, before],
+    [bodyOf(page), before],
     { timeout: 10000, polling: 250 },
   ).catch(() => {});
   // ... and settled.
@@ -355,10 +427,10 @@ async function waitForSettle(page, before) {
     null,
     { timeout: 20000, polling: 250 },
   ).catch(() => {});
-  if (await page.$(SEL.fees)) {
+  if (isCourseBody(page) && await page.$(SEL.fees)) {
     await page.waitForSelector(SEL.feePanel, { state: 'attached', timeout: 15000 }).catch(() => {});
   }
-  await waitForStableText(page, SEL.body, { timeout: 10000, quietPolls: 2 });
+  await waitForStableText(page, bodyOf(page), { timeout: 10000, quietPolls: 2 });
   await sleep(500);
   await page.evaluate(() => window.__excatObs?.disconnect());
 }
@@ -366,7 +438,7 @@ async function waitForSettle(page, before) {
 const textOf = (page, selector) => page.evaluate((s) => document.querySelector(s)?.innerText || '', selector);
 
 async function switchAudience(page, audience) {
-  const before = await textOf(page, SEL.body);
+  const before = await textOf(page, bodyOf(page));
   await armMutationWatch(page);
   await page.click(audience === 'international' ? SEL.intlLabel : SEL.domLabel, { timeout: 10000 });
   await page.waitForFunction(
@@ -375,13 +447,110 @@ async function switchAudience(page, audience) {
     { timeout: 10000 },
   );
   await waitForSettle(page, before);
-  const after = await textOf(page, SEL.body);
+  const after = await textOf(page, bodyOf(page));
   return { changed: after !== before };
+}
+
+// Microcredential / short-course "Information for: Individuals | Organisations" switcher.
+const VIEW = {
+  switcher: '#page-short-course-audience-switcher',
+  checked: '#page-short-course-audience-switcher input[name=audience]:checked',
+  label: (v) => `label[for=page-short-course-audience-switcher-${v}]`,
+  parts: [['body', '#main'], ['key-facts', SEL.keyFacts], ['hero', '#main > div.page-header-alt']],
+};
+
+/** Switch the individuals (b2c) / organisations (b2b) view and wait for #main to settle. */
+async function switchView(page, value) {
+  const before = await textOf(page, bodyOf(page));
+  await armMutationWatch(page);
+  await page.click(VIEW.label(value), { timeout: 10000 });
+  await page.waitForFunction(
+    ([s, v]) => document.querySelector(s)?.value === v,
+    [VIEW.checked, value],
+    { timeout: 10000 },
+  );
+  await waitForSettle(page, before);
+  return { changed: (await textOf(page, bodyOf(page))) !== before };
+}
+
+// Click-to-play players: the YouTube URL only exists after play is clicked.
+// Two UI-kit generations are live: v17.9 (div.video > button.video__btn, iframe.video__embed)
+// and v17.11 (div.uom-video > button.uom-video-overlay__play-button, iframe.uom-video-embed__iframe).
+const VIDEO_PLAYER = '#main .video, #main .uom-video';
+const VIDEO_BUTTON = 'button.video__btn, button.uom-video-overlay__play-button';
+const VIDEO_IFRAME = 'iframe.video__embed, iframe.uom-video-embed__iframe, iframe[src*="youtube"], iframe[src*="vimeo"]';
+
+/** Tag click-to-play players (button, no iframe) with data-excat-video-idx; returns the count. */
+const tagVideoPlayers = (page) => page.evaluate(([p, btn, f]) => {
+  let n = 0;
+  document.querySelectorAll(p).forEach((el) => {
+    if (el.parentElement?.closest(p)) return;
+    if (el.querySelector(btn) && !el.querySelector(f)) {
+      el.setAttribute('data-excat-video-idx', String(n));
+      n += 1;
+    }
+  });
+  return n;
+}, [VIDEO_PLAYER, VIDEO_BUTTON, VIDEO_IFRAME]);
+
+/**
+ * Click each tagged player's play button, wait for its embed iframe, record the src and blank
+ * the iframe (stops playback). Runs after all serialisation, so the snapshot DOM is untouched.
+ * @returns {Promise<(string|null)[]>} embed URL per player index
+ */
+async function harvestVideoSrcs(page, count) {
+  const srcs = [];
+  for (let i = 0; i < count; i += 1) {
+    let src = null;
+    try {
+      await page.evaluate((f) => document.querySelectorAll(f).forEach((x) => x.setAttribute('data-excat-seen', '')), VIDEO_IFRAME);
+      const btnSel = VIDEO_BUTTON.split(', ').map((b) => `[data-excat-video-idx="${i}"] ${b}`).join(', ');
+      // Real click first; fall back to a DOM click when the button is covered/not "visible".
+      await page.click(btnSel, { timeout: 5000 })
+        .catch(() => page.$eval(btnSel, (b) => b.click()));
+      const h = await page.waitForFunction(([idx, f]) => {
+        const root = document.querySelector(`[data-excat-video-idx="${idx}"]`);
+        const inRoot = root?.querySelector(f);
+        const fresh = [...document.querySelectorAll(f)].find((x) => !x.hasAttribute('data-excat-seen'));
+        const el = inRoot || fresh;
+        const s = el?.getAttribute('src');
+        if (!s || s === 'about:blank') return null;
+        el.setAttribute('src', 'about:blank'); // stop playback
+        el.setAttribute('data-excat-seen', '');
+        return s;
+      }, [i, VIDEO_IFRAME], { timeout: 15000, polling: 250 });
+      src = await h.jsonValue();
+    } catch { /* recorded as null */ }
+    srcs.push(src);
+  }
+  return srcs;
+}
+
+/** Scroll lazily-styled background elements into view until their computed background is set. */
+async function primeLazyBackgrounds(page) {
+  const n = await page.evaluate(() => {
+    const els = [...document.querySelectorAll('#main div.full-width-image, #main [style*="background-image"]')]
+      .filter((el) => el.matches('.full-width-image') || /background-image\s*:\s*(none\s*)?(;|$)/i.test(el.getAttribute('style') || ''))
+      .slice(0, 40);
+    els.forEach((el, i) => el.setAttribute('data-excat-bg-idx', String(i)));
+    return els.length;
+  });
+  for (let i = 0; i < n; i += 1) {
+    const sel = `[data-excat-bg-idx="${i}"]`;
+    await page.$eval(sel, (el) => el.scrollIntoView({ block: 'center' })).catch(() => {});
+    await page.waitForFunction(
+      (s) => /url\(/.test(getComputedStyle(document.querySelector(s) || document.body).backgroundImage),
+      sel,
+      { timeout: 2500, polling: 250 },
+    ).catch(() => {});
+  }
+  await page.evaluate(() => document.querySelectorAll('[data-excat-bg-idx]').forEach((el) => el.removeAttribute('data-excat-bg-idx')));
+  return n;
 }
 
 /** Select option `index` of `selectSel` and wait for the region `rootSel` to re-render. */
 async function selectOptionAndSettle(page, selectSel, rootSel, index) {
-  const before = await textOf(page, SEL.body);
+  const before = await textOf(page, bodyOf(page));
   const rootBefore = await textOf(page, rootSel);
   await armMutationWatch(page);
   await page.selectOption(selectSel, { index }, { timeout: 10000 });
@@ -463,9 +632,9 @@ class CaptureError extends Error {
 
 const partTexts = (page) => page.evaluate((sels) => Object.fromEntries(
   Object.entries(sels).map(([k, s]) => [k, (document.querySelector(s)?.innerText || '').replace(/\s+/g, ' ')]),
-), { body: SEL.body, 'key-facts': SEL.keyFacts, 'hero-codes': SEL.heroCodes });
+), { body: bodyOf(page), 'key-facts': SEL.keyFacts, 'hero-codes': SEL.heroCodes });
 
-async function capture(context, url) {
+async function capture(context, url, { bodySelector = null } = {}) {
   const t0 = Date.now();
   const phases = {};
   let tp = t0;
@@ -499,17 +668,17 @@ async function capture(context, url) {
     if (st && st >= 400) throw new CaptureError(`HTTP ${st}`, { retryable: st >= 500 });
 
     try {
-      await waitForBodyRender(page);
+      await waitForBodyRender(page, bodySelector);
     } catch (err) {
       const late = await detectBlocked(page, { status }).catch(() => ({}));
       if (late.isError) throw new CaptureError(`BLOCKED_PAGE: ${late.type} — ${late.detected}`, { retryable: late.isBotProtection });
-      throw new CaptureError(`body did not render (${SEL.body}): ${err.message.split('\n')[0]}`);
+      throw new CaptureError(`body did not render (${page.excatBody || bodySelector || [SEL.body, ...GENERIC_BODIES].join(' | ')}): ${err.message.split('\n')[0]}`);
     }
     mark('render');
 
     await scrollToTriggerLazyLoad(page);
     await sleep(1000);
-    await waitForStableText(page, SEL.body, { timeout: 10000, quietPolls: 2 });
+    await waitForStableText(page, bodyOf(page), { timeout: 10000, quietPolls: 2 });
     mark('scroll');
 
     const hasSwitcher = Boolean(await page.$(SEL.switcher));
@@ -522,7 +691,27 @@ async function capture(context, url) {
       }
     }
     const audiences = hasSwitcher ? 'domestic,international' : 'domestic';
-    let html = await page.evaluate(serializeFixed, { selector: null, sourceUrl: url, audiences });
+
+    // Individuals/organisations switcher: make sure the default (b2c) view is showing.
+    const hasViewSwitcher = Boolean(await page.$(VIEW.switcher));
+    if (hasViewSwitcher) {
+      const v = await page.evaluate((s) => document.querySelector(s)?.value, VIEW.checked);
+      if (v && v !== 'b2c') {
+        await switchView(page, 'b2c');
+        domesticReset = true;
+      }
+    }
+    const views = hasViewSwitcher ? 'individuals,organisations' : null;
+    // Non-course pages only (course output stays byte-for-byte as before): lazily-applied
+    // backgrounds are scrolled into view and recorded as data-excat-bg.
+    const markBg = !isCourseBody(page);
+    let lazyBackgrounds = 0;
+    if (markBg) lazyBackgrounds = await primeLazyBackgrounds(page);
+    const videoCount = await tagVideoPlayers(page);
+
+    let html = await page.evaluate(serializeFixed, {
+      selector: null, sourceUrl: url, audiences, views, markBg,
+    });
     if (!html) throw new CaptureError('could not serialise document');
     mark('domestic');
 
@@ -538,12 +727,12 @@ async function capture(context, url) {
         const part = await page.evaluate(serializeFixed, { selector, sourceUrl: url });
         if (part) parts.push({ name, html: part });
       };
-      await add('body', SEL.body);
+      await add('body', bodyOf(page));
       await add('key-facts', SEL.keyFacts);
       await add('hero-codes', SEL.heroCodes);
       const titleOutside = await page.evaluate(
         ([b, t]) => { const tt = document.querySelector(t); return Boolean(tt && !document.querySelector(b)?.contains(tt)); },
-        [SEL.body, SEL.pageTitle],
+        [bodyOf(page), SEL.pageTitle],
       );
       if (titleOutside) await add('page-title', SEL.pageTitle);
       if (!parts.some((p) => p.name === 'body')) throw new CaptureError('international body missing after switch');
@@ -579,11 +768,42 @@ async function capture(context, url) {
       mark('options');
     }
 
+    // Organisations (b2b) view of microcredential / short-course pages.
+    let organisations = null;
+    if (hasViewSwitcher) {
+      const { changed } = await switchView(page, 'b2b');
+      const parts = [];
+      for (const [name, selector] of VIEW.parts) {
+        const part = await page.evaluate(serializeFixed, { selector, sourceUrl: url, markBg });
+        if (part) parts.push({ name, html: part });
+      }
+      if (!parts.some((p) => p.name === 'body')) throw new CaptureError('organisations body missing after switch');
+      html = insertBeforeBodyEnd(html, `<template id="excat-organisations" data-captured-at="${new Date().toISOString()}">${
+        parts.map((p) => `<div data-excat-part="${p.name}">${p.html}</div>`).join('')}</template>`);
+      organisations = { parts: parts.map((p) => p.name), changed };
+      await switchView(page, 'b2c').catch(() => {});
+      await deleteAudienceCookie(page); // fac-profile also stores "audience":"b2b"
+      mark('organisations');
+    }
+
+    // Click-to-play videos: write each embed URL onto its player root.
+    let videos = null;
+    if (videoCount) {
+      const srcs = await harvestVideoSrcs(page, videoCount);
+      html = html.replace(/ data-excat-video-idx="(\d+)"/g, (m, i) => (srcs[+i]
+        ? ` data-excat-video-src="${escAttr(srcs[+i])}"` : ''));
+      videos = { players: videoCount, resolved: srcs.filter(Boolean).length, srcs };
+      if (hasSwitcher || hasViewSwitcher) await deleteAudienceCookie(page);
+      mark('videos');
+    }
+    const bgCount = markBg ? (html.match(/ data-excat-bg="/g) || []).length : 0;
+
     html = stripScripts(html);
     const bytes = Buffer.byteLength(html, 'utf-8');
     if (bytes < MIN_SNAPSHOT_BYTES) throw new CaptureError(`snapshot suspiciously small (${bytes} bytes)`);
     return {
-      html, bytes, audiences, intl, domesticReset, phases, options,
+      html, bytes, audiences, intl, domesticReset, phases, options, body: bodyOf(page),
+      views, organisations, videos, backgrounds: markBg ? { primed: lazyBackgrounds, marked: bgCount } : null,
     };
   } finally {
     await page.close().catch(() => {});
@@ -719,7 +939,7 @@ async function main() {
           attempts = attempt;
           try {
             if (!browser || !browser.isConnected()) await connect();
-            res = await capture(context, item.url);
+            res = await capture(context, item.url, { bodySelector: opts.bodySelector });
             break;
           } catch (err) {
             lastErr = err;
@@ -746,10 +966,15 @@ async function main() {
             status: 'ok',
             file: item.file,
             audiences: res.audiences,
+            body: res.body,
             parts: res.intl?.parts ?? [],
             intlDiffers: res.intl ? res.intl.differs : null,
             domesticReset: res.domesticReset,
             options: res.options ?? null,
+            views: res.views,
+            organisations: res.organisations,
+            videos: res.videos,
+            backgrounds: res.backgrounds,
             phases: res.phases,
             bytes: res.bytes,
             ms,
@@ -764,7 +989,10 @@ async function main() {
             note += ` options=${Object.entries(res.options)
               .map(([k, v]) => `${k}:${v.map((o) => o.label).join('/')}`).join(';')}`;
           }
-          console.log(`${label(item.index)} ok       ${item.url} audiences=${res.audiences} bytes=${res.bytes}${note} ${(ms / 1000).toFixed(1)}s`);
+          if (res.organisations) note += ` views=${res.views}`;
+          if (res.videos) note += ` videos=${res.videos.resolved}/${res.videos.players}`;
+          if (res.backgrounds?.marked) note += ` bg=${res.backgrounds.marked}`;
+          console.log(`${label(item.index)} ok       ${item.url}${res.body === SEL.body ? '' : ` body=${res.body}`} audiences=${res.audiences} bytes=${res.bytes}${note} ${(ms / 1000).toFixed(1)}s`);
         } else if (lastErr && !stopping) {
           counts.failed += 1;
           const reason = lastErr.message.split('\n')[0];

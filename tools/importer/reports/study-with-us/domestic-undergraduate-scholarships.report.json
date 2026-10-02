@@ -1,0 +1,24 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/domestic-undergraduate-scholarships",
+  "path": "study-with-us/domestic-undergraduate-scholarships",
+  "timestamp": "2026-10-02T07:16:51.505Z",
+  "title": "Undergraduate scholarships",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards",
+    "columns",
+    "columns",
+    "cards-tile",
+    "columns",
+    "cards-tile",
+    "columns",
+    "cards-tile",
+    "cards",
+    "accordion",
+    "columns-split"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

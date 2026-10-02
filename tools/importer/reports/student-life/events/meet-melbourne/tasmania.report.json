@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/events/meet-melbourne/tasmania",
+  "path": "student-life/events/meet-melbourne/tasmania",
+  "timestamp": "2026-10-02T07:16:22.716Z",
+  "title": "Meet Melbourne Tasmania",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "columns",
+    "cards",
+    "cards-tile"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

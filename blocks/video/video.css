@@ -103,24 +103,237 @@
   margin-top: 4px;
 }
 
-/* shorts: portrait videos in a grid */
+/* landing: no trailing gap when the video closes a styled (padded) section */
+main .section:is(.centered, .grey) > .video-wrapper:last-child > .video {
+  margin-bottom: 0;
+}
+
+/* split + shorts: the UoM video overlay (play circle and a caption bar on the poster) */
+.video.split,
+.video.shorts {
+  margin-bottom: 0;
+}
+
+.video.split .video-intro h2,
+.video.shorts .video-intro h2 {
+  margin: 0 0 18px;
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* a lone intro link is an arrow text link */
+.video.split .video-intro p > a:only-child:any-link,
+.video.shorts .video-intro p > a:only-child:any-link {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.video.split .video-intro p > a:only-child::before,
+.video.shorts .video-intro p > a:only-child::before {
+  content: '';
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  background-color: currentcolor;
+  mask: var(--arrow-icon) center / contain no-repeat;
+}
+
+.video.split .video-intro p > a:only-child:hover,
+.video.shorts .video-intro p > a:only-child:hover {
+  text-decoration: underline;
+}
+
+.video.split .video-poster,
+.video.shorts .video-poster {
+  overflow: hidden;
+}
+
+.video.split .video-poster picture {
+  transition: scale 0.3s ease;
+}
+
+.video.split .video-poster:hover picture {
+  scale: 1.2;
+}
+
+/* split: navy tint over the poster */
+.video.split .video-poster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: var(--uom-navy-dark);
+  opacity: 0.3;
+}
+
+.video.split .video-item .video-play,
+.video.shorts .video-item .video-play {
+  width: 64px;
+  height: 64px;
+  z-index: 2;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 35%);
+}
+
+.video.split .video-play:hover,
+.video.shorts .video-play:hover {
+  background: rgb(255 255 255 / 50%);
+}
+
+.video.split .video-item .video-play::after,
+.video.shorts .video-item .video-play::after,
+.video .video-controls-icon {
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M320-203v-560l440 280-440 280Zm60-280Zm0 171 269-171-269-171v342Z'/%3E%3C/svg%3E") center / 100% no-repeat;
+}
+
+.video.split .video-item .video-play::after,
+.video.shorts .video-item .video-play::after {
+  content: '';
+  inset: 0;
+  border: 0;
+  background-color: #fff;
+  transform: none;
+}
+
+.video .video-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  padding-right: 12px;
+  background-color: var(--uom-navy-dark);
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: left;
+  transition: background-color 0.15s ease;
+}
+
+.video .video-poster:hover .video-controls {
+  background-color: var(--uom-teal-light);
+}
+
+.video .video-controls-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background-color: var(--uom-cyan);
+}
+
+.video .video-controls-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.video .video-controls-title {
+  padding-block: 4px;
+}
+
+.video .video-controls-duration {
+  flex-shrink: 0;
+  font-weight: 400;
+}
+
+/* shorts: portrait 9:16 video testimonials, a scrolling row on small screens */
 .video.shorts .video-frame {
   aspect-ratio: 9 / 16;
 }
 
-.video .video-grid {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+.video.shorts .video-grid {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+}
+
+.video.shorts .video-grid .video-item {
+  display: flex;
+  flex: 1 0 192px;
+  flex-direction: column;
+}
+
+/* YouTube thumbnails pillarbox portrait videos: crop the black edges */
+.video.shorts .video-poster img {
+  object-position: center;
+  scale: 1.04;
+}
+
+.video.shorts .video-caption {
+  margin-top: 0;
+}
+
+.video.shorts .video-caption .video-title {
+  margin: 24px 0 16px;
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-m);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.video.shorts .video-caption .video-name {
+  margin: 0 0 20px;
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
+}
+
+@media (width >= 600px) {
+  .video.shorts .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow-x: visible;
+  }
+}
+
+@media (width >= 769px) {
+  .video.split .video-intro h2,
+  .video.shorts .video-intro h2 {
+    margin-bottom: 20px;
+  }
+
+  .video .video-controls-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .video.shorts .video-grid {
+    gap: 24px;
+  }
+
+  .video.shorts .video-caption .video-title {
+    margin-bottom: 18px;
+  }
 }
 
 @media (width >= 900px) {
   .video.split.video-has-intro,
   .video.shorts.video-has-intro {
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-    gap: 72px;
+    gap: 24px;
     align-items: start;
   }
 
-  .video .video-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* shorts: intro takes a third, the two portrait videos share the rest */
+  .video.shorts.video-has-intro {
+    grid-template-columns: calc((100% - 24px) / 3) minmax(0, 1fr);
+  }
+
+  .video.split.video-has-intro .video-intro,
+  .video.shorts.video-has-intro .video-intro {
+    margin-right: 48px;
+  }
+
+  .video.split .video-intro > :last-child,
+  .video.shorts .video-intro > :last-child {
+    margin-bottom: 24px;
   }
 }

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life",
+  "path": "student-life",
+  "timestamp": "2026-10-02T07:15:55.414Z",
+  "title": "Student life",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "cards",
+    "cards-icon"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

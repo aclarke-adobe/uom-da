@@ -74,7 +74,11 @@
   font-weight: 700;
 }
 
-/* photo: full-bleed image behind a centred panel */
+/*
+ * photo (source ct-sectionfocus): a full-bleed photo band (cover, centred) with a white panel
+ * on the content grid; the panel's items are centred one by one, their text stays left-aligned.
+ * The band has no spacing of its own: neighbouring sections provide it.
+ */
 .callout.photo {
   margin: 0;
   background-color: var(--uom-sage-pale);
@@ -91,14 +95,26 @@
   justify-content: center;
 }
 
+main .section.callout-container:has(> .callout-wrapper > .callout.photo.callout-has-media.block) {
+  margin: 0;
+  padding: 0;
+}
+
+main .section > .callout-wrapper:has(> .callout.photo.callout-has-media.block) {
+  max-width: none;
+  padding: 0;
+}
+
 .callout.photo.callout-has-media {
   display: grid;
   background-color: transparent;
 }
 
-.callout.photo.callout-has-media .callout-media,
-.callout.photo.callout-has-media .callout-panel {
-  grid-area: 1 / 1;
+/* the photo fills the band; the panel alone sets its height */
+.callout.photo.callout-has-media .callout-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
 }
 
 .callout.photo .callout-media picture,
@@ -107,6 +123,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .callout.photo.callout-has-media .callout-panel {
@@ -114,16 +131,89 @@
   place-self: center;
   box-sizing: border-box;
   width: calc(100% - 32px);
+  max-width: var(--content-max-width);
   margin: 48px 0;
-  padding: 32px 24px;
+  padding: 32px;
+  gap: 0;
   background-color: var(--background-color);
+  text-align: start;
 }
 
-@media (width >= 900px) {
+.callout.photo.callout-has-media .callout-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.callout.photo.callout-has-media .callout-text > * {
+  max-width: var(--text-max-width);
+  margin: 0 0 24px;
+}
+
+.callout.photo.callout-has-media .callout-text > :is(h1, h2, h3, h4, h5, h6) {
+  margin-bottom: 20px;
+  font-size: var(--heading-font-size-xl);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.callout.photo.callout-has-media .callout-panel > .callout-text:last-child > :last-child {
+  margin-bottom: 0;
+}
+
+/* below 600px the CTA spans the panel */
+.callout.photo.callout-has-media .callout-actions {
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.callout.photo.callout-has-media .callout-actions p {
+  margin: 0;
+}
+
+.callout.photo.callout-has-media .callout-actions a.button:any-link {
+  display: flex;
+  justify-content: flex-start;
+  gap: 4px;
+  width: 100%;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: start;
+}
+
+.callout.photo.callout-has-media .callout-actions a.button::before {
+  width: 20px;
+  height: 20px;
+  align-self: center;
+}
+
+@media (width >= 600px) {
   .callout.photo.callout-has-media .callout-panel {
-    width: calc(100% - 200px);
-    max-width: var(--content-max-width);
+    margin: 64px 0;
+    padding: 48px;
+  }
+
+  .callout.photo.callout-has-media .callout-actions {
+    flex-direction: row;
+    align-self: center;
+  }
+
+  .callout.photo.callout-has-media .callout-actions a.button:any-link {
+    display: inline-flex;
+    width: auto;
+  }
+}
+
+@media (width >= 769px) {
+  .callout.photo.callout-has-media .callout-panel {
+    width: calc(100% - 64px);
+  }
+}
+
+@media (width >= 1304px) {
+  .callout.photo.callout-has-media .callout-panel {
     margin: 80px 0;
-    padding: 64px 48px;
   }
 }

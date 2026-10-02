@@ -59,7 +59,56 @@ function parseCourseQuote(root, document) {
   return text;
 }
 
+/* section-landing ct-testimonial .card-focus (verified in block-context/quote/instances/section-landing-*.html):
+ *   .testimonials: blockquote > p (quote) + cite (name) + .block-quotation__sub-cite (course line);
+ *                  .testimonials__img[data-excat-bg][aria-label] (portrait, often absent)
+ *   .alumni: p.alumni__title (role), h3.alumni__name, p.alumni__short-text (quote), .alumni__img[data-excat-bg]
+ * Row: quote paragraph(s) + "— {name}" + course/role line | portrait (only when there is one). */
+function bgPortrait(holder, document) {
+  if (!holder) return null;
+  const img = holder.querySelector('img');
+  let src = (holder.getAttribute('data-excat-bg') || '').trim();
+  if (!src && img) src = (img.getAttribute('src') || '').trim();
+  if (!src || /^(data|blob):/.test(src)) return null;
+  const out = document.createElement('img');
+  out.src = src;
+  out.alt = (holder.getAttribute('aria-label') || (img && img.getAttribute('alt')) || '').trim();
+  return out;
+}
+
+function parseCardFocus(element, document) {
+  const para = (t) => { const p = document.createElement('p'); p.textContent = t; return p; };
+  const text = [];
+  let holder = null;
+  const alumni = element.querySelector('.alumni');
+  if (alumni) {
+    const q = clean(alumni.querySelector('.alumni__short-text'));
+    if (q) text.push(para(q));
+    const name = clean(alumni.querySelector('.alumni__name'));
+    if (name) text.push(para(`— ${name}`));
+    const role = clean(alumni.querySelector('.alumni__title'));
+    if (role) text.push(para(role));
+    holder = alumni.querySelector('.alumni__img');
+  } else {
+    const bq = element.querySelector('blockquote') || element;
+    bq.querySelectorAll('p').forEach((p) => { if (!p.closest('cite') && clean(p)) text.push(para(clean(p))); });
+    const name = clean(bq.querySelector('cite'));
+    if (name) text.push(para(`— ${name.replace(/^[—–-]\s*/, '')}`));
+    const sub = clean(bq.querySelector('.block-quotation__sub-cite'));
+    if (sub) text.push(para(sub));
+    holder = element.querySelector('.testimonials__img');
+  }
+  if (!text.length) { element.replaceWith(...element.childNodes); return; }
+  const image = bgPortrait(holder, document);
+  const row = image ? [text, [image]] : [text];
+  element.replaceWith(WebImporter.Blocks.createBlock(document, { name: 'Quote', cells: [row] }));
+}
+
 export default function parse(element, { document }) {
+  if (element.matches('.card-focus') && element.querySelector('.testimonials, .alumni')) {
+    parseCardFocus(element, document);
+    return;
+  }
   const root = element.matches('blockquote') ? element : (element.querySelector('blockquote') || element);
 
   if (element.closest('.course-content, .course-section__main, [data-test$="-page"]')) {

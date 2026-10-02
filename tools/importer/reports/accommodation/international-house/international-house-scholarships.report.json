@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/accommodation/international-house/international-house-scholarships",
+  "path": "accommodation/international-house/international-house-scholarships",
+  "timestamp": "2026-10-02T07:07:39.051Z",
+  "title": "International House Scholarships | The University of Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "table",
+    "quote",
+    "quote"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

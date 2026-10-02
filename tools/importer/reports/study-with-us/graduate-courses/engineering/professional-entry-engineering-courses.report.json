@@ -1,0 +1,24 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/engineering/professional-entry-engineering-courses",
+  "path": "study-with-us/graduate-courses/engineering/professional-entry-engineering-courses",
+  "timestamp": "2026-10-02T07:17:25.264Z",
+  "title": "Professional entry engineering courses",
+  "template": "section-landing",
+  "blocks": [
+    "hero",
+    "cards-chips",
+    "cards-chips",
+    "cards-chips",
+    "cards-chips",
+    "cards-chips",
+    "cards-chips",
+    "cards-icon",
+    "columns-split",
+    "columns-split",
+    "quote",
+    "quote"
+  ],
+  "fragments": "personalised-advice",
+  "droppedImages": ""
+}

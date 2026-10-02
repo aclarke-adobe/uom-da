@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/urban-design-for-bushfire-resilient-homes",
+  "path": "find/microcredentials/urban-design-for-bushfire-resilient-homes",
+  "timestamp": "2026-10-02T07:10:47.477Z",
+  "title": "Urban Design for Bushfire-Resilient Homes micro-credential",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "columns",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits",
+  "droppedImages": ""
+}

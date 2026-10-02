@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/treaties-and-other-agreements",
+  "path": "find/microcredentials/treaties-and-other-agreements",
+  "timestamp": "2026-10-02T07:10:43.653Z",
+  "title": "Treaties and Other Agreements micro-credential",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "organisations-only-notice micro-credential-benefits who-you-will-learn-from-matthew-campbell",
+  "droppedImages": ""
+}

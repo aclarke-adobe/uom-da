@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/undergraduate-courses/high-school-guide",
+  "path": "study-with-us/undergraduate-courses/high-school-guide",
+  "timestamp": "2026-10-02T07:21:20.916Z",
+  "title": "High school student's guide to university",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards",
+    "quote",
+    "quote"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

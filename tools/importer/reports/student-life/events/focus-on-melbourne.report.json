@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/events/focus-on-melbourne",
+  "path": "student-life/events/focus-on-melbourne",
+  "timestamp": "2026-10-02T07:16:13.277Z",
+  "title": "Focus on Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards-icon",
+    "cards-icon"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

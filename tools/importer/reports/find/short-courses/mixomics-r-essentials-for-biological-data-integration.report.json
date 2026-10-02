@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/mixomics-r-essentials-for-biological-data-integration",
+  "path": "find/short-courses/mixomics-r-essentials-for-biological-data-integration",
+  "timestamp": "2026-10-02T07:13:21.474Z",
+  "title": "mixOmics online course - Short Course",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

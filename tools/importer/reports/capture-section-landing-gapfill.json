@@ -1,0 +1,1690 @@
+{
+  "generatedAt": "2026-10-02T02:24:58.470Z",
+  "urlsFile": "/backups/aclarke-adobe/uom-da/repo/tools/importer/reports/snapshot-gaps-section-landing-all.txt",
+  "concurrency": 4,
+  "lastRun": {
+    "total": 11,
+    "ok": 11,
+    "skipped": 0,
+    "failed": 0,
+    "wallSeconds": 82.8
+  },
+  "results": [
+    {
+      "url": "https://study.unimelb.edu.au/connect-with-us/high-school-programs/university-of-melbourne-extension-program",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/connect-with-us/high-school-programs/university-of-melbourne-extension-program.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 2,
+        "resolved": 2,
+        "srcs": [
+          "https://www.youtube.com/embed/9OiHfKKyhm0?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au",
+          "https://www.youtube.com/embed/Lq453oncJoQ?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 16623,
+        "challenge": 300,
+        "render": 2084,
+        "scroll": 9234,
+        "domestic": 402,
+        "videos": 1250
+      },
+      "bytes": 255268,
+      "ms": 31439,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:15:52.804Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/career-practitioner-resources",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/career-practitioner-resources.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/mD40XuNyXrg?autoplay=1&playsinline=1&rel=0&cc_load_policy=0&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 22352,
+        "challenge": 608,
+        "render": 2863,
+        "scroll": 5824,
+        "domestic": 438,
+        "videos": 692
+      },
+      "bytes": 195387,
+      "ms": 33544,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:24:09.278Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/melbourne-school-enrichment-program",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/melbourne-school-enrichment-program.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": null,
+      "backgrounds": {
+        "primed": 1,
+        "marked": 1
+      },
+      "phases": {
+        "goto": 26833,
+        "challenge": 833,
+        "render": 3002,
+        "scroll": 8200,
+        "domestic": 947
+      },
+      "bytes": 242728,
+      "ms": 40620,
+      "attempts": 1,
+      "worker": 4,
+      "capturedAt": "2026-10-02T02:16:01.995Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/accommodation",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/accommodation.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://youtube.com/embed/c37X_3JU2Wc?si=hAQb0XFqbhN9wAw_&autoplay=1&playsinline=1&rel=0&cc_load_policy=0&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 1
+      },
+      "phases": {
+        "goto": 21506,
+        "challenge": 592,
+        "render": 2551,
+        "scroll": 12802,
+        "domestic": 326,
+        "videos": 588
+      },
+      "bytes": 228961,
+      "ms": 39115,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-02T02:24:14.851Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/connect-with-us/international/china",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/connect-with-us/international/china.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": null,
+      "backgrounds": {
+        "primed": 1,
+        "marked": 3
+      },
+      "phases": {
+        "goto": 2523,
+        "challenge": 265,
+        "render": 2395,
+        "scroll": 12852,
+        "domestic": 515
+      },
+      "bytes": 250435,
+      "ms": 18684,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:16:12.165Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/connect-with-us/international/vietnam",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/connect-with-us/international/vietnam.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/ag2pGVs_rMM?autoplay=1&playsinline=1&rel=0&cc_load_policy=0&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 23048,
+        "challenge": 1717,
+        "render": 4107,
+        "scroll": 11260,
+        "domestic": 362,
+        "videos": 641
+      },
+      "bytes": 208812,
+      "ms": 41767,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-02T02:24:17.516Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/connect-with-us/international/india",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/connect-with-us/international/india.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": null,
+      "backgrounds": {
+        "primed": 1,
+        "marked": 2
+      },
+      "phases": {
+        "goto": 7986,
+        "challenge": 180,
+        "render": 3216,
+        "scroll": 14304,
+        "domestic": 772
+      },
+      "bytes": 246147,
+      "ms": 26697,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-02T02:16:28.025Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/connect-with-us/international/indonesia",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/connect-with-us/international/indonesia.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": null,
+      "backgrounds": {
+        "primed": 2,
+        "marked": 2
+      },
+      "phases": {
+        "goto": 5893,
+        "challenge": 243,
+        "render": 5599,
+        "scroll": 14427,
+        "domestic": 1372
+      },
+      "bytes": 244310,
+      "ms": 27829,
+      "attempts": 1,
+      "worker": 4,
+      "capturedAt": "2026-10-02T02:16:30.754Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/microcredentials/effective-leadership-communication",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/microcredentials/effective-leadership-communication.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": "individuals,organisations",
+      "organisations": {
+        "parts": [
+          "body",
+          "key-facts",
+          "hero"
+        ],
+        "changed": true
+      },
+      "videos": null,
+      "backgrounds": {
+        "primed": 2,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 4371,
+        "challenge": 298,
+        "render": 3344,
+        "scroll": 8567,
+        "domestic": 5870,
+        "organisations": 7605
+      },
+      "bytes": 274579,
+      "ms": 30203,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:16:43.036Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/microcredentials/effective-negotiation",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/microcredentials/effective-negotiation.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": "individuals,organisations",
+      "organisations": {
+        "parts": [
+          "body",
+          "key-facts",
+          "hero"
+        ],
+        "changed": true
+      },
+      "videos": null,
+      "backgrounds": {
+        "primed": 2,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 7919,
+        "challenge": 728,
+        "render": 2706,
+        "scroll": 9111,
+        "domestic": 5686,
+        "organisations": 7673
+      },
+      "bytes": 276921,
+      "ms": 34111,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-02T02:17:01.726Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/microcredentials/introduction-to-the-ethics-of-artificial-intelligence",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/microcredentials/introduction-to-the-ethics-of-artificial-intelligence.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": "individuals,organisations",
+      "organisations": {
+        "parts": [
+          "body",
+          "key-facts",
+          "hero"
+        ],
+        "changed": true
+      },
+      "videos": null,
+      "backgrounds": {
+        "primed": 2,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 5168,
+        "challenge": 539,
+        "render": 6111,
+        "scroll": 8084,
+        "domestic": 5627,
+        "organisations": 7446
+      },
+      "bytes": 271178,
+      "ms": 33325,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-02T02:17:02.695Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/microcredentials/leading-teams",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/microcredentials/leading-teams.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": "individuals,organisations",
+      "organisations": {
+        "parts": [
+          "body",
+          "key-facts",
+          "hero"
+        ],
+        "changed": true
+      },
+      "videos": null,
+      "backgrounds": {
+        "primed": 2,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 2023,
+        "challenge": 467,
+        "render": 2388,
+        "scroll": 9432,
+        "domestic": 6089,
+        "organisations": 7606
+      },
+      "bytes": 276557,
+      "ms": 28165,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:17:12.379Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/microcredentials/leading-change",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/microcredentials/leading-change.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": "individuals,organisations",
+      "organisations": {
+        "parts": [
+          "body",
+          "key-facts",
+          "hero"
+        ],
+        "changed": true
+      },
+      "videos": null,
+      "backgrounds": {
+        "primed": 2,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 5459,
+        "challenge": 862,
+        "render": 6296,
+        "scroll": 8893,
+        "domestic": 8776,
+        "organisations": 15042
+      },
+      "bytes": 274315,
+      "ms": 45748,
+      "attempts": 1,
+      "worker": 4,
+      "capturedAt": "2026-10-02T02:17:17.607Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/microcredentials/managing-strategic-performance",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/microcredentials/managing-strategic-performance.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": "individuals,organisations",
+      "organisations": {
+        "parts": [
+          "body",
+          "key-facts",
+          "hero"
+        ],
+        "changed": true
+      },
+      "videos": null,
+      "backgrounds": {
+        "primed": 2,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 3912,
+        "challenge": 697,
+        "render": 2785,
+        "scroll": 8069,
+        "domestic": 5957,
+        "organisations": 7455
+      },
+      "bytes": 266921,
+      "ms": 29014,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-02T02:17:31.884Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/microcredentials/performance-management",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/microcredentials/performance-management.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": "individuals,organisations",
+      "organisations": {
+        "parts": [
+          "body",
+          "key-facts",
+          "hero"
+        ],
+        "changed": true
+      },
+      "videos": null,
+      "backgrounds": {
+        "primed": 2,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 3465,
+        "challenge": 801,
+        "render": 4046,
+        "scroll": 8104,
+        "domestic": 5769,
+        "organisations": 8146
+      },
+      "bytes": 272225,
+      "ms": 30734,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-02T02:17:34.781Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/find/microcredentials/personal-effectiveness",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/find/microcredentials/personal-effectiveness.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": "individuals,organisations",
+      "organisations": {
+        "parts": [
+          "body",
+          "key-facts",
+          "hero"
+        ],
+        "changed": true
+      },
+      "videos": null,
+      "backgrounds": {
+        "primed": 2,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 2668,
+        "challenge": 615,
+        "render": 2462,
+        "scroll": 8368,
+        "domestic": 6245,
+        "organisations": 7707
+      },
+      "bytes": 274498,
+      "ms": 28196,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:17:41.607Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": null,
+      "backgrounds": {
+        "primed": 1,
+        "marked": 1
+      },
+      "phases": {
+        "goto": 11062,
+        "challenge": 1491,
+        "render": 5919,
+        "scroll": 9036,
+        "domestic": 1439
+      },
+      "bytes": 210631,
+      "ms": 29449,
+      "attempts": 1,
+      "worker": 4,
+      "capturedAt": "2026-10-02T02:17:48.065Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate/narrm-scholarship-program",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate/narrm-scholarship-program.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": null,
+      "backgrounds": {
+        "primed": 1,
+        "marked": 1
+      },
+      "phases": {
+        "goto": 4571,
+        "challenge": 236,
+        "render": 2111,
+        "scroll": 10606,
+        "domestic": 523
+      },
+      "bytes": 235264,
+      "ms": 18313,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-02T02:17:51.013Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate/narrm-scholarship-program/meet-our-narrm-scholars",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate/narrm-scholarship-program/meet-our-narrm-scholars.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 2,
+        "resolved": 2,
+        "srcs": [
+          "https://www.youtube.com/embed/Y62fs74kyLs?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au",
+          "https://www.youtube.com/embed/QsIN97Pkcqg?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 8599,
+        "challenge": 328,
+        "render": 2230,
+        "scroll": 6851,
+        "domestic": 324,
+        "videos": 1286
+      },
+      "bytes": 186994,
+      "ms": 19761,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-02T02:17:55.239Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/how-to-apply/graduate-coursework-study/grade-conversion-eligibility-calculator",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/how-to-apply/graduate-coursework-study/grade-conversion-eligibility-calculator.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://youtube.com/embed/OvQmgr5CkHA?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 2798,
+        "challenge": 267,
+        "render": 3133,
+        "scroll": 10926,
+        "domestic": 394,
+        "videos": 1024
+      },
+      "bytes": 188282,
+      "ms": 18672,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:18:01.003Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/student-life/clubs-societies-and-events",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/student-life/clubs-societies-and-events.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://youtube.com/embed/XeUhqpqkljw?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 28204,
+        "challenge": 501,
+        "render": 7380,
+        "scroll": 4893,
+        "domestic": 752,
+        "videos": 794
+      },
+      "bytes": 179549,
+      "ms": 43740,
+      "attempts": 1,
+      "worker": 4,
+      "capturedAt": "2026-10-02T02:24:19.475Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/student-life/events/webinars-aus-nz",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/student-life/events/webinars-aus-nz.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 3,
+        "resolved": 3,
+        "srcs": [
+          "https://www.youtube.com/embed/n-LuWnudq5Q?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au",
+          "https://www.youtube.com/embed/zh8FFAhIGlE?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au",
+          "https://www.youtube.com/embed/SifBmwsLyuc?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 5327,
+        "challenge": 245,
+        "render": 1995,
+        "scroll": 7833,
+        "domestic": 224,
+        "videos": 1286
+      },
+      "bytes": 187195,
+      "ms": 17201,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-02T02:18:09.312Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/student-life/living-in-melbourne",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/student-life/living-in-melbourne.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/jVxslxYiVww?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 2697,
+        "challenge": 282,
+        "render": 2559,
+        "scroll": 6254,
+        "domestic": 368,
+        "videos": 551
+      },
+      "bytes": 184481,
+      "ms": 12813,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:18:14.909Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/student-life/life-at-melbourne",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/student-life/life-at-melbourne.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/Zv4eaj0o64E?autoplay=1&playsinline=1&rel=0&cc_load_policy=0&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 1
+      },
+      "phases": {
+        "goto": 5425,
+        "challenge": 313,
+        "render": 4292,
+        "scroll": 7553,
+        "domestic": 765,
+        "videos": 653
+      },
+      "bytes": 185019,
+      "ms": 19590,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:24:29.615Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/domestic-undergraduate-scholarships",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/domestic-undergraduate-scholarships.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": null,
+      "backgrounds": {
+        "primed": 3,
+        "marked": 3
+      },
+      "phases": {
+        "goto": 5521,
+        "challenge": 217,
+        "render": 3785,
+        "scroll": 10995,
+        "domestic": 1501
+      },
+      "bytes": 203799,
+      "ms": 22252,
+      "attempts": 1,
+      "worker": 4,
+      "capturedAt": "2026-10-02T02:18:28.264Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/clinical-and-health-leadership",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/health/clinical-and-health-leadership.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/nqPxrZpa7k4?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 2495,
+        "challenge": 228,
+        "render": 2463,
+        "scroll": 8430,
+        "domestic": 310,
+        "videos": 671
+      },
+      "bytes": 198263,
+      "ms": 14708,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:18:30.503Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/critical-care-and-disaster-management",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/health/critical-care-and-disaster-management.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/jdAl_2RY0eA?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 3871,
+        "challenge": 797,
+        "render": 3453,
+        "scroll": 7888,
+        "domestic": 261,
+        "videos": 542
+      },
+      "bytes": 194958,
+      "ms": 17030,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-02T02:18:35.743Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/cancer-science-and-treatment",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/health/cancer-science-and-treatment.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/g4CCkRWu1C4?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 3479,
+        "challenge": 330,
+        "render": 3030,
+        "scroll": 7012,
+        "domestic": 345,
+        "videos": 5517
+      },
+      "bytes": 193614,
+      "ms": 19907,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-02T02:24:35.395Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/digital-health-and-biostatistics",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/health/digital-health-and-biostatistics.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/na-IDC-i_4s?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 1
+      },
+      "phases": {
+        "goto": 2672,
+        "challenge": 291,
+        "render": 2240,
+        "scroll": 7243,
+        "domestic": 368,
+        "videos": 630
+      },
+      "bytes": 188235,
+      "ms": 13540,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:18:45.259Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/dentistry-and-oral-health",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/health/dentistry-and-oral-health.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/C_DMpdJ1ae8?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 1
+      },
+      "phases": {
+        "goto": 4808,
+        "challenge": 1682,
+        "render": 4998,
+        "scroll": 7914,
+        "domestic": 400,
+        "videos": 615
+      },
+      "bytes": 191771,
+      "ms": 20681,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-02T02:24:38.876Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/medicine",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/health/medicine.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/StPQdbf1GvE?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 4719,
+        "challenge": 264,
+        "render": 1930,
+        "scroll": 8094,
+        "domestic": 190,
+        "videos": 579
+      },
+      "bytes": 186006,
+      "ms": 16013,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-02T02:18:55.184Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/health-research",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/health/health-research.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/gVjfEB3W250?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 1
+      },
+      "phases": {
+        "goto": 6862,
+        "challenge": 320,
+        "render": 3568,
+        "scroll": 7815,
+        "domestic": 354,
+        "videos": 757
+      },
+      "bytes": 197404,
+      "ms": 19835,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-02T02:18:56.240Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/mental-health-and-psychology",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/health/mental-health-and-psychology.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/ip8ZCGg124M?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 2395,
+        "challenge": 282,
+        "render": 2709,
+        "scroll": 9012,
+        "domestic": 385,
+        "videos": 617
+      },
+      "bytes": 209732,
+      "ms": 15515,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:19:01.409Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/physiotherapy-and-rehabilitation",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/health/physiotherapy-and-rehabilitation.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/dUqPraWOjYI?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 1
+      },
+      "phases": {
+        "goto": 5771,
+        "challenge": 604,
+        "render": 3581,
+        "scroll": 7865,
+        "domestic": 668,
+        "videos": 926
+      },
+      "bytes": 199833,
+      "ms": 19589,
+      "attempts": 1,
+      "worker": 4,
+      "capturedAt": "2026-10-02T02:24:40.093Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/study-social-work-and-gender-based-violence",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/health/study-social-work-and-gender-based-violence.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/m8SoSuJt_HY?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 2142,
+        "challenge": 217,
+        "render": 2267,
+        "scroll": 7008,
+        "domestic": 398,
+        "videos": 629
+      },
+      "bytes": 189296,
+      "ms": 12861,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:19:15.383Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/public-health",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/health/public-health.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 2,
+        "resolved": 2,
+        "srcs": [
+          "https://www.youtube.com/embed/RhX9FZxqG9Y?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au",
+          "https://www.youtube.com/embed/DIfaGiIpQKs?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 4360,
+        "challenge": 188,
+        "render": 2163,
+        "scroll": 11095,
+        "domestic": 253,
+        "videos": 1014
+      },
+      "bytes": 218813,
+      "ms": 19208,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-02T02:19:15.490Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/public-health/global-health",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/health/public-health/global-health.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/wftB4h8vnxA?autoplay=1&playsinline=1&rel=0&cc_load_policy=0&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 8666,
+        "challenge": 757,
+        "render": 6918,
+        "scroll": 7618,
+        "domestic": 596,
+        "videos": 1206
+      },
+      "bytes": 215768,
+      "ms": 26035,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:24:56.307Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/study-education",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/study-education.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://youtube.com/embed/vXI9iWsVwQ4?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 1
+      },
+      "phases": {
+        "goto": 3900,
+        "challenge": 520,
+        "render": 2785,
+        "scroll": 7844,
+        "domestic": 389,
+        "videos": 597
+      },
+      "bytes": 187324,
+      "ms": 16181,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-02T02:24:52.125Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/hansen-scholarship-program",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/hansen-scholarship-program.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 2,
+        "resolved": 2,
+        "srcs": [
+          "https://www.youtube.com/embed/r677kxh_bSw?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au",
+          "https://www.youtube.com/embed/aZGdUhiBggk?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 1,
+        "marked": 1
+      },
+      "phases": {
+        "goto": 2556,
+        "challenge": 230,
+        "render": 2438,
+        "scroll": 9512,
+        "domestic": 474,
+        "videos": 1215
+      },
+      "bytes": 235849,
+      "ms": 16541,
+      "attempts": 1,
+      "worker": 2,
+      "capturedAt": "2026-10-02T02:19:33.171Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/study-education/education",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/graduate-courses/study-education/education.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://youtube.com/embed/vXI9iWsVwQ4?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 1
+      },
+      "phases": {
+        "goto": 4430,
+        "challenge": 210,
+        "render": 2052,
+        "scroll": 14792,
+        "domestic": 462,
+        "videos": 655
+      },
+      "bytes": 210461,
+      "ms": 22867,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-02T02:19:38.976Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/hansen-scholarship-program/meet-our-hansen-scholars",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/hansen-scholarship-program/meet-our-hansen-scholars.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/Nnry91855EU?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 1
+      },
+      "phases": {
+        "goto": 6575,
+        "challenge": 562,
+        "render": 2751,
+        "scroll": 11186,
+        "domestic": 541,
+        "videos": 1243
+      },
+      "bytes": 186695,
+      "ms": 23566,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-02T02:19:41.110Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/professional-development/micro-credentials-and-short-courses-for-individuals",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/professional-development/micro-credentials-and-short-courses-for-individuals.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/Nku6XfznEz0?autoplay=1&playsinline=1&rel=0&cc_load_policy=0&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 5526,
+        "challenge": 860,
+        "render": 4696,
+        "scroll": 6460,
+        "domestic": 487,
+        "videos": 657
+      },
+      "bytes": 190451,
+      "ms": 18896,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-02T02:24:58.468Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/professional-development/for-organisations",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/professional-development/for-organisations.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://www.youtube.com/embed/4JEv9ylGclo?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 3671,
+        "challenge": 361,
+        "render": 2693,
+        "scroll": 11044,
+        "domestic": 549,
+        "videos": 864
+      },
+      "bytes": 217043,
+      "ms": 19459,
+      "attempts": 1,
+      "worker": 4,
+      "capturedAt": "2026-10-02T02:19:48.684Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/the-melbourne-curriculum",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/the-melbourne-curriculum.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 1,
+        "resolved": 1,
+        "srcs": [
+          "https://youtube.com/embed/PubbNsh5zyQ?autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 5883,
+        "challenge": 752,
+        "render": 2465,
+        "scroll": 8602,
+        "domestic": 428,
+        "videos": 845
+      },
+      "bytes": 220161,
+      "ms": 19291,
+      "attempts": 1,
+      "worker": 1,
+      "capturedAt": "2026-10-02T02:19:59.286Z",
+      "error": null
+    },
+    {
+      "url": "https://study.unimelb.edu.au/study-with-us/undergraduate-courses/change-of-preference/your-guide-to-starting-uni",
+      "status": "ok",
+      "file": "/backups/aclarke-adobe/uom-da/repo/tools/importer/bd-snapshots/study.unimelb.edu.au/study-with-us/undergraduate-courses/change-of-preference/your-guide-to-starting-uni.html",
+      "audiences": "domestic",
+      "body": "#main",
+      "parts": [],
+      "intlDiffers": null,
+      "domesticReset": false,
+      "options": null,
+      "views": null,
+      "organisations": null,
+      "videos": {
+        "players": 2,
+        "resolved": 2,
+        "srcs": [
+          "https://www.youtube.com/embed/d-WDhjKiUBo?feature=share&autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au",
+          "https://www.youtube.com/embed/MnFp4zB2zBE?feature=share&autoplay=1&playsinline=1&rel=0&modestbranding=1&cc_load_policy=1&controls=1&enablejsapi=1&origin=https%3A%2F%2Fstudy.unimelb.edu.au"
+        ]
+      },
+      "backgrounds": {
+        "primed": 0,
+        "marked": 0
+      },
+      "phases": {
+        "goto": 6264,
+        "challenge": 319,
+        "render": 2182,
+        "scroll": 11272,
+        "domestic": 916,
+        "videos": 2691
+      },
+      "bytes": 193651,
+      "ms": 24239,
+      "attempts": 1,
+      "worker": 3,
+      "capturedAt": "2026-10-02T02:20:06.068Z",
+      "error": null
+    }
+  ]
+}

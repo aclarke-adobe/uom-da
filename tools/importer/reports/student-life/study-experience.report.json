@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/study-experience",
+  "path": "student-life/study-experience",
+  "timestamp": "2026-10-02T07:16:44.865Z",
+  "title": "Study experience",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "video"
+  ],
+  "fragments": "",
+  "droppedImages": ""
+}

@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/microbial-genomics-dna-sequencing-basics",
+  "path": "find/microcredentials/microbial-genomics-dna-sequencing-basics",
+  "timestamp": "2026-10-02T07:10:09.828Z",
+  "title": "Microbial Genomics: DNA Sequencing Basics",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "quote",
+    "quote",
+    "columns",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits",
+  "droppedImages": ""
+}

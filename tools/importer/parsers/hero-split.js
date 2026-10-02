@@ -201,7 +201,83 @@ function parseCourseHeader(element, document) {
   element.replaceWith(block);
 }
 
+/**
+ * Section-landing page header (div.page-header-alt: Nuxt short courses / micro-credentials and
+ * Matrix ct-campaignbanner banners), verified in block-context/hero-split/instances/section-landing-*.html:
+ *   .page-header-alt__img img | .page-header-alt__content-inner >
+ *     a.page-header-alt__title-tag ("Short course" / "Micro-credential" tag link -> eyebrow <p><a>),
+ *     h1.page-header-alt__title, p.page-header-alt__introduction, .page-header-alt__actions a.btn…
+ * A later banner (an h1 already precedes it: the "banner-feature" sections) has its h1 demoted to h2.
+ * CTAs: a.btn -> <p><strong><a>, a.btn--secondary -> <em>, a.btn--text -> plain link.
+ */
+function parsePageHeaderAlt(element, document) {
+  const content = element.querySelector('.page-header-alt__content-inner, .page-header-alt__content') || element;
+  const textCell = [];
+  const tag = content.querySelector('.page-header-alt__title-tag, .title--overline');
+  if (tag && cleanText(tag)) {
+    const p = document.createElement('p');
+    if (tag.matches('a[href]')) {
+      const a = document.createElement('a');
+      a.href = tag.getAttribute('href').trim();
+      a.textContent = cleanText(tag);
+      p.append(a);
+    } else p.textContent = cleanText(tag);
+    textCell.push(p);
+  }
+  const title = content.querySelector('h1, h2, .page-header-alt__title');
+  if (title && cleanText(title)) {
+    const later = [...document.querySelectorAll('h1')].some((h) => h !== title && !element.contains(h)
+      && (h.compareDocumentPosition(element) & 4));
+    const h = document.createElement(later ? 'h2' : 'h1');
+    h.textContent = cleanText(title);
+    textCell.push(h);
+  }
+  content.querySelectorAll('p').forEach((p) => {
+    if (p === tag || p.closest('.page-header-alt__actions') || !cleanText(p)) return;
+    const out = document.createElement('p');
+    out.innerHTML = p.innerHTML.trim();
+    out.querySelectorAll('*').forEach((c) => [...c.attributes].forEach((a) => { if (a.name !== 'href') c.removeAttribute(a.name); }));
+    textCell.push(out);
+  });
+  content.querySelectorAll('.page-header-alt__actions a[href]').forEach((a) => {
+    if (!cleanText(a)) return;
+    if (/btn--text/.test(a.className) || !/\bbtn\b/.test(a.className)) {
+      const link = document.createElement('a');
+      link.href = a.getAttribute('href').trim();
+      link.textContent = cleanText(a);
+      const p = document.createElement('p');
+      p.append(link);
+      textCell.push(p);
+    } else textCell.push(ctaFrom(a, document));
+  });
+  if (!textCell.length) {
+    element.replaceWith(...element.childNodes);
+    return;
+  }
+  const holder = element.querySelector('.page-header-alt__img');
+  let image = null;
+  if (holder) {
+    const img = holder.querySelector('img');
+    let src = img ? (img.getAttribute('src') || img.getAttribute('data-src') || '') : '';
+    if ((!src || /^(data|blob):/.test(src)) && holder.querySelector('[data-excat-bg]')) src = holder.querySelector('[data-excat-bg]').getAttribute('data-excat-bg');
+    if (src && !/^(data|blob):/.test(src)) {
+      image = document.createElement('img');
+      image.src = src.trim();
+      image.alt = (img && img.getAttribute('alt')) || '';
+    }
+  }
+  const cells = [image ? [textCell, [image]] : [textCell]];
+  const block = WebImporter.Blocks.createBlock(document, { name: 'Hero (split)', cells });
+  element.replaceWith(block);
+}
+
 export default function parse(element, { document }) {
+  // --- Section-landing page header (div.page-header-alt) ---
+  if (element.matches('.page-header-alt')) {
+    parsePageHeaderAlt(element, document);
+    return;
+  }
+
   // --- Course-detail page header (div.course-header) ---
   if (element.matches('.course-header') || element.querySelector(':scope > .course-header__inner')) {
     parseCourseHeader(element, document);

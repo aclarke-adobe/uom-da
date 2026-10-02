@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/performance-management",
+  "path": "find/microcredentials/performance-management",
+  "timestamp": "2026-10-02T07:10:19.156Z",
+  "title": "Performance Management - micro-credential",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts",
+    "columns-overlap",
+    "columns",
+    "cards-tile",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "micro-credential-benefits who-you-will-learn-from-belinda-allen",
+  "droppedImages": ""
+}

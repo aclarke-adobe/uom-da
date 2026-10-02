@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/critical-care-and-disaster-management",
+  "path": "study-with-us/graduate-courses/health/critical-care-and-disaster-management",
+  "timestamp": "2026-10-02T07:17:56.584Z",
+  "title": "Critical care and disaster management",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "video-split",
+    "accordion",
+    "accordion",
+    "columns-overlap",
+    "video"
+  ],
+  "fragments": "personalised-advice",
+  "droppedImages": ""
+}

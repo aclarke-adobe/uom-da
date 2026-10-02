@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/short-courses/neurological-rehabilitation-elearning",
+  "path": "find/short-courses/neurological-rehabilitation-elearning",
+  "timestamp": "2026-10-02T07:13:31.711Z",
+  "title": "Neurological Rehabilitation eLearning",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-tile",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0036/154998/rehab9.jpg https://matrix-cms.unimelb.edu.au/__data/assets/image/0037/154999/rehab10.jpg https://matrix-cms.unimelb.edu.au/__data/assets/image/0011/155000/rehab11.jpg https://matrix-cms.unimelb.edu.au/__data/assets/image/0012/155001/rehab12.jpg https://matrix-cms.unimelb.edu.au/__data/assets/image/0013/155002/rehab13.jpg https://matrix-cms.unimelb.edu.au/__data/assets/image/0014/155003/rehab14.jpg"
+}

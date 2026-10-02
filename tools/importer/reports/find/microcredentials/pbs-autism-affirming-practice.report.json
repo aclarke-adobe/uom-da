@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/microcredentials/pbs-autism-affirming-practice",
+  "path": "find/microcredentials/pbs-autism-affirming-practice",
+  "timestamp": "2026-10-02T07:10:13.068Z",
+  "title": "PBS: Autism Affirming Practice - University of Melbourne",
+  "template": "section-landing",
+  "blocks": [
+    "hero-split",
+    "key-facts",
+    "columns-overlap",
+    "cards-people",
+    "columns",
+    "accordion"
+  ],
+  "fragments": "organisations-only-notice micro-credential-benefits",
+  "droppedImages": ""
+}

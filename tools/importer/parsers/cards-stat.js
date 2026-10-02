@@ -80,7 +80,41 @@ function statRows(container, document) {
   return rows;
 }
 
+/**
+ * Section-landing stats and rankings (div.ct-statsrankings ul.uom-stats-and-rankings__stats), verified in
+ * block-context/cards-stat/instances/section-landing-*.html:
+ *   li.uom-stats-and-rankings__stat > .uom-stat > .uom-stat__icon-inline (decorative svg),
+ *     .uom-stat__content > .uom-stat__title (figure) + .uom-stat__text (caption)
+ * Row (1 cell): <p><strong>{figure}</strong></p><p>{caption}</p>. The citation
+ * (.uom-stats-and-rankings__citation) sits outside the instance and stays default content.
+ */
+function landingStatRows(container, document) {
+  const rows = [];
+  container.querySelectorAll('.uom-stat').forEach((stat) => {
+    const figure = cleanText(stat.querySelector('.uom-stat__title'));
+    const caption = cleanText(stat.querySelector('.uom-stat__text'));
+    if (!figure && !caption) return;
+    const cell = [];
+    if (figure) {
+      const p = document.createElement('p');
+      const strong = document.createElement('strong');
+      strong.textContent = figure;
+      p.append(strong);
+      cell.push(p);
+    }
+    if (caption) cell.push(para(caption, document));
+    rows.push([cell]);
+  });
+  return rows;
+}
+
 export default function parse(element, { document }) {
+  if (element.querySelector('.uom-stat')) {
+    const rows = landingStatRows(element, document);
+    if (!rows.length) { element.replaceWith(...element.childNodes); return; }
+    element.replaceWith(WebImporter.Blocks.createBlock(document, { name: 'Cards', variants: ['stat'], cells: rows }));
+    return;
+  }
   const cells = statRows(element, document);
   if (!cells.length) {
     element.replaceWith(...element.childNodes);
