@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-wellbeing-science",
   "path": "find/courses/graduate/professional-certificate-in-wellbeing-science",
-  "timestamp": "2026-10-01T12:39:32.296Z",
+  "timestamp": "2026-10-03T09:55:36.876Z",
   "title": "Professional Certificate in Wellbeing Science - The University of Melbourne",
   "template": "course-detail",
   "blocks": [
@@ -13,5 +13,5 @@
     "video",
     "columns"
   ],
-  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0030/52986/Prof.jpg"
+  "droppedImages": ""
 }

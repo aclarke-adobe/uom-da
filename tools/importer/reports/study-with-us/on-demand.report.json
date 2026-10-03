@@ -2,12 +2,13 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/study-with-us/on-demand",
   "path": "study-with-us/on-demand",
-  "timestamp": "2026-10-03T07:24:59.224Z",
+  "timestamp": "2026-10-03T09:49:10.419Z",
   "title": "Watch UniMelb On-Demand videos: Explore courses, careers and more",
   "template": "section-landing",
   "blocks": [
     "hero",
-    "columns-text-column"
+    "columns-text-column",
+    "video-library"
   ],
   "fragments": "",
   "droppedImages": ""

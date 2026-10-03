@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/find/courses/graduate/specialist-certificate-in-implementation-science",
   "path": "find/courses/graduate/specialist-certificate-in-implementation-science",
-  "timestamp": "2026-10-01T12:45:37.763Z",
+  "timestamp": "2026-10-03T09:56:42.938Z",
   "title": "Specialist Certificate in Implementation Science - The University of Melbourne",
   "template": "course-detail",
   "blocks": [
@@ -12,5 +12,5 @@
     "key-facts",
     "columns"
   ],
-  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0026/108782/Narrative-therapy.jpg"
+  "droppedImages": ""
 }

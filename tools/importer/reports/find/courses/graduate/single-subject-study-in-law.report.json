@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/find/courses/graduate/single-subject-study-in-law",
   "path": "find/courses/graduate/single-subject-study-in-law",
-  "timestamp": "2026-10-01T12:40:17.087Z",
+  "timestamp": "2026-10-03T09:55:45.577Z",
   "title": "Single Subject Study in Law - The University of Melbourne",
   "template": "course-detail",
   "blocks": [
@@ -13,5 +13,5 @@
     "video",
     "columns"
   ],
-  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0019/133345/MLM-2020-1.jpg"
+  "droppedImages": ""
 }

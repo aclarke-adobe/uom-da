@@ -466,10 +466,12 @@ var CustomImportScript = (() => {
     let items = [...element.querySelectorAll(".key-facts-section__main--item")];
     if (!items.length) items = [...element.querySelectorAll(".key-facts-section__main > div")];
     const landing = !!(element.parentElement && element.parentElement.id === "main");
+    let logoRow = null;
     items.forEach((item) => {
       const label = cleanText4(item.querySelector('.key-facts-section__main--title, [class*="--title"]'));
       const value = item.querySelector('.key-facts-section__main--value, [class*="--value"]');
-      if (landing && label && value && !cleanText4(value) && value.querySelector("img")) {
+      const logoItem = landing && value && !cleanText4(value) && value.querySelector("img");
+      if (logoItem && (label || logoRow)) {
         const logos = [...value.querySelectorAll("img")].map((img) => {
           const src = img.getAttribute("src") || "";
           if (!src || /^(data|blob):/.test(src)) return null;
@@ -480,13 +482,17 @@ var CustomImportScript = (() => {
           p.append(out);
           return p;
         }).filter(Boolean);
-        if (logos.length) {
+        if (logos.length && !label) {
+          logoRow.push(...logos);
+        } else if (logos.length) {
           const labelP2 = document2.createElement("p");
           labelP2.textContent = label;
-          cells.push([[labelP2], logos]);
+          logoRow = logos;
+          cells.push([[labelP2], logoRow]);
         }
         return;
       }
+      if (label) logoRow = null;
       if (!label || !value || !cleanText4(value)) return;
       const icon = ICONS[label.toLowerCase()];
       const labelP = document2.createElement("p");
@@ -962,7 +968,8 @@ var CustomImportScript = (() => {
     const title = clean(heading2);
     if (title) {
       const h = document2.createElement("h3");
-      const titleLink = heading2.matches("a[href]") ? heading2 : heading2.querySelector("a[href]");
+      const wrapping = heading2.parentElement && heading2.parentElement.closest("a[href]");
+      const titleLink = heading2.matches("a[href]") ? heading2 : heading2.querySelector("a[href]") || (wrapping && card.contains(wrapping) ? wrapping : null);
       const href = titleLink && titleLink.getAttribute("href") || cardHref;
       if (href) h.append(landingLink(href, title, document2));
       else h.textContent = title;
@@ -1002,7 +1009,13 @@ var CustomImportScript = (() => {
     });
     if (!titleHref && !body.some((b) => b.querySelector && b.querySelector("a"))) {
     }
-    const image = pickImage(card, document2);
+    let image = pickImage(card, document2);
+    const bgHolder = image ? null : [card, ...card.querySelectorAll("[data-excat-bg]")].find((el) => (el.getAttribute("data-excat-bg") || "").trim());
+    if (bgHolder) {
+      image = document2.createElement("img");
+      image.src = bgHolder.getAttribute("data-excat-bg").trim();
+      image.alt = (bgHolder.getAttribute("aria-label") || "").trim();
+    }
     if (image && card.matches(".card--stafflist") && /^profile-image$/i.test(image.alt)) {
       const t = card.querySelector("[title]");
       image.alt = t && t.getAttribute("title").trim() || title;
@@ -1010,19 +1023,27 @@ var CustomImportScript = (() => {
     if (!body.length && !image) return null;
     return image ? [[image], body.length ? body : ""] : [body];
   }
-  function parseLanding(element, document2) {
+  function parseLanding(element, document2, url) {
     let cards = [...element.querySelectorAll(".card")].filter((c) => !c.parentElement.closest(".card"));
     if (!cards.length) cards = [...element.querySelectorAll(":scope > .cell, :scope > li")];
+    const newsroom = /\/news\/?$/.test(url ? new URL(url, "https://study.unimelb.edu.au").pathname : "");
+    if (!newsroom) {
+      cards = cards.filter((c) => {
+        const hidden = c.closest(".hidden");
+        return !hidden || !element.contains(hidden);
+      });
+    }
     const rows = cards.map((c) => landingCard(c, document2)).filter(Boolean);
     if (!rows.length) {
       element.replaceWith(...element.childNodes);
       return;
     }
-    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Cards", cells: rows }));
+    const listing = cards.length && cards.every((c) => c.matches(".card--imagelisting"));
+    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: listing ? "Cards (listing)" : "Cards", cells: rows }));
   }
-  function parse9(element, { document: document2, template }) {
+  function parse9(element, { document: document2, template, url }) {
     if (template === "section-landing") {
-      parseLanding(element, document2);
+      parseLanding(element, document2, url);
       return;
     }
     const course = !!element.closest('.course-content, .course-section__main, [data-test$="-page"]');
@@ -1254,7 +1275,8 @@ var CustomImportScript = (() => {
       let cards = [...element.querySelectorAll(".card--fact, .card-focus, .section-alt__inner-flex-items")];
       if (!cards.length) cards = [...element.querySelectorAll(":scope > .cell")];
       cards.forEach((card) => {
-        const holder = card.querySelector(".section-alt__inner-svg-icon, .card--focus-box__icon, .card__icons__left") || card.querySelector(":scope > img");
+        const imageParagraph = card.matches(".card-focus") ? [...card.querySelectorAll(":scope > p")].find((p) => !clean2(p) && p.querySelector(":scope > img")) : null;
+        const holder = card.querySelector(".section-alt__inner-svg-icon, .card--focus-box__icon, .card__icons__left") || card.querySelector(":scope > img") || imageParagraph;
         const icon = card.matches(".card--fact") ? null : landingIconCell(holder, document2);
         const body = landingBody(card, holder, document2);
         if (!body.length && !icon) return;
@@ -1265,7 +1287,8 @@ var CustomImportScript = (() => {
       element.replaceWith(...element.childNodes);
       return;
     }
-    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Cards (icon)", cells: rows }));
+    const name = element.closest(".ct-focusbox") ? "Cards (icon, boxed)" : "Cards (icon)";
+    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name, cells: rows }));
   }
   function isLanding(element) {
     if (element.closest('.course-content, .course-section__main, [data-test$="-page"]')) return false;
@@ -2474,6 +2497,24 @@ var CustomImportScript = (() => {
     out.alt = (holder.getAttribute("aria-label") || img && img.getAttribute("alt") || "").trim();
     return out;
   }
+  function inlinePara(el, document2) {
+    const p = document2.createElement("p");
+    [...el.childNodes].forEach((n) => {
+      if (n.nodeType === 1 && n.matches("a[href]") && clean3(n)) {
+        const a = document2.createElement("a");
+        a.href = (n.getAttribute("href") || "").trim();
+        a.textContent = clean3(n);
+        p.append(a);
+      } else if (n.nodeType === 1 && n.querySelector("a[href]")) {
+        p.append(...inlinePara(n, document2).childNodes);
+      } else {
+        p.append(document2.createTextNode((n.textContent || "").replace(/\s+/g, " ")));
+      }
+    });
+    if (p.firstChild && p.firstChild.nodeType === 3) p.firstChild.textContent = p.firstChild.textContent.replace(/^\s+/, "");
+    if (p.lastChild && p.lastChild.nodeType === 3) p.lastChild.textContent = p.lastChild.textContent.replace(/\s+$/, "");
+    return p;
+  }
   function parseCardFocus(element, document2) {
     const para3 = (t) => {
       const p = document2.createElement("p");
@@ -2482,15 +2523,17 @@ var CustomImportScript = (() => {
     };
     const text = [];
     let holder = null;
+    let textEl = null;
     const alumni = element.querySelector(".alumni");
     if (alumni) {
       const q = clean3(alumni.querySelector(".alumni__short-text"));
       if (q) text.push(para3(q));
       const name = clean3(alumni.querySelector(".alumni__name"));
       if (name) text.push(para3(`\u2014 ${name}`));
-      const role = clean3(alumni.querySelector(".alumni__title"));
-      if (role) text.push(para3(role));
+      const roleEl = alumni.querySelector(".alumni__title");
+      if (clean3(roleEl)) text.push(inlinePara(roleEl, document2));
       holder = alumni.querySelector(".alumni__img");
+      textEl = alumni.querySelector(".alumni__info");
     } else {
       const bq = element.querySelector("blockquote") || element;
       bq.querySelectorAll("p").forEach((p) => {
@@ -2501,14 +2544,17 @@ var CustomImportScript = (() => {
       const sub = clean3(bq.querySelector(".block-quotation__sub-cite"));
       if (sub) text.push(para3(sub));
       holder = element.querySelector(".testimonials__img");
+      textEl = element.querySelector(".testimonials__info") || bq;
     }
     if (!text.length) {
       element.replaceWith(...element.childNodes);
       return;
     }
     const image = bgPortrait(holder, document2);
-    const row = image ? [text, [image]] : [text];
-    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Quote", cells: [row] }));
+    const imageFirst = !!(image && textEl && holder.compareDocumentPosition(textEl) & 4);
+    let row = [text];
+    if (image) row = imageFirst ? [[image], text] : [text, [image]];
+    element.replaceWith(WebImporter.Blocks.createBlock(document2, alumni ? { name: "Quote", variants: ["alumni"], cells: [row] } : { name: "Quote", cells: [row] }));
   }
   function parse19(element, { document: document2 }) {
     if (element.matches(".card-focus") && element.querySelector(".testimonials, .alumni")) {
@@ -3037,7 +3083,8 @@ var CustomImportScript = (() => {
       p.textContent = cleanText17(caption);
       before.push(p);
     }
-    const block = WebImporter.Blocks.createBlock(document2, { name: "Table", cells });
+    const compact = /\btable--is-compacted\b/.test(table.className || "") && !table.closest('[data-test$="-page"]');
+    const block = WebImporter.Blocks.createBlock(document2, compact ? { name: "Table", variants: ["compact"], cells } : { name: "Table", cells });
     element.replaceWith(...before, block);
   }
 
@@ -3660,20 +3707,193 @@ ${hrefs}`;
     }
   }
 
+  // tools/importer/transformers/unimelb-course-metadata.js
+  var TransformHook2 = { beforeTransform: "beforeTransform", afterTransform: "afterTransform" };
+  var FIELDS = [
+    ["course-title", "title_search_display"],
+    ["course-code", "course_code"],
+    ["qualification-type", "qualification_type_search_display"],
+    ["study-level", "study_level_search_filter"],
+    ["study-mode", "study_mode_search_filter"],
+    ["location", "location_search_filter"],
+    ["delivery", "delivery"],
+    ["study-area", "study_area_search_filter"],
+    ["duration-months", "duration_in_months_search_filter"],
+    ["duration-filter", "duration_filter"],
+    ["duration-display", "duration_search_display"],
+    ["intakes", "intakes_search_display"]
+  ];
+  var OVERVIEW_PATH = /^\/find\/courses\/[^/]+\/[^/]+$/;
+  function isCourseOverview(originalURL) {
+    if (!originalURL || /#excat-fragment-\d+$/.test(originalURL)) return false;
+    let path;
+    try {
+      path = new URL(originalURL).pathname;
+    } catch (e) {
+      return false;
+    }
+    return OVERVIEW_PATH.test(path.replace(/\/$/, "").replace(/\.html?$/, ""));
+  }
+  function readCourseMetadata(doc) {
+    const out = {};
+    const head = doc.head || doc;
+    FIELDS.forEach(([key, name]) => {
+      const el = head.querySelector(`meta[name="${name}"]`);
+      const value = el && (el.getAttribute("content") || "").replace(/\s+/g, " ").trim();
+      if (value) out[key] = value;
+    });
+    return out;
+  }
+  function transform4(hookName, element, payload) {
+    if (hookName !== TransformHook2.beforeTransform) return;
+    const doc = element && element.ownerDocument || payload && payload.document;
+    if (!doc) return;
+    const originalURL = payload && payload.params && payload.params.originalURL;
+    doc.excatCourseMetadata = isCourseOverview(originalURL) ? readCourseMetadata(doc) : {};
+  }
+
   // tools/importer/unloadable-images.js
   var unloadable_images_default = [
     "https://matrix-cms.unimelb.edu.au/?a=45131",
     "https://matrix-cms.unimelb.edu.au/__data/assets/image/0010/111421/KannanSethuraman.jpg",
+    "https://matrix-cms.unimelb.edu.au/__data/assets/image/0011/155000/rehab11.jpg",
+    "https://matrix-cms.unimelb.edu.au/__data/assets/image/0012/155001/rehab12.jpg",
+    "https://matrix-cms.unimelb.edu.au/__data/assets/image/0013/155002/rehab13.jpg",
+    "https://matrix-cms.unimelb.edu.au/__data/assets/image/0014/155003/rehab14.jpg",
     "https://matrix-cms.unimelb.edu.au/__data/assets/image/0017/420434/varieties/banner.jpg",
     "https://matrix-cms.unimelb.edu.au/__data/assets/image/0017/422306/varieties/banner.jpg",
     "https://matrix-cms.unimelb.edu.au/__data/assets/image/0028/46963/diploma-in-languages-banner.jpg",
+    "https://matrix-cms.unimelb.edu.au/__data/assets/image/0036/154998/rehab9.jpg",
+    "https://matrix-cms.unimelb.edu.au/__data/assets/image/0037/154999/rehab10.jpg",
     "https://matrix-cms.unimelb.edu.au/study-fac/content/courses-by-academic-division/graduate/fam/profiles/academic/Leon-de-Bruin-300px.jpg",
+    "https://matrix-cms.unimelb.edu.au/study-fac/content/courses-by-academic-division/obsolete-data-records/identifying-and-responding-to-domestic-and-family-violence/Domestic-and-Family-Violence.jpg",
     "https://matrix-cms.unimelb.edu.au/study-fac/data/courses/grad/doctor-of-optometry/90b137e1ce72197f51a63df0f6652311992e66a6.png",
     "https://matrix-cms.unimelb.edu.au/study-fac/data/courses/grad/graduate-certificate-in-adolescent-health-and-wellbeing/iStock-1488889438.jpg",
     "https://matrix-cms.unimelb.edu.au/study-fac/data/courses/incompatible-courses/doctoral-program-in-economics/22180_0175.jpg/300x240.jpg",
     "https://matrix-cms.unimelb.edu.au/study-fac/data/courses/incompatible-courses/doctoral-program-in-economics/tim-robinso.jpg/300.jpg",
+    "https://matrix-cms.unimelb.edu.au/study-fac/data/non-award/short-courses/transition-to-mental-health-nursing/Cathy.jpg",
+    "https://study.unimelb.edu.au/2362",
+    "https://study.unimelb.edu.au/2592",
+    "https://study.unimelb.edu.au/3456",
+    "https://study.unimelb.edu.au/3543",
     "https://study.unimelb.edu.au/4024",
-    "https://study.unimelb.edu.au/4732"
+    "https://study.unimelb.edu.au/4732",
+    "https://study.unimelb.edu.au/__data/assets/video_file/0020/475022/COP_hidden-gem_websiteHP.mp4",
+    "https://study.unimelb.edu.au/__data/assets/video_file/0020/496100/Web-loop_UMEP-outcomes2.mp4",
+    "https://study.unimelb.edu.au/__data/assets/video_file/0021/475023/COP_make-friends_websiteHP.mp4",
+    "https://study.unimelb.edu.au/__data/assets/video_file/0024/268242/ClaraIntro_3.mp4",
+    "https://study.unimelb.edu.au/__data/assets/video_file/0025/491236/Web-loop_Christine_9x16.mp4",
+    "https://study.unimelb.edu.au/__data/assets/video_file/0030/476760/Web-loop_Little-Hall_9x16.mp4",
+    "https://study.unimelb.edu.au/__data/assets/video_file/0031/476662/Web-loop_Lachlan-mentoring_9x16.mp4",
+    "https://study.unimelb.edu.au/__data/assets/video_file/0031/478507/HSP_web-loop_Lachlan_9x16.mp4",
+    "https://study.unimelb.edu.au/__data/assets/video_file/0034/485647/Website-loop_Crystal.mp4",
+    "https://study.unimelb.edu.au/__data/assets/video_file/0035/485648/Website-loop_Gyan.mp4",
+    "https://study.unimelb.edu.au/__data/assets/video_file/0039/495984/Web-loop_UMEP-experience.mp4",
+    "https://study.unimelb.edu.au/accommodation/1961",
+    "https://study.unimelb.edu.au/accommodation/2942",
+    "https://study.unimelb.edu.au/accommodation/3686",
+    "https://study.unimelb.edu.au/accommodation/6553",
+    "https://study.unimelb.edu.au/accommodation/international-house/1200",
+    "https://study.unimelb.edu.au/accommodation/international-house/800",
+    "https://study.unimelb.edu.au/connect-with-us/3800",
+    "https://study.unimelb.edu.au/connect-with-us/5697",
+    "https://study.unimelb.edu.au/connect-with-us/high-school-programs/1333",
+    "https://study.unimelb.edu.au/connect-with-us/high-school-programs/1334",
+    "https://study.unimelb.edu.au/connect-with-us/high-school-programs/2000",
+    "https://study.unimelb.edu.au/connect-with-us/high-school-programs/kwong-lee-dow-young-scholars-program/3800",
+    "https://study.unimelb.edu.au/connect-with-us/high-school-programs/kwong-lee-dow-young-scholars-program/5697",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/534",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/800",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/1094",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/1363",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/1667",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/2000",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/2048",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/2085",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/2500",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/3000",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/3280",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/3744",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/4928",
+    "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/5616",
+    "https://study.unimelb.edu.au/connect-with-us/international/1001",
+    "https://study.unimelb.edu.au/connect-with-us/international/1102",
+    "https://study.unimelb.edu.au/connect-with-us/international/1500",
+    "https://study.unimelb.edu.au/connect-with-us/international/2000",
+    "https://study.unimelb.edu.au/connect-with-us/international/827",
+    "https://study.unimelb.edu.au/how-to-apply/equity-entry-schemes/3963",
+    "https://study.unimelb.edu.au/how-to-apply/equity-entry-schemes/5956",
+    "https://study.unimelb.edu.au/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate/1007",
+    "https://study.unimelb.edu.au/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate/2000",
+    "https://study.unimelb.edu.au/how-to-apply/graduate-coursework-study/1564",
+    "https://study.unimelb.edu.au/how-to-apply/graduate-coursework-study/2262",
+    "https://study.unimelb.edu.au/student-life/1000",
+    "https://study.unimelb.edu.au/student-life/1120",
+    "https://study.unimelb.edu.au/student-life/1200",
+    "https://study.unimelb.edu.au/student-life/1637",
+    "https://study.unimelb.edu.au/student-life/2000",
+    "https://study.unimelb.edu.au/student-life/2456",
+    "https://study.unimelb.edu.au/student-life/604",
+    "https://study.unimelb.edu.au/student-life/800",
+    "https://study.unimelb.edu.au/student-life/events/1000",
+    "https://study.unimelb.edu.au/student-life/events/1333",
+    "https://study.unimelb.edu.au/student-life/events/2000",
+    "https://study.unimelb.edu.au/student-life/events/4002",
+    "https://study.unimelb.edu.au/student-life/events/6000",
+    "https://study.unimelb.edu.au/student-life/events/meet-melbourne/1373",
+    "https://study.unimelb.edu.au/student-life/events/meet-melbourne/1940",
+    "https://study.unimelb.edu.au/student-life/events/meet-melbourne/2001",
+    "https://study.unimelb.edu.au/student-life/events/meet-melbourne/3000",
+    "https://study.unimelb.edu.au/student-life/inside-melbourne/1200",
+    "https://study.unimelb.edu.au/student-life/inside-melbourne/1250",
+    "https://study.unimelb.edu.au/study-with-us/1000",
+    "https://study.unimelb.edu.au/study-with-us/2000",
+    "https://study.unimelb.edu.au/study-with-us/3800",
+    "https://study.unimelb.edu.au/study-with-us/3963",
+    "https://study.unimelb.edu.au/study-with-us/533",
+    "https://study.unimelb.edu.au/study-with-us/568",
+    "https://study.unimelb.edu.au/study-with-us/5697",
+    "https://study.unimelb.edu.au/study-with-us/5956",
+    "https://study.unimelb.edu.au/study-with-us/800",
+    "https://study.unimelb.edu.au/study-with-us/graduate-courses/1080",
+    "https://study.unimelb.edu.au/study-with-us/graduate-courses/1920",
+    "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/1029",
+    "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/2160",
+    "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/2576",
+    "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/2577",
+    "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/2578",
+    "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/3863",
+    "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/3864",
+    "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/4096",
+    "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/688",
+    "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/public-health/1000",
+    "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/public-health/667",
+    "https://study.unimelb.edu.au/study-with-us/guaranteed-undergraduate-to-graduate-study-pathways/1333",
+    "https://study.unimelb.edu.au/study-with-us/guaranteed-undergraduate-to-graduate-study-pathways/2000",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/1000",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/2000",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/400",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/600",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/for-organisations/1900",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/for-organisations/2849",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/for-organisations/3800",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/for-organisations/3937",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/for-organisations/5697",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/for-organisations/5906",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/micro-credentials-and-short-courses-for-individuals/1000",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/micro-credentials-and-short-courses-for-individuals/2000",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/micro-credentials-and-short-courses-for-individuals/2899",
+    "https://study.unimelb.edu.au/study-with-us/professional-development/micro-credentials-and-short-courses-for-individuals/4588",
+    "https://study.unimelb.edu.au/study-with-us/undergraduate-courses/1028",
+    "https://study.unimelb.edu.au/study-with-us/undergraduate-courses/1200",
+    "https://study.unimelb.edu.au/study-with-us/undergraduate-courses/421",
+    "https://study.unimelb.edu.au/study-with-us/undergraduate-courses/800",
+    "https://study.unimelb.edu.au/study-with-us/undergraduate-courses/change-of-preference/1366",
+    "https://study.unimelb.edu.au/study-with-us/undergraduate-courses/change-of-preference/2048",
+    "https://study.unimelb.edu.au/support/3024",
+    "https://study.unimelb.edu.au/support/4032",
+    "https://study.unimelb.edu.au/support/moving-support/2000",
+    "https://study.unimelb.edu.au/support/moving-support/814"
   ];
 
   // tools/importer/import-course-detail.js
@@ -4455,6 +4675,8 @@ ${hrefs}`;
     ]
   };
   var transformers = [
+    transform4,
+    // reads the course listing <meta> tags only (no DOM change)
     transform,
     transform2,
     transform3
@@ -4574,7 +4796,8 @@ ${hrefs}`;
       }
       const hr = document2.createElement("hr");
       main.appendChild(hr);
-      WebImporter.rules.createMetadata(main, document2);
+      const meta = __spreadValues(__spreadValues({}, WebImporter.Blocks.getMetadata(document2)), document2.excatCourseMetadata || {});
+      if (Object.keys(meta).length > 0) main.append(WebImporter.Blocks.getMetadataBlock(document2, meta));
       WebImporter.rules.transformBackgroundImages(main, document2);
       WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
       const rawPath = new URL(params.originalURL).pathname.replace(/\/$/, "").replace(/\.html?$/, "");

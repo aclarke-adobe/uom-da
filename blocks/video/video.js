@@ -10,25 +10,12 @@
  * blocks in a section join one row, and the section's intro text sits beside them).
  */
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { youtubeId } from '../../scripts/youtube.js';
 
 const OPTION_CLASSES = ['split', 'shorts'];
 const VIDEO_LINK = /youtube\.com|youtu\.be|vimeo\.com|\.mp4(\?|$)/i;
 const YOUTUBE_LINK = /youtube\.com|youtu\.be/i;
 const DURATION = /^(\d+h\s*)?(\d+m\s*)?(\d+s)?$/i;
-
-function youtubeId(href) {
-  try {
-    const url = new URL(href);
-    const host = url.hostname.replace(/^www\./, '');
-    if (host === 'youtu.be') return url.pathname.slice(1);
-    if (host.endsWith('youtube.com')) {
-      return url.searchParams.get('v') || url.pathname.split('/').filter(Boolean).pop();
-    }
-  } catch (e) {
-    // not a valid URL
-  }
-  return null;
-}
 
 function embedSrc(href, autoplay) {
   const url = new URL(href);

@@ -1,0 +1,766 @@
+/* Grade conversion eligibility calculator (widget) */
+
+/* rules are grouped by component; same-tag selectors in different components never overlap */
+/* stylelint-disable no-descending-specificity */
+
+/* the widget's section is the source's sage band */
+main .section.grade-conversion-calculator-container {
+  background-color: var(--uom-sage-pale);
+}
+
+.grade-conversion-calculator {
+  --gcc-navy-main: #094183;
+  --gcc-text: #1d1d1d;
+  --gcc-border: #e4e4e4;
+  --gcc-input-bg: #f7f7f7;
+  --gcc-input-border: #c6c8ca;
+  --gcc-focus: #2563eb;
+  --gcc-divider: rgb(29 29 29 / 20%);
+  --gcc-eligible: #d5f2e6;
+  --gcc-eligible-tag: #22765f;
+  --gcc-not-eligible: #ffdca2;
+  --gcc-not-eligible-tag: #dc291e;
+  --gcc-neutral: #dbe5f0;
+
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.grade-conversion-calculator .gcc-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.grade-conversion-calculator [hidden] {
+  display: none !important;
+}
+
+/* layout: questions left (4/7), sticky results right (3/7) */
+.grade-conversion-calculator .gcc-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grade-conversion-calculator .gcc-heading {
+  margin: 0 0 16px;
+  color: var(--uom-navy);
+  font-family: var(--heading-font-family);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.grade-conversion-calculator .gcc-completion {
+  margin: 0 0 32px;
+  font-size: 16px;
+}
+
+.grade-conversion-calculator .gcc-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* question cards */
+.grade-conversion-calculator .gcc-card {
+  position: relative;
+  border: 1px solid var(--gcc-border);
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.grade-conversion-calculator .gcc-card-body {
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  padding: 24px;
+}
+
+.grade-conversion-calculator .gcc-card-title {
+  display: block;
+  padding: 0 30px 12px 0;
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.grade-conversion-calculator legend.gcc-card-title {
+  box-sizing: border-box;
+  float: left;
+  width: 100%;
+  padding-bottom: 24px;
+}
+
+.grade-conversion-calculator legend.gcc-card-title + * {
+  clear: both;
+}
+
+.grade-conversion-calculator .gcc-info-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 24px;
+  right: 16px;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  background: none;
+  color: var(--gcc-text);
+  cursor: pointer;
+}
+
+.grade-conversion-calculator .gcc-info-btn svg {
+  width: 100%;
+  height: 100%;
+}
+
+.grade-conversion-calculator .gcc-info-btn:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+/* radios */
+.grade-conversion-calculator .gcc-options {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.grade-conversion-calculator .gcc-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 24px;
+}
+
+.grade-conversion-calculator .gcc-option input {
+  appearance: none;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid #6b6b6b;
+  border-radius: 50%;
+  padding: 0;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.grade-conversion-calculator .gcc-option input:checked {
+  background: radial-gradient(circle, var(--gcc-navy-main) 0 5.5px, #fff 6px);
+}
+
+.grade-conversion-calculator .gcc-option input:hover,
+.grade-conversion-calculator .gcc-option input:focus-visible {
+  border: 2px solid var(--gcc-navy-main);
+  outline: none;
+}
+
+.grade-conversion-calculator .gcc-option input:focus-visible {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--gcc-focus);
+}
+
+.grade-conversion-calculator .gcc-option label {
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+/* text inputs */
+.grade-conversion-calculator .gcc-text-input {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--gcc-input-border);
+  border-radius: 4px;
+  padding: 8px 12px;
+  background-color: var(--gcc-input-bg);
+  color: var(--gcc-text);
+  font-size: 18px;
+  line-height: normal;
+  text-overflow: ellipsis;
+}
+
+.grade-conversion-calculator .gcc-text-input::placeholder {
+  color: #6b7280;
+}
+
+.grade-conversion-calculator .gcc-text-input:focus,
+.grade-conversion-calculator .gcc-text-input:focus-visible {
+  border-color: var(--gcc-focus);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--gcc-focus);
+}
+
+.grade-conversion-calculator .gcc-number-input {
+  max-width: 246px;
+}
+
+/* combobox */
+.grade-conversion-calculator .gcc-combobox {
+  position: relative;
+  margin-top: 8px;
+}
+
+.grade-conversion-calculator .gcc-listbox {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  max-height: 24rem;
+  margin: 4px 0 0;
+  border-radius: 4px;
+  padding: 4px 0;
+  overflow: auto;
+  background-color: #f4f4f4;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+  font-size: 16px;
+  list-style: none;
+}
+
+.grade-conversion-calculator .gcc-listbox li {
+  margin: 0;
+  padding: 8px 36px 8px 12px;
+  overflow-wrap: break-word;
+  cursor: default;
+  user-select: none;
+}
+
+.grade-conversion-calculator .gcc-listbox li:last-of-type {
+  margin-bottom: 4px;
+}
+
+.grade-conversion-calculator .gcc-listbox li.is-active {
+  background-color: #e0e0e6;
+}
+
+.grade-conversion-calculator .gcc-listbox li.is-selected {
+  font-weight: 600;
+}
+
+.grade-conversion-calculator .gcc-combobox-status {
+  margin: 0;
+  font-size: 16px;
+}
+
+.grade-conversion-calculator .gcc-combobox-status:not(.is-visible) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.grade-conversion-calculator .gcc-combobox-status.is-visible {
+  margin-top: 8px;
+}
+
+/* loaders */
+.grade-conversion-calculator .gcc-loader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.grade-conversion-calculator .gcc-spinner {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--uom-sage);
+  border-top-color: var(--uom-navy);
+  border-radius: 50%;
+  animation: gcc-spin 0.8s linear infinite;
+}
+
+@keyframes gcc-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* "View your results" */
+.grade-conversion-calculator .gcc-results-action {
+  display: flex;
+  justify-content: center;
+}
+
+.grade-conversion-calculator .gcc-results-button {
+  width: 100%;
+  font-size: 18px;
+}
+
+/* error notice (one at a time) */
+.grade-conversion-calculator .gcc-notice {
+  margin: 0 0 16px;
+  border: 1px solid var(--gcc-not-eligible-tag);
+  border-left-width: 6px;
+  border-radius: 2px;
+  padding: 12px 16px;
+  background-color: #fff;
+  color: var(--gcc-text);
+  font-size: 16px;
+}
+
+.grade-conversion-calculator .gcc-notice p {
+  margin: 0;
+}
+
+.grade-conversion-calculator .gcc-notice-retry {
+  margin: 8px 0 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--link-color);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.grade-conversion-calculator .gcc-notice-retry:hover {
+  text-decoration: none;
+}
+
+/* results */
+.grade-conversion-calculator .gcc-results-heading {
+  padding-bottom: 72px;
+}
+
+.grade-conversion-calculator .gcc-results-heading:focus {
+  outline: none;
+}
+
+.grade-conversion-calculator .gcc-results-panel {
+  display: flex;
+  flex-direction: column;
+  max-width: 356px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 0 6px rgb(0 0 0 / 40%);
+  transition: opacity 0.2s;
+}
+
+.grade-conversion-calculator .gcc-results-panel.is-busy {
+  opacity: 0.6;
+}
+
+.grade-conversion-calculator .gcc-results > .gcc-notice {
+  box-sizing: border-box;
+  max-width: 356px;
+}
+
+.grade-conversion-calculator .gcc-results-loader {
+  padding: 24px;
+}
+
+.grade-conversion-calculator .gcc-result-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  border-bottom: 1px solid var(--gcc-divider);
+  padding: 24px;
+}
+
+.grade-conversion-calculator .gcc-result-card.is-eligible {
+  background-color: var(--gcc-eligible);
+}
+
+.grade-conversion-calculator .gcc-result-card.is-not-eligible {
+  background-color: var(--gcc-not-eligible);
+}
+
+.grade-conversion-calculator .gcc-result-card.is-neutral {
+  background-color: var(--gcc-neutral);
+}
+
+.grade-conversion-calculator .gcc-result-title {
+  margin: 0 0 8px;
+  padding-right: 30px;
+  color: #000;
+  font-family: var(--body-font-family);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 23px;
+}
+
+.grade-conversion-calculator .gcc-info-btn.is-large {
+  top: 24px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+}
+
+.grade-conversion-calculator .gcc-result-score {
+  margin: 0 0 8px;
+  color: var(--gcc-text);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.64px;
+}
+
+.grade-conversion-calculator .gcc-result-tag {
+  margin: 0 0 25px;
+  border-left: 6px solid var(--gcc-eligible-tag);
+  border-radius: 2px;
+  padding: 4px 12px;
+  background-color: #f7f7f7;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.grade-conversion-calculator .gcc-result-tag.is-not-eligible {
+  border-left-color: var(--gcc-not-eligible-tag);
+}
+
+.grade-conversion-calculator .gcc-result-details {
+  color: var(--gcc-text);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.grade-conversion-calculator .gcc-result-details p {
+  margin: 0;
+}
+
+.grade-conversion-calculator .gcc-result-details p + p {
+  margin-top: 1rem;
+}
+
+.grade-conversion-calculator .gcc-result-details a:any-link {
+  color: var(--gcc-navy-main);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.grade-conversion-calculator .gcc-result-details a:hover {
+  text-decoration: none;
+}
+
+.grade-conversion-calculator a.gcc-link-section:any-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--gcc-divider);
+  padding: 24px;
+  color: var(--gcc-navy-main);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.grade-conversion-calculator a.gcc-link-section:hover {
+  text-decoration: underline;
+}
+
+.grade-conversion-calculator a.gcc-link-section svg {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+}
+
+.grade-conversion-calculator a.gcc-link-section:focus-visible {
+  outline-offset: -4px;
+}
+
+.grade-conversion-calculator .gcc-cta-section {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.grade-conversion-calculator a.gcc-apply:any-link {
+  width: 100%;
+  font-size: 18px;
+}
+
+.grade-conversion-calculator a.gcc-apply::before {
+  width: 12px;
+  height: 12px;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1.92 1.18 5.72 5l-3.8 3.83L3.08 10l5-5-5-5-1.16 1.18z'/%3E%3C/svg%3E");
+}
+
+.grade-conversion-calculator .gcc-reset {
+  max-width: 356px;
+  margin: 1rem 0 0;
+  padding-bottom: 32px;
+  font-size: 16px;
+  text-align: right;
+}
+
+.grade-conversion-calculator .gcc-reset-button {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: #012a58;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.grade-conversion-calculator .gcc-reset-button:hover {
+  text-decoration: none;
+}
+
+.grade-conversion-calculator .gcc-reset-button:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+/* information slide-over */
+.grade-conversion-calculator .gcc-info {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+.grade-conversion-calculator .gcc-info::backdrop {
+  background-color: rgb(107 114 128 / 75%);
+}
+
+.grade-conversion-calculator .gcc-info-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: calc(100% - 46px);
+  max-width: 666px;
+  background-color: #fff;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 8px 10px -6px rgb(0 0 0 / 10%);
+}
+
+.grade-conversion-calculator .gcc-info[open] .gcc-info-panel {
+  animation: gcc-slide-in 0.5s ease-in-out;
+}
+
+.grade-conversion-calculator .gcc-info[open]::backdrop {
+  animation: gcc-fade-in 0.5s ease-in-out;
+}
+
+@keyframes gcc-slide-in {
+  from { transform: translateX(100%); }
+}
+
+@keyframes gcc-fade-in {
+  from { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grade-conversion-calculator .gcc-info[open] .gcc-info-panel,
+  .grade-conversion-calculator .gcc-info[open]::backdrop,
+  .grade-conversion-calculator .gcc-spinner {
+    animation: none;
+  }
+}
+
+.grade-conversion-calculator .gcc-info-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 16px;
+  left: -44px;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  background-color: #fff;
+  color: var(--uom-navy);
+  cursor: pointer;
+}
+
+.grade-conversion-calculator .gcc-info-close svg {
+  width: 16px;
+  height: 16px;
+  fill: currentcolor;
+}
+
+.grade-conversion-calculator .gcc-info-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.grade-conversion-calculator .gcc-info-scroll {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.grade-conversion-calculator .gcc-info-header {
+  padding: 24px;
+}
+
+.grade-conversion-calculator .gcc-info-header h2 {
+  margin: 0;
+  color: var(--uom-navy);
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: normal;
+}
+
+.grade-conversion-calculator .gcc-info-header p {
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.grade-conversion-calculator .gcc-info-sections {
+  border-block: 1px solid #e0e0e0;
+}
+
+.grade-conversion-calculator .gcc-info-section + .gcc-info-section {
+  border-top: 1px solid #e0e0e0;
+}
+
+.grade-conversion-calculator .gcc-info-section h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.grade-conversion-calculator .gcc-info-section h3 button {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  padding: 24px 24px 34px;
+  background: none;
+  color: var(--uom-navy);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+}
+
+.grade-conversion-calculator .gcc-info-section h3 button::after {
+  content: '';
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e6edf5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1.18 1.92 5 5.72l3.83-3.8L10 3.08l-5 5-5-5z'/%3E%3C/svg%3E") center / 12px no-repeat;
+  transition: transform 0.2s;
+}
+
+.grade-conversion-calculator .gcc-info-section.is-open h3 button::after {
+  transform: rotate(180deg);
+}
+
+.grade-conversion-calculator .gcc-info-section h3 button:hover {
+  background-color: #e6edf5;
+}
+
+.grade-conversion-calculator .gcc-info-section h3 button:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: -2px;
+}
+
+.grade-conversion-calculator .gcc-info-body {
+  padding: 16px 24px 24px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.grade-conversion-calculator .gcc-info-body > :first-child {
+  margin-top: 0;
+}
+
+.grade-conversion-calculator .gcc-info-body > :last-child {
+  margin-bottom: 0;
+}
+
+.grade-conversion-calculator .gcc-info-body p,
+.grade-conversion-calculator .gcc-info-body ul {
+  margin: 0 0 1.25em;
+}
+
+.grade-conversion-calculator .gcc-info-body ul {
+  padding-left: 24px;
+  list-style: disc;
+}
+
+.grade-conversion-calculator .gcc-info-body li + li {
+  margin-top: 0.5em;
+}
+
+.grade-conversion-calculator .gcc-info-body h4 {
+  margin: 1.5em 0 0.75em;
+  color: var(--gcc-text);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+@media (width >= 600px) {
+  .grade-conversion-calculator .gcc-listbox {
+    font-size: 14px;
+  }
+}
+
+@media (width >= 769px) {
+  .grade-conversion-calculator .gcc-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+
+  .grade-conversion-calculator .gcc-form {
+    grid-column: span 4;
+  }
+
+  .grade-conversion-calculator .gcc-results-col {
+    grid-column: span 3;
+  }
+
+  .grade-conversion-calculator .gcc-results-sticky {
+    position: sticky;
+    top: 12px;
+  }
+
+  .grade-conversion-calculator .gcc-heading {
+    font-size: 36px;
+  }
+
+  .grade-conversion-calculator .gcc-completion {
+    font-size: 18px;
+  }
+
+  .grade-conversion-calculator .gcc-results-button {
+    width: auto;
+  }
+
+  .grade-conversion-calculator .gcc-info-close {
+    left: -58px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .grade-conversion-calculator .gcc-info-close svg {
+    width: 18px;
+    height: 18px;
+  }
+}

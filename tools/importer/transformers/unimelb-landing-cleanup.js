@@ -28,7 +28,8 @@
  *   5. unwrap <u>, wrap loose <sub>/<sup> runs; link fixes (trim, protocol-relative -> https,
  *      study.unimelb.edu.au -> root-relative except files, no trailing slash on root-relative).
  * afterTransform (parsers have run and read data-excat-video-src / data-excat-bg):
- *   - widgets: region -> /widgets/<name>.html link (course-listing keeps its intro);
+ *   - widgets: region -> <p><a href="/widgets/<name>.html">/widgets/<name>.html</a></p> (course-listing
+ *     keeps its intro; scripts.js turns the link into a widget block);
  *   - leftover [data-excat-bg] (default content, e.g. full-width-image) -> <img alt=aria-label>;
  *     leftover [data-excat-video-src] outside a block -> link paragraph;
  *   - remove every <template>, the chrome list again, trackers; link fixes again;
@@ -105,11 +106,11 @@ const DEFAULT_CHROME = [
 // templates[section-landing].drops
 const DEFAULT_DROPS = [`${ROOT} > div.ct-focusboxpathfinder > img`];
 
-// templates[section-landing].widgets
+// templates[section-landing].widgets (the on-demand library div.filter-category is the Video library
+// block, parsers/video-library.js, not a widget)
 const DEFAULT_WIDGETS = [
   { section: 'conversion-tool', selector: `${ROOT} > div.section:has(#conversion-tool-app)`, widget: '/widgets/grade-conversion-calculator.html' },
   { section: 'course-listing', selector: `${ROOT} > div.CourseListing`, widget: '/widgets/online-course-listing.html', keep: ':scope > .content-block.bg-inverted' },
-  { section: 'on-demand-library', selector: `${ROOT} > div.filter-category`, widget: '/widgets/on-demand-video-library.html' },
 ];
 
 // Headings inside these never become anchor targets (they are chrome, removed right after).
@@ -498,20 +499,10 @@ function removeSourceRulesAndEmptyHeadings(root) {
 
 /* ---------- afterTransform helpers ---------- */
 
-// Interactive apps have no authorable content and no EDS widget yet: link to the live tool
-// on the source page instead of a /widgets/ path that would fail to load.
-const WIDGET_LABELS = {
-  'conversion-tool': 'grade conversion calculator',
-  'course-listing': 'online course browser',
-  'on-demand-library': 'on-demand video library',
-};
-
-function replaceWidgets(element, template, pageUrl) {
+// Interactive apps with no authorable content -> a <p><a href="/widgets/<name>.html"> link (the link
+// text is the path, so scripts.js buildWidgetAutoBlocks replaces the paragraph with a widget block).
+function replaceWidgets(element, template) {
   const doc = element.ownerDocument;
-  let liveUrl = '';
-  try {
-    liveUrl = `https://study.unimelb.edu.au${new URL(pageUrl).pathname.replace(/\/$/, '')}`;
-  } catch (e) { /* no page url */ }
   const widgets = toList(template && template.widgets).length ? template.widgets : DEFAULT_WIDGETS;
   widgets.forEach((w) => {
     let nodes = [];
@@ -529,9 +520,9 @@ function replaceWidgets(element, template, pageUrl) {
       }
       const p = doc.createElement('p');
       const a = doc.createElement('a');
-      const href = liveUrl || w.widget;
+      const href = w.widget;
       a.setAttribute('href', href);
-      a.textContent = liveUrl ? `Open the ${WIDGET_LABELS[w.section] || 'interactive tool'}` : w.widget;
+      a.textContent = href;
       p.append(a);
       wrap.append(p);
       region.replaceWith(wrap);
@@ -617,7 +608,7 @@ export default function transform(hookName, element, payload) {
   }
 
   if (hookName === TransformHook.afterTransform) {
-    replaceWidgets(element, template, (payload && payload.params && payload.params.originalURL) || '');
+    replaceWidgets(element, template);
     materializeBackgrounds(element);
     materializeVideos(element);
     // import scaffolding must never leak into the content

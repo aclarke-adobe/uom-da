@@ -1,0 +1,28 @@
+{
+  "description": "Clean-up rules applied by tools/importer/parsers/video-library.js to the on-demand video data (template#excat-video-data in the /study-with-us/on-demand snapshot) before the Video library block is written. User decision: authors maintain the list; start from a cleaned copy.",
+  "page": "/study-with-us/on-demand",
+  "rules": {
+    "dropUnavailable": "drop entries whose YouTube id is listed in unavailableYoutubeIds (YouTube oEmbed 404: private or removed)",
+    "dropTruncated": "drop entries whose YouTube id does not match youtubeIdPattern (truncated ids in the source data)",
+    "dropDuplicates": "drop an entry with the same YouTube id AND title as an earlier one; the first is kept and gets the duplicate's topics / study levels (the source repeats a video to list it under a second topic, e.g. Computing and Software Systems: Engineering + Information technology and computer science)",
+    "topicMap": "replace topic (discipline) names",
+    "durations": "normalise durations: '.' separator -> ':' (\"21.59\" -> \"21:59\")"
+  },
+  "youtubeIdPattern": "^[A-Za-z0-9_-]{11}$",
+  "unavailableYoutubeIds": {
+    "3vbjUOCIf9M": "oEmbed 404 on 2026-10-03 (Discover the Graphic Design major)",
+    "LvZEYx4AEcs": "oEmbed 404 on 2026-10-03 (Discover the Performance Design major)",
+    "uLdiBs4GmA0": "oEmbed 404 on 2026-10-03 (Discover the Digital Infrastructure Engineering major, 3 entries)",
+    "0DlZCN35ICo": "oEmbed 404 on 2026-10-03 (Discover the Master of Digital Infrastructure Engineering)",
+    "RHNN-rM89gs": "oEmbed 404 on 2026-10-03 (Discover the Geology major)"
+  },
+  "truncatedYoutubeIdsSeen": {
+    "zmFDikODUI": "Discover the English Language Studies minor (10 characters; oEmbed 400)",
+    "efO8nZF9c4": "Discover the Master of Mechanical Engineering (10 characters; oEmbed 400)",
+    "d_f5dBbSm4": "Discover the Diploma in General Studies (10 characters; oEmbed 400)"
+  },
+  "topicMap": {
+    "Admissions and scholarships": "Applications and scholarships"
+  },
+  "studyLevelMap": {}
+}

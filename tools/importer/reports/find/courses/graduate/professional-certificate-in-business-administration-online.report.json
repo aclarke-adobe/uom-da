@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-business-administration-online",
+  "path": "find/courses/graduate/professional-certificate-in-business-administration-online",
+  "timestamp": "2026-10-03T10:10:23.875Z",
+  "title": "Professional Certificate in Business Administration (Online) - The University of Melbourne",
+  "template": "course-detail",
+  "blocks": [
+    "hero-split",
+    "audience-switcher",
+    "key-facts",
+    "key-facts"
+  ],
+  "droppedImages": ""
+}

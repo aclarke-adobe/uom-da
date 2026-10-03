@@ -1,0 +1,271 @@
+<div class="gcc">
+  <div class="gcc-notice" role="alert" hidden></div>
+  <div class="gcc-grid">
+    <div class="gcc-form">
+      <h2 class="gcc-heading">Your study details</h2>
+      <p class="gcc-completion">This should only take you 2 - 5 mins to complete</p>
+      <div class="gcc-cards">
+
+        <div class="gcc-card" data-card="course">
+          <div class="gcc-card-body">
+            <label class="gcc-card-title" id="gcc-course-label" for="gcc-course-input">What course do you intend to apply for?</label>
+            <p class="gcc-loader" data-loader="course" hidden><span class="gcc-spinner" aria-hidden="true"></span>Loading courses</p>
+            <div class="gcc-combobox" data-combobox="course">
+              <input id="gcc-course-input" class="gcc-text-input" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="gcc-course-list" autocomplete="off" spellcheck="false" placeholder="Search for your course name. (E.g. Master of Management)">
+              <ul id="gcc-course-list" class="gcc-listbox" role="listbox" aria-labelledby="gcc-course-label" hidden></ul>
+              <p class="gcc-combobox-status" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gcc-card" data-card="unimelb" hidden>
+          <button type="button" class="gcc-info-btn" data-info="unimelb-student-status" aria-label="Information for Are you a current University of Melbourne student?"></button>
+          <fieldset class="gcc-card-body">
+            <legend class="gcc-card-title">Are you a current University of Melbourne student?</legend>
+            <div class="gcc-options">
+              <div class="gcc-option"><input type="radio" id="gcc-unimelb-true" name="gcc-unimelb" value="true" data-field="isUnimelbStudent"><label for="gcc-unimelb-true">Yes</label></div>
+              <div class="gcc-option"><input type="radio" id="gcc-unimelb-false" name="gcc-unimelb" value="false" data-field="isUnimelbStudent"><label for="gcc-unimelb-false">No</label></div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="gcc-card" data-card="status" hidden>
+          <button type="button" class="gcc-info-btn" data-info="study-status" aria-label="Information for Are you an international or domestic student?"></button>
+          <fieldset class="gcc-card-body">
+            <legend class="gcc-card-title">Are you an international or domestic student?</legend>
+            <div class="gcc-options">
+              <div class="gcc-option"><input type="radio" id="gcc-status-domestic" name="gcc-status" value="domestic" data-field="selectedStatus"><label for="gcc-status-domestic">Domestic Student</label></div>
+              <div class="gcc-option"><input type="radio" id="gcc-status-international" name="gcc-status" value="international" data-field="selectedStatus"><label for="gcc-status-international">International Student</label></div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="gcc-card" data-card="unimelb-score" hidden>
+          <button type="button" class="gcc-info-btn" data-info="unimelb-score" aria-label="Information for What is your University of Melbourne Weighted Average Mark (WAM)?"></button>
+          <div class="gcc-card-body">
+            <label class="gcc-card-title" for="gcc-unimelb-wam-input">What is your University of Melbourne Weighted Average Mark (WAM)?</label>
+            <input id="gcc-unimelb-wam-input" class="gcc-text-input gcc-number-input" type="text" inputmode="decimal" pattern="^\d*\.?\d*$" autocomplete="off" placeholder="Eg. 65" data-number="weightedAverageMark" data-max="100" required>
+          </div>
+        </div>
+
+        <div class="gcc-card" data-card="sponsorship" hidden>
+          <button type="button" class="gcc-info-btn" data-info="sponsorship" aria-label="Information for Are you a sponsored student?"></button>
+          <fieldset class="gcc-card-body">
+            <legend class="gcc-card-title">Are you a sponsored student?</legend>
+            <div class="gcc-options">
+              <div class="gcc-option"><input type="radio" id="gcc-sponsored-true" name="gcc-sponsored" value="true" data-field="isSponsored"><label for="gcc-sponsored-true">Yes</label></div>
+              <div class="gcc-option"><input type="radio" id="gcc-sponsored-false" name="gcc-sponsored" value="false" data-field="isSponsored"><label for="gcc-sponsored-false">No</label></div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="gcc-card" data-card="institution" hidden>
+          <button type="button" class="gcc-info-btn" data-info="university-information" aria-label="Information for Which institution did you study at?"></button>
+          <div class="gcc-card-body">
+            <label class="gcc-card-title" id="gcc-institution-label" for="gcc-institution-input">Which institution did you study at?</label>
+            <div class="gcc-combobox" data-combobox="institution">
+              <input id="gcc-institution-input" class="gcc-text-input" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="gcc-institution-list" autocomplete="off" spellcheck="false" placeholder="Start typing the name of your institution...">
+              <ul id="gcc-institution-list" class="gcc-listbox" role="listbox" aria-labelledby="gcc-institution-label" hidden></ul>
+              <p class="gcc-combobox-status" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gcc-card" data-card="grading" hidden>
+          <button type="button" class="gcc-info-btn" data-info="grading" aria-label="Information for What grading scale does your institution use?"></button>
+          <fieldset class="gcc-card-body">
+            <legend class="gcc-card-title">What grading scale does your institution use?</legend>
+            <div class="gcc-options">
+              <div class="gcc-option"><input type="radio" id="gcc-grading-wam" name="gcc-grading" value="wam" data-field="selectedGradingType"><label for="gcc-grading-wam">Percentage %</label></div>
+              <div class="gcc-option"><input type="radio" id="gcc-grading-gpa" name="gcc-grading" value="gpa" data-field="selectedGradingType"><label for="gcc-grading-gpa">Grade point average (GPA)</label></div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="gcc-card" data-card="wam-pass" hidden>
+          <button type="button" class="gcc-info-btn" data-info="pass-mark" aria-label="Information for What is the minimum percentage required to pass at your institution?"></button>
+          <div class="gcc-card-body">
+            <label class="gcc-card-title" for="gcc-wam-pass-input">What is the minimum percentage required to pass at your institution?</label>
+            <input id="gcc-wam-pass-input" class="gcc-text-input gcc-number-input" type="text" inputmode="decimal" pattern="^\d*\.?\d*$" autocomplete="off" placeholder="E.g. 50" data-number="institutionWamPassMark" data-max="100" required>
+          </div>
+        </div>
+
+        <div class="gcc-card" data-card="gpa-max" hidden>
+          <button type="button" class="gcc-info-btn" data-info="max-gpa" aria-label="Information for What is the maximum GPA you can achieve at your institution?"></button>
+          <div class="gcc-card-body">
+            <label class="gcc-card-title" for="gcc-gpa-max-input">What is the maximum GPA you can achieve at your institution?</label>
+            <input id="gcc-gpa-max-input" class="gcc-text-input gcc-number-input" type="text" inputmode="decimal" pattern="^\d*\.?\d*$" autocomplete="off" placeholder="For example: 7.0" data-number="institutionMaxGpa" data-max="100" required>
+          </div>
+        </div>
+
+        <div class="gcc-card" data-card="gpa-pass" hidden>
+          <button type="button" class="gcc-info-btn" data-info="pass-mark" aria-label="Information for What is the minimum GPA required to pass at your institution?"></button>
+          <div class="gcc-card-body">
+            <label class="gcc-card-title" for="gcc-gpa-pass-input">What is the minimum GPA required to pass at your institution?</label>
+            <input id="gcc-gpa-pass-input" class="gcc-text-input gcc-number-input" type="text" inputmode="decimal" pattern="^\d*\.?\d*$" autocomplete="off" placeholder="E.g. 5" data-number="institutionGpaPassMark" data-max-field="institutionMaxGpa" required>
+          </div>
+        </div>
+
+        <div class="gcc-card" data-card="wam-score" hidden>
+          <button type="button" class="gcc-info-btn" data-info="assessed-by-standard" data-info-assessment aria-label="Information for score"></button>
+          <div class="gcc-card-body">
+            <label class="gcc-card-title" for="gcc-wam-score-input" data-score-title="wam">What is the overall percentage you achieved in your most recent qualification?</label>
+            <input id="gcc-wam-score-input" class="gcc-text-input gcc-number-input" type="text" inputmode="decimal" pattern="^\d*\.?\d*$" autocomplete="off" placeholder="E.g. 65" data-number="weightedAverageMark" data-max="100" data-delay required>
+          </div>
+        </div>
+
+        <div class="gcc-card" data-card="gpa-score" hidden>
+          <button type="button" class="gcc-info-btn" data-info="assessed-by-standard" data-info-assessment aria-label="Information for score"></button>
+          <div class="gcc-card-body">
+            <label class="gcc-card-title" for="gcc-gpa-score-input" data-score-title="gpa">What is the GPA you achieved in your most recent study?</label>
+            <input id="gcc-gpa-score-input" class="gcc-text-input gcc-number-input" type="text" inputmode="decimal" pattern="^\d*\.?\d*$" autocomplete="off" placeholder="E.g. 3.0" data-number="gradePointAverage" data-max-field="institutionMaxGpa" data-delay required>
+          </div>
+        </div>
+
+        <div class="gcc-results-action" hidden>
+          <button type="button" class="button primary gcc-results-button">View your results</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="gcc-results-col">
+      <div class="gcc-results-sticky">
+        <section class="gcc-results" aria-labelledby="gcc-results-heading" hidden>
+          <h2 class="gcc-heading gcc-results-heading" id="gcc-results-heading" tabindex="-1">Your results</h2>
+          <div class="gcc-results-panel"></div>
+          <p class="gcc-reset">Need to start again? <button type="button" class="gcc-reset-button">Clear calculator</button></p>
+        </section>
+        <p class="gcc-sr-only gcc-results-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      </div>
+    </div>
+  </div>
+
+  <dialog class="gcc-info" aria-labelledby="gcc-info-title">
+    <div class="gcc-info-panel">
+      <button type="button" class="gcc-info-close"><span class="gcc-sr-only">Close panel</span><svg viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M10 1L9 0 5 4 1 0 0 1l4 4-4 4 1 1 4-4 4 4 1-1-4-4z"/></svg></button>
+      <div class="gcc-info-scroll">
+        <div class="gcc-info-header">
+          <h2 id="gcc-info-title">Grade Conversion Eligibility Calculator Information</h2>
+          <p>Select the option to get more info:</p>
+        </div>
+        <div class="gcc-info-sections">
+          <div class="gcc-info-section" data-section="study-status">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-study-status">Student type</button></h3>
+            <div class="gcc-info-body" id="gcc-info-study-status" hidden>
+              <h4>Domestic students</h4>
+              <p>You're a domestic student if you are an Australian citizen or permanent resident, hold a permanent Australian humanitarian visa or are a New Zealand citizen.</p>
+              <h4>International students</h4>
+              <p>You're an international student if you are not an Australian or New Zealand citizen, you're not an Australian permanent resident or you don't hold a permanent Australian humanitarian visa.</p>
+            </div>
+          </div>
+          <div class="gcc-info-section" data-section="university-information">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-university-information">Institution</button></h3>
+            <div class="gcc-info-body" id="gcc-info-university-information" hidden>
+              <p>Select the institution where you completed your degree. This list includes only university level institutions.</p>
+              <p>If you cannot find your institute within the list you will not be able to use the Grade Conversion Eligibility Calculator.</p>
+            </div>
+          </div>
+          <div class="gcc-info-section" data-section="grading">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-grading">Grading scale</button></h3>
+            <div class="gcc-info-body" id="gcc-info-grading" hidden>
+              <p>The Grade Conversion Eligibility Calculator is able to be used for students who have achieved their results in either of the below grading systems:</p>
+              <ul>
+                <li><b>Percentage-Based System</b> uses a 100% scale to grade student performance where scores will be between 0 and 100. Systems can have varying minimum pass marks.</li>
+                <li><b>Grade Point Average (GPA)</b> is a number that represents the average of your grades achieved throughout a single degree, divided by the total number of credits taken. There are many GPA grading scales (e.g. 4.0, 4.3, 5.0, 10, 20 etc). Systems can have varying minimum pass marks. GPA systems where 1 is high (reverse GPA) are not able to be used in the Grade Conversion Eligibility Calculator.</li>
+              </ul>
+              <p>If your grading scale is not within the above you will not be able to use the Grade Conversion Calculator.</p>
+            </div>
+          </div>
+          <div class="gcc-info-section" data-section="sponsorship">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-sponsorship">Sponsorship</button></h3>
+            <div class="gcc-info-body" id="gcc-info-sponsorship" hidden>
+              <p>Sponsored students are international students who receive funding to study at the University of Melbourne from an approved sponsoring authority, such as the Australian government, foreign entities or state-owned enterprises and multilateral or regional organisations. Sponsorship can cover tuition and living expenses, depending on the agreement.</p>
+            </div>
+          </div>
+          <div class="gcc-info-section" data-section="unimelb-student-status">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-unimelb-student-status">Current University of Melbourne student</button></h3>
+            <div class="gcc-info-body" id="gcc-info-unimelb-student-status" hidden>
+              <p>You are considered a current University of Melbourne student if you are:</p>
+              <ul>
+                <li>A currently enrolled student at the University of Melbourne, or</li>
+                <li>A previous student who has completed studies within the last 12 months.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="gcc-info-section" data-section="unimelb-score">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-unimelb-score">Weighted Average Mark (WAM)</button></h3>
+            <div class="gcc-info-body" id="gcc-info-unimelb-score" hidden>
+              <p>The WAM provides an overall indication of your academic performance in your course. The WAM reflects the numeric mark (eg 45%, 87%) and the number of credit points (eg 25 points) for each subject you complete. It is calculated progressively as your subject results are certified and added in <a href="https://my.unimelb.edu.au/">my.unimelb.</a>.</p>
+            </div>
+          </div>
+          <div class="gcc-info-section" data-section="max-gpa">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-max-gpa">Maximum GPA</button></h3>
+            <div class="gcc-info-body" id="gcc-info-max-gpa" hidden>
+              <p>A maximum GPA is the highest possible grade that can be achieved at your institution.</p>
+            </div>
+          </div>
+          <div class="gcc-info-section" data-section="pass-mark">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-pass-mark">Pass mark</button></h3>
+            <div class="gcc-info-body" id="gcc-info-pass-mark" hidden>
+              <p>A pass mark is the minimum level of achievement required to complete a subject or course successfully. If your pass mark on your transcript indicates a band of scores, please select the lowest score within the band.</p>
+            </div>
+          </div>
+          <div class="gcc-info-section" data-section="university-of-melbourne-score-equivalence">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-university-of-melbourne-score-equivalence">University of Melbourne score equivalence</button></h3>
+            <div class="gcc-info-body" id="gcc-info-university-of-melbourne-score-equivalence" hidden>
+              <p>Your University of Melbourne equivalent score is calculated by comparing your previous study to an Australian university qualification standard, providing an initial comparison to our own grade scale.</p>
+              <p>To determine the University of Melbourne equivalent score we look at your academic record and calculate the equivalent score based on the following factors:</p>
+              <ul>
+                <li>Your transcript includes grades (including fails and withdrawals).</li>
+                <li>Minimum and maximum passing grades at your previous institution.</li>
+                <li>The international standing of the University you have received your degree(s) from.</li>
+                <li>Your likelihood to succeed based on your academic background.</li>
+                <li>Australian Government guidelines which recognise and assess international universities and educational institutions.</li>
+              </ul>
+              <h4>Differences in grades</h4>
+              <p>Grades gained from previous tertiary study do not always equal the same grade on the University of Melbourne grade scale due to differences in grading conventions. As a result, the outcome of our University of Melbourne equivalent score may differ from your previous tertiary education.</p>
+            </div>
+          </div>
+          <div class="gcc-info-section" data-section="university-of-melbourne-score-csp">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-university-of-melbourne-score-csp">Commonwealth Supported Place</button></h3>
+            <div class="gcc-info-body" id="gcc-info-university-of-melbourne-score-csp" hidden>
+              <p>A Commonwealth Supported Place (CSP) is an enrolment at the University of Melbourne which is subsidised by the Commonwealth Government. CSPs at the University of Melbourne are available to <a href="https://www.studyassist.gov.au/financial-and-study-support/commonwealth-supported-places-csps">eligible</a> students in undergraduate and some graduate coursework courses.</p>
+            </div>
+          </div>
+          <div class="gcc-info-section" data-section="assessed-by-standard">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-assessed-by-standard">Assessment based on overall score</button></h3>
+            <div class="gcc-info-body" id="gcc-info-assessed-by-standard" hidden>
+              <p>Eligibility is assessed using an overall score calculated using results for all completed subjects within a degree.</p>
+              <p>This includes subjects for which you gained a failing score or grade. Do not include any subjects for which there are no scores, or where only a non-scoring pass or fail is possible.</p>
+              <p>If you have not completed your studies, enter the score you have currently achieved to receive an indication of your eligibility.</p>
+            </div>
+          </div>
+          <div class="gcc-info-section" data-section="assessed-by-best-fifty-points">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-assessed-by-best-fifty-points">Assessment based on final year of study in major</button></h3>
+            <div class="gcc-info-body" id="gcc-info-assessed-by-best-fifty-points" hidden>
+              <p>Eligibility is assessed using scores achieved in relevant discipline subjects at third year level (or equivalent). This includes subjects for which you gained a failing score or grade.</p>
+              <p>Relevant discipline subjects refer to the area of study (major) required for entry into the course and will be assessed at University of Melbourne 3rd year level equivalent standards. This can include subjects from both 3rd and 4th year levels.</p>
+              <p>If you have not completed your studies, enter the score achieved in relevant major/discipline subjects in your most recent year of studies to receive an indication of your eligibility.</p>
+            </div>
+          </div>
+          <div class="gcc-info-section" data-section="assessed-by-final-hundred-points">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-assessed-by-final-hundred-points">Assessment based on final year of study</button></h3>
+            <div class="gcc-info-body" id="gcc-info-assessed-by-final-hundred-points" hidden>
+              <p>Eligibility is assessed using an average score for all subjects completed in your final year of study (or equivalent).</p>
+              <p>This includes subjects for which you gain a failing score or grade. Do not include any subjects for which there are no scores, or where a non-scoring pass or fail is possible.</p>
+              <p>If you have not completed your studies, enter the score for your most recent year of studies to receive an indication of your eligibility.</p>
+            </div>
+          </div>
+          <div class="gcc-info-section" data-section="assessed-by-major-area-of-study">
+            <h3><button type="button" aria-expanded="false" aria-controls="gcc-info-assessed-by-major-area-of-study">Assessment based on major</button></h3>
+            <div class="gcc-info-body" id="gcc-info-assessed-by-major-area-of-study" hidden>
+              <p>Eligibility is assessed using scores achieved in all relevant discipline/major subjects. This includes subjects for which you gain a failing score or grade. Weighting of subject scores can vary by course, check course entry requirements for more information.</p>
+              <p>Entry into some graduate course require completion of a relevant undergraduate major. A major refers to a concentration of subjects that equips you with specialised knowledge in a specific field of study.</p>
+              <p>If you have not completed your studies, enter the score achieved in relevant major/discipline subjects you have already completed to receive an indication of your eligibility.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+</div>

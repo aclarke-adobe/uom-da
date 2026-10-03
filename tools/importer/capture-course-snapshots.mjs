@@ -35,6 +35,9 @@
  *     inline background-image) are scrolled into view and recorded as data-excat-bg="<url>"
  *     (a url the bd-scrape regex can't read, e.g. the leading-space portraits on
  *     .testimonials__img / .alumni__img, is recorded too; a blank url(" ") is not).
+ *   - the on-demand video library (#main div.filter-category): the full video list from the
+ *     server HTML (<cards-filter-category :data='[...]'>, read from the document response, or a
+ *     same-origin re-fetch) as <template id="excat-video-data"> JSON (video-data-snapshot.mjs).
  *
  * Like the analysis scrape (excat-scrape-webpage bd-scrape.js) the snapshot has
  * <script>/<noscript> stripped (so it is inert under page.setContent) and the same
@@ -80,6 +83,7 @@ const { detectBlocked } = await import(join(SCRAPE_SCRIPTS, 'bot-detection.js'))
 const { stripScripts } = await import(join(SCRAPE_SCRIPTS, 'strip-scripts.js'));
 const { trackMainFrameDocumentStatus } = await import(join(SCRAPE_SCRIPTS, 'bd-scrape.js'));
 const { OPTION_REGIONS, snapshotSelectRegions, isStructureUrl } = await import(join(__dirname, 'snapshot-inspect.mjs'));
+const { extractVideoData, withVideoData } = await import(join(__dirname, 'video-data-snapshot.mjs'));
 const { scrollToTriggerLazyLoad } = await import(
   join(PLUGIN, 'edge-delivery-services/skills/scrape-webpage/scripts/analyze-webpage.js')
 );
@@ -804,12 +808,33 @@ async function capture(context, url, { bodySelector = null } = {}) {
     }
     const bgCount = markBg ? (html.match(/ data-excat-bg="/g) || []).length : 0;
 
+    // On-demand video library (div.filter-category): its full video list exists only in the server
+    // HTML (<cards-filter-category :data='[...]'>), written as template#excat-video-data.
+    let videoData = null;
+    if (await page.$('#main div.filter-category')) {
+      let data = null;
+      try { data = extractVideoData(await response.text()); } catch { data = null; }
+      if (!data) {
+        const raw = await page.evaluate(async () => {
+          try {
+            const r = await fetch(window.location.href, { credentials: 'include', cache: 'no-store' });
+            return await r.text();
+          } catch { return ''; }
+        }).catch(() => '');
+        data = raw ? extractVideoData(raw) : null;
+      }
+      if (data) html = withVideoData(html, data);
+      videoData = data ? { entries: data.length } : { entries: 0, error: 'cards-filter-category :data not found' };
+      mark('video-data');
+    }
+
     html = stripScripts(html);
     const bytes = Buffer.byteLength(html, 'utf-8');
     if (bytes < MIN_SNAPSHOT_BYTES) throw new CaptureError(`snapshot suspiciously small (${bytes} bytes)`);
     return {
       html, bytes, audiences, intl, domesticReset, phases, options, body: bodyOf(page),
       views, organisations, videos, backgrounds: markBg ? { primed: lazyBackgrounds, marked: bgCount } : null,
+      videoData,
     };
   } finally {
     await page.close().catch(() => {});
@@ -981,6 +1006,7 @@ async function main() {
             organisations: res.organisations,
             videos: res.videos,
             backgrounds: res.backgrounds,
+            videoData: res.videoData,
             phases: res.phases,
             bytes: res.bytes,
             ms,
@@ -998,6 +1024,7 @@ async function main() {
           if (res.organisations) note += ` views=${res.views}`;
           if (res.videos) note += ` videos=${res.videos.resolved}/${res.videos.players}`;
           if (res.backgrounds?.marked) note += ` bg=${res.backgrounds.marked}`;
+          if (res.videoData) note += ` video-data=${res.videoData.entries}${res.videoData.error ? ` (${res.videoData.error})` : ''}`;
           console.log(`${label(item.index)} ok       ${item.url}${res.body === SEL.body ? '' : ` body=${res.body}`} audiences=${res.audiences} bytes=${res.bytes}${note} ${(ms / 1000).toFixed(1)}s`);
         } else if (lastErr && !stopping) {
           counts.failed += 1;

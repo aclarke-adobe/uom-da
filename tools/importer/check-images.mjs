@@ -149,6 +149,23 @@ export function normaliseImageUrl(raw, pageUrl = ORIGIN, fromImg = false) {
   return u.href;
 }
 
+// on-demand video entries the import drops (on-demand-cleanup.json: unavailable / truncated ids)
+// have no image to localise
+const VIDEO_RULES = (() => {
+  try {
+    return JSON.parse(readFileSync(join(__dirname, 'on-demand-cleanup.json'), 'utf8'));
+  } catch (e) {
+    return {};
+  }
+})();
+function keptVideo(v) {
+  if (!v || !v.img_url) return false;
+  const src = String(v.src || v.link || '');
+  const id = (src.match(/(?:embed\/|watch\?v=|youtu\.be\/|shorts\/)([^/?#&]+)/) || [])[1] || '';
+  return new RegExp(VIDEO_RULES.youtubeIdPattern || '^[A-Za-z0-9_-]{11}$').test(id)
+    && !Object.prototype.hasOwnProperty.call(VIDEO_RULES.unavailableYoutubeIds || {}, id);
+}
+
 function collect() {
   const files = walk(SNAP_ROOT);
   const seen = new Map(); // url -> { pages, example, files }
@@ -172,6 +189,16 @@ function collect() {
     for (const m of html.matchAll(/<meta\b[^>]*(?:property|name)="(?:og:image|twitter:image)[^"]*"[^>]*>/gi)) {
       const c = m[0].match(/\scontent="([^"]*)"/i);
       if (c) add(c[1], true);
+    }
+    // template#excat-video-data (on-demand video library, video-data-snapshot.mjs): img_url of
+    // every video the import keeps (only 12 are rendered as cards; parsers/video-library.js emits
+    // all the videos that on-demand-cleanup.json does not drop)
+    const vd = html.match(/<template id="excat-video-data"[^>]*>([\s\S]*?)<\/template>/);
+    if (vd) {
+      try {
+        const json = vd[1].replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+        JSON.parse(json).filter(keptVideo).forEach((v) => add(v.img_url, true));
+      } catch (e) { /* not JSON: nothing to collect */ }
     }
     found.forEach((url) => {
       const e = seen.get(url) || { pages: 0, example: page };

@@ -4491,6 +4491,12 @@
           ]
         },
         {
+          "name": "video-library",
+          "instances": [
+            ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.filter-category"
+          ]
+        },
+        {
           "name": "quote",
           "instances": [
             "#main > section#hear-from-students .section-alt__right blockquote.testimonials-alt",
@@ -5606,12 +5612,14 @@
         },
         {
           "id": "on-demand-library",
-          "name": "On-demand video library filter (widget)",
+          "name": "On-demand video library (Video library block)",
           "selector": [
             ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.filter-category"
           ],
           "style": "navy",
-          "blocks": [],
+          "blocks": [
+            "video-library"
+          ],
           "defaultContent": []
         }
       ],
@@ -5749,20 +5757,14 @@
           "section": "conversion-tool",
           "selector": ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.section:has(#conversion-tool-app)",
           "widget": "/widgets/grade-conversion-calculator.html",
-          "note": "Vue eligibility calculator (#conversion-tool-app); no authorable content. Widget code to be built; until then author a link to the live calculator."
+          "note": "Vue eligibility calculator (#conversion-tool-app); no authorable content. The region becomes a <p><a href=\"/widgets/grade-conversion-calculator.html\"> link, which scripts.js turns into a widget block."
         },
         {
           "section": "course-listing",
           "selector": ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.CourseListing",
           "widget": "/widgets/online-course-listing.html",
           "keep": ":scope > .content-block.bg-inverted",
-          "note": "JS course browser (study area / duration filters, Load more, 78 courses). Keep the intro h3 + p as default content, replace the form and results with the widget link; the ct-coursesearch Search block above already links to /find."
-        },
-        {
-          "section": "on-demand-library",
-          "selector": ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.filter-category",
-          "widget": "/widgets/on-demand-video-library.html",
-          "note": "Client-side video library filter (study level / topic radios, results fetched at runtime; the snapshot has no results)."
+          "note": "JS course browser (study area / duration filters, Load more). Keep the intro h3 + p as default content, replace the form and results with a <p><a href=\"/widgets/online-course-listing.html\"> link (widget block); the ct-coursesearch Search block above already links to /find."
         }
       ],
       "fragmentContract": {
@@ -6252,7 +6254,8 @@
         "organisationsView": "template#excat-organisations (8 micro-credential pages; html[data-excat-views=\"individuals,organisations\"]): parts body (main#main of the organisations view), hero (div.page-header-alt), key-facts (div.key-facts). See audienceContract.",
         "clickToPlayVideo": "[data-excat-video-src] on the click-to-play root (div.uom-video in ct-video, div.video.video--portrait in video testimonials; 37 roots on 30 pages): the captured embed URL. Video parsers take the id from it and emit https://www.youtube.com/watch?v=<id>; poster from the root img; caption from the overlay title / duration. Never emit a video row without a link: if the attribute is missing, log video-url-missing and keep the poster as default content.",
         "lazyBackground": "[data-excat-bg] on elements whose image is a CSS background (full-width-image, ct-section-imagefullwidth, alumni__img, testimonials__img; 23 on 17 pages): the trimmed absolute image URL. Parsers/transformers turn it into an <img> (alt from aria-label) instead of parsing style=\"background-image\".",
-        "optimizely": "5 pages contain .optimizely_experiment; only the first span.optimizely_experiment__block is the default variant. All region selectors use the ROOT form, so they match whether or not the cleanup unwraps or keeps that span; the other spans are removed by cleanup."
+        "optimizely": "5 pages contain .optimizely_experiment; only the first span.optimizely_experiment__block is the default variant. All region selectors use the ROOT form, so they match whether or not the cleanup unwraps or keeps that span; the other spans are removed by cleanup.",
+        "videoData": "template#excat-video-data (/study-with-us/on-demand; capture-course-snapshots.mjs): the full :data JSON array of the <cards-filter-category> component (the rendered region holds only 12 cards and no video URLs), as text (& < > escaped), data-source=\"cards-filter-category:data\". parsers/video-library.js reads it and applies tools/importer/on-demand-cleanup.json."
       },
       "representativeUrls": [
         "https://study.unimelb.edu.au/find/short-courses/applied-learning-health-system",

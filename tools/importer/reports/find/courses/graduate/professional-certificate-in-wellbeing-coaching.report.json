@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/find/courses/graduate/professional-certificate-in-wellbeing-coaching",
   "path": "find/courses/graduate/professional-certificate-in-wellbeing-coaching",
-  "timestamp": "2026-10-01T12:38:44.836Z",
+  "timestamp": "2026-10-03T09:55:26.819Z",
   "title": "Professional Certificate in Wellbeing Coaching - The University of Melbourne",
   "template": "course-detail",
   "blocks": [
@@ -13,5 +13,5 @@
     "video",
     "columns"
   ],
-  "droppedImages": "https://matrix-cms.unimelb.edu.au/__data/assets/image/0030/52986/Prof.jpg"
+  "droppedImages": ""
 }

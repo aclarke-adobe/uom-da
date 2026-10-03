@@ -811,29 +811,29 @@ var CustomImportScript = (() => {
     });
     const out = [];
     let para3 = null;
-    let list = null;
+    let list2 = null;
     const lineText = (l) => clean3(l.map((x) => x.textContent).join(""));
     lines.forEach((line) => {
       const t = lineText(line);
       if (!t) {
         para3 = null;
-        list = null;
+        list2 = null;
         return;
       }
       if (/^\d+\.\s+/.test(t)) {
-        if (!list) {
-          list = document2.createElement("ol");
-          out.push(list);
+        if (!list2) {
+          list2 = document2.createElement("ol");
+          out.push(list2);
         }
         para3 = null;
         const li = document2.createElement("li");
         line.forEach((x) => li.append(x));
         const first = [...li.childNodes].find((x) => x.nodeType === 3 && x.textContent.trim());
         if (first) first.textContent = first.textContent.replace(/^\s*\d+\.\s+/, "");
-        list.append(li);
+        list2.append(li);
         return;
       }
-      list = null;
+      list2 = null;
       if (!para3) {
         para3 = document2.createElement("p");
         out.push(para3);
@@ -1210,9 +1210,9 @@ var CustomImportScript = (() => {
     });
     return root;
   }
-  function linkList(list, document2) {
+  function linkList(list2, document2) {
     const ul = document2.createElement("ul");
-    list.querySelectorAll(":scope > li").forEach((li) => {
+    list2.querySelectorAll(":scope > li").forEach((li) => {
       const a = li.querySelector("a[href]");
       const text7 = cleanText5(li.querySelector(".card-course__name") || a || li);
       if (!text7) return;
@@ -1286,9 +1286,9 @@ var CustomImportScript = (() => {
     p.append(wrap);
     return p;
   }
-  function landingCourseList(list, document2) {
+  function landingCourseList(list2, document2) {
     const ul = document2.createElement("ul");
-    list.querySelectorAll(":scope > li").forEach((li) => {
+    list2.querySelectorAll(":scope > li").forEach((li) => {
       const a = li.querySelector("a[href]");
       const name = cleanText5(li.querySelector(".card-course__name") || a || li);
       if (!name) return;
@@ -2882,6 +2882,127 @@ var CustomImportScript = (() => {
     element.replaceWith(block, ...leftovers);
   }
 
+  // tools/importer/parsers/video-library.js
+  var LOG = "[video-library]";
+  var DEFAULT_ID_PATTERN = "^[A-Za-z0-9_-]{11}$";
+  function readData(document2) {
+    const tpl = document2.querySelector("template#excat-video-data");
+    if (!tpl) return null;
+    const raw = (tpl.content && tpl.content.textContent || tpl.textContent || "").trim();
+    if (!raw) return null;
+    try {
+      const data = JSON.parse(raw);
+      return Array.isArray(data) ? data : null;
+    } catch (e) {
+      console.warn(`${LOG} template#excat-video-data is not valid JSON: ${e.message}`);
+      return null;
+    }
+  }
+  function youtubeIdOf(entry) {
+    const src = String(entry.src || entry.link || "").trim();
+    const m = src.match(/(?:youtube(?:-nocookie)?\.com\/(?:embed\/|watch\?v=|shorts\/)|youtu\.be\/)([^/?#&]+)/);
+    return m ? m[1] : "";
+  }
+  function normaliseDuration(d) {
+    const t = String(d || "").trim();
+    return /^\d{1,2}(?:[.:]\d{2}){1,2}$/.test(t) ? t.replace(/\./g, ":") : t;
+  }
+  function list(v) {
+    if (Array.isArray(v)) return v.map((x) => String(x).trim()).filter(Boolean);
+    return v ? [String(v).trim()].filter(Boolean) : [];
+  }
+  function cleanVideos(data, rules = {}) {
+    const idPattern = new RegExp(rules.youtubeIdPattern || DEFAULT_ID_PATTERN);
+    const unavailable = rules.unavailableYoutubeIds || {};
+    const topicMap = rules.topicMap || {};
+    const levelMap = rules.studyLevelMap || {};
+    const stats = {
+      entries: data.length,
+      unavailable: 0,
+      truncated: 0,
+      duplicate: 0,
+      topicsMapped: 0,
+      durationsNormalised: 0,
+      videos: 0
+    };
+    const seen = /* @__PURE__ */ new Map();
+    const videos = [];
+    data.forEach((entry) => {
+      const id = youtubeIdOf(entry);
+      const title = String(entry.title || "").replace(/\s+/g, " ").trim();
+      if (!id || !idPattern.test(id)) {
+        stats.truncated += 1;
+        return;
+      }
+      if (Object.prototype.hasOwnProperty.call(unavailable, id)) {
+        stats.unavailable += 1;
+        return;
+      }
+      const topics = [...new Set(list(entry.disciplines).map((t) => {
+        if (Object.prototype.hasOwnProperty.call(topicMap, t)) {
+          stats.topicsMapped += 1;
+          return topicMap[t];
+        }
+        return t;
+      }))];
+      const levels = [...new Set(list(entry.study_levels).map((l) => levelMap[l] || l))];
+      const key = `${id}\0${title}`;
+      if (seen.has(key)) {
+        const first = seen.get(key);
+        first.topics = [.../* @__PURE__ */ new Set([...first.topics, ...topics])];
+        first.levels = [.../* @__PURE__ */ new Set([...first.levels, ...levels])];
+        stats.duplicate += 1;
+        return;
+      }
+      const duration = normaliseDuration(entry.duration);
+      if (duration !== String(entry.duration || "").trim()) stats.durationsNormalised += 1;
+      const video = {
+        id,
+        title,
+        levels,
+        topics,
+        duration,
+        type: String(entry.type || "").trim(),
+        thumb: String(entry.img_url || "").trim()
+      };
+      seen.set(key, video);
+      videos.push(video);
+    });
+    stats.videos = videos.length;
+    return { videos, stats };
+  }
+  function parse20(element, { document: document2, onDemandCleanup }) {
+    const data = readData(document2);
+    const { videos, stats } = data ? cleanVideos(data, onDemandCleanup || {}) : { videos: [], stats: null };
+    if (!videos.length) {
+      console.warn(`${LOG} video-data-missing: no template#excat-video-data entries; region removed`);
+      element.remove();
+      return;
+    }
+    const types = [...new Set(videos.map((v) => v.type).filter(Boolean))];
+    if (types.length > 1) console.warn(`${LOG} ${types.length} video types (${types.join(", ")}): the block shows one group`);
+    console.log(`${LOG} ${stats.entries} entries -> ${stats.videos} videos (dropped: unavailable ${stats.unavailable}, truncated ${stats.truncated}, duplicate ${stats.duplicate}; topics mapped ${stats.topicsMapped}; durations normalised ${stats.durationsNormalised})`);
+    const cells = [
+      ["Heading", types[0] || "On-demand"],
+      ["Thumbnail", "Title", "Video", "Study level", "Topic", "Duration"]
+    ];
+    videos.forEach((v) => {
+      let thumb = "";
+      if (v.thumb) {
+        thumb = document2.createElement("img");
+        thumb.setAttribute("src", v.thumb);
+        thumb.setAttribute("alt", "");
+      }
+      const href = `https://www.youtube.com/watch?v=${v.id}`;
+      const a = document2.createElement("a");
+      a.setAttribute("href", href);
+      a.textContent = href;
+      cells.push([thumb, v.title, a, v.levels.join("; "), v.topics.join("; "), v.duration]);
+    });
+    const block = WebImporter.Blocks.createBlock(document2, { name: "Video library", cells });
+    element.replaceWith(block);
+  }
+
   // tools/importer/parsers/quote.js
   function clean10(el) {
     return (el ? el.textContent : "").replace(/\s+/g, " ").trim();
@@ -2997,7 +3118,7 @@ var CustomImportScript = (() => {
     if (image) row = imageFirst ? [[image], text7] : [text7, [image]];
     element.replaceWith(WebImporter.Blocks.createBlock(document2, alumni ? { name: "Quote", variants: ["alumni"], cells: [row] } : { name: "Quote", cells: [row] }));
   }
-  function parse20(element, { document: document2 }) {
+  function parse21(element, { document: document2 }) {
     if (element.matches(".card-focus") && element.querySelector(".testimonials, .alumni")) {
       parseCardFocus(element, document2);
       return;
@@ -3274,7 +3395,7 @@ var CustomImportScript = (() => {
     const block = WebImporter.Blocks.createBlock(document2, { name: "Accordion", cells });
     element.replaceWith(block);
   }
-  function parse21(element, { document: document2 }) {
+  function parse22(element, { document: document2 }) {
     if (element.querySelector("details.uom-accordion-item") || element.matches(".uom-accordion")) {
       parseLandingAccordion(element, document2);
       return;
@@ -3344,7 +3465,7 @@ var CustomImportScript = (() => {
     out.alt = clean11(alt);
     return out;
   }
-  function parse22(element, { document: document2 }) {
+  function parse23(element, { document: document2 }) {
     const card = element.querySelector(".card-focus") || element.querySelector(".section__inner") || element;
     const panel2 = [];
     [...card.children].forEach((el) => {
@@ -3382,7 +3503,7 @@ var CustomImportScript = (() => {
   var DEFAULT_ACTION = "/find/";
   var DEFAULT_PARAM = "query";
   var DEFAULT_PLACEHOLDER = "Find a course, study area or major";
-  function parse23(element, { document: document2, params }) {
+  function parse24(element, { document: document2, params }) {
     const form = element.matches("form") ? element : element.querySelector("form");
     const input = (form || element).querySelector('input.inline-search__input, input[type="search"], input[type="text"], input:not([type="hidden"])');
     let origin = DEFAULT_ORIGIN;
@@ -3457,7 +3578,7 @@ var CustomImportScript = (() => {
     }
     return [p];
   }
-  function parse24(element, { document: document2 }) {
+  function parse25(element, { document: document2 }) {
     const table = element.matches("table") ? element : element.querySelector("table");
     if (!table) {
       element.replaceWith(...element.childNodes);
@@ -3497,7 +3618,7 @@ var CustomImportScript = (() => {
 
   // tools/importer/transformers/unimelb-landing-cleanup.js
   var TransformHook = { beforeTransform: "beforeTransform", afterTransform: "afterTransform" };
-  var LOG = "[landing-cleanup]";
+  var LOG2 = "[landing-cleanup]";
   var STUDY_ORIGIN = "https://study.unimelb.edu.au";
   var STUDY_HOST = /^https?:\/\/study\.unimelb\.edu\.au(?=[/?#]|$)/i;
   var FILE_HREF = /(?:\.(?:pdf|docx?|xlsx?|pptx?|zip)(?:[?#]|$))|\/__data\/assets\/(?:pdf_file|file|word_doc|excel_doc|powerpoint_doc)\//i;
@@ -3556,8 +3677,7 @@ var CustomImportScript = (() => {
   var DEFAULT_DROPS = [`${ROOT} > div.ct-focusboxpathfinder > img`];
   var DEFAULT_WIDGETS = [
     { section: "conversion-tool", selector: `${ROOT} > div.section:has(#conversion-tool-app)`, widget: "/widgets/grade-conversion-calculator.html" },
-    { section: "course-listing", selector: `${ROOT} > div.CourseListing`, widget: "/widgets/online-course-listing.html", keep: ":scope > .content-block.bg-inverted" },
-    { section: "on-demand-library", selector: `${ROOT} > div.filter-category`, widget: "/widgets/on-demand-video-library.html" }
+    { section: "course-listing", selector: `${ROOT} > div.CourseListing`, widget: "/widgets/online-course-listing.html", keep: ":scope > .content-block.bg-inverted" }
   ];
   var ANCHOR_SKIP = "#main > div.stickyPanel, #main div.in-page-nav-today, section.uom-link-list-section, dash-cart, #liveagent, nav.in-page-navigation-v2__collapsed";
   function toList(v) {
@@ -3630,13 +3750,13 @@ var CustomImportScript = (() => {
     if (!id) return null;
     const sel = `[id="${String(id).replace(/["\\]/g, "\\$&")}"]`;
     const pick = (root, s) => {
-      let list = [];
+      let list2 = [];
       try {
-        list = [...root.querySelectorAll(s)];
+        list2 = [...root.querySelectorAll(s)];
       } catch (e) {
-        list = [];
+        list2 = [];
       }
-      return list.find((e) => /^H[1-6]$/.test(e.tagName) && headingText(e)) || list[0] || null;
+      return list2.find((e) => /^H[1-6]$/.test(e.tagName) && headingText(e)) || list2[0] || null;
     };
     let el = pick(scope, sel);
     if (!el && scope !== doc && doc) el = pick(doc, `#main ${sel}`);
@@ -3680,7 +3800,7 @@ var CustomImportScript = (() => {
       const slug = heading ? slugify2(headingText(heading)) : "";
       if (!slug) {
         stats.unresolved += 1;
-        console.warn(`${LOG} anchor unresolved, source href kept: ${href}`);
+        console.warn(`${LOG2} anchor unresolved, source href kept: ${href}`);
         return;
       }
       if (href !== `#${slug}`) {
@@ -3877,18 +3997,8 @@ var CustomImportScript = (() => {
       if (!h.textContent.trim() && !h.querySelector("img, picture, iframe")) h.remove();
     });
   }
-  var WIDGET_LABELS = {
-    "conversion-tool": "grade conversion calculator",
-    "course-listing": "online course browser",
-    "on-demand-library": "on-demand video library"
-  };
-  function replaceWidgets(element, template, pageUrl) {
+  function replaceWidgets(element, template) {
     const doc = element.ownerDocument;
-    let liveUrl = "";
-    try {
-      liveUrl = `https://study.unimelb.edu.au${new URL(pageUrl).pathname.replace(/\/$/, "")}`;
-    } catch (e) {
-    }
     const widgets = toList(template && template.widgets).length ? template.widgets : DEFAULT_WIDGETS;
     widgets.forEach((w) => {
       let nodes = [];
@@ -3907,13 +4017,13 @@ var CustomImportScript = (() => {
         }
         const p = doc.createElement("p");
         const a = doc.createElement("a");
-        const href = liveUrl || w.widget;
+        const href = w.widget;
         a.setAttribute("href", href);
-        a.textContent = liveUrl ? `Open the ${WIDGET_LABELS[w.section] || "interactive tool"}` : w.widget;
+        a.textContent = href;
         p.append(a);
         wrap.append(p);
         region.replaceWith(wrap);
-        console.log(`${LOG} widget ${w.section || ""} -> ${href}`);
+        console.log(`${LOG2} widget ${w.section || ""} -> ${href}`);
       });
     });
   }
@@ -3965,20 +4075,20 @@ var CustomImportScript = (() => {
     if (hookName === TransformHook.beforeTransform) {
       const path = pagePathOf(doc, payload);
       const stats = cleanRoot(element, doc, template, path);
-      if (stats.rewritten || stats.unresolved) console.log(`${LOG} anchors rewritten ${stats.rewritten}, unresolved ${stats.unresolved}`);
+      if (stats.rewritten || stats.unresolved) console.log(`${LOG2} anchors rewritten ${stats.rewritten}, unresolved ${stats.unresolved}`);
       templateRoots(doc).forEach((frag) => cleanRoot(frag, doc, template, path));
-      const list = new Set(payload && payload.unloadableImages || []);
-      if (list.size) {
+      const list2 = new Set(payload && payload.unloadableImages || []);
+      if (list2.size) {
         const dropped = new Set(doc.excatDroppedImages || []);
-        dropUnloadableImages(element, list, dropped);
-        templateRoots(doc).forEach((frag) => dropUnloadableImages(frag, list, dropped));
-        if (doc.head) dropUnloadableImages(doc.head, list, dropped);
+        dropUnloadableImages(element, list2, dropped);
+        templateRoots(doc).forEach((frag) => dropUnloadableImages(frag, list2, dropped));
+        if (doc.head) dropUnloadableImages(doc.head, list2, dropped);
         doc.excatDroppedImages = [...dropped];
-        dropped.forEach((u) => console.warn(`${LOG} image dropped (cannot be loaded on the source): ${u}`));
+        dropped.forEach((u) => console.warn(`${LOG2} image dropped (cannot be loaded on the source): ${u}`));
       }
     }
     if (hookName === TransformHook.afterTransform) {
-      replaceWidgets(element, template, payload && payload.params && payload.params.originalURL || "");
+      replaceWidgets(element, template);
       materializeBackgrounds(element);
       materializeVideos(element);
       doc.querySelectorAll('template[id^="excat-"]').forEach((t) => t.remove());
@@ -3997,7 +4107,7 @@ var CustomImportScript = (() => {
   var START_ATTR = "data-excat-section-start";
   var FRAGMENT_LINK_ATTR = "data-excat-fragment-link";
   var ORG_SUFFIX = "--organisations";
-  var LOG2 = "[landing-audience]";
+  var LOG3 = "[landing-audience]";
   function toList2(v) {
     if (!v) return [];
     return Array.isArray(v) ? v : [v];
@@ -4164,7 +4274,7 @@ ${hrefs}`;
               tally.individualsOnly.push(id);
             } else {
               tally.missing.push(id);
-              console.warn(`${LOG2} audience-missing: ${id}`);
+              console.warn(`${LOG3} audience-missing: ${id}`);
             }
             return;
           }
@@ -4185,7 +4295,7 @@ ${hrefs}`;
           const o = orgByKey.get(key(u));
           if (!o) {
             tally.missing.push(u.id);
-            console.warn(`${LOG2} audience-missing (kept shared): ${key(u)}`);
+            console.warn(`${LOG3} audience-missing (kept shared): ${key(u)}`);
             return;
           }
           if (signature(u.els) === signature(o.els)) {
@@ -4220,7 +4330,7 @@ ${hrefs}`;
           tally.organisationsOnly.push(o.id);
         });
       }
-      console.log(`${LOG2} split [${tally.split.join(", ")}] individuals-only [${tally.individualsOnly.join(", ")}] organisations-only [${tally.organisationsOnly.join(", ")}] identical [${tally.identical.join(", ")}]${tally.missing.length ? ` missing [${tally.missing.join(", ")}]` : ""}`);
+      console.log(`${LOG3} split [${tally.split.join(", ")}] individuals-only [${tally.individualsOnly.join(", ")}] organisations-only [${tally.organisationsOnly.join(", ")}] identical [${tally.identical.join(", ")}]${tally.missing.length ? ` missing [${tally.missing.join(", ")}]` : ""}`);
       doc.excatAudience = tally;
     }
     if (hookName === "afterTransform") {
@@ -4236,7 +4346,7 @@ ${hrefs}`;
   var FRAGMENT_LINK_ATTR2 = "data-excat-fragment-link";
   var ORG_SUFFIX2 = "--organisations";
   var STUDY_ORIGIN_RE = /^https?:\/\/study\.unimelb\.edu\.au/i;
-  var LOG3 = "[landing-fragments]";
+  var LOG4 = "[landing-fragments]";
   function toList3(v) {
     if (!v) return [];
     return Array.isArray(v) ? v : [v];
@@ -4371,7 +4481,7 @@ ${hrefs}`;
         const id = identityOf(region);
         const f = bySection[u.def.id].find((x) => sameIdentity(id, x.identity) && toList3(x.selector).some((sel) => safeMatches2(region, sel)));
         if (!f) {
-          console.log(`${LOG3} no identity match, kept inline: ${u.def.id} (text ${id.text}, links ${id.links}, media ${id.media}, ${id.chars} chars)`);
+          console.log(`${LOG4} no identity match, kept inline: ${u.def.id} (text ${id.text}, links ${id.links}, media ${id.media}, ${id.chars} chars)`);
           return;
         }
         u.els.forEach((el) => el.setAttribute(FRAGMENT_ATTR, f.slug));
@@ -4390,11 +4500,11 @@ ${hrefs}`;
         const hit = matches.find((m) => m.fragment.slug === slug);
         doc.excatFragmentMode = { slug, path: f ? f.path : null, found: !!hit, sourcePage: f ? f.sourcePage : null };
         if (!f) {
-          console.warn(`${LOG3} fragment-missing: unknown slug ${slug}`);
+          console.warn(`${LOG4} fragment-missing: unknown slug ${slug}`);
           return;
         }
         if (!hit) {
-          console.warn(`${LOG3} fragment-missing: band ${slug} not found (or identity mismatch) on this page`);
+          console.warn(`${LOG4} fragment-missing: band ${slug} not found (or identity mismatch) on this page`);
           return;
         }
         const main = element.querySelector("#main") || element;
@@ -4403,7 +4513,7 @@ ${hrefs}`;
           el.removeAttribute(START_ATTR2);
         });
         pruneTo(element, main, hit.unit.els);
-        console.log(`${LOG3} fragment mode: ${slug} -> ${f.path} (${hit.unit.els.length} region(s))`);
+        console.log(`${LOG4} fragment mode: ${slug} -> ${f.path} (${hit.unit.els.length} region(s))`);
         return;
       }
       matches.forEach(({ unit, fragment }) => {
@@ -4420,7 +4530,7 @@ ${hrefs}`;
         holder.append(p);
         first.before(holder);
         unit.els.forEach((el) => el.remove());
-        console.log(`${LOG3} ${unit.def.id} -> ${fragment.path}${unit.els.length > 1 ? ` (+${unit.els.length - 1} joined region(s))` : ""}${audience ? ` [${audience}]` : ""}`);
+        console.log(`${LOG4} ${unit.def.id} -> ${fragment.path}${unit.els.length > 1 ? ` (+${unit.els.length - 1} joined region(s))` : ""}${audience ? ` [${audience}]` : ""}`);
       });
     }
     if (hookName === "afterTransform") {
@@ -4436,7 +4546,7 @@ ${hrefs}`;
   var START_ATTR3 = "data-excat-section-start";
   var FRAGMENT_LINK_ATTR3 = "data-excat-fragment-link";
   var ORG_SUFFIX3 = "--organisations";
-  var LOG4 = "[landing-sections]";
+  var LOG5 = "[landing-sections]";
   function toList4(v) {
     if (!v) return [];
     return Array.isArray(v) ? v : [v];
@@ -4537,9 +4647,9 @@ ${hrefs}`;
     return unit.els.some((el) => [...el.querySelectorAll("h2.heading-section")].some((h) => !blocks.some((b) => b.contains(h))));
   }
   function withStyle(style, token) {
-    const list = (style || "").split(",").map((s) => s.trim()).filter(Boolean);
-    if (!list.includes(token)) list.push(token);
-    return list.join(", ");
+    const list2 = (style || "").split(",").map((s) => s.trim()).filter(Boolean);
+    if (!list2.includes(token)) list2.push(token);
+    return list2.join(", ");
   }
   function transform4(hookName, element, payload) {
     const template = payload && payload.template || {};
@@ -4557,7 +4667,7 @@ ${hrefs}`;
       });
       element.ownerDocument.excatSections = units.map((u) => `${u.id || "(none)"}${u.els[0].getAttribute(AUD_ATTR3) ? `[${u.els[0].getAttribute(AUD_ATTR3)}]` : ""}`);
       const unmatched = units.filter((u) => !u.def && !u.fragmentLink).length;
-      console.log(`${LOG4} ${units.length} sections (${units.filter((u) => u.els.length > 1).length} with joined/continued regions${unmatched ? `, ${unmatched} without a section entry` : ""})`);
+      console.log(`${LOG5} ${units.length} sections (${units.filter((u) => u.els.length > 1).length} with joined/continued regions${unmatched ? `, ${unmatched} without a section entry` : ""})`);
     }
     if (hookName === "afterTransform") {
       element.querySelectorAll(`hr[${MARK}]`).forEach((hr) => {
@@ -4771,6 +4881,36 @@ ${hrefs}`;
     "132c98e": "video-player"
   };
 
+  // tools/importer/on-demand-cleanup.json
+  var on_demand_cleanup_default = {
+    description: "Clean-up rules applied by tools/importer/parsers/video-library.js to the on-demand video data (template#excat-video-data in the /study-with-us/on-demand snapshot) before the Video library block is written. User decision: authors maintain the list; start from a cleaned copy.",
+    page: "/study-with-us/on-demand",
+    rules: {
+      dropUnavailable: "drop entries whose YouTube id is listed in unavailableYoutubeIds (YouTube oEmbed 404: private or removed)",
+      dropTruncated: "drop entries whose YouTube id does not match youtubeIdPattern (truncated ids in the source data)",
+      dropDuplicates: "drop an entry with the same YouTube id AND title as an earlier one; the first is kept and gets the duplicate's topics / study levels (the source repeats a video to list it under a second topic, e.g. Computing and Software Systems: Engineering + Information technology and computer science)",
+      topicMap: "replace topic (discipline) names",
+      durations: `normalise durations: '.' separator -> ':' ("21.59" -> "21:59")`
+    },
+    youtubeIdPattern: "^[A-Za-z0-9_-]{11}$",
+    unavailableYoutubeIds: {
+      "3vbjUOCIf9M": "oEmbed 404 on 2026-10-03 (Discover the Graphic Design major)",
+      LvZEYx4AEcs: "oEmbed 404 on 2026-10-03 (Discover the Performance Design major)",
+      uLdiBs4GmA0: "oEmbed 404 on 2026-10-03 (Discover the Digital Infrastructure Engineering major, 3 entries)",
+      "0DlZCN35ICo": "oEmbed 404 on 2026-10-03 (Discover the Master of Digital Infrastructure Engineering)",
+      "RHNN-rM89gs": "oEmbed 404 on 2026-10-03 (Discover the Geology major)"
+    },
+    truncatedYoutubeIdsSeen: {
+      zmFDikODUI: "Discover the English Language Studies minor (10 characters; oEmbed 400)",
+      efO8nZF9c4: "Discover the Master of Mechanical Engineering (10 characters; oEmbed 400)",
+      d_f5dBbSm4: "Discover the Diploma in General Studies (10 characters; oEmbed 400)"
+    },
+    topicMap: {
+      "Admissions and scholarships": "Applications and scholarships"
+    },
+    studyLevelMap: {}
+  };
+
   // tools/importer/import-section-landing.js
   var parsers = {
     "hero-split": parse2,
@@ -4794,11 +4934,12 @@ ${hrefs}`;
     "video": parse17,
     "video-shorts": parse18,
     "video-split": parse19,
-    "quote": parse20,
-    "accordion": parse21,
-    "callout-photo": parse22,
-    "search": parse23,
-    "table": parse24
+    "video-library": parse20,
+    "quote": parse21,
+    "accordion": parse22,
+    "callout-photo": parse23,
+    "search": parse24,
+    "table": parse25
   };
   var PAGE_TEMPLATE = {
     "name": "section-landing",
@@ -4950,6 +5091,12 @@ ${hrefs}`;
         "name": "video-split",
         "instances": [
           ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.ct-video.section-alt .section-alt__row:has(.uom-video, .video, iframe)"
+        ]
+      },
+      {
+        "name": "video-library",
+        "instances": [
+          ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.filter-category"
         ]
       },
       {
@@ -6068,12 +6215,14 @@ ${hrefs}`;
       },
       {
         "id": "on-demand-library",
-        "name": "On-demand video library filter (widget)",
+        "name": "On-demand video library (Video library block)",
         "selector": [
           ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.filter-category"
         ],
         "style": "navy",
-        "blocks": [],
+        "blocks": [
+          "video-library"
+        ],
         "defaultContent": []
       }
     ],
@@ -6211,20 +6360,14 @@ ${hrefs}`;
         "section": "conversion-tool",
         "selector": ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.section:has(#conversion-tool-app)",
         "widget": "/widgets/grade-conversion-calculator.html",
-        "note": "Vue eligibility calculator (#conversion-tool-app); no authorable content. Widget code to be built; until then author a link to the live calculator."
+        "note": 'Vue eligibility calculator (#conversion-tool-app); no authorable content. The region becomes a <p><a href="/widgets/grade-conversion-calculator.html"> link, which scripts.js turns into a widget block.'
       },
       {
         "section": "course-listing",
         "selector": ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.CourseListing",
         "widget": "/widgets/online-course-listing.html",
         "keep": ":scope > .content-block.bg-inverted",
-        "note": "JS course browser (study area / duration filters, Load more, 78 courses). Keep the intro h3 + p as default content, replace the form and results with the widget link; the ct-coursesearch Search block above already links to /find."
-      },
-      {
-        "section": "on-demand-library",
-        "selector": ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.filter-category",
-        "widget": "/widgets/on-demand-video-library.html",
-        "note": "Client-side video library filter (study level / topic radios, results fetched at runtime; the snapshot has no results)."
+        "note": 'JS course browser (study area / duration filters, Load more). Keep the intro h3 + p as default content, replace the form and results with a <p><a href="/widgets/online-course-listing.html"> link (widget block); the ct-coursesearch Search block above already links to /find.'
       }
     ],
     "fragmentContract": {
@@ -6547,7 +6690,8 @@ ${hrefs}`;
       "organisationsView": 'template#excat-organisations (8 micro-credential pages; html[data-excat-views="individuals,organisations"]): parts body (main#main of the organisations view), hero (div.page-header-alt), key-facts (div.key-facts). See audienceContract.',
       "clickToPlayVideo": "[data-excat-video-src] on the click-to-play root (div.uom-video in ct-video, div.video.video--portrait in video testimonials; 37 roots on 30 pages): the captured embed URL. Video parsers take the id from it and emit https://www.youtube.com/watch?v=<id>; poster from the root img; caption from the overlay title / duration. Never emit a video row without a link: if the attribute is missing, log video-url-missing and keep the poster as default content.",
       "lazyBackground": '[data-excat-bg] on elements whose image is a CSS background (full-width-image, ct-section-imagefullwidth, alumni__img, testimonials__img; 23 on 17 pages): the trimmed absolute image URL. Parsers/transformers turn it into an <img> (alt from aria-label) instead of parsing style="background-image".',
-      "optimizely": "5 pages contain .optimizely_experiment; only the first span.optimizely_experiment__block is the default variant. All region selectors use the ROOT form, so they match whether or not the cleanup unwraps or keeps that span; the other spans are removed by cleanup."
+      "optimizely": "5 pages contain .optimizely_experiment; only the first span.optimizely_experiment__block is the default variant. All region selectors use the ROOT form, so they match whether or not the cleanup unwraps or keeps that span; the other spans are removed by cleanup.",
+      "videoData": 'template#excat-video-data (/study-with-us/on-demand; capture-course-snapshots.mjs): the full :data JSON array of the <cards-filter-category> component (the rendered region holds only 12 cards and no video URLs), as text (& < > escaped), data-source="cards-filter-category:data". parsers/video-library.js reads it and applies tools/importer/on-demand-cleanup.json.'
     },
     "representativeUrls": [
       "https://study.unimelb.edu.au/find/short-courses/applied-learning-health-system",
@@ -6700,7 +6844,13 @@ ${hrefs}`;
           block.element.after(end);
         }
         try {
-          parser(block.element, { document: document2, url, params, template: PAGE_TEMPLATE.name });
+          parser(block.element, {
+            document: document2,
+            url,
+            params,
+            template: PAGE_TEMPLATE.name,
+            onDemandCleanup: on_demand_cleanup_default
+          });
         } catch (e) {
           console.error(`Failed to parse ${block.name} (${block.selector}):`, e);
         }
