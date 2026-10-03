@@ -12,7 +12,7 @@ Single block table. Content: Rows and cells map 1:1 to table rows and cells; cel
 
 | Variation | Option class | Look |
 | --- | --- | --- |
-| Compact | `compact` | Needs a header row. Columns size to their content. Below 600px each body row becomes a card: the first cell is a navy title bar and every other cell is prefixed with its bold column header (source `table--is-compacted`, e.g. the accommodation scholarships table). |
+| Compact | `compact` | Columns size to their content. Below 600px each body row becomes a card: the first cell is a navy title bar and, when the table has a header row, every other cell is prefixed with its bold column header. Only a bold or heading first row counts as the header (source `table--is-compacted`, e.g. the accommodation scholarships table; headerless: the extension-program grade table). |
 
 ## Universal Editor fields
 

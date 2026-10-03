@@ -56,6 +56,14 @@
     {
       "class": "chips",
       "label": "Chips"
+    },
+    {
+      "class": "boxed",
+      "label": "Boxed"
+    },
+    {
+      "class": "listing",
+      "label": "Listing"
     }
   ],
   "memberVariantIds": [

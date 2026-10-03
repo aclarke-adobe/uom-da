@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/connect-with-us/international/vietnam",
   "path": "connect-with-us/international/vietnam",
-  "timestamp": "2026-10-02T07:08:46.049Z",
+  "timestamp": "2026-10-03T07:13:12.380Z",
   "title": "Vietnam: Information for international students",
   "template": "section-landing",
   "blocks": [
@@ -10,6 +10,7 @@
     "cards-stat",
     "columns-overlap",
     "cards-tile",
+    "columns-text-column",
     "video",
     "quote",
     "quote",

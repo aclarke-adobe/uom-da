@@ -479,30 +479,35 @@ main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.h
 }
 
 /*
- * profile card (source card-focus .alumni; its quotation carries typed quotation marks):
- * role line, a navy name over a short grey rule, then the quotation in plain body text;
- * the text sits at the top on desktop
+ * alumni profile card (option `alumni`, source card-focus .alumni): role line (may be a
+ * link), a navy name over a short grey rule, then the text in plain body type with no
+ * generated quotation marks; the text sits at the top on desktop
  */
-.quote.quote-card.quote-marked .quote-text {
+.quote.quote-card.alumni .quote-text {
   padding-bottom: 0;
 }
 
-.quote.quote-card.quote-marked .quote-subcite {
+.quote.quote-card.alumni blockquote > p::before,
+.quote.quote-card.alumni blockquote > p::after {
+  content: none;
+}
+
+.quote.quote-card.alumni .quote-subcite {
   order: -2;
 }
 
-.quote.quote-card.quote-marked .quote-attribution {
+.quote.quote-card.alumni .quote-attribution {
   order: -1;
   color: var(--heading-color);
   font-size: 24px;
 }
 
-.quote.quote-card.quote-marked .quote-attribution::before {
+.quote.quote-card.alumni .quote-attribution::before {
   content: none;
 }
 
 /* the 40px rule under the name */
-.quote.quote-card.quote-marked .quote-attribution::after {
+.quote.quote-card.alumni .quote-attribution::after {
   content: '';
   display: block;
   width: 40px;
@@ -511,7 +516,7 @@ main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.h
   background-color: rgb(128 128 128);
 }
 
-.quote.quote-card.quote-marked blockquote {
+.quote.quote-card.alumni blockquote {
   margin-bottom: 24px;
   font-style: normal;
 }
@@ -521,7 +526,7 @@ main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.h
     margin-top: 12px;
   }
 
-  .quote.quote-card.quote-marked .quote-subcite {
+  .quote.quote-card.alumni .quote-subcite {
     margin-top: 0;
   }
 }
@@ -545,16 +550,16 @@ main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.h
     min-width: 0;
   }
 
-  .quote.quote-card.quote-marked .quote-text {
+  .quote.quote-card.alumni .quote-text {
     flex-basis: 65%;
     justify-content: flex-start;
   }
 
-  .quote.quote-card.quote-marked .quote-attribution {
+  .quote.quote-card.alumni .quote-attribution {
     font-size: 32px;
   }
 
-  .quote.quote-card.quote-marked .quote-attribution::after {
+  .quote.quote-card.alumni .quote-attribution::after {
     margin-top: 20px;
   }
 }

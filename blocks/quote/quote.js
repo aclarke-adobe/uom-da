@@ -8,7 +8,8 @@
  * An attribution followed by one more paragraph (a course or role line) makes a card
  * (`quote-card`, line gets `quote-subcite`); its portrait sits beside the text on desktop,
  * on the side of its cell (image cell first = left, otherwise right).
- * A card with authored quotation marks is the profile card (role, name, rule, quotation).
+ * Option `alumni`: the alumni profile card (role line, name, rule, then the text in plain
+ * body type with no generated quotation marks), whatever marks the author typed.
  * Option `profile`: a collapsed profile — a header row with the image, an eyebrow
  * paragraph, the name heading and a "Read more" toggle; the toggle reveals a full-width
  * panel with the remaining content. When that content ends with an attribution, the
@@ -16,7 +17,7 @@
  */
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
-const OPTION_CLASSES = ['profile'];
+const OPTION_CLASSES = ['profile', 'alumni'];
 const BLOCK_TAGS = /^(P|H[1-6]|UL|OL|DIV|BLOCKQUOTE|PICTURE|TABLE|HR)$/;
 const DASH = /^(—|–|-)\s*/;
 const QUOTE_MARK = /^["“”‘’„«]/;
@@ -123,6 +124,8 @@ export default function decorate(block) {
       block.classList.add('quote-card');
     }
   }
+  // an alumni profile is always a card, with or without its role line
+  if (active.includes('alumni')) block.classList.add('quote-card');
 
   if (media) {
     media.querySelectorAll('img').forEach((img) => {

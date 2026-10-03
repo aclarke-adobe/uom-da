@@ -5,8 +5,9 @@
  * (and more rows follow). Cells may contain rich content (lists, links, images).
  * Narrow screens scroll the table sideways inside the block; the scroll container
  * becomes a focusable, labelled region only while it actually overflows.
- * Option `compact` (with a header row): below 600px each row becomes a card headed by its
- * first cell, the other cells labelled with their column headers; columns size to content.
+ * Option `compact`: below 600px each row becomes a card headed by its first cell, the other
+ * cells labelled with their column headers (when there is a header row); columns size to
+ * content. In a compact table only a bold / heading first row is a header.
  */
 
 /**
@@ -36,12 +37,20 @@ function unbuttonLinks(cell) {
   });
 }
 
-function isHeaderRow(row, rowCount) {
+function isHeaderRow(row, rowCount, strict) {
   if (rowCount < 2) return false;
   const cells = [...row.children].filter((c) => c.textContent.trim());
   if (!cells.length) return false;
   return cells.every((cell) => {
     const els = [...cell.children];
+    // strict (compact): only an authored heading / bold row is a header, never short plain text
+    if (strict) {
+      return els.length === 1 && cell.textContent.trim() === els[0].textContent.trim()
+        && (/^(H[1-6]|STRONG|B)$/.test(els[0].tagName) || isButtonLabel(els[0])
+          || (els[0].tagName === 'P' && els[0].children.length === 1
+            && /^(STRONG|B)$/.test(els[0].firstElementChild.tagName)
+            && els[0].textContent.trim() === els[0].firstElementChild.textContent.trim()));
+    }
     if (!els.length) return cell.textContent.trim().length <= 60;
     const onlyText = els.length === 1
       && cell.textContent.trim() === els[0].textContent.trim();
@@ -60,7 +69,7 @@ export default function decorate(block) {
   if (!rows.length) return;
 
   const table = document.createElement('table');
-  const hasHeader = isHeaderRow(rows[0], rows.length);
+  const hasHeader = isHeaderRow(rows[0], rows.length, block.classList.contains('compact'));
 
   if (hasHeader) {
     const thead = document.createElement('thead');

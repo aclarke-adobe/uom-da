@@ -11,6 +11,8 @@ Single block table. Content: Optional intro row (no video link): heading and tex
 - **Default**: full-width 16:9 poster with YouTube's red play button; the player loads on click.
 - **Split**: intro (a third) beside the video (two thirds). The caption (`title`, `duration`) becomes a navy bar
   with a play icon at the poster's bottom left; the poster gets a 30% navy tint and a white play circle.
+- **Split, plain** (`split` + `plain`, source: the newer UoM video player): as Split, but the poster has no navy
+  tint, it zooms less on hover, the play circle is brighter and the caption is semibold.
 - **Shorts**: portrait 9:16 testimonials. Caption cell: title (shown as an `h3`), speaker name, duration (shown in
   the bar on the poster). Without a poster image, the YouTube thumbnail is used. Consecutive `video (shorts)`
   blocks in a section join one row, and default content directly before the first one becomes the intro beside
@@ -21,6 +23,7 @@ Single block table. Content: Optional intro row (no video link): heading and tex
 | Variation | Option class |
 | --- | --- |
 | Split | `split` |
+| Split, plain (with `split`) | `plain` |
 | Shorts | `shorts` |
 
 ## Universal Editor fields

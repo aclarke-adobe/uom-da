@@ -29,7 +29,8 @@ Section-landing shapes (also automatic; `cards.js` `decorateShapes` derives them
 | `cards-chip-<type>` on the card | chips | link + type paragraph | ct-coursecards (left rule coloured by type) |
 | `cards-news` | default | linked h3, date, excerpt, links | ct-newslisting / ct-eventslisting |
 | `cards-staff` | default, no CTA | image + linked h3 + text | ct-profilelist staff cards |
-| `cards-listing` | default, no CTA | image + h3 only | ct-pagelisting image listing |
+| `cards-listing` | `listing` option, or default with no CTA | image + h3 (+ teaser); without the option: image + plain h3 only | ct-pagelisting image listing |
+| `cards-tile-link` (+ `cards-tile-box` / `cards-tile-photo`) | tile | (image +) one plain link | ct-pathfinder tiles whose title is a paragraph: underlined bold link, whole card links |
 | `cards-feature` | default | CTA authored as a button (`*[link]*`) | ct-featurespanel (full-width button) |
 
 ## Supported variations
@@ -43,6 +44,8 @@ Section-landing shapes (also automatic; `cards.js` `decorateShapes` derives them
 | People | `people` |
 | Stat | `stat` |
 | Chips | `chips` |
+| Boxed (with Icon) | `icon boxed`, authored as `Cards (icon, boxed)`: ct-focusbox white centred boxes (pictogram or image over heading and text) |
+| Listing | `listing`, authored as `Cards (listing)`: ct-pagelisting image listing (photo over a linked, link-styled title and optional teaser; gets `cards-listing`) |
 
 ## Universal Editor fields
 

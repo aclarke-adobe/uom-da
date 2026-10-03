@@ -2,11 +2,17 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate/access-melbourne-scholarships",
   "path": "how-to-apply/equity-entry-schemes/access-melbourne-undergraduate/access-melbourne-scholarships",
-  "timestamp": "2026-10-02T07:15:35.591Z",
+  "timestamp": "2026-10-03T07:20:24.003Z",
   "title": "Access Melbourne scholarships",
   "template": "section-landing",
   "blocks": [
     "hero-split",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
     "cards-tile"
   ],
   "fragments": "",

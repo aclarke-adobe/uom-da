@@ -90,6 +90,17 @@ function tileBody(root, document, titleLink) {
     });
   };
   walk(root);
+  // link tiles whose only text is a paragraph (a.card--image > .card__inner > p, e.g. vietnam
+  // "Entry requirements" tiles): keep the paragraph and link it to the tile href (a plain link,
+  // as on the source), so the link is not lost
+  if (titleLink && !body.some((b) => b.tagName === 'H3' || (b.querySelector && b.querySelector('a')))) {
+    const first = body[0];
+    if (first && first.tagName === 'P' && cleanText(first)) {
+      const p = document.createElement('p');
+      p.append(makeLink(titleLink, cleanText(first), document));
+      body[0] = p;
+    }
+  }
   return body;
 }
 

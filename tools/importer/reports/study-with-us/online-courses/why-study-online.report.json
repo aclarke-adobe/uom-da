@@ -2,12 +2,13 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/study-with-us/online-courses/why-study-online",
   "path": "study-with-us/online-courses/why-study-online",
-  "timestamp": "2026-10-02T07:20:04.932Z",
+  "timestamp": "2026-10-03T07:25:05.529Z",
   "title": "Benefits of online learning at the University of Melbourne",
   "template": "section-landing",
   "blocks": [
     "hero-split",
     "cards",
+    "columns-text-column",
     "columns-split"
   ],
   "fragments": "",

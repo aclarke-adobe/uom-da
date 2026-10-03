@@ -2,11 +2,12 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/study-with-us/programs-for-indigenous-students",
   "path": "study-with-us/programs-for-indigenous-students",
-  "timestamp": "2026-10-02T07:21:03.736Z",
+  "timestamp": "2026-10-03T07:26:10.882Z",
   "title": "Programs and support for Indigenous students",
   "template": "section-landing",
   "blocks": [
     "hero-split",
+    "columns-text-column",
     "columns-overlap",
     "columns-split"
   ],

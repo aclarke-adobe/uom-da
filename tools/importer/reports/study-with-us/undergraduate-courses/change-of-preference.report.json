@@ -2,13 +2,15 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/study-with-us/undergraduate-courses/change-of-preference",
   "path": "study-with-us/undergraduate-courses/change-of-preference",
-  "timestamp": "2026-10-02T07:21:09.410Z",
+  "timestamp": "2026-10-03T07:26:17.282Z",
   "title": "Change of preference",
   "template": "section-landing",
   "blocks": [
     "hero-split",
     "cards-tile",
     "hero",
+    "columns-text-column",
+    "columns-text-column",
     "cards"
   ],
   "fragments": "",

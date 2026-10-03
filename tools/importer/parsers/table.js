@@ -20,6 +20,9 @@
  * Source (verified on the bulk raw snapshots, e.g. graduate/doctoral-program-in-accounting/structure):
  *   table.table[.table--striped] > thead > tr.table__row--inverted > th[colspan]?, tbody > tr > td
  * Empty tables are removed by the course cleanup transformer before parsing.
+ *
+ * Section-landing pages: a table.table--is-compacted is authored as "Table (compact)"
+ * (blocks/table `compact`: row cards below 600px). Course tables never get it.
  */
 
 function cleanText(el) {
@@ -89,6 +92,14 @@ export default function parse(element, { document }) {
     before.push(p);
   }
 
-  const block = WebImporter.Blocks.createBlock(document, { name: 'Table', cells });
+  // section-landing only: the source's compacted table (table.table--is-compacted, inside
+  // div.compacted-table: a card per row on mobile) becomes the `compact` option. Course pages
+  // (#main div[data-test$="-page"]) keep the plain Table, unchanged. Headerless compacted tables
+  // (e.g. the subject-information grade table) are compact too: on the source each row is still a card.
+  const compact = /\btable--is-compacted\b/.test(table.className || '')
+    && !table.closest('[data-test$="-page"]');
+  const block = WebImporter.Blocks.createBlock(document, compact
+    ? { name: 'Table', variants: ['compact'], cells }
+    : { name: 'Table', cells });
   element.replaceWith(...before, block);
 }

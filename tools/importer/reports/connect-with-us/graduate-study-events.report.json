@@ -2,12 +2,13 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/connect-with-us/graduate-study-events",
   "path": "connect-with-us/graduate-study-events",
-  "timestamp": "2026-10-02T07:07:45.336Z",
+  "timestamp": "2026-10-03T07:12:03.419Z",
   "title": "Graduate study events |The University of Melbourne",
   "template": "section-landing",
   "blocks": [
     "hero-split",
     "accordion",
+    "columns-text-column",
     "accordion",
     "columns-split"
   ],

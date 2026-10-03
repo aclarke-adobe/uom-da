@@ -2,11 +2,12 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/study-with-us/guaranteed-undergraduate-to-graduate-study-pathways",
   "path": "study-with-us/guaranteed-undergraduate-to-graduate-study-pathways",
-  "timestamp": "2026-10-02T07:19:42.440Z",
+  "timestamp": "2026-10-03T07:24:43.046Z",
   "title": "Guaranteed undergraduate to graduate degree pathways",
   "template": "section-landing",
   "blocks": [
     "hero-split",
+    "columns-text-column",
     "cards",
     "columns-split"
   ],

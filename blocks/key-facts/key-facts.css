@@ -140,6 +140,24 @@ main .section.key-facts-container:is(.grey, .light, .highlight, .sage, .cream) {
     line-height: 27px;
   }
 
+  /* more than two partner logos: two per column, the next column beside them (as on the source) */
+  .key-facts .key-facts-item-logos-wide {
+    grid-column: span 2;
+  }
+
+  .key-facts .key-facts-item-logos-wide .key-facts-value {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    align-content: start;
+    padding-right: 0;
+  }
+
+  .key-facts .key-facts-item-logos-wide .key-facts-value > * {
+    padding-right: 24px;
+  }
+
   .key-facts .key-facts-actions {
     gap: 24px;
   }

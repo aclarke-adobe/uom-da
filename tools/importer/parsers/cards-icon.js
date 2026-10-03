@@ -152,8 +152,13 @@ function parseLanding(element, document) {
     let cards = [...element.querySelectorAll('.card--fact, .card-focus, .section-alt__inner-flex-items')];
     if (!cards.length) cards = [...element.querySelectorAll(':scope > .cell')];
     cards.forEach((card) => {
+      // focus boxes without the icon holder carry their pictogram as an image-only paragraph
+      // (professional-development: <p><img src="…/trophy-blue.png"></p> above the h3)
+      const imageParagraph = card.matches('.card-focus')
+        ? [...card.querySelectorAll(':scope > p')].find((p) => !clean(p) && p.querySelector(':scope > img'))
+        : null;
       const holder = card.querySelector('.section-alt__inner-svg-icon, .card--focus-box__icon, .card__icons__left')
-        || card.querySelector(':scope > img');
+        || card.querySelector(':scope > img') || imageParagraph;
       const icon = card.matches('.card--fact') ? null : landingIconCell(holder, document);
       const body = landingBody(card, holder, document);
       if (!body.length && !icon) return;
@@ -161,7 +166,9 @@ function parseLanding(element, document) {
     });
   }
   if (!rows.length) { element.replaceWith(...element.childNodes); return; }
-  element.replaceWith(WebImporter.Blocks.createBlock(document, { name: 'Cards (icon)', cells: rows }));
+  // ct-focusbox: white, centred boxes on the grey band (not the pictogram text columns)
+  const name = element.closest('.ct-focusbox') ? 'Cards (icon, boxed)' : 'Cards (icon)';
+  element.replaceWith(WebImporter.Blocks.createBlock(document, { name, cells: rows }));
 }
 
 function isLanding(element) {

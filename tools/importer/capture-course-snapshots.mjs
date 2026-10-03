@@ -32,7 +32,9 @@
  *     clicked after serialisation and the embed URL written as data-excat-video-src on the
  *     player root (the snapshot keeps the poster + button, no iframe).
  *   - non-course pages only: lazily applied backgrounds (div.full-width-image, empty/none
- *     inline background-image) are scrolled into view and recorded as data-excat-bg="<url>".
+ *     inline background-image) are scrolled into view and recorded as data-excat-bg="<url>"
+ *     (a url the bd-scrape regex can't read, e.g. the leading-space portraits on
+ *     .testimonials__img / .alumni__img, is recorded too; a blank url(" ") is not).
  *
  * Like the analysis scrape (excat-scrape-webpage bd-scrape.js) the snapshot has
  * <script>/<noscript> stripped (so it is inert under page.setContent) and the same
@@ -271,7 +273,11 @@ function serializeFixed({
           // bd-scrape regex above can't read (e.g. url(" https://...") with a leading space).
           const comp = window.getComputedStyle(el)?.getPropertyValue('background-image') || '';
           const cm = comp.match(/url\(\s*['"]?\s*([^'")]*?)\s*['"]?\s*\)/);
-          if (cm && cm[1]) {
+          // a blank inline url(" ") computes to the document URL itself (e.g. the two portrait-less
+          // .testimonials__img on study-education/teaching): not an image, never recorded
+          let blank = false;
+          try { blank = Boolean(cm && cm[1]) && new URL(cm[1], document.baseURI).href.split('#')[0] === document.URL.split('#')[0]; } catch { /* keep */ }
+          if (cm && cm[1] && !blank) {
             const im = (el.getAttribute('style') || '').match(/background-image\s*:\s*([^;]*)/i);
             const inlineBg = im ? im[1].trim().toLowerCase() : null;
             const lazy = inlineBg === '' || inlineBg === 'none';

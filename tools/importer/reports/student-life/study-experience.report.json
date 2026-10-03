@@ -2,12 +2,14 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/student-life/study-experience",
   "path": "student-life/study-experience",
-  "timestamp": "2026-10-02T07:16:44.865Z",
+  "timestamp": "2026-10-03T07:21:38.332Z",
   "title": "Study experience",
   "template": "section-landing",
   "blocks": [
     "hero-split",
-    "video"
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column"
   ],
   "fragments": "",
   "droppedImages": ""

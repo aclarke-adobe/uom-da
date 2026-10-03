@@ -2,12 +2,15 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/student-life",
   "path": "student-life",
-  "timestamp": "2026-10-02T07:15:55.414Z",
+  "timestamp": "2026-10-03T07:20:42.476Z",
   "title": "Student life",
   "template": "section-landing",
   "blocks": [
     "hero-split",
+    "columns-text-column",
+    "columns-text-column",
     "cards",
+    "columns-text-column",
     "cards-icon"
   ],
   "fragments": "",

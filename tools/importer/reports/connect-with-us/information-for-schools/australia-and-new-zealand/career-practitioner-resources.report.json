@@ -2,12 +2,14 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/career-practitioner-resources",
   "path": "connect-with-us/information-for-schools/australia-and-new-zealand/career-practitioner-resources",
-  "timestamp": "2026-10-02T07:08:12.280Z",
+  "timestamp": "2026-10-03T07:12:33.576Z",
   "title": "Career practitioner resources",
   "template": "section-landing",
   "blocks": [
     "hero-split",
-    "video-split"
+    "video-split",
+    "columns-text-column",
+    "columns-text-column"
   ],
   "fragments": "",
   "droppedImages": ""

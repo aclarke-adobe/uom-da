@@ -63,7 +63,9 @@ function parseCourseQuote(root, document) {
  *   .testimonials: blockquote > p (quote) + cite (name) + .block-quotation__sub-cite (course line);
  *                  .testimonials__img[data-excat-bg][aria-label] (portrait, often absent)
  *   .alumni: p.alumni__title (role), h3.alumni__name, p.alumni__short-text (quote), .alumni__img[data-excat-bg]
- * Row: quote paragraph(s) + "— {name}" + course/role line | portrait (only when there is one). */
+ * Row: quote paragraph(s) + "— {name}" + course/role line | portrait (only when there is one); the
+ * portrait cell comes first when the source portrait precedes the text. `.alumni` cards are authored
+ * as "Quote (alumni)" (role line links kept); `.testimonials` cards as plain "Quote". */
 function bgPortrait(holder, document) {
   if (!holder) return null;
   const img = holder.querySelector('img');
@@ -76,19 +78,42 @@ function bgPortrait(holder, document) {
   return out;
 }
 
+/** Role line keeping its links (e.g. "Explore Edward's Melbourne journey"), other markup flattened. */
+function inlinePara(el, document) {
+  const p = document.createElement('p');
+  [...el.childNodes].forEach((n) => {
+    if (n.nodeType === 1 && n.matches('a[href]') && clean(n)) {
+      const a = document.createElement('a');
+      a.href = (n.getAttribute('href') || '').trim();
+      a.textContent = clean(n);
+      p.append(a);
+    } else if (n.nodeType === 1 && n.querySelector('a[href]')) {
+      p.append(...inlinePara(n, document).childNodes);
+    } else {
+      p.append(document.createTextNode((n.textContent || '').replace(/\s+/g, ' ')));
+    }
+  });
+  // trim edge whitespace
+  if (p.firstChild && p.firstChild.nodeType === 3) p.firstChild.textContent = p.firstChild.textContent.replace(/^\s+/, '');
+  if (p.lastChild && p.lastChild.nodeType === 3) p.lastChild.textContent = p.lastChild.textContent.replace(/\s+$/, '');
+  return p;
+}
+
 function parseCardFocus(element, document) {
   const para = (t) => { const p = document.createElement('p'); p.textContent = t; return p; };
   const text = [];
   let holder = null;
+  let textEl = null;
   const alumni = element.querySelector('.alumni');
   if (alumni) {
     const q = clean(alumni.querySelector('.alumni__short-text'));
     if (q) text.push(para(q));
     const name = clean(alumni.querySelector('.alumni__name'));
     if (name) text.push(para(`— ${name}`));
-    const role = clean(alumni.querySelector('.alumni__title'));
-    if (role) text.push(para(role));
+    const roleEl = alumni.querySelector('.alumni__title');
+    if (clean(roleEl)) text.push(inlinePara(roleEl, document));
     holder = alumni.querySelector('.alumni__img');
+    textEl = alumni.querySelector('.alumni__info');
   } else {
     const bq = element.querySelector('blockquote') || element;
     bq.querySelectorAll('p').forEach((p) => { if (!p.closest('cite') && clean(p)) text.push(para(clean(p))); });
@@ -97,11 +122,20 @@ function parseCardFocus(element, document) {
     const sub = clean(bq.querySelector('.block-quotation__sub-cite'));
     if (sub) text.push(para(sub));
     holder = element.querySelector('.testimonials__img');
+    textEl = element.querySelector('.testimonials__info') || bq;
   }
   if (!text.length) { element.replaceWith(...element.childNodes); return; }
   const image = bgPortrait(holder, document);
-  const row = image ? [text, [image]] : [text];
-  element.replaceWith(WebImporter.Blocks.createBlock(document, { name: 'Quote', cells: [row] }));
+  // the portrait keeps its source side: a portrait before the text (.alumni__img /
+  // .testimonials__img preceding the info) is the first cell, otherwise the last
+  // eslint-disable-next-line no-bitwise
+  const imageFirst = !!(image && textEl && (holder.compareDocumentPosition(textEl) & 4));
+  let row = [text];
+  if (image) row = imageFirst ? [[image], text] : [text, [image]];
+  // alumni profile cards (.alumni: role, name, rule, plain text) vs student testimonials
+  element.replaceWith(WebImporter.Blocks.createBlock(document, alumni
+    ? { name: 'Quote', variants: ['alumni'], cells: [row] }
+    : { name: 'Quote', cells: [row] }));
 }
 
 export default function parse(element, { document }) {

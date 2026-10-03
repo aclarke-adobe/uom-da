@@ -2,11 +2,13 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/support/moving-support/moving-guide",
   "path": "support/moving-support/moving-guide",
-  "timestamp": "2026-10-02T07:21:28.855Z",
+  "timestamp": "2026-10-03T07:26:43.276Z",
   "title": "Moving guide for International students",
   "template": "section-landing",
   "blocks": [
-    "hero-split"
+    "hero-split",
+    "columns-text-column",
+    "columns-text-column"
   ],
   "fragments": "",
   "droppedImages": ""

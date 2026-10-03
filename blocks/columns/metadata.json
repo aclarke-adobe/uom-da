@@ -35,6 +35,10 @@
     {
       "class": "overlap",
       "label": "Overlap"
+    },
+    {
+      "class": "text-column",
+      "label": "Text column"
     }
   ],
   "memberVariantIds": [

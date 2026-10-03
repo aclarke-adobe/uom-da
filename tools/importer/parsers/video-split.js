@@ -9,6 +9,8 @@
  *   row 1 (intro, no video link) = .section-alt__left: heading, text, CTA links
  *   row 2+ (one per player)      = <p><a href="https://www.youtube.com/watch?v=<id>">{title}</a></p> |
  *                                  poster <img> (when present) | caption <p>{title}</p><p>{duration}</p>
+ * Option `plain` ("Video (split, plain)"): every player is the newer div.uom-video (uom-video-overlay,
+ * no navy tint); the older div.video / iframe players stay "Video (split)".
  * Video URL: data-excat-video-src on the click-to-play root (snapshot contract), else an iframe src.
  * A player without a URL is logged (video-url-missing) and its poster is kept as default content;
  * a video row is never emitted without a link.
@@ -153,6 +155,9 @@ export default function parse(element, { document }) {
     element.replaceWith(...introCell, ...leftovers);
     return;
   }
-  const block = WebImporter.Blocks.createBlock(document, { name: 'Video', variants: ['split'], cells });
+  // the newer UI-kit player (div.uom-video > .uom-video-overlay: no navy tint on the poster,
+  // semibold caption bar) is `plain`; the older div.video / iframe players keep the tinted split
+  const plain = roots.length > 0 && roots.every((r) => r.matches('.uom-video') || !!r.querySelector('.uom-video-overlay'));
+  const block = WebImporter.Blocks.createBlock(document, { name: 'Video', variants: plain ? ['split', 'plain'] : ['split'], cells });
   element.replaceWith(block, ...leftovers);
 }

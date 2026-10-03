@@ -899,6 +899,35 @@ main .section .cards > ul {
   margin: 0;
 }
 
+/* paragraph-title tiles (a.card--image > p): underlined bold link, top-aligned, whole card links */
+.cards.tile.cards-tile-link .cards-card-body,
+.cards.tile.cards-tile-box.cards-tile-link .cards-card-body {
+  justify-content: flex-start;
+  padding: 48px 24px;
+  line-height: 1.5;
+}
+
+.cards.tile.cards-tile-link .cards-card-body > p {
+  margin: 0;
+}
+
+.cards.tile.cards-tile-link .cards-card-body a:any-link {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.cards.tile.cards-tile-link .cards-card-body a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.cards.tile.cards-tile-link .cards-card-body a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
 /* photo tiles without a description: a single line title with a trailing arrow */
 .cards.tile.cards-tile-photo:not(.cards-tile-desc) .cards-card-body > :where(h2, h3, h4, h5, h6).cards-card-title {
   margin: 0;
@@ -1206,6 +1235,70 @@ main .section:not(.centered) .cards.icon.cards-icon-inline .cards-card-body > :i
   opacity: 0.65;
 }
 
+/* --- icon, boxed (ct-focusbox): white centred boxes, pictogram over heading and text */
+.cards.icon.boxed > ul > li {
+  box-sizing: border-box;
+  padding: 32px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.cards.icon.boxed .cards-card-image {
+  margin: 0 0 24px;
+}
+
+.cards.icon.boxed .cards-card-image.cards-card-icon .icon {
+  display: block;
+  width: auto;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.cards.icon.boxed > ul > li .cards-card-icon img {
+  width: auto;
+  height: 100%;
+}
+
+/* image pictograms (professional development) keep their natural size */
+.cards.icon.boxed > ul > li .cards-card-image:not(.cards-card-icon) img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 80px;
+  aspect-ratio: auto;
+  margin: 0 auto;
+}
+
+.cards.icon.boxed .cards-card-body {
+  padding: 0;
+}
+
+.cards.icon.boxed .cards-card-body > :is(h2, h3, h4, h5, h6) {
+  margin: 0 0 18px;
+  font-size: var(--heading-font-size-l);
+}
+
+.cards.icon.boxed .cards-card-body > p:where(:not(.cards-card-cta)) {
+  margin: 0 0 24px;
+}
+
+@media (width >= 768px) {
+  .cards.icon.boxed > ul > li {
+    padding: 48px;
+  }
+
+  .cards.icon.boxed .cards-card-body > :is(h2, h3, h4, h5, h6) {
+    margin-bottom: 20px;
+  }
+}
+
+@media (width >= 900px) {
+  /* three-up: the pictogram narrows with its box, as on the source */
+  .cards.icon.boxed .cards-card-image.cards-card-icon .icon {
+    height: 102px;
+  }
+}
+
 /* --- stat, rankings (uom-stats-and-rankings): outlined tiles, serif figure, small caps label */
 .cards.stat.cards-stat-ranking > ul {
   grid-template-columns: 1fr;
@@ -1477,6 +1570,11 @@ main .section .cards.link-list > ul {
   margin: 0;
   color: var(--link-color);
   text-decoration: underline;
+}
+
+/* a teaser under the title (pg-articles guide) */
+.cards.cards-profile.cards-listing .cards-card-body > h3:not(:last-child) {
+  margin-bottom: 16px;
 }
 
 @media (width >= 600px) {

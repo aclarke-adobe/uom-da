@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/study-with-us/the-melbourne-curriculum",
   "path": "study-with-us/the-melbourne-curriculum",
-  "timestamp": "2026-10-02T07:21:06.362Z",
+  "timestamp": "2026-10-03T07:26:13.977Z",
   "title": "The Melbourne curriculum at the University of Melbourne",
   "template": "section-landing",
   "blocks": [
@@ -11,8 +11,10 @@
     "accordion",
     "cards-icon",
     "hero",
+    "columns-text-column",
     "quote",
-    "quote"
+    "quote",
+    "columns-text-column"
   ],
   "fragments": "",
   "droppedImages": ""

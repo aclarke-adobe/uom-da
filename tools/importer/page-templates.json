@@ -4379,7 +4379,7 @@
           "name": "notice",
           "instances": [
             "#main > div.section > .section__inner > div.notice",
-            ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > :is(div.content-block, div.ct-textcolumnlayout) div.notice"
+            ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.content-block div.notice"
           ]
         },
         {
@@ -4387,6 +4387,12 @@
           "instances": [
             "#main > section#what-you-will-learn",
             ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.ct-textcolumnlayout:has(.section-alt__img-wrapper) > section.section-alt"
+          ]
+        },
+        {
+          "name": "columns-text-column",
+          "instances": [
+            ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.ct-textcolumnlayout:not(:has(.section-alt__img-wrapper)) > section.section-alt"
           ]
         },
         {
@@ -4469,7 +4475,7 @@
           "name": "video",
           "instances": [
             ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.ct-video.section :is(div.embed, div.uom-video, div.video)",
-            ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > :is(div.content-block, section.content-block, div.ct-textcolumnlayout:not(:has(.section-alt__img-wrapper))) :is(div, p):has(> iframe[src*=\"youtube.com/embed\"], > iframe[src*=\"vimeo.com\"])"
+            ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > :is(div.content-block, section.content-block) :is(div, p):has(> iframe[src*=\"youtube.com/embed\"], > iframe[src*=\"vimeo.com\"])"
           ]
         },
         {
@@ -4515,7 +4521,7 @@
         {
           "name": "table",
           "instances": [
-            ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > :is(div.content-block, div.ct-textcolumnlayout) table:not(.uom-accordion table)"
+            ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.content-block table:not(.uom-accordion table)"
           ]
         }
       ],
@@ -4772,14 +4778,9 @@
           ],
           "style": null,
           "blocks": [
-            "notice",
-            "table",
-            "video"
+            "columns-text-column"
           ],
-          "defaultContent": [
-            ":scope .section-alt__left > *",
-            ":scope .section-alt__right > *"
-          ]
+          "defaultContent": []
         },
         {
           "id": "text-column-grey",
@@ -4789,14 +4790,9 @@
           ],
           "style": "grey",
           "blocks": [
-            "notice",
-            "table",
-            "video"
+            "columns-text-column"
           ],
-          "defaultContent": [
-            ":scope .section-alt__left > *",
-            ":scope .section-alt__right > *"
-          ]
+          "defaultContent": []
         },
         {
           "id": "text-column-overlap",

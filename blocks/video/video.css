@@ -245,6 +245,46 @@ main .section:is(.centered, .grey) > .video-wrapper:last-child > .video {
   font-weight: 400;
 }
 
+/*
+ * split + plain (source: the newer UI-kit player, div.uom-video): no navy tint, a gentler
+ * 1.08 zoom on hover, a 45% white play circle and a semibold caption on a #000f46 bar
+ */
+.video.split.plain .video-poster::before {
+  content: none;
+}
+
+.video.split.plain .video-poster picture {
+  transition: scale 0.15s ease-in-out;
+}
+
+.video.split.plain .video-poster:hover picture {
+  scale: 1.08;
+}
+
+.video.split.plain .video-item .video-play {
+  background: rgb(255 255 255 / 45%);
+  transition: background-color 0.15s ease;
+}
+
+.video.split.plain .video-play:hover,
+.video.split.plain .video-poster:hover .video-play {
+  background: rgb(255 255 255 / 60%);
+}
+
+.video.split.plain .video-controls {
+  background-color: #000f46;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.video.split.plain .video-poster:hover .video-controls {
+  background-color: #00354c;
+}
+
+.video.split.plain .video-controls-title {
+  padding-block: 0;
+}
+
 /* shorts: portrait 9:16 video testimonials, a scrolling row on small screens */
 .video.shorts .video-frame {
   aspect-ratio: 9 / 16;

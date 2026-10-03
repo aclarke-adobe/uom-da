@@ -32,6 +32,10 @@
     {
       "class": "shorts",
       "label": "Shorts"
+    },
+    {
+      "class": "plain",
+      "label": "Plain (with split)"
     }
   ],
   "memberVariantIds": [

@@ -106,7 +106,10 @@ function landingCard(card, document) {
   const title = clean(heading);
   if (title) {
     const h = document.createElement('h3');
-    const titleLink = heading.matches('a[href]') ? heading : heading.querySelector('a[href]');
+    // the link is in the heading, or wraps it (card--imagelisting: .card__inner > a > h3)
+    const wrapping = heading.parentElement && heading.parentElement.closest('a[href]');
+    const titleLink = heading.matches('a[href]') ? heading
+      : (heading.querySelector('a[href]') || (wrapping && card.contains(wrapping) ? wrapping : null));
     const href = (titleLink && titleLink.getAttribute('href')) || cardHref;
     if (href) h.append(landingLink(href, title, document));
     else h.textContent = title;
@@ -135,7 +138,15 @@ function landingCard(card, document) {
     body.push(landingPara(link, document));
   });
   if (!titleHref && !body.some((b) => b.querySelector && b.querySelector('a'))) { /* text-only card */ }
-  const image = pickImage(card, document);
+  let image = pickImage(card, document);
+  // CSS-background thumbnail captured as data-excat-bg (snapshot contract "lazyBackground"):
+  // e.g. ct-eventslisting a.card__thumb, an empty link that html2md's preProcess deletes
+  const bgHolder = image ? null : [card, ...card.querySelectorAll('[data-excat-bg]')].find((el) => (el.getAttribute('data-excat-bg') || '').trim());
+  if (bgHolder) {
+    image = document.createElement('img');
+    image.src = bgHolder.getAttribute('data-excat-bg').trim();
+    image.alt = (bgHolder.getAttribute('aria-label') || '').trim();
+  }
   if (image && card.matches('.card--stafflist') && /^profile-image$/i.test(image.alt)) {
     const t = card.querySelector('[title]');
     image.alt = (t && t.getAttribute('title').trim()) || title;
@@ -144,17 +155,30 @@ function landingCard(card, document) {
   return image ? [[image], body.length ? body : ''] : [body];
 }
 
-function parseLanding(element, document) {
+function parseLanding(element, document, url) {
   let cards = [...element.querySelectorAll('.card')].filter((c) => !c.parentElement.closest('.card'));
   if (!cards.length) cards = [...element.querySelectorAll(':scope > .cell, :scope > li')];
+  // live feeds copy what the source shows initially: "Show more" items (.cell.news.hidden on
+  // ct-newslisting) are not imported (mapping-notes "Live feeds") — except on a newsroom page
+  // (path ending /news), where the listing is the page and every article is kept
+  const newsroom = /\/news\/?$/.test(url ? new URL(url, 'https://study.unimelb.edu.au').pathname : '');
+  if (!newsroom) {
+    cards = cards.filter((c) => {
+      const hidden = c.closest('.hidden');
+      return !hidden || !element.contains(hidden);
+    });
+  }
   const rows = cards.map((c) => landingCard(c, document)).filter(Boolean);
   if (!rows.length) { element.replaceWith(...element.childNodes); return; }
-  element.replaceWith(WebImporter.Blocks.createBlock(document, { name: 'Cards', cells: rows }));
+  // image listing (card--imagelisting: photo over a linked title, optional text) is authored as an
+  // option: with the title linked it is otherwise indistinguishable from the staff-list cards
+  const listing = cards.length && cards.every((c) => c.matches('.card--imagelisting'));
+  element.replaceWith(WebImporter.Blocks.createBlock(document, { name: listing ? 'Cards (listing)' : 'Cards', cells: rows }));
 }
 
-export default function parse(element, { document, template }) {
+export default function parse(element, { document, template, url }) {
   if (template === 'section-landing') {
-    parseLanding(element, document);
+    parseLanding(element, document, url);
     return;
   }
   // Course-detail shape (block-context/cards/instances/course-detail-01.html, MMA career outcomes

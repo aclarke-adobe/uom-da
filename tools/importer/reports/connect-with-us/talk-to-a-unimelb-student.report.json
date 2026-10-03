@@ -2,11 +2,14 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/connect-with-us/talk-to-a-unimelb-student",
   "path": "connect-with-us/talk-to-a-unimelb-student",
-  "timestamp": "2026-10-02T07:08:49.131Z",
+  "timestamp": "2026-10-03T07:13:15.878Z",
   "title": "Talk to a UniMelb student",
   "template": "section-landing",
   "blocks": [
     "hero-split",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
     "cards",
     "cards",
     "columns"

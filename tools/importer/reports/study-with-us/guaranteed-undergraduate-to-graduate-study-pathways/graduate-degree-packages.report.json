@@ -2,12 +2,14 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/study-with-us/guaranteed-undergraduate-to-graduate-study-pathways/graduate-degree-packages",
   "path": "study-with-us/guaranteed-undergraduate-to-graduate-study-pathways/graduate-degree-packages",
-  "timestamp": "2026-10-02T07:19:45.399Z",
+  "timestamp": "2026-10-03T07:24:46.883Z",
   "title": "Graduate Degree Packages | Study at Melbourne",
   "template": "section-landing",
   "blocks": [
     "hero-split",
+    "columns-text-column",
     "cards",
+    "columns-text-column",
     "accordion",
     "accordion"
   ],

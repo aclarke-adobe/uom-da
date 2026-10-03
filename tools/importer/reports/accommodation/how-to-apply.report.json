@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/accommodation/how-to-apply",
   "path": "accommodation/how-to-apply",
-  "timestamp": "2026-10-02T07:07:36.088Z",
+  "timestamp": "2026-10-03T07:11:53.822Z",
   "title": "How to apply for University Accommodation",
   "template": "section-landing",
   "blocks": [
@@ -10,6 +10,7 @@
     "cards-tile",
     "accordion",
     "columns-split",
+    "columns-text-column",
     "callout-photo"
   ],
   "fragments": "",

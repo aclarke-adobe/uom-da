@@ -167,29 +167,14 @@ main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.h
   text-decoration: underline;
 }
 
-/* crest band (navy, centred): the closing link is the band's call to action (source btn--secondary) */
-main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.navy.centered > .default-content-wrapper:only-child > p:last-child:not(:first-child, .button-wrapper) > a:only-child:any-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px 12px 12px;
-  background-color: var(--uom-sage);
-  color: var(--uom-navy);
-  text-decoration: none;
-}
-
-main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.navy.centered > .default-content-wrapper:only-child > p:last-child:not(:first-child, .button-wrapper) > a:only-child::before {
-  content: '';
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  background-color: currentcolor;
-  mask: var(--arrow-icon) center / contain no-repeat;
-}
-
-main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.navy.centered > .default-content-wrapper:only-child > p:last-child:not(:first-child, .button-wrapper) > a:only-child:hover {
-  background-color: var(--uom-sage-light);
-  color: var(--uom-navy);
+/* section title (source h2.heading-section): the sans title style; the importer sets the heading-sans section option */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.heading-sans > .default-content-wrapper > h2 {
+  margin-bottom: 18px;
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
 }
 
 /* full-width image: a section holding only image paragraphs spans the viewport (ct-section-imagefullwidth) */
@@ -353,6 +338,11 @@ main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.h
   }
 
   main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))):has(.key-facts) .section > .default-content-wrapper > h2:not(#fees) {
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .section.heading-sans > .default-content-wrapper > h2 {
     margin-bottom: 20px;
     font-size: 32px;
   }

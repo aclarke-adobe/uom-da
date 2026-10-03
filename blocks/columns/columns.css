@@ -273,7 +273,7 @@ main .section > .columns-wrapper:last-child > .columns.split.block:is(.columns-b
  * heading + content pair (course "Related study areas"): sans heading in a narrow
  * label column, the content beside it from tablet up
  */
-.columns:not(.split, .overlap) > .columns-text-row > div:first-child > :is(h2, h3) {
+.columns:not(.split, .overlap, .text-column) > .columns-text-row > div:first-child > :is(h2, h3) {
   color: var(--heading-color);
   font-family: var(--body-font-family);
   font-size: var(--heading-font-size-l);
@@ -282,62 +282,62 @@ main .section > .columns-wrapper:last-child > .columns.split.block:is(.columns-b
   letter-spacing: normal;
 }
 
-.columns:not(.split, .overlap) > .columns-text-row > div:first-child > :is(h2, h3):not(:last-child) {
+.columns:not(.split, .overlap, .text-column) > .columns-text-row > div:first-child > :is(h2, h3):not(:last-child) {
   margin-bottom: 18px;
 }
 
-.columns.columns-2-cols:not(.split, .overlap) > .columns-text-row > div:first-child {
+.columns.columns-2-cols:not(.split, .overlap, .text-column) > .columns-text-row > div:first-child {
   margin-bottom: 24px;
 }
 
-.columns.columns-2-cols:not(.split, .overlap) > .columns-text-row > div:first-child > :is(h1, h2, h3, h4, h5, h6):last-child {
+.columns.columns-2-cols:not(.split, .overlap, .text-column) > .columns-text-row > div:first-child > :is(h1, h2, h3, h4, h5, h6):last-child {
   margin-bottom: 0;
 }
 
 /* a label column ending in text keeps its paragraph margin as the gap */
-.columns.columns-2-cols:not(.split, .overlap) > .columns-text-row > div:first-child:has(> p:last-child) {
+.columns.columns-2-cols:not(.split, .overlap, .text-column) > .columns-text-row > div:first-child:has(> p:last-child) {
   margin-bottom: 0;
 }
 
-.columns:not(.split, .overlap) > .columns-text-row > div:last-child > :last-child {
+.columns:not(.split, .overlap, .text-column) > .columns-text-row > div:last-child > :last-child {
   margin-bottom: 0;
 }
 
-.columns:not(.split, .overlap) > .columns-text-row > div:last-child > h3 {
+.columns:not(.split, .overlap, .text-column) > .columns-text-row > div:last-child > h3 {
   margin-bottom: 16px;
   font-size: var(--heading-font-size-m);
 }
 
 /* heading | text + button (two-column header text): serif heading, 1/3 + 2/3 */
-.columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row {
+.columns.columns-2-cols:not(.split, .overlap, .text-column) > .columns-cta-row {
   gap: 16px;
 }
 
-.columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row > div:first-child {
+.columns.columns-2-cols:not(.split, .overlap, .text-column) > .columns-cta-row > div:first-child {
   margin-bottom: 0;
 }
 
-.columns:not(.split, .overlap) > .columns-cta-row > div:first-child > :is(h1, h2, h3, h4, h5, h6) {
+.columns:not(.split, .overlap, .text-column) > .columns-cta-row > div:first-child > :is(h1, h2, h3, h4, h5, h6) {
   font-family: var(--heading-font-family);
   font-size: var(--heading-font-size-xl);
   font-weight: 400;
   letter-spacing: -0.01em;
 }
 
-.columns:not(.split, .overlap) p.button-wrapper {
+.columns:not(.split, .overlap, .text-column) p.button-wrapper {
   margin: 0 0 24px;
 }
 
-.columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row > div:first-child > :is(h1, h2, h3, h4, h5, h6):last-child {
+.columns.columns-2-cols:not(.split, .overlap, .text-column) > .columns-cta-row > div:first-child > :is(h1, h2, h3, h4, h5, h6):last-child {
   margin-bottom: 20px;
 }
 
 /* text + inset figure (text with figures): photo first on phones */
-.columns:not(.split, .overlap) > div:not(.columns-text-row) > .columns-img-col {
+.columns:not(.split, .overlap, .text-column) > div:not(.columns-text-row) > .columns-img-col {
   margin-bottom: 24px;
 }
 
-.columns:not(.split, .overlap) > div:not(.columns-text-row) > div:not(.columns-img-col) > :last-child {
+.columns:not(.split, .overlap, .text-column) > div:not(.columns-text-row) > div:not(.columns-img-col) > :last-child {
   margin-bottom: 0;
 }
 
@@ -442,7 +442,7 @@ main .section > .columns-wrapper:last-child > .columns.split.block:is(.columns-b
     padding-block: 64px;
   }
 
-  .columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row {
+  .columns.columns-2-cols:not(.split, .overlap, .text-column) > .columns-cta-row {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
@@ -578,7 +578,7 @@ main .section > .columns-wrapper:last-child > .columns.split.block:is(.columns-b
   }
 
   /* text + inset figure: text up to 880px, the photo a quarter of the viewport */
-  .columns:not(.split, .overlap) > div:not(.columns-text-row) {
+  .columns:not(.split, .overlap, .text-column) > div:not(.columns-text-row) {
     --columns-inset-width: calc(50vw - 24px);
 
     flex-direction: row;
@@ -587,18 +587,18 @@ main .section > .columns-wrapper:last-child > .columns.split.block:is(.columns-b
     gap: 24px;
   }
 
-  .columns:not(.split, .overlap) > div:not(.columns-text-row) > div {
+  .columns:not(.split, .overlap, .text-column) > div:not(.columns-text-row) > div {
     flex: 0 1 var(--text-max-width);
     order: unset;
     min-width: 0;
   }
 
-  .columns:not(.split, .overlap) > div:not(.columns-text-row) > .columns-img-col {
+  .columns:not(.split, .overlap, .text-column) > div:not(.columns-text-row) > .columns-img-col {
     flex: 0 0 var(--columns-inset-width);
     margin-bottom: 0;
   }
 
-  .columns:not(.split, .overlap) > div:not(.columns-text-row) > .columns-img-col:first-child + div {
+  .columns:not(.split, .overlap, .text-column) > div:not(.columns-text-row) > .columns-img-col:first-child + div {
     flex-basis: calc(var(--text-max-width) - var(--columns-inset-width) - 24px);
     margin-right: auto;
   }
@@ -606,26 +606,26 @@ main .section > .columns-wrapper:last-child > .columns.split.block:is(.columns-b
 
 /* heading + content pair from tablet: one-third label column, two-thirds content */
 @media (width >= 769px) {
-  .columns.columns-2-cols:not(.split, .overlap) > .columns-text-row {
+  .columns.columns-2-cols:not(.split, .overlap, .text-column) > .columns-text-row {
     display: grid;
     grid-template-columns: 1fr 2fr;
     align-items: start;
     gap: 24px;
   }
 
-  .columns.columns-2-cols:not(.split, .overlap) > .columns-text-row > div:first-child {
+  .columns.columns-2-cols:not(.split, .overlap, .text-column) > .columns-text-row > div:first-child {
     margin: 0 48px 0 0;
   }
 
-  .columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row {
+  .columns.columns-2-cols:not(.split, .overlap, .text-column) > .columns-cta-row {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row > div:first-child {
+  .columns.columns-2-cols:not(.split, .overlap, .text-column) > .columns-cta-row > div:first-child {
     margin: 0;
   }
 
-  .columns.columns-2-cols:not(.split, .overlap) > .columns-cta-row > div:last-child {
+  .columns.columns-2-cols:not(.split, .overlap, .text-column) > .columns-cta-row > div:last-child {
     grid-column: span 2;
   }
 
@@ -637,16 +637,16 @@ main .section > .columns-wrapper:last-child > .columns.split.block:is(.columns-b
     margin-bottom: 16px;
   }
 
-  .columns:not(.split, .overlap) > .columns-text-row > div:first-child > :is(h2, h3):not(:last-child) {
+  .columns:not(.split, .overlap, .text-column) > .columns-text-row > div:first-child > :is(h2, h3):not(:last-child) {
     margin-bottom: 20px;
   }
 
-  .columns:not(.split, .overlap) > .columns-text-row > div:last-child > h3 {
+  .columns:not(.split, .overlap, .text-column) > .columns-text-row > div:last-child > h3 {
     margin-bottom: 18px;
     font-size: var(--heading-font-size-m);
   }
 
-  .columns:not(.split, .overlap) > .columns-cta-row > div:first-child > :is(h1, h2, h3, h4, h5, h6) {
+  .columns:not(.split, .overlap, .text-column) > .columns-cta-row > div:first-child > :is(h1, h2, h3, h4, h5, h6) {
     font-size: 36px;
   }
 }
@@ -673,13 +673,13 @@ main .section > .columns-wrapper:last-child > .columns.split.block:is(.columns-b
     margin: 0 48px 0 0;
   }
 
-  .columns:not(.split, .overlap) > div:not(.columns-text-row) {
+  .columns:not(.split, .overlap, .text-column) > div:not(.columns-text-row) {
     align-items: flex-start;
   }
 }
 
 @media (width >= 1099px) {
-  .columns:not(.split, .overlap) > div:not(.columns-text-row) {
+  .columns:not(.split, .overlap, .text-column) > div:not(.columns-text-row) {
     --columns-inset-width: calc(100vw / 3 - 24px);
   }
 }
@@ -697,7 +697,133 @@ main .section > .columns-wrapper:last-child > .columns.split.block:is(.columns-b
     padding-inline: 104px;
   }
 
-  .columns:not(.split, .overlap) > div:not(.columns-text-row) {
+  .columns:not(.split, .overlap, .text-column) > div:not(.columns-text-row) {
     --columns-inset-width: calc(25vw - 24px);
+  }
+}
+
+/*
+ * text column (source ct-textcolumnlayout): heading column | content column, the content
+ * column ending in a two-up grid of cards (pictogram or photo, title, text, arrow link).
+ * Stacked below 900px; the cards go two-up from 768px.
+ */
+.columns.text-column > div {
+  display: block;
+}
+
+.columns.text-column > div > div:first-child:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.columns.text-column > div > div > :last-child,
+.columns.text-column .columns-text-column-card > :last-child {
+  margin-bottom: 0;
+}
+
+.columns.text-column > div > .columns-text-column-empty {
+  display: none;
+}
+
+.columns.text-column > div > div > h3 {
+  margin-bottom: 16px;
+  font-size: var(--heading-font-size-m);
+}
+
+.columns.text-column > div > div > .notice-wrapper {
+  margin: 24px 0;
+}
+
+.columns.text-column .columns-text-column-cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+.columns.text-column .columns-text-column-card > :is(p, ul, ol) {
+  margin-bottom: 16px;
+}
+
+.columns.text-column .columns-text-column-card > h3 {
+  margin-bottom: 16px;
+  font-size: var(--heading-font-size-m);
+}
+
+.columns.text-column .columns-text-column-card > h4 {
+  margin-bottom: 16px;
+  font-size: var(--heading-font-size-s);
+}
+
+.columns.text-column .columns-text-column-card > .columns-text-column-icon {
+  margin-bottom: 8px;
+  line-height: 0;
+}
+
+.columns.text-column .columns-text-column-icon .icon,
+.columns.text-column .columns-text-column-icon .icon img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.columns.text-column .columns-text-column-card picture img {
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* text link (source btn--text): arrow + bold link */
+.columns.text-column .columns-text-link a:any-link {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.columns.text-column .columns-text-link a::before {
+  content: '';
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 0.15em;
+  background-color: currentcolor;
+  mask: var(--arrow-icon) center / contain no-repeat;
+}
+
+.columns.text-column .columns-text-link a:hover {
+  text-decoration: underline;
+}
+
+@media (width >= 768px) {
+  .columns.text-column .columns-text-column-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 769px) {
+  .columns.text-column > div > div > h3 {
+    margin-bottom: 18px;
+  }
+}
+
+@media (width >= 900px) {
+  /* heading column: the left third (source __left, 48px right margin + 24px gutter) */
+  .columns.text-column > div {
+    display: grid;
+    grid-template-columns: minmax(0, calc((100% + 24px) / 3 - 64px)) minmax(0, 1fr);
+    column-gap: 72px;
+    align-items: start;
+  }
+
+  .columns.text-column > div > div:first-child:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .columns.text-column > div > .columns-text-column-empty {
+    display: block;
+  }
+
+  .columns.text-column .columns-text-column-cards {
+    gap: 24px;
   }
 }

@@ -2,11 +2,13 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/connect-with-us/information-for-schools/Australia-and-New-Zealand/interstate-applications",
   "path": "connect-with-us/information-for-schools/australia-and-new-zealand/interstate-applications",
-  "timestamp": "2026-10-02T07:08:17.482Z",
+  "timestamp": "2026-10-03T07:12:40.121Z",
   "title": "Interstate applications",
   "template": "section-landing",
   "blocks": [
     "hero-split",
+    "columns-text-column",
+    "columns-text-column",
     "columns-split"
   ],
   "fragments": "",

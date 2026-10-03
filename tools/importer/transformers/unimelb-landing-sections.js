@@ -138,15 +138,45 @@ function insertBreak(el, id, style, audience, isFirst) {
   return true;
 }
 
+/* ---------- section title style ---------- */
+
+// Section option for a UI-kit section title (h2.heading-section: sans 600, 24px / 32px from
+// tablet) left in default content; plain h2s keep the serif. Titles inside a block (e.g. the
+// split-section h2 in Columns (split)) are styled by the block.
+const HEADING_SANS = 'heading-sans';
+
+function blockElements(root, template) {
+  const els = [];
+  toList(template && template.blocks).forEach((b) => toList(b.instances).forEach((sel) => {
+    try {
+      els.push(...root.ownerDocument.querySelectorAll(sel));
+    } catch (e) { /* invalid selector */ }
+  }));
+  return els;
+}
+
+function hasDefaultSectionTitle(unit, blocks) {
+  return unit.els.some((el) => [...el.querySelectorAll('h2.heading-section')]
+    .some((h) => !blocks.some((b) => b.contains(h))));
+}
+
+function withStyle(style, token) {
+  const list = (style || '').split(',').map((s) => s.trim()).filter(Boolean);
+  if (!list.includes(token)) list.push(token);
+  return list.join(', ');
+}
+
 export default function transform(hookName, element, payload) {
   const template = (payload && payload.template) || {};
 
   if (hookName === 'beforeTransform') {
     if (!toList(template.sections).length) return;
     const units = sectionUnits(element, template);
+    const blocks = blockElements(element, template);
     units.forEach((u, i) => {
       const start = u.els[0];
-      const style = u.fragmentLink ? null : ((u.def && u.def.style) || null);
+      let style = u.fragmentLink ? null : ((u.def && u.def.style) || null);
+      if (!u.fragmentLink && hasDefaultSectionTitle(u, blocks)) style = withStyle(style, HEADING_SANS);
       const audience = start.getAttribute(AUD_ATTR) || null;
       if (i === 0 && !style && !audience) return; // first section: no break, no metadata
       insertBreak(start, u.id, style, audience, i === 0);

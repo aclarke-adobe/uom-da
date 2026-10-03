@@ -74,6 +74,8 @@ const parsers = {
   'key-facts': keyFactsParser,
   'notice': noticeParser,
   'columns-overlap': columnsOverlapParser,
+  // ct-textcolumnlayout without a banner: the same parser emits Columns (text-column)
+  'columns-text-column': columnsOverlapParser,
   'columns': columnsParser,
   'columns-split': columnsSplitParser,
   'cards-people': cardsPeopleParser,
@@ -135,7 +137,7 @@ const PAGE_TEMPLATE = {
       "name": "notice",
       "instances": [
         "#main > div.section > .section__inner > div.notice",
-        ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > :is(div.content-block, div.ct-textcolumnlayout) div.notice"
+        ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.content-block div.notice"
       ]
     },
     {
@@ -143,6 +145,12 @@ const PAGE_TEMPLATE = {
       "instances": [
         "#main > section#what-you-will-learn",
         ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.ct-textcolumnlayout:has(.section-alt__img-wrapper) > section.section-alt"
+      ]
+    },
+    {
+      "name": "columns-text-column",
+      "instances": [
+        ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.ct-textcolumnlayout:not(:has(.section-alt__img-wrapper)) > section.section-alt"
       ]
     },
     {
@@ -225,7 +233,7 @@ const PAGE_TEMPLATE = {
       "name": "video",
       "instances": [
         ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.ct-video.section :is(div.embed, div.uom-video, div.video)",
-        ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > :is(div.content-block, section.content-block, div.ct-textcolumnlayout:not(:has(.section-alt__img-wrapper))) :is(div, p):has(> iframe[src*=\"youtube.com/embed\"], > iframe[src*=\"vimeo.com\"])"
+        ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > :is(div.content-block, section.content-block) :is(div, p):has(> iframe[src*=\"youtube.com/embed\"], > iframe[src*=\"vimeo.com\"])"
       ]
     },
     {
@@ -271,7 +279,7 @@ const PAGE_TEMPLATE = {
     {
       "name": "table",
       "instances": [
-        ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > :is(div.content-block, div.ct-textcolumnlayout) table:not(.uom-accordion table)"
+        ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.content-block table:not(.uom-accordion table)"
       ]
     }
   ],
@@ -528,14 +536,9 @@ const PAGE_TEMPLATE = {
       ],
       "style": null,
       "blocks": [
-        "notice",
-        "table",
-        "video"
+        "columns-text-column"
       ],
-      "defaultContent": [
-        ":scope .section-alt__left > *",
-        ":scope .section-alt__right > *"
-      ]
+      "defaultContent": []
     },
     {
       "id": "text-column-grey",
@@ -545,14 +548,9 @@ const PAGE_TEMPLATE = {
       ],
       "style": "grey",
       "blocks": [
-        "notice",
-        "table",
-        "video"
+        "columns-text-column"
       ],
-      "defaultContent": [
-        ":scope .section-alt__left > *",
-        ":scope .section-alt__right > *"
-      ]
+      "defaultContent": []
     },
     {
       "id": "text-column-overlap",
@@ -1932,6 +1930,21 @@ function svgFromDataUri(src) {
   }
 }
 
+/**
+ * Events cards (ct-eventslisting li.event) carry their photo as an inline background on an empty
+ * a.card__thumb, which the importer's own cleanup deletes before any parser runs. Copy it to the
+ * card's data-excat-bg so parsers/cards.js can emit it.
+ */
+function tagCardThumbBackgrounds(document) {
+  document.querySelectorAll('#main .card a.card__thumb[style*="background-image"]').forEach((a) => {
+    const m = (a.getAttribute('style') || '').match(/url\(\s*["']?\s*([^"')]+?)\s*["']?\s*\)/);
+    const card = a.closest('.card');
+    if (m && !/^(none|data:|blob:)/i.test(m[1]) && card && !card.hasAttribute('data-excat-bg')) {
+      card.setAttribute('data-excat-bg', m[1]);
+    }
+  });
+}
+
 /** Tag pictogram images with data-excat-icon (in the page and in <template> parts). */
 function tagPictograms(root) {
   root.querySelectorAll(`:is(${PICTOGRAM_HOLDERS}) img[src^="data:image/svg+xml"]`).forEach((img) => {
@@ -1977,6 +1990,7 @@ export default {
   preprocess: ({ document }) => {
     removeCommentNodes(document.documentElement, document);
     tagPictograms(document.documentElement);
+    tagCardThumbBackgrounds(document);
   },
 
   transform: (payload) => {

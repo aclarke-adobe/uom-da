@@ -29,6 +29,10 @@
     {
       "class": "profile",
       "label": "Profile"
+    },
+    {
+      "class": "alumni",
+      "label": "Alumni"
     }
   ],
   "memberVariantIds": [

@@ -2,11 +2,12 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/study-with-us/domestic-undergraduate-scholarships",
   "path": "study-with-us/domestic-undergraduate-scholarships",
-  "timestamp": "2026-10-02T07:16:51.505Z",
+  "timestamp": "2026-10-03T07:21:45.487Z",
   "title": "Undergraduate scholarships",
   "template": "section-landing",
   "blocks": [
     "hero-split",
+    "columns-text-column",
     "cards",
     "columns",
     "columns",

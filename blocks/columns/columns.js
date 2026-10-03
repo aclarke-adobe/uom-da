@@ -1,5 +1,74 @@
-const OPTION_CLASSES = ['split', 'overlap'];
+import { decorateIcons } from '../../scripts/aem.js';
+import { decorateNestedBlocks } from '../../scripts/nested-blocks.js';
+
+const OPTION_CLASSES = ['split', 'overlap', 'text-column'];
 const HEADINGS = 'h1, h2, h3, h4, h5, h6';
+
+const BLOCK_LEVEL = /^(P|DIV|UL|OL|H[1-6]|TABLE|PICTURE|BLOCKQUOTE|PRE|HR)$/;
+
+/**
+ * A single-cell nested block (e.g. a notice) whose cell is one paragraph arrives unwrapped
+ * (inline content only); block decorators read element children, so the run goes back in a <p>.
+ * @param {Element} cell
+ */
+function wrapInlineCells(cell) {
+  cell.querySelectorAll(':scope table').forEach((table) => {
+    const tds = table.querySelectorAll('td');
+    if (tds.length !== 1) return;
+    const [td] = tds;
+    const nodes = [...td.childNodes];
+    const hasBlock = nodes.some((n) => n.nodeType === 1 && BLOCK_LEVEL.test(n.tagName));
+    if (!td.textContent.trim() || hasBlock) return;
+    const p = document.createElement('p');
+    p.append(...nodes);
+    td.append(p);
+  });
+}
+
+/**
+ * Text column: row 1 = heading column | content column; every later row's cells are cards
+ * (pictogram or image, title, text, link) laid out as a two-up grid at the end of the content
+ * column. Cells missing from row 1 are added so the grid always has a content column.
+ * @param {Element} block
+ */
+function decorateTextColumn(block) {
+  const [first, ...rest] = [...block.children];
+  if (!first) return;
+  while (first.children.length < 2) first.append(document.createElement('div'));
+  const content = first.children[1];
+  const cards = rest.flatMap((row) => [...row.children])
+    .filter((cell) => cell.textContent.trim() || cell.querySelector('picture, img, table'));
+  if (cards.length) {
+    const grid = document.createElement('div');
+    grid.className = 'columns-text-column-cards';
+    cards.forEach((cell) => {
+      cell.className = 'columns-text-column-card';
+      // `:uom-name:` left as text (unprocessed HTML, e.g. imported content previewed locally)
+      cell.querySelectorAll(':scope > p').forEach((p) => {
+        const m = p.textContent.trim().match(/^:([a-z0-9-]+):$/);
+        if (!m || p.children.length) return;
+        const span = document.createElement('span');
+        span.className = `icon icon-${m[1]}`;
+        p.replaceChildren(span);
+      });
+      decorateIcons(cell);
+      cell.querySelectorAll(':scope > p:has(> .icon:only-child)').forEach((p) => p.classList.add('columns-text-column-icon'));
+      grid.append(cell);
+    });
+    content.append(grid);
+  }
+  rest.forEach((row) => row.remove());
+  [...first.children].forEach((cell) => {
+    if (!cell.children.length && !cell.textContent.trim()) cell.classList.add('columns-text-column-empty');
+  });
+  // a paragraph holding only a plain link is a text link (source btn--text: arrow + link)
+  block.querySelectorAll('p').forEach((p) => {
+    if (p.closest('.block') !== block) return;
+    const links = p.querySelectorAll(':scope > a');
+    if (links.length === 1 && p.children.length === 1 && !p.classList.contains('button-wrapper')
+      && p.textContent.trim() === links[0].textContent.trim()) p.classList.add('columns-text-link');
+  });
+}
 
 /**
  * A list whose every item is one link followed by a bracketed type, e.g.
@@ -35,8 +104,19 @@ function decorateCourseList(list) {
   return true;
 }
 
-export default function decorate(block) {
+export default async function decorate(block) {
   const active = [...block.classList].filter((c) => OPTION_CLASSES.includes(c));
+  if (active.includes('text-column')) {
+    // blocks authored inside a cell (a notice, table or video), loaded before the cards move
+    if (block.querySelector('table')) {
+      const cells = [...block.querySelectorAll(':scope > div > div')];
+      cells.forEach(wrapInlineCells);
+      await Promise.all(cells.map((cell) => decorateNestedBlocks(cell)));
+    }
+    decorateTextColumn(block);
+    block.classList.add('columns-2-cols');
+    return;
+  }
   const rows = [...block.children];
 
   // overlap: a leading single-image row becomes the banner the content panel overlaps

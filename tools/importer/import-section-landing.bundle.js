@@ -540,10 +540,12 @@ var CustomImportScript = (() => {
     let items = [...element.querySelectorAll(".key-facts-section__main--item")];
     if (!items.length) items = [...element.querySelectorAll(".key-facts-section__main > div")];
     const landing = !!(element.parentElement && element.parentElement.id === "main");
+    let logoRow = null;
     items.forEach((item) => {
       const label = cleanText3(item.querySelector('.key-facts-section__main--title, [class*="--title"]'));
       const value = item.querySelector('.key-facts-section__main--value, [class*="--value"]');
-      if (landing && label && value && !cleanText3(value) && value.querySelector("img")) {
+      const logoItem = landing && value && !cleanText3(value) && value.querySelector("img");
+      if (logoItem && (label || logoRow)) {
         const logos = [...value.querySelectorAll("img")].map((img) => {
           const src = img.getAttribute("src") || "";
           if (!src || /^(data|blob):/.test(src)) return null;
@@ -554,13 +556,17 @@ var CustomImportScript = (() => {
           p.append(out);
           return p;
         }).filter(Boolean);
-        if (logos.length) {
+        if (logos.length && !label) {
+          logoRow.push(...logos);
+        } else if (logos.length) {
           const labelP2 = document2.createElement("p");
           labelP2.textContent = label;
-          cells.push([[labelP2], logos]);
+          logoRow = logos;
+          cells.push([[labelP2], logoRow]);
         }
         return;
       }
+      if (label) logoRow = null;
       if (!label || !value || !cleanText3(value)) return;
       const icon = ICONS[label.toLowerCase()];
       const labelP = document2.createElement("p");
@@ -912,7 +918,269 @@ var CustomImportScript = (() => {
     out.alt = clean3(img && img.getAttribute("alt") || "").replace(/\^?empty:(banner image)?$/i, "").replace(/^\^?empty:/i, "").replace(/^banner image$/i, "");
     return out;
   }
+  var ICON_HOLDERS = ".section-alt__inner-svg-icon, .card--focus-box__icon, .card__icons__left";
+  function dashLists2(cell, document2) {
+    const out = [];
+    let ul = null;
+    cell.forEach((el) => {
+      const isDash = el.tagName === "P" && /^\s*[-–•]\s+/.test(el.textContent);
+      if (!isDash) {
+        ul = null;
+        out.push(el);
+        return;
+      }
+      if (!ul) {
+        ul = document2.createElement("ul");
+        out.push(ul);
+      }
+      const li = document2.createElement("li");
+      li.innerHTML = el.innerHTML.replace(/^\s*[-–•]\s+/, "");
+      ul.append(li);
+    });
+    return out;
+  }
+  function noticeBlock(el, document2) {
+    let cell;
+    if (el.tagName === "P") {
+      const p = document2.createElement("p");
+      [...el.childNodes].forEach((n) => p.append(n));
+      stripAttrs2(p);
+      cell = p.querySelector("br") ? splitParagraph2(p, document2) : [p];
+    } else {
+      cell = dashLists2(textPanel(el, document2, null), document2);
+    }
+    if (!cell.some((c) => text3(c))) return null;
+    return WebImporter.Blocks.createBlock(document2, { name: "Notice", cells: [[cell]] });
+  }
+  function tableCell(cell, document2, bold) {
+    const hasBlocks = [...cell.children].some((c) => /^(P|UL|OL|DIV|H[1-6]|TABLE)$/.test(c.tagName));
+    if (hasBlocks) {
+      stripAttrs2(cell);
+      cell.querySelectorAll("[headers]").forEach((c) => c.removeAttribute("headers"));
+      const kids = [...cell.childNodes].filter((n) => n.nodeType === 1 || clean3(n.textContent));
+      if (bold) {
+        kids.filter((k) => k.tagName === "P" && !(k.children.length === 1 && /^(STRONG|B)$/.test(k.firstElementChild.tagName))).forEach((k) => {
+          const strong = document2.createElement("strong");
+          strong.append(...k.childNodes);
+          k.append(strong);
+        });
+      }
+      return kids;
+    }
+    const p = document2.createElement("p");
+    p.innerHTML = cell.innerHTML.replace(/\s+/g, " ").trim();
+    stripAttrs2(p);
+    if (!text3(p) && !p.querySelector("img")) return "";
+    if (bold) {
+      const strong = document2.createElement("strong");
+      strong.append(...p.childNodes);
+      p.append(strong);
+    }
+    return [p];
+  }
+  function tableBlock(table, document2) {
+    const rows = [...table.querySelectorAll(":scope > thead > tr, :scope > tbody > tr, :scope > tr, :scope > tfoot > tr")];
+    const cells = [];
+    rows.forEach((tr) => {
+      const highlighted = /table__row--info/.test(tr.className);
+      const row = [];
+      [...tr.children].filter((c) => /^(TD|TH)$/.test(c.tagName)).forEach((c) => {
+        row.push(tableCell(c, document2, c.tagName === "TH" || highlighted));
+        const span = parseInt(c.getAttribute("colspan") || "1", 10);
+        for (let i = 1; i < span && i < 20; i += 1) row.push("");
+      });
+      if (row.some((c) => c && c.length)) cells.push(row);
+    });
+    if (!cells.length) return null;
+    const width = Math.max(...cells.map((r) => r.length));
+    cells.forEach((r) => {
+      while (r.length < width) r.push("");
+    });
+    return WebImporter.Blocks.createBlock(document2, { name: "Table", cells });
+  }
+  function videoBlock(iframe, document2) {
+    const src = (iframe.getAttribute("src") || iframe.getAttribute("data-src") || "").trim();
+    const yt = src.match(/youtube(?:-nocookie)?\.com\/embed\/([\w-]+)/);
+    const vm = src.match(/player\.vimeo\.com\/video\/(\d+)/);
+    if (!yt && !vm) return null;
+    const href = yt ? `https://www.youtube.com/watch?v=${yt[1]}` : `https://vimeo.com/${vm[1]}`;
+    const a = document2.createElement("a");
+    a.href = href;
+    a.textContent = clean3(iframe.getAttribute("title")) || href;
+    const p = document2.createElement("p");
+    p.append(a);
+    const row = [[p]];
+    if (yt) {
+      const img = document2.createElement("img");
+      img.src = `https://i.ytimg.com/vi/${yt[1]}/hqdefault.jpg`;
+      img.alt = clean3(iframe.getAttribute("title"));
+      row.push([img]);
+    }
+    return WebImporter.Blocks.createBlock(document2, { name: "Video", cells: [row] });
+  }
+  function imageParagraph(img, document2) {
+    const src = (img.getAttribute("src") || img.getAttribute("data-src") || "").trim();
+    if (!src || /^(data|blob):/.test(src)) return null;
+    const out = document2.createElement("img");
+    out.src = src;
+    out.alt = clean3(img.getAttribute("alt")).replace(/^\^?empty:.*$/i, "");
+    const p = document2.createElement("p");
+    p.append(out);
+    return p;
+  }
+  function looseItem(li, document2) {
+    const item = document2.createElement("li");
+    const rest = [];
+    let inline = true;
+    [...li.childNodes].forEach((n) => {
+      if (inline && n.nodeType === 1 && /^(P|DIV|UL|OL|H[1-6]|TABLE)$/.test(n.tagName)) inline = false;
+      if (inline) item.append(n);
+      else rest.push(n);
+    });
+    while (item.lastChild && (item.lastChild.nodeName === "BR" || item.lastChild.nodeType === 3 && !clean3(item.lastChild.textContent))) item.lastChild.remove();
+    if (item.firstChild && item.firstChild.nodeType === 3) item.firstChild.textContent = item.firstChild.textContent.replace(/^\s+/, "");
+    if (item.lastChild && item.lastChild.nodeType === 3) item.lastChild.textContent = item.lastChild.textContent.replace(/\s+$/, "");
+    stripAttrs2(item);
+    const holder = document2.createElement("div");
+    rest.forEach((n) => holder.append(n));
+    return { item: text3(item) ? item : null, holder };
+  }
+  function textPanel(root, document2, items) {
+    const out = [];
+    let looseList = null;
+    [...root.childNodes].forEach((n) => {
+      if (n.nodeType === 1 && n.tagName === "LI") {
+        const { item, holder } = looseItem(n, document2);
+        if (item) {
+          if (!looseList) {
+            looseList = document2.createElement("ul");
+            out.push(looseList);
+          }
+          looseList.append(item);
+        }
+        const after = textPanel(holder, document2, items);
+        if (after.length) {
+          looseList = null;
+          out.push(...after);
+        }
+        return;
+      }
+      if (n.nodeType === 1 || clean3(n.textContent)) looseList = null;
+      if (n.nodeType === 3) {
+        if (clean3(n.textContent)) {
+          const p = document2.createElement("p");
+          p.textContent = clean3(n.textContent);
+          out.push(p);
+        }
+        return;
+      }
+      if (n.nodeType !== 1) return;
+      if (n.matches(ICON_HOLDERS)) {
+        const img = n.querySelector("img[data-excat-icon]");
+        if (img) {
+          const p = document2.createElement("p");
+          p.textContent = `:uom-${img.getAttribute("data-excat-icon")}:`;
+          out.push(p);
+        }
+        return;
+      }
+      if (n.matches("img")) {
+        const p = imageParagraph(n, document2);
+        if (p) out.push(p);
+        return;
+      }
+      if (n.matches(".notice")) {
+        const b = noticeBlock(n, document2);
+        if (b) out.push(b);
+        return;
+      }
+      if (n.tagName === "TABLE") {
+        const b = tableBlock(n, document2);
+        if (b) out.push(b);
+        return;
+      }
+      if (n.tagName === "IFRAME") {
+        const b = videoBlock(n, document2);
+        if (b) out.push(b);
+        return;
+      }
+      if (items && n.matches(".card-flat-list")) {
+        n.querySelectorAll(":scope > .card-flat-list__item, :scope > .cell").forEach((cell) => {
+          const content2 = textPanel(cell, document2, null);
+          if (content2.some((c) => text3(c) || c.querySelector && c.querySelector("img") || c.tagName === "TABLE")) items.push(content2);
+        });
+        return;
+      }
+      if (n.matches('a.btn, a[class*="btn--"]')) {
+        if (text3(n)) out.push(ctaParagraph3(n, document2));
+        return;
+      }
+      if (n.matches("a")) {
+        if (text3(n)) {
+          const p = document2.createElement("p");
+          p.append(stripAttrs2(n));
+          out.push(p);
+        }
+        return;
+      }
+      if (!text3(n) && !n.querySelector("img, iframe, table")) return;
+      if (/^H[1-6]$/.test(n.tagName)) {
+        const h = document2.createElement(n.tagName.toLowerCase());
+        h.textContent = text3(n);
+        out.push(h);
+        return;
+      }
+      if (n.tagName === "P") {
+        if (n.querySelector("iframe")) {
+          n.querySelectorAll("iframe").forEach((f) => {
+            const b = videoBlock(f, document2);
+            if (b) out.push(b);
+            f.remove();
+          });
+          if (!text3(n)) return;
+        }
+        const btn = n.querySelector(':scope > a.btn, :scope > a[class*="btn--"]');
+        if (btn && text3(n) === text3(btn)) {
+          out.push(ctaParagraph3(btn, document2));
+          return;
+        }
+        stripAttrs2(n);
+        ["paraid", "paraeid"].forEach((a) => n.querySelectorAll(`[${a}]`).forEach((x) => x.removeAttribute(a)));
+        n.removeAttribute("paraid");
+        n.removeAttribute("paraeid");
+        if (n.querySelector("br")) out.push(...splitParagraph2(n, document2));
+        else out.push(n);
+        return;
+      }
+      if (/^(UL|OL|BLOCKQUOTE)$/.test(n.tagName)) {
+        out.push(stripAttrs2(n));
+        return;
+      }
+      out.push(...textPanel(n, document2, items));
+    });
+    return out;
+  }
+  function parseTextColumn(element, document2) {
+    const row = element.querySelector(".section-alt__row") || element;
+    const left = row.querySelector(":scope > .section-alt__left");
+    const right = row.querySelector(":scope > .section-alt__right");
+    const items = [];
+    const leftCell = left ? textPanel(left, document2, items) : [];
+    const rightCell = right ? textPanel(right, document2, items) : [];
+    if (!leftCell.length && !rightCell.length && !items.length) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    const cells = [[leftCell.length ? leftCell : "", rightCell.length ? rightCell : ""]];
+    for (let i = 0; i < items.length; i += 2) cells.push(items.slice(i, i + 2));
+    const block = WebImporter.Blocks.createBlock(document2, { name: "Columns", variants: ["text-column"], cells });
+    element.replaceWith(block);
+  }
   function parse7(element, { document: document2 }) {
+    if (!element.querySelector(".section-alt__img-wrapper") && element.closest(".ct-textcolumnlayout")) {
+      parseTextColumn(element, document2);
+      return;
+    }
     const row = element.querySelector(".section-alt__row") || element;
     const left = row.querySelector(":scope > .section-alt__left");
     const right = row.querySelector(":scope > .section-alt__right");
@@ -1531,6 +1799,14 @@ var CustomImportScript = (() => {
       });
     };
     walk(root);
+    if (titleLink && !body.some((b) => b.tagName === "H3" || b.querySelector && b.querySelector("a"))) {
+      const first = body[0];
+      if (first && first.tagName === "P" && cleanText7(first)) {
+        const p = document2.createElement("p");
+        p.append(makeLink(titleLink, cleanText7(first), document2));
+        body[0] = p;
+      }
+    }
     return body;
   }
   function tileImage(card, document2) {
@@ -1778,7 +2054,8 @@ var CustomImportScript = (() => {
       let cards = [...element.querySelectorAll(".card--fact, .card-focus, .section-alt__inner-flex-items")];
       if (!cards.length) cards = [...element.querySelectorAll(":scope > .cell")];
       cards.forEach((card) => {
-        const holder = card.querySelector(".section-alt__inner-svg-icon, .card--focus-box__icon, .card__icons__left") || card.querySelector(":scope > img");
+        const imageParagraph2 = card.matches(".card-focus") ? [...card.querySelectorAll(":scope > p")].find((p) => !clean5(p) && p.querySelector(":scope > img")) : null;
+        const holder = card.querySelector(".section-alt__inner-svg-icon, .card--focus-box__icon, .card__icons__left") || card.querySelector(":scope > img") || imageParagraph2;
         const icon = card.matches(".card--fact") ? null : landingIconCell(holder, document2);
         const body = landingBody(card, holder, document2);
         if (!body.length && !icon) return;
@@ -1789,7 +2066,8 @@ var CustomImportScript = (() => {
       element.replaceWith(...element.childNodes);
       return;
     }
-    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Cards (icon)", cells: rows }));
+    const name = element.closest(".ct-focusbox") ? "Cards (icon, boxed)" : "Cards (icon)";
+    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name, cells: rows }));
   }
   function isLanding(element) {
     if (element.closest('.course-content, .course-section__main, [data-test$="-page"]')) return false;
@@ -1907,7 +2185,8 @@ var CustomImportScript = (() => {
     const title = clean6(heading);
     if (title) {
       const h = document2.createElement("h3");
-      const titleLink = heading.matches("a[href]") ? heading : heading.querySelector("a[href]");
+      const wrapping = heading.parentElement && heading.parentElement.closest("a[href]");
+      const titleLink = heading.matches("a[href]") ? heading : heading.querySelector("a[href]") || (wrapping && card.contains(wrapping) ? wrapping : null);
       const href = titleLink && titleLink.getAttribute("href") || cardHref;
       if (href) h.append(landingLink(href, title, document2));
       else h.textContent = title;
@@ -1947,7 +2226,13 @@ var CustomImportScript = (() => {
     });
     if (!titleHref && !body.some((b) => b.querySelector && b.querySelector("a"))) {
     }
-    const image = pickImage(card, document2);
+    let image = pickImage(card, document2);
+    const bgHolder = image ? null : [card, ...card.querySelectorAll("[data-excat-bg]")].find((el) => (el.getAttribute("data-excat-bg") || "").trim());
+    if (bgHolder) {
+      image = document2.createElement("img");
+      image.src = bgHolder.getAttribute("data-excat-bg").trim();
+      image.alt = (bgHolder.getAttribute("aria-label") || "").trim();
+    }
     if (image && card.matches(".card--stafflist") && /^profile-image$/i.test(image.alt)) {
       const t = card.querySelector("[title]");
       image.alt = t && t.getAttribute("title").trim() || title;
@@ -1955,19 +2240,27 @@ var CustomImportScript = (() => {
     if (!body.length && !image) return null;
     return image ? [[image], body.length ? body : ""] : [body];
   }
-  function parseLanding4(element, document2) {
+  function parseLanding4(element, document2, url) {
     let cards = [...element.querySelectorAll(".card")].filter((c) => !c.parentElement.closest(".card"));
     if (!cards.length) cards = [...element.querySelectorAll(":scope > .cell, :scope > li")];
+    const newsroom = /\/news\/?$/.test(url ? new URL(url, "https://study.unimelb.edu.au").pathname : "");
+    if (!newsroom) {
+      cards = cards.filter((c) => {
+        const hidden = c.closest(".hidden");
+        return !hidden || !element.contains(hidden);
+      });
+    }
     const rows = cards.map((c) => landingCard(c, document2)).filter(Boolean);
     if (!rows.length) {
       element.replaceWith(...element.childNodes);
       return;
     }
-    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Cards", cells: rows }));
+    const listing = cards.length && cards.every((c) => c.matches(".card--imagelisting"));
+    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: listing ? "Cards (listing)" : "Cards", cells: rows }));
   }
-  function parse13(element, { document: document2, template }) {
+  function parse13(element, { document: document2, template, url }) {
     if (template === "section-landing") {
-      parseLanding4(element, document2);
+      parseLanding4(element, document2, url);
       return;
     }
     const course = !!element.closest('.course-content, .course-section__main, [data-test$="-page"]');
@@ -2584,7 +2877,8 @@ var CustomImportScript = (() => {
       element.replaceWith(...introCell, ...leftovers);
       return;
     }
-    const block = WebImporter.Blocks.createBlock(document2, { name: "Video", variants: ["split"], cells });
+    const plain = roots.length > 0 && roots.every((r) => r.matches(".uom-video") || !!r.querySelector(".uom-video-overlay"));
+    const block = WebImporter.Blocks.createBlock(document2, { name: "Video", variants: plain ? ["split", "plain"] : ["split"], cells });
     element.replaceWith(block, ...leftovers);
   }
 
@@ -2644,6 +2938,24 @@ var CustomImportScript = (() => {
     out.alt = (holder.getAttribute("aria-label") || img && img.getAttribute("alt") || "").trim();
     return out;
   }
+  function inlinePara(el, document2) {
+    const p = document2.createElement("p");
+    [...el.childNodes].forEach((n) => {
+      if (n.nodeType === 1 && n.matches("a[href]") && clean10(n)) {
+        const a = document2.createElement("a");
+        a.href = (n.getAttribute("href") || "").trim();
+        a.textContent = clean10(n);
+        p.append(a);
+      } else if (n.nodeType === 1 && n.querySelector("a[href]")) {
+        p.append(...inlinePara(n, document2).childNodes);
+      } else {
+        p.append(document2.createTextNode((n.textContent || "").replace(/\s+/g, " ")));
+      }
+    });
+    if (p.firstChild && p.firstChild.nodeType === 3) p.firstChild.textContent = p.firstChild.textContent.replace(/^\s+/, "");
+    if (p.lastChild && p.lastChild.nodeType === 3) p.lastChild.textContent = p.lastChild.textContent.replace(/\s+$/, "");
+    return p;
+  }
   function parseCardFocus(element, document2) {
     const para3 = (t) => {
       const p = document2.createElement("p");
@@ -2652,15 +2964,17 @@ var CustomImportScript = (() => {
     };
     const text7 = [];
     let holder = null;
+    let textEl = null;
     const alumni = element.querySelector(".alumni");
     if (alumni) {
       const q = clean10(alumni.querySelector(".alumni__short-text"));
       if (q) text7.push(para3(q));
       const name = clean10(alumni.querySelector(".alumni__name"));
       if (name) text7.push(para3(`\u2014 ${name}`));
-      const role = clean10(alumni.querySelector(".alumni__title"));
-      if (role) text7.push(para3(role));
+      const roleEl = alumni.querySelector(".alumni__title");
+      if (clean10(roleEl)) text7.push(inlinePara(roleEl, document2));
       holder = alumni.querySelector(".alumni__img");
+      textEl = alumni.querySelector(".alumni__info");
     } else {
       const bq = element.querySelector("blockquote") || element;
       bq.querySelectorAll("p").forEach((p) => {
@@ -2671,14 +2985,17 @@ var CustomImportScript = (() => {
       const sub = clean10(bq.querySelector(".block-quotation__sub-cite"));
       if (sub) text7.push(para3(sub));
       holder = element.querySelector(".testimonials__img");
+      textEl = element.querySelector(".testimonials__info") || bq;
     }
     if (!text7.length) {
       element.replaceWith(...element.childNodes);
       return;
     }
     const image = bgPortrait(holder, document2);
-    const row = image ? [text7, [image]] : [text7];
-    element.replaceWith(WebImporter.Blocks.createBlock(document2, { name: "Quote", cells: [row] }));
+    const imageFirst = !!(image && textEl && holder.compareDocumentPosition(textEl) & 4);
+    let row = [text7];
+    if (image) row = imageFirst ? [[image], text7] : [text7, [image]];
+    element.replaceWith(WebImporter.Blocks.createBlock(document2, alumni ? { name: "Quote", variants: ["alumni"], cells: [row] } : { name: "Quote", cells: [row] }));
   }
   function parse20(element, { document: document2 }) {
     if (element.matches(".card-focus") && element.querySelector(".testimonials, .alumni")) {
@@ -2761,7 +3078,7 @@ var CustomImportScript = (() => {
     }
     return [p];
   }
-  function tableBlock(table, document2) {
+  function tableBlock2(table, document2) {
     const rows = [...table.querySelectorAll(":scope > thead > tr, :scope > tbody > tr, :scope > tr, :scope > tfoot > tr")];
     const cells = [];
     rows.forEach((tr) => {
@@ -2841,7 +3158,7 @@ var CustomImportScript = (() => {
       if (node.nodeType !== 1) return;
       const el = node;
       if (el.matches("table")) {
-        const t = tableBlock(el, document2);
+        const t = tableBlock2(el, document2);
         if (t) out.push(t);
         return;
       }
@@ -3173,7 +3490,8 @@ var CustomImportScript = (() => {
       p.textContent = cleanText12(caption);
       before.push(p);
     }
-    const block = WebImporter.Blocks.createBlock(document2, { name: "Table", cells });
+    const compact = /\btable--is-compacted\b/.test(table.className || "") && !table.closest('[data-test$="-page"]');
+    const block = WebImporter.Blocks.createBlock(document2, compact ? { name: "Table", variants: ["compact"], cells } : { name: "Table", cells });
     element.replaceWith(...before, block);
   }
 
@@ -3505,7 +3823,53 @@ var CustomImportScript = (() => {
     removeComments(root);
     normalizeInlineFormats(root);
     fixLinks(root);
+    normalizeHeadings(root);
+    markCrestButtons(root);
     return anchors;
+  }
+  function regionOf(el) {
+    let top = el;
+    while (top.parentElement && !top.parentElement.matches("#main, span.optimizely_experiment__block")) top = top.parentElement;
+    return top.parentElement ? top : null;
+  }
+  function retag(el, tag) {
+    const doc = el.ownerDocument;
+    const h = doc.createElement(tag);
+    [...el.attributes].forEach((a) => h.setAttribute(a.name, a.value));
+    h.append(...el.childNodes);
+    el.replaceWith(h);
+    return h;
+  }
+  function normalizeHeadings(root) {
+    root.querySelectorAll(":is(h1, h2, h3, h4, h5, h6):has(:is(h1, h2, h3, h4, h5, h6))").forEach((outer) => {
+      if (!outer.isConnected && !outer.parentNode) return;
+      const inner = outer.querySelector("h1, h2, h3, h4, h5, h6");
+      if (!inner || outer.textContent.replace(/\s+/g, "") !== inner.textContent.replace(/\s+/g, "")) return;
+      outer.replaceWith(inner);
+    });
+    root.querySelectorAll("h3.heading-section").forEach((h) => {
+      const region = regionOf(h);
+      if (!region || region.querySelector("h1, h2, h3, h4, h5, h6") !== h) return;
+      retag(h, "h2");
+    });
+  }
+  function markCrestButtons(root) {
+    const doc = root.ownerDocument || root;
+    root.querySelectorAll('.ct-section-crest a.btn, .ct-section-crest a[class*="btn--"]').forEach((a) => {
+      const cls = a.className || "";
+      if (/btn--text/.test(cls) || a.closest("strong, em")) return;
+      const link = doc.createElement("a");
+      link.setAttribute("href", (a.getAttribute("href") || "").trim());
+      link.textContent = a.textContent.replace(/\s+/g, " ").trim();
+      if (!link.textContent) return;
+      const wrap = doc.createElement(/btn--secondary/.test(cls) ? "em" : "strong");
+      wrap.append(link);
+      const p = doc.createElement("p");
+      p.append(wrap);
+      const parent = a.parentElement;
+      if (parent && /^(DIV|P)$/.test(parent.tagName) && parent.textContent.trim() === a.textContent.trim() && !parent.matches(".section__inner")) parent.replaceWith(p);
+      else a.replaceWith(wrap);
+    });
   }
   function removeSourceRulesAndEmptyHeadings(root) {
     root.querySelectorAll("hr:not([data-excat-landing-section])").forEach((hr) => hr.remove());
@@ -3557,6 +3921,7 @@ var CustomImportScript = (() => {
     const doc = element.ownerDocument;
     element.querySelectorAll("[data-excat-bg]").forEach((el) => {
       const src = (el.getAttribute("data-excat-bg") || "").trim();
+      if (src && el.style && el.style.backgroundImage) el.style.removeProperty("background-image");
       if (!src || el.querySelector("img")) return;
       const img = doc.createElement("img");
       img.setAttribute("src", src);
@@ -4157,14 +4522,35 @@ ${hrefs}`;
     el.before(hr);
     return true;
   }
+  var HEADING_SANS = "heading-sans";
+  function blockElements(root, template) {
+    const els = [];
+    toList4(template && template.blocks).forEach((b) => toList4(b.instances).forEach((sel) => {
+      try {
+        els.push(...root.ownerDocument.querySelectorAll(sel));
+      } catch (e) {
+      }
+    }));
+    return els;
+  }
+  function hasDefaultSectionTitle(unit, blocks) {
+    return unit.els.some((el) => [...el.querySelectorAll("h2.heading-section")].some((h) => !blocks.some((b) => b.contains(h))));
+  }
+  function withStyle(style, token) {
+    const list = (style || "").split(",").map((s) => s.trim()).filter(Boolean);
+    if (!list.includes(token)) list.push(token);
+    return list.join(", ");
+  }
   function transform4(hookName, element, payload) {
     const template = payload && payload.template || {};
     if (hookName === "beforeTransform") {
       if (!toList4(template.sections).length) return;
       const units = sectionUnits3(element, template);
+      const blocks = blockElements(element, template);
       units.forEach((u, i) => {
         const start = u.els[0];
-        const style = u.fragmentLink ? null : u.def && u.def.style || null;
+        let style = u.fragmentLink ? null : u.def && u.def.style || null;
+        if (!u.fragmentLink && hasDefaultSectionTitle(u, blocks)) style = withStyle(style, HEADING_SANS);
         const audience = start.getAttribute(AUD_ATTR3) || null;
         if (i === 0 && !style && !audience) return;
         insertBreak(start, u.id, style, audience, i === 0);
@@ -4394,6 +4780,8 @@ ${hrefs}`;
     "key-facts": parse5,
     "notice": parse6,
     "columns-overlap": parse7,
+    // ct-textcolumnlayout without a banner: the same parser emits Columns (text-column)
+    "columns-text-column": parse7,
     "columns": parse8,
     "columns-split": parse9,
     "cards-people": parse10,
@@ -4453,7 +4841,7 @@ ${hrefs}`;
         "name": "notice",
         "instances": [
           "#main > div.section > .section__inner > div.notice",
-          ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > :is(div.content-block, div.ct-textcolumnlayout) div.notice"
+          ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.content-block div.notice"
         ]
       },
       {
@@ -4461,6 +4849,12 @@ ${hrefs}`;
         "instances": [
           "#main > section#what-you-will-learn",
           ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.ct-textcolumnlayout:has(.section-alt__img-wrapper) > section.section-alt"
+        ]
+      },
+      {
+        "name": "columns-text-column",
+        "instances": [
+          ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.ct-textcolumnlayout:not(:has(.section-alt__img-wrapper)) > section.section-alt"
         ]
       },
       {
@@ -4543,7 +4937,7 @@ ${hrefs}`;
         "name": "video",
         "instances": [
           ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.ct-video.section :is(div.embed, div.uom-video, div.video)",
-          ':is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > :is(div.content-block, section.content-block, div.ct-textcolumnlayout:not(:has(.section-alt__img-wrapper))) :is(div, p):has(> iframe[src*="youtube.com/embed"], > iframe[src*="vimeo.com"])'
+          ':is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > :is(div.content-block, section.content-block) :is(div, p):has(> iframe[src*="youtube.com/embed"], > iframe[src*="vimeo.com"])'
         ]
       },
       {
@@ -4589,7 +4983,7 @@ ${hrefs}`;
       {
         "name": "table",
         "instances": [
-          ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > :is(div.content-block, div.ct-textcolumnlayout) table:not(.uom-accordion table)"
+          ":is(#main, #main > .optimizely_experiment > span.optimizely_experiment__block:first-of-type) > div.content-block table:not(.uom-accordion table)"
         ]
       }
     ],
@@ -4846,14 +5240,9 @@ ${hrefs}`;
         ],
         "style": null,
         "blocks": [
-          "notice",
-          "table",
-          "video"
+          "columns-text-column"
         ],
-        "defaultContent": [
-          ":scope .section-alt__left > *",
-          ":scope .section-alt__right > *"
-        ]
+        "defaultContent": []
       },
       {
         "id": "text-column-grey",
@@ -4863,14 +5252,9 @@ ${hrefs}`;
         ],
         "style": "grey",
         "blocks": [
-          "notice",
-          "table",
-          "video"
+          "columns-text-column"
         ],
-        "defaultContent": [
-          ":scope .section-alt__left > *",
-          ":scope .section-alt__right > *"
-        ]
+        "defaultContent": []
       },
       {
         "id": "text-column-overlap",
@@ -6244,6 +6628,15 @@ ${hrefs}`;
       return "";
     }
   }
+  function tagCardThumbBackgrounds(document2) {
+    document2.querySelectorAll('#main .card a.card__thumb[style*="background-image"]').forEach((a) => {
+      const m = (a.getAttribute("style") || "").match(/url\(\s*["']?\s*([^"')]+?)\s*["']?\s*\)/);
+      const card = a.closest(".card");
+      if (m && !/^(none|data:|blob:)/i.test(m[1]) && card && !card.hasAttribute("data-excat-bg")) {
+        card.setAttribute("data-excat-bg", m[1]);
+      }
+    });
+  }
   function tagPictograms(root) {
     root.querySelectorAll(`:is(${PICTOGRAM_HOLDERS2}) img[src^="data:image/svg+xml"]`).forEach((img) => {
       const svg = svgFromDataUri(img.getAttribute("src") || "");
@@ -6279,6 +6672,7 @@ ${hrefs}`;
     preprocess: ({ document: document2 }) => {
       removeCommentNodes(document2.documentElement, document2);
       tagPictograms(document2.documentElement);
+      tagCardThumbBackgrounds(document2);
     },
     transform: (payload) => {
       const { document: document2, url, params } = payload;

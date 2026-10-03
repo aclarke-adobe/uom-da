@@ -415,7 +415,74 @@ function cleanRoot(root, doc, template, path) {
   removeComments(root);
   normalizeInlineFormats(root);
   fixLinks(root);
+  normalizeHeadings(root);
+  markCrestButtons(root);
   return anchors;
+}
+
+/* ---------- Headings ---------- */
+
+function regionOf(el) {
+  let top = el;
+  while (top.parentElement && !top.parentElement.matches('#main, span.optimizely_experiment__block')) top = top.parentElement;
+  return top.parentElement ? top : null;
+}
+
+function retag(el, tag) {
+  const doc = el.ownerDocument;
+  const h = doc.createElement(tag);
+  [...el.attributes].forEach((a) => h.setAttribute(a.name, a.value));
+  h.append(...el.childNodes);
+  el.replaceWith(h);
+  return h;
+}
+
+/**
+ * - A heading wrapped in another heading (Matrix paste, e.g. for-organisations
+ *   <h3 class="heading-section"><center><h2>…</h2></center></h3>, hansen <h2><center><h2>…</h2></center></h2>)
+ *   becomes the inner heading alone: html2md would write the inner one as a literal "## " inside the
+ *   outer. The inner heading is the one the source renders (plain h2: serif), so it is kept as is.
+ * - h3.heading-section that opens its region (ct-section-crest, ct-newslisting, ct-profilelist,
+ *   ct-imagelisting) is the section title, the same role and style as h2.heading-section: h2.
+ */
+function normalizeHeadings(root) {
+  root.querySelectorAll(':is(h1, h2, h3, h4, h5, h6):has(:is(h1, h2, h3, h4, h5, h6))').forEach((outer) => {
+    if (!outer.isConnected && !outer.parentNode) return;
+    const inner = outer.querySelector('h1, h2, h3, h4, h5, h6');
+    if (!inner || outer.textContent.replace(/\s+/g, '') !== inner.textContent.replace(/\s+/g, '')) return;
+    outer.replaceWith(inner);
+  });
+  root.querySelectorAll('h3.heading-section').forEach((h) => {
+    const region = regionOf(h);
+    if (!region || region.querySelector('h1, h2, h3, h4, h5, h6') !== h) return;
+    retag(h, 'h2');
+  });
+}
+
+/* ---------- Buttons ---------- */
+
+/**
+ * ct-section-crest call to action (div > a.btn[--secondary]): the site's button convention,
+ * <p><strong><a> (btn, cyan) / <p><em><a> (btn--secondary, sage); btn--text stays a text link.
+ */
+function markCrestButtons(root) {
+  const doc = root.ownerDocument || root;
+  root.querySelectorAll('.ct-section-crest a.btn, .ct-section-crest a[class*="btn--"]').forEach((a) => {
+    const cls = a.className || '';
+    if (/btn--text/.test(cls) || a.closest('strong, em')) return;
+    const link = doc.createElement('a');
+    link.setAttribute('href', (a.getAttribute('href') || '').trim());
+    link.textContent = a.textContent.replace(/\s+/g, ' ').trim();
+    if (!link.textContent) return;
+    const wrap = doc.createElement(/btn--secondary/.test(cls) ? 'em' : 'strong');
+    wrap.append(link);
+    const p = doc.createElement('p');
+    p.append(wrap);
+    const parent = a.parentElement;
+    if (parent && /^(DIV|P)$/.test(parent.tagName) && parent.textContent.trim() === a.textContent.trim()
+      && !parent.matches('.section__inner')) parent.replaceWith(p);
+    else a.replaceWith(wrap);
+  });
 }
 
 // Source <hr> (decorative hr.alumni__line in ct-testimonial alumni cards, bare <hr> dividers in a
@@ -479,6 +546,10 @@ function materializeBackgrounds(element) {
   const doc = element.ownerDocument;
   element.querySelectorAll('[data-excat-bg]').forEach((el) => {
     const src = (el.getAttribute('data-excat-bg') || '').trim();
+    // the captured URL replaces the inline CSS background: left in place, the importer's
+    // transformBackgroundImages rule would emit the same image a second time (without its alt),
+    // e.g. the international country pages' full-width image
+    if (src && el.style && el.style.backgroundImage) el.style.removeProperty('background-image');
     if (!src || el.querySelector('img')) return;
     const img = doc.createElement('img');
     img.setAttribute('src', src);

@@ -59,6 +59,8 @@ function buildFact(labelCell, valueCells) {
   // partner logo rows ("In collaboration with", "Endorsed by"): images only, no icon
   if (!icon && dd.querySelector('img') && !dd.textContent.trim()) {
     item.classList.add('key-facts-item-logos');
+    // the source stacks two logos per column: a 3rd+ logo starts the next column
+    if (dd.querySelectorAll('img').length > 2) item.classList.add('key-facts-item-logos-wide');
   }
 
   item.append(dt, dd);

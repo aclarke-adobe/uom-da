@@ -87,13 +87,18 @@ export default function parse(element, { document }) {
   let items = [...element.querySelectorAll('.key-facts-section__main--item')];
   if (!items.length) items = [...element.querySelectorAll('.key-facts-section__main > div')];
   const landing = !!(element.parentElement && element.parentElement.id === 'main');
+  let logoRow = null; // the last partner-logo row's logo cell (landing only)
   items.forEach((item) => {
     const label = cleanText(item.querySelector('.key-facts-section__main--title, [class*="--title"]'));
     const value = item.querySelector('.key-facts-section__main--value, [class*="--value"]');
     // section-landing partner-logo rows ("In collaboration with" / "Endorsed by" / "Co-designed with"):
     // label | logo image(s). Only on the landing shape (#main > div.key-facts); course key facts
-    // (#main > div > div.key-facts) are unchanged. Empty placeholder items (&nbsp; label, no value) are skipped.
-    if (landing && label && value && !cleanText(value) && value.querySelector('img')) {
+    // (#main > div > div.key-facts) are unchanged. The source renders at most 2 logos per item: a
+    // 3rd+ logo sits in a following .key-facts-section__main--images item whose title is the
+    // &nbsp; placeholder; those logos are folded into the preceding logo row. Empty placeholder
+    // items (no image) are skipped.
+    const logoItem = landing && value && !cleanText(value) && value.querySelector('img');
+    if (logoItem && (label || logoRow)) {
       const logos = [...value.querySelectorAll('img')].map((img) => {
         const src = img.getAttribute('src') || '';
         if (!src || /^(data|blob):/.test(src)) return null;
@@ -104,13 +109,17 @@ export default function parse(element, { document }) {
         p.append(out);
         return p;
       }).filter(Boolean);
-      if (logos.length) {
+      if (logos.length && !label) {
+        logoRow.push(...logos);
+      } else if (logos.length) {
         const labelP = document.createElement('p');
         labelP.textContent = label;
-        cells.push([[labelP], logos]);
+        logoRow = logos;
+        cells.push([[labelP], logoRow]);
       }
       return;
     }
+    if (label) logoRow = null;
     if (!label || !value || !cleanText(value)) return;
     const icon = ICONS[label.toLowerCase()];
     const labelP = document.createElement('p');

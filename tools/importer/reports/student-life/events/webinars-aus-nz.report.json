@@ -2,11 +2,12 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/student-life/events/webinars-aus-nz",
   "path": "student-life/events/webinars-aus-nz",
-  "timestamp": "2026-10-02T07:16:26.876Z",
+  "timestamp": "2026-10-03T07:21:18.929Z",
   "title": "Webinars for students in Australia and New Zealand",
   "template": "section-landing",
   "blocks": [
     "hero-split",
+    "columns-text-column",
     "video-split",
     "columns",
     "video",

@@ -2,11 +2,12 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/student-life/events/focus-on-melbourne",
   "path": "student-life/events/focus-on-melbourne",
-  "timestamp": "2026-10-02T07:16:13.277Z",
+  "timestamp": "2026-10-03T07:21:04.121Z",
   "title": "Focus on Melbourne",
   "template": "section-landing",
   "blocks": [
     "hero-split",
+    "columns-text-column",
     "accordion",
     "cards-icon",
     "cards-icon"

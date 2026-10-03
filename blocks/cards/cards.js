@@ -111,7 +111,19 @@ function decorateShapes(block, ul, active) {
       return !b.children.length || (b.children.length === 1 && b.firstElementChild.tagName === 'P'
         && !b.firstElementChild.children.length);
     };
-    if (all(hasImage)) {
+    // the whole body is one plain (unformatted) link: a pathfinder tile whose title is a
+    // paragraph, not a heading (a.card--image > p): underlined title, whole card links
+    const linkOnly = (li) => {
+      const b = body(li);
+      if (!b || b.children.length !== 1) return false;
+      const el = b.firstElementChild;
+      const a = el.tagName === 'P' && el.children.length === 1 ? el.firstElementChild : el;
+      return a.tagName === 'A' && !a.className && !!a.textContent.trim()
+        && b.textContent.trim() === a.textContent.trim();
+    };
+    if (all(linkOnly) && (all(hasImage) || !lis.some(hasImage))) {
+      add(all(hasImage) ? 'cards-tile-photo' : 'cards-tile-box', 'cards-tile-link');
+    } else if (all(hasImage)) {
       // pathfinder photo tiles: navy card, photo on top, centred white title (+ description)
       add('cards-tile-photo');
       if (lis.some((li) => body(li)?.querySelector(':scope > p:not(.cards-card-cta)'))) add('cards-tile-desc');
@@ -149,7 +161,9 @@ function decorateShapes(block, ul, active) {
     else if (all((li) => hasImage(li) && body(li)
       && [...body(li).children].every((el) => el.tagName === 'A' || isActionParagraph(el)))) add('cards-docs');
     else if (block.classList.contains('cards-facts') && all((li) => first(li)?.tagName === 'H3')) add('cards-fact-tiles');
-    else if (ul.querySelector('.cards-card-icon') && !section?.querySelector('.cards.tile')) {
+    else if (block.classList.contains('boxed')) {
+      // focus boxes (`Cards (icon, boxed)`): styled by the option class, not as text columns
+    } else if (ul.querySelector('.cards-card-icon') && !section?.querySelector('.cards.tile')) {
       // line pictograms beside the text columns (the homepage feature panel keeps full-width art)
       add('cards-icon-inline');
     }
@@ -197,7 +211,9 @@ function decorateShapes(block, ul, active) {
         }
       });
     } else if (block.classList.contains('cards-profile') && all(hasImage)) {
-      if (all((li) => linkedHeading(first(li)))) add('cards-staff');
+      // image listing (authored `Cards (listing)`: photo over a linked title, optional text)
+      if (block.classList.contains('listing')) add('cards-listing');
+      else if (all((li) => linkedHeading(first(li)))) add('cards-staff');
       else if (all((li) => body(li)?.children.length === 1 && first(li).tagName === 'H3')) add('cards-listing');
     } else if (ul.querySelector('.cards-card-cta a.button')) {
       // feature panel: full-width button under each card
