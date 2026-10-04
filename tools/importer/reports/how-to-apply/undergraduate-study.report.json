@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/undergraduate-study",
+  "path": "how-to-apply/undergraduate-study",
+  "timestamp": "2026-10-04T04:00:39.483Z",
+  "title": "How to apply - undergraduate study",
+  "template": "story-article",
+  "blocks": [
+    "cards-link-list",
+    "cards-tile",
+    "cards-tile",
+    "columns"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/stem/episode-2-future-proof-your-career",
+  "path": "student-life/inside-melbourne/stem/episode-2-future-proof-your-career",
+  "timestamp": "2026-10-04T04:04:49.992Z",
+  "title": "Episode 2: Future proof your career",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards-chips"
+  ],
+  "fragments": "stem-careers-and-employability",
+  "droppedImages": "",
+  "tags": "STEM"
+}

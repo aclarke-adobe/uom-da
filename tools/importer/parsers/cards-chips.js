@@ -1,5 +1,7 @@
 /* eslint-disable */
 /* global WebImporter */
+import { isLandingFamily } from '../landing-family.js';
+
 /**
  * Parser for cards-chips. Base: cards (option: chips). Authored as "Cards (chips)".
  * Source: course-detail template, career outcomes "Graduate pathways" (#available-pathways).
@@ -40,7 +42,7 @@ function landingChip(li, document) {
 }
 
 export default function parse(element, { document, template }) {
-  if (template === 'section-landing') {
+  if (isLandingFamily(template)) {
     let lis = [...element.querySelectorAll(':scope > li')];
     if (!lis.length) lis = [...element.querySelectorAll('li')];
     const rows = lis.map((li) => landingChip(li, document)).filter(Boolean);

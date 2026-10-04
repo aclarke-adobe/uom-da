@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/international-scholarships",
+  "path": "study-with-us/international-scholarships",
+  "timestamp": "2026-10-04T04:09:37.376Z",
+  "title": "International Scholarships",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "columns-split",
+    "cards-tile",
+    "columns-split",
+    "cards-tile"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

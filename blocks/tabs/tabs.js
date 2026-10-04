@@ -8,6 +8,50 @@ import { decorateNestedBlocks } from '../../scripts/nested-blocks.js';
 
 let instance = 0;
 
+/**
+ * Panel text sections (applicant-route / graduate-courses tabs): each run of default content
+ * starting at an h2 becomes a row, the heading (with the paragraphs after it when other
+ * content follows them) beside the rest, as on the source "section-alt" rows. Course tab
+ * panels have no h2 of their own and are left as they are.
+ * @param {HTMLElement} panel
+ */
+function decoratePanelRows(panel) {
+  if (!panel.querySelector(':scope > h2')) return;
+  let row = null;
+  [...panel.children].forEach((el) => {
+    if (el.tagName === 'H2') {
+      row = document.createElement('div');
+      row.className = 'tabs-panel-row';
+      el.before(row);
+    } else if (!row || /^(TABLE|DIV)$/.test(el.tagName)) {
+      // nested blocks (their wrappers) and tables end a row
+      row = null;
+      return;
+    }
+    row.append(el);
+  });
+  panel.querySelectorAll(':scope > .tabs-panel-row').forEach((r) => {
+    const [heading, ...rest] = r.children;
+    let split = rest.findIndex((el) => el.tagName !== 'P');
+    // only paragraphs: they sit beside the heading
+    if (split < 0) split = 0;
+    const aside = document.createElement('div');
+    aside.className = 'tabs-panel-aside';
+    aside.append(heading, ...rest.slice(0, split));
+    const main = document.createElement('div');
+    main.className = 'tabs-panel-main';
+    main.append(...rest.slice(split));
+    r.replaceChildren(aside, ...(main.children.length ? [main] : []));
+    // a list of links only (study areas): link chips
+    const list = main.children.length === 1 ? main.firstElementChild : null;
+    if (list && list.tagName === 'UL'
+      && [...list.children].every((li) => li.children.length === 1 && li.firstElementChild.tagName === 'A'
+        && li.textContent.trim() === li.firstElementChild.textContent.trim())) {
+      r.classList.add('tabs-panel-links');
+    }
+  });
+}
+
 function activate(block, index, focus = false) {
   const buttons = [...block.querySelectorAll('.tabs-tab')];
   const panels = [...block.querySelectorAll('.tabs-panel')];
@@ -73,4 +117,6 @@ export default async function decorate(block) {
   if (rows.length === 1) block.classList.add('tabs-single');
   activate(block, 0);
   await Promise.all(panels.map(decorateNestedBlocks));
+  // after the nested blocks: their loader takes any classed div in a panel for a block
+  panels.forEach(decoratePanelRows);
 }

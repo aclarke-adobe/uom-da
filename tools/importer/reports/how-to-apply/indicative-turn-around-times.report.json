@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/indicative-turn-around-times",
+  "path": "how-to-apply/indicative-turn-around-times",
+  "timestamp": "2026-10-04T03:59:41.776Z",
+  "title": "Indicative turnaround times",
+  "template": "story-article",
+  "blocks": [
+    "accordion",
+    "notice",
+    "notice",
+    "table",
+    "table",
+    "table",
+    "table"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

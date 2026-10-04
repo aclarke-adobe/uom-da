@@ -33,6 +33,17 @@ Section-landing shapes (also automatic; `cards.js` `decorateShapes` derives them
 | `cards-tile-link` (+ `cards-tile-box` / `cards-tile-photo`) | tile | (image +) one plain link | ct-pathfinder tiles whose title is a paragraph: underlined bold link, whole card links |
 | `cards-feature` | default | CTA authored as a button (`*[link]*`) | ct-featurespanel (full-width button) |
 
+Story-article shapes (automatic; only story content produces these cell shapes):
+
+| Shape class | Option | Authored as | Source component |
+| --- | --- | --- | --- |
+| `cards-chip-study-area` / `-bachelor` / `-major` / `-research` | chips | link + type paragraph | story "Study options" `a.card-course--*` (navy, navy, `#809daa`, `#9fb825` rule) |
+| `cards-link-boxes` (+ `cards-link-note` on a title-less box) | link-list | heading + description + one link per paragraph | sublink-menu--blue titled boxes (how-to-apply, languages); the title-less box is the card-rounded-figure "not sure if you're domestic or international?" note |
+| `cards-image-focus` | icon | image + h3 name (+ role paragraph) + quote, no links | card--image-focus testimonials / feature photos (cover photo, padded text) |
+| `cards-news-list` | default (news), or the `list` option | image + linked h3 + excerpt + tag paragraph(s), no date | card--generic--full-width (STEM episode list): one card per row, photo left on desktop, tags in a row |
+| `cards-events` (+ `cards-news-list`) | default (news) | linked h3, date, tag labels, the same labels as links, "View event" | static events listing: label copies hidden, linked tags shown as chips, one card per row |
+| (excerpt rule) | default (news) in a section headed `#keep-reading` | image + linked h3 + excerpt + link | story "Keep reading" card--generic (excerpt under a thin rule) |
+
 ## Supported variations
 
 | Variation | Option class |
@@ -46,6 +57,7 @@ Section-landing shapes (also automatic; `cards.js` `decorateShapes` derives them
 | Chips | `chips` |
 | Boxed (with Icon) | `icon boxed`, authored as `Cards (icon, boxed)`: ct-focusbox white centred boxes (pictogram or image over heading and text) |
 | Listing | `listing`, authored as `Cards (listing)`: ct-pagelisting image listing (photo over a linked, link-styled title and optional teaser; gets `cards-listing`) |
+| List | `list`, authored as `Cards (list)` on news cards: card--generic--full-width one-per-row list (gets `cards-news-list`) |
 
 ## Universal Editor fields
 

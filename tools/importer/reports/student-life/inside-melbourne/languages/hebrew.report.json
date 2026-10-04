@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/languages/hebrew",
+  "path": "student-life/inside-melbourne/languages/hebrew",
+  "timestamp": "2026-10-04T04:03:08.860Z",
+  "title": "Study Hebrew at the University of Melbourne",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "callout-photo",
+    "columns",
+    "cards-link-list",
+    "cards-link-list",
+    "cards-tile"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

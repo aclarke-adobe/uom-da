@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/your-30-second-guide-to-unimelb-student-services",
+  "path": "student-life/inside-melbourne/your-30-second-guide-to-unimelb-student-services",
+  "timestamp": "2026-10-04T04:06:35.104Z",
+  "title": "Your 30 second guide to UniMelb: student services",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-icon"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": "About Melbourne"
+}

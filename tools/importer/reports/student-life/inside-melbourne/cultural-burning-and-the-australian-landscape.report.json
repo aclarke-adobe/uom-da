@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/cultural-burning-and-the-australian-landscape",
+  "path": "student-life/inside-melbourne/cultural-burning-and-the-australian-landscape",
+  "timestamp": "2026-10-04T04:02:06.532Z",
+  "title": "Cultural burning and the Australian landscape",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Bite-sized lectures"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/stem/episode-9-growing-pop-cultures",
+  "path": "student-life/inside-melbourne/stem/episode-9-growing-pop-cultures",
+  "timestamp": "2026-10-04T04:05:18.326Z",
+  "title": "Episode 9: Growing pop cultures",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards-chips"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": "STEM"
+}

@@ -1,5 +1,8 @@
 /* eslint-disable */
 /* global WebImporter */
+import accordionParse from './accordion.js';
+import searchParse from './search.js';
+
 /**
  * Parser for tabs. Base: tabs (no options). Authored as "Tabs".
  * Source: course-detail template, structure tab: subject lists (#available-subjects
@@ -327,8 +330,116 @@ function parseSamplePlan(element, document) {
   return [WebImporter.Blocks.createBlock(document, { name: 'Tabs', cells })];
 }
 
-export default function parse(element, { document }) {
+// ---------------------------------------------------------------- generic app-tabs panels
+/*
+ * C. Generic tabs (section-landing family, story-article graduate-degree-packages + graduate-courses;
+ *    verified on the snapshots): the instance IS div.app-tabs (its untyped wrapper div is unwrapped by
+ *    the cleanup transformer, template.unwrap):
+ *    div.app-tabs > .app-tabs__container nav button.app-tabs__tab[aria-controls] > span.app-tabs__tab-title
+ *      .app-tabs__tabpanels > section.app-tab#{aria-controls} > .loading-overlay (empty) + .app-tab__inner >
+ *        landing components: div.section-alt.ct-accordion (.section-alt__row: left intro | right
+ *        .uom-accordion), div.content-block, div.ct-textcolumnlayout, ct-coursesearch, section-alt with
+ *        ul.card-course-list
+ *    - one row per tab: label | panel content;
+ *    - nested blocks in the panel (scripts/nested-blocks.js convention, a block table inside the cell):
+ *        accordion rows -> "Accordion" (parsers/accordion.js: 1-cell intro row from the left column +
+ *        one row per details item), the ct-coursesearch row -> "Search" (parsers/search.js);
+ *    - everything else is flattened to default content in source order (headings, paragraphs, lists;
+ *      a.btn -> <p><strong><a>, a.btn--secondary -> <em>, a.btn--text -> plain link).
+ */
+const PANEL_BLOCKS = /^(P|UL|OL|H[1-6]|TABLE|BLOCKQUOTE|PRE)$/;
+
+function panelButtons(root, document) {
+  root.querySelectorAll('a.btn, a[class*="btn--"]').forEach((a) => {
+    if (a.closest('table')) return;
+    const cls = a.className || '';
+    const link = document.createElement('a');
+    link.href = (a.getAttribute('href') || '').trim();
+    link.textContent = cleanText(a);
+    let node = link;
+    if (!/btn--text/.test(cls) && /\bbtn\b/.test(cls)) {
+      node = document.createElement(/btn--secondary/.test(cls) ? 'em' : 'strong');
+      node.append(link);
+    }
+    const parent = a.parentElement;
+    if (parent && parent.tagName === 'P') a.replaceWith(node);
+    else { const p = document.createElement('p'); p.append(node); a.replaceWith(p); }
+  });
+}
+
+function flattenPanel(node, document, out) {
+  let loose = null;
+  [...node.childNodes].forEach((n) => {
+    if (n.nodeType === 3) {
+      if (!n.textContent.trim()) return;
+      if (!loose) { loose = document.createElement('p'); out.push(loose); }
+      loose.append(n.textContent.replace(/\s+/g, ' '));
+      return;
+    }
+    if (n.nodeType !== 1) return;
+    if (n.tagName === 'TABLE') { loose = null; out.push(n); return; }
+    if (PANEL_BLOCKS.test(n.tagName)) {
+      loose = null;
+      if (!cleanText(n) && !n.querySelector('img, table')) return;
+      if (/^H[1-6]$/.test(n.tagName)) { out.push(heading(n.tagName.toLowerCase(), cleanText(n), document)); return; }
+      out.push(stripAttrs(n));
+      return;
+    }
+    if (/^(DIV|SECTION|ARTICLE|ASIDE|NAV|HEADER|FOOTER|MAIN|FORM|FIGURE)$/.test(n.tagName)) {
+      loose = null;
+      flattenPanel(n, document, out);
+      return;
+    }
+    if (/^(BUTTON|INPUT|SELECT|LABEL|TEXTAREA)$/.test(n.tagName)) return;
+    // inline element (a, strong, span …) outside a paragraph
+    if (!cleanText(n) && !n.querySelector('img')) return;
+    if (!loose) { loose = document.createElement('p'); out.push(loose); }
+    loose.append(stripAttrs(n));
+  });
+}
+
+function genericPanel(section, document, params) {
+  const inner = section.querySelector(':scope > .app-tab__inner') || section;
+  inner.querySelectorAll('.loading-overlay').forEach((o) => o.remove());
+  // nested Accordion blocks (intro row + items), then nested Search blocks, in place
+  inner.querySelectorAll('.section-alt__row:has(.uom-accordion)').forEach((row) => accordionParse(row, { document }));
+  inner.querySelectorAll('.uom-accordion').forEach((acc) => { if (acc.isConnected) accordionParse(acc, { document }); });
+  inner.querySelectorAll('.ct-coursesearch .section-alt__row').forEach((row) => searchParse(row, { document, params }));
+  panelButtons(inner, document);
+  const out = [];
+  flattenPanel(inner, document, out);
+  return out;
+}
+
+function genericTabs(element, document, params) {
+  const buttons = [...element.querySelectorAll('button.app-tabs__tab[aria-controls], [role="tab"][aria-controls]')]
+    .filter((b, i, all) => all.indexOf(b) === i);
+  const cells = [];
+  buttons.forEach((btn) => {
+    const label = cleanText(btn.querySelector('.app-tabs__tab-title') || btn);
+    const id = btn.getAttribute('aria-controls');
+    const section = id ? element.querySelector(`[id="${id}"]`) : null;
+    if (!label || !section) return;
+    const panel = genericPanel(section, document, params);
+    cells.push([label, panel.length ? panel : '']);
+  });
+  return cells.length ? [WebImporter.Blocks.createBlock(document, { name: 'Tabs', cells })] : [];
+}
+
+function isGenericAppTabs(element) {
+  return element.matches('.app-tabs') && !!element.querySelector('section.app-tab .app-tab__inner')
+    && !element.querySelector('.subject-programs-list, .subject-programs__group, .sample-plan-section')
+    && !element.closest('.subject-programs, .sample-plan, #sample-plans');
+}
+
+export default function parse(element, { document, params }) {
   let out = [];
+  if (isGenericAppTabs(element)) {
+    out = genericTabs(element, document, params);
+    if (!out.length) { element.replaceWith(...element.childNodes); return; }
+    element.replaceWith(...out);
+    return;
+  }
   if (element.matches('.sample-plan') || element.querySelector(':scope > .sample-plan-section')) {
     out = parseSamplePlan(element, document);
   } else {

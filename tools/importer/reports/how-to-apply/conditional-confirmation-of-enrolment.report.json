@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/conditional-confirmation-of-enrolment",
+  "path": "how-to-apply/conditional-confirmation-of-enrolment",
+  "timestamp": "2026-10-04T03:57:40.060Z",
+  "title": "Conditional confirmation of enrolment",
+  "template": "story-article",
+  "blocks": [
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "accordion",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

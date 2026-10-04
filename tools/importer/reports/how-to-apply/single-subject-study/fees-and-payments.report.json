@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/single-subject-study/fees-and-payments",
+  "path": "how-to-apply/single-subject-study/fees-and-payments",
+  "timestamp": "2026-10-04T04:00:33.759Z",
+  "title": "Fees and payments - single subjects - domestic applications",
+  "template": "story-article",
+  "blocks": [
+    "hero-aside",
+    "columns-text-column",
+    "accordion",
+    "columns-text-column",
+    "accordion",
+    "columns-text-column",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

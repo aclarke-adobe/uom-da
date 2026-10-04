@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/events/international-webinar",
+  "path": "student-life/events/international-webinar",
+  "timestamp": "2026-10-04T04:01:33.477Z",
+  "title": "International webinar",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "columns-text-column",
+    "timeline"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

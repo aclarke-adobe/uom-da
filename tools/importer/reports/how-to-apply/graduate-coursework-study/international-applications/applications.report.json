@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/graduate-coursework-study/international-applications/applications",
+  "path": "how-to-apply/graduate-coursework-study/international-applications/applications",
+  "timestamp": "2026-10-04T03:58:47.346Z",
+  "title": "Applications - graduate coursework study - international",
+  "template": "story-article",
+  "blocks": [
+    "hero-aside",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "accordion",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/satisfy-subject-prerequisites",
+  "path": "how-to-apply/satisfy-subject-prerequisites",
+  "timestamp": "2026-10-04T04:00:26.252Z",
+  "title": "Satisfy subject prerequisites",
+  "template": "story-article",
+  "blocks": [
+    "columns-text-column",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

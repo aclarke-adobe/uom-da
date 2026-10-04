@@ -56,6 +56,17 @@
   font-weight: inherit;
 }
 
+/* group label row (source tr.table__row--info): navy text on a navy tint across the table */
+.table tbody tr.table-row-info {
+  background-color: #bfc3d1;
+}
+
+.table tr.table-row-info th {
+  background-color: transparent;
+  color: var(--heading-color);
+  font-weight: 700;
+}
+
 .table th a:any-link {
   color: #fff;
 }

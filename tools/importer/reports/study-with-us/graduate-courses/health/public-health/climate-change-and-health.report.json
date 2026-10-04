@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/public-health/climate-change-and-health",
+  "path": "study-with-us/graduate-courses/health/public-health/climate-change-and-health",
+  "timestamp": "2026-10-04T04:08:19.720Z",
+  "title": "Study Climate Change and Health | Study at Melbourne",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards-icon",
+    "columns-split"
+  ],
+  "fragments": "personalised-advice",
+  "droppedImages": "",
+  "tags": ""
+}

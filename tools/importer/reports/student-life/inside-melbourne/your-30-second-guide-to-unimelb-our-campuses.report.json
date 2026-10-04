@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/your-30-second-guide-to-unimelb-our-campuses",
+  "path": "student-life/inside-melbourne/your-30-second-guide-to-unimelb-our-campuses",
+  "timestamp": "2026-10-04T04:06:31.212Z",
+  "title": "Your 30 second guide to UniMelb: our campuses",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-icon",
+    "columns-split"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": "About Melbourne"
+}

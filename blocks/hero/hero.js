@@ -13,7 +13,15 @@
  * the right 30%. `hero-banner` replaces it when a split hero is the only content of its
  * section (landing page header or feature banner): navy band, optional tag link, image
  * pinned to the right edge.
- * The aside option splits its panel into the course list and the trailing CTA links.
+ * `hero-story` replaces `hero-banner` for a story article header: an h1-only banner on a
+ * page that carries `Tags` metadata (only story articles do): navy half with the title
+ * centred vertically beside a half-width image. `hero-search` replaces the page header
+ * when a split h1 hero shares its section only with a Search block (study-level header,
+ * e.g. graduate research): the search box moves into the text column.
+ * The aside option splits its panel into the course list and the trailing CTA links;
+ * with an h1 (`hero-menu`, how-to-apply menu header) it is a navy band with the panel
+ * of arrow links beside the intro.
+ * Overlay: centred title (and CTA) over the photo with a black scrim, `dark` doubles it.
  * Link-only paragraphs that are not buttons get `hero-link` (arrow links in split-light).
  */
 import { createOptimizedPicture } from '../../scripts/aem.js';
@@ -47,12 +55,16 @@ export default function decorate(block) {
   const main = textCells[0] || document.createElement('div');
   main.className = 'hero-main';
   content.append(main);
+  // menu header: an aside hero whose heading is the page h1 (the course title band has an h2)
+  const isMenu = active.includes('aside') && !!main.querySelector(':scope > h1');
 
   if (textCells[1]) {
     const aside = textCells[1];
     aside.className = 'hero-aside';
     content.append(aside);
-    block.classList.add('hero-has-aside');
+    // the menu header (h1) keeps its panel in the band; hero-has-aside is the course
+    // title band's overhanging panel, which course.css makes room for
+    if (!isMenu) block.classList.add('hero-has-aside');
   }
   textCells.slice(2).forEach((extra) => main.append(...extra.childNodes));
 
@@ -68,14 +80,32 @@ export default function decorate(block) {
   const section = block.closest('.section');
   const isBanner = !isCourse && active.includes('split') && section
     && [...section.children].every((el) => el === block.parentElement);
+  // story article header: the banner holds nothing but its h1, and the page has tags
+  // (the meta name keeps the authored case on some pipelines, hence the `i` flag)
+  const tags = document.head.querySelector('meta[name="tags" i]');
+  const isStory = isBanner && heading && heading.tagName === 'H1'
+    && main.children.length === 1 && !!tags && tags.content.trim() !== '';
+  // study-level header: the section holds this hero and a search box only
+  const siblings = section ? [...section.children].filter((el) => el !== block.parentElement) : [];
+  const searchBlock = !isCourse && active.includes('split') && heading && heading.tagName === 'H1'
+    && siblings.length === 1 && siblings[0].matches('.search-wrapper')
+    ? siblings[0].querySelector(':scope > .search') : null;
   if (isCourse) {
     block.classList.add('hero-course');
+  } else if (isStory) {
+    block.classList.add('hero-story');
   } else if (isBanner) {
     block.classList.add('hero-banner');
+  } else if (searchBlock) {
+    block.classList.add('hero-search');
+    const wrapper = searchBlock.parentElement;
+    main.append(searchBlock);
+    wrapper.remove();
   } else if (active.includes('split') && heading && heading.tagName === 'H1') {
     // a split hero whose main heading is the page h1 is the homepage page header
     block.classList.add('hero-page-header');
   }
+  if (isMenu) block.classList.add('hero-menu');
   const tagEyebrows = isCourse || isBanner;
   if (heading) {
     let prev = heading.previousElementSibling;

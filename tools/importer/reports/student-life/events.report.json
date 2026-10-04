@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/events",
+  "path": "student-life/events",
+  "timestamp": "2026-10-04T04:01:29.835Z",
+  "title": "Events for future students",
+  "template": "story-article",
+  "blocks": [
+    "cards",
+    "columns-text-column"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/graduate-research/international-applications/offers-and-enrolments",
+  "path": "how-to-apply/graduate-research/international-applications/offers-and-enrolments",
+  "timestamp": "2026-10-04T03:59:34.628Z",
+  "title": "Offers and enrolments - graduate research - international applications",
+  "template": "story-article",
+  "blocks": [
+    "hero-aside",
+    "columns-text-column",
+    "accordion",
+    "columns-text-column",
+    "columns-split",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

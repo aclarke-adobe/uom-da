@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/human-rights-law-and-practice",
+  "path": "student-life/inside-melbourne/human-rights-law-and-practice",
+  "timestamp": "2026-10-04T04:02:39.218Z",
+  "title": "Human rights law and practice",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Bite-sized lectures"
+}

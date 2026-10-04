@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/channel-your-inner-author",
+  "path": "student-life/inside-melbourne/channel-your-inner-author",
+  "timestamp": "2026-10-04T04:01:59.177Z",
+  "title": "Channel your inner author",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": "Get involved"
+}

@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/auditions-and-interviews/master-of-production-design-auditions-and-interviews",
+  "path": "how-to-apply/auditions-and-interviews/master-of-production-design-auditions-and-interviews",
+  "timestamp": "2026-10-04T03:57:27.602Z",
+  "title": "Master of Design and Production - auditions and interviews",
+  "template": "story-article",
+  "blocks": [
+    "notice",
+    "notice",
+    "timeline",
+    "accordion",
+    "accordion",
+    "accordion"
+  ],
+  "fragments": "inclusivity-and-accessibility-interview",
+  "droppedImages": "",
+  "tags": ""
+}

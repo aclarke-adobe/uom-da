@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/managing-your-personal-finances",
+  "path": "student-life/inside-melbourne/managing-your-personal-finances",
+  "timestamp": "2026-10-04T04:03:37.464Z",
+  "title": "Managing your personal finances",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Bite-sized lectures"
+}

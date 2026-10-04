@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/stem/episode-8-stem-in-society",
+  "path": "student-life/inside-melbourne/stem/episode-8-stem-in-society",
+  "timestamp": "2026-10-04T04:05:13.484Z",
+  "title": "Episode 8: STEM in society",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards-chips"
+  ],
+  "fragments": "stem-careers-and-employability",
+  "droppedImages": "",
+  "tags": "STEM"
+}

@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/languages/korean",
+  "path": "student-life/inside-melbourne/languages/korean",
+  "timestamp": "2026-10-04T04:03:22.459Z",
+  "title": "Study Korean at the University of Melbourne",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "callout-photo",
+    "columns",
+    "cards-link-list",
+    "cards-link-list",
+    "cards-tile"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

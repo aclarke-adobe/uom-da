@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/why-do-designers-draw",
+  "path": "student-life/inside-melbourne/why-do-designers-draw",
+  "timestamp": "2026-10-04T04:06:15.373Z",
+  "title": "Why do designers draw?",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Bite-sized lectures"
+}

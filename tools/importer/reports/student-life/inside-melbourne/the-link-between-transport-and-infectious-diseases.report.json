@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/the-link-between-transport-and-infectious-diseases",
+  "path": "student-life/inside-melbourne/the-link-between-transport-and-infectious-diseases",
+  "timestamp": "2026-10-04T04:05:35.728Z",
+  "title": "The link between transport and infectious diseases",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Bite-sized lectures"
+}

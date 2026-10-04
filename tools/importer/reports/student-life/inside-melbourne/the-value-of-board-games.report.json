@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/the-value-of-board-games",
+  "path": "student-life/inside-melbourne/the-value-of-board-games",
+  "timestamp": "2026-10-04T04:05:43.085Z",
+  "title": "The value of board games",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Bite-sized lectures"
+}

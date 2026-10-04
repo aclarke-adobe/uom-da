@@ -31,7 +31,57 @@ function link(a, document) {
   return out;
 }
 
+/**
+ * Section-landing-family page title with a link panel (story-article ql-menu headers, 33 pages:
+ * how-to-apply, equity schemes, English requirements …), verified on the snapshots:
+ *   div.section.ct-menu.bg-inverted > .section__inner > .grid.ql-menu >
+ *     .cell.ql-menu__content > h1 + p (intro, links kept)
+ *     .cell > .uom-link-panel-list > ul.uom-link-panel-list__items > li > a.uom-link-panel >
+ *       span.uom-link-panel__text
+ * Row: h1 + intro | <ul><li><a>{panel text}</a></li></ul> (no aside cell without links).
+ */
+function parseQlMenu(element, document) {
+  const content = element.querySelector('.ql-menu__content') || element;
+  const mainCell = [];
+  [...content.children].forEach((c) => {
+    if (!cleanText(c) && !c.querySelector('img')) return;
+    if (/^H[1-6]$/.test(c.tagName)) {
+      const h = document.createElement(c.tagName.toLowerCase());
+      h.textContent = cleanText(c);
+      mainCell.push(h);
+      return;
+    }
+    c.querySelectorAll('*').forEach((x) => [...x.attributes].forEach((a) => { if (a.name !== 'href') x.removeAttribute(a.name); }));
+    [...c.attributes].forEach((a) => c.removeAttribute(a.name));
+    mainCell.push(c);
+  });
+  const links = [...element.querySelectorAll('.uom-link-panel-list a[href], ul.uom-link-panel-list__items a[href]')]
+    .filter((a, i, all) => all.indexOf(a) === i);
+  const ul = document.createElement('ul');
+  links.forEach((a) => {
+    const label = cleanText(a.querySelector('.uom-link-panel__text') || a);
+    if (!label) return;
+    const out = document.createElement('a');
+    out.href = (a.getAttribute('href') || '').trim();
+    out.textContent = label;
+    const li = document.createElement('li');
+    li.append(out);
+    ul.append(li);
+  });
+  if (!mainCell.length && !ul.children.length) {
+    element.replaceWith(...element.childNodes);
+    return;
+  }
+  const row = [mainCell.length ? mainCell : ''];
+  if (ul.children.length) row.push([ul]);
+  element.replaceWith(WebImporter.Blocks.createBlock(document, { name: 'Hero (aside)', cells: [row] }));
+}
+
 export default function parse(element, { document }) {
+  if (element.matches('.ct-menu') && element.querySelector('.ql-menu')) {
+    parseQlMenu(element, document);
+    return;
+  }
   const main = element.querySelector('.course-section__main') || element;
   const aside = element.querySelector('.course-section__aside, .at-a-glance');
 

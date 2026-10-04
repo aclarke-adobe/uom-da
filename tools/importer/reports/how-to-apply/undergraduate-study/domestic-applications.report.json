@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/undergraduate-study/domestic-applications",
+  "path": "how-to-apply/undergraduate-study/domestic-applications",
+  "timestamp": "2026-10-04T04:00:42.791Z",
+  "title": "How to apply - undergraduate study - domestic applications",
+  "template": "story-article",
+  "blocks": [
+    "hero-aside",
+    "cards-icon",
+    "columns-split",
+    "columns-text-column"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

@@ -563,3 +563,63 @@ main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.h
     margin-top: 20px;
   }
 }
+
+/*
+ * story pull quotes (source .content-block__inner > blockquote + h3 "- Name"): a text-only
+ * quote with the article text running on below it in the same section. A large semibold
+ * italic quotation in the text colour, up to the text width, marks inline, then the name as
+ * a navy semibold line after a hyphen. (Landing testimonials are never followed by text.)
+ */
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote-wrapper:has(+ .default-content-wrapper) > .quote:not(.profile, .quote-has-media, .quote-card) {
+  max-width: var(--text-max-width);
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote-wrapper:has(+ .default-content-wrapper) > .quote:not(.profile, .quote-has-media, .quote-card) blockquote {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  color: var(--text-color);
+  font-size: 24px;
+  font-style: italic;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote-wrapper:has(+ .default-content-wrapper) > .quote:not(.profile, .quote-has-media, .quote-card) blockquote > p {
+  position: static;
+  margin: 0 0 18px;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote-wrapper:has(+ .default-content-wrapper) > .quote:not(.profile, .quote-has-media, .quote-card) blockquote > p + p {
+  margin-top: 0;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote-wrapper:has(+ .default-content-wrapper) > .quote:not(.profile, .quote-has-media, .quote-card) blockquote > p:first-child::before,
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote-wrapper:has(+ .default-content-wrapper) > .quote:not(.profile, .quote-has-media, .quote-card) blockquote > p:last-child::after {
+  position: static;
+  display: inline;
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote-wrapper:has(+ .default-content-wrapper) > .quote:not(.profile, .quote-has-media, .quote-card) .quote-attribution {
+  margin: 0 0 18px;
+  color: var(--heading-color);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote-wrapper:has(+ .default-content-wrapper) > .quote:not(.profile, .quote-has-media, .quote-card) .quote-attribution::before {
+  content: '- ';
+}
+
+@media (width >= 769px) {
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote-wrapper:has(+ .default-content-wrapper) > .quote:not(.profile, .quote-has-media, .quote-card) blockquote,
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote-wrapper:has(+ .default-content-wrapper) > .quote:not(.profile, .quote-has-media, .quote-card) .quote-attribution {
+    font-size: 32px;
+  }
+
+  main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .quote-wrapper:has(+ .default-content-wrapper) > .quote:not(.profile, .quote-has-media, .quote-card) :is(blockquote > p, .quote-attribution) {
+    margin-bottom: 20px;
+  }
+}

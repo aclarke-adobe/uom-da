@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/languages/chinese",
+  "path": "student-life/inside-melbourne/languages/chinese",
+  "timestamp": "2026-10-04T04:02:54.702Z",
+  "title": "Study Chinese at the University of Melbourne",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "callout-photo",
+    "columns",
+    "quote",
+    "cards-link-list",
+    "cards-link-list",
+    "cards-tile"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

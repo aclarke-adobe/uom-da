@@ -1,0 +1,24 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/support/faq",
+  "path": "support/faq",
+  "timestamp": "2026-10-04T04:09:56.671Z",
+  "title": "Frequently asked questions | Future students",
+  "template": "story-article",
+  "blocks": [
+    "cards-icon",
+    "accordion",
+    "accordion",
+    "cards",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion",
+    "cards"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

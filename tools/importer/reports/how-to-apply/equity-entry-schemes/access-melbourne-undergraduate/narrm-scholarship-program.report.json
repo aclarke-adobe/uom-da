@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate/narrm-scholarship-program",
   "path": "how-to-apply/equity-entry-schemes/access-melbourne-undergraduate/narrm-scholarship-program",
-  "timestamp": "2026-10-03T07:20:30.426Z",
+  "timestamp": "2026-10-03T13:58:29.489Z",
   "title": "Narrm Scholarship Program",
   "template": "section-landing",
   "blocks": [
@@ -14,9 +14,11 @@
     "cards-tile",
     "accordion",
     "cards-tile",
+    "timeline",
     "accordion",
     "hero"
   ],
   "fragments": "",
-  "droppedImages": ""
+  "droppedImages": "",
+  "tags": ""
 }

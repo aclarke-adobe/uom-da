@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/undergraduate-courses",
+  "path": "study-with-us/undergraduate-courses",
+  "timestamp": "2026-10-04T04:09:46.892Z",
+  "title": "Undergraduate courses at the University of Melbourne",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "search",
+    "columns",
+    "video-split",
+    "hero-split",
+    "cards-stat",
+    "cards-tile",
+    "quote",
+    "quote",
+    "cards-icon",
+    "cards-icon",
+    "cards-icon",
+    "cards-tile"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

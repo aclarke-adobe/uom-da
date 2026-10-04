@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/languages/linguistics",
+  "path": "student-life/inside-melbourne/languages/linguistics",
+  "timestamp": "2026-10-04T04:03:26.223Z",
+  "title": "Linguistics",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "callout-photo",
+    "columns",
+    "cards-link-list",
+    "cards-link-list",
+    "cards-tile"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

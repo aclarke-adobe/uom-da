@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/meet-andrew",
+  "path": "student-life/inside-melbourne/meet-andrew",
+  "timestamp": "2026-10-04T04:03:41.409Z",
+  "title": "Meet Andrew",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Alumni"
+}

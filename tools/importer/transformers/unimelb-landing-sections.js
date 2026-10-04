@@ -34,6 +34,10 @@
  *   <hr data-excat-landing-section="<id>" [data-excat-landing-style] [data-excat-landing-audience]>
  * before each section start. The first section gets a marker only when it has Style or Audience
  * (flagged data-excat-landing-first: Metadata without a leading break).
+ * story-article only (keyed on the template name): a section whose default content is a centred
+ * h2 title with centred text gets `centered`; h2.title--md / h2.uom-title-3 count as sans section
+ * titles (heading-sans) like h2.heading-section; each lead paragraph (p.lead / p.lead.text-center)
+ * starts a section with Style `lead` / `lead-center` (see unitLeads).
  * afterTransform: every marker <hr> -> <hr> + Section Metadata {Style?, Audience?}; the first
  * section's marker <hr> is removed after its metadata is placed. A marker directly before a region
  * is never added twice, so running the hook twice does not double up breaks.
@@ -155,8 +159,14 @@ function blockElements(root, template) {
   return els;
 }
 
-function hasDefaultSectionTitle(unit, blocks) {
-  return unit.els.some((el) => [...el.querySelectorAll('h2.heading-section')]
+// story-article also reads the UI-kit title classes with the same sans title-3 type as
+// .heading-section (ui.min.css: .title--md, .uom-title-3); section-landing keeps .heading-section.
+const SANS_TITLE = { 'story-article': 'h2:is(.heading-section, .title--md, .uom-title-3)' };
+const SANS_TITLE_DEFAULT = 'h2.heading-section';
+
+function hasDefaultSectionTitle(unit, blocks, template) {
+  const sel = SANS_TITLE[template && template.name] || SANS_TITLE_DEFAULT;
+  return unit.els.some((el) => [...el.querySelectorAll(sel)]
     .some((h) => !blocks.some((b) => b.contains(h))));
 }
 
@@ -166,6 +176,102 @@ function withStyle(style, token) {
   return list.join(', ');
 }
 
+/* ---------- story-article: centred sections and lead paragraphs ---------- */
+
+// Templates with the two story rules below (keyed on the template name; section-landing has neither).
+const STORY_RULES = new Set(['story-article']);
+const CENTERED = 'centered';
+const LEAD = 'lead';
+const LEAD_CENTER = 'lead-center';
+const TEXT_ELS = 'h1, h2, h3, h4, h5, h6, p, li';
+
+function isCentredText(el, region) {
+  for (let n = el; n && n !== region.parentElement; n = n.parentElement) {
+    if (n.classList && n.classList.contains('text-center')) return true;
+    if (/text-align\s*:\s*center/i.test(n.getAttribute('style') || '')) return true;
+  }
+  return false;
+}
+
+function regionOfUnit(unit, el) {
+  return unit.els.find((r) => r.contains(el)) || unit.els[0];
+}
+
+/** Default-content text elements of a unit (outside every block instance), in document order. */
+function defaultTextEls(unit, blocks) {
+  const out = [];
+  unit.els.forEach((r) => {
+    const own = r.matches(TEXT_ELS) ? [r] : [];
+    [...own, ...r.querySelectorAll(TEXT_ELS)].forEach((el) => {
+      if (!/\S/.test(el.textContent || '') || blocks.some((b) => b.contains(el))) return;
+      if (el.matches('li') && el.querySelector(TEXT_ELS)) return;
+      out.push(el);
+    });
+  });
+  return out;
+}
+
+/**
+ * A centred section title: the unit's default content opens with an h2 marked text-center (class
+ * or inline style, on it or a wrapper in its region) and all its default-content text is centred
+ * the same way (e.g. graduate-research "Make a difference through graduate research", the navy
+ * stats band's h2.uom-title-3.text-center). Left-aligned body text keeps the section uncentred.
+ */
+function isCentredSection(unit, blocks) {
+  const els = defaultTextEls(unit, blocks);
+  if (!els.length || els[0].tagName !== 'H2') return false;
+  return els.every((el) => isCentredText(el, regionOfUnit(unit, el)));
+}
+
+/** True when nothing with content precedes `target` inside the unit. */
+function opensUnit(unit, target) {
+  for (const r of unit.els) {
+    if (r === target || r.contains(target)) {
+      const doc = r.ownerDocument;
+      const walker = doc.createTreeWalker(r, 1 | 4 /* SHOW_ELEMENT | SHOW_TEXT */);
+      for (let n = walker.currentNode; n; n = walker.nextNode()) {
+        if (n === target) return true;
+        if (n.nodeType === 3 && /\S/.test(n.textContent)) return false;
+        if (n.nodeType === 1 && n.matches('img, iframe, video, picture, table')) return false;
+      }
+      return true;
+    }
+    if (hasContent(r)) return false;
+  }
+  return false;
+}
+
+/**
+ * Lead paragraphs (source p.lead / p.lead.text-center lose their class at import): each one in
+ * default content starts a section with Style `lead` / `lead-center` (styles/story.css styles the
+ * first paragraph of such a section). A lead opening its unit adds the token to that section's
+ * style; any other lead (e.g. the second of the languages' two intro leads) gets a break of its
+ * own, carrying the unit's style (minus lead tokens) and Audience, so the surrounding sections keep
+ * their styles and metadata.
+ * Returns { token, splits: [{ el, token }] } for the unit.
+ */
+function unitLeads(unit, blocks) {
+  const leads = [];
+  unit.els.forEach((r) => {
+    const own = r.matches('p.lead') ? [r] : [];
+    [...own, ...r.querySelectorAll('p.lead')].forEach((p) => {
+      if (!/\S/.test(p.textContent || '') || blocks.some((b) => b.contains(p))) return;
+      leads.push({ el: p, token: p.classList.contains('text-center') ? LEAD_CENTER : LEAD });
+    });
+  });
+  let token = null;
+  const splits = [];
+  leads.forEach((l, i) => {
+    if (i === 0 && opensUnit(unit, l.el)) token = l.token;
+    else splits.push(l);
+  });
+  return { token, splits };
+}
+
+function withoutLead(style) {
+  return (style || '').split(',').map((s) => s.trim()).filter((s) => s && s !== LEAD && s !== LEAD_CENTER).join(', ');
+}
+
 export default function transform(hookName, element, payload) {
   const template = (payload && payload.template) || {};
 
@@ -173,11 +279,17 @@ export default function transform(hookName, element, payload) {
     if (!toList(template.sections).length) return;
     const units = sectionUnits(element, template);
     const blocks = blockElements(element, template);
+    const story = STORY_RULES.has(template.name);
     units.forEach((u, i) => {
       const start = u.els[0];
       let style = u.fragmentLink ? null : ((u.def && u.def.style) || null);
-      if (!u.fragmentLink && hasDefaultSectionTitle(u, blocks)) style = withStyle(style, HEADING_SANS);
+      if (story && !u.fragmentLink && isCentredSection(u, blocks)) style = withStyle(style, CENTERED);
+      if (!u.fragmentLink && hasDefaultSectionTitle(u, blocks, template)) style = withStyle(style, HEADING_SANS);
+      const leads = story && !u.fragmentLink ? unitLeads(u, blocks) : { token: null, splits: [] };
+      const carry = style;
+      if (leads.token) style = withStyle(style, leads.token);
       const audience = start.getAttribute(AUD_ATTR) || null;
+      leads.splits.forEach((l) => insertBreak(l.el, LEAD, withStyle(withoutLead(carry), l.token), audience, false));
       if (i === 0 && !style && !audience) return; // first section: no break, no metadata
       insertBreak(start, u.id, style, audience, i === 0);
     });

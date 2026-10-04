@@ -12,6 +12,8 @@ Card: when the attribution paragraph is followed by one more paragraph (a course
 
 On section landing pages, a text-only quote with no portrait and no course line ("What people are saying") renders as a large navy quotation, up to 544px wide. Its opening mark sits on its own line.
 
+Story pull quotes are text-only quotes followed by article text in the same section. They render as a large semibold italic quotation in the text colour, up to the text width, with the marks inline. The name follows as a navy semibold line after a hyphen.
+
 ## Supported variations
 
 | Variation | Option class |

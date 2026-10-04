@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/stem",
+  "path": "student-life/inside-melbourne/stem",
+  "timestamp": "2026-10-04T04:04:34.258Z",
+  "title": "Discover the world with STEM",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "cards",
+    "cards"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

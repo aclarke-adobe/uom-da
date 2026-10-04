@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/student-takeovers/meet-mollie-bachelor-of-science-student",
+  "path": "student-life/student-takeovers/meet-mollie-bachelor-of-science-student",
+  "timestamp": "2026-10-04T04:07:14.831Z",
+  "title": "Meet Mollie: Bachelor of Science student",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": "About Melbourne"
+}

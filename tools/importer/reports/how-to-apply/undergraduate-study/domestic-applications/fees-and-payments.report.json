@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/undergraduate-study/domestic-applications/fees-and-payments",
+  "path": "how-to-apply/undergraduate-study/domestic-applications/fees-and-payments",
+  "timestamp": "2026-10-04T04:00:53.617Z",
+  "title": "Fees and payments - undergraduate study - domestic applications",
+  "template": "story-article",
+  "blocks": [
+    "hero-aside",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

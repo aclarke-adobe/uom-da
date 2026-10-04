@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/student-takeovers/meet-courtney-bachelor-of-science",
+  "path": "student-life/student-takeovers/meet-courtney-bachelor-of-science",
+  "timestamp": "2026-10-04T04:06:50.056Z",
+  "title": "Meet Courtney: Bachelor of Science student",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": "About Melbourne"
+}

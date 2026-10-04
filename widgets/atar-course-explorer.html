@@ -1,0 +1,114 @@
+<form class="ace-form" novalidate>
+  <div class="ace-band ace-audience">
+    <fieldset class="ace-audience-group">
+      <legend class="ace-audience-label">I am a</legend>
+      <div class="ace-audience-options">
+        <div class="ace-radio"><input type="radio" name="ace-residency" value="domestic" id="ace-residency-domestic" checked><label for="ace-residency-domestic">Domestic student</label></div>
+        <div class="ace-radio"><input type="radio" name="ace-residency" value="international" id="ace-residency-international"><label for="ace-residency-international">International student</label></div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="ace-band ace-score" id="ace-score-section">
+    <div class="ace-score-heading">
+      <label class="ace-score-label" for="ace-atar-input">My ATAR is</label>
+      <input class="ace-score-input" id="ace-atar-input" type="number" inputmode="decimal" min="50" max="99.95" step="0.05" value="90" autocomplete="off" aria-describedby="ace-atar-hint">
+    </div>
+    <p class="ace-sr-only" id="ace-atar-hint">Enter an ATAR between 50.00 and 99.95 to filter the courses and other study options below.</p>
+    <div class="ace-slider">
+      <span class="ace-slider-limit" aria-hidden="true">50.00</span>
+      <input class="ace-slider-input" id="ace-atar-slider" type="range" min="50" max="99.95" step="0.05" value="90" aria-label="ATAR score">
+      <span class="ace-slider-limit" aria-hidden="true">99.95</span>
+    </div>
+  </div>
+
+  <div class="ace-band ace-filter">
+    <p class="ace-filter-label" id="ace-area-label">My area of interest is</p>
+    <div class="ace-dropdown">
+      <button type="button" class="ace-dropdown-toggle" id="ace-area-toggle" aria-expanded="false" aria-controls="ace-area-panel" aria-labelledby="ace-area-label ace-area-toggle">Please select</button>
+      <div class="ace-dropdown-panel" id="ace-area-panel" hidden>
+        <fieldset class="ace-dropdown-options">
+          <legend class="ace-sr-only">Areas of interest</legend>
+        </fieldset>
+        <div class="ace-dropdown-actions">
+          <button type="button" class="ace-dropdown-action" data-action="apply">Apply filter</button>
+          <button type="button" class="ace-dropdown-action" data-action="clear">Clear filter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<p class="ace-sr-only ace-status" role="status" aria-live="polite" aria-atomic="true"></p>
+
+<div class="ace-loading ace-band">
+  <span class="ace-loading-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+  <p>Loading courses</p>
+</div>
+
+<div class="ace-message ace-band" hidden></div>
+
+<div class="ace-results" hidden>
+  <div class="ace-band ace-options">
+    <h2>Your study options</h2>
+    <p class="ace-text">Explore each of your study options at Melbourne including courses with additional entry requirements and our pathways to graduate study.</p>
+    <ul class="ace-jump">
+      <li data-jump="atar"><a href="#ace-atar">Courses with ATAR-based entry</a></li>
+      <li data-jump="range"><a href="#ace-range">Courses with a range of criteria</a></li>
+      <li data-jump="gdp"><a href="#ace-gdp">Graduate Degree Packages</a></li>
+      <li data-jump="pathways"><a href="#ace-pathways">Career pathways</a></li>
+    </ul>
+
+    <section class="ace-section" data-section="atar" id="ace-atar" aria-labelledby="ace-atar-heading">
+      <h3 id="ace-atar-heading">Courses with ATAR-based entry</h3>
+      <p class="ace-text" data-residency="domestic">Use course entry requirements to explore your course options and to plan ahead with confidence. Domestic students may also be eligible for our equity entry scheme, <a href="/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate">Access Melbourne</a>. To understand more about lowest selection ranks and the Access Melbourne guarantee, visit <a href="/study-with-us/undergraduate-courses/change-of-preference/atar-entry-score-guide">ATAR entry score guide</a>.</p>
+      <p class="ace-text" data-residency="international" hidden>The scores displayed are for international students who have completed an Australian Year 12 qualification or the International Baccalaureate (IB) Diploma. If you meet all course prerequisites and achieve the International Guaranteed ATAR (or notional ATAR), you will be guaranteed a place in your chosen degree.</p>
+      <p class="ace-count"></p>
+      <div class="ace-view" role="group" aria-label="Show courses with ATAR-based entry as"></div>
+      <div class="ace-list"></div>
+    </section>
+
+    <section class="ace-section ace-no-results" data-section="atar-empty" aria-labelledby="ace-atar-empty-heading" hidden>
+      <h3 id="ace-atar-empty-heading">No matching courses found</h3>
+      <ul class="ace-text">
+        <li>Choose another interest area</li>
+        <li>Learn more about our alternative entry pathways including the <a href="/find/courses/undergraduate/diploma-in-general-studies">Diploma in General Studies</a> for domestic students and <a href="https://www.trinity.unimelb.edu.au/pathways-school">Trinity College Foundation Studies</a> for international students.</li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="ace-band ace-band-grey">
+    <section class="ace-section" data-section="gdp" id="ace-gdp" aria-labelledby="ace-gdp-heading">
+      <h3 id="ace-gdp-heading">Graduate Degree Packages</h3>
+      <div class="ace-text">
+        <p>If you already know the area you want to specialise in, or have a career in mind, a Graduate Degree Package can help secure a place in both an undergraduate and graduate course before you begin your studies.</p>
+        <p>Packages are available for both domestic and international students. The results shown may change based on your student type and the score you’ve selected in the <a href="#ace-score-section">ATAR slider above</a>.</p>
+        <p>Please note:</p>
+        <ul>
+          <li><a href="https://study.unimelb.edu.au/how-to-apply/equity-entry-schemes/access-melbourne-undergraduate/access-melbourne-eligibility#gdpguarantees">Access Melbourne ATAR guarantees</a> are also available for select Graduate Degree Packages for domestic students</li>
+          <li>For Bachelor of Fine Arts and Bachelor of Music packages, you'll need to submit supplementary creative tasks (such as a recorded audition or folio) as part of your undergraduate course application. See <a href="https://study.unimelb.edu.au/how-to-apply/auditions-and-interviews">Auditions and interviews</a> for full details.</li>
+        </ul>
+        <p><a href="/study-with-us/guaranteed-undergraduate-to-graduate-study-pathways/graduate-degree-packages">Find out more</a> about Graduate Degree Packages including benefits, general eligibility criteria and additional entry requirements.</p>
+      </div>
+      <p class="ace-count"></p>
+      <div class="ace-view" role="group" aria-label="Show Graduate Degree Packages as"></div>
+      <div class="ace-list"></div>
+    </section>
+  </div>
+
+  <div class="ace-band">
+    <section class="ace-section" data-section="range" id="ace-range" aria-labelledby="ace-range-heading">
+      <h3 id="ace-range-heading">Courses with additional entry requirements</h3>
+      <p class="ace-text">Entry requirements for the courses below include a 'range of criteria'. You'll need to provide additional information to apply, such as submitting a portfolio or attending an audition or interview. Entry requirements may include meeting an ATAR.</p>
+      <p class="ace-count"></p>
+      <div class="ace-view" role="group" aria-label="Show courses with a range of criteria as"></div>
+      <div class="ace-list"></div>
+    </section>
+
+    <section class="ace-section" data-section="pathways" id="ace-pathways" aria-labelledby="ace-pathways-heading">
+      <h3 id="ace-pathways-heading">Career pathways</h3>
+      <p class="ace-text">From day one of your studies, you can choose to focus on your career with our range of <a href="https://study.unimelb.edu.au/study-with-us/guaranteed-undergraduate-to-graduate-study-pathways/flexible-degree-pathways">flexible undergraduate degrees and graduate study options</a>. Below are common career pathways to explore – but this is just a small selection of what’s possible at Melbourne.</p>
+      <div class="ace-list"></div>
+    </section>
+  </div>
+</div>

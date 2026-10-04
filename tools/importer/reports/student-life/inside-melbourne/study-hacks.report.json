@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/study-hacks",
+  "path": "student-life/inside-melbourne/study-hacks",
+  "timestamp": "2026-10-04T04:05:27.826Z",
+  "title": "Study hacks to study smart",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "video-split",
+    "columns-text-column"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": "Health and wellbeing"
+}

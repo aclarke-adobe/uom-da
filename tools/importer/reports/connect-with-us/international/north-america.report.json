@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/connect-with-us/international/north-america",
+  "path": "connect-with-us/international/north-america",
+  "timestamp": "2026-10-04T03:55:50.382Z",
+  "title": "North America: Information for international students",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "cards-stat",
+    "cards-tile",
+    "cards-chips",
+    "cards-tile",
+    "cards-icon"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

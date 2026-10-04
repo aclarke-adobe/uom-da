@@ -3,6 +3,8 @@
  * Each row becomes a table row, each cell a table cell. The first row is used as the
  * header when every non-empty cell in it is only a heading, bold text or a short label
  * (and more rows follow). Cells may contain rich content (lists, links, images).
+ * Below a header row, a row whose first cell is only bold text and whose other cells are
+ * empty is a group label: one heading cell spanning the table (`table-row-info`).
  * Narrow screens scroll the table sideways inside the block; the scroll container
  * becomes a focusable, labelled region only while it actually overflows.
  * Option `compact`: below 600px each row becomes a card headed by its first cell, the other
@@ -64,6 +66,22 @@ function isHeaderRow(row, rowCount, strict) {
   });
 }
 
+/**
+ * A group label row: the first cell holds only bold text, every other cell is empty.
+ * @param {Element} row
+ * @returns {boolean}
+ */
+function isInfoRow(row) {
+  const [first, ...rest] = [...row.children];
+  if (!first || !rest.length) return false;
+  if (rest.some((c) => c.textContent.trim() || c.children.length)) return false;
+  const els = [...first.children];
+  const label = els.length === 1 && els[0].tagName === 'P' ? els[0] : first;
+  const text = label.textContent.trim();
+  return label.children.length === 1 && /^(STRONG|B)$/.test(label.firstElementChild.tagName)
+    && text !== '' && text === label.firstElementChild.textContent.trim();
+}
+
 export default function decorate(block) {
   const rows = [...block.children];
   if (!rows.length) return;
@@ -89,6 +107,17 @@ export default function decorate(block) {
   const tbody = document.createElement('tbody');
   rows.slice(hasHeader ? 1 : 0).forEach((row) => {
     const tr = document.createElement('tr');
+    if (hasHeader && isInfoRow(row)) {
+      // group label row (source tr.table__row--info): one heading cell across the table
+      const th = document.createElement('th');
+      th.scope = 'colgroup';
+      th.colSpan = row.children.length;
+      th.append(...row.firstElementChild.childNodes);
+      tr.className = 'table-row-info';
+      tr.append(th);
+      tbody.append(tr);
+      return;
+    }
     [...row.children].forEach((cell) => {
       const td = document.createElement('td');
       td.append(...cell.childNodes);

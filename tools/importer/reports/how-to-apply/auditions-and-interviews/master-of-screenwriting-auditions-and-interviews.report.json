@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/auditions-and-interviews/master-of-screenwriting-auditions-and-interviews",
+  "path": "how-to-apply/auditions-and-interviews/master-of-screenwriting-auditions-and-interviews",
+  "timestamp": "2026-10-04T03:57:30.707Z",
+  "title": "Master of Screenwriting - auditions and interviews",
+  "template": "story-article",
+  "blocks": [
+    "notice",
+    "notice",
+    "timeline",
+    "accordion",
+    "accordion",
+    "columns-text-column"
+  ],
+  "fragments": "inclusivity-and-accessibility-interview",
+  "droppedImages": "",
+  "tags": ""
+}

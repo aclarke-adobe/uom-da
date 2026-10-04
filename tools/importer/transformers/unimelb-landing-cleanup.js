@@ -405,8 +405,49 @@ function templateRoots(doc) {
     .map((tpl) => (tpl.content && tpl.content.childNodes.length ? tpl.content : tpl));
 }
 
+/* ---------- Wrapper divs (template.unwrap) ---------- */
+
+// story-article: untyped wrapper divs around a navy title band + app-tabs are replaced by their
+// children, so each component is a #main region of its own (section matching is per region).
+// section-landing has no unwrap list: nothing changes there.
+function unwrapWrappers(root, template) {
+  toList(template && template.unwrap).forEach((sel) => {
+    let nodes = [];
+    try {
+      nodes = [...root.querySelectorAll(sel)];
+    } catch (e) {
+      nodes = [];
+    }
+    nodes.forEach((w) => { if (w.parentNode) w.replaceWith(...w.childNodes); });
+  });
+}
+
+/* ---------- Page metadata (template.pageMetadata) ---------- */
+
+// story-article Tags: the share-bar tag link texts (the share bar itself is chrome), read before
+// the chrome is removed. Result: document.excatPageMetadata = { Tags: 'A, B' } (import script adds
+// the rows to the page Metadata block). No pageMetadata in the template, or no match: {}.
+function readPageMetadata(root, template) {
+  const out = {};
+  const spec = (template && template.pageMetadata) || {};
+  Object.entries(spec).forEach(([key, def]) => {
+    const sel = typeof def === 'string' ? def : def && def.selector;
+    if (!sel) return;
+    let nodes = [];
+    try {
+      nodes = [...root.querySelectorAll(sel)];
+    } catch (e) {
+      nodes = [];
+    }
+    const values = [...new Set(nodes.map((n) => (n.textContent || '').replace(/\s+/g, ' ').trim()).filter(Boolean))];
+    if (values.length) out[key] = values.join(', ');
+  });
+  return out;
+}
+
 function cleanRoot(root, doc, template, path) {
   unwrapOptimizely(root);
+  unwrapWrappers(root, template);
   const anchors = rewriteAnchors(root, doc, path);
   removeAll(root, chromeList(template));
   removeAll(root, toList(template && template.drops).map((d) => (typeof d === 'string' ? d : d.selector)).concat(DEFAULT_DROPS));
@@ -418,6 +459,7 @@ function cleanRoot(root, doc, template, path) {
   fixLinks(root);
   normalizeHeadings(root);
   markCrestButtons(root);
+  markStoryButtons(root, template);
   return anchors;
 }
 
@@ -483,6 +525,67 @@ function markCrestButtons(root) {
     if (parent && /^(DIV|P)$/.test(parent.tagName) && parent.textContent.trim() === a.textContent.trim()
       && !parent.matches('.section__inner')) parent.replaceWith(p);
     else a.replaceWith(wrap);
+  });
+}
+
+/**
+ * story-article only: a.btn links left in default content (outside every block instance of the
+ * template) follow the same convention, one button per paragraph: <p><strong><a> (btn, incl.
+ * btn--tertiary, the outlined button, as in the accordion / tabs parsers) / <p><em><a>
+ * (btn--secondary, btn--cta); btn--text stays a text link. A paragraph holding only buttons (e.g. two
+ * btn--secondary links side by side) becomes one paragraph per button; a button loose in a container
+ * div becomes its own paragraph; a button inside running text or a list item is left as a link.
+ * section-landing is unchanged (its default-content buttons stay plain links).
+ */
+const BUTTON_TEMPLATES = new Set(['story-article']);
+
+function isButtonLink(a) {
+  const cls = a.className || '';
+  return /\bbtn\b/.test(cls) && !/btn--text/.test(cls);
+}
+
+// the link itself is moved (href, title and text as the import keeps them), only wrapped; bold /
+// italic runs inside the link are unwrapped (the wrapper is the button marker)
+function buttonParagraph(a, doc) {
+  const wrap = doc.createElement(/btn--secondary|btn--cta/.test(a.className || '') ? 'em' : 'strong');
+  a.removeAttribute('class');
+  a.querySelectorAll('strong, em, b, i').forEach((x) => { if (x.parentNode) x.replaceWith(...x.childNodes); });
+  wrap.append(a);
+  const p = doc.createElement('p');
+  p.append(wrap);
+  return p;
+}
+
+function markStoryButtons(root, template) {
+  if (!template || !BUTTON_TEMPLATES.has(template.name)) return;
+  const doc = root.ownerDocument || root;
+  const blocks = [];
+  toList(template.blocks).forEach((b) => toList(b.instances).forEach((sel) => {
+    try {
+      blocks.push(...root.querySelectorAll(sel));
+    } catch (e) { /* invalid selector */ }
+  }));
+  const buttons = [...root.querySelectorAll('a[href][class*="btn"]')].filter((a) => isButtonLink(a)
+    && a.textContent.trim() && !a.closest('strong, em') && !blocks.some((b) => b.contains(a)));
+  const squash = (t) => (t || '').replace(/\s+/g, '');
+  const done = new Set();
+  buttons.forEach((a) => {
+    if (done.has(a) || !a.isConnected) return;
+    const p = a.closest('p');
+    if (p) {
+      if (p.closest('li, table')) return;
+      const inP = buttons.filter((b) => p.contains(b));
+      inP.forEach((b) => done.add(b));
+      // only a paragraph made of buttons (plus whitespace / <br>) is split into button paragraphs
+      if (squash(p.textContent) !== squash(inP.map((b) => b.textContent).join(''))) return;
+      p.replaceWith(...inP.map((b) => buttonParagraph(b, doc)));
+      return;
+    }
+    done.add(a);
+    const parent = a.parentElement;
+    if (!parent || !/^(DIV|SECTION|ARTICLE)$/.test(parent.tagName) || parent.closest('li, table')) return;
+    const next = a.nextSibling;
+    parent.insertBefore(buttonParagraph(a, doc), next);
   });
 }
 
@@ -588,6 +691,7 @@ export default function transform(hookName, element, payload) {
   const doc = element.ownerDocument || document;
 
   if (hookName === TransformHook.beforeTransform) {
+    doc.excatPageMetadata = readPageMetadata(element, template);
     const path = pagePathOf(doc, payload);
     const stats = cleanRoot(element, doc, template, path);
     if (stats.rewritten || stats.unresolved) console.log(`${LOG} anchors rewritten ${stats.rewritten}, unresolved ${stats.unresolved}`);

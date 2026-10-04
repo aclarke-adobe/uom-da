@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/international-exchange-and-study-abroad/fees-and-costs",
+  "path": "how-to-apply/international-exchange-and-study-abroad/fees-and-costs",
+  "timestamp": "2026-10-04T03:59:56.194Z",
+  "title": "Fees and costs - Exchange and study abroad",
+  "template": "story-article",
+  "blocks": [
+    "hero-aside",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

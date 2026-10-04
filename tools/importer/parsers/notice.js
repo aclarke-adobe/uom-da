@@ -1,5 +1,7 @@
 /* eslint-disable */
 /* global WebImporter */
+import { isLandingFamily } from '../landing-family.js';
+
 /**
  * Parser for notice. Base: notice (no options). Authored as "Notice".
  * Source: course-detail template, fees (fee panels, one domestic + one international copy) and
@@ -130,14 +132,27 @@ function dashLists(cell, document) {
 }
 
 export default function parse(element, { document, template }) {
-  if (template === 'section-landing' && !element.matches('.fee-info-panel')) {
+  if (isLandingFamily(template) && !element.matches('.fee-info-panel')) {
     const root = element.matches('.notice') ? element : (element.querySelector('.notice') || element);
-    const cell = dashLists(content(root, document), document);
+    // an inline p.notice is one paragraph: kept whole (its text, links and <br>s), spans unwrapped
+    let cell;
+    if (root.tagName === 'P') {
+      const p = document.createElement('p');
+      p.innerHTML = root.innerHTML.trim();
+      stripAttrs(p);
+      p.querySelectorAll('span').forEach((s) => s.replaceWith(...s.childNodes));
+      cell = cleanText(p) ? [p] : [];
+    } else cell = dashLists(content(root, document), document);
     if (!cell.length || !cell.some((el) => cleanText(el))) {
       element.replaceWith(...element.childNodes);
       return;
     }
-    element.replaceWith(WebImporter.Blocks.createBlock(document, { name: 'Notice', cells: [[cell]] }));
+    // inline p.notice (story-article auditions / how-to-apply, kwong-lee): notice--warning and
+    // notice--success become the warning / success options; notice--default stays plain Notice
+    const tone = ['warning', 'success'].find((t) => root.classList.contains(`notice--${t}`));
+    element.replaceWith(WebImporter.Blocks.createBlock(document, tone
+      ? { name: 'Notice', variants: [tone], cells: [[cell]] }
+      : { name: 'Notice', cells: [[cell]] }));
     return;
   }
   const cell = [];

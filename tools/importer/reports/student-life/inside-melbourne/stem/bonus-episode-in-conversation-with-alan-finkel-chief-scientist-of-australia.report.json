@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/stem/bonus-episode-in-conversation-with-alan-finkel-chief-scientist-of-australia",
+  "path": "student-life/inside-melbourne/stem/bonus-episode-in-conversation-with-alan-finkel-chief-scientist-of-australia",
+  "timestamp": "2026-10-04T04:04:38.187Z",
+  "title": "Bonus episode: In conversation with Alan Finkel, Chief Scientist of Australia",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "STEM"
+}

@@ -1,5 +1,7 @@
 /* eslint-disable */
 /* global WebImporter */
+import { isLandingFamily } from '../landing-family.js';
+
 /**
  * Parser for columns. Base: columns (no options). Authored as "Columns".
  * Source: course-detail template, "Related study areas" row (#what-can-i-study; overview + majors).
@@ -200,7 +202,7 @@ function parseLanding(element, document) {
 }
 
 export default function parse(element, { document, template }) {
-  if (template === 'section-landing') {
+  if (isLandingFamily(template)) {
     parseLanding(element, document);
     return;
   }

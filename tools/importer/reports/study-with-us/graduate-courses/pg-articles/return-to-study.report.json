@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/pg-articles/return-to-study",
+  "path": "study-with-us/graduate-courses/pg-articles/return-to-study",
+  "timestamp": "2026-10-04T04:08:43.907Z",
+  "title": "Returning to Study: Balancing Work and Postgraduate Studies",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "columns-text-column",
+    "columns-overlap",
+    "columns-overlap",
+    "quote",
+    "columns-text-column",
+    "columns-overlap",
+    "quote"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

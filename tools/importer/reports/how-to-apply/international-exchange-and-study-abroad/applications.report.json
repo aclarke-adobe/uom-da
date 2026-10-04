@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/international-exchange-and-study-abroad/applications",
+  "path": "how-to-apply/international-exchange-and-study-abroad/applications",
+  "timestamp": "2026-10-04T03:59:48.633Z",
+  "title": "Applications - Exchange and study abroad",
+  "template": "story-article",
+  "blocks": [
+    "notice",
+    "notice",
+    "accordion",
+    "columns-text-column",
+    "accordion",
+    "columns-text-column",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

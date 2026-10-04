@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/auditions-and-interviews/graduate-diploma-in-music-practical-music-auditions-and-interviews",
+  "path": "how-to-apply/auditions-and-interviews/graduate-diploma-in-music-practical-music-auditions-and-interviews",
+  "timestamp": "2026-10-04T03:57:02.123Z",
+  "title": "Graduate Diploma in Music (Practical Music) - auditions and interviews",
+  "template": "story-article",
+  "blocks": [
+    "notice",
+    "notice",
+    "timeline",
+    "accordion",
+    "accordion",
+    "columns-text-column"
+  ],
+  "fragments": "inclusivity-and-accessibility-contact",
+  "droppedImages": "",
+  "tags": ""
+}

@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/graduate-research/international-applications/entry-requirements",
+  "path": "how-to-apply/graduate-research/international-applications/entry-requirements",
+  "timestamp": "2026-10-04T03:59:30.965Z",
+  "title": "Entry requirements - graduate research - international applications",
+  "template": "story-article",
+  "blocks": [
+    "hero-aside",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-split",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

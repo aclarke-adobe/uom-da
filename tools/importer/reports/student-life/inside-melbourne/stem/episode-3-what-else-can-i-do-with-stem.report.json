@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/stem/episode-3-what-else-can-i-do-with-stem",
+  "path": "student-life/inside-melbourne/stem/episode-3-what-else-can-i-do-with-stem",
+  "timestamp": "2026-10-04T04:04:53.489Z",
+  "title": "Episode 3: What else can I do with STEM?",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards-chips"
+  ],
+  "fragments": "stem-careers-and-employability",
+  "droppedImages": "",
+  "tags": "STEM"
+}

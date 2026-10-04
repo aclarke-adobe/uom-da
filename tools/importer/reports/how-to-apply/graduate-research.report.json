@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/graduate-research",
+  "path": "how-to-apply/graduate-research",
+  "timestamp": "2026-10-04T03:59:02.018Z",
+  "title": "How to apply - graduate research study",
+  "template": "story-article",
+  "blocks": [
+    "cards-link-list",
+    "cards-icon",
+    "columns-split"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

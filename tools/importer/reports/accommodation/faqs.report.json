@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/accommodation/faqs",
+  "path": "accommodation/faqs",
+  "timestamp": "2026-10-04T03:55:41.198Z",
+  "title": "Frequently asked questions – Accommodation | The University of Melbourne",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion",
+    "callout-photo"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

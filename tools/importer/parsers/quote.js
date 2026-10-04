@@ -170,6 +170,18 @@ export default function parse(element, { document }) {
     attribution = document.createElement('p');
     attribution.textContent = `— ${clean(citeEl).replace(/^[—–-]\s*/, '')}`;
   }
+  // Bare pull quote in a landing-family content block (story-article, 3 stories:
+  // .content-block__inner > blockquote > p, verified on the snapshots). A heading right after it
+  // that starts with a dash ("<h3>- Tiriki Onus</h3>") is the attribution: folded in and removed.
+  if (!attribution && element.matches('blockquote') && element.parentElement
+    && element.parentElement.matches('.content-block__inner')) {
+    const next = element.nextElementSibling;
+    if (next && /^H[1-6]$/.test(next.tagName) && /^\s*[-–—]\s*\S/.test(next.textContent) && clean(next).length <= 120) {
+      attribution = document.createElement('p');
+      attribution.textContent = `— ${clean(next).replace(/^[—–-]\s*/, '')}`;
+      next.remove();
+    }
+  }
 
   let image = null;
   const img = root.querySelector('.testimonials-alt__img img, .progressive-image img, img');

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/the-science-behind-sourdough",
+  "path": "student-life/inside-melbourne/the-science-behind-sourdough",
+  "timestamp": "2026-10-04T04:05:39.091Z",
+  "title": "The science behind sourdough",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Bite-sized lectures"
+}

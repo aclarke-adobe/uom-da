@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/graduate-coursework-study/domestic-applications/applications",
+  "path": "how-to-apply/graduate-coursework-study/domestic-applications/applications",
+  "timestamp": "2026-10-04T03:58:29.807Z",
+  "title": "Applications - graduate coursework study - domestic",
+  "template": "story-article",
+  "blocks": [
+    "hero-aside",
+    "columns-text-column",
+    "columns-text-column",
+    "columns-text-column",
+    "accordion",
+    "columns-text-column",
+    "columns-text-column",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

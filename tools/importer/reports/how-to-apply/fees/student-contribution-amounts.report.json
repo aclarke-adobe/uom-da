@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/fees/student-contribution-amounts",
+  "path": "how-to-apply/fees/student-contribution-amounts",
+  "timestamp": "2026-10-04T03:58:17.025Z",
+  "title": "Student contribution amounts",
+  "template": "story-article",
+  "blocks": [
+    "columns-text-column",
+    "columns-text-column",
+    "table",
+    "columns-text-column"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

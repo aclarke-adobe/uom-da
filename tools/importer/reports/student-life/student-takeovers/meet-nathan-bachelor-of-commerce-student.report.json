@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/student-takeovers/meet-nathan-bachelor-of-commerce-student",
+  "path": "student-life/student-takeovers/meet-nathan-bachelor-of-commerce-student",
+  "timestamp": "2026-10-04T04:07:19.561Z",
+  "title": "A day in the life of a Bachelor of Commerce student",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": "About Melbourne"
+}

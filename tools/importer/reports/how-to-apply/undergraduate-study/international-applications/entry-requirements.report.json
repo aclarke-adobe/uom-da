@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/undergraduate-study/international-applications/entry-requirements",
+  "path": "how-to-apply/undergraduate-study/international-applications/entry-requirements",
+  "timestamp": "2026-10-04T04:01:06.757Z",
+  "title": "Entry requirements - undergraduate study - international applications",
+  "template": "story-article",
+  "blocks": [
+    "hero-aside",
+    "accordion",
+    "columns-text-column",
+    "columns-split",
+    "columns-text-column",
+    "accordion",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

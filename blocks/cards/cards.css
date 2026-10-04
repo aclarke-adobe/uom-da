@@ -1366,6 +1366,19 @@ main .section:has(> .cards-wrapper > .cards-stat-ranking) > .cards-wrapper + .de
   --chip-color: #809daa;
 }
 
+/* story study options: study areas and bachelors keep the navy rule, majors and research their own */
+.cards.chips > ul > li:is(.cards-chip-study-area, .cards-chip-bachelor) {
+  --chip-color: var(--uom-navy);
+}
+
+.cards.chips > ul > li.cards-chip-major {
+  --chip-color: #809daa;
+}
+
+.cards.chips > ul > li.cards-chip-research {
+  --chip-color: #9fb825;
+}
+
 .cards.chips > ul > li:not(.cards-card-link) .cards-card-body {
   justify-content: center;
   padding: 12px 16px;
@@ -1802,6 +1815,238 @@ main .section .cards.link-list > ul {
 @media (width >= 1098px) {
   .cards.icon.cards-logos > ul > li:nth-child(n) {
     width: 20%;
+  }
+}
+
+/*
+ * Story-article shapes (cards.js hooks that only story content produces): titled link boxes,
+ * image-focus testimonials, full-width news / event lists and the keep-reading excerpt rule.
+ */
+
+/* --- link-list, titled boxes (how-to-apply, languages): title, description, ruled arrow links */
+main .section .cards.link-list.cards-link-boxes > ul {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: none;
+  grid-auto-flow: row;
+  gap: 16px;
+  padding-top: 0;
+}
+
+.cards.link-list.cards-link-boxes > ul > li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.cards.link-list.cards-link-boxes .cards-card-body > :is(h2, h3, h4, h5, h6) {
+  margin: 0 0 16px;
+  color: var(--heading-color);
+  font-family: var(--body-font-family);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+.cards.link-list.cards-link-boxes .cards-card-body > p {
+  margin: 0 0 24px;
+}
+
+.cards.link-list.cards-link-boxes .cards-card-body > p.cards-link-item {
+  margin: 0;
+  padding: 16px 16px 16px 0;
+  border-top: 1px solid var(--uom-grey-border);
+}
+
+.cards.link-list.cards-link-boxes .cards-card-body > p.cards-link-item-last {
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--uom-grey-border);
+}
+
+/* links inside a description, and the note's link, are plain underlined links */
+.cards.link-list.cards-link-boxes .cards-card-body > p:not(.cards-link-item) a:any-link {
+  display: inline;
+  margin: 0;
+  font-size: inherit;
+  font-weight: 600;
+}
+
+.cards.link-list.cards-link-boxes .cards-card-body > p:not(.cards-link-item) a::after {
+  content: none;
+}
+
+.cards.link-list.cards-link-boxes .cards-link-note .cards-card-body > p:first-child {
+  margin: 0 0 20px;
+  color: var(--heading-color);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* --- icon, image-focus testimonials: cover photo over a padded name / role and the quote */
+.cards.icon.cards-image-focus > ul {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+.cards.icon.cards-image-focus > ul > li img {
+  height: 240px;
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
+.cards.icon.cards-image-focus .cards-card-body {
+  padding: 24px;
+}
+
+.cards.icon.cards-image-focus .cards-card-body > h3,
+.cards.icon.cards-image-focus .cards-card-body > p.cards-card-role {
+  margin: 0 0 16px;
+  color: var(--heading-color);
+  font-family: var(--body-font-family);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+.cards.icon.cards-image-focus .cards-card-body > h3:has(+ .cards-card-role) {
+  margin-bottom: 0;
+}
+
+.cards.icon.cards-image-focus .cards-card-body > p:where(:not(.cards-card-role)) {
+  margin: 0;
+}
+
+/* --- default, news list (card--generic--full-width, events): one card per row */
+main .cards.cards-news.cards-news-list > ul {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+main .cards.cards-news.cards-events > ul {
+  gap: 0;
+}
+
+.cards.cards-news .cards-card-body > .cards-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.cards.cards-news .cards-card-tags > p {
+  margin: 0;
+  padding: 4px 8px;
+  background-color: var(--uom-sage-pale);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.cards.cards-news .cards-card-tags a:any-link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.cards.cards-news .cards-card-tags a:hover {
+  text-decoration: underline;
+}
+
+.cards.cards-news .cards-card-body > p.cards-card-dup {
+  display: none;
+}
+
+/* an event without an excerpt still closes its date with the excerpt's rule */
+.cards.cards-news .cards-card-body > p.cards-card-date-end {
+  margin-bottom: 28px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+/* --- default, excerpt under its own rule (STEM list, keep reading on story articles) */
+:is(.cards.cards-news.cards-news-list, main .section:has(#keep-reading) .cards.cards-news)
+  .cards-card-body > .cards-card-title + p:where(:not(.cards-card-cta, .cards-card-date, .cards-card-tag, .cards-card-dup)) {
+  margin: 8px 0 16px;
+  padding-top: 12px;
+  border-top: 1px solid #e4e4e4;
+}
+
+@media (width >= 600px) {
+  .cards.link-list.cards-link-boxes > ul,
+  main .section .cards.link-list.cards-link-boxes > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cards.icon.cards-image-focus > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cards.icon.cards-image-focus > ul > li:last-child:nth-child(odd),
+  .cards.cards-news.cards-news-list > ul > li:last-child:nth-child(odd) {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
+  }
+}
+
+@media (width >= 769px) {
+  main .section .cards.link-list.cards-link-boxes > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .cards.link-list.cards-link-boxes .cards-card-body > :is(h2, h3, h4, h5, h6) {
+    margin-bottom: 18px;
+    font-size: 24px;
+  }
+
+  .cards.link-list.cards-link-boxes .cards-link-note .cards-card-body > p:first-child {
+    margin-bottom: 30px;
+    font-size: 32px;
+  }
+
+  .cards.icon.cards-image-focus > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .cards.icon.cards-image-focus > ul > li img {
+    height: 213px;
+  }
+
+  .cards.icon.cards-image-focus .cards-card-body > h3,
+  .cards.icon.cards-image-focus .cards-card-body > p.cards-card-role {
+    margin-bottom: 18px;
+    font-size: 24px;
+  }
+
+  main .cards.cards-news.cards-news-list > ul {
+    gap: 24px;
+  }
+
+  main .cards.cards-news.cards-events > ul {
+    gap: 0;
+  }
+
+  /* photo on the left, a third of the card, cropped to the card height */
+  .cards.cards-news.cards-news-list > ul > li:has(> .cards-card-image) {
+    flex-direction: row;
+  }
+
+  .cards.cards-news.cards-news-list .cards-card-image {
+    position: relative;
+    flex: 0 0 30%;
+  }
+
+  .cards.cards-news.cards-news-list > ul > li .cards-card-image img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    aspect-ratio: auto;
   }
 }
 

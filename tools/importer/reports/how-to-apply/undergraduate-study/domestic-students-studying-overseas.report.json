@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/undergraduate-study/domestic-students-studying-overseas",
+  "path": "how-to-apply/undergraduate-study/domestic-students-studying-overseas",
+  "timestamp": "2026-10-04T04:01:00.557Z",
+  "title": "Domestic students studying overseas",
+  "template": "story-article",
+  "blocks": [
+    "columns-text-column",
+    "accordion",
+    "accordion",
+    "accordion",
+    "columns-text-column",
+    "columns-split",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

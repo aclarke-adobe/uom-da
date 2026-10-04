@@ -1,5 +1,7 @@
 /* eslint-disable */
 /* global WebImporter */
+import { isLandingFamily } from '../landing-family.js';
+
 /**
  * Parser for columns-split. Base: columns (option: split). Authored as "Columns (split)".
  * Source: https://study.unimelb.edu.au (homepage template, 4 section.split-section tiles).
@@ -215,7 +217,7 @@ function parseLanding(element, document) {
 }
 
 export default function parse(element, { document, template }) {
-  if (template === 'section-landing') {
+  if (isLandingFamily(template)) {
     parseLanding(element, document);
     return;
   }

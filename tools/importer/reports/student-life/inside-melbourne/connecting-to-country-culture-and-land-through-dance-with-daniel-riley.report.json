@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/connecting-to-country,-culture-and-land-through-dance-with-daniel-riley",
+  "path": "student-life/inside-melbourne/connecting-to-country-culture-and-land-through-dance-with-daniel-riley",
+  "timestamp": "2026-10-04T04:02:02.865Z",
+  "title": "Connecting to Country, culture and land through dance with Daniel Riley",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "quote",
+    "video",
+    "cards-chips",
+    "cards"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Indigenous"
+}

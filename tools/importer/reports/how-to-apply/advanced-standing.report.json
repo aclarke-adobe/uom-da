@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/advanced-standing",
+  "path": "how-to-apply/advanced-standing",
+  "timestamp": "2026-10-04T03:55:53.630Z",
+  "title": "Advanced Standing",
+  "template": "story-article",
+  "blocks": [
+    "columns-text-column",
+    "accordion",
+    "columns-text-column",
+    "columns-text-column",
+    "accordion",
+    "accordion",
+    "columns-text-column",
+    "accordion",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

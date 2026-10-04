@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/storytelling-and-the-art-of-persuasion",
+  "path": "student-life/inside-melbourne/storytelling-and-the-art-of-persuasion",
+  "timestamp": "2026-10-04T04:05:22.421Z",
+  "title": "Storytelling and the art of persuasion",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Bite-sized lectures"
+}

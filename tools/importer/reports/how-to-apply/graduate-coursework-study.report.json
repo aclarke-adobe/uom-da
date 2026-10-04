@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/graduate-coursework-study",
+  "path": "how-to-apply/graduate-coursework-study",
+  "timestamp": "2026-10-04T03:58:22.829Z",
+  "title": "How to apply for graduate coursework study",
+  "template": "story-article",
+  "blocks": [
+    "cards-link-list",
+    "cards-tile",
+    "cards-tile",
+    "columns"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

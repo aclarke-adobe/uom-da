@@ -126,9 +126,52 @@ function landingBody(card, skip, document) {
   return body;
 }
 
+/**
+ * ct-imagelisting photo cards (card--image-focus; story-article north-america testimonials and
+ * unilodge features, verified on the snapshots):
+ *   .cell > .card.card--image-focus > .card__thumb[role=img][aria-label] > img (alt from aria-label)
+ *     .card__inner > h4 ("Name<br>Course": first line = title, later lines = paragraphs) + div (text)
+ * Row: image | h3 + paragraphs.
+ */
+function imageFocusRow(card, document) {
+  const thumb = card.querySelector('.card__thumb');
+  const img = thumb && thumb.querySelector('img');
+  let image = null;
+  const src = img ? (img.getAttribute('src') || img.getAttribute('data-src') || '').trim() : '';
+  if (src && !/^(data|blob):/.test(src)) {
+    image = document.createElement('img');
+    image.src = src;
+    image.alt = ((thumb.getAttribute('aria-label') || img.getAttribute('alt') || '')).replace(/\s+/g, ' ').trim();
+  }
+  const body = [];
+  const inner = card.querySelector('.card__inner') || card;
+  [...inner.children].forEach((el) => {
+    if (!clean(el)) return;
+    if (/^H[1-6]$/.test(el.tagName)) {
+      const lines = el.innerHTML.split(/<br\s*\/?>/i).map((html) => { const d = document.createElement('div'); d.innerHTML = html; return clean(d); }).filter(Boolean);
+      lines.forEach((t, i) => { const n = document.createElement(i ? 'p' : 'h3'); n.textContent = t; body.push(n); });
+      return;
+    }
+    if (/^(UL|OL)$/.test(el.tagName)) { body.push(el); return; }
+    const kids = [...el.children].filter((c) => /^(P|UL|OL)$/.test(c.tagName));
+    if (kids.length) { kids.forEach((k) => { if (clean(k)) body.push(k); }); return; }
+    const p = document.createElement('p');
+    p.innerHTML = el.innerHTML.trim();
+    body.push(p);
+  });
+  body.forEach((b) => b.querySelectorAll && b.querySelectorAll('*').forEach((c) => [...c.attributes].forEach((at) => { if (at.name !== 'href') c.removeAttribute(at.name); })));
+  if (!body.length && !image) return null;
+  return image ? [[image], body.length ? body : ''] : [body];
+}
+
 function parseLanding(element, document) {
   const rows = [];
-  if (element.matches('.logo-listing') || element.querySelector('.logo-listing__item')) {
+  if (element.querySelector('.card--image-focus')) {
+    element.querySelectorAll('.card--image-focus').forEach((card) => {
+      const row = imageFocusRow(card, document);
+      if (row) rows.push(row);
+    });
+  } else if (element.matches('.logo-listing') || element.querySelector('.logo-listing__item')) {
     element.querySelectorAll('.logo-listing__item').forEach((item) => {
       const img = landingIconCell(item.querySelector('img'), document);
       if (img) rows.push([[img]]);

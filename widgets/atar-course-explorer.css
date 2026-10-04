@@ -1,0 +1,838 @@
+/* Explore courses by ATAR (widget). Full-bleed bands like the source: white residency row, grey
+   ATAR band, sage area-of-interest band, then white / grey / white result bands. */
+
+main > .section.atar-course-explorer-container {
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+}
+
+main > .section.atar-course-explorer-container > div {
+  max-width: none;
+  padding: 0;
+}
+
+.atar-course-explorer {
+  --ace-gutter: 16px;
+  --ace-band-padding: 40px;
+  --ace-border: #e4e4e4;
+  --ace-toggle-off: #7d9ec9;
+  --ace-pathway-accent: #a4dff3;
+  --ace-pathway-border: #c7ecf8;
+  --ace-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M39.914 55.915 12 28l5.001-5.001L39.914 46.03l22.914-23.116 5.001 5.002-27.915 27.999z'/%3E%3C/svg%3E");
+}
+
+.atar-course-explorer [hidden] {
+  display: none;
+}
+
+.atar-course-explorer .ace-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.atar-course-explorer .ace-band {
+  padding: var(--ace-band-padding) var(--ace-gutter);
+}
+
+.atar-course-explorer .ace-form,
+.atar-course-explorer fieldset {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+/* ---------- residency ---------- */
+.atar-course-explorer .ace-band.ace-audience {
+  padding-block: 16px;
+  background-color: #fff;
+}
+
+.atar-course-explorer .ace-audience-label {
+  float: left;
+  margin: 0 0 8px;
+  padding: 0;
+  color: #222;
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.atar-course-explorer .ace-audience-options {
+  clear: both;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.atar-course-explorer .ace-radio {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.atar-course-explorer .ace-radio input {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  background-color: #fff;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--uom-navy);
+  border-radius: 50%;
+}
+
+.atar-course-explorer .ace-radio input:checked {
+  background: radial-gradient(circle, var(--uom-navy) 0 4.5px, #fff 5.5px);
+}
+
+.atar-course-explorer .ace-radio input:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+.atar-course-explorer .ace-radio label {
+  padding-left: 8px;
+  color: #222;
+  font-size: var(--body-font-size-m);
+  line-height: 1.33;
+  cursor: pointer;
+}
+
+/* ---------- ATAR score ---------- */
+.atar-course-explorer .ace-band.ace-score {
+  padding-block: 24px 32px;
+  background-color: var(--uom-grey);
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+.atar-course-explorer .ace-score-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+}
+
+.atar-course-explorer .ace-score-label {
+  color: var(--uom-navy);
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.atar-course-explorer .ace-score-input {
+  width: 130px;
+  height: 70px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  padding: 1px 2px;
+  appearance: textfield;
+  background-color: #fff;
+  color: var(--uom-navy);
+  font-family: var(--heading-font-family);
+  font-size: 36px;
+  line-height: 1;
+  text-align: center;
+}
+
+.atar-course-explorer .ace-score-input::-webkit-outer-spin-button,
+.atar-course-explorer .ace-score-input::-webkit-inner-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.atar-course-explorer .ace-slider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.atar-course-explorer .ace-slider-limit {
+  flex-shrink: 0;
+  color: var(--uom-navy);
+  font-size: var(--body-font-size-s);
+}
+
+.atar-course-explorer .ace-slider-input {
+  --ace-fill: 80%;
+
+  flex: 1;
+  min-width: 0;
+  height: 14px;
+  margin: 17px 0;
+  border: 1px solid #b9bfd1;
+  padding: 0;
+  appearance: none;
+  background: linear-gradient(to right, var(--uom-navy) var(--ace-fill), #fff var(--ace-fill));
+  cursor: pointer;
+}
+
+.atar-course-explorer .ace-slider-input::-webkit-slider-thumb {
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--uom-navy);
+  border-radius: 50%;
+  appearance: none;
+  background-color: #fff;
+}
+
+.atar-course-explorer .ace-slider-input::-moz-range-thumb {
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--uom-navy);
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.atar-course-explorer .ace-slider-input:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 18px;
+}
+
+/* ---------- area of interest ---------- */
+.atar-course-explorer .ace-band.ace-filter {
+  padding-block: 24px;
+  background-color: var(--uom-sage-pale);
+}
+
+.atar-course-explorer .ace-filter-label {
+  margin: 0 0 8px;
+  color: var(--uom-navy);
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
+}
+
+.atar-course-explorer .ace-dropdown {
+  position: relative;
+}
+
+.atar-course-explorer .ace-dropdown-toggle {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 12px 64px 12px 16px;
+  background-color: #fff;
+  box-shadow: inset 0 0 0 1px var(--uom-navy);
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* chevron cell, divided from the label by a 1px navy rule */
+.atar-course-explorer .ace-dropdown-toggle::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 48px;
+  background-color: var(--uom-navy);
+  mask: var(--ace-chevron) center / 16px 16px no-repeat;
+}
+
+.atar-course-explorer .ace-dropdown-toggle::before {
+  content: '';
+  position: absolute;
+  inset: 0 47px 0 auto;
+  width: 1px;
+  background-color: var(--uom-navy);
+}
+
+.atar-course-explorer .is-open > .ace-dropdown-toggle::after {
+  transform: rotate(180deg);
+}
+
+.atar-course-explorer .ace-dropdown-toggle:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+.atar-course-explorer .ace-dropdown-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 3;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid var(--uom-navy);
+  border-top: 0;
+  padding: 24px;
+  background-color: #fff;
+}
+
+.atar-course-explorer .ace-dropdown-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.atar-course-explorer .ace-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.atar-course-explorer .ace-checkbox input[type="checkbox"] {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  border: 1px solid var(--uom-navy);
+  border-radius: 3px;
+  padding: 0;
+  appearance: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.atar-course-explorer .ace-checkbox input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+.atar-course-explorer .ace-checkbox input[type="checkbox"]:hover {
+  background-color: var(--uom-cyan-light);
+}
+
+.atar-course-explorer .ace-checkbox input[type="checkbox"]:checked {
+  background: var(--uom-navy) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='m9.5 16.2-4.2-4.2-1.4 1.4 5.6 5.6 12-12-1.4-1.4z'/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+}
+
+.atar-course-explorer .ace-checkbox label {
+  color: var(--text-color);
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  line-height: 1.5;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.atar-course-explorer .ace-checkbox input[type="checkbox"]:checked + label {
+  text-decoration: underline;
+}
+
+.atar-course-explorer .ace-dropdown-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.atar-course-explorer .ace-dropdown-action {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 12px 16px 12px 12px;
+  background-color: var(--uom-sage);
+  color: var(--uom-navy);
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.atar-course-explorer .ace-dropdown-action::before {
+  content: '';
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  background-color: currentcolor;
+  mask: var(--arrow-icon) center / contain no-repeat;
+}
+
+.atar-course-explorer .ace-dropdown-action:hover {
+  background-color: var(--uom-sage-light);
+}
+
+.atar-course-explorer .ace-dropdown-action:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+/* ---------- loading, error ---------- */
+.atar-course-explorer .ace-loading p {
+  margin: 16px 0 0;
+}
+
+.atar-course-explorer .ace-loading-dots {
+  position: relative;
+  display: block;
+  width: 64px;
+  height: 12px;
+}
+
+.atar-course-explorer .ace-loading-dots span {
+  position: absolute;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--link-color);
+  animation: ace-dot-grow 0.6s infinite;
+}
+
+.atar-course-explorer .ace-loading-dots span:nth-child(1) { left: 0; }
+
+.atar-course-explorer .ace-loading-dots span:nth-child(2) {
+  left: 0;
+  animation-name: ace-dot-move;
+}
+
+.atar-course-explorer .ace-loading-dots span:nth-child(3) {
+  left: 24px;
+  animation-name: ace-dot-move;
+}
+
+.atar-course-explorer .ace-loading-dots span:nth-child(4) {
+  left: 48px;
+  animation-name: ace-dot-shrink;
+}
+
+@keyframes ace-dot-grow {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+@keyframes ace-dot-shrink {
+  from { transform: scale(1); }
+  to { transform: scale(0); }
+}
+
+@keyframes ace-dot-move {
+  from { transform: translateX(0); }
+  to { transform: translateX(24px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atar-course-explorer .ace-loading-dots span {
+    animation: none;
+  }
+}
+
+.atar-course-explorer .ace-message h3 {
+  margin-bottom: 12px;
+  font-size: var(--heading-font-size-m);
+}
+
+.atar-course-explorer .ace-message p {
+  margin: 0;
+  max-width: var(--text-max-width);
+}
+
+.atar-course-explorer .ace-message {
+  margin: var(--ace-band-padding) var(--ace-gutter);
+  border-left: 4px solid var(--uom-cyan);
+  padding: 24px;
+  background-color: var(--uom-cyan-light);
+}
+
+/* ---------- results ---------- */
+.atar-course-explorer .ace-band-grey {
+  background-color: #f7f7f7;
+}
+
+.atar-course-explorer .ace-options > h2 {
+  margin-bottom: 20px;
+}
+
+.atar-course-explorer .ace-text {
+  max-width: var(--text-max-width);
+}
+
+.atar-course-explorer .ace-text p {
+  margin: 0 0 16px;
+}
+
+.atar-course-explorer .ace-jump {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.atar-course-explorer :is(.ace-jump, .ace-pathways) > li {
+  margin: 0;
+}
+
+.atar-course-explorer .ace-jump li[hidden] {
+  display: none;
+}
+
+.atar-course-explorer .ace-jump a:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background-color: var(--uom-sage);
+  color: var(--uom-navy);
+  font-size: var(--body-font-size-m);
+  line-height: 1.33;
+  text-decoration: none;
+}
+
+.atar-course-explorer .ace-jump a::after {
+  content: '';
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  background-color: currentcolor;
+  mask: var(--ace-chevron) center / contain no-repeat;
+}
+
+.atar-course-explorer .ace-jump a:hover {
+  background-color: var(--uom-sage-light);
+  text-decoration: underline;
+}
+
+.atar-course-explorer .ace-section {
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+.atar-course-explorer .ace-options .ace-section {
+  margin-top: 48px;
+}
+
+.atar-course-explorer .ace-section + .ace-section {
+  margin-top: 64px;
+}
+
+.atar-course-explorer .ace-section h3 {
+  margin-bottom: 20px;
+}
+
+.atar-course-explorer .ace-no-results ul {
+  margin: 0;
+  padding-left: 24px;
+}
+
+.atar-course-explorer .ace-no-results li + li {
+  margin-top: 16px;
+}
+
+.atar-course-explorer .ace-count {
+  margin: 24px 0 0;
+  font-style: italic;
+}
+
+.atar-course-explorer .ace-view {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  margin: 16px 0 8px;
+}
+
+.atar-course-explorer .ace-view-button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  border: 0;
+  padding: 2px;
+  background: none;
+  color: var(--ace-toggle-off);
+  cursor: pointer;
+}
+
+.atar-course-explorer .ace-view-button.is-active {
+  color: var(--link-color);
+}
+
+.atar-course-explorer .ace-view-button:hover {
+  color: var(--link-hover-color);
+}
+
+.atar-course-explorer .ace-view-button:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 0;
+}
+
+.atar-course-explorer .ace-view-icon,
+.atar-course-explorer .ace-view-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentcolor;
+}
+
+/* cards */
+.atar-course-explorer .ace-cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.atar-course-explorer .ace-card {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  border: 1px solid var(--ace-border);
+  padding: 16px;
+  background-color: #fff;
+  color: var(--uom-navy);
+}
+
+.atar-course-explorer .ace-card-wide {
+  padding: 28px;
+}
+
+.atar-course-explorer .ace-card-range {
+  min-height: 144px;
+}
+
+.atar-course-explorer .ace-card:hover {
+  border-color: var(--uom-grey-border);
+}
+
+.atar-course-explorer .ace-card-overline {
+  margin: 0 0 8px;
+  color: var(--uom-navy);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.atar-course-explorer .ace-card-title {
+  margin: 0;
+  font-size: var(--heading-font-size-m);
+  line-height: 1.2;
+}
+
+.atar-course-explorer .ace-card-title a:any-link {
+  color: var(--link-color);
+}
+
+/* the whole card is the link target */
+.atar-course-explorer .ace-card-title a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.atar-course-explorer .ace-card-title a:focus-visible {
+  outline: 0;
+}
+
+.atar-course-explorer .ace-card-title a:focus-visible::after {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+.atar-course-explorer .ace-cards-gdp .ace-card-title span {
+  display: block;
+}
+
+.atar-course-explorer .ace-card-subheading {
+  display: block;
+  margin-top: 16px;
+  font-size: var(--body-font-size-s);
+}
+
+.atar-course-explorer .ace-card-meta {
+  margin: 0;
+}
+
+.atar-course-explorer .ace-card-score {
+  display: block;
+  margin: 16px 0 8px;
+  color: var(--uom-navy);
+  font-family: var(--heading-font-family);
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.atar-course-explorer .ace-card-score-note {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  letter-spacing: 0;
+}
+
+.atar-course-explorer .ace-card-label {
+  display: block;
+  font-size: var(--body-font-size-m);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.atar-course-explorer .ace-card-access {
+  display: block;
+  margin-top: 4px;
+  font-size: 12.8px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.atar-course-explorer .ace-card-desc {
+  margin: 16px 0 0;
+  color: var(--text-color);
+}
+
+/* tables */
+.atar-course-explorer .ace-table-wrap {
+  overflow-x: auto;
+}
+
+.atar-course-explorer .ace-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--body-font-size-xs);
+}
+
+.atar-course-explorer .ace-table th,
+.atar-course-explorer .ace-table td {
+  border-bottom: 1px solid #dcdcdc;
+  padding: 16px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.atar-course-explorer .ace-table thead th {
+  border-bottom: 0;
+  padding-block: 20px;
+  background-color: var(--uom-navy);
+  color: #fff;
+  font-weight: 600;
+}
+
+.atar-course-explorer .ace-table tbody th {
+  font-weight: 400;
+}
+
+/* career pathways */
+.atar-course-explorer .ace-pathways {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.atar-course-explorer .ace-pathways a:any-link {
+  display: flex;
+  box-sizing: border-box;
+  height: 100%;
+  border: 1px solid var(--ace-pathway-border);
+  border-left: 6px solid var(--ace-pathway-accent);
+  padding: 8px 16px;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.atar-course-explorer .ace-pathways a:hover {
+  border-color: var(--uom-cyan);
+}
+
+@media (width >= 600px) {
+  .atar-course-explorer .ace-cards,
+  .atar-course-explorer .ace-pathways {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .atar-course-explorer .ace-audience-label {
+    margin: 0 16px 0 0;
+  }
+
+  .atar-course-explorer .ace-audience-options {
+    clear: none;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .atar-course-explorer .ace-score-heading {
+    justify-content: center;
+  }
+
+  .atar-course-explorer .ace-jump {
+    flex-flow: row wrap;
+    gap: 24px;
+  }
+
+  .atar-course-explorer .ace-dropdown-actions {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+@media (width >= 769px) {
+  .atar-course-explorer {
+    --ace-gutter: 32px;
+    --ace-band-padding: 80px;
+  }
+
+  .atar-course-explorer .ace-score-label {
+    font-size: 45px;
+  }
+
+  .atar-course-explorer .ace-score-input {
+    width: 145px;
+    height: 80px;
+    font-size: 45px;
+  }
+
+  .atar-course-explorer .ace-dropdown {
+    max-width: 421px;
+  }
+
+  .atar-course-explorer .ace-card-score {
+    font-size: 48px;
+  }
+
+  .atar-course-explorer .ace-card-wide {
+    padding: 30px;
+  }
+
+  .atar-course-explorer .ace-table {
+    font-size: var(--body-font-size-m);
+  }
+}
+
+@media (width >= 900px) {
+  .atar-course-explorer .ace-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .atar-course-explorer .ace-pathways {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 1304px) {
+  .atar-course-explorer {
+    --ace-gutter: calc((100% - var(--content-max-width)) / 2);
+  }
+}

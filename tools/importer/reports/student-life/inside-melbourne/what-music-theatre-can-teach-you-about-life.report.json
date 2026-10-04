@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/what-music-theatre-can-teach-you-about-life",
+  "path": "student-life/inside-melbourne/what-music-theatre-can-teach-you-about-life",
+  "timestamp": "2026-10-04T04:06:10.947Z",
+  "title": "What music theatre can teach you about life",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Bite-sized lectures"
+}

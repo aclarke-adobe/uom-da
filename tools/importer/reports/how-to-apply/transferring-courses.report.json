@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/transferring-courses",
+  "path": "how-to-apply/transferring-courses",
+  "timestamp": "2026-10-04T04:00:36.475Z",
+  "title": "Transferring courses",
+  "template": "story-article",
+  "blocks": [
+    "accordion",
+    "columns-text-column",
+    "accordion",
+    "accordion",
+    "accordion"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/fees/application-fee",
+  "path": "how-to-apply/fees/application-fee",
+  "timestamp": "2026-10-04T03:58:14.053Z",
+  "title": "International application fee",
+  "template": "story-article",
+  "blocks": [
+    "notice",
+    "notice",
+    "table"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

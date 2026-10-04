@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/meet-victoria",
+  "path": "student-life/inside-melbourne/meet-victoria",
+  "timestamp": "2026-10-04T04:04:21.622Z",
+  "title": "Meet Victoria",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Alumni"
+}

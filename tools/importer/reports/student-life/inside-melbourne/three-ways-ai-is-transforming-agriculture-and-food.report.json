@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/three-ways-ai-is-transforming-agriculture-and-food",
+  "path": "student-life/inside-melbourne/three-ways-ai-is-transforming-agriculture-and-food",
+  "timestamp": "2026-10-04T04:05:52.846Z",
+  "title": "Three ways AI is transforming agriculture and food",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Bite-sized lectures"
+}

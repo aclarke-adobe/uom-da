@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/online-courses/current-students",
+  "path": "study-with-us/online-courses/current-students",
+  "timestamp": "2026-10-04T04:09:40.299Z",
+  "title": "Current students",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "cards-tile"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

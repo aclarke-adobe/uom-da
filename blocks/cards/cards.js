@@ -88,6 +88,57 @@ const isHeading = (el) => !!el && HEADING.includes(el.tagName);
 const slug = (text) => text.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 /**
+ * Full-width news lists (card--generic--full-width): `Cards (list)`, the STEM episode list
+ * (photo, excerpt and topic tags, no dates) and the static events listing, whose topic tags
+ * were imported twice (plain labels, then the same labels as filter links). The labels hide,
+ * the linked copies become the tag row; each card's tags are grouped so they wrap in a row.
+ */
+function decorateNewsList(block, lis) {
+  const body = (li) => li.querySelector(':scope > .cards-card-body');
+  const photo = (li) => !!li.querySelector(':scope > .cards-card-image');
+  let events = false;
+  lis.forEach((li) => {
+    const b = body(li);
+    const ctaTexts = [...b.querySelectorAll(':scope > .cards-card-cta')].map((p) => p.textContent.trim());
+    const dups = [...b.querySelectorAll(':scope > p:not(.cards-card-cta, .cards-card-date)')]
+      .filter((p) => !p.querySelector('a') && ctaTexts.includes(p.textContent.trim()));
+    if (!dups.length) return;
+    events = true;
+    const labels = dups.map((p) => p.textContent.trim());
+    dups.forEach((p) => { p.classList.remove('cards-card-tag'); p.classList.add('cards-card-dup'); });
+    b.querySelectorAll(':scope > .cards-card-cta').forEach((p) => {
+      if (labels.includes(p.textContent.trim())) {
+        p.classList.remove('cards-card-cta');
+        p.classList.add('cards-card-taglink');
+      }
+    });
+  });
+  const tagged = (li) => !!body(li).querySelector(':scope > .cards-card-tag');
+  const dated = (li) => !!body(li).querySelector(':scope > .cards-card-date');
+  const list = block.classList.contains('list')
+    || (lis.every((li) => photo(li) && tagged(li)) && !lis.some(dated));
+  if (!events && !list) return;
+  block.classList.add('cards-news-list');
+  if (events) block.classList.add('cards-events');
+  lis.forEach((li) => {
+    const b = body(li);
+    const tags = [...b.querySelectorAll(':scope > :is(.cards-card-tag, .cards-card-taglink)')];
+    if (tags.length) {
+      const row = document.createElement('div');
+      row.className = 'cards-card-tags';
+      tags[0].before(row);
+      row.append(...tags);
+    }
+    // a date with no excerpt after it still closes with the excerpt's rule
+    const date = b.querySelector(':scope > .cards-card-date');
+    const next = date?.nextElementSibling;
+    if (date && (!next || !next.matches('p:not(.cards-card-dup, .cards-card-cta)'))) {
+      date.classList.add('cards-card-date-end');
+    }
+  });
+}
+
+/**
  * Shape hooks for the section-landing card patterns, derived only from the authored
  * cells (and the section style), so the homepage / course shapes keep their look.
  * Each `cards-<shape>` class names one source component.
@@ -163,6 +214,14 @@ function decorateShapes(block, ul, active) {
     else if (block.classList.contains('cards-facts') && all((li) => first(li)?.tagName === 'H3')) add('cards-fact-tiles');
     else if (block.classList.contains('boxed')) {
       // focus boxes (`Cards (icon, boxed)`): styled by the option class, not as text columns
+    } else if (all((li) => hasImage(li) && body(li) && first(li)?.tagName === 'H3'
+      && !body(li).querySelector('a'))) {
+      // image-focus testimonials (card--image-focus): photo over a padded name, role and quote
+      add('cards-image-focus');
+      lis.forEach((li) => {
+        const role = first(li).nextElementSibling;
+        if (role?.tagName === 'P' && role.nextElementSibling?.tagName === 'P') role.classList.add('cards-card-role');
+      });
     } else if (ul.querySelector('.cards-card-icon') && !section?.querySelector('.cards.tile')) {
       // line pictograms beside the text columns (the homepage feature panel keeps full-width art)
       add('cards-icon-inline');
@@ -175,8 +234,27 @@ function decorateShapes(block, ul, active) {
   }
 
   if (active.includes('link-list')) {
-    // sublink menus fill their three columns top to bottom
-    ul.style.setProperty('--link-rows', Math.ceil(lis.length / 3));
+    if (lis.some((li) => isHeading(first(li)))) {
+      // titled sublink boxes (title, description, ruled links); a box without a title is the
+      // "not sure if you're domestic or international?" note beside them
+      add('cards-link-boxes');
+      lis.forEach((li) => {
+        const b = body(li);
+        if (!b) return;
+        if (!isHeading(b.firstElementChild)) li.classList.add('cards-link-note');
+        const items = [...b.children].filter((el) => isActionParagraph(el));
+        items.forEach((el) => {
+          el.classList.remove('cards-card-cta');
+          if (!li.classList.contains('cards-link-note')) el.classList.add('cards-link-item');
+        });
+        if (!li.classList.contains('cards-link-note') && items.length) {
+          items[items.length - 1].classList.add('cards-link-item-last');
+        }
+      });
+    } else {
+      // sublink menus fill their three columns top to bottom
+      ul.style.setProperty('--link-rows', Math.ceil(lis.length / 3));
+    }
   }
 
   if (active.includes('chips')) {
@@ -204,12 +282,15 @@ function decorateShapes(block, ul, active) {
           el.classList.add('cards-card-cta');
           el = el.previousElementSibling;
         }
-        if (el && el.tagName === 'P' && !el.classList.contains('cards-card-date')
+        // (several short labels in a row are several tags)
+        while (el && el.tagName === 'P' && !el.classList.contains('cards-card-date')
           && el.previousElementSibling?.tagName === 'P' && !el.previousElementSibling.classList.contains('cards-card-date')
           && el.textContent.trim().length < 40 && !/[.!?]$/.test(el.textContent.trim())) {
           el.classList.add('cards-card-tag');
+          el = el.previousElementSibling;
         }
       });
+      decorateNewsList(block, lis);
     } else if (block.classList.contains('cards-profile') && all(hasImage)) {
       // image listing (authored `Cards (listing)`: photo over a linked title, optional text)
       if (block.classList.contains('listing')) add('cards-listing');

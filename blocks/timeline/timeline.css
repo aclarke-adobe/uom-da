@@ -90,6 +90,142 @@
 }
 
 /*
+ * default (source dl.timeline: audition, scholarship and program pages): one grid for the
+ * whole list, so every date shares the column (a sixth of the row, at least the longest
+ * word); right-aligned uppercase navy dates (a bold second line), a pale diamond and rule
+ * leading each description, rows spaced by the 30px foot of each cell
+ */
+.timeline:not(.key-dates) .timeline-list {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.timeline:not(.key-dates) .timeline-item {
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  gap: 0;
+  padding: 0;
+}
+
+.timeline:not(.key-dates) .timeline-item::before,
+.timeline:not(.key-dates) .timeline-item::after {
+  content: none;
+}
+
+/* an empty date (continuing the previous one) still holds a line, as on the source */
+.timeline:not(.key-dates) .timeline-date {
+  min-height: 1.4em;
+  margin-bottom: 8px;
+  padding: 0 20px 30px 0;
+  color: var(--heading-color);
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.07em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.timeline:not(.key-dates) .timeline-date > * {
+  font-size: inherit;
+  font-weight: 400;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+/* line boxes as on the source, where the bold run sits on the 14px strut */
+.timeline:not(.key-dates) .timeline-date-value :is(strong, b) {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20.6px;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.timeline:not(.key-dates) .timeline-body {
+  position: relative;
+  min-width: 0;
+  padding: 0 0 30px 20px;
+}
+
+/* diamond */
+.timeline:not(.key-dates) .timeline-body::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: -5px;
+  width: 11px;
+  height: 11px;
+  background-color: #bfced5;
+  transform: rotate(45deg);
+}
+
+/* rule, from the diamond to the next one */
+.timeline:not(.key-dates) .timeline-body::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 100%;
+  border-left: 1px solid #bfced5;
+}
+
+.timeline:not(.key-dates) .timeline-item:last-child .timeline-body::after {
+  content: none;
+}
+
+.timeline:not(.key-dates) .timeline-body > * {
+  max-width: var(--text-max-width);
+}
+
+.timeline:not(.key-dates) .timeline-body > :is(h2, h3, h4, h5, h6) {
+  margin-bottom: 12px;
+  color: var(--heading-color);
+  font-family: var(--body-font-family);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.timeline:not(.key-dates) .timeline-body > :is(h2, h3, h4, h5) {
+  font-size: 18px;
+}
+
+.timeline:not(.key-dates) .timeline-body > h6 {
+  font-size: var(--body-font-size-m);
+}
+
+/* a short first line (e.g. 'August', '8–8.45pm (AEDT)') */
+.timeline:not(.key-dates) .timeline-body > .timeline-body-label {
+  max-width: none;
+  margin: 0;
+  color: var(--heading-color);
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+@media (width >= 600px) {
+  .timeline:not(.key-dates) .timeline-item {
+    gap: 0;
+    padding: 0;
+  }
+}
+
+@media (width >= 769px) {
+  .timeline:not(.key-dates) .timeline-date-value :is(strong, b) {
+    font-size: 18px;
+    line-height: 22.6px;
+  }
+
+  .timeline:not(.key-dates) .timeline-body > :is(h2, h3, h4, h5) {
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+}
+
+/*
  * key-dates option
  * card (default; the undergraduate title-band aside): white with a shadow, teal header with an
  * outlined label chip and a title, one calendar-icon row per date (bold title above the

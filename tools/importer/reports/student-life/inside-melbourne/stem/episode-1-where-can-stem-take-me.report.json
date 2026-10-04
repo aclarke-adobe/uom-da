@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/stem/episode-1-where-can-stem-take-me",
+  "path": "student-life/inside-melbourne/stem/episode-1-where-can-stem-take-me",
+  "timestamp": "2026-10-04T04:04:42.289Z",
+  "title": "Episode 1: Where Can STEM Take Me?",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards-chips"
+  ],
+  "fragments": "stem-careers-and-employability",
+  "droppedImages": "",
+  "tags": "STEM"
+}

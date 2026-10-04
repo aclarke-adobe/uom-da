@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/languages/spanish",
+  "path": "student-life/inside-melbourne/languages/spanish",
+  "timestamp": "2026-10-04T04:03:33.140Z",
+  "title": "Study Spanish at the University of Melbourne",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "callout-photo",
+    "columns",
+    "quote",
+    "cards-link-list",
+    "cards-link-list",
+    "cards-tile"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

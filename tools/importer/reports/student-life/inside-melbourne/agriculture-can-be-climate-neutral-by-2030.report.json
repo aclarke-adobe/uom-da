@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/agriculture-can-be-climate-neutral-by-2030",
+  "path": "student-life/inside-melbourne/agriculture-can-be-climate-neutral-by-2030",
+  "timestamp": "2026-10-04T04:01:56.049Z",
+  "title": "Agriculture can be climate neutral by 2030",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Bite-sized lectures"
+}

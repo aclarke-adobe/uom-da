@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/stem/episode-4-stem-for-artsy-types",
+  "path": "student-life/inside-melbourne/stem/episode-4-stem-for-artsy-types",
+  "timestamp": "2026-10-04T04:04:57.206Z",
+  "title": "Episode 4: STEM for artsy types",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards-chips"
+  ],
+  "fragments": "stem-careers-and-employability",
+  "droppedImages": "",
+  "tags": "STEM"
+}

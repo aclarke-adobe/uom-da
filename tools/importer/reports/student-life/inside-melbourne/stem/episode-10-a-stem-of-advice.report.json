@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/stem/episode-10-a-stem-of-advice",
+  "path": "student-life/inside-melbourne/stem/episode-10-a-stem-of-advice",
+  "timestamp": "2026-10-04T04:04:46.711Z",
+  "title": "Episode 10: A STEM of advice",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "STEM"
+}

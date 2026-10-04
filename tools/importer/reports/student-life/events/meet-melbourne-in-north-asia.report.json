@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/events/meet-melbourne-in-north-asia",
+  "path": "student-life/events/meet-melbourne-in-north-asia",
+  "timestamp": "2026-10-04T04:01:36.819Z",
+  "title": "Meet Melbourne in North Asia 2026",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "cards-tile",
+    "columns-text-column",
+    "columns-split"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

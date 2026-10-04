@@ -117,13 +117,15 @@ function isIntroRow(row) {
  * dividers, tinted open item) are told apart from course-page "togglerow" accordions by
  * their markup: an h2/h3 intro row, or (without an intro) a section h2 as the last heading
  * before the block, or nothing before it in its section. Course accordions sit under
- * h3/h4 headings, have h4 "Year" intros (sample plans) or are nested in tabs.
+ * h3/h4 headings, have h4 "Year" intros (sample plans) or are nested in tabs (unless the
+ * intro starts with an h2, as in the applicant-route tabs).
  * @param {HTMLElement} block
  * @param {?HTMLElement} intro
  * @returns {boolean}
  */
 function isLandingAccordion(block, intro) {
-  if (block.closest('.tabs')) return false;
+  // in tabs: only an h2 intro (applicant-route tabs); course tab accordions have h4 intros
+  if (block.closest('.tabs')) return !!intro?.querySelector(':scope > h2');
   if (intro) return !!intro.querySelector(':scope > :is(h2, h3)') && !intro.querySelector(':scope > :is(h4, h5, h6)');
   const wrapper = block.parentElement;
   const section = wrapper?.parentElement;

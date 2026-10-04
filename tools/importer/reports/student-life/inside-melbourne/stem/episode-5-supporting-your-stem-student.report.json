@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/stem/episode-5-supporting-your-stem-student",
+  "path": "student-life/inside-melbourne/stem/episode-5-supporting-your-stem-student",
+  "timestamp": "2026-10-04T04:05:01.298Z",
+  "title": "Episode 5: Supporting your STEM student",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch stem-careers-and-employability",
+  "droppedImages": "",
+  "tags": "STEM"
+}

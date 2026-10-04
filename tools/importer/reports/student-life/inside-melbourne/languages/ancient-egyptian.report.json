@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/languages/ancient-egyptian",
+  "path": "student-life/inside-melbourne/languages/ancient-egyptian",
+  "timestamp": "2026-10-04T04:02:42.876Z",
+  "title": "Ancient Egyptian",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "callout-photo",
+    "columns",
+    "quote",
+    "cards-link-list",
+    "cards-link-list"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

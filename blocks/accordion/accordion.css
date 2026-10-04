@@ -203,7 +203,7 @@
 }
 
 /* trailing "View detailed information in the Handbook" link */
-.tabs .accordion .accordion-item-body > * + p:last-child:has(> a:only-child) {
+.tabs .accordion:not(.accordion-ds) .accordion-item-body > * + p:last-child:has(> a:only-child) {
   max-width: none;
   margin: 0;
   padding-top: 16px;
@@ -334,8 +334,11 @@ main .section.navy .accordion.accordion-ds {
   color: var(--accordion-ds-title-color);
 }
 
+/* (inherit: in a tab panel the course subject-list title colour would otherwise apply) */
 .accordion.accordion-ds .accordion-item-title {
+  max-width: none;
   padding: 0;
+  color: inherit;
   font-weight: 600;
   line-height: 1.2;
 }
@@ -363,6 +366,7 @@ main .section.navy .accordion.accordion-ds {
 
 .accordion.accordion-ds .accordion-item-body {
   padding: 16px;
+  border: 0;
   border-bottom: 1px solid var(--accordion-ds-divider);
   color: var(--accordion-ds-content-color);
 }

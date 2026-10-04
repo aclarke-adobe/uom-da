@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/meet-daniel",
+  "path": "student-life/inside-melbourne/meet-daniel",
+  "timestamp": "2026-10-04T04:03:49.624Z",
+  "title": "Meet Daniel",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Alumni"
+}

@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/accommodation/unilodge-at-lincoln-square",
+  "path": "accommodation/unilodge-at-lincoln-square",
+  "timestamp": "2026-10-04T03:55:44.123Z",
+  "title": "UniLodge at Lincoln House",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "table",
+    "table",
+    "notice",
+    "notice",
+    "video-split",
+    "cards-icon",
+    "columns-text-column",
+    "table",
+    "callout-photo"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

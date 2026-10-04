@@ -308,3 +308,44 @@ main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.h
 main:where(:has(> .section:first-child > .hero-wrapper:only-child > .hero:not(.hero-course, .aside))) .notice:not(.notice-panel) .notice-body > ul > li::before {
   content: '- ';
 }
+
+/*
+ * status options (source notice--warning / notice--success): amber warning and green
+ * success panels with their own glyphs
+ */
+.notice.warning {
+  --notice-info-color: var(--uom-amber);
+  --notice-info-bg: var(--uom-cream);
+  --notice-info-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M1 21 12 2l11 19H1Zm11-3q.425 0 .713-.288T13 17q0-.425-.288-.713T12 16q-.425 0-.713.288T11 17q0 .425.288.713T12 18Zm-1-3h2v-5h-2v5Z'/%3E%3C/svg%3E");
+}
+
+.notice.success {
+  --notice-info-color: #60751f;
+  --notice-info-bg: #f2f6e2;
+  --notice-info-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m10.6 16.6 7.05-7.05-1.4-1.4-5.65 5.65-2.85-2.85-1.4 1.4 4.25 4.25ZM12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22Z'/%3E%3C/svg%3E");
+}
+
+/*
+ * on the source the marker sits in the first line and later lines run under it. Status
+ * notices only occur on story pages; default notices follow suit on story title-band pages
+ * (first section is a default-content h1) and on the program pages carrying the dated
+ * timeline. Course and section landing notices keep their hanging indent.
+ */
+:is(.notice.warning, .notice.success),
+main:where(:has(> .section:first-child > .default-content-wrapper > h1, .timeline:not(.key-dates))) .notice:not(.notice-panel) {
+  padding-left: 16px;
+}
+
+:is(.notice.warning, .notice.success)::before,
+main:where(:has(> .section:first-child > .default-content-wrapper > h1, .timeline:not(.key-dates))) .notice:not(.notice-panel)::before {
+  position: static;
+  float: left;
+  margin-right: 8px;
+}
+
+@media (width >= 769px) {
+  :is(.notice.warning, .notice.success),
+  main:where(:has(> .section:first-child > .default-content-wrapper > h1, .timeline:not(.key-dates))) .notice:not(.notice-panel) {
+    padding-left: 24px;
+  }
+}

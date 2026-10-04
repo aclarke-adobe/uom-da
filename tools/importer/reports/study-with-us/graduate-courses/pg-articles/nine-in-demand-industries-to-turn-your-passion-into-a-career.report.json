@@ -1,0 +1,33 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/study-with-us/graduate-courses/pg-articles/nine-in-demand-industries-to-turn-your-passion-into-a-career",
+  "path": "study-with-us/graduate-courses/pg-articles/nine-in-demand-industries-to-turn-your-passion-into-a-career",
+  "timestamp": "2026-10-04T04:08:40.578Z",
+  "title": "Nine in demand industries to turn your passion into a career",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "accordion",
+    "cards-chips",
+    "accordion",
+    "cards-chips",
+    "accordion",
+    "cards-chips",
+    "accordion",
+    "cards-chips",
+    "accordion",
+    "cards-chips",
+    "accordion",
+    "cards-chips",
+    "accordion",
+    "cards-chips",
+    "accordion",
+    "cards-chips",
+    "accordion",
+    "cards-chips",
+    "cards"
+  ],
+  "fragments": "",
+  "droppedImages": "",
+  "tags": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/how-to-look-after-yourself",
+  "path": "student-life/inside-melbourne/how-to-look-after-yourself",
+  "timestamp": "2026-10-04T04:02:21.477Z",
+  "title": "How to look after yourself",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "video",
+    "cards-chips"
+  ],
+  "fragments": "stay-in-touch",
+  "droppedImages": "",
+  "tags": "Bite-sized lectures"
+}

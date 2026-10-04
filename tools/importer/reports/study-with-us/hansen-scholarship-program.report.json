@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/study-with-us/hansen-scholarship-program",
   "path": "study-with-us/hansen-scholarship-program",
-  "timestamp": "2026-10-03T07:24:50.723Z",
+  "timestamp": "2026-10-03T13:58:33.322Z",
   "title": "Hansen Scholarship Program",
   "template": "section-landing",
   "blocks": [
@@ -14,9 +14,11 @@
     "video-shorts",
     "columns",
     "accordion",
+    "timeline",
     "accordion",
     "hero"
   ],
   "fragments": "",
-  "droppedImages": ""
+  "droppedImages": "",
+  "tags": ""
 }

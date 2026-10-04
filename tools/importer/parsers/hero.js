@@ -15,6 +15,8 @@
  *            subtitle paragraph(s), CTA (a.btn -> <p><strong><a>, btn--secondary -> <em>, btn--text -> plain)
  * A banner is "later" when an h1 already precedes it in the document; its h1 is demoted to h2 so the
  * page keeps one h1.
+ * story-article: B banners are "Hero (overlay)" (o25) / "Hero (overlay, dark)" (o50), see
+ * storyOverlayVariants; A banners and every other template keep "Hero".
  *
  * Source (verified in block-context/hero/instances/section-landing-01..04.html).
  */
@@ -63,7 +65,22 @@ function isLaterBanner(element, document) {
     && (h.compareDocumentPosition(element) & 4 /* FOLLOWING */));
 }
 
-export default function parse(element, { document }) {
+/**
+ * story-article campaign banners (B, 37 story pages): the photo with a black scrim under a centred
+ * title is the Overlay option, `dark` for the 50% scrim (page-header__darken--o50) -> "Hero (overlay)"
+ * / "Hero (overlay, dark)". Every other template keeps the plain "Hero" (section-landing's 4 B
+ * banners included).
+ */
+function storyOverlayVariants(element, template) {
+  if (template !== 'story-article') return null;
+  const darken = element.querySelector(':scope > [class*="page-header__darken--o"]');
+  if (!darken) return null;
+  if (darken.matches('.page-header__darken--o50')) return ['overlay', 'dark'];
+  if (darken.matches('.page-header__darken--o25')) return ['overlay'];
+  return null;
+}
+
+export default function parse(element, { document, template }) {
   const later = isLaterBanner(element, document);
   const content = element.querySelector('.campaign-banner-alt__content, header.page-header, .page-header') || element;
   const textCell = [];
@@ -93,6 +110,9 @@ export default function parse(element, { document }) {
   const row = [];
   if (image) row.push([image]);
   if (textCell.length) row.push(textCell);
-  const block = WebImporter.Blocks.createBlock(document, { name: 'Hero', cells: [row] });
+  const variants = storyOverlayVariants(element, template);
+  const block = WebImporter.Blocks.createBlock(document, variants
+    ? { name: 'Hero', variants, cells: [row] }
+    : { name: 'Hero', cells: [row] });
   element.replaceWith(block);
 }

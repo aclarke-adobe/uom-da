@@ -19,7 +19,12 @@ Single block table. Content: one cell holding an optional leading heading, then 
 
 ## Supported variations
 
-No variations.
+| Variation | Option class |
+| --- | --- |
+| Warning (amber panel, warning glyph) | `warning` |
+| Success (green panel, check glyph) | `success` |
+
+Warning and success notices (story pages: auditions, accommodation) set the marker in the first line, with later lines running under it, as on the source. Default notices do the same on story title-band pages and on pages with a dated (default) Timeline. Course and section landing notices keep their hanging indent.
 
 ## Universal Editor fields
 

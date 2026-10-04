@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/how-to-apply/auditions-and-interviews/master-of-theatre-auditions-and-interviews",
+  "path": "how-to-apply/auditions-and-interviews/master-of-theatre-auditions-and-interviews",
+  "timestamp": "2026-10-04T03:57:34.549Z",
+  "title": "Master of Theatre - auditions and interviews",
+  "template": "story-article",
+  "blocks": [
+    "notice",
+    "notice",
+    "timeline",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion"
+  ],
+  "fragments": "inclusivity-and-accessibility-interview",
+  "droppedImages": "",
+  "tags": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://study.unimelb.edu.au/student-life/inside-melbourne/stem/episode-6-stem-will-i-fit-in",
+  "path": "student-life/inside-melbourne/stem/episode-6-stem-will-i-fit-in",
+  "timestamp": "2026-10-04T04:05:04.187Z",
+  "title": "Episode 6: STEM: Will I fit in?",
+  "template": "story-article",
+  "blocks": [
+    "hero-split",
+    "accordion",
+    "cards-chips"
+  ],
+  "fragments": "stem-careers-and-employability",
+  "droppedImages": "",
+  "tags": "STEM, Indigenous"
+}

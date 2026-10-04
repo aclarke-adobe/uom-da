@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://study.unimelb.edu.au/connect-with-us/high-school-programs/university-of-melbourne-extension-program",
   "path": "connect-with-us/high-school-programs/university-of-melbourne-extension-program",
-  "timestamp": "2026-10-03T07:12:16.185Z",
+  "timestamp": "2026-10-03T13:58:22.219Z",
   "title": "University of Melbourne Extension Program",
   "template": "section-landing",
   "blocks": [
@@ -15,9 +15,11 @@
     "video-shorts",
     "accordion",
     "accordion",
+    "timeline",
     "accordion",
     "columns-text-column"
   ],
   "fragments": "",
-  "droppedImages": ""
+  "droppedImages": "",
+  "tags": ""
 }

@@ -1,5 +1,7 @@
 /* eslint-disable */
 /* global WebImporter */
+import { isLandingFamily } from '../landing-family.js';
+
 /**
  * Parser for cards. Base: cards (no option). Authored as "Cards".
  * Source: https://study.unimelb.edu.au (homepage template, section 9 feature panel).
@@ -98,7 +100,7 @@ function landingPara(textOrNode, document) {
   return p;
 }
 
-function landingCard(card, document) {
+function landingCard(card, document, story) {
   card.querySelectorAll('.screenreaders-only, .sr-only').forEach((x) => x.remove());
   const body = [];
   const cardHref = card.matches('a[href]') ? card.getAttribute('href') : '';
@@ -125,6 +127,9 @@ function landingCard(card, document) {
     if (t) body.push(landingPara(t, document));
   });
   card.querySelectorAll('.card__tags .tags__item').forEach((tag) => {
+    // story-article: a linked tag (static events copy) is emitted once, as the link from the
+    // footer below, not also as a plain label
+    if (story && tag.querySelector('a[href]') && tag.closest('.card__footer')) return;
     if (clean(tag)) body.push(landingPara(clean(tag), document));
   });
   const titleHref = heading && (heading.matches('a') ? heading : heading.querySelector('a'));
@@ -155,30 +160,39 @@ function landingCard(card, document) {
   return image ? [[image], body.length ? body : ''] : [body];
 }
 
-function parseLanding(element, document, url) {
+function parseLanding(element, document, url, template) {
   let cards = [...element.querySelectorAll('.card')].filter((c) => !c.parentElement.closest('.card'));
   if (!cards.length) cards = [...element.querySelectorAll(':scope > .cell, :scope > li')];
   // live feeds copy what the source shows initially: "Show more" items (.cell.news.hidden on
   // ct-newslisting) are not imported (mapping-notes "Live feeds") — except on a newsroom page
-  // (path ending /news), where the listing is the page and every article is kept
-  const newsroom = /\/news\/?$/.test(url ? new URL(url, 'https://study.unimelb.edu.au').pathname : '');
+  // (path ending /news, or a story-article news hub such as .../alumni-news-and-updates), where the
+  // listing is the page and every article is kept
+  const newsroom = /\/(?:news|[\w-]*-news-and-updates)\/?$/.test(url ? new URL(url, 'https://study.unimelb.edu.au').pathname : '');
   if (!newsroom) {
     cards = cards.filter((c) => {
       const hidden = c.closest('.hidden');
       return !hidden || !element.contains(hidden);
     });
   }
-  const rows = cards.map((c) => landingCard(c, document)).filter(Boolean);
+  const story = template === 'story-article';
+  const rows = cards.map((c) => landingCard(c, document, story)).filter(Boolean);
   if (!rows.length) { element.replaceWith(...element.childNodes); return; }
   // image listing (card--imagelisting: photo over a linked title, optional text) is authored as an
   // option: with the title linked it is otherwise indistinguishable from the staff-list cards
   const listing = cards.length && cards.every((c) => c.matches('.card--imagelisting'));
-  element.replaceWith(WebImporter.Blocks.createBlock(document, { name: listing ? 'Cards (listing)' : 'Cards', cells: rows }));
+  // story-article one-per-row news list (.grid--1col > .cell > .card--generic--full-width: STEM
+  // episode list, Wilam Hall alumni news) is the List option
+  const list = story && cards.length
+    && cards.every((c) => c.matches('.grid--1col > .cell > .card--generic--full-width'));
+  let name = 'Cards';
+  if (listing) name = 'Cards (listing)';
+  else if (list) name = 'Cards (list)';
+  element.replaceWith(WebImporter.Blocks.createBlock(document, { name, cells: rows }));
 }
 
 export default function parse(element, { document, template, url }) {
-  if (template === 'section-landing') {
-    parseLanding(element, document, url);
+  if (isLandingFamily(template)) {
+    parseLanding(element, document, url, template);
     return;
   }
   // Course-detail shape (block-context/cards/instances/course-detail-01.html, MMA career outcomes
