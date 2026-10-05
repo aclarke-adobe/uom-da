@@ -1062,6 +1062,14 @@ main .section.hero-container:has(> .hero-wrapper > .hero.hero-banner) {
   margin-top: 16px;
 }
 
+/* subtitle (source h2.heading-card, imported as a paragraph): semibold, 48px above the CTA */
+.hero.overlay .hero-main > p:not(.button-wrapper, .hero-link, .hero-eyebrow) {
+  margin-bottom: 48px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
 /* CTA: the source's 18px label and 20px arrow; it spans the column on small phones */
 .hero.overlay .button-wrapper a.button {
   align-items: flex-start;
@@ -1095,6 +1103,10 @@ main .section.hero-container:has(> .hero-wrapper > .hero.hero-banner) {
 
   .hero.overlay .hero-main > :is(h1, h2) {
     margin-bottom: 24px;
+  }
+
+  .hero.overlay .hero-main > p:not(.button-wrapper, .hero-link, .hero-eyebrow) {
+    font-size: 24px;
   }
 }
 

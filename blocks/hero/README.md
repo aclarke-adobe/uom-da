@@ -21,7 +21,8 @@ Single block table. Content: Cells: optional image-only cell (media); main text 
 
 ### Story articles and content pages
 
-- **Story header** (Split, h1 only, alone in its section, page has `Tags` metadata): `hero-story` instead of `hero-banner`. Navy band; 16:9 image above the title on mobile; from 769px the title is centred vertically in the left half (min 432px) and the image covers the right half.
+- **Story page hook**: on a page with `Template: story-article` metadata `hero.js` adds `body.story-article` (aem.js does it on aem.page/live; the local dev server keeps the meta name's case, which aem.js misses), so `styles/story.css` can scope story rules with it.
+- **Story header** (Split, h1 only, alone in its section, page has `Template: story-article` metadata): `hero-story` instead of `hero-banner`. Navy band; 16:9 image above the title on mobile; from 769px the title is centred vertically in the left half (min 432px) and the image covers the right half.
 - **Menu header** (Aside with an h1): main cell = h1 + intro; second cell = list of links. `hero-menu`: navy band, intro 2/3 + panel of cyan-arrow links 1/3 from 769px, stacked below on mobile. The panel stays in the band (no `hero-has-aside`, so course.css does not narrow the next section).
 - **Search header** (Split, h1 + intro + image, its section holds only this hero and a Search block): `hero-search`: page header layout (image on the right 45% from 769px); `hero.js` moves the search box under the intro.
 - **Campaign banner, centred** (Overlay; add `dark` for the 50% scrim): image + h1 and an optional bold CTA link centred over the photo under a 25% black scrim.

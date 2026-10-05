@@ -38,10 +38,11 @@ Story-article shapes (automatic; only story content produces these cell shapes):
 | Shape class | Option | Authored as | Source component |
 | --- | --- | --- | --- |
 | `cards-chip-study-area` / `-bachelor` / `-major` / `-research` | chips | link + type paragraph | story "Study options" `a.card-course--*` (navy, navy, `#809daa`, `#9fb825` rule) |
-| `cards-link-boxes` (+ `cards-link-note` on a title-less box) | link-list | heading + description + one link per paragraph | sublink-menu--blue titled boxes (how-to-apply, languages); the title-less box is the card-rounded-figure "not sure if you're domestic or international?" note |
+| `cards-link-boxes` (+ `cards-link-note` on a title-less box) | link-list | heading + description + one link per paragraph; the note: icon picture paragraph (`cards-link-icon`), heading line (`cards-link-note-title`), link | sublink-menu--blue titled boxes (how-to-apply, languages); the title-less box is the card-rounded-figure "not sure if you're domestic or international?" note (48px icon beside the text on mobile, above it from 600px) |
 | `cards-image-focus` | icon | image + h3 name (+ role paragraph) + quote, no links | card--image-focus testimonials / feature photos (cover photo, padded text) |
-| `cards-news-list` | default (news), or the `list` option | image + linked h3 + excerpt + tag paragraph(s), no date | card--generic--full-width (STEM episode list): one card per row, photo left on desktop, tags in a row |
-| `cards-events` (+ `cards-news-list`) | default (news) | linked h3, date, tag labels, the same labels as links, "View event" | static events listing: label copies hidden, linked tags shown as chips, one card per row |
+| `cards-news-list` | default (news), or the `list` option | image + linked h3 + excerpt + tag paragraph(s), no date | card--generic--full-width (STEM episode list, news hubs): one card per row, photo left on desktop, tags in a row, the link beside the tags at the bottom right from 769px |
+| `cards-events` (+ `cards-news-list`) | default (news) | linked h3, date, tag links, then a "View event" link repeating the title link (every card ends with its title link and at least one card has links before it) | static events listing: tag links shown as chips, one card per row |
+| (story stat tiles) | stat (`cards-stat-ranking`) on a `Template: story-article` page | `**figure**` + label, no image cell | uom-stats-and-rankings without icons: 16px padding, 24px gap from 769px |
 | (excerpt rule) | default (news) in a section headed `#keep-reading` | image + linked h3 + excerpt + link | story "Keep reading" card--generic (excerpt under a thin rule) |
 
 ## Supported variations

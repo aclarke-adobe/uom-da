@@ -1876,12 +1876,42 @@ main .section .cards.link-list.cards-link-boxes > ul {
   content: none;
 }
 
-.cards.link-list.cards-link-boxes .cards-link-note .cards-card-body > p:first-child {
+/* the title-less note (card-rounded-figure): 48px icon beside the heading line and link on
+   mobile, above them from tablet up */
+.cards.link-list.cards-link-boxes .cards-link-note .cards-card-body {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-content: start;
+  column-gap: 6px;
+}
+
+.cards.link-list.cards-link-boxes .cards-link-note .cards-card-body > * {
+  grid-column: 2;
+}
+
+.cards.link-list.cards-link-boxes .cards-link-note .cards-card-body > p.cards-link-icon {
+  grid-area: 1 / 1 / span 2;
+  margin: 0 0 20px;
+  line-height: 0;
+}
+
+.cards.link-list.cards-link-boxes > ul > li .cards-link-icon img {
+  width: 48px;
+  height: 48px;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+.cards.link-list.cards-link-boxes .cards-link-note .cards-card-body > p.cards-link-note-title {
   margin: 0 0 20px;
   color: var(--heading-color);
   font-size: 24px;
   font-weight: 600;
   line-height: 1.2;
+}
+
+.cards.link-list.cards-link-boxes .cards-link-note .cards-card-body > :last-child {
+  margin-bottom: 0;
 }
 
 /* --- icon, image-focus testimonials: cover photo over a padded name / role and the quote */
@@ -1917,6 +1947,17 @@ main .section .cards.link-list.cards-link-boxes > ul {
 
 .cards.icon.cards-image-focus .cards-card-body > p:where(:not(.cards-card-role)) {
   margin: 0;
+}
+
+/* --- stat, rankings on story pages (body.story-article, see cards.js isStoryPage): the source
+   tiles have no icon, so no top padding is reserved for one; light-band tiles keep the kit's
+   blue-grey outline. Landing tiles (icons dropped by the import) keep the reserved space. */
+body.story-article .cards.stat.cards-stat-ranking > ul > li:not(:has(> .cards-card-image)) {
+  padding: 16px;
+}
+
+body.story-article main .section:not(.navy, .dark) .cards.stat.cards-stat-ranking > ul > li {
+  border-color: #b5baca;
 }
 
 /* --- default, news list (card--generic--full-width, events): one card per row */
@@ -1956,8 +1997,19 @@ main .cards.cards-news.cards-events > ul {
   text-decoration: underline;
 }
 
-.cards.cards-news .cards-card-body > p.cards-card-dup {
-  display: none;
+/* list footer: "View article" / "View event" at the body size on a single 1:1 line; a list's
+   tag row keeps 30px above the link (events keep 16px) */
+.cards.cards-news.cards-news-list .cards-card-body > .cards-card-cta {
+  line-height: 1;
+}
+
+.cards.cards-news.cards-news-list .cards-card-cta a:any-link {
+  font-size: inherit;
+  line-height: 1;
+}
+
+.cards.cards-news.cards-news-list:not(.cards-events) .cards-card-body > .cards-card-tags {
+  margin-bottom: 30px;
 }
 
 /* an event without an excerpt still closes its date with the excerpt's rule */
@@ -1969,7 +2021,7 @@ main .cards.cards-news.cards-events > ul {
 
 /* --- default, excerpt under its own rule (STEM list, keep reading on story articles) */
 :is(.cards.cards-news.cards-news-list, main .section:has(#keep-reading) .cards.cards-news)
-  .cards-card-body > .cards-card-title + p:where(:not(.cards-card-cta, .cards-card-date, .cards-card-tag, .cards-card-dup)) {
+  .cards-card-body > .cards-card-title + p:where(:not(.cards-card-cta, .cards-card-date, .cards-card-tag)) {
   margin: 8px 0 16px;
   padding-top: 12px;
   border-top: 1px solid #e4e4e4;
@@ -1979,6 +2031,14 @@ main .cards.cards-news.cards-events > ul {
   .cards.link-list.cards-link-boxes > ul,
   main .section .cards.link-list.cards-link-boxes > ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cards.link-list.cards-link-boxes .cards-link-note .cards-card-body {
+    display: block;
+  }
+
+  .cards.link-list.cards-link-boxes .cards-link-note .cards-card-body > p.cards-link-note-title {
+    margin-bottom: 30px;
   }
 
   .cards.icon.cards-image-focus > ul {
@@ -2004,8 +2064,7 @@ main .cards.cards-news.cards-events > ul {
     font-size: 24px;
   }
 
-  .cards.link-list.cards-link-boxes .cards-link-note .cards-card-body > p:first-child {
-    margin-bottom: 30px;
+  .cards.link-list.cards-link-boxes .cards-link-note .cards-card-body > p.cards-link-note-title {
     font-size: 32px;
   }
 
@@ -2028,6 +2087,10 @@ main .cards.cards-news.cards-events > ul {
     gap: 24px;
   }
 
+  body.story-article .cards.stat.cards-stat-ranking > ul {
+    gap: 24px;
+  }
+
   main .cards.cards-news.cards-events > ul {
     gap: 0;
   }
@@ -2047,6 +2110,25 @@ main .cards.cards-news.cards-events > ul {
     inset: 0;
     height: 100%;
     aspect-ratio: auto;
+  }
+
+  /* list footer (card__footer row): tags on the left, the link at the bottom right */
+  .cards.cards-news.cards-news-list:not(.cards-events) .cards-card-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-content: start;
+  }
+
+  .cards.cards-news.cards-news-list:not(.cards-events) .cards-card-body > * {
+    grid-column: 1 / -1;
+  }
+
+  .cards.cards-news.cards-news-list:not(.cards-events) .cards-card-body > .cards-card-tags {
+    grid-column: 1;
+  }
+
+  .cards.cards-news.cards-news-list:not(.cards-events) .cards-card-body > .cards-card-cta {
+    grid-column: 2;
   }
 }
 

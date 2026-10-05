@@ -8,12 +8,11 @@
  *   (source div.content-block.bg-inverted title band; 73 story pages, no other template).
  * - ASIDE: the first section holds only a Hero (aside) (source ct-menu ql-menu header;
  *   33 story pages; styles/landing.css excludes .aside from its own scope).
- * - TAGS: the page carries `Tags` metadata (source share-bar tags; 70 story pages, all of them
- *   stories with a Hero (split) header, which also match the landing scope).
- * - TEMPLATE: body.story-article, set by aem.js from `Template: story-article` page metadata
- *   (not yet in the imported content; covers the remaining story pages once it is).
+ * - STORY: body.story-article, from `Template: story-article` page metadata (all 226 story
+ *   pages). aem.js sets it on aem.page/live; locally blocks/hero/hero.js sets it, so it is
+ *   there on every story page with a hero (153) — the TITLE pages have none, hence TITLE too.
  * The NL scope (TITLE, ASIDE) is the landing.css section model for pages outside the landing
- * scope; the ALL scope (every hook) carries the story-only corrections. Each scope sits in
+ * scope; the ALL scope (STORY, TITLE) carries the story-only corrections. Each scope sits in
  * :where() so it adds no specificity, as in landing.css.
  */
 
@@ -156,19 +155,19 @@ main:where(:has(> .section.navy:first-child > .default-content-wrapper:first-chi
 /* ---- story corrections (ALL scope) ---- */
 
 /* body sub-headings: story h3 are the regular h3 (32px), not the landing small title */
-main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .section > .default-content-wrapper > h3:not(:first-child),
-main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .columns.text-column > div > div > h3 {
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .section > .default-content-wrapper > h3:not(:first-child),
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .columns.text-column > div > div > h3 {
   margin-bottom: 20px;
   font-size: var(--heading-font-size-l);
 }
 
 /* text column (ct-textcolumnlayout): source list indent */
-main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .columns.text-column :is(ul, ol) {
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .columns.text-column :is(ul, ol) {
   padding-left: 24px;
 }
 
 /* a heading-sized lead line straight after a section heading (source h2.heading-sm) */
-main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .section > .default-content-wrapper > h2 + h2 {
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .section > .default-content-wrapper > h2 + h2 {
   margin-bottom: 12px;
   font-family: var(--body-font-family);
   font-size: 18px;
@@ -178,12 +177,10 @@ main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .sec
 }
 
 /*
- * lead paragraph (source p.lead): the importer drops the class, so only two shapes are styled:
- * a section with the lead / lead-center option (first paragraph), and the student-takeover
- * intro (one paragraph above the video, straight after the story hero)
+ * lead paragraph (source p.lead, 24px semibold navy): the importer puts it first in a section of its
+ * own with the lead / lead-center option (Inclusivity and accessibility bands: `grey, lead`)
  */
-main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .section:is(.lead, .lead-center) > .default-content-wrapper:first-child > p:first-child,
-main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) > .section.hero-container:first-child + .section:not(.centered):has(> .default-content-wrapper:first-child + .video-wrapper:last-child) > .default-content-wrapper > p:only-child {
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .section:is(.lead, .lead-center) > .default-content-wrapper:first-child > p:first-child {
   margin-bottom: 16px;
   color: var(--heading-color);
   font-size: 20px;
@@ -191,33 +188,106 @@ main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .sec
   line-height: 1.2;
 }
 
-main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .section.lead-center > .default-content-wrapper:first-child > p:first-child {
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .section.lead-center > .default-content-wrapper:first-child > p:first-child {
   margin-inline: auto;
   text-align: center;
 }
 
-/* Inclusivity and accessibility bands (fragment or inline): a grey band of a title line and one paragraph; the title is a lead line (source p.lead) */
-main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .section.grey > .default-content-wrapper:only-child > p:first-child:not(:has(*)):has(+ p:last-child) {
-  margin-bottom: 16px;
-  color: var(--heading-color);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.2;
+/*
+ * the landing lead shape (a lone paragraph straight after the page header, landing.css) is body
+ * text on story pages: their leads carry the lead option (source plain p, e.g. return-to-study)
+ */
+main:where(.story-article main) > .section.hero-container:first-child + .section:not(.grey, .navy, .lead, .lead-center) > .default-content-wrapper:only-child > p:only-child:not(:has(> a:only-child)) {
+  margin-bottom: 24px;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+/* consecutive lead sections (languages intro: two p.lead in one source block) are spaced by the lead's own margin */
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) > .section:is(.lead, .lead-center):has(+ .section:is(.lead, .lead-center)) {
+  margin-bottom: 0;
+}
+
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) > .section:is(.lead, .lead-center) + .section:is(.lead, .lead-center) {
+  margin-top: 0;
 }
 
 /* stacked accordion closing its band: the source's 40px list margin collapses into the band padding */
-main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .section > .accordion-wrapper:last-child > .accordion.accordion-ds .accordion-items {
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .section > .accordion-wrapper:last-child > .accordion.accordion-ds .accordion-items {
   margin-bottom: 0;
 }
 
 /* photo captions (source p > em > strong > sup): a paragraph of superscript text keeps its line */
-main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .section > .default-content-wrapper > p:has(sup):not(:has(:not(em, strong, b, i, sup))) sup {
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .section > .default-content-wrapper > p:has(sup):not(:has(:not(em, strong, b, i, sup))) sup {
   line-height: 2; /* the paragraph's 1.5 line at the 0.75em superscript size */
 }
 
 /* embedded YouTube in the story text (source p > iframe, 700 x 393): a text-column player, not a full-width video */
-main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .section:not(.centered) > .default-content-wrapper + .video-wrapper > .video:not(.split, .shorts) {
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .section:not(.centered) > .default-content-wrapper + .video-wrapper > .video:not(.split, .shorts) {
   max-width: 700px;
+}
+
+/*
+ * buttons in the text, accordions and tabs (source .btn in a paragraph): 18px label, 20px arrow 4px
+ * from it, a paragraph's 24px below; full column width on small phones (as columns.css does).
+ * Two button paragraphs in a row (source: two .btn in one paragraph) sit side by side from 481px.
+ */
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) :is(.default-content-wrapper, .accordion-item-body, .tabs-panel-main) > p.button-wrapper {
+  margin: 0 0 24px;
+}
+
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) :is(.default-content-wrapper, .accordion-item-body, .tabs-panel-main) > p.button-wrapper:has(+ p.button-wrapper) {
+  margin-bottom: 16px;
+}
+
+/* a band holding nothing but one button (languages "Back to languages", source p.text-center) */
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .section > .default-content-wrapper:only-child > p.button-wrapper:only-child {
+  text-align: center;
+}
+
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) :is(.default-content-wrapper, .accordion-item-body, .tabs-panel-main) > p.button-wrapper > a.button:any-link {
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  font-size: 18px;
+}
+
+main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) :is(.default-content-wrapper, .accordion-item-body, .tabs-panel-main) > p.button-wrapper > a.button::before {
+  width: 20px;
+  height: 20px;
+  margin-top: 3.5px;
+}
+
+/*
+ * pull quote inside the story text (source blockquote between paragraphs; the text goes on after
+ * the quote): not landing.css's heading-beside-quotes section, so its h2 stay section headings
+ * and (from 900px) the text and quote keep the full text column
+ */
+main:where(.story-article main) .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media)):has(> .quote-wrapper + .default-content-wrapper) > .default-content-wrapper:first-child h2 {
+  margin-bottom: 20px;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+@media (width >= 481px) {
+  main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) :is(.default-content-wrapper, .accordion-item-body, .tabs-panel-main) > p.button-wrapper > a.button:any-link {
+    width: auto;
+  }
+
+  main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) :is(.default-content-wrapper, .accordion-item-body, .tabs-panel-main) > p.button-wrapper:has(+ p.button-wrapper),
+  main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) :is(.default-content-wrapper, .accordion-item-body, .tabs-panel-main) > p.button-wrapper + p.button-wrapper {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) :is(.default-content-wrapper, .accordion-item-body, .tabs-panel-main) > p.button-wrapper:has(+ p.button-wrapper) {
+    margin: 0 20px 24px 0;
+  }
 }
 
 @media (width >= 769px) {
@@ -297,26 +367,24 @@ main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .sec
     margin-bottom: 24px;
   }
 
-  main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .section > .default-content-wrapper > h2 + h2 {
+  main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .section > .default-content-wrapper > h2 + h2 {
     margin-bottom: 16px;
     font-size: 20px;
   }
 
-  main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .section:is(.lead, .lead-center) > .default-content-wrapper:first-child > p:first-child,
-  main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) > .section.hero-container:first-child + .section:not(.centered):has(> .default-content-wrapper:first-child + .video-wrapper:last-child) > .default-content-wrapper > p:only-child,
-  main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .section.grey > .default-content-wrapper:only-child > p:first-child:not(:has(*)):has(+ p:last-child) {
+  main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .section:is(.lead, .lead-center) > .default-content-wrapper:first-child > p:first-child {
     margin-bottom: 18px;
     font-size: 24px;
   }
 }
 
 @media (width >= 900px) {
-  main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .section > .accordion-wrapper:last-child > .accordion.accordion-ds .accordion-items {
+  main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .section > .accordion-wrapper:last-child > .accordion.accordion-ds .accordion-items {
     margin-bottom: 40px;
   }
 
   /* text column side by side: the source keeps the last paragraph's 24px margin inside the band */
-  main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .columns.text-column {
+  main:where(.story-article main, :has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child)) .columns.text-column {
     padding-bottom: 24px;
   }
 
@@ -340,10 +408,30 @@ main:where(.story-article main, :root:has(meta[name="tags" i]) main, :has(> .sec
   main:where(:has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) .section:has(> .default-content-wrapper:first-child > h2:first-child + p > picture:first-child):has(> .cards-wrapper > .cards.tile) > .cards-wrapper {
     grid-area: 2 / 3 / span 9;
   }
+
+  /* pull quote inside the story text: the plain section layout (styles.css), not the landing grid */
+  main:where(.story-article main) .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media)):has(> .quote-wrapper + .default-content-wrapper) {
+    display: block;
+    padding-inline: 0;
+  }
+
+  main:where(.story-article main) .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media)):has(> .quote-wrapper + .default-content-wrapper) > div {
+    max-width: var(--content-max-width);
+    margin: auto;
+    padding: 0 32px;
+  }
+
+  main:where(.story-article main) .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media)):has(> .quote-wrapper + .default-content-wrapper) > .default-content-wrapper:first-child > :last-child {
+    margin-bottom: 24px;
+  }
 }
 
 @media (width >= 1304px) {
   main:where(:has(> .section.navy:first-child > .default-content-wrapper:first-child > h1:first-child), :has(> .section:first-child > .hero-wrapper:only-child > .hero.aside)) > .section:not(:has(> .default-content-wrapper > :not(.section))) > .default-content-wrapper > .section > div {
+    padding: 0;
+  }
+
+  main:where(.story-article main) .section:has(> .default-content-wrapper:first-child + .quote-wrapper > .quote:not(.quote-has-media)):has(> .quote-wrapper + .default-content-wrapper) > div {
     padding: 0;
   }
 }

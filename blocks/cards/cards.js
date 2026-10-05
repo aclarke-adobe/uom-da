@@ -83,36 +83,47 @@ function decorateTitle(body, tile) {
   }
 }
 
+/*
+ * story-article page: `Template: story-article` page metadata. aem.js turns it into
+ * body.story-article on aem.page/live, but it reads the meta case-sensitively and the local
+ * dev server keeps the authored name (`Template`), so the meta is also looked up with `i`
+ * and the body class is added here (as hero.js does), so cards.css can use body.story-article.
+ */
+function isStoryPage() {
+  if (document.body.classList.contains('story-article')) return true;
+  const meta = document.head.querySelector('meta[name="template" i]');
+  const isStory = !!meta && meta.content.split(',').some((t) => t.trim().toLowerCase() === 'story-article');
+  if (isStory) document.body.classList.add('story-article');
+  return isStory;
+}
+
 const HEADING = 'H2 H3 H4 H5 H6';
 const isHeading = (el) => !!el && HEADING.includes(el.tagName);
 const slug = (text) => text.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 /**
  * Full-width news lists (card--generic--full-width): `Cards (list)`, the STEM episode list
- * (photo, excerpt and topic tags, no dates) and the static events listing, whose topic tags
- * were imported twice (plain labels, then the same labels as filter links). The labels hide,
- * the linked copies become the tag row; each card's tags are grouped so they wrap in a row.
+ * (photo, excerpt and topic tags, no dates) and the static events listing. An event card ends
+ * with its topic tags as filter links and then a "View event" link that repeats the title link;
+ * no other card listing has link paragraphs before a link back to its own title. Those tag
+ * links become the tag row; each card's tags are grouped so they wrap in a row.
  */
 function decorateNewsList(block, lis) {
   const body = (li) => li.querySelector(':scope > .cards-card-body');
   const photo = (li) => !!li.querySelector(':scope > .cards-card-image');
-  let events = false;
-  lis.forEach((li) => {
-    const b = body(li);
-    const ctaTexts = [...b.querySelectorAll(':scope > .cards-card-cta')].map((p) => p.textContent.trim());
-    const dups = [...b.querySelectorAll(':scope > p:not(.cards-card-cta, .cards-card-date)')]
-      .filter((p) => !p.querySelector('a') && ctaTexts.includes(p.textContent.trim()));
-    if (!dups.length) return;
-    events = true;
-    const labels = dups.map((p) => p.textContent.trim());
-    dups.forEach((p) => { p.classList.remove('cards-card-tag'); p.classList.add('cards-card-dup'); });
-    b.querySelectorAll(':scope > .cards-card-cta').forEach((p) => {
-      if (labels.includes(p.textContent.trim())) {
-        p.classList.remove('cards-card-cta');
-        p.classList.add('cards-card-taglink');
-      }
-    });
-  });
+  const href = (el) => el?.querySelector('a')?.getAttribute('href');
+  const ctas = (li) => [...body(li).querySelectorAll(':scope > .cards-card-cta')];
+  const events = lis.every((li) => {
+    const links = ctas(li);
+    const title = href(body(li).querySelector(':scope > .cards-card-title'));
+    return !!title && links.length > 0 && href(links[links.length - 1]) === title;
+  }) && lis.some((li) => ctas(li).length > 1);
+  if (events) {
+    lis.forEach((li) => ctas(li).slice(0, -1).forEach((p) => {
+      p.classList.remove('cards-card-cta');
+      p.classList.add('cards-card-taglink');
+    }));
+  }
   const tagged = (li) => !!body(li).querySelector(':scope > .cards-card-tag');
   const dated = (li) => !!body(li).querySelector(':scope > .cards-card-date');
   const list = block.classList.contains('list')
@@ -132,7 +143,7 @@ function decorateNewsList(block, lis) {
     // a date with no excerpt after it still closes with the excerpt's rule
     const date = b.querySelector(':scope > .cards-card-date');
     const next = date?.nextElementSibling;
-    if (date && (!next || !next.matches('p:not(.cards-card-dup, .cards-card-cta)'))) {
+    if (date && (!next || !next.matches('p:not(.cards-card-cta)'))) {
       date.classList.add('cards-card-date-end');
     }
   });
@@ -241,7 +252,18 @@ function decorateShapes(block, ul, active) {
       lis.forEach((li) => {
         const b = body(li);
         if (!b) return;
-        if (!isHeading(b.firstElementChild)) li.classList.add('cards-link-note');
+        if (!isHeading(b.firstElementChild)) {
+          // the note opens with a small icon (a picture-only paragraph); its first line of text
+          // is the note's heading, followed by the link
+          li.classList.add('cards-link-note');
+          const icon = b.firstElementChild;
+          if (icon.tagName === 'P' && icon.querySelector('picture') && !icon.textContent.trim()) {
+            icon.classList.add('cards-link-icon');
+          }
+          const title = [...b.children].find((el) => el.tagName === 'P'
+            && !el.classList.contains('cards-link-icon') && !isActionParagraph(el));
+          if (title) title.classList.add('cards-link-note-title');
+        }
         const items = [...b.children].filter((el) => isActionParagraph(el));
         items.forEach((el) => {
           el.classList.remove('cards-card-cta');
@@ -304,6 +326,7 @@ function decorateShapes(block, ul, active) {
 }
 
 export default function decorate(block) {
+  isStoryPage();
   const active = [...block.classList].filter((c) => OPTION_CLASSES.includes(c));
   // icon pictograms render at card width, so only stat images are small
   const smallImages = active.includes('stat');

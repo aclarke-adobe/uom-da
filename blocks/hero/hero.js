@@ -14,7 +14,7 @@
  * section (landing page header or feature banner): navy band, optional tag link, image
  * pinned to the right edge.
  * `hero-story` replaces `hero-banner` for a story article header: an h1-only banner on a
- * page that carries `Tags` metadata (only story articles do): navy half with the title
+ * page with `Template: story-article` metadata (isStoryPage): navy half with the title
  * centred vertically beside a half-width image. `hero-search` replaces the page header
  * when a split h1 hero shares its section only with a Search block (study-level header,
  * e.g. graduate research): the search box moves into the text column.
@@ -28,7 +28,22 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 
 const OPTION_CLASSES = ['split', 'split-light', 'aside', 'overlay'];
 
+/*
+ * story-article page: `Template: story-article` page metadata. aem.js turns it into
+ * body.story-article on aem.page/live, but it reads the meta case-sensitively and the local
+ * dev server keeps the authored name (`Template`), so the meta is also looked up with `i`
+ * and the body class is added here, letting styles/story.css use body.story-article.
+ */
+function isStoryPage() {
+  if (document.body.classList.contains('story-article')) return true;
+  const meta = document.head.querySelector('meta[name="template" i]');
+  const isStory = !!meta && meta.content.split(',').some((t) => t.trim().toLowerCase() === 'story-article');
+  if (isStory) document.body.classList.add('story-article');
+  return isStory;
+}
+
 export default function decorate(block) {
+  isStoryPage();
   const active = [...block.classList].filter((c) => OPTION_CLASSES.includes(c));
   const cells = [...block.querySelectorAll(':scope > div > div')];
 
@@ -80,11 +95,9 @@ export default function decorate(block) {
   const section = block.closest('.section');
   const isBanner = !isCourse && active.includes('split') && section
     && [...section.children].every((el) => el === block.parentElement);
-  // story article header: the banner holds nothing but its h1, and the page has tags
-  // (the meta name keeps the authored case on some pipelines, hence the `i` flag)
-  const tags = document.head.querySelector('meta[name="tags" i]');
+  // story article header: the banner holds nothing but its h1 on a story-article page
   const isStory = isBanner && heading && heading.tagName === 'H1'
-    && main.children.length === 1 && !!tags && tags.content.trim() !== '';
+    && main.children.length === 1 && isStoryPage();
   // study-level header: the section holds this hero and a search box only
   const siblings = section ? [...section.children].filter((el) => el !== block.parentElement) : [];
   const searchBlock = !isCourse && active.includes('split') && heading && heading.tagName === 'H1'
