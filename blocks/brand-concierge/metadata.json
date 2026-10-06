@@ -1,0 +1,23 @@
+{
+  "variantName": "brand-concierge",
+  "baseBlock": "brand-concierge",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasBackgroundImage": false,
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "embedded third-party conversational agent",
+    "purpose": "Adobe Experience Platform Brand Concierge web agent mounted where the block is placed"
+  },
+  "contentPattern": {
+    "structure": "Empty block table, optionally key | value rows overriding the Web SDK / agent configuration (see README.md)."
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 0,
+    "lastUsed": null
+  },
+  "options": []
+}

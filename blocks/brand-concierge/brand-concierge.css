@@ -1,0 +1,6 @@
+/* .bc-card__image is rendered by the Brand Concierge agent; its name is fixed by the vendor */
+/* stylelint-disable-next-line selector-class-pattern */
+.brand-concierge .bc-card__image {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
