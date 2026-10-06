@@ -225,7 +225,7 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
-  loadBC();
+  
 }
 
 /**
@@ -244,9 +244,6 @@ async function loadPage() {
 }
 
 loadPage();
-/* BC */
-function loadBC() {
-  console.log("load bc");
-}
+
 
 
