@@ -243,3 +243,5 @@ async function loadPage() {
 }
 
 loadPage();
+
+console.log("hello world");
