@@ -1,0 +1,22 @@
+{
+  "variantName": "widget",
+  "baseBlock": "widget",
+  "version": "1.0.0",
+  "created": "2026-10-07T00:00:00.000Z",
+  "visualCharacteristics": {
+    "purpose": "Loads an interactive tool from /widgets/<name> (HTML, CSS and JS) into the page"
+  },
+  "contentPattern": {
+    "structure": "Single cell with one link to /widgets/<name>.html (grade-conversion-calculator, online-course-listing, atar-course-explorer); query parameters on the link become widget settings. A bare /widgets/ link in content is auto-blocked by scripts.js.",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "usage": {
+    "pagesUsing": [
+      "how-to-apply/graduate-coursework-study/grade-conversion-eligibility-calculator",
+      "study-with-us/online-courses",
+      "study-with-us/undergraduate-courses/explore-courses-by-atar"
+    ],
+    "reuseCount": 3
+  }
+}

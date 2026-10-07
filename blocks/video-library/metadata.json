@@ -1,0 +1,21 @@
+{
+  "variantName": "video-library",
+  "baseBlock": "video-library",
+  "version": "1.0.0",
+  "created": "2026-10-07T00:00:00.000Z",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "moderate",
+    "imagePattern": "grid",
+    "purpose": "Filterable library of YouTube videos (study level, topic, keyword search) with a pop-up player"
+  },
+  "contentPattern": {
+    "structure": "Optional 'Heading | <text>' row and a column-label row, then one row per video: thumbnail image | title | YouTube link | study level | topic | duration. Designed for a navy section.",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "usage": {
+    "pagesUsing": ["study-with-us/on-demand"],
+    "reuseCount": 1
+  }
+}

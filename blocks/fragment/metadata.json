@@ -1,0 +1,18 @@
+{
+  "variantName": "fragment",
+  "baseBlock": "fragment",
+  "version": "1.0.0",
+  "created": "2026-10-07T00:00:00.000Z",
+  "visualCharacteristics": {
+    "purpose": "Includes a shared content fragment (e.g. a band reused on many pages) at this point of the page"
+  },
+  "contentPattern": {
+    "structure": "Single cell holding one link to the fragment path (e.g. /fragments/story-article/stay-in-touch); the fragment's sections replace the block. Pages usually reference fragments as a bare link, which scripts.js auto-blocks.",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "usage": {
+    "pagesUsing": [],
+    "reuseCount": 169
+  }
+}
