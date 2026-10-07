@@ -12,7 +12,7 @@
     "purpose": "Adobe Experience Platform Brand Concierge web agent mounted where the block is placed"
   },
   "contentPattern": {
-    "structure": "Empty block table, optionally key | value rows overriding the Web SDK / agent configuration (see README.md)."
+    "structure": "Empty block table, optionally key | value rows: welcome copy (Heading, Subheading, Cards Heading, Placeholder), Examples (list of prompts, optional images) and Web SDK overrides (see README.md)."
   },
   "usage": {
     "pagesUsing": [],
