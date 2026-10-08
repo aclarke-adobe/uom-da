@@ -1,0 +1,313 @@
+{
+  "id": "40bd08df-ca86-40bb-ae0b-d757e4dee71c",
+  "name": "UNIVERSITY OF MELBOURNE_26-10-06_40bd08df-ca86-40bb-ae0b-d757e4dee71c",
+  "metadata": {
+    "brandName": "UNIVERSITY OF MELBOURNE",
+    "version": "1.0.0",
+    "language": "en",
+    "namespace": "brand-concierge"
+  },
+  "behavior": {
+    "multimodalCarousel": {
+      "cardClickAction": "openLink"
+    },
+    "input": {
+      "enableVoiceInput": false,
+      "continuousVoiceMode": false,
+      "disableMultiline": true,
+      "showAiChatIcon": {
+        "icon": ""
+      }
+    },
+    "chat": {
+      "messageAlignment": "normal",
+      "messageWidth": "100%"
+    },
+    "privacyNotice": {
+      "title": "Privacy Notice",
+      "text": "Your use of this automated chatbot constitutes your consent that the personal information you provide in the chat session can be collected, used, disclosed, and retained by YourBrand and service providers acting on YourBrand's behalf in accordance with the YourBrand {Privacy Policy}. Please do not provide sensitive personal information (such as financial or health information) in the chatbot.",
+      "links": [
+        {
+          "text": "Privacy Policy",
+          "url": "<your-privacy-policy-url>"
+        }
+      ]
+    },
+    "meetingForm": {
+      "fieldsPerRow": 2,
+      "fieldLayoutRules": {
+        "textInputs": {
+          "allowTwoColumns": true,
+          "fieldTypes": [
+            "string",
+            "email",
+            "tel",
+            "number"
+          ],
+          "identifyBy": null
+        },
+        "dropdowns": {
+          "allowTwoColumns": false,
+          "fieldTypes": [
+            "select"
+          ],
+          "identifyBy": "hasOptions"
+        },
+        "checkboxes": {
+          "allowTwoColumns": false,
+          "fieldTypes": [
+            "boolean",
+            "checkbox"
+          ],
+          "identifyBy": null
+        }
+      },
+      "title": {
+        "text": "Schedule a Meeting",
+        "alignment": "left"
+      },
+      "subtitle": {
+        "text": "Connect with our team to discuss your study options.",
+        "alignment": "left"
+      },
+      "buttons": {
+        "submit": {
+          "text": "Submit",
+          "alignment": "left"
+        },
+        "cancel": {
+          "text": "Cancel",
+          "alignment": "left"
+        }
+      }
+    },
+    "calendarWidget": {
+      "title": {
+        "text": "Pick a Time",
+        "alignment": "left"
+      },
+      "subtitle": {
+        "text": "Choose a convenient time for your meeting.",
+        "alignment": "left"
+      },
+      "postTitle": {
+        "text": "Once confirmed, you will receive a calendar invite with all the details. The specialist will already have this conversation context, so no need to repeat anything. Looking forward to connecting you with the right expert!",
+        "alignment": "left"
+      },
+      "buttons": {
+        "confirm": {
+          "text": "Confirm",
+          "alignment": "left"
+        },
+        "cancel": {
+          "text": "Cancel",
+          "alignment": "left"
+        }
+      }
+    },
+    "productCard": {
+      "actionButtonSize": "S"
+    },
+    "b2bLiveChat": {
+      "enabled": true
+    }
+  },
+  "disclaimer": {
+    "text": "All information provided is subject to the terms and conditions of the University of Melbourne.",
+    "links": [
+      {
+        "text": "Terms of Use",
+        "url": "https://eds.run.place/terms-and-conditions"
+      }
+    ]
+  },
+  "text": {
+    "welcome.heading": "Welcome to the University of Melbourne",
+    "welcome.subheading": "Discover courses, scholarships, and resources to start your journey.",
+    "input.placeholder": "Find a course, study area, or major",
+    "input.messageInput.aria": "Type your message here",
+    "input.send.aria": "Send message",
+    "input.aiChatIcon.tooltip": "Chat with us",
+    "input.mic.aria": "Use voice input",
+    "card.aria.select": "Select this option",
+    "carousel.prev.aria": "Previous",
+    "carousel.next.aria": "Next",
+    "scroll.bottom.aria": "Scroll to bottom",
+    "error.network": "Network error. Please try again.",
+    "loading.message": "Generating response...",
+    "feedback.dialog.title.positive": "Positive Feedback",
+    "feedback.dialog.title.negative": "Negative Feedback",
+    "feedback.dialog.question.positive": "What went well?",
+    "feedback.dialog.question.negative": "What could be better?",
+    "feedback.dialog.notes": "Additional comments",
+    "feedback.dialog.submit": "Submit",
+    "feedback.dialog.cancel": "Cancel",
+    "feedback.dialog.notes.placeholder": "Write your comments here",
+    "feedback.toast.success": "Thank you for your feedback!",
+    "feedback.thumbsUp.aria": "Thumbs up",
+    "feedback.thumbsDown.aria": "Thumbs down",
+    "feedback.title": "Share your feedback",
+    "feedback.positive.title": "What did you like?",
+    "feedback.negative.title": "What could be improved?",
+    "feedback.submitButton": "Submit Feedback",
+    "feedback.positive.options": "",
+    "feedback.negative.options": ""
+  },
+  "arrays": {
+    "welcome.examples": [
+      {
+        "text": "Explore undergraduate courses",
+        "systemPrompt": "Show me undergraduate courses at the University of Melbourne.",
+        "backgroundColor": "#000f46",
+        "image": "https://eds.run.place/media_13924072f09ada82368c4682abe4a3d4b1c2314cd.png?width=2000&format=png&optimize=medium"
+      },
+      {
+        "text": "Learn about scholarships",
+        "systemPrompt": "Tell me about scholarships available at the University of Melbourne.",
+        "backgroundColor": "#263362",
+        "image": "https://eds.run.place/media_14b951c071862b2b603291aba2a063c9426cf505e.png?width=2000&format=png&optimize=medium"
+      },
+      {
+        "text": "Discover graduate research opportunities",
+        "systemPrompt": "What graduate research programs are offered at the University of Melbourne?",
+        "backgroundColor": "#4d577e",
+        "image": "https://eds.run.place/media_16f629f63e386801a34bad77a45cc96900e4c11e5.png?width=750&format=png&optimize=medium"
+      },
+      {
+        "text": "Find professional development programs",
+        "systemPrompt": "What professional development programs are available at the University of Melbourne?",
+        "backgroundColor": "#737b99",
+        "image": "https://eds.run.place/media_1626569580deed0a832d36c71b9a55e7ed9adf9bb.png?width=2000&format=png&optimize=medium"
+      }
+    ],
+    "feedback.positive.options": [
+      "Helpful information",
+      "Easy navigation",
+      "Friendly assistance",
+      "Quick responses",
+      "Other"
+    ],
+    "feedback.negative.options": [
+      "Unclear information",
+      "Difficult navigation",
+      "Unhelpful assistance",
+      "Slow responses",
+      "Other"
+    ]
+  },
+  "assets": {
+    "icons": {
+      "company": "https://eds.run.place/media_13924072f09ada82368c4682abe4a3d4b1c2314cd.png?width=2000&format=png&optimize=medium"
+    }
+  },
+  "visualProfile": {
+    "sendIconIconColor": "#ffffff",
+    "sendIconBackgroundColor": "#522752"
+  },
+  "theme": {
+    "--welcome-input-order": "3",
+    "--welcome-cards-order": "2",
+    "--welcome-heading-size-desktop": "2.5rem",
+    "--welcome-heading-size-mobile": "2rem",
+    "--welcome-heading-weight": "700",
+    "--welcome-heading-text-align": "center",
+    "--welcome-subheading-size-desktop": "1.25rem",
+    "--welcome-subheading-size-mobile": "1rem",
+    "--welcome-subheading-text-align": "center",
+    "--welcome-padding": "2rem",
+    "--prompt-suggestion-background": "#522752",
+    "--prompt-suggestion-background-hover": "#522752",
+    "--prompt-suggestion-text-color": "#522752",
+    "--prompt-suggestion-border-color": "#522752",
+    "--font-family": "Source Sans 3, sans-serif",
+    "--color-primary": "#000f46",
+    "--color-text": "#522752",
+    "--line-height-body": "1.6",
+    "--main-container-background": "#ffffff",
+    "--input-height": "48px",
+    "--input-height-mobile": "40px",
+    "--input-border-radius": "8px",
+    "--input-border-radius-mobile": "6px",
+    "--input-background": "#ffffff",
+    "--input-outline-color": "#d9d9d9",
+    "--input-outline-width": "1px",
+    "--input-box-shadow": "0 2px 4px rgba(0, 0, 0, 0.1)",
+    "--input-focus-outline-width": "2px",
+    "--input-focus-outline-color": "#000f46",
+    "--input-font-size": "1rem",
+    "--input-font-weight": "400",
+    "--input-text-color": "#000f46",
+    "--input-button-height": "36px",
+    "--input-button-width": "36px",
+    "--submit-button-fill-color": "#ffffff",
+    "--submit-button-fill-color-disabled": "#CCCCCC",
+    "--color-button-submit": "#000f46",
+    "--color-button-submit-hover": "#522752",
+    "--input-button-border-radius": "8px",
+    "--button-disabled-background": "#F0F0F0",
+    "--disclaimer-color": "#333f6a",
+    "--disclaimer-font-size": "0.875rem",
+    "--disclaimer-font-weight": "400",
+    "--message-user-background": "#000f46",
+    "--message-user-text": "#ffffff",
+    "--message-border-radius": "8px",
+    "--message-padding": "1rem",
+    "--message-concierge-background": "#f3f3f3",
+    "--message-concierge-text": "#000000",
+    "--message-max-width": "100%",
+    "--chat-interface-max-width": "768px",
+    "--message-blocker-height": "48px",
+    "--loading-message-background": "#d9d9d9",
+    "--loading-dot-background": "#626262",
+    "--color-text-muted": "#626262",
+    "--citations-text-font-weight": "400",
+    "--citations-desktop-button-font-size": "0.875rem",
+    "--feedback-icon-btn-background": "#f1f1f1",
+    "--feedback-icon-btn-hover-background": "#e0e0e0",
+    "--feedback-icon-btn-size-desktop": "40px",
+    "--feedback-container-gap": "1rem",
+    "--multimodal-card-box-shadow": "0 4px 8px rgba(0, 0, 0, 0.1)",
+    "--border-radius-card": "12px",
+    "--button-height-s": "36px",
+    "--button-primary-background": "#000f46",
+    "--button-primary-text": "#ffffff",
+    "--button-primary-hover": "#522752",
+    "--button-secondary-border": "1px solid #333f6a",
+    "--button-secondary-text": "#333f6a",
+    "--button-secondary-hover": "#000b34",
+    "--color-button-secondary-hover-text": "#ffffff",
+    "--privacy-notice-background": "#f1f1f1",
+    "--privacy-notice-padding": "1rem",
+    "--privacy-notice-title-color": "#626262",
+    "--privacy-notice-text-color": "#626262",
+    "--privacy-notice-text-font-size": "0.875rem",
+    "--privacy-notice-title-font-size": "1rem",
+    "--message-concierge-link-decoration": "underline",
+    "--color-secondary": "#333f6a",
+    "--prompt-suggestion-button-background": "#d9d9d9",
+    "--prompt-pill-background": "#333f6a",
+    "--button-primary-mobile-background": "#522752",
+    "--button-primary-mobile-hover": "#522752",
+    "--main-container-mobile-background": "#ffffff",
+    "--message-concierge-border-width": "1px",
+    "--message-concierge-link-color": "#333f6a",
+    "--prompt-suggestion-button-border-radius": "20px",
+    "--prompt-suggestion-button-padding": "0.5rem 1rem",
+    "--prompt-suggestions-container-gap": "1rem",
+    "--card-background": "#333f6a",
+    "--card-text-font-size": "1rem",
+    "--card-text-padding": "1rem",
+    "--chat-container-background": "#ffffff",
+    "--message-blocker-background": "#ffffff",
+    "--card-text-color": "#ffffff",
+    "--prompt-pill-border-color": "#333f6a",
+    "--prompt-pill-text-color": "#ffffff",
+    "--prompt-suggestion-button-text-color": "#626262",
+    "--prompt-suggestion-button-background-hover": "#d9d9d9",
+    "--welcome-heading-text-color": "#000000",
+    "--welcome-subheading-text-color": "#000000",
+    "--welcome-header-order": "1",
+    "--prompt-suggestions-flex-direction": "row",
+    "--prompt-suggestions-flex-wrap": "wrap"
+  }
+}
