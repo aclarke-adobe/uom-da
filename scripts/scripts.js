@@ -245,5 +245,44 @@ async function loadPage() {
 
 loadPage();
 
+<script>
+  !function (n, o) {
+    o.forEach(function (o) {
+      n[o] || ((n.__alloyNS = n.__alloyNS ||
+        []).push(o), n[o] = function () {
+          var u = arguments; return new Promise(
+            function (i, l) { n[o].q.push([i, l, u]) })
+        }, n[o].q = [])
+    })
+  }
+  (window, ["alloy"]);
+</script>
+
+<style>
+  .bc-card__image {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+  }
+</style>
+
+<script src="https://cdn1.adoberesources.net/alloy/2.32.0/alloy.min.js"></script>
+<script src="https://experience.adobe.net/solutions/experience-platform-brand-concierge-web-agent/static-assets/main.js"></script>
+
+<script>
+  alloy("configure", {
+    defaultConsent: "in",
+    edgeDomain: "edge.adobedc.net",
+    edgeBasePath: "ee",
+    datastreamId: "638a5671-d3c7-4d23-9a7f-150360a10e8c",
+    orgId: "447AE26358FA40C50A495DB1@AdobeOrg",
+    debugEnabled: true,
+    idMigrationEnabled: false,
+    thirdPartyCookiesEnabled: false,
+    prehidingStyle: ".personalization-container { opacity: 0 !important }",
+  });
+
+  alloy("sendEvent", {});
+</script>
+
 
 
