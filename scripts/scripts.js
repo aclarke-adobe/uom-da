@@ -245,6 +245,54 @@ async function loadPage() {
 
 loadPage();
 
+/* ---- Brand Concierge / Alloy: add to scripts.js ---- */
+
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src;
+    s.async = true;
+    s.onload = resolve;
+    s.onerror = () => reject(new Error(`Failed to load ${src}`));
+    document.head.append(s);
+  });
+}
+
+function initConcierge() {
+  // Alloy queue stub (replaces the inline <script> from the vendor snippet)
+  ((n, o) => {
+    o.forEach((name) => {
+      if (!n[name]) {
+        (n.__alloyNS = n.__alloyNS || []).push(name);
+        n[name] = (...args) => new Promise((resolve, reject) => {
+          n[name].q.push([resolve, reject, args]);
+        });
+        n[name].q = [];
+      }
+    });
+  })(window, ['alloy']);
+
+  // Calls are queued by the stub until alloy.min.js finishes loading
+  window.alloy('configure', {
+    defaultConsent: 'in',
+    edgeDomain: 'edge.adobedc.net',
+    edgeBasePath: 'ee',
+    datastreamId: '638a5671-d3c7-4d23-9a7f-150360a10e8c',
+    orgId: '447AE26358FA40C50A495DB1@AdobeOrg',
+    debugEnabled: true,
+    idMigrationEnabled: false,
+    thirdPartyCookiesEnabled: false,
+    prehidingStyle: '.personalization-container { opacity: 0 !important }',
+  });
+  window.alloy('sendEvent', {});
+
+  loadScript('https://cdn1.adoberesources.net/alloy/2.32.0/alloy.min.js');
+  loadScript('https://experience.adobe.net/solutions/experience-platform-brand-concierge-web-agent/static-assets/main.js');
+}
+
+/* Call initConcierge() inside loadEager() (or at the top of loadPage())
+   so the stub exists before the brand-concierge block decorates. */
+
 
 
 
