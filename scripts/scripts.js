@@ -279,7 +279,7 @@ function initConcierge() {
     defaultConsent: 'in',
     edgeDomain: 'edge.adobedc.net',
     edgeBasePath: 'ee',
-    datastreamId: '638a5671-d3c7-4d23-9a7f-150360a10e8c',
+    datastreamId: '0e2d0439-ea3b-4a8d-822d-f82323103b2c',
     orgId: '447AE26358FA40C50A495DB1@AdobeOrg',
     debugEnabled: true,
     idMigrationEnabled: false,
