@@ -238,6 +238,7 @@ function loadDelayed() {
 }
 
 async function loadPage() {
+  initConcierge();
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
