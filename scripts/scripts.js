@@ -261,6 +261,7 @@ function loadScript(src) {
 
 function initConcierge() {
   // Alloy queue stub (replaces the inline <script> from the vendor snippet)
+  console.log('initConcierge');
   ((n, o) => {
     o.forEach((name) => {
       if (!n[name]) {
