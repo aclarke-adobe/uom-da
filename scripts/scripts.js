@@ -281,6 +281,11 @@ function initConcierge() {
     edgeBasePath: 'ee',
     datastreamId: '0e2d0439-ea3b-4a8d-822d-f82323103b2c',
     orgId: '447AE26358FA40C50A495DB1@AdobeOrg',
+    conversation: {
+        // Routes Brand Concierge conversation requests to the aus region.
+        // This must match the region provisioned for the customer.
+        region: "aus5"
+    },
     debugEnabled: true,
     idMigrationEnabled: false,
     thirdPartyCookiesEnabled: false,
@@ -288,7 +293,7 @@ function initConcierge() {
   });
   window.alloy('sendEvent', {});
 
-  loadScript('https://cdn1.adoberesources.net/alloy/2.32.0/alloy.min.js');
+  loadScript('https://cdn1.adoberesources.net/alloy/2.35.1/alloy.min.js');
   loadScript('https://experience.adobe.net/solutions/experience-platform-brand-concierge-web-agent/static-assets/main.js');
 }
 
